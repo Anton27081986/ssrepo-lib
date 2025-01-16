@@ -1,0 +1,1 @@
+export {FrontComponentsComponent} from './front-components.component';
