@@ -8,6 +8,7 @@
     "watch": "ng build --watch --configuration development",
     "lib:build": "ng build front-components",
     "lib:watch": "ng build front-components --watch",
+    "tokens:update": "style-dictionary build",
     "test": "ng test"
   },
   "private": true,
