@@ -1,1 +1,1 @@
-export {FrontComponentsComponent} from './front-components.component';
+export {IconComponent} from './icon/icon.component';
