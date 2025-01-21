@@ -1,0 +1,93 @@
+@import "_variables/alias";
+
+:root {
+    /* Mapped - Light */
+    --border-focus: #{$primary-400};
+    --surface-page: #{$neutral-white};
+    --border-focus-error: rgba(255, 255, 255, 1);
+    --surface-primary: #{$neutral-white};
+    --surface-information: #{$neutral-800};
+    --surface-information-2: #{$primary-50};
+    --surface-action: #{$primary-default};
+    --surface-action-hover: #{$primary-600};
+    --surface-action-hover-2: #{$neutral-200};
+    --surface-action-pressed: #{$primary-700};
+    --surface-action-pressed-2: #{$neutral-300};
+    --surface-disabled: #{$neutral-100};
+    --icon-action-hover: #{$neutral-700};
+    --icon-action: #{$neutral-500};
+    --icon-action-2: #{$neutral-600};
+    --icon-on-action: #{$neutral-white};
+    --icon-on-disabled: #{$neutral-400};
+    --icon-primary: #{$neutral-900};
+    --border-primary: #{$neutral-200};
+    --border-disabled: #{$neutral-300};
+    --text-on-action: #{$neutral-white};
+    --text-on-disabled: #{$neutral-400};
+    --text-disabled: #{$neutral-500};
+    --text-hover: #{$neutral-800};
+    --text-primary: #{$neutral-900};
+    --text-secondary: #{$neutral-700};
+    --text-tertiary: #{$neutral-600};
+    --text-on-information: #{$neutral-white};
+    --text-action: #{$neutral-500};
+
+    /* Mapped - Dark */
+    .dark {
+        --border-focus: #{$primary-400};
+        --surface-page: #{$neutral-800};
+        --surface-primary: #{$neutral-800};
+        --border-focus-error: rgba(255, 255, 255, 1);
+        --surface-secondary: #{$neutral-800};
+        --surface-information: #{$neutral-500};
+        --surface-information-2: #{$primary-900};
+        --surface-action: #{$primary-default};
+        --surface-action-hover: #{$primary-600};
+        --surface-action-hover-2: #{$neutral-700};
+        --surface-action-pressed: #{$primary-700};
+        --surface-action-pressed-2: #{$neutral-600};
+        --surface-disabled: #{$neutral-950};
+        --icon-action-hover: #{$neutral-200};
+        --icon-action: #{$neutral-100};
+        --icon-action-2: #{$neutral-100};
+        --icon-on-action: #{$neutral-white};
+        --icon-on-disabled: #{$neutral-400};
+        --icon-primary: #{$neutral-25};
+        --border-primary: rgba(65, 70, 81, 1);
+        --border-disabled: #{$neutral-600};
+        --text-on-action: #{$neutral-white};
+        --text-on-disabled: #{$neutral-400};
+        --text-disabled: #{$neutral-500};
+        --text-hover: #{$neutral-200};
+        --text-primary: #{$neutral-300};
+        --text-secondary: #{$neutral-200};
+        --text-tertiary: #{$neutral-400};
+        --text-quaternary: #{$neutral-500};
+        --text-on-information: #{$neutral-300};
+        --text-action: #{$neutral-500};
+        --text-headings: rgba(255, 255, 255, 1);
+    }
+
+    /* FONT-SIZE */
+    --font-size-body-xs: 12px;
+    --font-size-body-sm: 14px;
+    --font-size-body-md: 16px;
+    --font-size-body-lg: 18px;
+    --font-size-body-xl: 20px;
+    --font-size-heading-xs: 24px;
+
+    /* LINE-HEIGHT */
+    --line-height-body-sm: 20px;
+    --line-height-body-md: 24px;
+    --line-height-body-lg: 28px;
+    --line-height-body-xl: 30px;
+    --line-height-heading-xs: 32px;
+
+    /* SPACING */
+    --paragraph-spacing-body-xs: 12px;
+    --paragraph-spacing-body-sm: 14px;
+    --paragraph-spacing-body-md: 16px;
+    --paragraph-spacing-body-lg: 18px;
+    --paragraph-spacing-body-xl: 20px;
+    --paragraph-spacing-heading-xs: 24px;
+}
