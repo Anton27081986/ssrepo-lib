@@ -18,7 +18,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {\n    icon: IconType.Bell,\n    height: '24',\n    width: '24',\n    color: 'black',\n  },\n}"
+                "defaultValue": "{\n  args: {\n    icon: IconType.Bell,\n    height: '24',\n    width: '24',\n    color: Colors.IconPrimary,\n  },\n}"
             },
             {
                 "name": "Large",
@@ -108,7 +108,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<IconComponent>",
-                "defaultValue": "{\n  title: 'Components/Icon',\n  component: IconComponent,\n  decorators: [withDesign],\n  tags: ['autodocs'],\n  argTypes: {\n    icon: {\n      control: 'select',\n      options: Object.values(IconType),\n      description: ' Текст в label',\n    },\n    height: {\n      control: 'text',\n      description: ' Текст в label',\n    },\n    width: {\n      control: 'text',\n      description: ' Текст в label',\n    },\n    color: {\n      control: 'color',\n      description: ' Текст в label',\n    },\n  },\n}"
+                "defaultValue": "{\n  title: 'Components/Icon',\n  component: IconComponent,\n  tags: ['autodocs'],\n  argTypes: {\n    icon: {\n      control: 'select',\n      options: Object.values(IconType),\n      description: 'Иконка',\n    },\n    height: {\n      control: 'text',\n      description: 'Высота, px',\n    },\n    width: {\n      control: 'text',\n      description: 'Ширина, px',\n    },\n    color: {\n      control:'select',\n      options: Object.values(Colors),\n      description: 'Цвет иконки'\n    },\n  },\n}"
             },
             {
                 "name": "preview",
@@ -209,7 +209,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {\n    icon: IconType.Bell,\n    height: '24',\n    width: '24',\n    color: 'black',\n  },\n}"
+                    "defaultValue": "{\n  args: {\n    icon: IconType.Bell,\n    height: '24',\n    width: '24',\n    color: Colors.IconPrimary,\n  },\n}"
                 },
                 {
                     "name": "meta",
@@ -219,7 +219,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<IconComponent>",
-                    "defaultValue": "{\n  title: 'Components/Icon',\n  component: IconComponent,\n  decorators: [withDesign],\n  tags: ['autodocs'],\n  argTypes: {\n    icon: {\n      control: 'select',\n      options: Object.values(IconType),\n      description: ' Текст в label',\n    },\n    height: {\n      control: 'text',\n      description: ' Текст в label',\n    },\n    width: {\n      control: 'text',\n      description: ' Текст в label',\n    },\n    color: {\n      control: 'color',\n      description: ' Текст в label',\n    },\n  },\n}"
+                    "defaultValue": "{\n  title: 'Components/Icon',\n  component: IconComponent,\n  tags: ['autodocs'],\n  argTypes: {\n    icon: {\n      control: 'select',\n      options: Object.values(IconType),\n      description: 'Иконка',\n    },\n    height: {\n      control: 'text',\n      description: 'Высота, px',\n    },\n    width: {\n      control: 'text',\n      description: 'Ширина, px',\n    },\n    color: {\n      control:'select',\n      options: Object.values(Colors),\n      description: 'Цвет иконки'\n    },\n  },\n}"
                 }
             ],
             "projects/front-components/src/stories/button.stories.ts": [

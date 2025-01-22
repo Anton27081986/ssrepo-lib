@@ -1,32 +1,32 @@
 // icon.component.stories.ts
 import { Meta, StoryObj } from '@storybook/angular';
 import { IconComponent } from './icon.component';
-import { IconType } from '../../models/enums/icon-type';
-import { withDesign } from 'storybook-addon-designs';
+import { IconType } from '../../models';
+import { Colors } from '../../models';
 
 // Мета-информация о компоненте
 const meta: Meta<IconComponent> = {
   title: 'Components/Icon',
   component: IconComponent,
-  decorators: [withDesign],
   tags: ['autodocs'],
   argTypes: {
     icon: {
       control: 'select',
       options: Object.values(IconType),
-      description: ' Текст в label',
+      description: 'Иконка',
     },
     height: {
       control: 'text',
-      description: ' Текст в label',
+      description: 'Высота, px',
     },
     width: {
       control: 'text',
-      description: ' Текст в label',
+      description: 'Ширина, px',
     },
     color: {
-      control: 'color',
-      description: ' Текст в label',
+      control:'select',
+      options: Object.values(Colors),
+      description: 'Цвет иконки'
     },
   },
 };
@@ -40,6 +40,6 @@ export const Default: Story = {
     icon: IconType.Bell,
     height: '24',
     width: '24',
-    color: 'black',
+    color: Colors.IconPrimary,
   },
 };

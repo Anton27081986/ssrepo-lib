@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { appImports } from './app.imports';
-import { IconType } from '../../../front-components/src/lib/models/enums/icon-type';
+import { IconType } from '../../../front-components/src/lib/models';
+import { Colors } from '../../../front-components/src/lib/models';
 
 @Component({
   selector: 'app-root',
@@ -11,4 +12,5 @@ import { IconType } from '../../../front-components/src/lib/models/enums/icon-ty
 })
 export class AppComponent {
   protected readonly IconType = IconType;
+  protected readonly Colors = Colors;
 }

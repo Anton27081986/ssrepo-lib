@@ -7,7 +7,7 @@ import {
 import { NgStyle } from '@angular/common';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { ICONS } from '../../assets/icons';
-import { IconType } from '../../models/enums/icon-type';
+import { IconType, Colors } from '../../models';
 
 /**
  * Параметры:
@@ -18,7 +18,7 @@ import { IconType } from '../../models/enums/icon-type';
  *
  * [width]: string - Ширина. По умолчанию: `24`
  *
- * [color]: string - Цвет. По умолчанию: `black`
+ * [color]: Colors - Цвет. По умолчанию: `Colors.IconPrimary`
  */
 @Component({
     selector: 'snab-icon',
@@ -35,7 +35,7 @@ export class IconComponent implements OnInit {
     public icon = input.required<IconType>();
     public height = input<string>('24');
     public width = input<string>('24');
-    public color = input<string>('black');
+    public color = input<Colors>(Colors.IconPrimary);
 
     public svg = signal<SafeHtml>('');
 

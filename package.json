@@ -10,7 +10,7 @@
     "lib:build": "ng build front-components",
     "lib:watch": "ng build front-components --watch",
     "tokens:update": "style-dictionary build",
-    "storybook": "ng run front-components:storybook",
+    "storybook": "ng run front-components:storybook"
   },
   "private": true,
   "dependencies": {
