@@ -10,7 +10,8 @@
     "lib:build": "ng build front-components",
     "lib:watch": "ng build front-components --watch",
     "tokens:update": "style-dictionary build",
-    "storybook": "ng run front-components:storybook"
+    "storybook": "ng run front-components:storybook",
+    "css-to-scss-variables": "node scripts/convert-css-to-scss-variables.js ./projects/front-components/src/lib/styles/custom-variables.scss"
   },
   "private": true,
   "dependencies": {
