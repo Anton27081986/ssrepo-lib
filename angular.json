@@ -105,6 +105,8 @@
             ],
             "styles": [
               "projects/test-app/src/styles.scss",
+              "projects/front-components/src/lib/styles/_variables/_brand.scss",
+              "projects/front-components/src/lib/styles/_variables/_alias.scss",
               "projects/front-components/src/lib/styles/custom-variables.scss"
             ],
             "scripts": []

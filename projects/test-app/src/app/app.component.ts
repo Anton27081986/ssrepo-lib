@@ -1,13 +1,16 @@
 import { Component } from '@angular/core';
-import { FrontComponentsComponent } from '../../../front-components/src/lib/components';
+import { appImports } from './app.imports';
+import { IconType } from '../../../front-components/src/lib/models';
+import { Colors } from '../../../front-components/src/lib/models';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [FrontComponentsComponent],
+  imports: [appImports],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'test-app';
+  protected readonly IconType = IconType;
+  protected readonly Colors = Colors;
 }

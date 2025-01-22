@@ -11,6 +11,16 @@
     "miscellaneous": {
         "variables": [
             {
+                "name": "Default",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/front-components/src/lib/components/icon/icon.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {\n    icon: IconType.Bell,\n    height: '24',\n    width: '24',\n    color: Colors.IconPrimary,\n  },\n}"
+            },
+            {
                 "name": "Large",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -91,6 +101,16 @@
                 "defaultValue": "{\n  title: 'Example/Page',\n  component: PageComponent,\n  parameters: {\n    // More on how to position stories at: https://storybook.js.org/docs/configure/story-layout\n    layout: 'fullscreen',\n  },\n}"
             },
             {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/front-components/src/lib/components/icon/icon.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<IconComponent>",
+                "defaultValue": "{\n  title: 'Components/Icon',\n  component: IconComponent,\n  tags: ['autodocs'],\n  argTypes: {\n    icon: {\n      control: 'select',\n      options: Object.values(IconType),\n      description: 'Иконка',\n    },\n    height: {\n      control: 'text',\n      description: 'Высота, px',\n    },\n    width: {\n      control: 'text',\n      description: 'Ширина, px',\n    },\n    color: {\n      control:'select',\n      options: Object.values(Colors),\n      description: 'Цвет иконки'\n    },\n  },\n}"
+            },
+            {
                 "name": "preview",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -165,10 +185,43 @@
                 "deprecationMessage": "",
                 "description": "",
                 "kind": 183
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<IconComponent>",
+                "file": "projects/front-components/src/lib/components/icon/icon.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 183
             }
         ],
         "enumerations": [],
         "groupedVariables": {
+            "projects/front-components/src/lib/components/icon/icon.stories.ts": [
+                {
+                    "name": "Default",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/front-components/src/lib/components/icon/icon.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {\n    icon: IconType.Bell,\n    height: '24',\n    width: '24',\n    color: Colors.IconPrimary,\n  },\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/front-components/src/lib/components/icon/icon.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<IconComponent>",
+                    "defaultValue": "{\n  title: 'Components/Icon',\n  component: IconComponent,\n  tags: ['autodocs'],\n  argTypes: {\n    icon: {\n      control: 'select',\n      options: Object.values(IconType),\n      description: 'Иконка',\n    },\n    height: {\n      control: 'text',\n      description: 'Высота, px',\n    },\n    width: {\n      control: 'text',\n      description: 'Ширина, px',\n    },\n    color: {\n      control:'select',\n      options: Object.values(Colors),\n      description: 'Цвет иконки'\n    },\n  },\n}"
+                }
+            ],
             "projects/front-components/src/stories/button.stories.ts": [
                 {
                     "name": "Large",
@@ -339,6 +392,19 @@
                     "description": "",
                     "kind": 183
                 }
+            ],
+            "projects/front-components/src/lib/components/icon/icon.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<IconComponent>",
+                    "file": "projects/front-components/src/lib/components/icon/icon.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 183
+                }
             ]
         }
     },
@@ -353,6 +419,36 @@
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
                 "name": "preview",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/front-components/src/lib/components/icon/icon.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Default",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/front-components/src/lib/components/icon/icon.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/front-components/src/lib/components/icon/icon.stories.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "Story",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"

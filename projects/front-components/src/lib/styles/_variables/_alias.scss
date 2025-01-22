@@ -1,6 +1,4 @@
-@import "_brand";
-
-{
+:root {
     --neutral-950: var(--grey-950);
     --primary-default: var(--blue-500);
     --neutral-25: var(--grey-25);
@@ -40,5 +38,4 @@
     --border-radius-2xl: var(--scale-4-16px);
     --border-radius-3-xl: var(--scale-5-20px);
     --border-radius-4-xl: var(--scale-6-24px);
-
 }
