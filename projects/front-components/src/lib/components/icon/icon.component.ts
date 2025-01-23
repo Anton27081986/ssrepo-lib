@@ -21,7 +21,7 @@ import { IconType, Colors } from '../../models';
  * [color]: Colors - Цвет. По умолчанию: `Colors.IconPrimary`
  */
 @Component({
-    selector: 'snab-icon',
+    selector: 'ss-lib-icon',
     standalone: true,
     imports: [
         NgStyle

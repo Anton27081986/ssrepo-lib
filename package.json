@@ -61,5 +61,7 @@
     "extends": [
       "plugin:storybook/recommended"
     ]
-  }
+  },
+  "author": "ssnab",
+  "license": "ISC"
 }

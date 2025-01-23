@@ -14,7 +14,7 @@
       },
       "root": "projects/front-components",
       "sourceRoot": "projects/front-components/src",
-      "prefix": "snab",
+      "prefix": "ss-lib",
       "architect": {
         "build": {
           "builder": "@angular/build:ng-packagr",
@@ -29,7 +29,7 @@
               "tsConfig": "projects/front-components/tsconfig.lib.json"
             }
           },
-          "defaultConfiguration": "production"
+          "defaultConfiguration": "production",
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
@@ -107,7 +107,8 @@
               "projects/test-app/src/styles.scss",
               "projects/front-components/src/lib/styles/_variables/_brand.scss",
               "projects/front-components/src/lib/styles/_variables/_alias.scss",
-              "projects/front-components/src/lib/styles/custom-variables.scss"
+              "projects/front-components/src/lib/styles/custom-variables.scss",
+              "projects/front-components/src/lib/styles/mixins/text.scss"
             ],
             "scripts": []
           },

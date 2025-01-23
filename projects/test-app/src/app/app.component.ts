@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { appImports } from './app.imports';
-import { IconType } from '../../../front-components/src/lib/models';
+import { IconType, TextType, TextWeight } from '../../../front-components/src/lib/models';
 import { Colors } from '../../../front-components/src/lib/models';
 
 @Component({
@@ -13,4 +13,6 @@ import { Colors } from '../../../front-components/src/lib/models';
 export class AppComponent {
   protected readonly IconType = IconType;
   protected readonly Colors = Colors;
+  protected readonly TextType = TextType;
+  protected readonly TextWeight = TextWeight;
 }

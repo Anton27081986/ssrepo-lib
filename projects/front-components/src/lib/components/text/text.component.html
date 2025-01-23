@@ -1,0 +1,7 @@
+<p
+    [ngClass]="[type(), weight()]"
+    [class.ellipsis]="isEllipsis()"
+    [style.color]="color()"
+>
+    <ng-content></ng-content>
+</p>
