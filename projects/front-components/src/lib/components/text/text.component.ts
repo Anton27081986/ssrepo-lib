@@ -14,7 +14,7 @@ import { Colors, TextType, TextWeight } from '../../models/enums';
  * [isEllipsis]: boolean - Добавлять троеточие при переполнении. По умолчанию: `false`
  */
 @Component({
-    selector: 'snab-text',
+    selector: 'ss-lib-text',
     templateUrl: './text.component.html',
     styleUrls: ['./text.component.scss'],
     imports: [NgClass],

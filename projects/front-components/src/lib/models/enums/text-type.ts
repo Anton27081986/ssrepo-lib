@@ -1,8 +1,8 @@
 export enum TextType {
-  HeadingXs= 'headingXs',
-  BodyXs = 'bodyXs',
-  BodySm = 'bodySm',
-  BodyMd = 'bodyMd',
-  BodyLg = 'bodyLg',
-  BodyXl = 'bodyXl',
+  HeadingXs= 'heading-xs',
+  BodyXs = 'body-xs',
+  BodySm = 'body-sm',
+  BodyMd = 'body-md',
+  BodyLg = 'body-lg',
+  BodyXl = 'body-xl',
 }

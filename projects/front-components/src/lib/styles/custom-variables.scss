@@ -1,3 +1,5 @@
+@use "../assets/scss/modules/_fonts.scss";
+
 :root {
     /* Mapped - Light */
     --surface-action: var(--primary-default);
@@ -69,6 +71,16 @@
         --text-quaternary: var(--neutral-500);
         --surface-secondary: var(--neutral-900);
     }
+
+    /* FONT-FAMILY */
+    --type-font-family-body: onest;
+    --type-font-family-heading: onest;
+
+    /* FONT-WEIGHT */
+    --type-font-weight-regular: regular;
+    --type-font-weight-medium: medium;
+    --type-font-weight-semibold: semibold;
+    --type-font-weight-bold: bold;
 
     /* FONT-SIZE */
     --font-size-body-xs: 12px;

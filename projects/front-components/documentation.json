@@ -11,26 +11,6 @@
     "miscellaneous": {
         "variables": [
             {
-                "name": "BoldText",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "projects/front-components/src/lib/components/text/text.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\n    args: {\n        type: TextType.BodyMd,\n        weight: TextWeight.Bold,\n        color: Colors.TextPrimary,\n        isEllipsis: false,\n    },\n    render: (args) => ({\n        component: TextComponent,\n        props: args,\n        template: `<snab-text [type]=\"type\" [weight]=\"weight\" [color]=\"color\" [isEllipsis]=\"isEllipsis\">Это жирный текст.</snab-text>`,\n    }),\n}"
-            },
-            {
-                "name": "ColoredText",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "projects/front-components/src/lib/components/text/text.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\n    args: {\n        type: TextType.BodyMd,\n        weight: TextWeight.Regular,\n        color: Colors.TextSecondary, // Assuming a secondary color exists in the Colors enum\n        isEllipsis: false,\n    },\n    render: (args) => ({\n        component: TextComponent,\n        props: args,\n        template: `<snab-text [type]=\"type\" [weight]=\"weight\" [color]=\"color\" [isEllipsis]=\"isEllipsis\">Это текст с другим цветом.</snab-text>`,\n    }),\n}"
-            },
-            {
                 "name": "Default",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -48,7 +28,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n    args: {\n        type: TextType.BodyMd,\n        weight: TextWeight.Regular,\n        color: Colors.TextPrimary,\n        isEllipsis: false,\n    },\n    // Контент передается как children компонента\n    render: (args) => ({\n        component: TextComponent,\n        props: args,\n        template: `<snab-text [type]=\"type\" [weight]=\"weight\" [color]=\"color\" [isEllipsis]=\"isEllipsis\">Это текст с базовым стилем.</snab-text>`,\n    }),\n}"
+                "defaultValue": "{\n    args: {\n        type: TextType.BodyMd,\n        weight: TextWeight.Regular,\n        color: Colors.TextPrimary,\n        isEllipsis: false,\n    },\n    render: (args) => ({\n        component: TextComponent,\n        props: args,\n        template: `<snab-text [type]=\"type\" [weight]=\"weight\" [color]=\"color\" [isEllipsis]=\"isEllipsis\">Это текст с базовым стилем.</snab-text>`,\n    }),\n}"
             },
             {
                 "name": "EllipsisText",
@@ -158,7 +138,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<TextComponent>",
-                "defaultValue": "{\n    title: 'Components/Text',\n    component: TextComponent,\n    tags: ['autodocs'],\n    argTypes: {\n        type: {\n            control: 'select',\n            options: Object.values(TextType),\n            description: 'Тип текста', // Description in Russian\n        },\n        weight: {\n            control: 'select',\n            options: Object.values(TextWeight),\n            description: 'Толщина шрифта', // Description in Russian\n        },\n        color: {\n            control: 'select',\n            options: Object.values(Colors),\n            description: 'Цвет текста', // Description in Russian\n        },\n        isEllipsis: {\n            control: 'boolean',\n            description: 'Добавлять троеточие при переполнении', // Description in Russian\n        },\n    },\n}"
+                "defaultValue": "{\n    title: 'Components/Text',\n    component: TextComponent,\n    tags: ['autodocs'],\n    argTypes: {\n        type: {\n            control: 'select',\n            options: Object.values(TextType),\n            description: 'Тип текста',\n        },\n        weight: {\n            control: 'select',\n            options: Object.values(TextWeight),\n            description: 'Толщина шрифта',\n        },\n        color: {\n            control: 'select',\n            options: Object.values(Colors),\n            description: 'Цвет текста',\n        },\n        isEllipsis: {\n            control: 'boolean',\n            description: 'Добавлять троеточие при переполнении',\n        },\n    },\n}"
             },
             {
                 "name": "preview",
@@ -261,58 +241,6 @@
         ],
         "enumerations": [],
         "groupedVariables": {
-            "projects/front-components/src/lib/components/text/text.stories.ts": [
-                {
-                    "name": "BoldText",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/front-components/src/lib/components/text/text.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\n    args: {\n        type: TextType.BodyMd,\n        weight: TextWeight.Bold,\n        color: Colors.TextPrimary,\n        isEllipsis: false,\n    },\n    render: (args) => ({\n        component: TextComponent,\n        props: args,\n        template: `<snab-text [type]=\"type\" [weight]=\"weight\" [color]=\"color\" [isEllipsis]=\"isEllipsis\">Это жирный текст.</snab-text>`,\n    }),\n}"
-                },
-                {
-                    "name": "ColoredText",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/front-components/src/lib/components/text/text.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\n    args: {\n        type: TextType.BodyMd,\n        weight: TextWeight.Regular,\n        color: Colors.TextSecondary, // Assuming a secondary color exists in the Colors enum\n        isEllipsis: false,\n    },\n    render: (args) => ({\n        component: TextComponent,\n        props: args,\n        template: `<snab-text [type]=\"type\" [weight]=\"weight\" [color]=\"color\" [isEllipsis]=\"isEllipsis\">Это текст с другим цветом.</snab-text>`,\n    }),\n}"
-                },
-                {
-                    "name": "Default",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/front-components/src/lib/components/text/text.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\n    args: {\n        type: TextType.BodyMd,\n        weight: TextWeight.Regular,\n        color: Colors.TextPrimary,\n        isEllipsis: false,\n    },\n    // Контент передается как children компонента\n    render: (args) => ({\n        component: TextComponent,\n        props: args,\n        template: `<snab-text [type]=\"type\" [weight]=\"weight\" [color]=\"color\" [isEllipsis]=\"isEllipsis\">Это текст с базовым стилем.</snab-text>`,\n    }),\n}"
-                },
-                {
-                    "name": "EllipsisText",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/front-components/src/lib/components/text/text.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\n    args: {\n        type: TextType.BodyMd,\n        weight: TextWeight.Regular,\n        color: Colors.TextPrimary,\n        isEllipsis: true,\n    },\n    render: (args) => ({\n        component: TextComponent,\n        props: args,\n        template: `<snab-text [type]=\"type\" [weight]=\"weight\" [color]=\"color\" [isEllipsis]=\"isEllipsis\">Этот текст будет обрезан с троеточием, если он слишком длинный.</snab-text>`,\n    }),\n}"
-                },
-                {
-                    "name": "meta",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/front-components/src/lib/components/text/text.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Meta<TextComponent>",
-                    "defaultValue": "{\n    title: 'Components/Text',\n    component: TextComponent,\n    tags: ['autodocs'],\n    argTypes: {\n        type: {\n            control: 'select',\n            options: Object.values(TextType),\n            description: 'Тип текста', // Description in Russian\n        },\n        weight: {\n            control: 'select',\n            options: Object.values(TextWeight),\n            description: 'Толщина шрифта', // Description in Russian\n        },\n        color: {\n            control: 'select',\n            options: Object.values(Colors),\n            description: 'Цвет текста', // Description in Russian\n        },\n        isEllipsis: {\n            control: 'boolean',\n            description: 'Добавлять троеточие при переполнении', // Description in Russian\n        },\n    },\n}"
-                }
-            ],
             "projects/front-components/src/lib/components/icon/icon.stories.ts": [
                 {
                     "name": "Default",
@@ -333,6 +261,38 @@
                     "deprecationMessage": "",
                     "type": "Meta<IconComponent>",
                     "defaultValue": "{\n  title: 'Components/Icon',\n  component: IconComponent,\n  tags: ['autodocs'],\n  argTypes: {\n    icon: {\n      control: 'select',\n      options: Object.values(IconType),\n      description: 'Иконка',\n    },\n    height: {\n      control: 'text',\n      description: 'Высота, px',\n    },\n    width: {\n      control: 'text',\n      description: 'Ширина, px',\n    },\n    color: {\n      control:'select',\n      options: Object.values(Colors),\n      description: 'Цвет иконки'\n    },\n  },\n}"
+                }
+            ],
+            "projects/front-components/src/lib/components/text/text.stories.ts": [
+                {
+                    "name": "Default",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/front-components/src/lib/components/text/text.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n    args: {\n        type: TextType.BodyMd,\n        weight: TextWeight.Regular,\n        color: Colors.TextPrimary,\n        isEllipsis: false,\n    },\n    render: (args) => ({\n        component: TextComponent,\n        props: args,\n        template: `<snab-text [type]=\"type\" [weight]=\"weight\" [color]=\"color\" [isEllipsis]=\"isEllipsis\">Это текст с базовым стилем.</snab-text>`,\n    }),\n}"
+                },
+                {
+                    "name": "EllipsisText",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/front-components/src/lib/components/text/text.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n    args: {\n        type: TextType.BodyMd,\n        weight: TextWeight.Regular,\n        color: Colors.TextPrimary,\n        isEllipsis: true,\n    },\n    render: (args) => ({\n        component: TextComponent,\n        props: args,\n        template: `<snab-text [type]=\"type\" [weight]=\"weight\" [color]=\"color\" [isEllipsis]=\"isEllipsis\">Этот текст будет обрезан с троеточием, если он слишком длинный.</snab-text>`,\n    }),\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/front-components/src/lib/components/text/text.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<TextComponent>",
+                    "defaultValue": "{\n    title: 'Components/Text',\n    component: TextComponent,\n    tags: ['autodocs'],\n    argTypes: {\n        type: {\n            control: 'select',\n            options: Object.values(TextType),\n            description: 'Тип текста',\n        },\n        weight: {\n            control: 'select',\n            options: Object.values(TextWeight),\n            description: 'Толщина шрифта',\n        },\n        color: {\n            control: 'select',\n            options: Object.values(Colors),\n            description: 'Цвет текста',\n        },\n        isEllipsis: {\n            control: 'boolean',\n            description: 'Добавлять троеточие при переполнении',\n        },\n    },\n}"
                 }
             ],
             "projects/front-components/src/stories/button.stories.ts": [
@@ -575,26 +535,6 @@
                 "linktype": "miscellaneous",
                 "linksubtype": "typealias",
                 "name": "Story",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "projects/front-components/src/lib/components/text/text.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "BoldText",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "projects/front-components/src/lib/components/text/text.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "ColoredText",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
