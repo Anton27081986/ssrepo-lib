@@ -10,6 +10,10 @@ deploy-library:
   script:
     - npm ci
     - npm run lib:build
+    - echo "Содержимое текущей директории"
+    - ls
+    - echo "Содержимое директории dist/components:"
+    - ls dist/components
     - echo "CI_SERVER_HOST ${CI_SERVER_HOST}"
     - echo "CI_PROJECT_ID ${CI_PROJECT_ID}"
     - echo "token ${CI_JOB_TOKEN}"
