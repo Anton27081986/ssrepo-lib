@@ -1,5 +1,5 @@
 {
-  "name": "front-library",
+  "name": "@front-library",
   "version": "0.0.1",
   "main": "fesm2022/front-components.mjs",
   "module": "fesm2022/front-components.mjs",
