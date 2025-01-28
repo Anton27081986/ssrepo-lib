@@ -24,6 +24,6 @@ deploy-library:
     - npm run lib:publish
   artifacts:
     paths:
-      - dist/components
+      - dist/front-components
   only:
     - main
