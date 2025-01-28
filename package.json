@@ -57,6 +57,11 @@
     "style-dictionary": "^4.3.0",
     "typescript": "~5.7.2"
   },
+  "engines": {
+    "node": "^18.19.1 || ^20.11.1 || >=22.0.0",
+    "npm": "^6.11.0 || ^7.5.6 || >=8.0.0",
+    "yarn": "Please use npm instead of yarn to install dependencies"
+  },
   "eslintConfig": {
     "extends": [
       "plugin:storybook/recommended"
