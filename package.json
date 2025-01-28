@@ -8,6 +8,7 @@
     "watch": "ng build --watch --configuration development",
     "lib:build": "ng build front-components",
     "lib:watch": "ng build front-components --watch",
+    "lib:publish": "npm run lib:build && cp .npmrc ./dist/components/ && cd dist/components && npm pack && npm publish",
     "test": "ng test"
   },
   "private": true,
