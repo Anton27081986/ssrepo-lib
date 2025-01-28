@@ -2,5 +2,5 @@ import { IconComponent, TextComponent } from '../../../front-components/src/lib/
 
 export const appImports = [
     IconComponent,
-    TextComponent
+    TextComponent,
 ]
