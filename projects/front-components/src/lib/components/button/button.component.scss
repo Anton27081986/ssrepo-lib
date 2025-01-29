@@ -4,6 +4,13 @@
     width: fit-content;
 }
 
+$box-shadow-focus: 0 0 0 2px var(--surface-primary),
+0 0 0 4px var(--border-focus),
+0 1px 2px 0 #0a0d120d,
+0 -2px 0 0 #0a0d120d inset,
+0 0 0 1px #0a0d122e inset !important;
+
+
 button {
     display: flex;
     align-items: center;
@@ -73,15 +80,10 @@ button.type-primary::before {
     inset: 0;
     border-radius: inherit;
     padding: 2px;
-    background: linear-gradient(
-                    180deg,
-                    rgba(255, 255, 255, 0.12) 0%,
-                    rgba(255, 255, 255, 0) 100%
-    );
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0) 100%);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
-    z-index: 1;
 }
 
 button:hover.type-primary {
@@ -95,17 +97,12 @@ button:active.type-primary {
 button:focus-visible.type-primary {
     outline: none;
     background-color: var(--surface-action);
-    box-shadow: 0px 0px 0px 2px var(--surface-primary),
-    0px 0px 0px 4px var(--border-focus),
-    0px 1px 2px 0px #0a0d120d,
-    0px -2px 0px 0px #0a0d120d inset,
-    0px 0px 0px 1px #0a0d122e inset !important;
-    z-index: 2;
+    box-shadow: $box-shadow-focus;
 }
 
 button:disabled.type-primary {
     background-color: var(--surface-disabled);
-    border: 1px solid var(--border-disabled, #D5D7DA);
+    border: 1px solid var(--border-disabled);
     box-shadow: var(--box-shadow-xs);
 }
 
@@ -113,43 +110,38 @@ button:disabled.type-primary {
 
 button.type-secondary {
     background: var(--surface-primary);
-    box-shadow: 0px 1px 2px 0px #0A0D120D, 0px -2px 0px 0px #0A0D120D inset, 0px 0px 0px 1px #0A0D122E inset;
+    box-shadow: 0 1px 2px 0 #0A0D120D, 0 -2px 0 0 #0A0D120D inset, 0 0 0 1px #0A0D122E inset;
 }
 
 button:hover.type-secondary {
-    background: var(--surface-action-hover-2, #E9EAEB);
+    background: var(--surface-action-hover-2);
 }
 
 button:active.type-secondary {
     background: var(--surface-action-pressed-2) !important;
-    box-shadow: 0px 1px 2px 0px #0A0D120D, 0px -2px 0px 0px #0A0D120D inset;
+    box-shadow: 0 1px 2px 0 #0A0D120D, 0 -2px 0 0 #0A0D120D inset;
 }
 
 button:focus-visible.type-secondary {
     outline: none;
     background: var(--surface-primary);
-    box-shadow: 0px 0px 0px 2px var(--surface-primary),
-    0px 0px 0px 4px var(--border-focus),
-    0px 1px 2px 0px #0a0d120d,
-    0px -2px 0px 0px #0a0d120d inset,
-    0px 0px 0px 1px #0a0d122e inset !important;
-    z-index: 2;
+    box-shadow: $box-shadow-focus;
 }
 
 button:disabled.type-secondary {
     background-color: var(--surface-disabled);
-    border: 1px solid var(--border-disabled, #D5D7DA);
+    border: 1px solid var(--border-disabled);
     box-shadow: var(--box-shadow-xs);
 }
 
 // *************** FLAT ***************
 
 button.type-flat {
-    background: var(--surface-primary);
+    background: transparent;
 }
 
 button:hover.type-flat {
-    background: var(--surface-action-hover-2, #E9EAEB);
+    background: var(--surface-action-hover-2);
 }
 
 button:active.type-flat {
@@ -158,23 +150,14 @@ button:active.type-flat {
 
 button:focus-visible.type-flat {
     outline: none;
-    background: var(--surface-action-hover-2, #E9EAEB);
-    box-shadow: 0px 0px 0px 2px var(--surface-primary),
-    0px 0px 0px 4px var(--border-focus),
-    0px 1px 2px 0px #0a0d120d,
-    0px -2px 0px 0px #0a0d120d inset,
-    0px 0px 0px 1px #0a0d122e inset !important;
-    z-index: 2;
+    background: var(--surface-action-hover-2);
+    box-shadow: $box-shadow-focus;
 }
-
-button:disabled.type-flat {
-}
-
 
 // *************** CLOSE ***************
 
 button.type-close {
-    background-color: var(--surface-primary);
+    background-color: transparent;
 }
 
 button:hover.type-close {
@@ -188,12 +171,7 @@ button:active.type-close {
 button:focus-visible.type-close {
     outline: none;
     background: var(--surface-action-hover-2, #E9EAEB);
-    box-shadow: 0px 0px 0px 2px var(--surface-primary),
-    0px 0px 0px 4px var(--border-focus),
-    0px 1px 2px 0px #0a0d120d,
-    0px -2px 0px 0px #0a0d120d inset,
-    0px 0px 0px 1px #0a0d122e inset !important;
-    z-index: 2;
+    box-shadow: $box-shadow-focus;
 }
 
 // *************** LINK ***************
@@ -206,15 +184,13 @@ button.type-link,
 button:hover.type-link,
 button:active.type-link,
 button:focus-visible.type-link {
-    background-color: var(--surface-primary);
+    background-color: transparent;
 }
 
 button:focus-visible.type-link {
     outline: none;
     background-color: var(--surface-primary);
-    box-shadow: 0px 0px 0px 4px var(--border-focus),
-    0px 0px 0px 2px var(--surface-primary) !important;
-
-    z-index: 2;
+    box-shadow: 0 0 0 4px var(--border-focus),
+    0 0 0 2px var(--surface-primary) !important;
 }
 

@@ -1,21 +1,21 @@
 import { Component } from '@angular/core';
 import { appImports } from './app.imports';
 import { ButtonType, Colors, IconType, TextType, TextWeight } from '../../../front-components/src/lib/shared/models';
-import { ButtonComponent, IconPosition, Size } from 'front-components';
+import { IconPosition, Size } from 'front-components';
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [appImports, ButtonComponent],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+    selector: 'app-root',
+    standalone: true,
+    imports: [appImports],
+    templateUrl: './app.component.html',
+    styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  protected readonly TextType = TextType;
-  protected readonly TextWeight = TextWeight;
-  protected readonly IconType = IconType;
-  protected readonly Colors = Colors;
-  protected readonly ButtonType = ButtonType;
-  protected readonly IconPosition = IconPosition;
-  protected readonly Size = Size;
+    protected readonly TextType = TextType;
+    protected readonly TextWeight = TextWeight;
+    protected readonly IconType = IconType;
+    protected readonly Colors = Colors;
+    protected readonly ButtonType = ButtonType;
+    protected readonly IconPosition = IconPosition;
+    protected readonly Size = Size;
 }
