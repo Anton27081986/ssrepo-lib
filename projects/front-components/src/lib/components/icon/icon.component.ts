@@ -6,8 +6,9 @@ import {
 } from '@angular/core';
 import { NgStyle } from '@angular/common';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
-import { ICONS } from '../../assets/icons';
-import { IconType, Colors } from '../../models';
+import { Colors, IconType } from '../../shared/models';
+import { ICONS } from '../../shared/assets/icons';
+
 
 /**
  * Параметры:

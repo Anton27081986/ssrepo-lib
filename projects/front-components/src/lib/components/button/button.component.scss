@@ -1,0 +1,196 @@
+:host {
+    display: flex;
+    align-items: center;
+    width: fit-content;
+}
+
+$box-shadow-focus: 0 0 0 2px var(--surface-primary),
+0 0 0 4px var(--border-focus),
+0 1px 2px 0 #0a0d120d,
+0 -2px 0 0 #0a0d120d inset,
+0 0 0 1px #0a0d122e inset !important;
+
+
+button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    cursor: pointer;
+    box-sizing: border-box;
+    -webkit-transition: background-color 100ms linear;
+    -ms-transition: background-color 100ms linear;
+    transition: background-color 100ms linear;
+    border-radius: var(--border-radius-md);
+}
+
+button:not(.only-icon):not(.type-close) {
+    flex-grow: 1;
+}
+
+// *************** SIZES ***************
+
+button.size-small:not(.type-only-icon):not(.type-close):not(.type-link) {
+    position: relative;
+    padding: 8px 12px;
+    gap: 6px;
+}
+
+button.size-medium:not(.type-only-icon):not(.type-close):not(.type-link) {
+    position: relative;
+    padding: 10px 14px;
+    gap: 4px;
+}
+
+button.size-large:not(.type-only-icon):not(.type-close):not(.type-link) {
+    position: relative;
+    padding: 10px 16px;
+    gap: 6px;
+}
+
+button.size-small.only-icon:not(.type-link),
+button.size-small.type-close {
+    padding: 8px !important;
+}
+
+button.size-medium.only-icon:not(.type-link),
+button.size-medium.type-close {
+    padding: 10px !important;
+}
+
+button.size-large.only-icon:not(.type-link),
+button.size-large.type-close {
+    padding: 12px !important;
+}
+
+button:disabled {
+    cursor: default;
+}
+
+// *************** PRIMARY ***************
+
+button.type-primary {
+    background-color: var(--surface-action);
+    box-shadow: var(--box-shadow-xs-skeumorphic);
+}
+
+button.type-primary::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 2px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0) 100%);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+}
+
+button:hover.type-primary {
+    background-color: var(--surface-action-hover);
+}
+
+button:active.type-primary {
+    background-color: var(--surface-action-pressed);
+}
+
+button:focus-visible.type-primary {
+    outline: none;
+    background-color: var(--surface-action);
+    box-shadow: $box-shadow-focus;
+}
+
+button:disabled.type-primary {
+    background-color: var(--surface-disabled);
+    border: 1px solid var(--border-disabled);
+    box-shadow: var(--box-shadow-xs);
+}
+
+// *************** SECONDARY ***************
+
+button.type-secondary {
+    background: var(--surface-primary);
+    box-shadow: 0 1px 2px 0 #0A0D120D, 0 -2px 0 0 #0A0D120D inset, 0 0 0 1px #0A0D122E inset;
+}
+
+button:hover.type-secondary {
+    background: var(--surface-action-hover-2);
+}
+
+button:active.type-secondary {
+    background: var(--surface-action-pressed-2) !important;
+    box-shadow: 0 1px 2px 0 #0A0D120D, 0 -2px 0 0 #0A0D120D inset;
+}
+
+button:focus-visible.type-secondary {
+    outline: none;
+    background: var(--surface-primary);
+    box-shadow: $box-shadow-focus;
+}
+
+button:disabled.type-secondary {
+    background-color: var(--surface-disabled);
+    border: 1px solid var(--border-disabled);
+    box-shadow: var(--box-shadow-xs);
+}
+
+// *************** FLAT ***************
+
+button.type-flat {
+    background: transparent;
+}
+
+button:hover.type-flat {
+    background: var(--surface-action-hover-2);
+}
+
+button:active.type-flat {
+    background: var(--surface-action-pressed-2) !important;
+}
+
+button:focus-visible.type-flat {
+    outline: none;
+    background: var(--surface-action-hover-2);
+    box-shadow: $box-shadow-focus;
+}
+
+// *************** CLOSE ***************
+
+button.type-close {
+    background-color: transparent;
+}
+
+button:hover.type-close {
+    background-color: var(--surface-action-hover-2);
+}
+
+button:active.type-close {
+    background-color: var(--surface-action-pressed-2);
+}
+
+button:focus-visible.type-close {
+    outline: none;
+    background: var(--surface-action-hover-2, #E9EAEB);
+    box-shadow: $box-shadow-focus;
+}
+
+// *************** LINK ***************
+
+button.type-link {
+    gap: 6px;
+}
+
+button.type-link,
+button:hover.type-link,
+button:active.type-link,
+button:focus-visible.type-link {
+    background-color: transparent;
+}
+
+button:focus-visible.type-link {
+    outline: none;
+    background-color: var(--surface-primary);
+    box-shadow: 0 0 0 4px var(--border-focus),
+    0 0 0 2px var(--surface-primary) !important;
+}
+

@@ -3,5 +3,12 @@
   "dest": "../../dist/front-components",
   "lib": {
     "entryFile": "src/public-api.ts"
-  }
+  },
+  "assets": [
+    {
+      "glob": "**/*.scss",
+      "input": "src/lib/shared/styles",
+      "output": "lib/shared/styles"
+    }
+  ]
 }

@@ -6,7 +6,7 @@
     --surface-primary: var(--neutral-white);
     --surface-action-hover-2: var(--neutral-200);
     --icon-action-hover: var(--neutral-700);
-    --icon-action: var(--neutral-500);
+    --icon-action: var(--neutral-600);
     --border-primary: var(--neutral-200);
     --text-on-action: var(--neutral-white);
     --icon-on-action: var(--neutral-white);
@@ -15,25 +15,33 @@
     --text-on-disabled: var(--neutral-400);
     --surface-disabled: var(--neutral-100);
     --border-disabled: var(--neutral-300);
-    --text-hover: var(--neutral-800);
-    --text-secondary: var(--neutral-700);
-    --text-primary: var(--neutral-900);
+    --text-action-hover: var(--neutral-700);
+    --text-body-2: var(--neutral-700);
+    --text-body: var(--neutral-900);
     --surface-information-2: var(--primary-50);
     --surface-action-pressed: var(--primary-700);
-    --text-tertiary: var(--neutral-600);
+    --text-body-3: var(--neutral-600);
     --border-focus: var(--primary-400);
-    --border-focus-error: #ffffff;
+    --border-focus-error: var(--error-400);
     --surface-action-pressed-2: var(--neutral-300);
-    --surface-page: var(--neutral-white);
-    --icon-primary: var(--neutral-700);
+    --surface-page: var(--neutral-50);
+    --icon-primary: var(--neutral-500);
     --text-on-information: var(--neutral-white);
     --surface-information: var(--neutral-800);
-    --text-action: var(--neutral-500);
-    --text-disabled: var(--neutral-500);
+    --text-action: var(--neutral-600);
+    --text-disabled: var(--neutral-400);
     --icon-action-2: var(--neutral-600);
     --text-headings: var(--neutral-950);
-    --text-quaternary: var(--neutral-500);
+    --text-body-4: var(--neutral-500);
     --surface-secondary: var(--neutral-50);
+    --icon-disabled: var(--neutral-400);
+    --icon-error: var(--error-600);
+    --text-error: var(--error-600);
+    --border-error: var(--error-300);
+    --text-information: var(--primary-default);
+    --icon-information: var(--primary-default);
+    --border-secondary: var(--neutral-300);
+    --surface-disabled-selected: var(--neutral-400);
 
 
     /* Mapped - Dark */
@@ -43,7 +51,7 @@
         --surface-action-hover-2: var(--neutral-700);
         --icon-action-hover: var(--neutral-200);
         --icon-action: var(--neutral-100);
-        --border-primary: #414651;
+        --border-primary: var(--neutral-700);
         --text-on-action: var(--neutral-white);
         --icon-on-action: var(--neutral-white);
         --surface-action-hover: var(--primary-600);
@@ -51,25 +59,33 @@
         --text-on-disabled: var(--neutral-400);
         --surface-disabled: var(--neutral-600);
         --border-disabled: var(--neutral-600);
-        --text-hover: var(--neutral-200);
-        --text-secondary: var(--neutral-200);
-        --text-primary: var(--neutral-300);
+        --text-action-hover: var(--neutral-200);
+        --text-body-2: var(--neutral-200);
+        --text-body: var(--neutral-300);
         --surface-information-2: var(--primary-900);
         --surface-action-pressed: var(--primary-700);
-        --text-tertiary: var(--neutral-400);
+        --text-body-3: var(--neutral-400);
         --border-focus: var(--primary-400);
-        --border-focus-error: #ffffff;
+        --border-focus-error: var(--error-400);
         --surface-action-pressed-2: var(--neutral-600);
         --surface-page: var(--neutral-800);
         --icon-primary: var(--neutral-25);
         --text-on-information: var(--neutral-300);
         --surface-information: var(--neutral-500);
-        --text-action: var(--neutral-500);
+        --text-action: var(--neutral-600);
         --text-disabled: var(--neutral-500);
         --icon-action-2: var(--neutral-100);
         --text-headings: #ffffff;
-        --text-quaternary: var(--neutral-500);
+        --text-body-4: var(--neutral-500);
         --surface-secondary: var(--neutral-900);
+        --icon-disabled: var(--neutral-400);
+        --icon-error: var(--error-400);
+        --text-error: var(--error-400);
+        --border-error: var(--error-400);
+        --text-information: var(--primary-default);
+        --icon-information: var(--primary-default);
+        --border-secondary: var(--neutral-700);
+        --surface-disabled-selected: var(--neutral-400);
     }
 
     /* FONT-FAMILY */
@@ -104,4 +120,7 @@
     --paragraph-spacing-body-lg: 18px;
     --paragraph-spacing-body-xl: 20px;
     --paragraph-spacing-heading-xs: 24px;
+
+    --box-shadow-xs: 0px 1px 2px 0px #0A0D120D;
+    --box-shadow-xs-skeumorphic: 0 1px 2px 0px #0A0D120D, 0px -2px 0px 0px #0A0D120D inset, 0px 0px 0px 1px #0A0D122E inset;
 }
