@@ -1,7 +1,7 @@
 import type { PipeTransform } from '@angular/core';
 import { Pipe } from '@angular/core';
 import { ButtonColors } from '../models/button-colors';
-import { Colors } from '../../../shared/models';
+import { Colors, IStateElement } from '../../../shared/models';
 
 @Pipe({
     standalone: true,
@@ -9,12 +9,24 @@ import { Colors } from '../../../shared/models';
 })
 export class GetColorPipe implements PipeTransform {
 
-    public transform(buttonColors: ButtonColors, isHover: boolean, isDisabled: boolean, isIconButton: boolean): Colors {
+    public transform(buttonColors: ButtonColors, state: IStateElement, isDisabled: boolean, isIconButton: boolean): Colors {
         if (isDisabled) {
             return isIconButton ? buttonColors.disabledIconOnly : buttonColors.disabled;
         }
 
-        return isHover ? buttonColors.hover : buttonColors.default;
+        if (state.hover) {
+            return buttonColors.hover;
+        }
+
+        if (state.pressed) {
+            return buttonColors.pressed;
+        }
+
+        if (state.focused) {
+            return buttonColors.focused;
+        }
+
+        return buttonColors.default;
     }
 }
 
