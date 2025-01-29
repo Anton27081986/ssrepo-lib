@@ -1,6 +1,6 @@
 import { Component, input } from '@angular/core';
 import { NgClass } from "@angular/common";
-import { Colors, TextType, TextWeight } from '../../models/enums';
+import { Colors, TextType, TextWeight } from '../../shared/models';
 
 /**
  * Параметры:
@@ -23,6 +23,6 @@ import { Colors, TextType, TextWeight } from '../../models/enums';
 export class TextComponent {
     public type = input<TextType>(TextType.BodyMd);
     public weight = input<TextWeight>(TextWeight.Regular);
-    public color = input<Colors>(Colors.TextPrimary);
+    public color = input<Colors>(Colors.TextHeadings);
     public isEllipsis = input<boolean>(false);
 }

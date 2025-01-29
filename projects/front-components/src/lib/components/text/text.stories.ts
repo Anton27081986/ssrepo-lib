@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/angular';
-import { TextType, TextWeight, Colors } from '../../models';
 import { TextComponent } from './text.component';
+import { Colors, TextType, TextWeight } from '../../shared/models';
 
 // Мета-информация о компоненте
 const meta: Meta<TextComponent> = {

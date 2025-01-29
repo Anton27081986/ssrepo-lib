@@ -1,0 +1,38 @@
+@mixin text-styles($font-size, $line-height) {
+    font-family: var(--type-font-family-heading), serif;
+    font-style: normal;
+    margin: 0;
+
+    @if $font-size {
+        font-size: $font-size;
+    }
+
+    @if $line-height {
+        line-height: $line-height;
+    }
+}
+
+.heading-xs {
+    @include text-styles(var(--font-size-heading-xs), var(--line-height-heading-xs));
+}
+
+.body-xs {
+    @include text-styles(var(--font-size-body-xs), var(--line-height-body-sm));
+}
+
+.body-sm {
+    @include text-styles(var(--font-size-body-sm), var(--line-height-body-sm));
+}
+
+.body-md {
+    @include text-styles(var(--font-size-body-md), var(--line-height-body-md));
+}
+
+.body-lg {
+    @include text-styles(var(--font-size-body-lg), var(--line-height-body-lg));
+}
+
+.body-xl {
+    @include text-styles(var(--font-size-body-xl), var(--line-height-body-xl));
+}
+
