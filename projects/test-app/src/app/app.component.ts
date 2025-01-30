@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { appImports } from './app.imports';
 import { ButtonType, Colors, IconType, TextType, TextWeight, IconPosition, Size } from '../../../front-components/src/lib/shared/models';
+import { FormControl } from '@angular/forms';
 
 @Component({
     selector: 'app-root',
@@ -17,4 +18,6 @@ export class AppComponent {
     protected readonly ButtonType = ButtonType;
     protected readonly IconPosition = IconPosition;
     protected readonly Size = Size;
+
+    toggleCtrl = new FormControl(false);
 }

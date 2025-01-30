@@ -24,21 +24,11 @@
                 "name": "Default",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/front-components/src/lib/components/text/text.stories.ts",
+                "file": "projects/front-components/src/lib/components/toggle/toggle.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n    args: {\n        type: TextType.BodyMd,\n        weight: TextWeight.Regular,\n        color: Colors.TextPrimary,\n        isEllipsis: false,\n    },\n    render: (args) => ({\n        component: TextComponent,\n        props: args,\n        template: `<snab-text [type]=\"type\" [weight]=\"weight\" [color]=\"color\" [isEllipsis]=\"isEllipsis\">Это текст с базовым стилем.</snab-text>`,\n    }),\n}"
-            },
-            {
-                "name": "EllipsisText",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "projects/front-components/src/lib/components/text/text.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\n    args: {\n        type: TextType.BodyMd,\n        weight: TextWeight.Regular,\n        color: Colors.TextPrimary,\n        isEllipsis: true,\n    },\n    render: (args) => ({\n        component: TextComponent,\n        props: args,\n        template: `<snab-text [type]=\"type\" [weight]=\"weight\" [color]=\"color\" [isEllipsis]=\"isEllipsis\">Этот текст будет обрезан с троеточием, если он слишком длинный.</snab-text>`,\n    }),\n}"
+                "defaultValue": "{\n    args: {\n        checked: signal<boolean>(false) as unknown as WritableSignal<boolean>,  // Используем signal()\n        isDisabled: signal<boolean>(false) as unknown as WritableSignal<boolean>,\n    },\n}"
             },
             {
                 "name": "Large",
@@ -94,6 +84,16 @@
                 "name": "meta",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "projects/front-components/src/lib/components/icon/icon.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<IconComponent>",
+                "defaultValue": "{\n  title: 'Components/Icon',\n  component: IconComponent,\n  tags: ['autodocs'],\n  argTypes: {\n    icon: {\n      control: 'select',\n      options: Object.values(IconType),\n      description: 'Иконка',\n    },\n    height: {\n      control: 'text',\n      description: 'Высота, px',\n    },\n    width: {\n      control: 'text',\n      description: 'Ширина, px',\n    },\n    color: {\n      control:'select',\n      options: Object.values(Colors),\n      description: 'Цвет иконки'\n    },\n  },\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "projects/front-components/src/stories/button.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -124,21 +124,21 @@
                 "name": "meta",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/front-components/src/lib/components/icon/icon.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Meta<IconComponent>",
-                "defaultValue": "{\n  title: 'Components/Icon',\n  component: IconComponent,\n  tags: ['autodocs'],\n  argTypes: {\n    icon: {\n      control: 'select',\n      options: Object.values(IconType),\n      description: 'Иконка',\n    },\n    height: {\n      control: 'text',\n      description: 'Высота, px',\n    },\n    width: {\n      control: 'text',\n      description: 'Ширина, px',\n    },\n    color: {\n      control:'select',\n      options: Object.values(Colors),\n      description: 'Цвет иконки'\n    },\n  },\n}"
-            },
-            {
-                "name": "meta",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "projects/front-components/src/lib/components/text/text.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<TextComponent>",
                 "defaultValue": "{\n    title: 'Components/Text',\n    component: TextComponent,\n    tags: ['autodocs'],\n    argTypes: {\n        type: {\n            control: 'select',\n            options: Object.values(TextType),\n            description: 'Тип текста',\n        },\n        weight: {\n            control: 'select',\n            options: Object.values(TextWeight),\n            description: 'Толщина шрифта',\n        },\n        color: {\n            control: 'select',\n            options: Object.values(Colors),\n            description: 'Цвет текста',\n        },\n        isEllipsis: {\n            control: 'boolean',\n            description: 'Добавлять троеточие при переполнении',\n        },\n    },\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/front-components/src/lib/components/toggle/toggle.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<ToggleComponent>",
+                "defaultValue": "{\n    title: 'Components/Toggle',\n    component: ToggleComponent,\n    tags: ['autodocs'],\n    argTypes: {\n        checked: {\n            control: 'boolean',\n            description: 'Переключить',\n        },\n        isDisabled: {\n            control: 'boolean',\n            description: 'Заблокировать',\n        },\n    },\n}"
             },
             {
                 "name": "preview",
@@ -187,6 +187,17 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
+                "rawtype": "StoryObj<IconComponent>",
+                "file": "projects/front-components/src/lib/components/icon/icon.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 183
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
                 "rawtype": "StoryObj<ButtonComponent>",
                 "file": "projects/front-components/src/stories/button.stories.ts",
                 "deprecated": false,
@@ -220,8 +231,8 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "StoryObj<IconComponent>",
-                "file": "projects/front-components/src/lib/components/icon/icon.stories.ts",
+                "rawtype": "StoryObj<TextComponent>",
+                "file": "projects/front-components/src/lib/components/text/text.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -231,8 +242,8 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "StoryObj<TextComponent>",
-                "file": "projects/front-components/src/lib/components/text/text.stories.ts",
+                "rawtype": "StoryObj<ToggleComponent>",
+                "file": "projects/front-components/src/lib/components/toggle/toggle.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -263,36 +274,26 @@
                     "defaultValue": "{\n  title: 'Components/Icon',\n  component: IconComponent,\n  tags: ['autodocs'],\n  argTypes: {\n    icon: {\n      control: 'select',\n      options: Object.values(IconType),\n      description: 'Иконка',\n    },\n    height: {\n      control: 'text',\n      description: 'Высота, px',\n    },\n    width: {\n      control: 'text',\n      description: 'Ширина, px',\n    },\n    color: {\n      control:'select',\n      options: Object.values(Colors),\n      description: 'Цвет иконки'\n    },\n  },\n}"
                 }
             ],
-            "projects/front-components/src/lib/components/text/text.stories.ts": [
+            "projects/front-components/src/lib/components/toggle/toggle.stories.ts": [
                 {
                     "name": "Default",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "projects/front-components/src/lib/components/text/text.stories.ts",
+                    "file": "projects/front-components/src/lib/components/toggle/toggle.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n    args: {\n        type: TextType.BodyMd,\n        weight: TextWeight.Regular,\n        color: Colors.TextPrimary,\n        isEllipsis: false,\n    },\n    render: (args) => ({\n        component: TextComponent,\n        props: args,\n        template: `<snab-text [type]=\"type\" [weight]=\"weight\" [color]=\"color\" [isEllipsis]=\"isEllipsis\">Это текст с базовым стилем.</snab-text>`,\n    }),\n}"
-                },
-                {
-                    "name": "EllipsisText",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/front-components/src/lib/components/text/text.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\n    args: {\n        type: TextType.BodyMd,\n        weight: TextWeight.Regular,\n        color: Colors.TextPrimary,\n        isEllipsis: true,\n    },\n    render: (args) => ({\n        component: TextComponent,\n        props: args,\n        template: `<snab-text [type]=\"type\" [weight]=\"weight\" [color]=\"color\" [isEllipsis]=\"isEllipsis\">Этот текст будет обрезан с троеточием, если он слишком длинный.</snab-text>`,\n    }),\n}"
+                    "defaultValue": "{\n    args: {\n        checked: signal<boolean>(false) as unknown as WritableSignal<boolean>,  // Используем signal()\n        isDisabled: signal<boolean>(false) as unknown as WritableSignal<boolean>,\n    },\n}"
                 },
                 {
                     "name": "meta",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "projects/front-components/src/lib/components/text/text.stories.ts",
+                    "file": "projects/front-components/src/lib/components/toggle/toggle.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "Meta<TextComponent>",
-                    "defaultValue": "{\n    title: 'Components/Text',\n    component: TextComponent,\n    tags: ['autodocs'],\n    argTypes: {\n        type: {\n            control: 'select',\n            options: Object.values(TextType),\n            description: 'Тип текста',\n        },\n        weight: {\n            control: 'select',\n            options: Object.values(TextWeight),\n            description: 'Толщина шрифта',\n        },\n        color: {\n            control: 'select',\n            options: Object.values(Colors),\n            description: 'Цвет текста',\n        },\n        isEllipsis: {\n            control: 'boolean',\n            description: 'Добавлять троеточие при переполнении',\n        },\n    },\n}"
+                    "type": "Meta<ToggleComponent>",
+                    "defaultValue": "{\n    title: 'Components/Toggle',\n    component: ToggleComponent,\n    tags: ['autodocs'],\n    argTypes: {\n        checked: {\n            control: 'boolean',\n            description: 'Переключить',\n        },\n        isDisabled: {\n            control: 'boolean',\n            description: 'Заблокировать',\n        },\n    },\n}"
                 }
             ],
             "projects/front-components/src/stories/button.stories.ts": [
@@ -411,6 +412,18 @@
                     "defaultValue": "{\n  title: 'Example/Page',\n  component: PageComponent,\n  parameters: {\n    // More on how to position stories at: https://storybook.js.org/docs/configure/story-layout\n    layout: 'fullscreen',\n  },\n}"
                 }
             ],
+            "projects/front-components/src/lib/components/text/text.stories.ts": [
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/front-components/src/lib/components/text/text.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<TextComponent>",
+                    "defaultValue": "{\n    title: 'Components/Text',\n    component: TextComponent,\n    tags: ['autodocs'],\n    argTypes: {\n        type: {\n            control: 'select',\n            options: Object.values(TextType),\n            description: 'Тип текста',\n        },\n        weight: {\n            control: 'select',\n            options: Object.values(TextWeight),\n            description: 'Толщина шрифта',\n        },\n        color: {\n            control: 'select',\n            options: Object.values(Colors),\n            description: 'Цвет текста',\n        },\n        isEllipsis: {\n            control: 'boolean',\n            description: 'Добавлять троеточие при переполнении',\n        },\n    },\n}"
+                }
+            ],
             "projects/front-components/.storybook/preview.ts": [
                 {
                     "name": "preview",
@@ -427,6 +440,19 @@
         "groupedFunctions": {},
         "groupedEnumerations": {},
         "groupedTypeAliases": {
+            "projects/front-components/src/lib/components/icon/icon.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<IconComponent>",
+                    "file": "projects/front-components/src/lib/components/icon/icon.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 183
+                }
+            ],
             "projects/front-components/src/stories/button.stories.ts": [
                 {
                     "name": "Story",
@@ -466,19 +492,6 @@
                     "kind": 183
                 }
             ],
-            "projects/front-components/src/lib/components/icon/icon.stories.ts": [
-                {
-                    "name": "Story",
-                    "ctype": "miscellaneous",
-                    "subtype": "typealias",
-                    "rawtype": "StoryObj<IconComponent>",
-                    "file": "projects/front-components/src/lib/components/icon/icon.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "description": "",
-                    "kind": 183
-                }
-            ],
             "projects/front-components/src/lib/components/text/text.stories.ts": [
                 {
                     "name": "Story",
@@ -486,6 +499,19 @@
                     "subtype": "typealias",
                     "rawtype": "StoryObj<TextComponent>",
                     "file": "projects/front-components/src/lib/components/text/text.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 183
+                }
+            ],
+            "projects/front-components/src/lib/components/toggle/toggle.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<ToggleComponent>",
+                    "file": "projects/front-components/src/lib/components/toggle/toggle.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
@@ -544,23 +570,33 @@
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/front-components/src/lib/components/text/text.stories.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "Story",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/front-components/src/lib/components/toggle/toggle.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
                 "name": "Default",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
             },
             {
-                "filePath": "projects/front-components/src/lib/components/text/text.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "EllipsisText",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "projects/front-components/src/lib/components/text/text.stories.ts",
+                "filePath": "projects/front-components/src/lib/components/toggle/toggle.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
@@ -570,7 +606,7 @@
                 "status": "low"
             },
             {
-                "filePath": "projects/front-components/src/lib/components/text/text.stories.ts",
+                "filePath": "projects/front-components/src/lib/components/toggle/toggle.stories.ts",
                 "type": "type alias",
                 "linktype": "miscellaneous",
                 "linksubtype": "typealias",
