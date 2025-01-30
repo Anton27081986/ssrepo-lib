@@ -1,7 +1,7 @@
 import type { PipeTransform } from '@angular/core';
 import { Pipe } from '@angular/core';
-import { ButtonColors } from '../models/button-colors';
 import { Colors, IStateElement } from '../../../shared/models';
+import { ButtonColors } from '../models';
 
 @Pipe({
     standalone: true,

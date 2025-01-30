@@ -31,12 +31,11 @@ import { EMPTY_STATE, ButtonIconColorsRecord, ButtonTextColorsRecord } from './u
  * [iconPosition]: IconPosition - Положение иконки в кнопке. По умолчанию: `IconPosition.Start`
  *
  * [disabled]: boolean - Блокировка кнопки. По умолчанию: `false`
- *
- * [loading]: boolean - Показывать лоадер. По умолчанию: `false`
  */
 
 @Component({
     selector: 'ss-lib-button',
+    standalone: true,
     templateUrl: './button.component.html',
     styleUrls: ['./button.component.scss'],
     imports: [
@@ -46,7 +45,6 @@ import { EMPTY_STATE, ButtonIconColorsRecord, ButtonTextColorsRecord } from './u
         IconComponent,
         MapperPipe
     ],
-    standalone: true
 })
 export class ButtonComponent {
     public type = input<ButtonType>(ButtonType.Primary);
@@ -55,7 +53,6 @@ export class ButtonComponent {
     public icon = input<IconType | null>(IconType.Bell);
     public iconPosition = input<IconPosition>(IconPosition.Start);
     public disabled = input<boolean>(false);
-    public loading = input<boolean>(false);
 
     public state = signal<IStateElement>(EMPTY_STATE);
 
@@ -99,7 +96,6 @@ export class ButtonComponent {
     public checkFocus(event: Event): void {
         const target = event.target as HTMLElement;
 
-        debugger
         if (target.matches(':focus-visible')) {
             this.updateState(StateTypes.Focused, true);
         }
