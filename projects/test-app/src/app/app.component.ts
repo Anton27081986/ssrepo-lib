@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { appImports } from './app.imports';
-import { ButtonType, Colors, IconType, TextType, TextWeight } from '../../../front-components/src/lib/shared/models';
-import { IconPosition, Size } from 'front-components';
+import { ButtonType, Colors, IconType, TextType, TextWeight, IconPosition, Size } from '../../../front-components/src/lib/shared/models';
 
 @Component({
     selector: 'app-root',
