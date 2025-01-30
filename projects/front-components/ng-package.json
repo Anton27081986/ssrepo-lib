@@ -9,6 +9,11 @@
       "glob": "**/*.scss",
       "input": "src/lib/shared/styles",
       "output": "lib/shared/styles"
+    },
+    {
+      "input": "src/lib/shared/assets",
+      "glob": "**/*",
+      "output": "lib/shared/assets"
     }
   ]
 }
