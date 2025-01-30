@@ -5,3 +5,4 @@ export { TextWeight } from './text-weight';
 export { ButtonType } from './button-type';
 export { IconPosition } from './icon-position';
 export { Size } from './size';
+export { StateTypes } from './state-types';
