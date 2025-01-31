@@ -121,6 +121,18 @@
     --paragraph-spacing-body-xl: 20px;
     --paragraph-spacing-heading-xs: 24px;
 
+    --border-radius-none: var(--scale-0);
+    --border-radius-xxs: var(--scale-0_5-2px);
+    --border-radius-xs: var(--scale-1-4px);
+    --border-radius-sm: var(--scale-1_5-6px);
+    --border-radius-round: var(--scale-unlimited-9999px);
+    --border-radius-md: var(--scale-2-8px);
+    --border-radius-lg: var(--scale-2_5-10px);
+    --border-radius-xl: var(--scale-3-12px);
+    --border-radius-2xl: var(--scale-4-16px);
+    --border-radius-3-xl: var(--scale-5-20px);
+    --border-radius-4-xl: var(--scale-6-24px);
+
     --box-shadow-xs: 0px 1px 2px 0px #0A0D120D;
     --box-shadow-xs-skeumorphic: 0 1px 2px 0px #0A0D120D, 0px -2px 0px 0px #0A0D120D inset, 0px 0px 0px 1px #0A0D122E inset;
 }

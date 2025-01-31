@@ -46,7 +46,6 @@
     [size]="Size.Large"
     [disabled]="true"
 />
-
 <br/>
 
 <ss-lib-button
@@ -56,7 +55,6 @@
     [iconPosition]="IconPosition.End"
     [size]="Size.Large"
 />
-
 <br/>
 
 <ss-lib-button
@@ -66,8 +64,8 @@
     [iconPosition]="IconPosition.End"
     [size]="Size.Large"
 />
+<br/>
 
-<!--  *****   -->
 <ss-lib-button
     [type]="ButtonType.Primary"
     [text]="'Кнопка'"
@@ -103,9 +101,7 @@
     [size]="Size.Large"
     [disabled]="true"
 />
-
 <br/>
-
 
 <ss-lib-button
     [type]="ButtonType.Secondary"
@@ -114,7 +110,6 @@
     [iconPosition]="IconPosition.OnlyIcon"
     [size]="Size.Large"
 />
-
 <br/>
 
 <ss-lib-button
@@ -141,8 +136,19 @@
     [icon]="IconType.Bell"
     [iconPosition]="IconPosition.Start"
 />
-
 <br/>
 
 <ss-lib-toggle [formControl]="toggleCtrl"></ss-lib-toggle>
+<br/>
+
+<div class="tooltip-example">
+    <ss-lib-icon
+        ss-lib-tooltip
+        [icon]="IconType.Plus"
+        [color]="Colors.IconOnDisabled"
+        [tooltipText]="'Это тултип'"
+        [position]="TooltipPosition.TopRight"
+    />
+</div>
+
 
