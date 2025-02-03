@@ -1,7 +1,7 @@
 .custom-toggle {
     position: relative;
-    width: 36px;
-    height: 20px;
+    width: 46px;
+    height: 24px;
     padding: 2px;
     background: var(--surface-action-hover-2);
     box-sizing: border-box;
@@ -9,34 +9,13 @@
     border-radius: 9999px;
     cursor: pointer;
 
-    &.checked {
-        background: var(--surface-action, #0B77CA);
-    }
-
-    &:not(.checked):hover {
+    &:hover {
         background: var(--surface-action-pressed-2, #D5D7DA);
-    }
-
-    &.checked:hover {
-        background: var(--surface-action-hover, #095FA2);
     }
 
     &:focus-visible {
         outline: none;
-        box-shadow: 0px 0px 0px 2px var(--surface-primary), 0px 0px 0px 4px var(--border-focus);
-    }
-
-    &:not(.checked):focus-visible {
-        background: var(--surface-disabled, #F5F5F5);
-    }
-
-    &.checked:focus-visible {
-        background: var(--surface-action, #0B77CA);
-    }
-
-    &.disabled {
-        background: var(--surface-disabled, #F5F5F5) !important;
-        cursor: default;
+        box-shadow: 0 0 0 2px var(--surface-primary), 0 0 0 4px var(--border-focus);
     }
 }
 
@@ -45,8 +24,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 16px;
-    height: 16px;
+    width: 20px;
+    height: 20px;
     background: var(--icon-on-action, #FFF);
     box-shadow: 0 1px 2px -1px #0A0D121A, 0 1px 3px 0 #0A0D121A;
     border-radius: 100%;
@@ -55,5 +34,18 @@
 }
 
 .custom-toggle.checked .toggle-circle {
-    left: calc(100% - 16px - 2px);
+    left: calc(100% - 20px - 2px);
+}
+
+.toggle-icon {
+    position: absolute;
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+    opacity: 1;
+    transform: scale(1);
+}
+
+.toggle-icon.hidden {
+    opacity: 0;
+    transform: scale(0.8);
+    pointer-events: none;
 }

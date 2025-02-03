@@ -1,8 +1,9 @@
 import {
     Component,
+    computed,
     inject,
     input,
-    OnInit, signal,
+    Signal,
 } from '@angular/core';
 import { NgStyle } from '@angular/common';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
@@ -30,7 +31,7 @@ import { ICONS } from '../../shared/assets/icons';
     templateUrl: './icon.component.html',
     styleUrl: './icon.component.scss'
 })
-export class IconComponent implements OnInit {
+export class IconComponent {
     private readonly sanitizer = inject(DomSanitizer)
 
     public icon = input.required<IconType>();
@@ -38,17 +39,9 @@ export class IconComponent implements OnInit {
     public width = input<string>('24');
     public color = input<Colors>(Colors.IconPrimary);
 
-    public svg = signal<SafeHtml>('');
-
-    ngOnInit(): void {
-        this.setIcon();
-    }
-
-    private setIcon(): void {
+    public svg: Signal<SafeHtml | null> = computed(() => {
         const svgData = ICONS.get(this.icon());
 
-        if (svgData) {
-            this.svg.set(this.sanitizer.bypassSecurityTrustHtml(svgData));
-        }
-    }
+        return svgData ? this.sanitizer.bypassSecurityTrustHtml(svgData) : null;
+    })
 }

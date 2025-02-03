@@ -1,0 +1,26 @@
+<div
+    class="custom-toggle"
+    tabindex="0"
+    [class.checked]="checked()"
+    (click)="toggleChecked()"
+>
+    <div class="toggle-circle">
+        <ss-lib-icon
+            class="toggle-icon"
+            [icon]="toggleIcon()!"
+            [height]="'16'"
+            [width]="'16'"
+            [color]="Colors.IconAction"
+            [class.hidden]="checked()"
+        />
+
+        <ss-lib-icon
+            class="toggle-icon"
+            [icon]="toggleIcon()!"
+            [height]="'16'"
+            [width]="'16'"
+            [color]="Colors.IconAction"
+            [class.hidden]="!checked()"
+        />
+    </div>
+</div>
