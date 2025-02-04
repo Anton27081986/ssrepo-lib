@@ -1,7 +1,6 @@
 :host {
     display: flex;
     align-items: center;
-    width: fit-content;
 }
 
 $box-shadow-focus: 0 0 0 2px var(--surface-primary),
@@ -21,7 +20,11 @@ button {
     -webkit-transition: background-color 100ms linear;
     -ms-transition: background-color 100ms linear;
     transition: background-color 100ms linear;
-    border-radius: var(--border-radius-md);
+    border-radius:
+            var(--border-radius-top-left, var(--border-radius-md))
+            var(--border-radius-top-right, var(--border-radius-md))
+            var(--border-radius-bottom-right, var(--border-radius-md))
+            var(--border-radius-bottom-left, var(--border-radius-md));
 }
 
 button:not(.only-icon):not(.type-close) {

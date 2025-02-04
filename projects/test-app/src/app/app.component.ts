@@ -20,4 +20,6 @@ export class AppComponent {
     protected readonly Size = Size;
 
     toggleCtrl = new FormControl(false);
+
+    numberPickerCtrl = new FormControl(5);
 }

@@ -1,0 +1,19 @@
+.number-picker {
+    display: flex;
+    align-items: center;
+
+    &__number-indicator.indicator-start {
+        --border-radius-top-right: 0;
+        --border-radius-bottom-right: 0;
+    }
+
+    &__number-indicator.indicator-end {
+        --border-radius-top-left: 0;
+        --border-radius-bottom-left: 0;
+    }
+
+    &__input-field::-webkit-outer-spin-button,
+    &__input-field::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+    }
+}

@@ -1,6 +1,7 @@
 import {
     ButtonComponent,
     IconComponent,
+    NumberPickerComponent,
     TextComponent,
     ToggleComponent,
     ToggleIconComponent
@@ -13,5 +14,6 @@ export const appImports = [
     TextComponent,
     ButtonComponent,
     ToggleComponent,
-    ToggleIconComponent
+    ToggleIconComponent,
+    NumberPickerComponent
 ]
