@@ -1,6 +1,14 @@
-import { IconType } from '../models/enums/icon-type';
+import { IconType } from '../models';
 
 export const ICONS = new Map<IconType, string>([
+        [IconType.Alert, '<svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">\n' +
+        '<path d="M12 8V12M12 16H12.01M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>\n' +
+        '</svg>'],
+
+        [IconType.ArrowLeft, '<svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">\n' +
+        '<path d="M19 12H5M5 12L12 19M5 12L12 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>\n' +
+        '</svg>'],
+
         [IconType.Bell, '<svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">\n' +
         '<path d="M10.268 21C10.4435 21.304 10.696 21.5565 11 21.732C11.3041 21.9075 11.6489 21.9999 12 21.9999C12.3511 21.9999 12.6959 21.9075 13 21.732C13.304 21.5565 13.5565 21.304 13.732 21M3.262 15.326C3.13137 15.4692 3.04516 15.6472 3.01386 15.8385C2.98256 16.0298 3.00752 16.226 3.08571 16.4034C3.1639 16.5807 3.29194 16.7316 3.45426 16.8375C3.61658 16.9434 3.80618 16.9999 4 17H20C20.1938 17.0001 20.3834 16.9438 20.5459 16.8381C20.7083 16.7324 20.8365 16.5817 20.9149 16.4045C20.9933 16.2273 21.0185 16.0311 20.9874 15.8398C20.9564 15.6485 20.8704 15.4703 20.74 15.327C19.41 13.956 18 12.499 18 8C18 6.4087 17.3679 4.88258 16.2426 3.75736C15.1174 2.63214 13.5913 2 12 2C10.4087 2 8.88258 2.63214 7.75736 3.75736C6.63214 4.88258 6 6.4087 6 8C6 12.499 4.589 13.956 3.262 15.326Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>\n' +
         '</svg>'],
@@ -9,8 +17,32 @@ export const ICONS = new Map<IconType, string>([
         '<path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>\n' +
         '</svg>'],
 
-        [IconType.Column, '<svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">\n' +
-        '<path d="M15 5V19M9 5V19M4 5H20C20.2652 5 20.5196 5.10536 20.7071 5.29289C20.8946 5.48043 21 5.73478 21 6V18C21 18.2652 20.8946 18.5196 20.7071 18.7071C20.5196 18.8946 20.2652 19 20 19H4C3.73478 19 3.48043 18.8946 3.29289 18.7071C3.10536 18.5196 3 18.2652 3 18V6C3 5.73478 3.10536 5.48043 3.29289 5.29289C3.48043 5.10536 3.73478 5 4 5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>\n' +
+        [IconType.ChevronLeftDouble, '<svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">\n' +
+        '<path d="M18 17L13 12L18 7M11 17L6 12L11 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>\n' +
+        '</svg>'],
+
+        [IconType.ChevronLeft, '<svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">\n' +
+        '<path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>\n' +
+        '</svg>'],
+
+        [IconType.ChevronRightDouble, '<svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">\n' +
+        '<path d="M6 17L11 12L6 7M13 17L18 12L13 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>\n' +
+        '</svg>'],
+
+        [IconType.ChevronRight, '<svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">\n' +
+        '<path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>\n' +
+        '</svg>'],
+
+        [IconType.ChevronUp, '<svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">\n' +
+        '<path d="M18 15L12 9L6 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>\n' +
+        '</svg>'],
+
+        [IconType.Close, '<svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">\n' +
+        '<path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>\n' +
+        '</svg>'],
+
+        [IconType.Columns, '<svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">\n' +
+        '<path d="M9 2.99805V20.998M15 2.99805V20.998M7.8 2.99805H16.2C17.8802 2.99805 18.7202 2.99805 19.362 3.32503C19.9265 3.61265 20.3854 4.07159 20.673 4.63608C21 5.27781 21 6.11789 21 7.79805V16.198C21 17.8782 21 18.7183 20.673 19.36C20.3854 19.9245 19.9265 20.3834 19.362 20.6711C18.7202 20.998 17.8802 20.998 16.2 20.998H7.8C6.11984 20.998 5.27976 20.998 4.63803 20.6711C4.07354 20.3834 3.6146 19.9245 3.32698 19.36C3 18.7183 3 17.8782 3 16.198V7.79805C3 6.11789 3 5.27781 3.32698 4.63608C3.6146 4.07159 4.07354 3.61265 4.63803 3.32503C5.27976 2.99805 6.11984 2.99805 7.8 2.99805Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>\n' +
         '</svg>'],
 
         [IconType.Drag, '<svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">\n' +
@@ -22,12 +54,37 @@ export const ICONS = new Map<IconType, string>([
         '<path d="M15 20C15.5523 20 16 19.5523 16 19C16 18.4477 15.5523 18 15 18C14.4477 18 14 18.4477 14 19C14 19.5523 14.4477 20 15 20Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>\n' +
         '</svg>'],
 
+        [IconType.Edit, '<svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">\n' +
+        '<path d="M11 4H6.8C5.11984 4 4.27976 4 3.63803 4.32698C3.07354 4.6146 2.6146 5.07354 2.32698 5.63803C2 6.27976 2 7.11984 2 8.8V17.2C2 18.8802 2 19.7202 2.32698 20.362C2.6146 20.9265 3.07354 21.3854 3.63803 21.673C4.27976 22 5.11984 22 6.8 22H15.2C16.8802 22 17.7202 22 18.362 21.673C18.9265 21.3854 19.3854 20.9265 19.673 20.362C20 19.7202 20 18.8802 20 17.2V13M7.99997 16H9.67452C10.1637 16 10.4083 16 10.6385 15.9447C10.8425 15.8957 11.0376 15.8149 11.2166 15.7053C11.4184 15.5816 11.5914 15.4086 11.9373 15.0627L21.5 5.5C22.3284 4.67157 22.3284 3.32843 21.5 2.5C20.6716 1.67157 19.3284 1.67157 18.5 2.5L8.93723 12.0627C8.59133 12.4086 8.41838 12.5816 8.29469 12.7834C8.18504 12.9624 8.10423 13.1575 8.05523 13.3615C7.99997 13.5917 7.99997 13.8363 7.99997 14.3255V16Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>\n' +
+        '</svg>'],
+
+        [IconType.EyeClosed, '<svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">\n' +
+        '<path d="M22 8C21.4139 8.92806 19.8051 11.3059 18.0786 12.69M2 8C2.59488 8.94193 4.23139 11.3559 6 12.7519M14.2895 14.6885C13.5717 14.8853 12.808 14.9981 12.0004 14.9981C11.2209 14.9981 10.4823 14.893 9.7863 14.7087M14.2895 14.6885L15 18M14.2895 14.6885C15.7462 14.289 17.0144 13.5432 18.0786 12.69M18.0786 12.69L20 15M9.7863 14.7087L9 18M9.7863 14.7087C8.33357 14.3239 7.0664 13.5937 6 12.7519M4 15L6 12.7519" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>\n' +
+        '</svg>'],
+
+        [IconType.EyeOff, '<svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">\n' +
+        '<path d="M10.7429 5.09232C11.1494 5.03223 11.5686 5 12.0004 5C17.1054 5 20.4553 9.50484 21.5807 11.2868C21.7169 11.5025 21.785 11.6103 21.8231 11.7767C21.8518 11.9016 21.8517 12.0987 21.8231 12.2236C21.7849 12.3899 21.7164 12.4985 21.5792 12.7156C21.2793 13.1901 20.8222 13.8571 20.2165 14.5805M6.72432 6.71504C4.56225 8.1817 3.09445 10.2194 2.42111 11.2853C2.28428 11.5019 2.21587 11.6102 2.17774 11.7765C2.1491 11.9014 2.14909 12.0984 2.17771 12.2234C2.21583 12.3897 2.28393 12.4975 2.42013 12.7132C3.54554 14.4952 6.89541 19 12.0004 19C14.0588 19 15.8319 18.2676 17.2888 17.2766M3.00042 3L21.0004 21M9.8791 9.87868C9.3362 10.4216 9.00042 11.1716 9.00042 12C9.00042 13.6569 10.3436 15 12.0004 15C12.8288 15 13.5788 14.6642 14.1217 14.1213" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>\n' +
+        '</svg>'],
+
+        [IconType.Eye, '<svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">\n' +
+        '<path d="M2.42012 12.7112C2.28394 12.4956 2.21584 12.3878 2.17772 12.2215C2.14909 12.0965 2.14909 11.8995 2.17772 11.7746C2.21584 11.6083 2.28394 11.5005 2.42012 11.2849C3.54553 9.50289 6.8954 4.99805 12.0004 4.99805C17.1054 4.99805 20.4553 9.50289 21.5807 11.2849C21.7169 11.5005 21.785 11.6083 21.8231 11.7746C21.8517 11.8995 21.8517 12.0965 21.8231 12.2215C21.785 12.3878 21.7169 12.4956 21.5807 12.7112C20.4553 14.4932 17.1054 18.998 12.0004 18.998C6.8954 18.998 3.54553 14.4932 2.42012 12.7112Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>\n' +
+        '<path d="M12.0004 14.998C13.6573 14.998 15.0004 13.6549 15.0004 11.998C15.0004 10.3412 13.6573 8.99805 12.0004 8.99805C10.3435 8.99805 9.0004 10.3412 9.0004 11.998C9.0004 13.6549 10.3435 14.998 12.0004 14.998Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>\n' +
+        '</svg>'],
+
+        [IconType.FilePreviewSearch, '<svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">\n' +
+        '<path d="M14 2.26953V6.40007C14 6.96012 14 7.24015 14.109 7.45406C14.2049 7.64222 14.3578 7.7952 14.546 7.89108C14.7599 8.00007 15.0399 8.00007 15.6 8.00007H19.7305M16 18.5L14.5 17M14 2H8.8C7.11984 2 6.27976 2 5.63803 2.32698C5.07354 2.6146 4.6146 3.07354 4.32698 3.63803C4 4.27976 4 5.11984 4 6.8V17.2C4 18.8802 4 19.7202 4.32698 20.362C4.6146 20.9265 5.07354 21.3854 5.63803 21.673C6.27976 22 7.11984 22 8.8 22H15.2C16.8802 22 17.7202 22 18.362 21.673C18.9265 21.3854 19.3854 20.9265 19.673 20.362C20 19.7202 20 18.8802 20 17.2V8L14 2ZM15.5 14.5C15.5 16.433 13.933 18 12 18C10.067 18 8.5 16.433 8.5 14.5C8.5 12.567 10.067 11 12 11C13.933 11 15.5 12.567 15.5 14.5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>\n' +
+        '</svg>'],
+
         [IconType.FilterLines, '<svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">\n' +
         '<path d="M6 12H18M3 6H21M9 18H15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>\n' +
         '</svg>'],
 
         [IconType.HamburgerMenu, '<svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">\n' +
         '<path d="M3 12H21M3 6H21M3 18H21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>\n' +
+        '</svg>'],
+
+        [IconType.Help, '<svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">\n' +
+        '<path d="M9.09 9C9.3251 8.33167 9.78915 7.76811 10.4 7.40913C11.0108 7.05016 11.7289 6.91894 12.4272 7.03871C13.1255 7.15849 13.7588 7.52152 14.2151 8.06353C14.6713 8.60553 14.9211 9.29152 14.92 10C14.92 12 11.92 13 11.92 13M12 17H12.01M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>\n' +
         '</svg>'],
 
         [IconType.ImagePlus, '<svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">\n' +
@@ -40,6 +97,10 @@ export const ICONS = new Map<IconType, string>([
         '<path d="M12 20C12.5523 20 13 19.5523 13 19C13 18.4477 12.5523 18 12 18C11.4477 18 11 18.4477 11 19C11 19.5523 11.4477 20 12 20Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>\n' +
         '</svg>'],
 
+        [IconType.LogOut, '<svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">\n' +
+        '<path d="M16 17L21 12M21 12L16 7M21 12H9M9 3H7.8C6.11984 3 5.27976 3 4.63803 3.32698C4.07354 3.6146 3.6146 4.07354 3.32698 4.63803C3 5.27976 3 6.11984 3 7.8V16.2C3 17.8802 3 18.7202 3.32698 19.362C3.6146 19.9265 4.07354 20.3854 4.63803 20.673C5.27976 21 6.11984 21 7.8 21H9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>\n' +
+        '</svg>'],
+
         [IconType.Minus, '<svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">\n' +
         '<path d="M5 12H19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>\n' +
         '</svg>'],
@@ -50,6 +111,10 @@ export const ICONS = new Map<IconType, string>([
 
         [IconType.Plus, '<svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">\n' +
         '<path d="M5 12H19M12 5V19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>\n' +
+        '</svg>'],
+
+        [IconType.Save, '<svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">\n' +
+        '<path d="M7 2.99805V6.39805C7 6.9581 7 7.23813 7.10899 7.45204C7.20487 7.6402 7.35785 7.79318 7.54601 7.88905C7.75992 7.99805 8.03995 7.99805 8.6 7.99805H15.4C15.9601 7.99805 16.2401 7.99805 16.454 7.88905C16.6422 7.79318 16.7951 7.6402 16.891 7.45204C17 7.23813 17 6.9581 17 6.39805V3.99805M17 20.998V14.598C17 14.038 17 13.758 16.891 13.5441C16.7951 13.3559 16.6422 13.2029 16.454 13.107C16.2401 12.998 15.9601 12.998 15.4 12.998H8.6C8.03995 12.998 7.75992 12.998 7.54601 13.107C7.35785 13.2029 7.20487 13.3559 7.10899 13.5441C7 13.758 7 14.038 7 14.598V20.998M21 9.32353V16.198C21 17.8782 21 18.7183 20.673 19.36C20.3854 19.9245 19.9265 20.3834 19.362 20.6711C18.7202 20.998 17.8802 20.998 16.2 20.998H7.8C6.11984 20.998 5.27976 20.998 4.63803 20.6711C4.07354 20.3834 3.6146 19.9245 3.32698 19.36C3 18.7183 3 17.8782 3 16.198V7.79805C3 6.11789 3 5.27781 3.32698 4.63608C3.6146 4.07159 4.07354 3.61265 4.63803 3.32503C5.27976 2.99805 6.11984 2.99805 7.8 2.99805H14.6745C15.1637 2.99805 15.4083 2.99805 15.6385 3.05331C15.8425 3.1023 16.0376 3.18311 16.2166 3.29277C16.4184 3.41645 16.5914 3.5894 16.9373 3.93531L20.0627 7.06079C20.4086 7.40669 20.5816 7.57964 20.7053 7.78148C20.8149 7.96042 20.8957 8.15551 20.9447 8.35958C21 8.58976 21 8.83435 21 9.32353Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>\n' +
         '</svg>'],
 
         [IconType.Settings01, '<svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">\n' +
@@ -66,8 +131,16 @@ export const ICONS = new Map<IconType, string>([
         '<path d="M12 2V4M12 20V22M4.93 4.93L6.34 6.34M17.66 17.66L19.07 19.07M2 12H4M20 12H22M6.34 17.66L4.93 19.07M19.07 4.93L17.66 6.34M16 12C16 14.2091 14.2091 16 12 16C9.79086 16 8 14.2091 8 12C8 9.79086 9.79086 8 12 8C14.2091 8 16 9.79086 16 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>\n' +
         '</svg>'],
 
+        [IconType.Trash, '<svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">\n' +
+        '<path d="M16 6V5.2C16 4.0799 16 3.51984 15.782 3.09202C15.5903 2.71569 15.2843 2.40973 14.908 2.21799C14.4802 2 13.9201 2 12.8 2H11.2C10.0799 2 9.51984 2 9.09202 2.21799C8.71569 2.40973 8.40973 2.71569 8.21799 3.09202C8 3.51984 8 4.0799 8 5.2V6M10 11.5V16.5M14 11.5V16.5M3 6H21M19 6V17.2C19 18.8802 19 19.7202 18.673 20.362C18.3854 20.9265 17.9265 21.3854 17.362 21.673C16.7202 22 15.8802 22 14.2 22H9.8C8.11984 22 7.27976 22 6.63803 21.673C6.07354 21.3854 5.6146 20.9265 5.32698 20.362C5 19.7202 5 18.8802 5 17.2V6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>\n' +
+        '</svg>'],
+
         [IconType.TrendUp01, '<svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">\n' +
         '<path d="M22 7L14.1314 14.8686C13.7354 15.2646 13.5373 15.4627 13.309 15.5368C13.1082 15.6021 12.8918 15.6021 12.691 15.5368C12.4627 15.4627 12.2646 15.2646 11.8686 14.8686L9.13137 12.1314C8.73535 11.7354 8.53735 11.5373 8.30902 11.4632C8.10817 11.3979 7.89183 11.3979 7.69098 11.4632C7.46265 11.5373 7.26465 11.7354 6.86863 12.1314L2 17M22 7H15M22 7V14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>\n' +
+        '</svg>'],
+
+        [IconType.Upload, '<svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">\n' +
+        '<path d="M18 9L12 3M12 3L6 9M12 3V17M5 21H19" stroke="currentColor" stroke-width="2.004" stroke-linecap="round" stroke-linejoin="round"/>\n' +
         '</svg>'],
 
         [IconType.User01, '<svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">\n' +
@@ -76,6 +149,6 @@ export const ICONS = new Map<IconType, string>([
 
         [IconType.Users, '<svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">\n' +
         '<path d="M18 15.8369C19.4559 16.5683 20.7041 17.742 21.6152 19.2096C21.7957 19.5003 21.8859 19.6456 21.9171 19.8468C21.9805 20.2558 21.7008 20.7585 21.3199 20.9204C21.1325 21 20.9217 21 20.5 21M16 11.5322C17.4817 10.7959 18.5 9.26686 18.5 7.5C18.5 5.73314 17.4817 4.20411 16 3.46776M14 7.5C14 9.98528 11.9853 12 9.5 12C7.01472 12 5 9.98528 5 7.5C5 5.01472 7.01472 3 9.5 3C11.9853 3 14 5.01472 14 7.5ZM2.55923 18.9383C4.15353 16.5446 6.66937 15 9.5 15C12.3306 15 14.8465 16.5446 16.4408 18.9383C16.79 19.4628 16.9647 19.725 16.9446 20.0599C16.9289 20.3207 16.7579 20.64 16.5496 20.7976C16.2819 21 15.9138 21 15.1776 21H3.82235C3.08617 21 2.71808 21 2.45044 20.7976C2.24205 20.64 2.07109 20.3207 2.05543 20.0599C2.03533 19.725 2.20996 19.4628 2.55923 18.9383Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>\n' +
-        '</svg>'],
+        '</svg>']
     ]
 );
