@@ -2,11 +2,7 @@ import {
     ChangeDetectionStrategy,
     Component,
     forwardRef,
-    inject,
-    Injector,
     input,
-    OnInit,
-    runInInjectionContext,
     signal,
 } from '@angular/core';
 import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR, ReactiveFormsModule } from '@angular/forms';
@@ -35,33 +31,29 @@ import { debounceTime, tap } from 'rxjs';
         },
     ],
 })
-export class InputComponent implements ControlValueAccessor, OnInit {
-    private readonly injector = inject(Injector);
-
+export class InputComponent implements ControlValueAccessor {
     public placeholder = input<string>('');
 
     public inputCtrl = new FormControl();
     public disabled = signal<boolean>(false);
 
-    private onChange!: (value: string | number | null) => void;
+    private onChange!: (value: string | null) => void;
     private onTouched!: () => void;
 
-    ngOnInit() {
-        runInInjectionContext(this.injector, () => {
-            toSignal(
-                this.inputCtrl.valueChanges.pipe(
-                    debounceTime(300),
-                    tap(value => this.onChange(value))
-                )
+    constructor() {
+        toSignal(
+            this.inputCtrl.valueChanges.pipe(
+                debounceTime(300),
+                tap(value => this.onChange(value))
             )
-        });
+        )
     }
 
-    public writeValue(value: string | number | null): void {
+    public writeValue(value: string | null): void {
         this.inputCtrl.setValue(value, {emitEvent: false});
     }
 
-    public registerOnChange(fn: (value: string | number | null) => void): void {
+    public registerOnChange(fn: (value: string | null) => void): void {
         this.onChange = fn;
     }
 
