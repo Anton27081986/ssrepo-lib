@@ -30,5 +30,4 @@ export class AppComponent {
     toggleCtrl = new FormControl(false);
 
     inputCtrl = new FormControl('rrrr', [Validators.required, Validators.minLength(10)]);
-    // inputCtrl = new FormControl({value: '', disabled: true});
 }
