@@ -3,3 +3,5 @@ export { TextComponent } from './text/text.component';
 export { ButtonComponent } from './button/button.component';
 export { ToggleComponent } from './toggle/toggle.component';
 export { ToggleIconComponent } from './toggle-icon/toggle-icon.component';
+export { FormFieldComponent } from './form-field/form-field.component';
+export { InputComponent } from './input/input.component';

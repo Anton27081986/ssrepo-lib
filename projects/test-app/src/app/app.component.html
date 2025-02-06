@@ -148,4 +148,18 @@
 <br>
 
 <ss-lib-toggle-icon [formControl]="toggleCtrl"></ss-lib-toggle-icon>
+<br>
 
+<div class="input">
+    <ss-lib-form-field
+        [label]="'Название'"
+        [hint]="'Подсказка'"
+        [errorText]="'Неверно заполнено'"
+    >
+        <ss-lib-input
+            fieldCtrl
+            [formControl]="inputCtrl"
+            [placeholder]="'oleg@mail.ru'"
+        />
+    </ss-lib-form-field>
+</div>
