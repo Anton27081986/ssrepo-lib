@@ -43,20 +43,22 @@
         [ngClass]="['state-' + currentFieldCtrlState()]"
         (focusout)="updateFormFieldStateOnFocusout()"
     >
-        <div class="field-container__content">
-            <ng-content></ng-content>
-        </div>
-
-        @if (showValidationFieldIcon()) {
-            <div class="field-container__error-icon">
-                <ss-lib-icon
-                    [icon]="IconType.Alert"
-                    [height]="'16'"
-                    [width]="'16'"
-                    [color]="Colors.IconError"
-                />
+        <div class="field-container__content-wrapper">
+            <div class="field-container__content">
+                <ng-content></ng-content>
             </div>
-        }
+
+            @if (showValidationFieldIcon()) {
+                <div class="field-container__error-icon">
+                    <ss-lib-icon
+                        [icon]="IconType.Alert"
+                        [height]="'16'"
+                        [width]="'16'"
+                        [color]="Colors.IconError"
+                    />
+                </div>
+            }
+        </div>
     </div>
 
     @if (errorText()) {
