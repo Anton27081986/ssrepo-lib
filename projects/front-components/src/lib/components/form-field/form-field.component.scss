@@ -19,7 +19,6 @@
     color: var(--text-body);
     background: var(--surface-primary);
     outline: 1px solid var(--border-primary, #E9EAEB);
-    outline-offset: -1px;
     transition: outline-color 0.3s ease;
     box-sizing: border-box;
     box-shadow: 0 1px 2px 0 #0A0D120D;
@@ -29,6 +28,7 @@
     display: flex;
     flex-direction: column;
     align-items: stretch;
+    overflow: hidden;
 }
 
 .field-container.state-disabled {
@@ -39,12 +39,10 @@
 
 .field-container:focus-within:not(.state-invalid):not(.state-disabled) {
     outline: 2px solid var(--border-focus, #3C92D5);
-    outline-offset: -2px;
 }
 
 .field-container.validation.state-invalid:not(:focus-within):not(.state-disabled) {
     outline: 1px solid var(--border-error);
-    outline-offset: -1px;
 
     .field-container__error-icon {
         display: flex;
@@ -57,7 +55,6 @@
 
 .field-container.validation.state-invalid:focus-within:not(.state-disabled) {
     outline: 2px solid var(--border-focus-error);
-    outline-offset: -2px;
 
     .field-container__error-icon {
         display: flex;

@@ -12,6 +12,9 @@ import {
 import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR, ReactiveFormsModule } from '@angular/forms';
 import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
 import { debounceTime, distinctUntilChanged, fromEvent, map, skip, takeUntil, tap } from 'rxjs';
+import { IconComponent } from '../icon/icon.component';
+import { Colors, IconType } from '../../shared/models';
+import { MapperPipe } from '../../core/pipes';
 
 export const TEXTAREA_MIN_HEIGHT = 130;
 
@@ -26,6 +29,8 @@ export const TEXTAREA_MIN_HEIGHT = 130;
     standalone: true,
     imports: [
         ReactiveFormsModule,
+        IconComponent,
+        MapperPipe,
     ],
     templateUrl: './textarea.component.html',
     styleUrl: './textarea.component.scss',
@@ -49,7 +54,10 @@ export class TextareaComponent implements ControlValueAccessor {
 
     textareaCtrl = new FormControl('');
     textareaHeight = signal(TEXTAREA_MIN_HEIGHT);
+
     readonly TEXTAREA_MIN_HEIGHT = TEXTAREA_MIN_HEIGHT;
+    readonly IconType = IconType;
+    readonly Colors = Colors;
 
     private onChange: (value: string | null) => void = () => {
     };
@@ -84,7 +92,7 @@ export class TextareaComponent implements ControlValueAccessor {
         isDisabled ? this.textareaCtrl.disable() : this.textareaCtrl.enable();
     }
 
-    startResize(event: MouseEvent): void {
+    public startResize(event: MouseEvent): void {
         event.preventDefault();
         const startY = event.clientY;
         const startHeight = this.resizeContainer.nativeElement.offsetHeight;
@@ -101,5 +109,13 @@ export class TextareaComponent implements ControlValueAccessor {
                 this.textareaHeight.set(newHeight);
             })
         ).subscribe();
+    }
+
+    public getResizeIconColor(isDisabled: boolean): Colors {
+        return isDisabled ? Colors.SurfaceDisabled : Colors.SurfacePrimary
+    }
+
+    public cursorType(isDisabled: boolean): 'default' | 'ns-resize' {
+        return isDisabled ? 'default' : 'ns-resize';
     }
 }

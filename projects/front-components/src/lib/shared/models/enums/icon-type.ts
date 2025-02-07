@@ -34,4 +34,5 @@ export enum IconType {
     Upload = 'upload',
     User01 = 'user-01',
     Users = 'users',
+    ResizeHandle='resize-handle'
 }
