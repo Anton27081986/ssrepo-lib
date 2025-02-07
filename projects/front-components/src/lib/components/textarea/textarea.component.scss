@@ -2,7 +2,6 @@
     &__field-container {
         position: relative;
         width: 100%;
-        min-height: 130px;
     }
 
     &__pseudo {
@@ -11,7 +10,6 @@
     }
 
     &__field {
-        min-height: 130px;
         position: absolute;
         top: 0;
         left: 0;
