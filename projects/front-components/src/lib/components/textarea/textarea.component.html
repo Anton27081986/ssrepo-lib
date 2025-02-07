@@ -3,7 +3,7 @@
         <div
             class="custom-textarea__pseudo"
             #resizeContainerPseudo
-            [style.height.px]=TEXTAREA_MIN_HEIGHT
+            [style.height.px]=textareaHeight()
         >
             {{ textareaCtrl.value }}
         </div>
@@ -11,7 +11,7 @@
         <textarea
             #resizeContainer
             class="custom-textarea__field"
-            [style.height.px]=TEXTAREA_MIN_HEIGHT
+            [style.height.px]=textareaHeight()
             [formControl]="textareaCtrl"
             [maxlength]="maxLength()"
         ></textarea>

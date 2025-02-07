@@ -1,17 +1,17 @@
 import {
     ChangeDetectionStrategy,
     Component,
+    DestroyRef,
     ElementRef,
     forwardRef,
     inject,
     input,
-    OnDestroy,
-    Renderer2,
+    signal,
     ViewChild
 } from '@angular/core';
 import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR, ReactiveFormsModule } from '@angular/forms';
-import { toSignal } from '@angular/core/rxjs-interop';
-import { debounceTime, distinctUntilChanged, skip, tap } from 'rxjs';
+import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
+import { debounceTime, distinctUntilChanged, fromEvent, map, skip, takeUntil, tap } from 'rxjs';
 
 export const TEXTAREA_MIN_HEIGHT = 130;
 
@@ -19,6 +19,7 @@ export const TEXTAREA_MIN_HEIGHT = 130;
  * Параметры:
  *
  * [maxLength]: <number | null> - Ограничение по длине текста. По умолчанию: `null`
+ *
  */
 @Component({
     selector: 'ss-lib-textarea',
@@ -38,26 +39,21 @@ export const TEXTAREA_MIN_HEIGHT = 130;
     ],
 })
 
-export class TextareaComponent implements ControlValueAccessor, OnDestroy {
+export class TextareaComponent implements ControlValueAccessor {
     @ViewChild('resizeContainer') resizeContainer!: ElementRef<HTMLElement>;
     @ViewChild('resizeContainerPseudo') resizeContainerPseudo!: ElementRef<HTMLElement>;
 
-    private readonly renderer = inject(Renderer2);
+    private readonly destroyRef = inject(DestroyRef);
 
     maxLength = input<number | null>(null);
 
     textareaCtrl = new FormControl('');
-
-    public readonly TEXTAREA_MIN_HEIGHT = TEXTAREA_MIN_HEIGHT;
+    textareaHeight = signal(TEXTAREA_MIN_HEIGHT);
+    readonly TEXTAREA_MIN_HEIGHT = TEXTAREA_MIN_HEIGHT;
 
     private onChange: (value: string | null) => void = () => {
     };
     private onTouched: () => void = () => {
-    };
-
-    private mouseMoveListener: () => void = () => {
-    };
-    private mouseUpListener: () => void = () => {
     };
 
     constructor() {
@@ -69,10 +65,6 @@ export class TextareaComponent implements ControlValueAccessor, OnDestroy {
                 tap(value => this.onChange(value))
             )
         )
-    }
-
-    ngOnDestroy(): void {
-        this.removeEventListeners();
     }
 
     writeValue(value: string): void {
@@ -95,26 +87,19 @@ export class TextareaComponent implements ControlValueAccessor, OnDestroy {
     startResize(event: MouseEvent): void {
         event.preventDefault();
         const startY = event.clientY;
-        const startHeight = this.resizeContainer.nativeElement.getBoundingClientRect().height;
+        const startHeight = this.resizeContainer.nativeElement.offsetHeight;
 
-        this.mouseMoveListener = this.renderer.listen('document', 'mousemove', (e: MouseEvent) => {
-            const dy = e.clientY - startY;
-            const newHeight = Math.max(TEXTAREA_MIN_HEIGHT, startHeight + dy);
-            this.resizeContainer.nativeElement.style.height = `${newHeight}px`;
-            this.resizeContainerPseudo.nativeElement.style.height = `${newHeight}px`;
-        });
+        const mousemove$ = fromEvent<MouseEvent>(document, 'mousemove');
+        const mouseup$ = fromEvent<MouseEvent>(document, 'mouseup');
 
-        this.mouseUpListener = this.renderer.listen('document', 'mouseup', () => {
-            this.removeEventListeners();
-        });
-    }
-
-    private removeEventListeners(): void {
-        if (this.mouseMoveListener) {
-            this.mouseMoveListener();
-        }
-        if (this.mouseUpListener) {
-            this.mouseUpListener();
-        }
+        mousemove$.pipe(
+            takeUntil(mouseup$),
+            takeUntilDestroyed(this.destroyRef),
+            map(e => e.clientY - startY),
+            tap(dy => {
+                const newHeight = Math.max(this.TEXTAREA_MIN_HEIGHT, startHeight + dy);
+                this.textareaHeight.set(newHeight);
+            })
+        ).subscribe();
     }
 }

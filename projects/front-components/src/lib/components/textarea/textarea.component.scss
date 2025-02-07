@@ -17,7 +17,7 @@
         left: 0;
         width: 100%;
         height: 100%;
-        resize: vertical;
+        resize: none;
         box-sizing: border-box;
         color: inherit;
         background: transparent;
@@ -26,16 +26,6 @@
         margin: 0;
         border: 0;
         padding: 10px 14px;
-    }
-
-    &__field::-webkit-resizer {
-        display: none;
-        cursor: default;
-    }
-
-    /* Для Firefox */
-    &__field {
-        -moz-user-select: none;
     }
 
     &__pseudo, &__field {
