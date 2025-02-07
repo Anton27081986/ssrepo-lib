@@ -1,0 +1,21 @@
+<div class="custom-textarea">
+    <div class="custom-textarea__field-container" >
+        <div
+            class="custom-textarea__pseudo"
+            #resizeContainerPseudo
+            [style.height.px]=TEXTAREA_MIN_HEIGHT
+        >
+            {{ textareaCtrl.value }}
+        </div>
+
+        <textarea
+            #resizeContainer
+            class="custom-textarea__field"
+            [style.height.px]=TEXTAREA_MIN_HEIGHT
+            [formControl]="textareaCtrl"
+            [maxlength]="maxLength()"
+        ></textarea>
+
+        <div class="custom-textarea__resize-icon" (mousedown)="startResize($event)"></div>
+    </div>
+</div>

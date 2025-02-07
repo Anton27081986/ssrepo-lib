@@ -22,12 +22,13 @@
     outline-offset: -1px;
     transition: outline-color 0.3s ease;
     box-sizing: border-box;
-    box-shadow: 0px 1px 2px 0px #0A0D120D;
+    box-shadow: 0 1px 2px 0 #0A0D120D;
 }
 
 .field-container {
-    min-height: 44px;
-    padding: 10px 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
 }
 
 .field-container.state-disabled {

@@ -1,0 +1,57 @@
+.custom-textarea {
+    &__field-container {
+        position: relative;
+        width: 100%;
+        min-height: 130px;
+    }
+
+    &__pseudo {
+        visibility: hidden;
+        color: transparent;
+    }
+
+    &__field {
+        min-height: 130px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        resize: vertical;
+        box-sizing: border-box;
+        color: inherit;
+        background: transparent;
+        border: none;
+        outline: none;
+        margin: 0;
+        border: 0;
+        padding: 10px 14px;
+    }
+
+    &__field::-webkit-resizer {
+        display: none;
+        cursor: default;
+    }
+
+    /* Для Firefox */
+    &__field {
+        -moz-user-select: none;
+    }
+
+    &__pseudo, &__field {
+        font-family: var(--type-font-family-body), serif;
+        font-size: var(--font-size-body-md);
+        font-weight: var(--type-font-weight-regular);
+    }
+
+    &__resize-icon {
+        position: absolute;
+        bottom: 2px;
+        right: 2px;
+        width: 12px;
+        height: 12px;
+        cursor: ns-resize;
+        background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIiIGhlaWdodD0iMTIiIHZpZXdCb3g9IjAgMCAxMiAxMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTIgMTBMMTAgMiIgc3Ryb2tlPSIjRDVEN0RBIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPHBhdGggZD0iTTcgMTFMMTEgNyIgc3Ryb2tlPSIjRDVEN0RBIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPC9zdmc+Cg==') center no-repeat;
+        background-size: contain;
+    }
+}
