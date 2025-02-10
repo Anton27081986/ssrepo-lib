@@ -16,7 +16,7 @@ import { IconComponent } from '../icon/icon.component';
 import { Colors, IconType } from '../../shared/models';
 import { MapperPipe } from '../../core/pipes';
 
-export const TEXTAREA_MIN_HEIGHT = 130;
+export const TEXTAREA_MIN_HEIGHT = 128;
 
 /**
  * Параметры:
