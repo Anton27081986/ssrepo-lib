@@ -25,7 +25,7 @@ import { Validators } from '@angular/forms';
  *
  * [showValidation]: boolean - Отображать валидацию. По умолчанию: `true`
  *
- * [showValidationFieldIcon]: boolean - Отображать иконку валидации в . По умолчанию: `true`
+ * [showValidationFieldIcon]: boolean - Отображать иконку валидации в . По умолчанию: `false`
  */
 @Component({
     selector: 'ss-lib-form-field',
@@ -46,7 +46,7 @@ export class FormFieldComponent implements AfterContentInit {
     public label = input<string>('');
     public hint = input<string>('');
     public showValidation = input<boolean>(true);
-    public showValidationFieldIcon = input<boolean>(true);
+    public showValidationFieldIcon = input<boolean>(false);
     public errorText = input<string>('');
 
     public existValidators = signal<boolean>(false);
