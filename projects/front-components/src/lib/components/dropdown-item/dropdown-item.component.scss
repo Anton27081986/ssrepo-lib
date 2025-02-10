@@ -18,7 +18,7 @@
 }
 
 .dropdown-item:active {
-    background: var(--surface-action-pressed-2);
+    background: var(--surface-action-pressed-2) !important;
 }
 
 .dropdown-item:focus-visible {
