@@ -1,0 +1,25 @@
+<div
+    tabindex="0"
+    class="dropdown-item"
+    [class.disabled]="isDisabled()"
+    (mouseenter)="state.set(StateTypes.Hover)"
+    (mouseleave)="state.set(StateTypes.Default)"
+    (mousedown)="state.set(StateTypes.Pressed)"
+    (mouseup)="state.set(StateTypes.Default)"
+    (focus)="checkFocus($event)"
+>
+    <ss-lib-icon
+        [icon]="icon()!"
+        [height]="'16'"
+        [width]="'16'"
+        [color]="iconColor()"
+    />
+
+    <ss-lib-text
+        [type]="TextType.BodySm"
+        [weight]="TextWeight.Medium"
+        [color]="textColor()"
+    >
+        {{ text() }}
+    </ss-lib-text>
+</div>
