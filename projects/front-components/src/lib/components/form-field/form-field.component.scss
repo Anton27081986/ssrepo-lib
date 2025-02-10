@@ -1,6 +1,11 @@
-.field-info {
-    padding-bottom: 6px;
+.form-field {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
 
+.field-info {
     &__label {
         display: flex;
         align-items: center;
@@ -19,15 +24,16 @@
     color: var(--text-body);
     background: var(--surface-primary);
     outline: 1px solid var(--border-primary, #E9EAEB);
-    outline-offset: -1px;
     transition: outline-color 0.3s ease;
     box-sizing: border-box;
-    box-shadow: 0px 1px 2px 0px #0A0D120D;
+    box-shadow: 0 1px 2px 0 #0A0D120D;
 }
 
 .field-container {
-    min-height: 44px;
-    padding: 10px 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    overflow: hidden;
 }
 
 .field-container.state-disabled {
@@ -36,35 +42,34 @@
     outline: 1px solid var(--border-disabled);
 }
 
-.field-container:focus-within:not(.state-invalid):not(.state-disabled) {
+.field-container:focus-within:not(.state-invalid) {
     outline: 2px solid var(--border-focus, #3C92D5);
-    outline-offset: -2px;
 }
 
-.field-container.validation.state-invalid:not(:focus-within):not(.state-disabled) {
+.field-container.validation.state-invalid:not(:focus-within) {
     outline: 1px solid var(--border-error);
-    outline-offset: -1px;
 
     .field-container__error-icon {
-        display: flex;
-    }
-
-    .field-container__error-message {
         display: flex;
     }
 }
 
-.field-container.validation.state-invalid:focus-within:not(.state-disabled) {
+.field-container.validation.state-invalid:focus-within {
     outline: 2px solid var(--border-focus-error);
-    outline-offset: -2px;
 
     .field-container__error-icon {
         display: flex;
     }
+}
 
-    .field-container__error-message {
-        display: flex;
-    }
+.field-container.validation.state-invalid:not(:focus-within) ~ .field-container__error-message,
+.field-container.validation.state-invalid:focus-within ~ .field-container__error-message {
+    display: flex;
+}
+
+.field-container__content-wrapper {
+    display: flex;
+    align-items: center;
 }
 
 .field-container__content {
@@ -74,6 +79,7 @@
 
 .field-container__error-icon {
     display: none;
+    margin: 0 14px 0 -10px;
 }
 
 .field-container__error-message {

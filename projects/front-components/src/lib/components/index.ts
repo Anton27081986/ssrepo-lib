@@ -5,3 +5,4 @@ export { ToggleComponent } from './toggle/toggle.component';
 export { ToggleIconComponent } from './toggle-icon/toggle-icon.component';
 export { FormFieldComponent } from './form-field/form-field.component';
 export { InputComponent } from './input/input.component';
+export { TextareaComponent } from './textarea/textarea.component';
