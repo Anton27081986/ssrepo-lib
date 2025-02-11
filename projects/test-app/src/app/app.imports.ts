@@ -8,6 +8,7 @@ import {
     InputComponent,
     TextareaComponent,
     DropdownItemComponent,
+    DropdownListComponent,
 } from '../../../front-components/src/lib/components';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FieldCtrlDirective } from '../../../front-components/src/lib/core/directives';
@@ -23,5 +24,6 @@ export const appImports = [
     FieldCtrlDirective,
     InputComponent,
     TextareaComponent,
-    DropdownItemComponent
+    DropdownItemComponent,
+    DropdownListComponent
 ]
