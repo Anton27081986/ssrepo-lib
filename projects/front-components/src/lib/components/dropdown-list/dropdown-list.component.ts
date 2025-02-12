@@ -1,6 +1,14 @@
-import { ChangeDetectionStrategy, Component, ContentChildren, output, QueryList } from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    ContentChildren,
+    output,
+    QueryList,
+    TemplateRef,
+    ViewChild,
+} from '@angular/core';
 import { DropdownItemComponent } from '../dropdown-item/dropdown-item.component';
-import { IDictionaryItemDto } from '../../shared/models';
+import { IDictionaryItemDto, PopoverContent } from '../../shared/models';
 
 @Component({
     selector: 'ss-lib-dropdown-list',
@@ -9,11 +17,15 @@ import { IDictionaryItemDto } from '../../shared/models';
     styleUrl: './dropdown-list.component.scss',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DropdownListComponent {
+export class DropdownListComponent implements PopoverContent {
     @ContentChildren(DropdownItemComponent) optionsContent?: QueryList<DropdownItemComponent>;
+    @ViewChild(TemplateRef) templateRef!: TemplateRef<any>;
+
+    public closed = output<void>();
     public selectOptionEvent = output<IDictionaryItemDto | null>()
 
     selectOption(item: IDictionaryItemDto | null): void {
         this.selectOptionEvent.emit(item);
+        this.closed.emit();
     }
 }

@@ -4,11 +4,13 @@ import {
     OnDestroy,
     inject,
     ViewContainerRef,
-    HostListener, TemplateRef, input,
+    HostListener,
+    input,
 } from '@angular/core';
 import { Overlay, OverlayRef } from '@angular/cdk/overlay';
 import { merge, Observable, Subscription } from 'rxjs';
 import { TemplatePortal } from '@angular/cdk/portal';
+import { PopoverContent } from '../../shared/models';
 
 @Directive({
     selector: '[popoverTriggerFor]',
@@ -19,11 +21,12 @@ export class PopoverTriggerForDirective implements OnDestroy {
     private readonly elementRef: ElementRef<HTMLElement> = inject(ElementRef<HTMLElement>);
     private readonly viewContainerRef = inject(ViewContainerRef);
 
-    popoverTemplate = input.required<TemplateRef<any>>({alias: 'popoverTriggerFor'});
+    popoverContent = input.required<PopoverContent>({alias: 'popoverTriggerFor'});
 
     private isPopoverOpen = false;
     private overlayRef: OverlayRef | null = null;
     private closingActionsSub = Subscription.EMPTY;
+    private closingFromPopoverSub = Subscription.EMPTY;
 
     @HostListener('click')
     togglePopover(): void {
@@ -35,6 +38,23 @@ export class PopoverTriggerForDirective implements OnDestroy {
         if (event.key === 'Escape') {
             this.destroyPopover();
         }
+    }
+
+    ngOnDestroy(): void {
+        this.closingActionsSub.unsubscribe();
+        if (this.overlayRef) {
+            this.overlayRef.dispose();
+            this.overlayRef = null;
+        }
+    }
+
+    public destroyPopover(): void {
+        if (!this.overlayRef || !this.isPopoverOpen) return;
+
+        this.closingActionsSub.unsubscribe();
+        this.closingFromPopoverSub.unsubscribe();
+        this.isPopoverOpen = false;
+        this.overlayRef.detach();
     }
 
     private openPopover(): void {
@@ -70,14 +90,16 @@ export class PopoverTriggerForDirective implements OnDestroy {
         }
 
         const templatePortal = new TemplatePortal(
-            this.popoverTemplate(),
+            this.popoverContent().templateRef,
             this.viewContainerRef
         );
         this.overlayRef.attach(templatePortal);
 
-        this.closingActionsSub = this.closingActions().subscribe(
-            () => this.destroyPopover()
-        );
+        this.closingActionsSub = this.closingActions()
+        .subscribe(() => this.destroyPopover());
+
+        this.closingFromPopoverSub = this.popoverContent().closed
+        .subscribe(() => this.destroyPopover())
     }
 
     private closingActions(): Observable<MouseEvent | void> {
@@ -85,22 +107,6 @@ export class PopoverTriggerForDirective implements OnDestroy {
             this.overlayRef!.backdropClick(),
             this.overlayRef!.detachments(),
         )
-    }
-
-    private destroyPopover(): void {
-        if (!this.overlayRef || !this.isPopoverOpen) return;
-
-        this.closingActionsSub.unsubscribe();
-        this.isPopoverOpen = false;
-        this.overlayRef.detach();
-    }
-
-    ngOnDestroy(): void {
-        this.closingActionsSub.unsubscribe();
-        if (this.overlayRef) {
-            this.overlayRef.dispose();
-            this.overlayRef = null;
-        }
     }
 }
 

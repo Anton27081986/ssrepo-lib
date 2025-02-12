@@ -194,13 +194,11 @@
 <div class="test">
     <button [popoverTriggerFor]="dropdown">toogle</button>
 
-    <ng-template #dropdown>
-        <ss-lib-dropdown-list>
-            <ss-lib-dropdown-item [text]="'Опция'" [icon]="IconType.Bell" [isDestructive]="true"/>
-            <ss-lib-dropdown-item [text]="'Опция'" [icon]="IconType.Bell" [isDestructive]="true"/>
-            <ss-lib-dropdown-item [text]="'Опция'" [icon]="IconType.Bell" [isDestructive]="true"/>
-            <ss-lib-dropdown-item [text]="'Опция'" [icon]="IconType.Bell" [isDestructive]="true"/>
-            <ss-lib-dropdown-item [text]="'Опция'" [icon]="IconType.Bell" [isDestructive]="true"/>
-        </ss-lib-dropdown-list>
-    </ng-template>
+    <ss-lib-dropdown-list #dropdown>
+        <ss-lib-dropdown-item [text]="'Опция'" [icon]="IconType.Bell" [isDestructive]="true"/>
+        <ss-lib-dropdown-item [text]="'Опция'" [icon]="IconType.Bell" [isDestructive]="true"/>
+        <ss-lib-dropdown-item [text]="'Опция'" [icon]="IconType.Bell" [isDestructive]="true"/>
+        <ss-lib-dropdown-item [text]="'Опция'" [icon]="IconType.Bell" [isDestructive]="true"/>
+        <ss-lib-dropdown-item [text]="'Опция'" [icon]="IconType.Bell" [isDestructive]="true"/>
+    </ss-lib-dropdown-list>
 </div>

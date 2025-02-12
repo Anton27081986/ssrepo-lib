@@ -1,8 +1,9 @@
-<div class="dropdown__options">
-    @if (!!optionsContent) {
-        <div class="dropdown__options-content" (click)="selectOption(null)">
-            <ng-content></ng-content>
-        </div>
-    }
-</div>
-
+<ng-template>
+    <div class="dropdown__options">
+        @if (!!optionsContent) {
+            <div class="dropdown__options-content" (click)="selectOption(null)">
+                <ng-content></ng-content>
+            </div>
+        }
+    </div>
+</ng-template>
