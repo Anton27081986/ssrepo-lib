@@ -1,13 +1,8 @@
-<div
-    class="dropdown__options"
-    [@collapseHeight]="isOpen()"
-    (@collapseHeight.done)="onCollapseHeightAnimationDone($event)"
->
-    @if (isContentVisible()) {
-        @if (!!optionsContent) {
-            <div class="dropdown__options-content" (click)="selectOption(null)">
-                <ng-content></ng-content>
-            </div>
-        }
+<div class="dropdown__options">
+    @if (!!optionsContent) {
+        <div class="dropdown__options-content" (click)="selectOption(null)">
+            <ng-content></ng-content>
+        </div>
     }
 </div>
+

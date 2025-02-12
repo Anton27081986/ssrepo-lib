@@ -150,54 +150,57 @@
 <!--<ss-lib-toggle-icon [formControl]="toggleCtrl"></ss-lib-toggle-icon>-->
 <!--<br>-->
 
-<div class="input">
-    <ss-lib-form-field
-        [label]="'Название'"
-        [hint]="'Подсказка'"
-        [errorText]="'Неверно заполнено'"
-        [showValidationFieldIcon]="true"
-    >
-        <ss-lib-input
-            fieldCtrl
-            [formControl]="inputCtrl"
-            [placeholder]="'oleg@mail.ru'"
-        />
-    </ss-lib-form-field>
+<!--<div class="input">-->
+<!--    <ss-lib-form-field-->
+<!--        [label]="'Название'"-->
+<!--        [hint]="'Подсказка'"-->
+<!--        [errorText]="'Неверно заполнено'"-->
+<!--        [showValidationFieldIcon]="true"-->
+<!--    >-->
+<!--        <ss-lib-input-->
+<!--            fieldCtrl-->
+<!--            [formControl]="inputCtrl"-->
+<!--            [placeholder]="'oleg@mail.ru'"-->
+<!--        />-->
+<!--    </ss-lib-form-field>-->
+<!--</div>-->
+<!--<br/>-->
+<!--<br/>-->
+
+<!--<div class="input">-->
+<!--    <ss-lib-form-field-->
+<!--        [label]="'Название'"-->
+<!--        [hint]="'Подсказка'"-->
+<!--        [errorText]="'Текст ошибки'"-->
+<!--    >-->
+<!--        <ss-lib-textarea-->
+<!--            fieldCtrl-->
+<!--            [formControl]="textareaCtrl"-->
+<!--        />-->
+<!--    </ss-lib-form-field>-->
+<!--</div>-->
+<!--<br>-->
+<!--<br>-->
+
+<!--<ss-lib-dropdown-item [text]="'Опция'" [icon]="IconType.Bell"/>-->
+<!--<br>-->
+
+<!--<ss-lib-dropdown-item [text]="'Опция'" [icon]="IconType.Bell" [isDisabled]="true"/>-->
+<!--<br>-->
+
+<!--<ss-lib-dropdown-item [text]="'Опция'" [icon]="IconType.Bell" [isDestructive]="true"/>-->
+<!--<br>-->
+
+<div class="test">
+    <button [popoverTriggerFor]="dropdown">toogle</button>
+
+    <ng-template #dropdown>
+        <ss-lib-dropdown-list>
+            <ss-lib-dropdown-item [text]="'Опция'" [icon]="IconType.Bell" [isDestructive]="true"/>
+            <ss-lib-dropdown-item [text]="'Опция'" [icon]="IconType.Bell" [isDestructive]="true"/>
+            <ss-lib-dropdown-item [text]="'Опция'" [icon]="IconType.Bell" [isDestructive]="true"/>
+            <ss-lib-dropdown-item [text]="'Опция'" [icon]="IconType.Bell" [isDestructive]="true"/>
+            <ss-lib-dropdown-item [text]="'Опция'" [icon]="IconType.Bell" [isDestructive]="true"/>
+        </ss-lib-dropdown-list>
+    </ng-template>
 </div>
-<br/>
-<br/>
-
-<div class="input">
-    <ss-lib-form-field
-        [label]="'Название'"
-        [hint]="'Подсказка'"
-        [errorText]="'Текст ошибки'"
-    >
-        <ss-lib-textarea
-            fieldCtrl
-            [formControl]="textareaCtrl"
-        />
-    </ss-lib-form-field>
-</div>
-<br>
-<br>
-
-<ss-lib-dropdown-item [text]="'Опция'" [icon]="IconType.Bell"/>
-<br>
-
-<ss-lib-dropdown-item [text]="'Опция'" [icon]="IconType.Bell" [isDisabled]="true"/>
-<br>
-
-<ss-lib-dropdown-item [text]="'Опция'" [icon]="IconType.Bell" [isDestructive]="true"/>
-<br>
-
-<ss-lib-dropdown-list [isOpen]="true">
-    <ss-lib-dropdown-item [text]="'Опция'" [icon]="IconType.Bell" [isDestructive]="true"/>
-    <ss-lib-dropdown-item [text]="'Опция'" [icon]="IconType.Bell" [isDestructive]="true"/>
-    <ss-lib-dropdown-item [text]="'Опция'" [icon]="IconType.Bell" [isDestructive]="true"/>
-    <ss-lib-dropdown-item [text]="'Опция'" [icon]="IconType.Bell" [isDestructive]="true"/>
-    <ss-lib-dropdown-item [text]="'Опция'" [icon]="IconType.Bell" [isDestructive]="true"/>
-</ss-lib-dropdown-list>
-<br>
-<br>
-<div></div>

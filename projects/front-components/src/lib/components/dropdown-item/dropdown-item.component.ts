@@ -38,7 +38,6 @@ export class DropdownItemComponent {
     protected readonly TextWeight = TextWeight;
     protected readonly StateTypes = StateTypes;
 
-
     public readonly iconColor = computed(() => {
         if (this.isDisabled()) {
             return Colors.IconDisabled;
