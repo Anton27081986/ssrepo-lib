@@ -192,13 +192,39 @@
 <!--<br>-->
 
 <div class="test">
-    <button [popoverTriggerFor]="dropdown">toogle</button>
-
-    <ss-lib-dropdown-list #dropdown>
-        <ss-lib-dropdown-item [text]="'Опция'" [icon]="IconType.Bell" [isDestructive]="true"/>
-        <ss-lib-dropdown-item [text]="'Опция'" [icon]="IconType.Bell" [isDestructive]="true"/>
-        <ss-lib-dropdown-item [text]="'Опция'" [icon]="IconType.Bell" [isDestructive]="true"/>
-        <ss-lib-dropdown-item [text]="'Опция'" [icon]="IconType.Bell" [isDestructive]="true"/>
-        <ss-lib-dropdown-item [text]="'Опция'" [icon]="IconType.Bell" [isDestructive]="true"/>
+    <ss-lib-button
+        [text]="'Test button'"
+        [popoverTriggerFor]="dropdown1"
+    />
+    <ss-lib-dropdown-list #dropdown1>
+        <ss-lib-dropdown-item [text]="'Опция'" [icon]="IconType.Bell"/>
+        <ss-lib-dropdown-item [text]="'Опция'" [icon]="IconType.Bell"/>
+        <ss-lib-dropdown-item [text]="'Опция'" [icon]="IconType.Bell"/>
+        <ss-lib-dropdown-item [text]="'Опция'" [icon]="IconType.Bell"/>
+        <ss-lib-dropdown-item [text]="'Опция'" [icon]="IconType.Bell"/>
     </ss-lib-dropdown-list>
+
+
+    <ss-lib-form-field
+        [label]="'Название'"
+        [hint]="'Подсказка'"
+        [errorText]="'Неверно заполнено'"
+        [showValidationFieldIcon]="true"
+    >
+        <ss-lib-select
+            fieldCtrl
+            [formControl]="selectCtrl"
+            [popoverTriggerFor]="dropdown2"
+        >
+            <ss-lib-dropdown-list #dropdown2>
+                <ss-lib-dropdown-item [text]="'Опция'" [icon]="IconType.Bell"/>
+                <ss-lib-dropdown-item [text]="'Опция'" [icon]="IconType.Bell"/>
+                <ss-lib-dropdown-item [text]="'Опция'" [icon]="IconType.Bell"/>
+                <ss-lib-dropdown-item [text]="'Опция'" [icon]="IconType.Bell"/>
+                <ss-lib-dropdown-item [text]="'Опция'" [icon]="IconType.Bell"/>
+            </ss-lib-dropdown-list>
+        </ss-lib-select>
+    </ss-lib-form-field>
 </div>
+
+

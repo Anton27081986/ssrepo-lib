@@ -13,6 +13,8 @@ import { debounceTime, tap } from 'rxjs';
  * Параметры:
  *
  * [placeholder]: string - Placeholder. По умолчанию: `''`
+ *
+ * [readOnly]: boolean - Только для чтения. По умолчанию: `false`
  */
 @Component({
     selector: 'ss-lib-input',
@@ -33,6 +35,7 @@ import { debounceTime, tap } from 'rxjs';
 })
 export class InputComponent implements ControlValueAccessor {
     public placeholder = input<string>('');
+    public readOnly = input<boolean>(false);
 
     public inputCtrl = new FormControl();
     public disabled = signal<boolean>(false);

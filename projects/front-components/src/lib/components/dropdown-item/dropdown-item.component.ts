@@ -47,7 +47,6 @@ export class DropdownItemComponent {
             return this.state() === StateTypes.Default ? Colors.IconAction : Colors.IconError;
         }
 
-
         return Colors.IconAction
     });
 

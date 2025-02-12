@@ -8,3 +8,4 @@ export { InputComponent } from './input/input.component';
 export { TextareaComponent } from './textarea/textarea.component';
 export { DropdownItemComponent } from './dropdown-item/dropdown-item.component';
 export { DropdownListComponent } from './dropdown-list/dropdown-list.component';
+export { SelectComponent } from './select/select.component';

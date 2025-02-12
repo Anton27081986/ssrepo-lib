@@ -11,6 +11,7 @@ import { Overlay, OverlayRef } from '@angular/cdk/overlay';
 import { merge, Observable, Subscription } from 'rxjs';
 import { TemplatePortal } from '@angular/cdk/portal';
 import { PopoverContent } from '../../shared/models';
+import { outputToObservable } from '@angular/core/rxjs-interop';
 
 @Directive({
     selector: '[popoverTriggerFor]',
@@ -26,7 +27,6 @@ export class PopoverTriggerForDirective implements OnDestroy {
     private isPopoverOpen = false;
     private overlayRef: OverlayRef | null = null;
     private closingActionsSub = Subscription.EMPTY;
-    private closingFromPopoverSub = Subscription.EMPTY;
 
     @HostListener('click')
     togglePopover(): void {
@@ -52,7 +52,6 @@ export class PopoverTriggerForDirective implements OnDestroy {
         if (!this.overlayRef || !this.isPopoverOpen) return;
 
         this.closingActionsSub.unsubscribe();
-        this.closingFromPopoverSub.unsubscribe();
         this.isPopoverOpen = false;
         this.overlayRef.detach();
     }
@@ -97,15 +96,13 @@ export class PopoverTriggerForDirective implements OnDestroy {
 
         this.closingActionsSub = this.closingActions()
         .subscribe(() => this.destroyPopover());
-
-        this.closingFromPopoverSub = this.popoverContent().closed
-        .subscribe(() => this.destroyPopover())
     }
 
     private closingActions(): Observable<MouseEvent | void> {
         return merge(
             this.overlayRef!.backdropClick(),
             this.overlayRef!.detachments(),
+            outputToObservable(this.popoverContent().closed)
         )
     }
 }

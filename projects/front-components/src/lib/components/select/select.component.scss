@@ -1,0 +1,15 @@
+.select__field {
+    display: flex;
+
+    &_control {
+        flex-grow: 1;
+    }
+
+    &_icon {
+        cursor: pointer;
+    }
+
+    &_icon.rotated {
+        transform: rotate(180deg);
+    }
+}

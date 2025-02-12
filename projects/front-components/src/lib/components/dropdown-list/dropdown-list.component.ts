@@ -22,10 +22,13 @@ export class DropdownListComponent implements PopoverContent {
     @ViewChild(TemplateRef) templateRef!: TemplateRef<any>;
 
     public closed = output<void>();
-    public selectOptionEvent = output<IDictionaryItemDto | null>()
+    public value = output<IDictionaryItemDto | null>()
 
     selectOption(item: IDictionaryItemDto | null): void {
-        this.selectOptionEvent.emit(item);
+        this.value.emit({
+            id: 1,
+            name: 'test',
+        });
         this.closed.emit();
     }
 }
