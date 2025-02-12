@@ -30,6 +30,13 @@ export class PopoverTriggerForDirective implements OnDestroy {
         this.isPopoverOpen ? this.destroyPopover() : this.openPopover();
     }
 
+    @HostListener('keydown', ['$event'])
+    handleKeyDown(event: KeyboardEvent) {
+        if (event.key === 'Escape') {
+            this.destroyPopover();
+        }
+    }
+
     private openPopover(): void {
         if (this.isPopoverOpen) return;
 
@@ -39,6 +46,7 @@ export class PopoverTriggerForDirective implements OnDestroy {
             this.overlayRef = this.overlay.create({
                 hasBackdrop: true,
                 backdropClass: 'cdk-overlay-transparent-backdrop',
+                scrollStrategy: this.overlay.scrollStrategies.reposition(),
                 positionStrategy: this.overlay
                 .position()
                 .flexibleConnectedTo(this.elementRef)
