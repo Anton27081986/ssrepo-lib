@@ -10,6 +10,7 @@ import {
     DropdownItemComponent,
     DropdownListComponent,
     SelectComponent,
+    AvatarComponent,
 } from '../../../front-components/src/lib/components';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PopoverTriggerForDirective, FieldCtrlDirective } from '../../../front-components/src/lib/core/directives';
@@ -28,5 +29,6 @@ export const appImports = [
     DropdownItemComponent,
     DropdownListComponent,
     PopoverTriggerForDirective,
-    SelectComponent
+    SelectComponent,
+    AvatarComponent
 ]
