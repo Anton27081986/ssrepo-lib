@@ -29,4 +29,8 @@
     color: var(--text-on-disabled);
 }
 
+.input-field:read-only:not(:disabled) {
+    cursor: pointer;
+}
+
 
