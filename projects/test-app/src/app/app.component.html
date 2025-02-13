@@ -197,13 +197,13 @@
         [popoverTriggerFor]="dropdown1"
     />
     <ss-lib-dropdown-list #dropdown1>
-        <ss-lib-dropdown-item [text]="'Опция'" [icon]="IconType.Bell"/>
-        <ss-lib-dropdown-item [text]="'Опция'" [icon]="IconType.Bell"/>
-        <ss-lib-dropdown-item [text]="'Опция'" [icon]="IconType.Bell"/>
-        <ss-lib-dropdown-item [text]="'Опция'" [icon]="IconType.Bell"/>
-        <ss-lib-dropdown-item [text]="'Опция'" [icon]="IconType.Bell"/>
+        <ss-lib-dropdown-item [label]="'Опция'" [icon]="IconType.Bell"/>
+        <ss-lib-dropdown-item [label]="'Опция'" [icon]="IconType.Bell"/>
+        <ss-lib-dropdown-item [label]="'Опция'" [icon]="IconType.Bell"/>
+        <ss-lib-dropdown-item [label]="'Опция'" [icon]="IconType.Bell"/>
+        <ss-lib-dropdown-item [label]="'Опция'" [icon]="IconType.Bell"/>
     </ss-lib-dropdown-list>
-
+    <br>
 
     <ss-lib-form-field
         [label]="'Название'"
@@ -217,11 +217,9 @@
             [popoverTriggerFor]="dropdown2"
         >
             <ss-lib-dropdown-list #dropdown2>
-                <ss-lib-dropdown-item [text]="'Опция'" [icon]="IconType.Bell"/>
-                <ss-lib-dropdown-item [text]="'Опция'" [icon]="IconType.Bell"/>
-                <ss-lib-dropdown-item [text]="'Опция'" [icon]="IconType.Bell"/>
-                <ss-lib-dropdown-item [text]="'Опция'" [icon]="IconType.Bell"/>
-                <ss-lib-dropdown-item [text]="'Опция'" [icon]="IconType.Bell"/>
+                @for (item of dropdownItems; track item.id) {
+                    <ss-lib-dropdown-item [value]="item" [icon]="IconType.Bell"/>
+                }
             </ss-lib-dropdown-list>
         </ss-lib-select>
     </ss-lib-form-field>

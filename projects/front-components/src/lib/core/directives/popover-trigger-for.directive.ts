@@ -89,7 +89,7 @@ export class PopoverTriggerForDirective implements OnDestroy {
         }
 
         const templatePortal = new TemplatePortal(
-            this.popoverContent().templateRef,
+            this.popoverContent().templateRef(),
             this.viewContainerRef
         );
         this.overlayRef.attach(templatePortal);

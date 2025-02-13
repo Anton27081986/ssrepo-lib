@@ -1,12 +1,14 @@
-import { ChangeDetectionStrategy, Component, computed, input, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, HostListener, input, output, signal } from '@angular/core';
 import { IconComponent } from '../icon/icon.component';
 import { TextComponent } from '../text/text.component';
-import { Colors, IconType, StateTypes, TextType, TextWeight } from '../../shared/models';
+import { Colors, IconType, IDictionaryItemDto, StateTypes, TextType, TextWeight } from '../../shared/models';
 
 /**
  * Параметры:
  *
- * [text]: string | undefined - Текст в item. По умолчанию: ``
+ * [label]: string | undefined - Label для item. По умолчанию: ``
+ *
+ * [value]: IDictionaryItemDto | null - Дынные item. По умолчанию: `null`
  *
  * [icon]: IconType | null - Название иконки.  По умолчанию: `null`
  *
@@ -27,16 +29,24 @@ import { Colors, IconType, StateTypes, TextType, TextWeight } from '../../shared
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DropdownItemComponent {
-    public text = input<string>('');
+    public label = input<string>('');
+    public value = input<IDictionaryItemDto | null>(null);
     public icon = input<IconType | null>(null);
     public isDestructive = input<boolean>(false);
     public isDisabled = input<boolean>(false);
+    public valueEvent = output<IDictionaryItemDto | null>();
 
     public state = signal<StateTypes>(StateTypes.Default);
+    public itemText = computed(() => this.value() ? this.value()?.name : this.label() || '')
 
     protected readonly TextType = TextType;
     protected readonly TextWeight = TextWeight;
     protected readonly StateTypes = StateTypes;
+
+    @HostListener('click')
+    togglePopover(): void {
+        this.valueEvent.emit(this.value());
+    }
 
     public readonly iconColor = computed(() => {
         if (this.isDisabled()) {

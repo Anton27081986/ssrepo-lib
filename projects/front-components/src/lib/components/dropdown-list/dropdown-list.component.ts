@@ -1,13 +1,17 @@
 import {
+    afterNextRender,
     ChangeDetectionStrategy,
     Component,
-    ContentChildren,
+    contentChildren,
+    Injector,
     output,
-    QueryList,
+    runInInjectionContext,
     TemplateRef,
-    ViewChild,
+    viewChild,
 } from '@angular/core';
 import { DropdownItemComponent } from '../dropdown-item/dropdown-item.component';
+import { outputToObservable, toSignal } from '@angular/core/rxjs-interop';
+import { tap } from 'rxjs';
 import { IDictionaryItemDto, PopoverContent } from '../../shared/models';
 
 @Component({
@@ -18,17 +22,28 @@ import { IDictionaryItemDto, PopoverContent } from '../../shared/models';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DropdownListComponent implements PopoverContent {
-    @ContentChildren(DropdownItemComponent) optionsContent?: QueryList<DropdownItemComponent>;
-    @ViewChild(TemplateRef) templateRef!: TemplateRef<any>;
+    readonly optionsContent = contentChildren(DropdownItemComponent);
+    readonly templateRef = viewChild.required<TemplateRef<any>>('dropdownTemplate');
 
     public closed = output<void>();
     public value = output<IDictionaryItemDto | null>()
 
-    selectOption(item: IDictionaryItemDto | null): void {
-        this.value.emit({
-            id: 1,
-            name: 'test',
+    constructor(private readonly injector: Injector) {
+        afterNextRender(() => {
+            runInInjectionContext(this.injector, () => {
+                this.optionsContent().forEach(
+                    option => toSignal(
+                        outputToObservable(option.valueEvent).pipe(
+                            tap(data => this.selectOption(data))
+                        )
+                    )
+                )
+            });
         });
+    }
+
+    selectOption(item: IDictionaryItemDto | null): void {
+        this.value.emit(item);
         this.closed.emit();
     }
 }
