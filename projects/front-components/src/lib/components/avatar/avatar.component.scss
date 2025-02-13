@@ -1,0 +1,25 @@
+:host {
+    display: flex;
+    align-items: center;
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border-primary);
+    background: var(--surface-primary);
+    border-radius: var(--border-radius-round);
+    overflow: hidden;
+    box-sizing: border-box;
+
+    &__image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+    }
+}
