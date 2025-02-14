@@ -65,5 +65,5 @@ export class AppComponent {
 
     selectCtrl = new FormControl(null);
 
-    numberPickerCtrl = new FormControl(null);
+    numberPickerCtrl = new FormControl(2);
 }

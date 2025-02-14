@@ -9,3 +9,4 @@ export { StateTypes } from './state-types';
 export { ControlState } from './control-state';
 export { Direction } from './direction';
 export { Align } from './align';
+export { InputType } from './input-type';

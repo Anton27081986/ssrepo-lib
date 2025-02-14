@@ -1,8 +1,10 @@
-import { ChangeDetectionStrategy, Component, forwardRef, input, signal, } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, forwardRef, input, signal, } from '@angular/core';
 import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR, ReactiveFormsModule } from '@angular/forms';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { debounceTime, tap } from 'rxjs';
-import { Align } from '../../shared/models';
+import { Align, InputType } from '../../shared/models';
+import { MaskitoDirective } from '@maskito/angular';
+import { maskitoNumberOptionsGenerator } from '@maskito/kit';
 
 /**
  * Параметры:
@@ -18,6 +20,7 @@ import { Align } from '../../shared/models';
     standalone: true,
     imports: [
         ReactiveFormsModule,
+        MaskitoDirective,
     ],
     templateUrl: './input.component.html',
     styleUrl: './input.component.scss',
@@ -31,12 +34,26 @@ import { Align } from '../../shared/models';
     ],
 })
 export class InputComponent implements ControlValueAccessor {
+    public type = input<InputType>(InputType.Text);
     public placeholder = input<string>('');
     public readOnly = input<boolean>(false);
     public align = input<Align>(Align.Start);
+    public min = input<number | undefined>(undefined);
+    public max = input<number | undefined>(undefined);
 
     public inputCtrl = new FormControl();
     public disabled = signal<boolean>(false);
+    public inputMask = computed(() => {
+        if (this.type() === InputType.Number) {
+            return maskitoNumberOptionsGenerator({
+                min: this.min(),
+                max: this.max(),
+                decimalSeparator: ','
+            })
+        }
+
+        return null;
+    });
 
     private onChange!: (value: string | null) => void;
     private onTouched!: () => void;

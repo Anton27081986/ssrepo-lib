@@ -1,19 +1,15 @@
 import {
     ChangeDetectionStrategy,
     Component,
-    forwardRef, inject, Injector,
+    forwardRef,
     input,
-    OnInit,
-    runInInjectionContext,
     signal
 } from '@angular/core';
 import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR, ReactiveFormsModule } from '@angular/forms';
-import { toSignal } from '@angular/core/rxjs-interop';
-import { debounceTime, tap } from 'rxjs';
 import { ButtonComponent } from '../button/button.component';
 import { InputComponent } from '../input/input.component';
 import { FormFieldComponent } from '../form-field/form-field.component';
-import { Align, ButtonType, Direction, IconPosition, IconType } from '../../shared/models';
+import { Align, ButtonType, Direction, IconPosition, IconType, InputType } from '../../shared/models';
 import { FieldCtrlDirective } from '../../core/directives';
 
 
@@ -47,11 +43,9 @@ import { FieldCtrlDirective } from '../../core/directives';
         },
     ],
 })
-export class NumberPickerComponent implements ControlValueAccessor, OnInit {
-    private readonly injector = inject(Injector);
-
-    public min = input<number>(0);
-    public max = input<number>(1000);
+export class NumberPickerComponent implements ControlValueAccessor {
+    public min = input<number | undefined>(undefined);
+    public max = input<number | undefined>(undefined);
     public step = input<number>(1);
 
     public numberPickerCtrl = new FormControl();
@@ -62,17 +56,7 @@ export class NumberPickerComponent implements ControlValueAccessor, OnInit {
     public readonly IconPosition = IconPosition;
     public readonly Direction = Direction;
     public readonly Align = Align;
-
-    ngOnInit() {
-        runInInjectionContext(this.injector, () => {
-            toSignal(
-                this.numberPickerCtrl.valueChanges.pipe(
-                    debounceTime(300),
-                    tap(value => this.inputChecking(value))
-                )
-            )
-        });
-    }
+    public readonly InputType = InputType;
 
     onChange = (value: number | null) => {
     };
@@ -100,12 +84,16 @@ export class NumberPickerComponent implements ControlValueAccessor, OnInit {
     }
 
     private checkNumberValue(value: number): number {
-        if (value && value < this.min()) {
-            return this.min();
+        if (this.min() !== undefined) {
+            if (value && value < this.min()!) {
+                return this.min()!;
+            }
         }
 
-        if (value && value > this.max()) {
-            return this.max();
+        if (this.max() !== undefined) {
+            if (value && value > this.max()!) {
+                return this.max()!;
+            }
         }
 
         return value;
@@ -122,21 +110,5 @@ export class NumberPickerComponent implements ControlValueAccessor, OnInit {
 
         this.numberPickerCtrl.setValue(value);
         this.onChange(value);
-    }
-
-    public inputChecking(value: string): void {
-        if (!value) {
-            this.onChange(null);
-
-            return;
-        }
-
-        let numberValue = this.checkNumberValue(+value || 0);
-
-        if (numberValue !== +value) {
-            this.numberPickerCtrl.setValue(numberValue);
-        }
-
-        this.onChange(numberValue);
     }
 }
