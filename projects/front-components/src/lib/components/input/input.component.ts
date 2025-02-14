@@ -1,19 +1,25 @@
 import { ChangeDetectionStrategy, Component, computed, forwardRef, input, signal, } from '@angular/core';
 import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR, ReactiveFormsModule } from '@angular/forms';
 import { toSignal } from '@angular/core/rxjs-interop';
-import { debounceTime, tap } from 'rxjs';
-import { Align, InputType } from '../../shared/models';
 import { MaskitoDirective } from '@maskito/angular';
 import { maskitoNumberOptionsGenerator } from '@maskito/kit';
+import { debounceTime, tap } from 'rxjs';
+import { Align, InputType } from '../../shared/models';
 
 /**
  * Параметры:
+ *
+ * [type]: InputType - Тип. По умолчанию: `InputType.Text`
  *
  * [placeholder]: string - Placeholder. По умолчанию: `''`
  *
  * [readOnly]: boolean - Только для чтения. По умолчанию: `false`
  *
  * [align]: Align - Выравнивание. По умолчанию: `Align.Start`
+ *
+ * [min]: number | undefined - Мин значение. По умолчанию: `undefined`
+ *
+ * [max]: number | undefined - Максимальное значение. По умолчанию: `undefined`
  */
 @Component({
     selector: 'ss-lib-input',
@@ -48,6 +54,7 @@ export class InputComponent implements ControlValueAccessor {
             return maskitoNumberOptionsGenerator({
                 min: this.min(),
                 max: this.max(),
+                precision: 2,
                 decimalSeparator: ','
             })
         }

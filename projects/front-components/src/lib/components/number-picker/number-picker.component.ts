@@ -16,9 +16,9 @@ import { FieldCtrlDirective } from '../../core/directives';
 /**
  * Параметры:
  *
- * [min]: number - Мин значение. По умолчанию: `0`
+ * [min]: number | undefined - Мин значение. По умолчанию: `undefined`
  *
- * [max]: number - Максимальное значение. По умолчанию: `1000`
+ * [max]: number | undefined - Максимальное значение. По умолчанию: `undefined`
  *
  * [step]: number - Шаг. По умолчанию: `1`
  */
