@@ -6,6 +6,7 @@ import {fromEvent, map, Observable, skip, startWith, Subscription} from 'rxjs';
 export class CanvasState implements OnDestroy {
   public sidebarType: WritableSignal<SidebarType> = signal(SidebarType.Close);
   private subscription: Subscription = new Subscription()
+
   public screenWidth$: Observable<number> = fromEvent(window, 'resize').pipe(
     map(() => window.innerWidth),
     startWith(window.innerWidth) // Начальное значение
@@ -13,7 +14,7 @@ export class CanvasState implements OnDestroy {
 
   constructor() {
     this.subscription.add(
-      this.screenWidth$.pipe(skip(1)).subscribe(item => {
+      this.screenWidth$.pipe().subscribe(item => {
         if (item >= 1440) {
           this.sidebarType.set(SidebarType.Full)
         } else {
