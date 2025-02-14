@@ -1,0 +1,30 @@
+.sidebar {
+  border-right: 1px solid var(--border-primary);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  background-color: var(--surface-primary);
+  width: 0;
+
+  &__top-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding:  16px 12px;
+  }
+
+  &__bottom-menu {
+    padding:  16px 12px;
+    display: flex;
+    height: 64px;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__bottom-menu-block {
+    display: flex;
+    flex-wrap: nowrap;
+    text-wrap: nowrap;
+  }
+}
