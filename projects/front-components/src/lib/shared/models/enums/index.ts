@@ -6,4 +6,4 @@ export { ButtonType } from './button-type';
 export { IconPosition } from './icon-position';
 export { Size } from './size';
 export { StateTypes } from './state-types';
-export { Direction } from './direction';
+export { ControlState } from './control-state';

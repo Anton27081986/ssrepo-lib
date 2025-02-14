@@ -1,0 +1,13 @@
+<div
+    class="input-container"
+    (focusout)="updateInputStateOnFocusout($event)"
+>
+    <input
+        tabindex="-1"
+        class="input-field"
+        type="text"
+        [formControl]="inputCtrl"
+        [placeholder]="placeholder()"
+        [readOnly]="readOnly()"
+    />
+</div>
