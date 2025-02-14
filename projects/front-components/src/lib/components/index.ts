@@ -3,3 +3,7 @@ export { TextComponent } from './text/text.component';
 export { ButtonComponent } from './button/button.component';
 export { ToggleComponent } from './toggle/toggle.component';
 export { ToggleIconComponent } from './toggle-icon/toggle-icon.component';
+export { SidebarComponent } from './sidebar/sidebar.component';
+export { HeaderComponent } from './header/header.component';
+export { DividerComponent } from './divider/divider.component';
+export { ScrollableBlockComponent } from './scrollable-block/scrollable-block.component'
