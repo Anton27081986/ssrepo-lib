@@ -12,25 +12,33 @@ import {
     SelectComponent,
     AvatarComponent,
     NumberPickerComponent,
+    DividerComponent,
 } from '../../../front-components/src/lib/components';
 import { ReactiveFormsModule } from '@angular/forms';
-import { PopoverTriggerForDirective, FieldCtrlDirective } from '../../../front-components/src/lib/core/directives';
+import {FieldCtrlDirective, PopoverTriggerForDirective} from '../../../front-components/src/lib/core/directives';
+
 
 export const appImports = [
-    ReactiveFormsModule,
-    IconComponent,
-    TextComponent,
-    ButtonComponent,
-    ToggleComponent,
-    ToggleIconComponent,
-    FormFieldComponent,
-    FieldCtrlDirective,
-    InputComponent,
-    TextareaComponent,
-    DropdownItemComponent,
-    DropdownListComponent,
-    PopoverTriggerForDirective,
-    SelectComponent,
-    AvatarComponent,
+  ReactiveFormsModule,
+  IconComponent,
+  TextComponent,
+  ButtonComponent,
+  ToggleComponent,
+  ToggleIconComponent,
+  DividerComponent,
+  IconComponent,
+  TextComponent,
+  ButtonComponent,
+  ToggleComponent,
+  ToggleIconComponent,
+  FormFieldComponent,
+  FieldCtrlDirective,
+  InputComponent,
+  TextareaComponent,
+  DropdownItemComponent,
+  DropdownListComponent,
+  PopoverTriggerForDirective,
+  SelectComponent,
+  AvatarComponent,
     NumberPickerComponent
 ]

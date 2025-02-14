@@ -1,0 +1,23 @@
+@mixin flex-wrap {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 16px;
+}
+
+.ss-lib-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 16px 12px;
+  border-bottom: 1px solid var(--border-primary);
+  align-items: center;
+  box-shadow: var(--box-shadow-xs);  // sm
+  background-color: var(--surface-primary);
+
+  &__left {
+    @include flex-wrap
+  }
+
+  &__right {
+    @include flex-wrap
+  }
+}
