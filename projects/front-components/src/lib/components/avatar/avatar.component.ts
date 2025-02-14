@@ -18,6 +18,7 @@ import { Colors, IconType, TextType, TextWeight } from '../../shared/models';
         NgOptimizedImage,
         TextComponent
     ],
+    standalone: true,
     templateUrl: './avatar.component.html',
     styleUrl: './avatar.component.scss',
     changeDetection: ChangeDetectionStrategy.OnPush
