@@ -37,5 +37,5 @@ export const appImports = [
   DropdownListComponent,
   PopoverTriggerForDirective,
   SelectComponent,
-  AvatarComponent
+  AvatarComponent,
 ]

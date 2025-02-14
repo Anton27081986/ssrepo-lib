@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import {FormControl, Validators} from '@angular/forms';
 import {appImports} from '../app.imports';
 import {
   ButtonType,
   Colors,
   IconPosition,
-  IconType, IMenu, Size,
+  IconType, IDictionaryItemDto, IMenu, Size,
   TextType,
   TextWeight
 } from '../../../../front-components/src/lib/shared/models';
@@ -26,15 +26,43 @@ export class StandComponent {
   protected readonly ButtonType = ButtonType;
   protected readonly IconPosition = IconPosition;
   protected readonly Size = Size;
+  protected readonly dropdownItems: IDictionaryItemDto[] = [
+    {
+      id: 1,
+      name: 'option1'
+    },
+    {
+      id: 2,
+      name: 'option2'
+    },
+    {
+      id: 3,
+      name: 'option3'
+    },
+    {
+      id: 4,
+      name: 'option4'
+    },
+    {
+      id: 5,
+      name: 'option5'
+    },
+    {
+      id: 6,
+      name: 'option6'
+    },
+    {
+      id: 7,
+      name: 'option7'
+    }
+  ];
 
-  protected toggleCtrl = new FormControl(false);
+  toggleCtrl = new FormControl(false);
 
-  protected exampleMenu: IMenu = {
-    title: 'Баннеры',
-    toolTip: 'Баннеры',
-    link: '',
-    pressed: true,
-    icon: IconType.Alert
-  }
+  inputCtrl = new FormControl('rrrr', [Validators.required, Validators.minLength(10)]);
+
+  textareaCtrl = new FormControl('rrrr', [Validators.required, Validators.minLength(10)]);
+
+  selectCtrl = new FormControl(null);
   protected readonly DividerType = DividerType;
 }
