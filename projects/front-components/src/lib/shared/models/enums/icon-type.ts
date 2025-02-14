@@ -35,5 +35,6 @@ export enum IconType {
   User01 = 'user-01',
   Users = 'users',
   Logo = 'logo',
-  Burger = 'burger'
+  Burger = 'burger',
+  ResizeHandle='resize-handle'
 }

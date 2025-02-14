@@ -1,0 +1,79 @@
+<div class="form-field">
+    @if (label()) {
+        <div class="field-info">
+            <div class="field-info__label">
+                <ss-lib-text
+                    [type]="TextType.BodySm"
+                    [weight]="TextWeight.Semibold"
+                    [color]="Colors.TextBody2"
+                >
+                    {{ label() }}
+                </ss-lib-text>
+
+                @if (isRequired()) {
+                    <ss-lib-text
+                        [type]="TextType.BodySm"
+                        [weight]="TextWeight.Medium"
+                        [color]="Colors.TextInformation"
+                    >
+                        *
+                    </ss-lib-text>
+                }
+            </div>
+        </div>
+    }
+
+    @if (hint()) {
+        <div class="field-info">
+            <ss-lib-text
+                [type]="TextType.BodySm"
+                [weight]="TextWeight.Medium"
+                [color]="Colors.TextBody3"
+            >
+                {{ hint() }}
+            </ss-lib-text>
+        </div>
+    }
+
+    <div
+        tabindex="0"
+        class="field-container"
+        [class.validation]="showValidation()"
+        [class.state-disabled]="fieldCtrl!.ngControl.disabled"
+        [ngClass]="['state-' + currentFieldCtrlState()]"
+        (focusout)="updateFormFieldStateOnFocusout()"
+    >
+        <div class="field-container__content-wrapper">
+            <div class="field-container__content">
+                <ng-content></ng-content>
+            </div>
+
+            @if (showValidationFieldIcon()) {
+                <div class="field-container__error-icon">
+                    <ss-lib-icon
+                        [icon]="IconType.Alert"
+                        [height]="'16'"
+                        [width]="'16'"
+                        [color]="Colors.IconError"
+                    />
+                </div>
+            }
+        </div>
+    </div>
+
+    @if (errorText()) {
+        <div class="field-container__error-message">
+            <ss-lib-icon
+                [icon]="IconType.Alert"
+                [height]="'16'"
+                [width]="'16'"
+                [color]="Colors.IconError"
+            />
+
+            <ss-lib-text [type]="TextType.BodySm" [weight]="TextWeight.Medium" [color]="Colors.TextError">
+                {{ errorText() }}
+            </ss-lib-text>
+        </div>
+    }
+</div>
+

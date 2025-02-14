@@ -157,6 +157,12 @@ export const ICONS = new Map<IconType, string>([
 
     [IconType.Burger, '<svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">\n' +
     '<path d="M3 12H21M3 6H21M3 18H21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>\n' +
-    '</svg>']
+    '</svg>'],
+
+    [IconType.ResizeHandle, '<svg width="100%" height="100%" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">\n' +
+    '<rect width="12" height="12" fill="currentColor"/>\n' +
+    '<path d="M2 10L10 2" stroke="#D5D7DA" stroke-linecap="round"/>\n' +
+    '<path d="M7 11L11 7" stroke="#D5D7DA" stroke-linecap="round"/>\n' +
+    '</svg>'],
   ]
 );
