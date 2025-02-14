@@ -7,3 +7,5 @@ export { IconPosition } from './icon-position';
 export { Size } from './size';
 export { StateTypes } from './state-types';
 export { ControlState } from './control-state';
+export { Direction } from './direction';
+export { Align } from './align';

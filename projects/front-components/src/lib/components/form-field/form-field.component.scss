@@ -20,7 +20,11 @@
     align-items: center;
     justify-content: space-between;
     gap: 4px;
-    border-radius: var(--border-radius-md);
+    border-radius:
+            var(--border-radius-top-left, var(--border-radius-md))
+            var(--border-radius-top-right, var(--border-radius-md))
+            var(--border-radius-bottom-right, var(--border-radius-md))
+            var(--border-radius-bottom-left, var(--border-radius-md));
     color: var(--text-body);
     background: var(--surface-primary);
     outline: 1px solid var(--border-primary, #E9EAEB);

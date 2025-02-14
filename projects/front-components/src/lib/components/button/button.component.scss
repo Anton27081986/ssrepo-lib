@@ -112,8 +112,9 @@ button:disabled.type-primary {
 // *************** SECONDARY ***************
 
 button.type-secondary {
+    outline: 1px solid var(--border-primary);
     background: var(--surface-primary);
-    box-shadow: 0 1px 2px 0 #0A0D120D, 0 -2px 0 0 #0A0D120D inset, 0 0 0 1px #0A0D122E inset;
+    box-shadow: var(--border-shadow-secondary-btn, 1px 2px 0 #0A0D120D, 0 -2px 0 0 #0A0D120D inset, 0 0 0 1px #0A0D122E inset);
 }
 
 button:hover.type-secondary {
@@ -122,7 +123,7 @@ button:hover.type-secondary {
 
 button:active.type-secondary {
     background: var(--surface-action-pressed-2) !important;
-    box-shadow: 0 1px 2px 0 #0A0D120D, 0 -2px 0 0 #0A0D120D inset;
+    box-shadow: var(--border-shadow-secondary-btn-active, 0 1px 2px 0 #0A0D120D, 0 -2px 0 0 #0A0D120D inset);
 }
 
 button:focus-visible.type-secondary {
@@ -133,7 +134,7 @@ button:focus-visible.type-secondary {
 
 button:disabled.type-secondary {
     background-color: var(--surface-disabled);
-    border: 1px solid var(--border-disabled);
+    outline: 1px solid var(--border-disabled);
     box-shadow: var(--box-shadow-xs);
 }
 

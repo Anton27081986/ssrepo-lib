@@ -8,17 +8,33 @@ import {
     signal
 } from '@angular/core';
 import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR, ReactiveFormsModule } from '@angular/forms';
-import { ButtonType, Direction, IconPosition, IconType } from '../../shared/models';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { debounceTime, tap } from 'rxjs';
 import { ButtonComponent } from '../button/button.component';
+import { InputComponent } from '../input/input.component';
+import { FormFieldComponent } from '../form-field/form-field.component';
+import { Align, ButtonType, Direction, IconPosition, IconType } from '../../shared/models';
+import { FieldCtrlDirective } from '../../core/directives';
 
+
+/**
+ * Параметры:
+ *
+ * [min]: number - Мин значение. По умолчанию: `0`
+ *
+ * [max]: number - Максимальное значение. По умолчанию: `1000`
+ *
+ * [step]: number - Шаг. По умолчанию: `1`
+ */
 @Component({
     selector: 'ss-lib-number-picker',
     standalone: true,
     imports: [
         ButtonComponent,
         ReactiveFormsModule,
+        FieldCtrlDirective,
+        FormFieldComponent,
+        InputComponent,
     ],
     templateUrl: './number-picker.component.html',
     styleUrl: './number-picker.component.scss',
@@ -35,7 +51,7 @@ export class NumberPickerComponent implements ControlValueAccessor, OnInit {
     private readonly injector = inject(Injector);
 
     public min = input<number>(0);
-    public max = input<number>(100);
+    public max = input<number>(1000);
     public step = input<number>(1);
 
     public numberPickerCtrl = new FormControl();
@@ -43,8 +59,9 @@ export class NumberPickerComponent implements ControlValueAccessor, OnInit {
 
     public readonly ButtonType = ButtonType;
     public readonly IconType = IconType;
-    public readonly Direction = Direction;
     public readonly IconPosition = IconPosition;
+    public readonly Direction = Direction;
+    public readonly Align = Align;
 
     ngOnInit() {
         runInInjectionContext(this.injector, () => {

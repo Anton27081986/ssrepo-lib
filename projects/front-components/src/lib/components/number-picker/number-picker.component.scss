@@ -1,19 +1,38 @@
 .number-picker {
+    width: 148px;
     display: flex;
     align-items: center;
+    border-radius: var(--border-radius-md);
+    box-shadow: 0px 1px 2px 0px #0A0D120D,
+    0px -2px 0px 0px #0A0D120D inset,
+    0px 0px 0px 1px #0A0D122E inset;
 
     &__number-indicator.indicator-start {
         --border-radius-top-right: 0;
         --border-radius-bottom-right: 0;
+
+        --border-shadow-secondary-btn: none;
+        --border-shadow-secondary-btn-active: none;
     }
 
     &__number-indicator.indicator-end {
         --border-radius-top-left: 0;
         --border-radius-bottom-left: 0;
+
+        --border-shadow-secondary-btn: none;
+        --border-shadow-secondary-btn-active: none;
     }
 
-    &__input-field::-webkit-outer-spin-button,
-    &__input-field::-webkit-inner-spin-button {
-        -webkit-appearance: none;
+    &__input-field {
+        --border-radius-top-left: 0;
+        --border-radius-top-right: 0;
+        --border-radius-bottom-right: 0;
+        --border-radius-bottom-left: 0;
+    }
+
+    &__number-indicator.indicator-start:focus-within,
+    &__number-indicator.indicator-end:focus-within,
+    &__input-field:focus-within {
+        z-index: 10;
     }
 }

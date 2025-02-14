@@ -1,13 +1,8 @@
-import {
-    ChangeDetectionStrategy,
-    Component,
-    forwardRef,
-    input,
-    signal,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, input, signal, } from '@angular/core';
 import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR, ReactiveFormsModule } from '@angular/forms';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { debounceTime, tap } from 'rxjs';
+import { Align } from '../../shared/models';
 
 /**
  * Параметры:
@@ -15,6 +10,8 @@ import { debounceTime, tap } from 'rxjs';
  * [placeholder]: string - Placeholder. По умолчанию: `''`
  *
  * [readOnly]: boolean - Только для чтения. По умолчанию: `false`
+ *
+ * [align]: Align - Выравнивание. По умолчанию: `Align.Start`
  */
 @Component({
     selector: 'ss-lib-input',
@@ -36,6 +33,7 @@ import { debounceTime, tap } from 'rxjs';
 export class InputComponent implements ControlValueAccessor {
     public placeholder = input<string>('');
     public readOnly = input<boolean>(false);
+    public align = input<Align>(Align.Start);
 
     public inputCtrl = new FormControl();
     public disabled = signal<boolean>(false);

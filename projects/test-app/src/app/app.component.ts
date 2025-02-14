@@ -64,4 +64,6 @@ export class AppComponent {
     textareaCtrl = new FormControl('rrrr', [Validators.required, Validators.minLength(10)]);
 
     selectCtrl = new FormControl(null);
+
+    numberPickerCtrl = new FormControl(null);
 }

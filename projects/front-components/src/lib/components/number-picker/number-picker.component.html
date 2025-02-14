@@ -8,12 +8,15 @@
         (click)="!isDisabled() && changeNumberValueByStep(Direction.Previous)"
     />
 
-    <input
-        class="number-picker__input-field"
-        type="number"
-        [formControl]="numberPickerCtrl"
-        [disabled]="isDisabled()"
-    />
+    <div class="number-picker__input-field">
+        <ss-lib-form-field>
+            <ss-lib-input
+                fieldCtrl
+                [formControl]="numberPickerCtrl"
+                [align]="Align.Center"
+            />
+        </ss-lib-form-field>
+    </div>
 
     <ss-lib-button
         class="number-picker__number-indicator indicator-end"
