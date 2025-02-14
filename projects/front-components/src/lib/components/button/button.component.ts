@@ -32,7 +32,6 @@ import { EMPTY_STATE, ButtonIconColorsRecord, ButtonTextColorsRecord } from './u
  *
  * [disabled]: boolean - Блокировка кнопки. По умолчанию: `false`
  */
-
 @Component({
     selector: 'ss-lib-button',
     standalone: true,

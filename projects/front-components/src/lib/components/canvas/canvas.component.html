@@ -1,0 +1,23 @@
+<div class="ss-lib-canvas">
+  <ss-lib-header
+    [leftMenuTemplateRef]="leftMenuHeaderTemplateRef"
+    [rightMenuTemplateRef]="rightMenuHeaderTemplateRef">
+  </ss-lib-header>
+
+  <div class="ss-lib-canvas__body">
+    <ss-lib-sidebar
+      class="ss-lib-canvas__sidebar"
+      [topMenuTemplateRef]="topMenuSidebarTemplateRef">
+    </ss-lib-sidebar>
+
+    <div class="ss-lib-canvas__content">
+      <ss-lib-scrollable-block [horizontalScroll]="contentScrollHorizontal()"
+                               [verticalScroll]="contentScrollVertical()">
+        <ng-content></ng-content>
+      </ss-lib-scrollable-block>
+    </div>
+  </div>
+
+</div>
+
+

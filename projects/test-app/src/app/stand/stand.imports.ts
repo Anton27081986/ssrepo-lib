@@ -11,12 +11,21 @@ import {
     DropdownListComponent,
     SelectComponent,
     AvatarComponent,
-} from '../../../front-components/src/lib/components';
+    NumberPickerComponent,
+    DividerComponent,
+}  from '../../../../front-components/src/lib/components';
 import { ReactiveFormsModule } from '@angular/forms';
-import { PopoverTriggerForDirective, FieldCtrlDirective } from '../../../front-components/src/lib/core/directives';
+import { FieldCtrlDirective, PopoverTriggerForDirective } from '../../../../front-components/src/lib/core/directives';
 
-export const appImports = [
+
+export const standImports = [
     ReactiveFormsModule,
+    IconComponent,
+    TextComponent,
+    ButtonComponent,
+    ToggleComponent,
+    ToggleIconComponent,
+    DividerComponent,
     IconComponent,
     TextComponent,
     ButtonComponent,
@@ -30,5 +39,6 @@ export const appImports = [
     DropdownListComponent,
     PopoverTriggerForDirective,
     SelectComponent,
-    AvatarComponent
+    AvatarComponent,
+    NumberPickerComponent
 ]

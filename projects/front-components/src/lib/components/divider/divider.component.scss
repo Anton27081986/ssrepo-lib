@@ -1,0 +1,16 @@
+.divider {
+    display: flex;
+
+    --_divider-border: 1px solid var(--border-primary);
+
+    min-height: 1px;
+    min-width: 1px;
+
+    &--vertical {
+        border-right: var(--_divider-border);
+    }
+
+    &--horizontal {
+        border-top: var(--_divider-border);
+    }
+}

@@ -3,6 +3,10 @@ export { TextComponent } from './text/text.component';
 export { ButtonComponent } from './button/button.component';
 export { ToggleComponent } from './toggle/toggle.component';
 export { ToggleIconComponent } from './toggle-icon/toggle-icon.component';
+export { SidebarComponent } from './sidebar/sidebar.component';
+export { HeaderComponent } from './header/header.component';
+export { DividerComponent } from './divider/divider.component';
+export { ScrollableBlockComponent } from './scrollable-block/scrollable-block.component'
 export { FormFieldComponent } from './form-field/form-field.component';
 export { InputComponent } from './input/input.component';
 export { TextareaComponent } from './textarea/textarea.component';
@@ -10,3 +14,4 @@ export { DropdownItemComponent } from './dropdown-item/dropdown-item.component';
 export { DropdownListComponent } from './dropdown-list/dropdown-list.component';
 export { SelectComponent } from './select/select.component';
 export { AvatarComponent } from './avatar/avatar.component';
+export { NumberPickerComponent } from './number-picker/number-picker.component';
