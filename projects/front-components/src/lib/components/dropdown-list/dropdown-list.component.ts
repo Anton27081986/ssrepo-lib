@@ -4,6 +4,7 @@ import {
     Component,
     contentChildren,
     Injector,
+    input,
     output,
     runInInjectionContext,
     TemplateRef,
@@ -13,6 +14,8 @@ import { DropdownItemComponent } from '../dropdown-item/dropdown-item.component'
 import { outputToObservable, toSignal } from '@angular/core/rxjs-interop';
 import { tap } from 'rxjs';
 import { IDictionaryItemDto, PopoverContent } from '../../shared/models';
+import { NgTemplateOutlet } from '@angular/common';
+import { DividerComponent } from '../divider/divider.component';
 
 @Component({
     selector: 'ss-lib-dropdown-list',
@@ -20,11 +23,16 @@ import { IDictionaryItemDto, PopoverContent } from '../../shared/models';
     templateUrl: './dropdown-list.component.html',
     styleUrl: './dropdown-list.component.scss',
     changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        NgTemplateOutlet,
+        DividerComponent
+    ]
 })
 export class DropdownListComponent implements PopoverContent {
     readonly optionsContent = contentChildren(DropdownItemComponent);
     readonly templateRef = viewChild.required<TemplateRef<any>>('dropdownTemplate');
 
+    public headerTemplateRef = input<TemplateRef<unknown> | null>(null);
     public closed = output<void>();
     public value = output<IDictionaryItemDto | null>()
 
