@@ -15,3 +15,4 @@ export { DropdownListComponent } from './dropdown-list/dropdown-list.component';
 export { SelectComponent } from './select/select.component';
 export { AvatarComponent } from './avatar/avatar.component';
 export { NumberPickerComponent } from './number-picker/number-picker.component';
+export { CanvasComponent } from './canvas/canvas.component'
