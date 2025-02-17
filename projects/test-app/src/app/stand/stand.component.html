@@ -185,17 +185,50 @@
 <br>
 <br>
 
-<ss-lib-button
-    [text]="'Test button'"
+<span>Пример avatar-dropdown</span>
+<ss-lib-avatar
+    [username]="'ВН'"
+    [src]="'https://i.pravatar.cc/300'"
     [popoverTriggerFor]="dropdown1"
 />
-<ss-lib-dropdown-list #dropdown1>
-    <ss-lib-dropdown-item [label]="'Опция'" [icon]="IconType.Bell"/>
-    <ss-lib-dropdown-item [label]="'Опция'" [icon]="IconType.Bell"/>
-    <ss-lib-dropdown-item [label]="'Опция'" [icon]="IconType.Bell"/>
-    <ss-lib-dropdown-item [label]="'Опция'" [icon]="IconType.Bell"/>
-    <ss-lib-dropdown-item [label]="'Опция'" [icon]="IconType.Bell"/>
+<ss-lib-dropdown-list
+    #dropdown1
+    [headerTemplateRef]="avatarHeader"
+>
+    <ss-lib-dropdown-item [label]="'Опция'" [icon]="IconType.Bell" (click)="console.log(1)"/>
+    <ss-lib-dropdown-item [label]="'Опция'" [icon]="IconType.Bell" (click)="console.log(2)"/>
+    <ss-lib-dropdown-item [label]="'Опция'" [icon]="IconType.Bell" (click)="console.log(3)"/>
+    <ss-lib-dropdown-item [label]="'Опция'" [icon]="IconType.Bell" (click)="console.log(4)"/>
+    <ss-lib-divider class="divider-block"></ss-lib-divider>
+    <ss-lib-dropdown-item [label]="'Удалить'" [icon]="IconType.Bell" (click)="console.log(5)"/>
 </ss-lib-dropdown-list>
+
+<ng-template #avatarHeader>
+    <div class="avatar-tmp">
+        <ss-lib-avatar
+            [username]="'ВН'"
+            [src]="'https://i.pravatar.cc/300'"
+        />
+
+        <div class="avatar-tmp__title">
+            <ss-lib-text
+                [type]="TextType.BodySm"
+                [weight]="TextWeight.Medium"
+                [color]="Colors.TextBody2"
+            >
+                Мария Викторовна
+            </ss-lib-text>
+
+            <ss-lib-text
+                [type]="TextType.BodySm"
+                [weight]="TextWeight.Regular"
+                [color]="Colors.TextBody3"
+            >
+                Менеджер по продажам
+            </ss-lib-text>
+        </div>
+    </div>
+</ng-template>
 <br>
 
 <ss-lib-form-field
@@ -222,7 +255,7 @@
 <ss-lib-avatar
     [username]="'ВН'"
     [src]="'https://i.pravatar.cc/300'"
-></ss-lib-avatar>
+/>
 <br>
 
 <ss-lib-number-picker [formControl]="numberPickerCtrl" [min]="5" [max]="1000"></ss-lib-number-picker>
