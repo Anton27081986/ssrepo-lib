@@ -63,4 +63,5 @@ export class StandComponent {
     textareaCtrl = new FormControl('rrrr', [Validators.required, Validators.minLength(10)]);
     selectCtrl = new FormControl(null);
     numberPickerCtrl = new FormControl(2);
+    protected readonly console = console;
 }
