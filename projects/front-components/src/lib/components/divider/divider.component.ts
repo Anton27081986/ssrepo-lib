@@ -17,9 +17,9 @@ import {DividerType} from '../../shared/models/enums/divider-type';
   selector: 'ss-lib-divider',
   template: `
     <div
-      class="divider"
-      [class.divider--horizontal]="direction() === 'horizontal'"
-      [class.divider--vertical]="direction() === 'vertical'"
+        class="divider"
+        [class.divider--horizontal]="direction() === 'horizontal'"
+        [class.divider--vertical]="direction() === 'vertical'"
     ></div>
   `,
   styleUrls: ['divider.component.scss'],
