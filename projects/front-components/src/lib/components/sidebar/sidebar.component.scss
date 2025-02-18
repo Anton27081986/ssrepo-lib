@@ -6,6 +6,19 @@
   height: 100%;
   background-color: var(--surface-primary);
   width: 0;
+  transition: 0.3s;
+
+  &--mini {
+    width: 62px;
+  }
+
+  &--close {
+    width: 0;
+  }
+
+  &--full {
+    width: 240px;
+  }
 
   &__top-menu {
     display: flex;
