@@ -1,0 +1,19 @@
+<table class="ss-lib-table-table">
+	<thead class="ss-lib-table-table__thead">
+	<tr class="ss-lib-table-tr">
+		<th class="ss-lib-table-th" *ngFor="let col of stateColumn.visibleCols$ | async"
+			[ngStyle]="{ minWidth: col.width ? col.width : null }">
+			<ss-lib-text
+        [color]="Colors.TextBody2"
+        [weight]="TextWeight.Semibold"
+        [type]="TextType.BodyXs">
+        {{ col.title }}
+			</ss-lib-text>
+		</th>
+	</tr>
+	</thead>
+	<tbody class="ss-lib-table-table__tbody">
+	  <ng-content></ng-content>
+	</tbody>
+</table>
+

@@ -1,0 +1,16 @@
+.canvas-content {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+
+	&__header {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	&__body {
+		display: flex;
+		width: 100%;
+	}
+}
