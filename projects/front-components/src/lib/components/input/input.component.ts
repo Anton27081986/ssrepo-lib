@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, computed, forwardRef, input, signal, } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, forwardRef, input, signal } from '@angular/core';
 import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR, ReactiveFormsModule } from '@angular/forms';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { MaskitoDirective } from '@maskito/angular';
@@ -55,7 +55,8 @@ export class InputComponent implements ControlValueAccessor {
                 min: this.min(),
                 max: this.max(),
                 precision: 2,
-                decimalSeparator: ','
+                decimalSeparator: ',',
+                thousandSeparator: ''
             })
         }
 

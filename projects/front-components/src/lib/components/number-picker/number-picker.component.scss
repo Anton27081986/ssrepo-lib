@@ -3,7 +3,7 @@
     display: flex;
     align-items: center;
     border-radius: var(--border-radius-md);
-    box-shadow: var(--shadow-xs-skeumorphic);
+    box-shadow: var(--shadow-xs);
 
     &__number-indicator.indicator-start {
         --border-radius-top-right: 0;
@@ -11,6 +11,10 @@
 
         --border-shadow-secondary-btn: none;
         --border-shadow-secondary-btn-active: none;
+
+        border-radius: var(--border-radius-md) 0 0 var(--border-radius-md);
+        outline: 1px solid var(--border-primary) !important;
+        z-index: 5;
     }
 
     &__number-indicator.indicator-end {
@@ -19,13 +23,19 @@
 
         --border-shadow-secondary-btn: none;
         --border-shadow-secondary-btn-active: none;
+
+        border-radius: 0 var(--border-radius-md) var(--border-radius-md) 0;
+        outline: 1px solid var(--border-primary) !important;
+        z-index: 5;
     }
+
 
     &__input-field {
         --border-radius-top-left: 0;
         --border-radius-top-right: 0;
         --border-radius-bottom-right: 0;
         --border-radius-bottom-left: 0;
+        z-index: 1;
     }
 
     &__number-indicator.indicator-start:focus-within,
