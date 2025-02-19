@@ -13,76 +13,88 @@
 
 <ss-lib-button
     [type]="ButtonType.Primary"
-    [text]="'Кнопка'"
+    [text]="'Primary xs'"
     [icon]="IconType.Bell"
     [iconPosition]="IconPosition.End"
-    [size]="Size.Small"
+    [size]="ExtraSize.xs"
 />
 <br/>
 
 <ss-lib-button
     [type]="ButtonType.Primary"
-    [text]="'Кнопка'"
+    [text]="'Primary sm'"
     [icon]="IconType.Bell"
     [iconPosition]="IconPosition.End"
-    [size]="Size.Medium"
+    [size]="ExtraSize.sm"
 />
 <br/>
 
 <ss-lib-button
     [type]="ButtonType.Primary"
-    [text]="'Кнопка'"
+    [text]="'Primary md'"
     [icon]="IconType.Bell"
     [iconPosition]="IconPosition.End"
-    [size]="Size.Large"
+    [size]="ExtraSize.md"
 />
 <br/>
 
 <ss-lib-button
     [type]="ButtonType.Primary"
-    [text]="'Кнопка'"
+    [text]="'Primary lg'"
     [icon]="IconType.Bell"
     [iconPosition]="IconPosition.End"
-    [size]="Size.Large"
+    [size]="ExtraSize.lg"
+/>
+<br/>
+
+<ss-lib-button
+    [type]="ButtonType.Primary"
+    [text]="'Primary lg disabled'"
+    [icon]="IconType.Bell"
+    [iconPosition]="IconPosition.End"
+    [size]="ExtraSize.lg"
     [disabled]="true"
 />
+<br/>
 
 <br/>
 
 <ss-lib-button
     [type]="ButtonType.Secondary"
-    [text]="'Кнопка'"
+    [text]="'Secondary lg'"
     [icon]="IconType.Bell"
     [iconPosition]="IconPosition.End"
-    [size]="Size.Large"
+    [size]="ExtraSize.lg"
 />
-
 <br/>
 
 <ss-lib-button
-    [type]="ButtonType.Flat"
-    [text]="'Кнопка'"
+    [type]="ButtonType.Ghost"
+    [text]="'Ghost lg'"
     [icon]="IconType.Bell"
     [iconPosition]="IconPosition.End"
-    [size]="Size.Large"
+    [size]="ExtraSize.lg"
 />
+<br/>
 
+<ss-lib-button
+    [type]="ButtonType.Text"
+    [text]="'Text lg'"
+    [icon]="IconType.Bell"
+    [iconPosition]="IconPosition.End"
+    [size]="ExtraSize.lg"
+/>
+<br/>
+
+<span>Кнопки only icon</span>
 <!--  *****   -->
-<ss-lib-button
-    [type]="ButtonType.Primary"
-    [text]="'Кнопка'"
-    [icon]="IconType.Bell"
-    [iconPosition]="IconPosition.OnlyIcon"
-    [size]="Size.Small"
-/>
-<br/>
 
 <ss-lib-button
     [type]="ButtonType.Primary"
     [text]="'Кнопка'"
     [icon]="IconType.Bell"
     [iconPosition]="IconPosition.OnlyIcon"
-    [size]="Size.Medium"
+    [size]="ExtraSize.sm"
 />
 <br/>
 
@@ -91,7 +103,7 @@
     [text]="'Кнопка'"
     [icon]="IconType.Bell"
     [iconPosition]="IconPosition.OnlyIcon"
-    [size]="Size.Large"
+    [size]="ExtraSize.md"
 />
 <br/>
 
@@ -100,57 +112,29 @@
     [text]="'Кнопка'"
     [icon]="IconType.Bell"
     [iconPosition]="IconPosition.OnlyIcon"
-    [size]="Size.Large"
-    [disabled]="true"
+    [size]="ExtraSize.lg"
 />
-
 <br/>
 
-
 <ss-lib-button
-    [type]="ButtonType.Secondary"
+    [type]="ButtonType.Text"
     [text]="'Кнопка'"
     [icon]="IconType.Bell"
     [iconPosition]="IconPosition.OnlyIcon"
-    [size]="Size.Large"
-/>
-
-<br/>
-
-<ss-lib-button
-    [type]="ButtonType.Flat"
-    [text]="'Кнопка'"
-    [icon]="IconType.Bell"
-    [iconPosition]="IconPosition.OnlyIcon"
-    [size]="Size.Large"
+    [size]="ExtraSize.sm"
 />
 <br/>
 
-<ss-lib-button
-    [type]="ButtonType.Close"
-    [text]="'Кнопка'"
-    [icon]="IconType.Bell"
-    [iconPosition]="IconPosition.OnlyIcon"
-    [size]="Size.Large"
-/>
-<br/>
-
-<ss-lib-button
-    [type]="ButtonType.Link"
-    [text]="'Кнопка'"
-    [icon]="IconType.Bell"
-    [iconPosition]="IconPosition.Start"
-/>
-
-<br/>
 
 <ss-lib-toggle [formControl]="toggleCtrl"></ss-lib-toggle>
 <br>
 
 <ss-lib-toggle-icon [formControl]="toggleCtrl"></ss-lib-toggle-icon>
 <br>
+
 <ss-lib-divider [direction]="DividerType.Vertical"></ss-lib-divider>
 <br>
+
 <ss-lib-divider></ss-lib-divider>
 
 <div class="input">
@@ -259,5 +243,5 @@
 <br>
 
 <ss-lib-number-picker [formControl]="numberPickerCtrl" [min]="5" [max]="1000"></ss-lib-number-picker>
-
+<br>
 

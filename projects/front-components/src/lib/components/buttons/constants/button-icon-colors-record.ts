@@ -1,7 +1,8 @@
-import { ButtonType, Colors } from '../../../../shared/models';
-import { ButtonColors } from '../../models/button-colors';
+import { ButtonType, ButtonTypeValues, Colors } from '../../../shared/models';
+import { IButtonStateColors } from '../models';
 
-export const ButtonIconColorsRecord: Record<ButtonType, ButtonColors> = {
+
+export const BUTTON_ICON_COLORS_RECORD: Record<Partial<ButtonTypeValues>, IButtonStateColors> = {
     [ButtonType.Primary]: {
         default: Colors.IconOnAction,
         hover: Colors.IconOnAction,
@@ -16,8 +17,28 @@ export const ButtonIconColorsRecord: Record<ButtonType, ButtonColors> = {
         pressed: Colors.IconActionHover,
         focused: Colors.IconAction,
         disabled: Colors.IconOnDisabled,
+        disabledIconOnly: Colors.IconOnDisabled,
+    },
+    [ButtonType.Ghost]: {
+        default: Colors.IconAction,
+        hover: Colors.IconActionHover,
+        pressed: Colors.IconAction,
+        focused: Colors.IconAction,
+        disabled: Colors.IconDisabled,
         disabledIconOnly: Colors.IconDisabled,
     },
+
+    [ButtonType.Text]: {
+        default: Colors.IconAction,
+        hover: Colors.IconActionHover,
+        pressed: Colors.IconAction,
+        focused: Colors.IconAction,
+        disabled: Colors.IconDisabled,
+        disabledIconOnly: Colors.IconDisabled,
+    },
+    //========================================
+
+
     [ButtonType.Flat]: {
         default: Colors.IconAction,
         hover: Colors.IconActionHover,
