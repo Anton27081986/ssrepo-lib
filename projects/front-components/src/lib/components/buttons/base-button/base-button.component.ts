@@ -1,14 +1,12 @@
-import { Component, computed, inject, input, InputSignal, signal } from '@angular/core';
+import { Component, computed, input, InputSignal, signal } from '@angular/core';
 import { NgClass } from "@angular/common";
 import { GetColorPipe } from '../pipes';
-import { BUTTON_COLORS, BUTTON_ICON_COLORS_RECORD, BUTTON_TEXT_COLORS_RECORD, EMPTY_STATE } from '../constants';
+import { BUTTON_ICON_COLORS_RECORD, BUTTON_TEXT_COLORS_RECORD, EMPTY_STATE } from '../constants';
 import {
     IStateElement,
-    ButtonType,
     Colors,
     IconPosition,
     IconType,
-    Size,
     StateTypes,
     TextType,
     TextWeight, ButtonTypeValues, ExtraSize
@@ -17,19 +15,6 @@ import { MapperPipe } from '../../../core/pipes';
 import { IconComponent } from '../../icon/icon.component';
 import { TextComponent } from '../../text/text.component';
 
-/**
- * Параметры:
- *
- * [size]: Size - Размер кнопки. По умолчанию: `Size.Default`
- *
- * [text]: string - Текст в кнопке
- *
- * [icon]: IconType | null - Название иконки.  По умолчанию: `null`
- *
- * [iconPosition]: IconPosition - Положение иконки в кнопке. По умолчанию: `IconPosition.Start`
- *
- * [disabled]: boolean - Блокировка кнопки. По умолчанию: `false`
- */
 @Component({
     selector: 'ss-lib-base-button',
     standalone: true,

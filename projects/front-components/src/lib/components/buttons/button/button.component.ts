@@ -2,6 +2,20 @@ import { ChangeDetectionStrategy, Component, input, InputSignal, ViewEncapsulati
 import { BaseButtonComponent } from '../base-button/base-button.component';
 import { ButtonType } from '../../../shared/models';
 
+
+/**
+ * Параметры:
+ *
+ * [size]: ExtraSize - Размер кнопки. По умолчанию: `ExtraSize.md`
+ *
+ * [text]: string - Текст в кнопке
+ *
+ * [icon]: IconType | null - Название иконки.  По умолчанию: `null`
+ *
+ * [iconPosition]: IconPosition - Положение иконки в кнопке. По умолчанию: `IconPosition.Start`
+ *
+ * [disabled]: boolean - Блокировка кнопки. По умолчанию: `false`
+ */
 @Component({
     selector: 'ss-lib-button',
     standalone: true,
