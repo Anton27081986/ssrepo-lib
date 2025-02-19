@@ -1,6 +1,6 @@
 import { Colors } from '../../../shared/models';
 
-export interface ButtonColors {
+export interface IButtonStateColors {
     default: Colors,
     hover: Colors,
     pressed: Colors,

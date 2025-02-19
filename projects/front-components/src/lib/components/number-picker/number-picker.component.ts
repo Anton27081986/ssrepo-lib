@@ -6,12 +6,11 @@ import {
     signal
 } from '@angular/core';
 import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR, ReactiveFormsModule } from '@angular/forms';
-import { ButtonComponent } from '../button/button.component';
 import { InputComponent } from '../input/input.component';
+import { ButtonComponent } from '../buttons/button/button.component';
 import { FormFieldComponent } from '../form-field/form-field.component';
-import { Align, ButtonType, Direction, IconPosition, IconType, InputType } from '../../shared/models';
+import { Align, ButtonType, Direction, ExtraSize, IconPosition, IconType, InputType } from '../../shared/models';
 import { FieldCtrlDirective } from '../../core/directives';
-
 
 /**
  * Параметры:
@@ -26,11 +25,11 @@ import { FieldCtrlDirective } from '../../core/directives';
     selector: 'ss-lib-number-picker',
     standalone: true,
     imports: [
-        ButtonComponent,
         ReactiveFormsModule,
         FieldCtrlDirective,
         FormFieldComponent,
         InputComponent,
+        ButtonComponent,
     ],
     templateUrl: './number-picker.component.html',
     styleUrl: './number-picker.component.scss',
@@ -57,6 +56,7 @@ export class NumberPickerComponent implements ControlValueAccessor {
     public readonly Direction = Direction;
     public readonly Align = Align;
     public readonly InputType = InputType;
+    protected readonly ExtraSize = ExtraSize;
 
     onChange = (value: number | null) => {
     };

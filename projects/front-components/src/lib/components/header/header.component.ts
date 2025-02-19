@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component, Input, TemplateRef} from '@angular/core';
 import {NgTemplateOutlet} from '@angular/common';
-import {ButtonComponent} from '../button/button.component';
-import {ButtonType, IconPosition, IconType, Size} from '../../shared/models';
+import {ButtonComponent} from '../buttons/button/button.component';
+import { ButtonType, ExtraSize, IconPosition, IconType } from '../../shared/models';
 import {CanvasState} from '../canvas/canvas.state';
 import {SidebarType} from '../../shared/models/enums/sidebar-type';
 
@@ -25,7 +25,7 @@ export class HeaderComponent {
   protected readonly ButtonType = ButtonType;
   protected readonly IconType = IconType;
   protected readonly IconPosition = IconPosition;
-  protected readonly Size = Size;
+  protected readonly ExtraSize = ExtraSize;
 
   public toggleMenu() {
     if(this.canvasState.sidebarType() === SidebarType.Close) {

@@ -1,6 +1,5 @@
 export { IconComponent } from './icon/icon.component';
 export { TextComponent } from './text/text.component';
-export { ButtonComponent } from './button/button.component';
 export { ToggleComponent } from './toggle/toggle.component';
 export { ToggleIconComponent } from './toggle-icon/toggle-icon.component';
 export { SidebarComponent } from './sidebar/sidebar.component';
@@ -19,3 +18,4 @@ export { CanvasComponent } from './canvas/canvas.component';
 export { CanvasContentComponent } from './canvas-content/canvas-content.component';
 export { TableComponent } from './table/table.component';
 export { ColumnsStateService } from './table/columns.state.service'
+export { ButtonComponent } from './buttons/button/button.component';

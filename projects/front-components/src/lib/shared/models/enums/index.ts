@@ -5,6 +5,7 @@ export { TextWeight } from './text-weight';
 export { ButtonType } from './button-type';
 export { IconPosition } from './icon-position';
 export { Size } from './size';
+export { ExtraSize } from './extra-size';
 export { StateTypes } from './state-types';
 export { ControlState } from './control-state';
 export { Direction } from './direction';

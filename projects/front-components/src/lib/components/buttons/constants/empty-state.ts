@@ -1,4 +1,4 @@
-import { IStateElement } from '../../../../shared/models';
+import { IStateElement } from '../../../shared/models';
 
 export const EMPTY_STATE: IStateElement = {
     default: true,
