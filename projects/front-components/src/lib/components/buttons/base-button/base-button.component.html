@@ -27,6 +27,15 @@
         }
 
         @switch (size()) {
+            @case (ButtonSize.xs) {
+                <ss-lib-text
+                    [type]="TextType.BodySm"
+                    [weight]="TextWeight.Regular"
+                    [color]="buttonTextColors() | getColor : state() : disabled() : false"
+                >
+                    {{ text() }}
+                </ss-lib-text>
+            }
             @case (ButtonSize.sm) {
                 <ss-lib-text
                     [type]="TextType.BodySm"

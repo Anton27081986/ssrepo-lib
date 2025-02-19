@@ -13,7 +13,16 @@
 
 <ss-lib-button
     [type]="ButtonType.Primary"
-    [text]="'Кнопка'"
+    [text]="'Primary xs'"
+    [icon]="IconType.Bell"
+    [iconPosition]="IconPosition.End"
+    [size]="ExtraSize.xs"
+/>
+<br/>
+
+<ss-lib-button
+    [type]="ButtonType.Primary"
+    [text]="'Primary sm'"
     [icon]="IconType.Bell"
     [iconPosition]="IconPosition.End"
     [size]="ExtraSize.sm"
@@ -22,7 +31,7 @@
 
 <ss-lib-button
     [type]="ButtonType.Primary"
-    [text]="'Кнопка'"
+    [text]="'Primary md'"
     [icon]="IconType.Bell"
     [iconPosition]="IconPosition.End"
     [size]="ExtraSize.md"
@@ -31,7 +40,7 @@
 
 <ss-lib-button
     [type]="ButtonType.Primary"
-    [text]="'Кнопка'"
+    [text]="'Primary lg'"
     [icon]="IconType.Bell"
     [iconPosition]="IconPosition.End"
     [size]="ExtraSize.lg"
@@ -40,34 +49,46 @@
 
 <ss-lib-button
     [type]="ButtonType.Primary"
-    [text]="'Кнопка'"
+    [text]="'Primary lg disabled'"
     [icon]="IconType.Bell"
     [iconPosition]="IconPosition.End"
     [size]="ExtraSize.lg"
     [disabled]="true"
 />
+<br/>
 
 <br/>
 
 <ss-lib-button
     [type]="ButtonType.Secondary"
-    [text]="'Кнопка'"
+    [text]="'Secondary lg'"
     [icon]="IconType.Bell"
     [iconPosition]="IconPosition.End"
     [size]="ExtraSize.lg"
 />
-
 <br/>
 
 <ss-lib-button
-    [type]="ButtonType.Flat"
-    [text]="'Кнопка'"
+    [type]="ButtonType.Ghost"
+    [text]="'Ghost lg'"
     [icon]="IconType.Bell"
     [iconPosition]="IconPosition.End"
     [size]="ExtraSize.lg"
 />
+<br/>
 
+<ss-lib-button
+    [type]="ButtonType.Text"
+    [text]="'Text lg'"
+    [icon]="IconType.Bell"
+    [iconPosition]="IconPosition.End"
+    [size]="ExtraSize.lg"
+/>
+<br/>
+
+<span>Кнопки only icon</span>
 <!--  *****   -->
+
 <ss-lib-button
     [type]="ButtonType.Primary"
     [text]="'Кнопка'"
@@ -96,61 +117,24 @@
 <br/>
 
 <ss-lib-button
-    [type]="ButtonType.Primary"
+    [type]="ButtonType.Text"
     [text]="'Кнопка'"
     [icon]="IconType.Bell"
     [iconPosition]="IconPosition.OnlyIcon"
-    [size]="ExtraSize.lg"
-    [disabled]="true"
-/>
-
-<br/>
-
-
-<ss-lib-button
-    [type]="ButtonType.Secondary"
-    [text]="'Кнопка'"
-    [icon]="IconType.Bell"
-    [iconPosition]="IconPosition.OnlyIcon"
-    [size]="ExtraSize.lg"
-/>
-
-<br/>
-
-<ss-lib-button
-    [type]="ButtonType.Flat"
-    [text]="'Кнопка'"
-    [icon]="IconType.Bell"
-    [iconPosition]="IconPosition.OnlyIcon"
-    [size]="ExtraSize.lg"
+    [size]="ExtraSize.sm"
 />
 <br/>
 
-<ss-lib-button
-    [type]="ButtonType.Close"
-    [text]="'Кнопка'"
-    [icon]="IconType.Bell"
-    [iconPosition]="IconPosition.OnlyIcon"
-    [size]="ExtraSize.lg"
-/>
-<br/>
-
-<ss-lib-button
-    [type]="ButtonType.Link"
-    [text]="'Кнопка'"
-    [icon]="IconType.Bell"
-    [iconPosition]="IconPosition.Start"
-/>
-
-<br/>
 
 <ss-lib-toggle [formControl]="toggleCtrl"></ss-lib-toggle>
 <br>
 
 <ss-lib-toggle-icon [formControl]="toggleCtrl"></ss-lib-toggle-icon>
 <br>
+
 <ss-lib-divider [direction]="DividerType.Vertical"></ss-lib-divider>
 <br>
+
 <ss-lib-divider></ss-lib-divider>
 
 <div class="input">
@@ -261,48 +245,3 @@
 <ss-lib-number-picker [formControl]="numberPickerCtrl" [min]="5" [max]="1000"></ss-lib-number-picker>
 <br>
 
-<ss-lib-button
-    [type]="ButtonType.Primary"
-    [text]="'Кнопка'"
-    [icon]="IconType.Alert"
-    [iconPosition]="IconPosition.End"
-    [size]="ExtraSize.sm"
-/>
-<br>
-
-<span>НОВЫЕ ТИПЫ КНОПОК</span>
-
-<ss-lib-button
-    [type]="ButtonType.Primary"
-    [text]="'Кнопка'"
-    [icon]="IconType.Alert"
-    [iconPosition]="IconPosition.End"
-    [size]="ExtraSize.sm"
-/>
-<br>
-
-<ss-lib-button
-    [type]="ButtonType.Secondary"
-    [text]="'Кнопка2'"
-    [icon]="IconType.Alert"
-    [iconPosition]="IconPosition.End"
-    [size]="ExtraSize.sm"
-/>
-<br>
-
-<ss-lib-button
-    [type]="ButtonType.Ghost"
-    [text]="'Кнопка3'"
-    [icon]="IconType.Alert"
-    [iconPosition]="IconPosition.End"
-    [size]="ExtraSize.sm"
-/>
-<br>
-
-<ss-lib-button
-    [type]="ButtonType.Text"
-    [text]="'Кнопка4'"
-    [icon]="IconType.Alert"
-    [iconPosition]="IconPosition.End"
-    [size]="ExtraSize.sm"
-/>

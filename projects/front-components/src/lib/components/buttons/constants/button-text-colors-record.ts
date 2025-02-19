@@ -19,7 +19,6 @@ export const BUTTON_TEXT_COLORS_RECORD: Record<Partial<ButtonTypeValues>, IButto
         disabled: Colors.TextOnDisabled,
         disabledIconOnly: Colors.TextOnDisabled,
     },
-
     [ButtonType.Ghost]: {
         default: Colors.TextAction,
         hover: Colors.TextActionHover,
@@ -28,7 +27,6 @@ export const BUTTON_TEXT_COLORS_RECORD: Record<Partial<ButtonTypeValues>, IButto
         disabled: Colors.TextDisabled,
         disabledIconOnly: Colors.TextDisabled,
     },
-
     [ButtonType.Text]: {
         default: Colors.TextAction,
         hover: Colors.TextActionHover,
@@ -37,7 +35,6 @@ export const BUTTON_TEXT_COLORS_RECORD: Record<Partial<ButtonTypeValues>, IButto
         disabled: Colors.TextDisabled,
         disabledIconOnly: Colors.TextDisabled,
     },
-
 
 
     [ButtonType.Flat]: {

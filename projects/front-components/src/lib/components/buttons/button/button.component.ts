@@ -11,10 +11,11 @@ import { ButtonType } from '../../../shared/models';
     template: `
         <ss-lib-base-button
             [type]="restrictedType()"
+            [size]="size()"
             [text]="text()"
             [icon]="icon()"
             [iconPosition]="iconPosition()"
-            [size]="size()"
+            [disabled]="disabled()"
         >
             <ng-content></ng-content>
         </ss-lib-base-button>

@@ -29,6 +29,10 @@ button.custom-button.size-xs:not(.only-icon) {
     position: relative;
     padding: 6px 10px;
     gap: 2px;
+    border-radius: var(--border-radius-top-left, var(--border-radius-sm)) var(--border-radius-top-right, var(--border-radius-sm)) var(--border-radius-bottom-right, var(--border-radius-sm)) var(--border-radius-bottom-left, var(--border-radius-sm));
+}
+button.custom-button.size-xs.type-text:not(.only-icon) {
+    gap: 4px;
 }
 
 button.custom-button.size-sm:not(.only-icon) {
@@ -45,40 +49,37 @@ button.custom-button.size-md:not(.only-icon) {
 
 button.custom-button.size-lg:not(.only-icon),
 button.custom-button.size-xl:not(.only-icon),
-button.custom-button.size-xxl:not(.only-icon){
+button.custom-button.size-xxl:not(.only-icon) {
     position: relative;
     padding: 10px 16px;
     gap: 6px;
 }
 
+
 // ONLY ICONS
-button.custom-button.size-xxs.only-icon {
-}
-
-button.custom-button.size-xs.only-icon {
-}
-
+button.custom-button.size-xxs.only-icon,
+button.custom-button.size-xs.only-icon,
 button.custom-button.size-sm.only-icon {
-    padding: 8px !important;
+    padding: 8px;
 }
 
 button.custom-button.size-md.only-icon {
-    padding: 10px !important;
+    padding: 10px;
 }
 
 button.custom-button.size-lg.only-icon,
 button.custom-button.size-xl.only-icon,
-button.custom-button.size-xxl.only-icon{
-    padding: 12px !important;
+button.custom-button.size-xxl.only-icon {
+    padding: 12px;
 }
 
 // *************** PRIMARY ***************
-button.type-primary {
+button.custom-button.type-primary {
     background-color: var(--surface-action);
     box-shadow: var(--shadow-xs-skeumorphic);
 }
 
-button.type-primary::before {
+button.custom-button.type-primary::before {
     content: '';
     position: absolute;
     inset: 0;
@@ -90,90 +91,85 @@ button.type-primary::before {
     mask-composite: exclude;
 }
 
-button:hover.type-primary {
+button.custom-button:hover.type-primary {
     background-color: var(--surface-action-hover);
 }
 
-button:active.type-primary {
+button.custom-button:active.type-primary {
     background-color: var(--surface-action-pressed);
     box-shadow: none;
 }
 
-button:focus-visible.type-primary {
+button.custom-button:focus-visible.type-primary {
     outline: none;
     background-color: var(--surface-action);
     box-shadow: var(--focus-rings-focus-ring-shadow-xs-skeumorphic);
 }
 
-button:disabled.type-primary {
+button.custom-button:disabled.type-primary {
     background-color: var(--surface-disabled);
     outline: 1px solid var(--border-disabled);
     box-shadow: var(--shadow-xs);
 }
 
 // *************** SECONDARY ***************
-
-button.type-secondary {
-    outline: 1px solid var(--border-secondary);
+button.custom-button.type-secondary {
     background: var(--surface-primary);
     box-shadow: var(--border-shadow-secondary-btn, var(--shadow-xs-skeumorphic));
 }
 
-button:hover.type-secondary {
+button.custom-button:hover.type-secondary {
     background: var(--surface-action-hover-2);
 }
 
-button:active.type-secondary {
+button.custom-button:active.type-secondary {
     background: var(--surface-action-pressed-2) !important;
     box-shadow: var(--border-shadow-secondary-btn-active, none);
 }
 
-button:focus-visible.type-secondary {
+button.custom-button:focus-visible.type-secondary {
     outline: none;
     background: var(--surface-primary);
     box-shadow: var(--focus-rings-focus-ring-shadow-xs-skeumorphic);
 }
 
-button:disabled.type-secondary {
+button.custom-button:disabled.type-secondary {
     background-color: var(--surface-disabled);
     outline: 1px solid var(--border-disabled);
     box-shadow: var(--shadow-xs);
 }
 
 // *************** GHOST ***************
-
-button.type-ghost {
+button.custom-button.type-ghost {
     background: transparent;
 }
 
-button:hover.type-ghost {
+button.custom-button:hover.type-ghost {
     background: var(--surface-action-hover-2);
 }
 
-button:active.type-ghost {
+button.custom-button:active.type-ghost {
     background: var(--surface-action-pressed-2) !important;
 }
 
-button:focus-visible.type-ghost {
+button.custom-button:focus-visible.type-ghost {
     outline: none;
-    background: var(--surface-action-hover-2);
-    box-shadow: var(--focus-rings-focus-ring-shadow-xs-skeumorphic);
+    box-shadow: var(--focus-rings-focus-ring);
 }
 
 // *************** TEXT ***************
-
-button.type-text {
-    gap: 6px;
+button.custom-button.type-text {
+    padding: 0 !important;
 }
 
-button.type-text,
-button:hover.type-text,
-button:active.type-text,
-button:focus-visible.type-text {
+button.custom-button.type-text,
+button.custom-button:hover.type-text,
+button.custom-button:active.type-text,
+button.custom-button:focus-visible.type-text {
     background-color: transparent;
 }
 
-button:focus-visible.type-text {
+button.custom-button:focus-visible.type-text {
     outline: none;
     background-color: var(--surface-primary);
     box-shadow: var(--focus-rings-focus-ring) !important;
