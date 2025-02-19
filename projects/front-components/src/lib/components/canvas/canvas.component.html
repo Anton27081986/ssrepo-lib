@@ -10,14 +10,16 @@
       [topMenuTemplateRef]="topMenuSidebarTemplateRef">
     </ss-lib-sidebar>
 
-    <div class="ss-lib-canvas__content">
-      <ss-lib-scrollable-block [horizontalScroll]="contentScrollHorizontal()"
-                               [verticalScroll]="contentScrollVertical()">
-        <ng-content></ng-content>
+    <div class="ss-lib-canvas__scroll-content">
+      <ss-lib-scrollable-block
+        [horizontalScroll]="contentScrollHorizontal()"
+        [verticalScroll]="contentScrollVertical()">
+        <div class="ss-lib-canvas__content">
+          <ng-content></ng-content>
+        </div>
       </ss-lib-scrollable-block>
     </div>
   </div>
-
 </div>
 
 

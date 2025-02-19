@@ -24,14 +24,6 @@ import { ButtonComponent } from '../buttons/button/button.component';
     DividerComponent,
     ButtonComponent
   ],
-  animations: [
-    trigger('expandedPanel', [
-      state('close', style({width: '0'})),
-      state('mini', style({width: '64px'})),
-      state('full', style({width: '240px'})),
-      transition('* => *', animate('0.3s')),
-    ]),
-  ],
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush
 

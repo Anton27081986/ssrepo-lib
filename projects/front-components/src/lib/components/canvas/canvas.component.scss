@@ -17,6 +17,13 @@
     flex-direction: column;
     overflow-x: hidden;
     overflow-y: auto;
-    margin: 12px;
+    padding: 32px 24px;
+  }
+
+  &__scroll-content {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    overflow: hidden;
   }
 }
