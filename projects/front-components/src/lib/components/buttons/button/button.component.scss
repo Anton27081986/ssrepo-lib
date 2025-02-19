@@ -1,0 +1,179 @@
+button.custom-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    cursor: pointer;
+    box-sizing: border-box;
+    -webkit-transition: background-color 100ms linear;
+    -ms-transition: background-color 100ms linear;
+    transition: background-color 100ms linear;
+    border-radius: var(--border-radius-top-left, var(--border-radius-md)) var(--border-radius-top-right, var(--border-radius-md)) var(--border-radius-bottom-right, var(--border-radius-md)) var(--border-radius-bottom-left, var(--border-radius-md));
+}
+
+button.custom-button:not(.only-icon) {
+    flex-grow: 1;
+}
+
+button.custom-button:disabled {
+    cursor: default;
+}
+
+
+// *************** SIZES ***************
+
+// NOT ONLY ICONS
+button.custom-button.size-xxs:not(.only-icon),
+button.custom-button.size-xs:not(.only-icon) {
+    position: relative;
+    padding: 6px 10px;
+    gap: 2px;
+}
+
+button.custom-button.size-sm:not(.only-icon) {
+    position: relative;
+    padding: 8px 12px;
+    gap: 4px;
+}
+
+button.custom-button.size-md:not(.only-icon) {
+    position: relative;
+    padding: 10px 14px;
+    gap: 4px;
+}
+
+button.custom-button.size-lg:not(.only-icon),
+button.custom-button.size-xl:not(.only-icon),
+button.custom-button.size-xxl:not(.only-icon){
+    position: relative;
+    padding: 10px 16px;
+    gap: 6px;
+}
+
+// ONLY ICONS
+button.custom-button.size-xxs.only-icon {
+}
+
+button.custom-button.size-xs.only-icon {
+}
+
+button.custom-button.size-sm.only-icon {
+    padding: 8px !important;
+}
+
+button.custom-button.size-md.only-icon {
+    padding: 10px !important;
+}
+
+button.custom-button.size-lg.only-icon,
+button.custom-button.size-xl.only-icon,
+button.custom-button.size-xxl.only-icon{
+    padding: 12px !important;
+}
+
+// *************** PRIMARY ***************
+button.type-primary {
+    background-color: var(--surface-action);
+    box-shadow: var(--shadow-xs-skeumorphic);
+}
+
+button.type-primary::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 2px;
+    background: var(--gradient-skeumorphic-gradient-border);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+}
+
+button:hover.type-primary {
+    background-color: var(--surface-action-hover);
+}
+
+button:active.type-primary {
+    background-color: var(--surface-action-pressed);
+    box-shadow: none;
+}
+
+button:focus-visible.type-primary {
+    outline: none;
+    background-color: var(--surface-action);
+    box-shadow: var(--focus-rings-focus-ring-shadow-xs-skeumorphic);
+}
+
+button:disabled.type-primary {
+    background-color: var(--surface-disabled);
+    outline: 1px solid var(--border-disabled);
+    box-shadow: var(--shadow-xs);
+}
+
+// *************** SECONDARY ***************
+
+button.type-secondary {
+    outline: 1px solid var(--border-secondary);
+    background: var(--surface-primary);
+    box-shadow: var(--border-shadow-secondary-btn, var(--shadow-xs-skeumorphic));
+}
+
+button:hover.type-secondary {
+    background: var(--surface-action-hover-2);
+}
+
+button:active.type-secondary {
+    background: var(--surface-action-pressed-2) !important;
+    box-shadow: var(--border-shadow-secondary-btn-active, none);
+}
+
+button:focus-visible.type-secondary {
+    outline: none;
+    background: var(--surface-primary);
+    box-shadow: var(--focus-rings-focus-ring-shadow-xs-skeumorphic);
+}
+
+button:disabled.type-secondary {
+    background-color: var(--surface-disabled);
+    outline: 1px solid var(--border-disabled);
+    box-shadow: var(--shadow-xs);
+}
+
+// *************** GHOST ***************
+
+button.type-ghost {
+    background: transparent;
+}
+
+button:hover.type-ghost {
+    background: var(--surface-action-hover-2);
+}
+
+button:active.type-ghost {
+    background: var(--surface-action-pressed-2) !important;
+}
+
+button:focus-visible.type-ghost {
+    outline: none;
+    background: var(--surface-action-hover-2);
+    box-shadow: var(--focus-rings-focus-ring-shadow-xs-skeumorphic);
+}
+
+// *************** TEXT ***************
+
+button.type-text {
+    gap: 6px;
+}
+
+button.type-text,
+button:hover.type-text,
+button:active.type-text,
+button:focus-visible.type-text {
+    background-color: transparent;
+}
+
+button:focus-visible.type-text {
+    outline: none;
+    background-color: var(--surface-primary);
+    box-shadow: var(--focus-rings-focus-ring) !important;
+}

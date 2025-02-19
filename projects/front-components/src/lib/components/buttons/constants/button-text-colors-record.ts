@@ -1,7 +1,7 @@
-import { ButtonType, Colors } from '../../../../shared/models';
-import { ButtonColors } from '../../models/button-colors';
+import { ButtonType, ButtonTypeValues, Colors } from '../../../shared/models';
+import { IButtonStateColors } from '../models';
 
-export const ButtonTextColorsRecord: Record<ButtonType, ButtonColors> = {
+export const BUTTON_TEXT_COLORS_RECORD: Record<Partial<ButtonTypeValues>, IButtonStateColors> = {
     [ButtonType.Primary]: {
         default: Colors.TextOnAction,
         hover: Colors.TextOnAction,
@@ -9,6 +9,7 @@ export const ButtonTextColorsRecord: Record<ButtonType, ButtonColors> = {
         focused: Colors.TextOnAction,
         disabled: Colors.TextOnDisabled,
         disabledIconOnly: Colors.TextDisabled,
+
     },
     [ButtonType.Secondary]: {
         default: Colors.TextAction,
@@ -16,8 +17,29 @@ export const ButtonTextColorsRecord: Record<ButtonType, ButtonColors> = {
         pressed: Colors.TextActionHover,
         focused: Colors.TextAction,
         disabled: Colors.TextOnDisabled,
+        disabledIconOnly: Colors.TextOnDisabled,
+    },
+
+    [ButtonType.Ghost]: {
+        default: Colors.TextAction,
+        hover: Colors.TextActionHover,
+        pressed: Colors.TextActionHover,
+        focused: Colors.TextAction,
+        disabled: Colors.TextDisabled,
         disabledIconOnly: Colors.TextDisabled,
     },
+
+    [ButtonType.Text]: {
+        default: Colors.TextAction,
+        hover: Colors.TextActionHover,
+        pressed: Colors.TextAction,
+        focused: Colors.TextAction,
+        disabled: Colors.TextDisabled,
+        disabledIconOnly: Colors.TextDisabled,
+    },
+
+
+
     [ButtonType.Flat]: {
         default: Colors.TextAction,
         hover: Colors.TextActionHover,

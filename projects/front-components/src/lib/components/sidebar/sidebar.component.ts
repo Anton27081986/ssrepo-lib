@@ -7,12 +7,12 @@ import {
   TemplateRef
 } from '@angular/core';
 import {NgIf, NgTemplateOutlet} from '@angular/common';
-import {ButtonComponent} from '../button/button.component';
 import {ButtonType, IconType} from '../../shared/models';
 import {SidebarType} from '../../shared/models/enums/sidebar-type';
 import {CanvasState} from '../canvas/canvas.state';
 import {DividerComponent} from '../divider/divider.component';
 import {animate, state, style, transition, trigger} from '@angular/animations';
+import { ButtonComponent } from '../buttons/button/button.component';
 
 @Component({
   selector: 'ss-lib-sidebar',
@@ -20,9 +20,9 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
   styleUrls: ['./sidebar.component.scss'],
   imports: [
     NgTemplateOutlet,
-    ButtonComponent,
     NgIf,
-    DividerComponent
+    DividerComponent,
+    ButtonComponent
   ],
   animations: [
     trigger('expandedPanel', [

@@ -1,6 +1,7 @@
-import { Component, computed, input, Signal, signal } from '@angular/core';
+import { Component, computed, inject, input, InputSignal, signal } from '@angular/core';
 import { NgClass } from "@angular/common";
-import { MapperPipe } from '../../core/pipes';
+import { GetColorPipe } from '../pipes';
+import { BUTTON_COLORS, BUTTON_ICON_COLORS_RECORD, BUTTON_TEXT_COLORS_RECORD, EMPTY_STATE } from '../constants';
 import {
     IStateElement,
     ButtonType,
@@ -10,17 +11,14 @@ import {
     Size,
     StateTypes,
     TextType,
-    TextWeight
-} from '../../shared/models';
-import { TextComponent } from '../text/text.component';
-import { IconComponent } from '../icon/icon.component';
-import { GetColorPipe } from './pipes';
-import { EMPTY_STATE, ButtonIconColorsRecord, ButtonTextColorsRecord } from './utils/constants';
+    TextWeight, ButtonTypeValues, ExtraSize
+} from '../../../shared/models';
+import { MapperPipe } from '../../../core/pipes';
+import { IconComponent } from '../../icon/icon.component';
+import { TextComponent } from '../../text/text.component';
 
 /**
  * Параметры:
- *
- * [type]: ButtonType - Стиль кнопки. По умолчанию: `ButtonType.Primary`
  *
  * [size]: Size - Размер кнопки. По умолчанию: `Size.Default`
  *
@@ -33,62 +31,41 @@ import { EMPTY_STATE, ButtonIconColorsRecord, ButtonTextColorsRecord } from './u
  * [disabled]: boolean - Блокировка кнопки. По умолчанию: `false`
  */
 @Component({
-    selector: 'ss-lib-button',
+    selector: 'ss-lib-base-button',
     standalone: true,
-    templateUrl: './button.component.html',
-    styleUrls: ['./button.component.scss'],
+    templateUrl: './base-button.component.html',
+    styleUrls: ['./base-button.component.scss'],
     imports: [
         NgClass,
         TextComponent,
         GetColorPipe,
         IconComponent,
-        MapperPipe
+        MapperPipe,
+        MapperPipe,
+        IconComponent,
+        TextComponent
     ],
 })
-export class ButtonComponent {
-    public type = input<ButtonType>(ButtonType.Primary);
-    public size = input<Size>(Size.Large);
+export class BaseButtonComponent {
+    public type: InputSignal<ButtonTypeValues | null> = input<ButtonTypeValues | null>(null);
+    public size = input<ExtraSize>(ExtraSize.md);
     public text = input<string | undefined>();
     public icon = input<IconType | null>(IconType.Bell);
     public iconPosition = input<IconPosition>(IconPosition.Start);
     public disabled = input<boolean>(false);
 
     public state = signal<IStateElement>(EMPTY_STATE);
+    public buttonTextColors = computed(() => BUTTON_TEXT_COLORS_RECORD[this.type()!]);
+    public buttonIconColors = computed(() => BUTTON_ICON_COLORS_RECORD[this.type()!]);
 
     public readonly IconPosition = IconPosition;
     public readonly TextType = TextType;
     public readonly TextWeight = TextWeight;
     public readonly Colors = Colors;
-    public readonly ButtonSize = Size;
+    public readonly ButtonSize = ExtraSize;
     public readonly StateTypes = StateTypes;
 
-    public readonly colorsIconBtn: Signal<{
-        default: Colors,
-        hover: Colors,
-        pressed: Colors,
-        focused: Colors,
-        disabled: Colors,
-        disabledIconOnly: Colors
-    }> = computed(() => {
-        return ButtonIconColorsRecord[this.type()];
-    });
-
-    public readonly colorsTextBtn: Signal<{
-        default: Colors,
-        hover: Colors,
-        pressed: Colors,
-        focused: Colors,
-        disabled: Colors,
-        disabledIconOnly: Colors
-    }> = computed(() => {
-        return ButtonTextColorsRecord[this.type()];
-    });
-
-    public isIconButton(type: ButtonType, iconPosition: IconPosition): boolean {
-        return iconPosition === IconPosition.OnlyIcon || type === ButtonType.Close;
-    }
-
-    public hasIconOnSide(icon: IconType | null, isSideIcon: boolean): boolean {
+    public hasIcon(icon: IconType | null, isSideIcon: boolean): boolean {
         return isSideIcon && !!icon;
     }
 

@@ -1,6 +1,5 @@
 export { IconComponent } from './icon/icon.component';
 export { TextComponent } from './text/text.component';
-export { ButtonComponent } from './button/button.component';
 export { ToggleComponent } from './toggle/toggle.component';
 export { ToggleIconComponent } from './toggle-icon/toggle-icon.component';
 export { SidebarComponent } from './sidebar/sidebar.component';
@@ -16,3 +15,4 @@ export { SelectComponent } from './select/select.component';
 export { AvatarComponent } from './avatar/avatar.component';
 export { NumberPickerComponent } from './number-picker/number-picker.component';
 export { CanvasComponent } from './canvas/canvas.component'
+export { ButtonComponent } from './buttons/button/button.component';
