@@ -9,7 +9,7 @@ import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR, ReactiveFormsModu
 import { InputComponent } from '../input/input.component';
 import { ButtonComponent } from '../buttons/button/button.component';
 import { FormFieldComponent } from '../form-field/form-field.component';
-import { Align, ButtonType, Direction, IconPosition, IconType, InputType } from '../../shared/models';
+import { Align, ButtonType, Direction, ExtraSize, IconPosition, IconType, InputType } from '../../shared/models';
 import { FieldCtrlDirective } from '../../core/directives';
 
 /**
@@ -56,6 +56,7 @@ export class NumberPickerComponent implements ControlValueAccessor {
     public readonly Direction = Direction;
     public readonly Align = Align;
     public readonly InputType = InputType;
+    protected readonly ExtraSize = ExtraSize;
 
     onChange = (value: number | null) => {
     };
