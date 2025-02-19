@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import {
     ButtonType,
-    Colors,
+    Colors, ExtraSize,
     IconPosition,
     IconType, IDictionaryItemDto, Size,
     TextType,
@@ -14,7 +14,7 @@ import { standImports } from './stand.imports';
 @Component({
     selector: 'app-stand',
     standalone: true,
-    imports: [standImports],
+    imports: standImports,
     templateUrl: './stand.component.html',
     styleUrl: './stand.component.scss'
 })
@@ -64,4 +64,5 @@ export class StandComponent {
     selectCtrl = new FormControl(null);
     numberPickerCtrl = new FormControl(2);
     protected readonly console = console;
+    protected readonly ExtraSize = ExtraSize;
 }
