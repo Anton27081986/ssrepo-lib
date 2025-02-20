@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { AvatarComponent } from '../../avatar/avatar.component';
-import { StateTypes } from '../../../shared/models';
 
 @Component({
     selector: 'ss-lib-avatar-button',
@@ -22,6 +21,4 @@ import { StateTypes } from '../../../shared/models';
 export class AvatarButtonComponent {
     public src = input<string>('');
     public username = input<string>('');
-
-    public readonly StateTypes = StateTypes;
 }
