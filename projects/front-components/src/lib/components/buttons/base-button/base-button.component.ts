@@ -35,7 +35,7 @@ export class BaseButtonComponent {
     public type: InputSignal<ButtonTypeValues | null> = input<ButtonTypeValues | null>(null);
     public size = input<ExtraSize>(ExtraSize.md);
     public text = input<string | undefined>();
-    public icon = input<IconType | null>(IconType.Bell);
+    public icon = input<IconType | null>(null);
     public iconPosition = input<IconPosition>(IconPosition.Start);
     public disabled = input<boolean>(false);
 
