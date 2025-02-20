@@ -18,5 +18,4 @@ export { CanvasComponent } from './canvas/canvas.component';
 export { CanvasContentComponent } from './canvas-content/canvas-content.component';
 export { TableComponent } from './table/table.component';
 export { ColumnsStateService } from './table/columns.state.service'
-export { ButtonComponent } from './buttons/button/button.component';
-export { UtilityButtonComponent } from './buttons/utility-button/utility-button.component';
+export * from './buttons/index';
