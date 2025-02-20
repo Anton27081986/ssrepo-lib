@@ -1,5 +1,5 @@
 button.custom-button {
-    border-radius: var(--border-radius-top-left, var(--border-radius-md)) var(--border-radius-top-right, var(--border-radius-md)) var(--border-radius-bottom-right, var(--border-radius-md)) var(--border-radius-bottom-left, var(--border-radius-md));
+    border-radius: var(--app-custom-button-border-radius-top-left, var(--border-radius-md)) var(--app-custom-button-border-radius-top-right, var(--border-radius-md)) var(--app-custom-button-border-radius-bottom-right, var(--border-radius-md)) var(--app-custom-button-border-radius-bottom-left, var(--border-radius-md));
 }
 
 // *************** SIZES ***************
@@ -18,7 +18,7 @@ button.custom-button.type-ghost:not(.only-icon) {
     &.size-xs {
         padding: 6px 10px;
         gap: 2px;
-        border-radius: var(--border-radius-top-left, var(--border-radius-sm)) var(--border-radius-top-right, var(--border-radius-sm)) var(--border-radius-bottom-right, var(--border-radius-sm)) var(--border-radius-bottom-left, var(--border-radius-sm));
+        border-radius: var(--app-custom-button-border-radius-top-left, var(--border-radius-sm)) var(--app-custom-button-border-radius-top-right, var(--border-radius-sm)) var(--app-custom-button-border-radius-bottom-right, var(--border-radius-sm)) var(--app-custom-button-border-radius-bottom-left, var(--border-radius-sm));
     }
 
     &.size-sm {
@@ -52,7 +52,7 @@ button.custom-button.type-text.only-icon {
 
     &.size-xxs,
     &.size-xs {
-        border-radius: var(--border-radius-top-left, var(--border-radius-xs)) var(--border-radius-top-right, var(--border-radius-xs)) var(--border-radius-bottom-right, var(--border-radius-xs)) var(--border-radius-bottom-left, var(--border-radius-xs));
+        border-radius: var(--app-custom-button-border-radius-top-left, var(--border-radius-xs)) var(--app-custom-button-border-radius-top-right, var(--border-radius-xs)) var(--app-custom-button-border-radius-bottom-right, var(--border-radius-xs)) var(--app-custom-button-border-radius-bottom-left, var(--border-radius-xs));
     }
 
     &.size-md {
@@ -109,7 +109,7 @@ button.custom-button:disabled.type-primary {
 // *************** SECONDARY ***************
 button.custom-button.type-secondary {
     background: var(--surface-primary);
-    box-shadow: var(--border-shadow-secondary-btn, var(--shadow-xs-skeumorphic));
+    box-shadow: var(--app-border-shadow-secondary-btn, var(--shadow-xs-skeumorphic));
 }
 
 button.custom-button:hover.type-secondary {
@@ -118,7 +118,7 @@ button.custom-button:hover.type-secondary {
 
 button.custom-button:active.type-secondary {
     background: var(--surface-action-pressed-2) !important;
-    box-shadow: var(--border-shadow-secondary-btn-active, none);
+    box-shadow: var(--app-border-shadow-secondary-btn-active, none);
 }
 
 button.custom-button:focus-visible.type-secondary {
