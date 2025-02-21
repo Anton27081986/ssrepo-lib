@@ -7,17 +7,23 @@
   <div class="ss-lib-canvas__body">
     <ss-lib-sidebar
       class="ss-lib-canvas__sidebar"
-      [topMenuTemplateRef]="topMenuSidebarTemplateRef">
+      [topMenuTemplateRef]="topMenuSidebarTemplateRef"
+      [menu]="menu()"
+    >
     </ss-lib-sidebar>
 
     <div class="ss-lib-canvas__scroll-content">
+
       <ss-lib-scrollable-block
         [horizontalScroll]="contentScrollHorizontal()"
         [verticalScroll]="contentScrollVertical()">
+
         <div class="ss-lib-canvas__content">
           <ng-content></ng-content>
         </div>
+
       </ss-lib-scrollable-block>
+
     </div>
   </div>
 </div>

@@ -121,10 +121,20 @@
     [text]="'Кнопка'"
     [icon]="IconType.Bell"
     [iconPosition]="IconPosition.OnlyIcon"
-    [size]="ExtraSize.sm"
+    [size]="ExtraSize.xs"
 />
 <br/>
 
+<ss-lib-utility-button/>
+<br/>
+
+<ss-lib-close-button [type]="ButtonType.CloseDark" [size]="ExtraSize.xs"/>
+<br/>
+
+<div class="dark-close-button">
+<ss-lib-close-button [type]="ButtonType.CloseDark" [size]="ExtraSize.xs"/>
+</div>
+<br/>
 
 <ss-lib-toggle [formControl]="toggleCtrl"></ss-lib-toggle>
 <br>
@@ -170,11 +180,13 @@
 <br>
 
 <span>Пример avatar-dropdown</span>
-<ss-lib-avatar
+
+<ss-lib-avatar-button
     [username]="'ВН'"
     [src]="'https://i.pravatar.cc/300'"
     [popoverTriggerFor]="dropdown1"
 />
+
 <ss-lib-dropdown-list
     #dropdown1
     [headerTemplateRef]="avatarHeader"
@@ -189,6 +201,7 @@
 
 <ng-template #avatarHeader>
     <div class="avatar-tmp">
+
         <ss-lib-avatar
             [username]="'ВН'"
             [src]="'https://i.pravatar.cc/300'"
@@ -243,5 +256,38 @@
 <br>
 
 <ss-lib-number-picker [formControl]="numberPickerCtrl" [min]="5" [max]="1000"></ss-lib-number-picker>
-<br>
+<br/>
+<div class="badge">
+
+  <span> Large </span>
+  <ss-lib-badge [size]="ExtraSize.lg" [icon]="IconType.ImagePlus"></ss-lib-badge>
+
+  <ss-lib-badge [type]="BadgeType.Round" [size]="ExtraSize.lg" [icon]="IconType.ImagePlus"></ss-lib-badge>
+
+  <span> Medium </span>
+
+  <ss-lib-badge [size]="ExtraSize.md" [icon]="IconType.ImagePlus"></ss-lib-badge>
+
+  <ss-lib-badge [type]="BadgeType.Round" [size]="ExtraSize.md" [icon]="IconType.ImagePlus"></ss-lib-badge>
+
+  <span> Xl </span>
+
+  <ss-lib-badge [size]="ExtraSize.xl" [icon]="IconType.ImagePlus"></ss-lib-badge>
+
+  <ss-lib-badge [type]="BadgeType.Round" [size]="ExtraSize.xl" [icon]="IconType.ImagePlus"></ss-lib-badge>
+
+</div>
+
+<ss-lib-empty-state
+  [icon]="IconType.ImagePlus"
+  [title]="'Заголовок'"
+  [description]="'Какой то текст который мне лень писать и выдумывать.'"
+>
+  <div class="empty-state-actions">
+    <ss-lib-button [type]="ButtonType.Primary" [text]="'Любая кнопка'"></ss-lib-button>
+    <ss-lib-button [type]="ButtonType.Primary" [text]="'Еще кнопка'"></ss-lib-button>
+  </div>
+</ss-lib-empty-state>
+
+
 

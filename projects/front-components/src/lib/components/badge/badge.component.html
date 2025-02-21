@@ -1,0 +1,18 @@
+<div class="ss-lib-badge"
+     [class.ss-lib-badge--round]="type() === BadgeType.Round"
+     [class.ss-lib-badge--square]="type() === BadgeType.Square"
+     [ngStyle]="{ 'padding': padding()}"
+>
+
+  @if (size() === ExtraSize.md) {
+    <ss-lib-icon [width]="'20'" [height]="'20'" [icon]="icon()"></ss-lib-icon>
+  }
+
+  @if (size() === ExtraSize.lg) {
+    <ss-lib-icon [width]="'24'" [height]="'24'" [icon]="icon()"></ss-lib-icon>
+  }
+
+  @if (size() === ExtraSize.xl) {
+    <ss-lib-icon [width]="'28'" [height]="'28'" [icon]="icon()"></ss-lib-icon>
+  }
+</div>

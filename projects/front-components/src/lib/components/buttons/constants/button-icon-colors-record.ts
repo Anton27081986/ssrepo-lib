@@ -2,7 +2,7 @@ import { ButtonType, ButtonTypeValues, Colors } from '../../../shared/models';
 import { IButtonStateColors } from '../models';
 
 
-export const BUTTON_ICON_COLORS_RECORD: Record<Partial<ButtonTypeValues>, IButtonStateColors> = {
+export const BUTTON_ICON_COLORS_RECORD: Record<Partial<ButtonTypeValues>, Partial<IButtonStateColors>> = {
     [ButtonType.Primary]: {
         default: Colors.IconOnAction,
         hover: Colors.IconOnAction,
@@ -27,7 +27,6 @@ export const BUTTON_ICON_COLORS_RECORD: Record<Partial<ButtonTypeValues>, IButto
         disabled: Colors.IconDisabled,
         disabledIconOnly: Colors.IconDisabled,
     },
-
     [ButtonType.Text]: {
         default: Colors.IconAction,
         hover: Colors.IconActionHover,
@@ -36,24 +35,23 @@ export const BUTTON_ICON_COLORS_RECORD: Record<Partial<ButtonTypeValues>, IButto
         disabled: Colors.IconDisabled,
         disabledIconOnly: Colors.IconDisabled,
     },
-    //========================================
-
-
-    [ButtonType.Flat]: {
-        default: Colors.IconAction,
-        hover: Colors.IconActionHover,
-        pressed: Colors.IconOnAction,
+    [ButtonType.Utility]: {
+        default: Colors.IconDisabled,
+        hover: Colors.IconAction,
+        pressed: Colors.IconAction,
         focused: Colors.IconAction,
-        disabled: Colors.IconDisabled,
-        disabledIconOnly: Colors.IconDisabled,
     },
-    [ButtonType.Close]: {
+    [ButtonType.CloseLight]: {
         default: Colors.IconDisabled,
         hover: Colors.IconActionHover,
         pressed: Colors.IconActionHover,
-        focused: Colors.IconAction,
-        disabled: Colors.IconDisabled,
-        disabledIconOnly: Colors.IconDisabled,
+        focused: Colors.IconActionHover,
+    },
+    [ButtonType.CloseDark]: {
+        default: Colors.IconDisabled,
+        hover: Colors.IconSecondary,
+        pressed: Colors.IconSecondary,
+        focused: Colors.IconSecondary,
     },
     [ButtonType.Link]: {
         default: Colors.IconInformation,
