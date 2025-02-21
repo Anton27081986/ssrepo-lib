@@ -36,14 +36,8 @@ export const BUTTON_TEXT_COLORS_RECORD: Record<Partial<ButtonTypeValues>, Partia
         disabledIconOnly: Colors.TextDisabled,
     },
     [ButtonType.Utility]: {},
-    [ButtonType.Close]: {
-        default: Colors.TextAction,
-        hover: Colors.TextActionHover,
-        pressed: Colors.TextActionHover,
-        focused: Colors.TextAction,
-        disabled: Colors.TextDisabled,
-        disabledIconOnly: Colors.TextDisabled,
-    },
+    [ButtonType.CloseLight]: {},
+    [ButtonType.CloseDark]: {},
     [ButtonType.Link]: {
         default: Colors.TextInformation,
         hover: Colors.TextInformation,

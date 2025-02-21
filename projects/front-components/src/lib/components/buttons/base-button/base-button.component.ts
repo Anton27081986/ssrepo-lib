@@ -39,6 +39,7 @@ export class BaseButtonComponent {
     public size = input<ExtraSize>(ExtraSize.md);
     public text = input<string | undefined>();
     public icon = input<IconType | null>(null);
+    public iconSize = input<string>('20');
     public iconPosition = input<IconPosition>(IconPosition.Start);
     public disabled = input<boolean>(false);
 

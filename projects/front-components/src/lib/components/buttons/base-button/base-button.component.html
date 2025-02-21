@@ -12,16 +12,16 @@
     @if (icon() | mapper: hasIcon : iconPosition() === IconPosition.OnlyIcon) {
         <ss-lib-icon
             [icon]="icon()!"
-            [height]="'20'"
-            [width]="'20'"
+            [height]="iconSize()"
+            [width]="iconSize()"
             [color]="buttonIconColors() | getColor : state() : disabled() : true"
         />
     } @else {
         @if (icon() | mapper : hasIcon :iconPosition() === IconPosition.Start) {
             <ss-lib-icon
                 [icon]="icon()!"
-                [height]="'20'"
-                [width]="'20'"
+                [height]="iconSize()"
+                [width]="iconSize()"
                 [color]="buttonIconColors() | getColor : state() : disabled() : false"
             />
         }
@@ -68,8 +68,8 @@
         @if (icon() | mapper : hasIcon :iconPosition() === IconPosition.End) {
             <ss-lib-icon
                 [icon]="icon()!"
-                [height]="'20'"
-                [width]="'20'"
+                [height]="iconSize()"
+                [width]="iconSize()"
                 [color]="buttonIconColors() | getColor : state() : disabled() : false"
             />
         }

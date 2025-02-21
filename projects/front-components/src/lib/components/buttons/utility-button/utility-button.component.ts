@@ -16,7 +16,7 @@ import { ButtonType, IconType } from '../../../shared/models';
     ],
     template: `
         <ss-lib-base-button
-            [type]="restrictedType()"
+            [type]="ButtonType.Utility"
             [icon]="restrictedIcon()"
             [iconPosition]="IconPosition.OnlyIcon"
         >
@@ -28,14 +28,11 @@ import { ButtonType, IconType } from '../../../shared/models';
     encapsulation: ViewEncapsulation.None,
 })
 export class UtilityButtonComponent extends BaseButtonComponent {
-    public restrictedType: InputSignal<ButtonType.Utility> = input<ButtonType.Utility>(ButtonType.Utility);
     public restrictedIcon = input<IconType>(IconType.KebabMenuDots);
 
     public readonly ButtonType = ButtonType;
 
     constructor() {
         super();
-
-        this.restrictedType = this.type as InputSignal<ButtonType.Utility>;
     }
 }

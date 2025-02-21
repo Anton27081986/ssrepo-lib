@@ -27,7 +27,6 @@ export const BUTTON_ICON_COLORS_RECORD: Record<Partial<ButtonTypeValues>, Partia
         disabled: Colors.IconDisabled,
         disabledIconOnly: Colors.IconDisabled,
     },
-
     [ButtonType.Text]: {
         default: Colors.IconAction,
         hover: Colors.IconActionHover,
@@ -41,16 +40,18 @@ export const BUTTON_ICON_COLORS_RECORD: Record<Partial<ButtonTypeValues>, Partia
         hover: Colors.IconAction,
         pressed: Colors.IconAction,
         focused: Colors.IconAction,
-        disabled: Colors.IconDisabled,
-        disabledIconOnly: Colors.IconDisabled,
     },
-    [ButtonType.Close]: {
+    [ButtonType.CloseLight]: {
         default: Colors.IconDisabled,
         hover: Colors.IconActionHover,
         pressed: Colors.IconActionHover,
-        focused: Colors.IconAction,
-        disabled: Colors.IconDisabled,
-        disabledIconOnly: Colors.IconDisabled,
+        focused: Colors.IconActionHover,
+    },
+    [ButtonType.CloseDark]: {
+        default: Colors.IconDisabled,
+        hover: Colors.IconSecondary,
+        pressed: Colors.IconSecondary,
+        focused: Colors.IconSecondary,
     },
     [ButtonType.Link]: {
         default: Colors.IconInformation,
