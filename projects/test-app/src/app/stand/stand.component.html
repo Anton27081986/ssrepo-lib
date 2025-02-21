@@ -121,8 +121,11 @@
     [text]="'Кнопка'"
     [icon]="IconType.Bell"
     [iconPosition]="IconPosition.OnlyIcon"
-    [size]="ExtraSize.sm"
+    [size]="ExtraSize.xs"
 />
+<br/>
+
+<ss-lib-utility-button [type]="ButtonType.Utility"></ss-lib-utility-button>
 <br/>
 
 
@@ -170,11 +173,13 @@
 <br>
 
 <span>Пример avatar-dropdown</span>
-<ss-lib-avatar
+
+<ss-lib-avatar-button
     [username]="'ВН'"
     [src]="'https://i.pravatar.cc/300'"
     [popoverTriggerFor]="dropdown1"
 />
+
 <ss-lib-dropdown-list
     #dropdown1
     [headerTemplateRef]="avatarHeader"
@@ -189,6 +194,7 @@
 
 <ng-template #avatarHeader>
     <div class="avatar-tmp">
+
         <ss-lib-avatar
             [username]="'ВН'"
             [src]="'https://i.pravatar.cc/300'"

@@ -2,8 +2,8 @@ export enum ButtonType {
   Primary = 'primary',
   Secondary = 'secondary',
   Ghost = 'ghost',
-  Flat = 'flat',
   Text = 'text',
+  Utility = 'utility',
   Link = 'link',
   Close = 'close'
 }

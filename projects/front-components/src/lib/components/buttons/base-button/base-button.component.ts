@@ -1,7 +1,7 @@
-import { Component, computed, input, InputSignal, signal } from '@angular/core';
+import { Component, computed, inject, input, InputSignal, signal } from '@angular/core';
 import { NgClass } from "@angular/common";
 import { GetColorPipe } from '../pipes';
-import { BUTTON_ICON_COLORS_RECORD, BUTTON_TEXT_COLORS_RECORD, EMPTY_STATE } from '../constants';
+import { BUTTON_ICON_COLORS_RECORD, BUTTON_TEXT_COLORS_RECORD } from '../constants';
 import {
     IStateElement,
     Colors,
@@ -14,6 +14,8 @@ import {
 import { MapperPipe } from '../../../core/pipes';
 import { IconComponent } from '../../icon/icon.component';
 import { TextComponent } from '../../text/text.component';
+import { ElementStateService } from '../../../shared/services';
+import { EMPTY_STATE } from '../../../shared/constants';
 
 @Component({
     selector: 'ss-lib-base-button',
@@ -28,14 +30,15 @@ import { TextComponent } from '../../text/text.component';
         MapperPipe,
         MapperPipe,
         IconComponent,
-        TextComponent
     ],
 })
 export class BaseButtonComponent {
+    protected readonly elementState = inject(ElementStateService);
+
     public type: InputSignal<ButtonTypeValues | null> = input<ButtonTypeValues | null>(null);
     public size = input<ExtraSize>(ExtraSize.md);
     public text = input<string | undefined>();
-    public icon = input<IconType | null>(IconType.Bell);
+    public icon = input<IconType | null>(null);
     public iconPosition = input<IconPosition>(IconPosition.Start);
     public disabled = input<boolean>(false);
 
@@ -52,26 +55,5 @@ export class BaseButtonComponent {
 
     public hasIcon(icon: IconType | null, isSideIcon: boolean): boolean {
         return isSideIcon && !!icon;
-    }
-
-    public checkFocus(event: Event): void {
-        const target = event.target as HTMLElement;
-
-        if (target.matches(':focus-visible')) {
-            this.updateState(StateTypes.Focused, true);
-        }
-    }
-
-    public updateState(stateType: StateTypes, stateValue: boolean): void {
-        if (!stateValue) {
-            this.state.set(EMPTY_STATE);
-
-            return;
-        }
-
-        this.state.set({
-            ...EMPTY_STATE,
-            [stateType.toLowerCase() as keyof IStateElement]: stateValue
-        })
     }
 }
