@@ -6,12 +6,11 @@ import {
   Input, InputSignal,
   TemplateRef
 } from '@angular/core';
-import {NgForOf, NgIf, NgTemplateOutlet} from '@angular/common';
+import {NgForOf, NgIf} from '@angular/common';
 import {ButtonType, IconType, IMenu} from '../../shared/models';
 import {SidebarType} from '../../shared/models/enums/sidebar-type';
 import {CanvasState} from '../canvas/canvas.state';
 import {DividerComponent} from '../divider/divider.component';
-import {animate, state, style, transition, trigger} from '@angular/animations';
 import { ButtonComponent } from '../buttons/button/button.component';
 import {NuvButtonComponent} from '../nuv-icon-button/nuv-button.component';
 import {NuvButtonEnum} from '../../shared/models/enums/nuv-button-enum';
