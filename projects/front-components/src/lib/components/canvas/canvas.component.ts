@@ -1,8 +1,9 @@
-import {Component, input, Input, InputSignal, TemplateRef} from '@angular/core';
+import {Component, inject, input, Input, InputSignal, TemplateRef} from '@angular/core';
 import {HeaderComponent} from '../header/header.component';
 import {SidebarComponent} from '../sidebar/sidebar.component';
 import {ScrollableBlockComponent} from '../scrollable-block/scrollable-block.component';
 import {CanvasState} from './canvas.state';
+import {IMenu} from '../../shared/models';
 
 @Component({
   selector: 'ss-lib-canvas',
@@ -24,4 +25,5 @@ export class CanvasComponent {
 
   public contentScrollHorizontal: InputSignal<boolean> = input(false);
   public contentScrollVertical: InputSignal<boolean> = input(true);
+  public menu: InputSignal<IMenu[]> = input.required<IMenu[]>();
 }

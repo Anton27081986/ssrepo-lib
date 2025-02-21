@@ -10,6 +10,7 @@ import {
 } from '../../../../front-components/src/lib/shared/models';
 import { DividerType } from '../../../../front-components/src/lib/shared/models/enums/divider-type';
 import { standImports } from './stand.imports';
+import {BadgeType} from '../../../../front-components/src/lib/shared/models/enums/badge-type';
 
 @Component({
     selector: 'app-stand',
@@ -65,4 +66,5 @@ export class StandComponent {
     numberPickerCtrl = new FormControl(2);
     protected readonly console = console;
     protected readonly ExtraSize = ExtraSize;
+  protected readonly BadgeType = BadgeType;
 }
