@@ -18,5 +18,7 @@ export { CanvasComponent } from './canvas/canvas.component';
 export { CanvasContentComponent } from './canvas-content/canvas-content.component';
 export { TableComponent } from './table/table.component';
 export { ColumnsStateService } from './table/columns.state.service'
-export * from './buttons';
-export { CloseButtonComponent } from './buttons/close-button/close-button.component';
+export { EmptyStateComponent } from './empty-state/empty-state.component';
+export { BadgeComponent } from './badge/badge.component'
+
+export * from './buttons/index';

@@ -16,6 +16,8 @@ import {
     UtilityButtonComponent,
     AvatarButtonComponent,
     CloseButtonComponent,
+    BadgeComponent,
+    EmptyStateComponent,
 } from '../../../../front-components/src/lib/components';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FieldCtrlDirective, PopoverTriggerForDirective } from '../../../../front-components/src/lib/core/directives';
@@ -41,5 +43,7 @@ export const standImports = [
     ButtonComponent,
     UtilityButtonComponent,
     AvatarButtonComponent,
-    CloseButtonComponent
+    CloseButtonComponent,
+    BadgeComponent,
+    EmptyStateComponent,
 ]

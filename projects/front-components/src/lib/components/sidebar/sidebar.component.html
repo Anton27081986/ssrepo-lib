@@ -1,11 +1,17 @@
-<div class="sidebar  sidebar--{{ sidebarType() }}" >
-  <div class="sidebar__top-menu">
-    <ng-container *ngTemplateOutlet="topMenuTemplateRef"></ng-container>
+<div class="sidebar  sidebar--{{ sidebarType() }}">
+  <div class="sidebar__top-menu" *ngIf="sidebarType() !== SidebarType.Close">
+    <ng-container *ngFor="let menu of menu()">
+      <ss-lib-nuv-icon-button
+        [menu]="menu"
+        [type]="stateCanvas.sidebarType() === SidebarType.Full ? NuvButtonType.NavBase : NuvButtonType.NavIcon">
+      </ss-lib-nuv-icon-button>
+    </ng-container>
   </div>
 
   <div class="sidebar__bottom-menu">
     <ss-lib-divider></ss-lib-divider>
     <div class="sidebar__bottom-menu-block">
+
       <ng-container *ngIf="stateCanvas.sidebarType() === SidebarType.Full">
         <ss-lib-button (click)="closeMenu()" [type]="ButtonType.Text" [text]="'Свернуть меню'"
                        [icon]="IconType.ChevronLeftDouble"></ss-lib-button>
@@ -15,6 +21,8 @@
         <ss-lib-button (click)="closeMenu()" [type]="ButtonType.Text"
                        [icon]="IconType.ChevronLeftDouble"></ss-lib-button>
       </ng-container>
+
     </div>
   </div>
+
 </div>

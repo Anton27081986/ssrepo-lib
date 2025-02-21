@@ -1,15 +1,18 @@
+:host {
+  background-color: var(--surface-primary);
+}
+
 .sidebar {
   border-right: 1px solid var(--border-primary);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
-  background-color: var(--surface-primary);
   width: 0;
-  transition: 0.3s;
+  transition: 0.5s;
 
   &--mini {
-    width: 62px;
+    width: 64px;
   }
 
   &--close {
@@ -32,7 +35,7 @@
     display: flex;
     height: 64px;
     flex-direction: column;
-    gap: 16px;
+    justify-content: space-around;
   }
 
   &__bottom-menu-block {
