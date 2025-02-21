@@ -14,3 +14,15 @@
     padding: 4px 0;
 }
 
+.badge {
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+}
+
+.empty-state-actions {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 10px;
+}
+

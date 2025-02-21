@@ -2,14 +2,16 @@ import {Component} from '@angular/core';
 import {CanvasComponent} from '../../../../front-components/src/lib/components/canvas/canvas.component';
 import {RouterOutlet} from '@angular/router';
 import {Colors, IconType, IMenu, TextType, TextWeight} from '../../../../front-components/src/lib/shared/models';
-import {NgForOf} from '@angular/common';
 import {IconComponent, TextComponent, ToggleIconComponent} from '../../../../front-components/src/lib/components';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import {SidebarType} from '../../../../front-components/src/lib/shared/models/enums/sidebar-type';
+import {NuvButtonEnum} from '../../../../front-components/src/lib/shared/models/enums/nuv-button-enum';
+import {NgForOf} from '@angular/common';
 
 @Component({
   selector: 'app-layout',
   standalone: true,
-  imports: [CanvasComponent, RouterOutlet, NgForOf, IconComponent, TextComponent, ToggleIconComponent, ReactiveFormsModule],
+  imports: [CanvasComponent, RouterOutlet, IconComponent, TextComponent, ToggleIconComponent, ReactiveFormsModule, NgForOf],
   templateUrl: './layout.component.html',
   styleUrl: './layout.component.scss'
 })
@@ -20,14 +22,16 @@ export class LayoutComponent {
       toolTip: 'Баннеры',
       link: '',
       pressed: true,
-      icon: IconType.Alert
+      icon: IconType.ImagePlus,
+      subMenu: []
     },
     {
       title: 'Баннеры',
       toolTip: 'Баннеры',
       link: '',
-      pressed: true,
-      icon: IconType.Alert
+      pressed: false,
+      icon: IconType.Alert,
+      subMenu: []
     },
   ];
 
@@ -38,15 +42,16 @@ export class LayoutComponent {
 
   constructor() {
     this.theme.valueChanges.subscribe(val => {
-      const elem = document.getElementsByTagName('body');
-      console.log()
+      const elem = document.body;
       if(val) {
-        elem[0].classList.add('dark')
+        elem.classList.add('dark')
       } else {
-        elem[0].classList.remove('dark')
+        elem.classList.remove('dark')
       }
     })
   }
 
   protected readonly Colors = Colors;
+  protected readonly SidebarType = SidebarType;
+  protected readonly NuvButtonType = NuvButtonEnum;
 }
