@@ -1,4 +1,4 @@
-import {Component, effect, input, InputSignal, ViewEncapsulation} from '@angular/core';
+import {Component, input, InputSignal, ViewEncapsulation} from '@angular/core';
 import {IconComponent} from '../icon/icon.component';
 import {IconType, IMenu, TextType, TextWeight} from '../../shared/models';
 import {TextComponent} from '../text/text.component';
@@ -30,7 +30,7 @@ import {NgIf} from '@angular/common';
 export class NuvButtonComponent {
   protected readonly IconType = IconType;
   public type: InputSignal<NavButtonType> = input<NuvButtonEnum>(NuvButtonEnum.NavBase);
-  public menu: InputSignal<IMenu> = input.required();
+  public menu: InputSignal<IMenu> = input.required<IMenu>();
 
   constructor() {}
 
