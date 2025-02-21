@@ -1,13 +1,8 @@
-import {
-    ChangeDetectionStrategy,
-    Component,
-    computed,
-    input,
-    InputSignal,
-    ViewEncapsulation
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, input, ViewEncapsulation } from '@angular/core';
 import { BaseButtonComponent } from '../base-button/base-button.component';
 import { ButtonType, ExtraSize, IconType } from '../../../shared/models';
+
+type CloseButtonType = ButtonType.CloseLight | ButtonType.CloseDark;
 
 /**
  * Параметры:
@@ -15,10 +10,9 @@ import { ButtonType, ExtraSize, IconType } from '../../../shared/models';
  * [type]: ButtonType.CloseLight | ButtonType.CloseDark - Тип. По умолчанию: `ButtonType.CloseLight`
  *
  * [icon]: IconType - Название иконки.  По умолчанию: `IconType.Close`
+ *
+ * [size]: ExtraSize - Размер кнопки. По умолчанию: `ExtraSize.md`
  */
-
-type CloseButtonType = ButtonType.CloseLight | ButtonType.CloseDark;
-
 @Component({
     selector: 'ss-lib-close-button',
     standalone: true,
@@ -28,7 +22,7 @@ type CloseButtonType = ButtonType.CloseLight | ButtonType.CloseDark;
     template: `
         <ss-lib-base-button
             [size]="size()"
-            [type]="restrictedType()"
+            [type]="type()"
             [icon]="restrictedIcon()"
             [iconSize]="restrictedIconSize()"
             [iconPosition]="IconPosition.OnlyIcon"
@@ -40,8 +34,9 @@ type CloseButtonType = ButtonType.CloseLight | ButtonType.CloseDark;
     changeDetection: ChangeDetectionStrategy.OnPush,
     encapsulation: ViewEncapsulation.None,
 })
-export class CloseButtonComponent extends BaseButtonComponent {
-    public restrictedType: InputSignal<CloseButtonType> = input<CloseButtonType>(ButtonType.CloseLight);
+export class CloseButtonComponent extends BaseButtonComponent<CloseButtonType> {
+    public override type = input<CloseButtonType>(ButtonType.CloseLight);
+
     public restrictedIcon = input<IconType>(IconType.Close);
 
     public restrictedIconSize = computed(() => {

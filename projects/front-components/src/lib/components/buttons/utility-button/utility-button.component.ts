@@ -1,10 +1,12 @@
-import { ChangeDetectionStrategy, Component, input, InputSignal, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input, ViewEncapsulation } from '@angular/core';
 import { BaseButtonComponent } from '../base-button/base-button.component';
 import { ButtonType, IconType } from '../../../shared/models';
 
 
 /**
  * Параметры:
+ *
+ * [type]: ButtonType.Utility - Тип кнопки`
  *
  * [icon]: IconType - Название иконки.  По умолчанию: `IconType.KebabMenuDots`
  */
@@ -16,7 +18,7 @@ import { ButtonType, IconType } from '../../../shared/models';
     ],
     template: `
         <ss-lib-base-button
-            [type]="ButtonType.Utility"
+            [type]="type()"
             [icon]="restrictedIcon()"
             [iconPosition]="IconPosition.OnlyIcon"
         >
@@ -27,7 +29,8 @@ import { ButtonType, IconType } from '../../../shared/models';
     changeDetection: ChangeDetectionStrategy.OnPush,
     encapsulation: ViewEncapsulation.None,
 })
-export class UtilityButtonComponent extends BaseButtonComponent {
+export class UtilityButtonComponent extends BaseButtonComponent<ButtonType.Utility> {
+    public override type = input<ButtonType.Utility>(ButtonType.Utility);
     public restrictedIcon = input<IconType>(IconType.KebabMenuDots);
 
     public readonly ButtonType = ButtonType;

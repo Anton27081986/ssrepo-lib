@@ -7,12 +7,12 @@
     <ss-lib-divider></ss-lib-divider>
     <div class="sidebar__bottom-menu-block">
       <ng-container *ngIf="stateCanvas.sidebarType() === SidebarType.Full">
-        <ss-lib-button (click)="closeMenu()" [type]="ButtonType.Link" [text]="'Свернуть меню'"
+        <ss-lib-button (click)="closeMenu()" [type]="ButtonType.Text" [text]="'Свернуть меню'"
                        [icon]="IconType.ChevronLeftDouble"></ss-lib-button>
       </ng-container>
 
       <ng-container *ngIf="stateCanvas.sidebarType() === SidebarType.Mini">
-        <ss-lib-button (click)="closeMenu()" [type]="ButtonType.Link"
+        <ss-lib-button (click)="closeMenu()" [type]="ButtonType.Text"
                        [icon]="IconType.ChevronLeftDouble"></ss-lib-button>
       </ng-container>
     </div>
