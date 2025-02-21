@@ -1,7 +1,7 @@
 import { ButtonType, ButtonTypeValues, Colors } from '../../../shared/models';
 import { IButtonStateColors } from '../models';
 
-export const BUTTON_TEXT_COLORS_RECORD: Record<Partial<ButtonTypeValues>, IButtonStateColors> = {
+export const BUTTON_TEXT_COLORS_RECORD: Record<Partial<ButtonTypeValues>, Partial<IButtonStateColors>> = {
     [ButtonType.Primary]: {
         default: Colors.TextOnAction,
         hover: Colors.TextOnAction,
@@ -35,24 +35,9 @@ export const BUTTON_TEXT_COLORS_RECORD: Record<Partial<ButtonTypeValues>, IButto
         disabled: Colors.TextDisabled,
         disabledIconOnly: Colors.TextDisabled,
     },
-
-
-    [ButtonType.Flat]: {
-        default: Colors.TextAction,
-        hover: Colors.TextActionHover,
-        pressed: Colors.TextActionHover,
-        focused: Colors.TextAction,
-        disabled: Colors.TextDisabled,
-        disabledIconOnly: Colors.TextDisabled,
-    },
-    [ButtonType.Close]: {
-        default: Colors.TextAction,
-        hover: Colors.TextActionHover,
-        pressed: Colors.TextActionHover,
-        focused: Colors.TextAction,
-        disabled: Colors.TextDisabled,
-        disabledIconOnly: Colors.TextDisabled,
-    },
+    [ButtonType.Utility]: {},
+    [ButtonType.CloseLight]: {},
+    [ButtonType.CloseDark]: {},
     [ButtonType.Link]: {
         default: Colors.TextInformation,
         hover: Colors.TextInformation,

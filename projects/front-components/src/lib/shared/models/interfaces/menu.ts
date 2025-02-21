@@ -5,5 +5,6 @@ export interface IMenu {
   toolTip: string | null,
   link: string,
   pressed: boolean,
-  icon: IconType
+  icon: IconType,
+  subMenu: IMenu[]
 }

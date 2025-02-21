@@ -1,0 +1,13 @@
+.ss-lib-badge {
+  display: inline-block;
+  border: 1px solid var(--border-primary);
+  box-shadow: var(--effects-shadows-5);
+
+  &--square {
+    border-radius: 10px;
+  }
+
+  &--round {
+    border-radius: 100%;
+  }
+}
