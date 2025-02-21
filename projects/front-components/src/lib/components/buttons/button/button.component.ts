@@ -3,8 +3,12 @@ import { BaseButtonComponent } from '../base-button/base-button.component';
 import { ButtonType } from '../../../shared/models';
 
 
+type RegularButtonType = ButtonType.Primary | ButtonType.Secondary | ButtonType.Ghost | ButtonType.Text;
+
 /**
  * Параметры:
+ *
+ * [type]: ButtonType.Primary | ButtonType.Secondary | ButtonType.Ghost | ButtonType.Text - Тип кнопки. По умолчанию 'ButtonType.Primary'
  *
  * [size]: ExtraSize - Размер кнопки. По умолчанию: `ExtraSize.md`
  *
@@ -24,7 +28,7 @@ import { ButtonType } from '../../../shared/models';
     ],
     template: `
         <ss-lib-base-button
-            [type]="restrictedType()"
+            [type]="type()"
             [size]="size()"
             [text]="text()"
             [icon]="icon()"
@@ -38,14 +42,12 @@ import { ButtonType } from '../../../shared/models';
     changeDetection: ChangeDetectionStrategy.OnPush,
     encapsulation: ViewEncapsulation.None,
 })
-export class ButtonComponent extends BaseButtonComponent {
-    public restrictedType: InputSignal<ButtonType.Primary | ButtonType.Secondary | ButtonType.Ghost | ButtonType.Text> = input<ButtonType.Primary | ButtonType.Secondary | ButtonType.Ghost | ButtonType.Text>(ButtonType.Primary);
+export class ButtonComponent extends BaseButtonComponent<RegularButtonType> {
+    public override type: InputSignal<RegularButtonType> = input<RegularButtonType>(ButtonType.Primary);
 
     public readonly ButtonType = ButtonType;
 
     constructor() {
         super();
-
-        this.restrictedType = this.type as InputSignal<ButtonType.Primary | ButtonType.Secondary | ButtonType.Ghost | ButtonType.Text>;
     }
 }

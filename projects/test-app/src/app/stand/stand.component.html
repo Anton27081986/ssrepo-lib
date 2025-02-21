@@ -125,9 +125,16 @@
 />
 <br/>
 
-<ss-lib-utility-button [type]="ButtonType.Utility"></ss-lib-utility-button>
+<ss-lib-utility-button/>
 <br/>
 
+<ss-lib-close-button [type]="ButtonType.CloseDark" [size]="ExtraSize.xs"/>
+<br/>
+
+<div class="dark-close-button">
+<ss-lib-close-button [type]="ButtonType.CloseDark" [size]="ExtraSize.xs"/>
+</div>
+<br/>
 
 <ss-lib-toggle [formControl]="toggleCtrl"></ss-lib-toggle>
 <br>

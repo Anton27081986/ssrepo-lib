@@ -1,6 +1,14 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { AvatarComponent } from '../../avatar/avatar.component';
 
+
+/**
+ * Параметры:
+ *
+ * [src]: string - Путь к фото. По умолчанию: `''`
+ *
+ * [username]: string - Имя пользователя. По умолчанию: `''`
+ */
 @Component({
     selector: 'ss-lib-avatar-button',
     standalone: true,

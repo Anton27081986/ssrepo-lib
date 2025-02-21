@@ -15,6 +15,7 @@ import {
     ButtonComponent,
     UtilityButtonComponent,
     AvatarButtonComponent,
+    CloseButtonComponent,
     BadgeComponent,
     EmptyStateComponent,
 } from '../../../../front-components/src/lib/components';
@@ -40,8 +41,9 @@ export const standImports = [
     NumberPickerComponent,
     DividerComponent,
     ButtonComponent,
+    UtilityButtonComponent,
+    AvatarButtonComponent,
+    CloseButtonComponent,
     BadgeComponent,
     EmptyStateComponent,
-    UtilityButtonComponent,
-    AvatarButtonComponent
 ]

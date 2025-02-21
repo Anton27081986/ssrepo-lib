@@ -1,4 +1,4 @@
-import { Component, computed, inject, input, InputSignal, signal } from '@angular/core';
+import { Component, computed, inject, input, signal } from '@angular/core';
 import { NgClass } from "@angular/common";
 import { GetColorPipe } from '../pipes';
 import { BUTTON_ICON_COLORS_RECORD, BUTTON_TEXT_COLORS_RECORD } from '../constants';
@@ -32,13 +32,14 @@ import { EMPTY_STATE } from '../../../shared/constants';
         IconComponent,
     ],
 })
-export class BaseButtonComponent {
+export class BaseButtonComponent<T extends ButtonTypeValues> {
     protected readonly elementState = inject(ElementStateService);
 
-    public type: InputSignal<ButtonTypeValues | null> = input<ButtonTypeValues | null>(null);
+    public type = input.required<T>();
     public size = input<ExtraSize>(ExtraSize.md);
     public text = input<string | undefined>();
     public icon = input<IconType | null>(null);
+    public iconSize = input<string>('20');
     public iconPosition = input<IconPosition>(IconPosition.Start);
     public disabled = input<boolean>(false);
 
