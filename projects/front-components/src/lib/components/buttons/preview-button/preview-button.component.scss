@@ -15,9 +15,18 @@ $preview-background: #000000;
 button.custom-button.type-preview {
     padding: 8px;
     z-index: 1;
+}
+
+button.custom-button.type-preview::before {
+    content: "";
+    position: absolute;
+    inset: 0;
     background: $preview-background;
     opacity: 60%;
+    border-radius: inherit;
+    z-index: -1;
 }
+
 
 button.custom-button:hover.type-preview {
     background: $preview-background;
@@ -38,9 +47,12 @@ button.custom-button:focus-visible.type-preview {
     box-shadow: var(--focus-rings-focus-ring);
 }
 
-button.custom-button:focus-visible.type-preview {
-    outline: none;
+button.custom-button:focus-visible.type-preview::before {
+    content: "";
+    position: absolute;
+    inset: 0;
     background: $preview-background;
     opacity: 40%;
-    box-shadow: var(--focus-rings-focus-ring);
+    border-radius: inherit;
+    z-index: -1;
 }

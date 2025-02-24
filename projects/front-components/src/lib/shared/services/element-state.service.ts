@@ -21,6 +21,7 @@ export class ElementStateService {
 
         state.set({
             ...EMPTY_STATE,
+            default: false,
             [stateType.toLowerCase() as keyof IStateElement]: stateValue
         })
     }
