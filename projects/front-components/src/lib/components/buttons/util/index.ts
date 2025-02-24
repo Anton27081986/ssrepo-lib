@@ -1,0 +1,1 @@
+export { hasIcon } from './has-icon.helper';

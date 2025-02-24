@@ -38,11 +38,20 @@ export const BUTTON_TEXT_COLORS_RECORD: Record<Partial<ButtonTypeValues>, Partia
     [ButtonType.Utility]: {},
     [ButtonType.CloseLight]: {},
     [ButtonType.CloseDark]: {},
-    [ButtonType.Link]: {
+    [ButtonType.Preview]: {},
+    [ButtonType.LinkBlue]: {
         default: Colors.TextInformation,
         hover: Colors.TextInformation,
         pressed: Colors.TextInformation,
         focused: Colors.TextInformation,
+        disabled: Colors.TextDisabled,
+        disabledIconOnly: Colors.TextDisabled,
+    },
+    [ButtonType.LinkBlack]: {
+        default: Colors.TextAction,
+        hover: Colors.TextAction,
+        pressed: Colors.TextAction,
+        focused: Colors.TextAction,
         disabled: Colors.TextDisabled,
         disabledIconOnly: Colors.TextDisabled,
     },
