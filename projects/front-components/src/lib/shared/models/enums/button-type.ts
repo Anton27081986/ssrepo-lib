@@ -4,7 +4,9 @@ export enum ButtonType {
     Ghost = 'ghost',
     Text = 'text',
     Utility = 'utility',
-    Link = 'link',
     CloseLight = 'close-light',
     CloseDark = 'close-dark',
+    Preview = 'preview',
+    LinkBlue = 'link-blue',
+    LinkBlack = 'link-black',
 }

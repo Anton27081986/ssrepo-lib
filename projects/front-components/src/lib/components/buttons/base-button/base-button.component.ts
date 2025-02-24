@@ -2,6 +2,7 @@ import { Component, computed, inject, input, signal } from '@angular/core';
 import { NgClass } from "@angular/common";
 import { GetColorPipe } from '../pipes';
 import { BUTTON_ICON_COLORS_RECORD, BUTTON_TEXT_COLORS_RECORD } from '../constants';
+import { hasIcon } from '../util';
 import {
     IStateElement,
     Colors,
@@ -9,13 +10,16 @@ import {
     IconType,
     StateTypes,
     TextType,
-    TextWeight, ButtonTypeValues, ExtraSize
+    TextWeight,
+    ButtonTypeValues,
+    ExtraSize
 } from '../../../shared/models';
 import { MapperPipe } from '../../../core/pipes';
 import { IconComponent } from '../../icon/icon.component';
 import { TextComponent } from '../../text/text.component';
 import { ElementStateService } from '../../../shared/services';
 import { EMPTY_STATE } from '../../../shared/constants';
+
 
 @Component({
     selector: 'ss-lib-base-button',
@@ -53,8 +57,5 @@ export class BaseButtonComponent<T extends ButtonTypeValues> {
     public readonly Colors = Colors;
     public readonly ButtonSize = ExtraSize;
     public readonly StateTypes = StateTypes;
-
-    public hasIcon(icon: IconType | null, isSideIcon: boolean): boolean {
-        return isSideIcon && !!icon;
-    }
+    protected readonly hasIcon = hasIcon;
 }

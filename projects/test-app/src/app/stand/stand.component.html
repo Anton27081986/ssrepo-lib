@@ -128,12 +128,47 @@
 <ss-lib-utility-button/>
 <br/>
 
-<ss-lib-close-button [type]="ButtonType.CloseDark" [size]="ExtraSize.xs"/>
+<ss-lib-close-button [size]="ExtraSize.xs"/>
 <br/>
 
 <div class="dark-close-button">
-<ss-lib-close-button [type]="ButtonType.CloseDark" [size]="ExtraSize.xs"/>
+    <ss-lib-close-button [type]="ButtonType.CloseDark" [size]="ExtraSize.xs"/>
 </div>
+<br/>
+
+<ss-lib-preview-button [shape]="Shape.Square"/>
+<br/>
+
+<ss-lib-link
+    [type]="ButtonType.LinkBlue"
+    [linkAppearance]="LinkAppearance.Standalone"
+    [text]="'Ссылка Standalone'"
+    [icon]="IconType.Plus"
+    [iconPosition]="IconPosition.Start"
+    [size]="ExtraSize.xs"
+    [disabled]="true"
+/>
+<br/>
+
+<ss-lib-link
+    [type]="ButtonType.LinkBlack"
+    [linkAppearance]="LinkAppearance.Standalone"
+    [text]="'Ссылка Standalone'"
+    [icon]="IconType.Plus"
+    [iconPosition]="IconPosition.Start"
+    [size]="ExtraSize.xs"
+/>
+<br/>
+
+<ss-lib-link
+    [type]="ButtonType.LinkBlue"
+    [linkAppearance]="LinkAppearance.Inline"
+    [text]="'Ссылка Inline'"
+    [icon]="IconType.Plus"
+    [iconPosition]="IconPosition.Start"
+    [size]="ExtraSize.xs"
+    [disabled]="true"
+/>
 <br/>
 
 <ss-lib-toggle [formControl]="toggleCtrl"></ss-lib-toggle>
@@ -259,34 +294,34 @@
 <br/>
 <div class="badge">
 
-  <span> Large </span>
-  <ss-lib-badge [size]="ExtraSize.lg" [icon]="IconType.ImagePlus"></ss-lib-badge>
+    <span> Large </span>
+    <ss-lib-badge [size]="ExtraSize.lg" [icon]="IconType.ImagePlus"></ss-lib-badge>
 
-  <ss-lib-badge [type]="BadgeType.Round" [size]="ExtraSize.lg" [icon]="IconType.ImagePlus"></ss-lib-badge>
+    <ss-lib-badge [type]="BadgeType.Round" [size]="ExtraSize.lg" [icon]="IconType.ImagePlus"></ss-lib-badge>
 
-  <span> Medium </span>
+    <span> Medium </span>
 
-  <ss-lib-badge [size]="ExtraSize.md" [icon]="IconType.ImagePlus"></ss-lib-badge>
+    <ss-lib-badge [size]="ExtraSize.md" [icon]="IconType.ImagePlus"></ss-lib-badge>
 
-  <ss-lib-badge [type]="BadgeType.Round" [size]="ExtraSize.md" [icon]="IconType.ImagePlus"></ss-lib-badge>
+    <ss-lib-badge [type]="BadgeType.Round" [size]="ExtraSize.md" [icon]="IconType.ImagePlus"></ss-lib-badge>
 
-  <span> Xl </span>
+    <span> Xl </span>
 
-  <ss-lib-badge [size]="ExtraSize.xl" [icon]="IconType.ImagePlus"></ss-lib-badge>
+    <ss-lib-badge [size]="ExtraSize.xl" [icon]="IconType.ImagePlus"></ss-lib-badge>
 
-  <ss-lib-badge [type]="BadgeType.Round" [size]="ExtraSize.xl" [icon]="IconType.ImagePlus"></ss-lib-badge>
+    <ss-lib-badge [type]="BadgeType.Round" [size]="ExtraSize.xl" [icon]="IconType.ImagePlus"></ss-lib-badge>
 
 </div>
 
 <ss-lib-empty-state
-  [icon]="IconType.ImagePlus"
-  [title]="'Заголовок'"
-  [description]="'Какой то текст который мне лень писать и выдумывать.'"
+    [icon]="IconType.ImagePlus"
+    [title]="'Заголовок'"
+    [description]="'Какой то текст который мне лень писать и выдумывать.'"
 >
-  <div class="empty-state-actions">
-    <ss-lib-button [type]="ButtonType.Primary" [text]="'Любая кнопка'"></ss-lib-button>
-    <ss-lib-button [type]="ButtonType.Primary" [text]="'Еще кнопка'"></ss-lib-button>
-  </div>
+    <div class="empty-state-actions">
+        <ss-lib-button [type]="ButtonType.Primary" [text]="'Любая кнопка'"></ss-lib-button>
+        <ss-lib-button [type]="ButtonType.Primary" [text]="'Еще кнопка'"></ss-lib-button>
+    </div>
 </ss-lib-empty-state>
 
 

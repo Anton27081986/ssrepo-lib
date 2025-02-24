@@ -53,11 +53,25 @@ export const BUTTON_ICON_COLORS_RECORD: Record<Partial<ButtonTypeValues>, Partia
         pressed: Colors.IconSecondary,
         focused: Colors.IconSecondary,
     },
-    [ButtonType.Link]: {
+    [ButtonType.Preview]: {
+        default: Colors.IconOnAction,
+        hover: Colors.IconOnAction,
+        pressed: Colors.IconOnAction,
+        focused: Colors.IconOnAction,
+    },
+    [ButtonType.LinkBlue]: {
         default: Colors.IconInformation,
         hover: Colors.IconInformation,
         pressed: Colors.IconInformation,
         focused: Colors.IconInformation,
+        disabled: Colors.IconDisabled,
+        disabledIconOnly: Colors.IconDisabled,
+    },
+    [ButtonType.LinkBlack]: {
+        default: Colors.IconAction,
+        hover: Colors.IconAction,
+        pressed: Colors.IconAction,
+        focused: Colors.IconAction,
         disabled: Colors.IconDisabled,
         disabledIconOnly: Colors.IconDisabled,
     },
