@@ -16,6 +16,26 @@
     @include text-styles(var(--font-size-heading-xs), var(--line-height-heading-xs));
 }
 
+.heading-sm {
+    @include text-styles(var(--font-size-heading-sm), var(--line-height-heading-sm));
+}
+
+.heading-md {
+    @include text-styles(var(--font-size-heading-md), var(--line-height-heading-md));
+}
+
+.heading-lg {
+    @include text-styles(var(--font-size-heading-lg), var(--line-height-heading-lg));
+}
+
+.heading-xl {
+    @include text-styles(var(--font-size-heading-xl), var(--line-height-heading-xl));
+}
+
+.heading-2xl {
+    @include text-styles(var(--font-size-heading-2xl), var(--line-height-heading-2xl));
+}
+
 .body-xs {
     @include text-styles(var(--font-size-body-xs), var(--line-height-body-sm));
 }

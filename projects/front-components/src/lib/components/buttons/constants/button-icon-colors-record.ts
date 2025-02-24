@@ -59,11 +59,19 @@ export const BUTTON_ICON_COLORS_RECORD: Record<Partial<ButtonTypeValues>, Partia
         pressed: Colors.IconOnAction,
         focused: Colors.IconOnAction,
     },
-    [ButtonType.Link]: {
+    [ButtonType.LinkBlue]: {
         default: Colors.IconInformation,
         hover: Colors.IconInformation,
         pressed: Colors.IconInformation,
         focused: Colors.IconInformation,
+        disabled: Colors.IconDisabled,
+        disabledIconOnly: Colors.IconDisabled,
+    },
+    [ButtonType.LinkBlack]: {
+        default: Colors.IconAction,
+        hover: Colors.IconAction,
+        pressed: Colors.IconAction,
+        focused: Colors.IconAction,
         disabled: Colors.IconDisabled,
         disabledIconOnly: Colors.IconDisabled,
     },

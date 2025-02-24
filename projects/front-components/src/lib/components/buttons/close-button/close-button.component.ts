@@ -36,7 +36,6 @@ type CloseButtonType = ButtonType.CloseLight | ButtonType.CloseDark;
 })
 export class CloseButtonComponent extends BaseButtonComponent<CloseButtonType> {
     public override type = input<CloseButtonType>(ButtonType.CloseLight);
-
     public restrictedIcon = input<IconType>(IconType.Close);
 
     public restrictedIconSize = computed(() => {
@@ -52,7 +51,7 @@ export class CloseButtonComponent extends BaseButtonComponent<CloseButtonType> {
             case ExtraSize.xxl:
                 return '24';
         }
-    })
+    });
 
     public readonly ButtonType = ButtonType;
 

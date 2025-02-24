@@ -25,4 +25,5 @@ export class TextComponent {
     public weight = input<TextWeight>(TextWeight.Regular);
     public color = input<Colors>(Colors.TextHeadings);
     public isEllipsis = input<boolean>(false);
+    public isUnderline = input<boolean>(false);
 }
