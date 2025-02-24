@@ -11,3 +11,4 @@ export { ControlState } from './control-state';
 export { Direction } from './direction';
 export { Align } from './align';
 export { InputType } from './input-type';
+export { Shape } from './shape';
