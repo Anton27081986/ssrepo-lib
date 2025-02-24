@@ -38,6 +38,7 @@ export const BUTTON_TEXT_COLORS_RECORD: Record<Partial<ButtonTypeValues>, Partia
     [ButtonType.Utility]: {},
     [ButtonType.CloseLight]: {},
     [ButtonType.CloseDark]: {},
+    [ButtonType.Preview]: {},
     [ButtonType.Link]: {
         default: Colors.TextInformation,
         hover: Colors.TextInformation,

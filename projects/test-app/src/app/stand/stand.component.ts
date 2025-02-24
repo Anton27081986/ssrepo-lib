@@ -4,13 +4,15 @@ import {
     ButtonType,
     Colors, ExtraSize,
     IconPosition,
-    IconType, IDictionaryItemDto, Size,
+    IconType,
+    IDictionaryItemDto,
+    Shape,
     TextType,
     TextWeight
 } from '../../../../front-components/src/lib/shared/models';
 import { DividerType } from '../../../../front-components/src/lib/shared/models/enums/divider-type';
 import { standImports } from './stand.imports';
-import {BadgeType} from '../../../../front-components/src/lib/shared/models/enums/badge-type';
+import { BadgeType } from '../../../../front-components/src/lib/shared/models/enums/badge-type';
 
 @Component({
     selector: 'app-stand',
@@ -26,8 +28,11 @@ export class StandComponent {
     protected readonly Colors = Colors;
     protected readonly ButtonType = ButtonType;
     protected readonly IconPosition = IconPosition;
-    protected readonly Size = Size;
     protected readonly DividerType = DividerType;
+    protected readonly console = console;
+    protected readonly ExtraSize = ExtraSize;
+    protected readonly BadgeType = BadgeType;
+    protected readonly Shape = Shape;
     protected readonly dropdownItems: IDictionaryItemDto[] = [
         {
             id: 1,
@@ -64,7 +69,4 @@ export class StandComponent {
     textareaCtrl = new FormControl('rrrr', [Validators.required, Validators.minLength(10)]);
     selectCtrl = new FormControl(null);
     numberPickerCtrl = new FormControl(2);
-    protected readonly console = console;
-    protected readonly ExtraSize = ExtraSize;
-  protected readonly BadgeType = BadgeType;
 }

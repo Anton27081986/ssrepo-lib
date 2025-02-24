@@ -7,4 +7,5 @@ export enum ButtonType {
     Link = 'link',
     CloseLight = 'close-light',
     CloseDark = 'close-dark',
+    Preview = 'preview',
 }
