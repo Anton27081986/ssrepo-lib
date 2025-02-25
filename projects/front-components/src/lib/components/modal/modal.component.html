@@ -30,7 +30,11 @@
         </div>
 
         <div class="ss-modal-header__close">
-            <ss-lib-close-button [type]="ButtonType.CloseLight" [size]="ExtraSize.xl"/>
+            <ss-lib-close-button
+                [type]="ButtonType.CloseLight"
+                [size]="ExtraSize.xl"
+                (click)="dialogRef.close()"
+            />
         </div>
     </div>
 
@@ -44,11 +48,11 @@
         </div>
     }
 
-    @if (modalConfig().showFooterDivider) {
-        <ss-lib-divider class="ss-modal-divider__bottom"/>
-    }
-
     @if (footerRef()) {
+        @if (modalConfig().showFooterDivider) {
+            <ss-lib-divider class="ss-modal-divider__bottom"/>
+        }
+
         <div
             class="ss-modal-footer"
             [class.footer-padding-with-divider]="modalConfig().showFooterDivider"

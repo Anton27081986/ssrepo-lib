@@ -1,18 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, inject, TemplateRef, viewChild } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { Dialog } from '@angular/cdk/dialog';
 import {
     ButtonType,
     Colors, ExtraSize,
     IconPosition,
     IconType,
     IDictionaryItemDto,
+    IModalData,
+    LinkAppearance,
     Orientation,
     Shape,
     TextType,
     TextWeight
 } from '../../../../front-components/src/lib/shared/models';
 import { standImports } from './stand.imports';
-import { LinkAppearance } from '../../../../front-components/src/lib/components/buttons/models';
+import { ModalComponent } from '../../../../front-components/src/lib/components';
 
 @Component({
     selector: 'app-stand',
@@ -22,16 +25,21 @@ import { LinkAppearance } from '../../../../front-components/src/lib/components/
     styleUrl: './stand.component.scss'
 })
 export class StandComponent {
+    private readonly dialog = inject(Dialog);
+
+    readonly modalTemplateContentRef = viewChild.required<TemplateRef<any>>('modalContent');
+    readonly modalTemplateFooterRef = viewChild.required<TemplateRef<any>>('modalFooter');
+
     protected readonly TextType = TextType;
     protected readonly TextWeight = TextWeight;
     protected readonly IconType = IconType;
     protected readonly Colors = Colors;
     protected readonly ButtonType = ButtonType;
     protected readonly IconPosition = IconPosition;
-    protected readonly orientation  = Orientation;
     protected readonly console = console;
     protected readonly ExtraSize = ExtraSize;
     protected readonly Shape = Shape;
+    protected readonly Orientation = Orientation;
     protected readonly LinkAppearance = LinkAppearance;
     protected readonly dropdownItems: IDictionaryItemDto[] = [
         {
@@ -69,5 +77,16 @@ export class StandComponent {
     textareaCtrl = new FormControl('rrrr', [Validators.required, Validators.minLength(10)]);
     selectCtrl = new FormControl(null);
     numberPickerCtrl = new FormControl(2);
-    protected readonly Orientation = Orientation;
+
+    openModalWithComponent(): void {
+        this.dialog.open<IModalData>(ModalComponent, {
+            minWidth: '500px',
+            minHeight: '600px',
+            data: {
+                title: 'Заголовок',
+                contentRef: this.modalTemplateContentRef(),
+                footerRef: this.modalTemplateFooterRef(),
+            } as IModalData
+        });
+    }
 }

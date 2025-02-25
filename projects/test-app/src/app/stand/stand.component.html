@@ -325,28 +325,18 @@
 </ss-lib-empty-state>
 <br>
 
-<div class="modal">
-    <ss-lib-modal
-        [title]="'Заголовок'"
-        [description]="'Описание'"
-        [contentRef]="content"
-        [footerRef]="footer"
-        [modalConfig]="{
-            headerOrientation: Orientation.Horizontal,
-            showHeaderPadding: true,
-            showHeaderDivider: true,
-            showFooterDivider: true,
-        }"
-    />
 
-    <ng-template #content>
-        <div>Content</div>
-    </ng-template>
+<ss-lib-button
+    [type]="ButtonType.Primary"
+    [text]="'Модалка - компонент'"
+    (click)="openModalWithComponent()"
+/>
 
-    <ng-template #footer>
-        <div>Footer</div>
-    </ng-template>
-</div>
+<ng-template #modalContent>
+    <div>Content</div>
+</ng-template>
 
-
+<ng-template #modalFooter>
+    <div>Footer</div>
+</ng-template>
 
