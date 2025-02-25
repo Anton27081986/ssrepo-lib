@@ -1,0 +1,59 @@
+<div class="ss-modal">
+    <div
+        class="ss-modal-header"
+        [ngClass]="[modalConfig().headerOrientation]"
+        [class.header-padding]="modalConfig().showHeaderPadding"
+    >
+        <div class="ss-modal-header__content">
+            <ss-lib-badge [icon]="IconType.ImagePlus" [size]="ExtraSize.lg"/>
+
+            <div class="ss-modal-header__text">
+                <ss-lib-text
+                    class="ss-modal-header__text_title"
+                    [type]="TextType.BodyLg"
+                    [weight]="TextWeight.Semibold"
+                    [color]="Colors.TextBody"
+                >
+                    {{ title() }}
+                </ss-lib-text>
+
+                @if (description()) {
+                    <ss-lib-text
+                        [type]="TextType.BodySm"
+                        [weight]="TextWeight.Regular"
+                        [color]="Colors.TextBody3"
+                    >
+                        {{ description() }}
+                    </ss-lib-text>
+                }
+            </div>
+        </div>
+
+        <div class="ss-modal-header__close">
+            <ss-lib-close-button [type]="ButtonType.CloseLight" [size]="ExtraSize.xl"/>
+        </div>
+    </div>
+
+    @if (modalConfig().showHeaderDivider) {
+        <ss-lib-divider class="ss-modal-divider__top"/>
+    }
+
+    @if (contentRef()) {
+        <div class="ss-modal-content">
+            <ng-container *ngTemplateOutlet="contentRef()!"></ng-container>
+        </div>
+    }
+
+    @if (modalConfig().showFooterDivider) {
+        <ss-lib-divider class="ss-modal-divider__bottom"/>
+    }
+
+    @if (footerRef()) {
+        <div
+            class="ss-modal-footer"
+            [class.footer-padding-with-divider]="modalConfig().showFooterDivider"
+        >
+            <ng-container *ngTemplateOutlet="footerRef()!"></ng-container>
+        </div>
+    }
+</div>
