@@ -17,11 +17,22 @@ import { modalImports } from './modal.imports';
  * Параметры:
  *
  * [title]: string - заголовок модального окна. Обязательное поле
+ *
  * [description]: string | null - описание модального окна. По умолчанию: `null`
+ *
  * [icon]: IconType | null - иконка модального окна. По умолчанию: `null`
+ *
  * [contentRef]: TemplateRef<any> | undefined - контент модального окна. По умолчанию: `undefined`
+ *
  * [footerRef]: TemplateRef<any> | undefined - футер модального окна.  По умолчанию: `undefined`
- * [modalConfig]: IModalConfig - конфиг. По умолчанию: `{ headerOrientation: Orientation.Horizontal, showHeaderPadding: true, showHeaderDivider: true, showFooterDivider: true }`
+ *
+ * [modalConfig]: IModalConfig - конфиг. По умолчанию: `
+ * {
+ *      headerOrientation: Orientation.Horizontal,
+ *      showHeaderPadding: true,
+ *      showHeaderDivider: true,
+ *      showFooterDivider: true
+ * }`
  */
 @Component({
     selector: 'ss-lib-modal',
