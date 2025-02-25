@@ -1,15 +1,17 @@
 import {Injectable, OnDestroy, signal, WritableSignal} from '@angular/core';
 import {SidebarType} from '../../shared/models/enums/sidebar-type';
-import {fromEvent, map, Observable, skip, startWith, Subscription} from 'rxjs';
+import {BehaviorSubject, fromEvent, map, Observable, startWith, Subscription} from 'rxjs';
+import {ProgressStateType} from '../../shared/models/types/progress-state-type';
 
 @Injectable({providedIn: 'root'})
 export class CanvasState implements OnDestroy {
   public sidebarType: WritableSignal<SidebarType> = signal(SidebarType.Close);
-  private subscription: Subscription = new Subscription()
+  public inProgressType$: BehaviorSubject<ProgressStateType> = new BehaviorSubject<ProgressStateType>('default');
+  private subscription: Subscription = new Subscription();
 
   public screenWidth$: Observable<number> = fromEvent(window, 'resize').pipe(
     map(() => window.innerWidth),
-    startWith(window.innerWidth) // Начальное значение
+    startWith(window.innerWidth)
   );
 
   constructor() {

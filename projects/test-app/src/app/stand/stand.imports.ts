@@ -21,6 +21,7 @@ import {
 } from '../../../../front-components/src/lib/components';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FieldCtrlDirective, PopoverTriggerForDirective } from '../../../../front-components/src/lib/core/directives';
+import {SpinnerComponent} from '../../../../front-components/src/lib/components/spinner/spinner.component';
 
 
 export const standImports = [
@@ -46,4 +47,5 @@ export const standImports = [
     CloseButtonComponent,
     BadgeComponent,
     EmptyStateComponent,
+    SpinnerComponent
 ]

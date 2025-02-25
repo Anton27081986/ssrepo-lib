@@ -1,15 +1,16 @@
-import {Component, inject, input, Input, InputSignal, TemplateRef} from '@angular/core';
+import {Component, input, Input, InputSignal, TemplateRef} from '@angular/core';
 import {HeaderComponent} from '../header/header.component';
 import {SidebarComponent} from '../sidebar/sidebar.component';
 import {ScrollableBlockComponent} from '../scrollable-block/scrollable-block.component';
 import {CanvasState} from './canvas.state';
 import {IMenu} from '../../shared/models';
+import {BaseApiService} from '../../shared/services/base-api.service';
 
 @Component({
   selector: 'ss-lib-canvas',
   templateUrl: './canvas.component.html',
   styleUrls: ['./canvas.component.scss'],
-  providers: [CanvasState],
+  providers: [CanvasState, BaseApiService],
   imports: [
     HeaderComponent,
     SidebarComponent,

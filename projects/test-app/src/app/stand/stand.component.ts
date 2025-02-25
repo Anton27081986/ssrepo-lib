@@ -11,6 +11,7 @@ import {
 import { DividerType } from '../../../../front-components/src/lib/shared/models/enums/divider-type';
 import { standImports } from './stand.imports';
 import {BadgeType} from '../../../../front-components/src/lib/shared/models/enums/badge-type';
+import {HeaderApiExample} from '../header-api-example';
 
 @Component({
     selector: 'app-stand',
@@ -67,4 +68,8 @@ export class StandComponent {
     protected readonly console = console;
     protected readonly ExtraSize = ExtraSize;
   protected readonly BadgeType = BadgeType;
+
+  constructor(exampleApiService: HeaderApiExample) {
+    exampleApiService.exampleFunc().subscribe(item => console.log(item))
+  }
 }
