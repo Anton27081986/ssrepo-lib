@@ -18,6 +18,8 @@ import {
     CloseButtonComponent,
     BadgeComponent,
     EmptyStateComponent,
+    PreviewButtonComponent,
+    LinkComponent,
 } from '../../../../front-components/src/lib/components';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FieldCtrlDirective, PopoverTriggerForDirective } from '../../../../front-components/src/lib/core/directives';
@@ -47,5 +49,7 @@ export const standImports = [
     CloseButtonComponent,
     BadgeComponent,
     EmptyStateComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    PreviewButtonComponent,
+    LinkComponent
 ]
