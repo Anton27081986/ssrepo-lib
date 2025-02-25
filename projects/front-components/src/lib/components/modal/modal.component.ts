@@ -23,14 +23,13 @@ import { modalImports } from './modal.imports';
 })
 export class ModalComponent {
     protected readonly dialogRef = inject(DialogRef);
-    private readonly data: IModalData = inject(DIALOG_DATA);
 
-    public title = input<string>(this.data.title);
-    public description = input<string | null>(this.data?.description || null);
-    public icon = input<IconType | null>(this.data?.icon ||null);
-    public contentRef = input<TemplateRef<any> | undefined>(this.data?.contentRef || undefined);
-    public footerRef = input<TemplateRef<any> | undefined>(this.data?.footerRef || undefined);
-    public modalConfig = input<IModalConfig>(this.data.modalConfig || {
+    public title = input.required<string>();
+    public description = input<string | null>(null);
+    public icon = input<IconType | null>(null);
+    public contentRef = input<TemplateRef<any> | undefined>(undefined);
+    public footerRef = input<TemplateRef<any> | undefined>(undefined);
+    public modalConfig = input<IModalConfig>({
         headerOrientation: Orientation.Horizontal,
         showHeaderPadding: true,
         showHeaderDivider: true,

@@ -1,4 +1,4 @@
-import { Component, inject, TemplateRef, viewChild } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { Dialog } from '@angular/cdk/dialog';
 import {
@@ -15,7 +15,7 @@ import {
     TextWeight
 } from '../../../../front-components/src/lib/shared/models';
 import { standImports } from './stand.imports';
-import { ModalComponent } from '../../../../front-components/src/lib/components';
+import { TestModalComponent } from '../test-modal/test-modal.component';
 
 @Component({
     selector: 'app-stand',
@@ -26,9 +26,6 @@ import { ModalComponent } from '../../../../front-components/src/lib/components'
 })
 export class StandComponent {
     private readonly dialog = inject(Dialog);
-
-    readonly modalTemplateContentRef = viewChild.required<TemplateRef<any>>('modalContent');
-    readonly modalTemplateFooterRef = viewChild.required<TemplateRef<any>>('modalFooter');
 
     protected readonly TextType = TextType;
     protected readonly TextWeight = TextWeight;
@@ -79,13 +76,9 @@ export class StandComponent {
     numberPickerCtrl = new FormControl(2);
 
     openModalWithComponent(): void {
-        this.dialog.open<IModalData>(ModalComponent, {
-            minWidth: '500px',
-            minHeight: '600px',
+        this.dialog.open<IModalData>(TestModalComponent, {
             data: {
-                title: 'Заголовок',
-                contentRef: this.modalTemplateContentRef(),
-                footerRef: this.modalTemplateFooterRef(),
+                title: 'Такой вот Заголовок',
             } as IModalData
         });
     }
