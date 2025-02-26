@@ -4,13 +4,12 @@ import {SidebarComponent} from '../sidebar/sidebar.component';
 import {ScrollableBlockComponent} from '../scrollable-block/scrollable-block.component';
 import {CanvasState} from './canvas.state';
 import {IMenu} from '../../shared/models';
-import {BaseApiService} from '../../shared/services/base-api.service';
 
 @Component({
   selector: 'ss-lib-canvas',
   templateUrl: './canvas.component.html',
   styleUrls: ['./canvas.component.scss'],
-  providers: [CanvasState, BaseApiService],
+  providers: [CanvasState],
   imports: [
     HeaderComponent,
     SidebarComponent,

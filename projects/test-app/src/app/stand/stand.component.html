@@ -324,8 +324,30 @@
     </div>
 </ss-lib-empty-state>
 <br>
-<div class="spinner-block">
-  <ss-lib-spinner></ss-lib-spinner>
+<div style="display: flex; gap: 10px">
+  <ss-lib-skeleton-block
+    [config]="{  width: '300px',
+  height: '200px',
+  type: 'square' }">
+  </ss-lib-skeleton-block>
+
+  <ss-lib-skeleton-block
+    [config]="{  width: '100px',
+  height: '10px',
+  type: 'square' }">
+  </ss-lib-skeleton-block>
+
+  <ss-lib-skeleton-block
+    [config]="{  width: '200px',
+  height: '200px',
+  type: 'round' }">
+  </ss-lib-skeleton-block>
+</div>
+
+<br>
+
+<div class="skeleton-table">
+  <ss-lib-skeleton-table></ss-lib-skeleton-table>
 </div>
 
 

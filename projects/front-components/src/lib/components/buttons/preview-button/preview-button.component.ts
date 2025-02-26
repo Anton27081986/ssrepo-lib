@@ -24,6 +24,7 @@ import { ButtonType, IconType, Shape } from '../../../shared/models';
             [ngClass]="['shape-button-' + shape()]"
             [type]="type()"
             [icon]="restrictedIcon()"
+            [size]="size()"
             [iconSize]="'16'"
             [iconPosition]="IconPosition.OnlyIcon"
         >
