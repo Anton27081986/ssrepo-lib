@@ -49,8 +49,6 @@ export class ConfirmComponent {
     public badgeProps = input<IBadgeProps>(this.data?.badgeProps || {
         icon: IconType.ImagePlus,
         size: ExtraSize.lg,
-        iconColor: Colors.IconPrimary,
-        borderColor: Colors.BorderPrimary
     })
 
     public modalConfig = signal<IModalConfig>({

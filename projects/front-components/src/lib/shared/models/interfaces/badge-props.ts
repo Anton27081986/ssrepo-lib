@@ -1,9 +1,8 @@
-import { Colors, IconType } from '../enums';
+import { IconType, Shape } from '../enums';
 import { BadgeSizeType } from '../types';
 
 export interface IBadgeProps {
     icon: IconType;
-    size: BadgeSizeType,
-    iconColor?: Colors,
-    borderColor?: Colors
+    size?: BadgeSizeType,
+    shape?: Shape,
 }

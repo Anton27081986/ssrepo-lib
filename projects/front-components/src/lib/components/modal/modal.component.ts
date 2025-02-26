@@ -56,8 +56,6 @@ export class ModalComponent {
     public badgeProps = input<IBadgeProps>({
         icon: IconType.ImagePlus,
         size: ExtraSize.lg,
-        iconColor: Colors.IconPrimary,
-        borderColor: Colors.BorderPrimary
     });
     public contentRef = input<TemplateRef<any> | undefined>(undefined);
     public footerRef = input<TemplateRef<any> | undefined>(undefined);

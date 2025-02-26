@@ -1,31 +1,23 @@
-import {
-    ChangeDetectionStrategy,
-    Component,
-    computed, HostBinding,
-    input,
-    InputSignal,
-    Signal,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, input } from '@angular/core';
 import { NgClass, NgStyle } from '@angular/common'
 import { IconComponent } from '../icon/icon.component';
-import { ExtraSize, Shape, IBadgeProps, Colors } from '../../shared/models';
+import { Colors, ExtraSize, IBadgeProps, Shape, Status } from '../../shared/models';
 
 /**
  * Параметры:
  *
- * [badgeProps]: IBadgeProps - бейдж модального окна. Обязательное поле`
+ * [badgeProps]: IBadgeProps - бейдж модального окна. Обязательное поле. По умолчанию `shape: Shape.Square` и  size: ExtraSize.lg
  *
- * [type]: Shape - форма (круглый/квадратный). По умолчанию `Shape.Square`
- **
- * [footerRef]: TemplateRef<any> | undefined - футер модального окна.  По умолчанию: `undefined`
+ * [status]: Status.Default | Status.Error - Статус. По умолчанию `Status.Default`
+ *
  */
 @Component({
     selector: 'ss-lib-badge',
     standalone: true,
     imports: [
         IconComponent,
-        NgStyle,
-        NgClass
+        NgClass,
+        NgStyle
     ],
     templateUrl: 'badge.component.html',
     styleUrls: ['badge.component.scss'],
@@ -33,32 +25,37 @@ import { ExtraSize, Shape, IBadgeProps, Colors } from '../../shared/models';
 
 })
 export class BadgeComponent {
-    public badgeProps = input.required<IBadgeProps>();
-    public type: InputSignal<Shape> = input<Shape>(Shape.Square);
+    public badgeProps = input.required<IBadgeProps, IBadgeProps>({
+        transform: this.setDefaultProps
+    });
 
-    @HostBinding('style.--effects-shadows-18')
-    get shadowColorVariable() {
-        return this.badgeProps()?.borderColor || null;
+    public status = input<Status.Default | Status.Error>(Status.Default);
+
+    public setDefaultProps(value: IBadgeProps): IBadgeProps {
+        return {...value, shape: value.shape ?? Shape.Square, size: value.size ?? ExtraSize.lg};
     }
 
-    public layoutConfig: Signal<{ padding: string, iconSize: string }> = computed(() => {
-        if (this.badgeProps().size === ExtraSize.lg) {
-            return {
-                padding: '11px',
-                iconSize: '24'
-            }
-        }
+    public statusProps = computed(() => {
+        switch (this.status()) {
+            case Status.Default:
+                return {iconColor: Colors.IconPrimary, borderColor: null};
 
-        if (this.badgeProps().size === ExtraSize.xl) {
-            return {
-                padding: '13px',
-                iconSize: '28'
-            }
+            case Status.Error:
+                return {iconColor: Colors.IconError, borderColor: Colors.BorderError};
         }
+    });
 
-        return {
-            padding: '9px',
-            iconSize: '20'
+    public layoutConfig = computed(() => {
+        switch (this.badgeProps().size) {
+            case ExtraSize.lg:
+                return {iconSize: '24'}
+
+            case ExtraSize.xl:
+                return {iconSize: '28'}
+
+            default: {
+                return {iconSize: '20'}
+            }
         }
     });
 

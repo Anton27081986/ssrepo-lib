@@ -1,12 +1,12 @@
 <div
     class="ss-lib-badge"
-    [ngClass]="['ss-lib-badge--'+ type()]"
-    [ngStyle]="{'padding': layoutConfig().padding}"
+    [ngClass]="[badgeProps().shape, 'size-'+badgeProps().size, status()]"
+    [ngStyle]="{'--app-shadow-xs-skeumorphic-border': statusProps().borderColor}"
 >
     <ss-lib-icon
         [width]="layoutConfig().iconSize"
         [height]="layoutConfig().iconSize"
         [icon]="badgeProps().icon!"
-        [color]="badgeProps().iconColor || Colors.IconPrimary"
-    ></ss-lib-icon>
+        [color]="statusProps().iconColor"
+    />
 </div>

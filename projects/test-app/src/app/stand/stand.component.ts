@@ -13,6 +13,7 @@ import {
     LinkAppearance,
     Orientation,
     Shape,
+    Status,
     TextType,
     TextWeight
 } from '../../../../front-components/src/lib/shared/models';
@@ -41,6 +42,7 @@ export class StandComponent {
     protected readonly Shape = Shape;
     protected readonly Orientation = Orientation;
     protected readonly LinkAppearance = LinkAppearance;
+    protected readonly Status = Status;
     protected readonly dropdownItems: IDictionaryItemDto[] = [
         {
             id: 1,

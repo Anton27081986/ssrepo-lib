@@ -301,10 +301,10 @@
     }"/>
 
     <ss-lib-badge
-        [type]="Shape.Round"
         [badgeProps]="{
         size: ExtraSize.lg,
-        icon: IconType.ImagePlus
+        icon: IconType.ImagePlus,
+        shape: Shape.Round
     }"/>
 
     <span> Medium </span>
@@ -314,26 +314,30 @@
     }"/>
 
     <ss-lib-badge
-        [type]="Shape.Round"
+
         [badgeProps]="{
         size: ExtraSize.md,
-        icon: IconType.ImagePlus
+        icon: IconType.ImagePlus,
+        shape: Shape.Round
     }"/>
 
     <span> Xl </span>
-    <ss-lib-badge [badgeProps]="{
-        size: ExtraSize.xl,
-        icon: IconType.ImagePlus,
-        borderColor: Colors.BorderError
-    }"/>
+    <ss-lib-badge
+        [status]="Status.Error"
+        [badgeProps]="{
+            size: ExtraSize.xl,
+            icon: IconType.ImagePlus,
+        }"
+    />
 
     <ss-lib-badge
-        [type]="Shape.Round"
+        [status]="Status.Error"
         [badgeProps]="{
-        size: ExtraSize.xl,
-        icon: IconType.ImagePlus,
-        borderColor: Colors.BorderError
-    }"/>
+            size: ExtraSize.xl,
+            icon: IconType.ImagePlus,
+            shape: Shape.Round
+        }"
+    />
 </div>
 
 <ss-lib-empty-state
