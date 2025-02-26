@@ -1,6 +1,6 @@
 <div
     class="ss-lib-badge"
-    [ngClass]="[badgeProps().shape, 'size-'+badgeProps().size, status()]"
+    [ngClass]="[badgeProps().shape, 'size-'+badgeProps().size, badgeProps().status]"
     [ngStyle]="{'--app-shadow-xs-skeumorphic-border': statusProps().borderColor}"
 >
     <ss-lib-icon

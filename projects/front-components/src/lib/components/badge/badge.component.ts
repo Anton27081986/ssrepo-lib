@@ -6,10 +6,12 @@ import { Colors, ExtraSize, IBadgeProps, Shape, Status } from '../../shared/mode
 /**
  * Параметры:
  *
- * [badgeProps]: IBadgeProps - бейдж модального окна. Обязательное поле. По умолчанию `shape: Shape.Square` и  size: ExtraSize.lg
- *
- * [status]: Status.Default | Status.Error - Статус. По умолчанию `Status.Default`
- *
+ * [badgeProps]: IBadgeProps - бейдж модального окна. Обязательное поле. По умолчанию `{
+ * shape: Shape.Square,
+ * size: ExtraSize.lg
+ * status: Status.Default
+ * }
+ **
  */
 @Component({
     selector: 'ss-lib-badge',
@@ -29,19 +31,22 @@ export class BadgeComponent {
         transform: this.setDefaultProps
     });
 
-    public status = input<Status.Default | Status.Error>(Status.Default);
-
-    public setDefaultProps(value: IBadgeProps): IBadgeProps {
-        return {...value, shape: value.shape ?? Shape.Square, size: value.size ?? ExtraSize.lg};
+    public setDefaultProps(badgeData: IBadgeProps): IBadgeProps {
+        return {
+            ...badgeData,
+            shape: badgeData.shape ?? Shape.Square,
+            size: badgeData.size ?? ExtraSize.lg,
+            status: badgeData.status ?? Status.Default
+        };
     }
 
     public statusProps = computed(() => {
-        switch (this.status()) {
-            case Status.Default:
-                return {iconColor: Colors.IconPrimary, borderColor: null};
-
+        switch (this.badgeProps().status) {
             case Status.Error:
                 return {iconColor: Colors.IconError, borderColor: Colors.BorderError};
+
+            default:
+                return {iconColor: Colors.IconPrimary, borderColor: null};
         }
     });
 

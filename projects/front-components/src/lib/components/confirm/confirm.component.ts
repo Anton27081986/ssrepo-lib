@@ -2,14 +2,14 @@ import { ChangeDetectionStrategy, Component, inject, input, signal } from '@angu
 import { DIALOG_DATA, DialogRef } from '@angular/cdk/dialog';
 import { ModalComponent } from '../modal/modal.component';
 import {
-    ExtraSize,
     IBadgeProps,
-    IconType,
     IModalConfig,
-    IModalData,
+    IConfirmData,
+    ExtraSize,
+    IconType,
     Orientation,
-    Colors,
-    ButtonType
+    ButtonType,
+
 } from '../../shared/models';
 import { ButtonComponent } from '../buttons';
 
@@ -23,8 +23,6 @@ import { ButtonComponent } from '../buttons';
  * [badgeProps]: IBadgeProps - бейдж модального окна. По умолчанию: `{
  *         icon: IconType.ImagePlus,
  *         size: ExtraSize.lg,
- *         iconColor: Colors.IconPrimary,
- *         borderColor: Colors.BorderPrimary
  *     }`
  **
  * [footerRef]: TemplateRef<any> | undefined - футер модального окна.  По умолчанию: `undefined`
@@ -34,7 +32,7 @@ import { ButtonComponent } from '../buttons';
     standalone: true,
     imports: [
         ModalComponent,
-        ButtonComponent
+        ButtonComponent,
     ],
     templateUrl: './confirm.component.html',
     styleUrl: './confirm.component.scss',
@@ -42,7 +40,7 @@ import { ButtonComponent } from '../buttons';
 })
 export class ConfirmComponent {
     protected readonly dialogRef = inject(DialogRef);
-    private readonly data: IModalData = inject(DIALOG_DATA);
+    private readonly data: IConfirmData= inject(DIALOG_DATA);
 
     public title = input<string>(this.data.title || 'Тестовый заголовок');
     public description = input<string | null>(this.data?.description || null);

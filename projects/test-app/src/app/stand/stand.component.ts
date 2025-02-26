@@ -93,8 +93,10 @@ export class StandComponent {
             data: {
                 title: 'Выйти без сохранения?',
                 description: 'Все изменения будут утеряны.',
+
                 badgeProps: {
-                    icon: IconType.Save
+                    icon: IconType.Save,
+                    status: Status.Error
                 }
             } as IConfirmData
         });

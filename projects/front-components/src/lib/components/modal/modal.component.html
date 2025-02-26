@@ -5,10 +5,7 @@
         [class.header-padding]="modalConfig().showHeaderPadding"
     >
         <div class="ss-modal-header__content">
-            <ss-lib-badge [badgeProps]="{
-                icon: badgeProps().icon,
-                size: badgeProps().size,
-            }"/>
+            <ss-lib-badge [badgeProps]="badgeProps()"/>
 
             <div class="ss-modal-header__text">
                 <ss-lib-text
