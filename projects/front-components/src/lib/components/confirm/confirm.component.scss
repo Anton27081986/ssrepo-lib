@@ -1,0 +1,14 @@
+.confirm-modal {
+    width: 400px;
+    min-height: 176px;
+
+    &__buttons {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+
+        .confirm-modal__btn {
+            flex-grow: 1;
+        }
+    }
+}

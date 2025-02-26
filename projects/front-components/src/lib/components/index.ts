@@ -21,5 +21,6 @@ export { ColumnsStateService } from './table/columns.state.service'
 export { EmptyStateComponent } from './empty-state/empty-state.component';
 export { BadgeComponent } from './badge/badge.component';
 export { ModalComponent } from './modal/modal.component';
+export { ConfirmComponent } from './confirm/confirm.component';
 
 export * from './buttons/index';

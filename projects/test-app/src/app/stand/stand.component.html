@@ -295,22 +295,45 @@
 <div class="badge">
 
     <span> Large </span>
-    <ss-lib-badge [size]="ExtraSize.lg" [icon]="IconType.ImagePlus"></ss-lib-badge>
+    <ss-lib-badge [badgeProps]="{
+        size: ExtraSize.lg,
+        icon: IconType.ImagePlus
+    }"/>
 
-    <ss-lib-badge [type]="Shape.Round" [size]="ExtraSize.lg" [icon]="IconType.ImagePlus"></ss-lib-badge>
+    <ss-lib-badge
+        [type]="Shape.Round"
+        [badgeProps]="{
+        size: ExtraSize.lg,
+        icon: IconType.ImagePlus
+    }"/>
 
     <span> Medium </span>
+    <ss-lib-badge [badgeProps]="{
+        size: ExtraSize.md,
+        icon: IconType.ImagePlus
+    }"/>
 
-    <ss-lib-badge [size]="ExtraSize.md" [icon]="IconType.ImagePlus"></ss-lib-badge>
-
-    <ss-lib-badge [type]="Shape.Round" [size]="ExtraSize.md" [icon]="IconType.ImagePlus"></ss-lib-badge>
+    <ss-lib-badge
+        [type]="Shape.Round"
+        [badgeProps]="{
+        size: ExtraSize.md,
+        icon: IconType.ImagePlus
+    }"/>
 
     <span> Xl </span>
+    <ss-lib-badge [badgeProps]="{
+        size: ExtraSize.xl,
+        icon: IconType.ImagePlus,
+        borderColor: Colors.BorderError
+    }"/>
 
-    <ss-lib-badge [size]="ExtraSize.xl" [icon]="IconType.ImagePlus"></ss-lib-badge>
-
-    <ss-lib-badge [type]="Shape.Round" [size]="ExtraSize.xl" [icon]="IconType.ImagePlus"></ss-lib-badge>
-
+    <ss-lib-badge
+        [type]="Shape.Round"
+        [badgeProps]="{
+        size: ExtraSize.xl,
+        icon: IconType.ImagePlus,
+        borderColor: Colors.BorderError
+    }"/>
 </div>
 
 <ss-lib-empty-state
@@ -330,3 +353,11 @@
     [text]="'Модалка - компонент'"
     (click)="openModalWithComponent()"
 />
+<br>
+
+<ss-lib-button
+    [type]="ButtonType.Primary"
+    [text]="'Модалка - confirm'"
+    (click)="openConfirm()"
+/>
+<br>

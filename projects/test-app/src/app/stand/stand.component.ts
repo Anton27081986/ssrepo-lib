@@ -3,7 +3,9 @@ import { FormControl, Validators } from '@angular/forms';
 import { Dialog } from '@angular/cdk/dialog';
 import {
     ButtonType,
-    Colors, ExtraSize,
+    Colors,
+    ExtraSize,
+    IConfirmData,
     IconPosition,
     IconType,
     IDictionaryItemDto,
@@ -16,6 +18,7 @@ import {
 } from '../../../../front-components/src/lib/shared/models';
 import { standImports } from './stand.imports';
 import { TestModalComponent } from '../test-modal/test-modal.component';
+import { ConfirmComponent } from '../../../../front-components/src/lib/components';
 
 @Component({
     selector: 'app-stand',
@@ -80,6 +83,18 @@ export class StandComponent {
             data: {
                 title: 'Такой вот Заголовок',
             } as IModalData
+        });
+    }
+
+    openConfirm(): void {
+        this.dialog.open<IConfirmData>(ConfirmComponent, {
+            data: {
+                title: 'Выйти без сохранения?',
+                description: 'Все изменения будут утеряны.',
+                badgeProps: {
+                    icon: IconType.Save
+                }
+            } as IConfirmData
         });
     }
 }

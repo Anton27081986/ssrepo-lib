@@ -1,0 +1,27 @@
+<div class="confirm-modal">
+    <ss-lib-modal
+        [title]="title()"
+        [description]="description()"
+        [footerRef]="modalFooter"
+        [modalConfig]="modalConfig()"
+    ></ss-lib-modal>
+</div>
+
+<ng-template #modalFooter>
+    <div class="confirm-modal__buttons">
+        <ss-lib-button
+            class="confirm-modal__btn"
+            [type]="ButtonType.Secondary"
+            [text]="'Нет'"
+            (click)="dialogRef.close()"
+        />
+
+        <ss-lib-button
+            class="confirm-modal__btn"
+            [type]="ButtonType.Primary"
+            [text]="'Да'"
+            (click)="dialogRef.close(true)"
+        />
+    </div>
+</ng-template>
+

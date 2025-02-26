@@ -2,11 +2,12 @@ import { ChangeDetectionStrategy, Component, inject, input, TemplateRef } from '
 import { DialogRef } from '@angular/cdk/dialog';
 import {
     ButtonType,
+    Colors,
     ExtraSize,
+    IBadgeProps,
     IconType,
     IModalConfig,
     Orientation,
-    Colors,
     TextType,
     TextWeight
 } from '../../shared/models';
@@ -20,7 +21,12 @@ import { modalImports } from './modal.imports';
  *
  * [description]: string | null - описание модального окна. По умолчанию: `null`
  *
- * [icon]: IconType | null - иконка модального окна. По умолчанию: `null`
+ * [badgeProps]: IBadgeProps - бейдж модального окна. По умолчанию: `{
+ *         icon: IconType.ImagePlus,
+ *         size: ExtraSize.lg,
+ *         iconColor: Colors.IconPrimary,
+ *         borderColor: Colors.BorderPrimary
+ *     }`
  *
  * [contentRef]: TemplateRef<any> | undefined - контент модального окна. По умолчанию: `undefined`
  *
@@ -47,7 +53,12 @@ export class ModalComponent {
 
     public title = input.required<string>();
     public description = input<string | null>(null);
-    public icon = input<IconType | null>(null);
+    public badgeProps = input<IBadgeProps>({
+        icon: IconType.ImagePlus,
+        size: ExtraSize.lg,
+        iconColor: Colors.IconPrimary,
+        borderColor: Colors.BorderPrimary
+    });
     public contentRef = input<TemplateRef<any> | undefined>(undefined);
     public footerRef = input<TemplateRef<any> | undefined>(undefined);
     public modalConfig = input<IModalConfig>({
