@@ -3,14 +3,13 @@
 
     --_divider-border: 1px solid var(--border-primary);
 
-    min-height: 1px;
-    min-width: 1px;
-
     &--vertical {
+        min-height: 1px;
         border-right: var(--_divider-border);
     }
 
     &--horizontal {
+        min-width: 1px;
         border-top: var(--_divider-border);
     }
 }
