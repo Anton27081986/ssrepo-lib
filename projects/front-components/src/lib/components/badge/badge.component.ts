@@ -9,9 +9,8 @@ import {
 } from '@angular/core';
 import {  NgStyle } from '@angular/common'
 import {IconComponent} from '../icon/icon.component';
-import {ExtraSize, IconType} from '../../shared/models';
+import { ExtraSize, IconType, Shape } from '../../shared/models';
 import {BadgeSizeType} from '../../shared/models/types/bange-size-type';
-import {BadgeType} from '../../shared/models/enums/badge-type';
 
 @Component({
   selector: 'ss-lib-badge',
@@ -27,7 +26,7 @@ import {BadgeType} from '../../shared/models/enums/badge-type';
 })
 export class BadgeComponent {
   public size: InputSignal<BadgeSizeType> = input<BadgeSizeType>(ExtraSize.md);
-  public type: InputSignal<BadgeType> = input<BadgeType>(BadgeType.Square);
+  public type: InputSignal<Shape> = input<Shape>(Shape.Square);
   public icon = input.required<IconType>();
 
   public padding: Signal<string> = computed(() => {
@@ -42,5 +41,5 @@ export class BadgeComponent {
     return '9px'
   })
   protected readonly ExtraSize = ExtraSize;
-  protected readonly BadgeType = BadgeType;
+  protected readonly Shape = Shape;
 }
