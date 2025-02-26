@@ -177,7 +177,7 @@
 <ss-lib-toggle-icon [formControl]="toggleCtrl"></ss-lib-toggle-icon>
 <br>
 
-<ss-lib-divider [direction]="DividerType.Vertical"></ss-lib-divider>
+<ss-lib-divider [orientation]="Orientation.Vertical"></ss-lib-divider>
 <br>
 
 <ss-lib-divider></ss-lib-divider>
@@ -297,19 +297,19 @@
     <span> Large </span>
     <ss-lib-badge [size]="ExtraSize.lg" [icon]="IconType.ImagePlus"></ss-lib-badge>
 
-    <ss-lib-badge [type]="BadgeType.Round" [size]="ExtraSize.lg" [icon]="IconType.ImagePlus"></ss-lib-badge>
+    <ss-lib-badge [type]="Shape.Round" [size]="ExtraSize.lg" [icon]="IconType.ImagePlus"></ss-lib-badge>
 
     <span> Medium </span>
 
     <ss-lib-badge [size]="ExtraSize.md" [icon]="IconType.ImagePlus"></ss-lib-badge>
 
-    <ss-lib-badge [type]="BadgeType.Round" [size]="ExtraSize.md" [icon]="IconType.ImagePlus"></ss-lib-badge>
+    <ss-lib-badge [type]="Shape.Round" [size]="ExtraSize.md" [icon]="IconType.ImagePlus"></ss-lib-badge>
 
     <span> Xl </span>
 
     <ss-lib-badge [size]="ExtraSize.xl" [icon]="IconType.ImagePlus"></ss-lib-badge>
 
-    <ss-lib-badge [type]="BadgeType.Round" [size]="ExtraSize.xl" [icon]="IconType.ImagePlus"></ss-lib-badge>
+    <ss-lib-badge [type]="Shape.Round" [size]="ExtraSize.xl" [icon]="IconType.ImagePlus"></ss-lib-badge>
 
 </div>
 
@@ -323,6 +323,10 @@
         <ss-lib-button [type]="ButtonType.Primary" [text]="'Еще кнопка'"></ss-lib-button>
     </div>
 </ss-lib-empty-state>
+<br>
 
-
-
+<ss-lib-button
+    [type]="ButtonType.Primary"
+    [text]="'Модалка - компонент'"
+    (click)="openModalWithComponent()"
+/>

@@ -1,0 +1,18 @@
+<div class="test-modal">
+    <ss-lib-modal
+        [title]="title()"
+        [description]="description()"
+        [icon]="icon()"
+        [contentRef]="modalContent"
+        [footerRef]="modalFooter"
+    ></ss-lib-modal>
+</div>
+
+<ng-template #modalContent>
+    <div>Content</div>
+</ng-template>
+
+<ng-template #modalFooter>
+    <div>Footer</div>
+</ng-template>
+

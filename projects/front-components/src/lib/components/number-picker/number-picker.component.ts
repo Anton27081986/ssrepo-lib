@@ -7,7 +7,7 @@ import {
 } from '@angular/core';
 import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR, ReactiveFormsModule } from '@angular/forms';
 import { InputComponent } from '../input/input.component';
-import { ButtonComponent } from '../buttons/button/button.component';
+import { ButtonComponent } from '../buttons';
 import { FormFieldComponent } from '../form-field/form-field.component';
 import { Align, ButtonType, Direction, ExtraSize, IconPosition, IconType, InputType } from '../../shared/models';
 import { FieldCtrlDirective } from '../../core/directives';
