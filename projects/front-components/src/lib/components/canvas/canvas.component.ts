@@ -1,4 +1,4 @@
-import {Component, inject, input, Input, InputSignal, TemplateRef} from '@angular/core';
+import {Component, input, Input, InputSignal, TemplateRef} from '@angular/core';
 import {HeaderComponent} from '../header/header.component';
 import {SidebarComponent} from '../sidebar/sidebar.component';
 import {ScrollableBlockComponent} from '../scrollable-block/scrollable-block.component';

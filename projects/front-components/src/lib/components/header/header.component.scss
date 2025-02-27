@@ -20,4 +20,8 @@
   &__right {
     @include flex-wrap
   }
+
+  &__progress {;
+    width: 100%;
+  }
 }
