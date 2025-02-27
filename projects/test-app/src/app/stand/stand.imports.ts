@@ -22,7 +22,8 @@ import {
     PreviewButtonComponent,
     LinkComponent,
     SkeletonTableComponent,
-    SkeletonBlockComponent
+    SkeletonBlockComponent,
+    OverlayButtonComponent
 } from '../../../../front-components/src/lib/components';
 import { FieldCtrlDirective, PopoverTriggerForDirective } from '../../../../front-components/src/lib/core/directives';
 
@@ -53,5 +54,6 @@ export const standImports = [
     PreviewButtonComponent,
     LinkComponent,
     SkeletonTableComponent,
-    SkeletonBlockComponent
+    SkeletonBlockComponent,
+    OverlayButtonComponent
 ]
