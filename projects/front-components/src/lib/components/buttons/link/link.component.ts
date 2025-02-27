@@ -8,8 +8,7 @@ import {
     ViewEncapsulation
 } from '@angular/core';
 import { NgClass } from '@angular/common';
-import { LinkAppearance } from '../models';
-import { ButtonType, ExtraSize, IconType, IStateElement } from '../../../shared/models';
+import { ButtonType, ExtraSize, IconType, IStateElement, LinkAppearance } from '../../../shared/models';
 import { ElementStateService } from '../../../shared/services';
 import { GetColorPipe } from '../pipes';
 import { IconComponent } from '../../icon/icon.component';

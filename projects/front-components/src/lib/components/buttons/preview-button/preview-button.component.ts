@@ -8,7 +8,7 @@ import { ButtonType, IconType, Shape } from '../../../shared/models';
  *
  * [type]: ButtonType.Preview - Тип. По умолчанию: `ButtonType.Preview`
  *
- * [shape]: Shape - Форма кнопки. По умолчанию: `Shape.Circle`
+ * [shape]: Shape - Форма кнопки. По умолчанию: `Shape.Round`
  *
  * [icon]: IconType - Название иконки.  По умолчанию: `IconType.Close`
  */
@@ -37,7 +37,7 @@ import { ButtonType, IconType, Shape } from '../../../shared/models';
 })
 export class PreviewButtonComponent extends BaseButtonComponent<ButtonType.Preview> {
     public override type = input<ButtonType.Preview>(ButtonType.Preview);
-    public shape  = input<Shape>(Shape.Circle);
+    public shape  = input<Shape>(Shape.Round);
     public restrictedIcon = input<IconType>(IconType.Close);
 
     public readonly ButtonType = ButtonType;

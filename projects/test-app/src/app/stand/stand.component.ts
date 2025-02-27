@@ -1,19 +1,20 @@
-import { Component } from '@angular/core';
+import {Component, inject} from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { Dialog } from '@angular/cdk/dialog';
 import {
     ButtonType,
     Colors, ExtraSize,
     IconPosition,
     IconType,
     IDictionaryItemDto,
+    IModalData,
+    LinkAppearance,
+    Orientation,
     Shape,
     TextType,
     TextWeight
 } from '../../../../front-components/src/lib/shared/models';
-import { DividerType } from '../../../../front-components/src/lib/shared/models/enums/divider-type';
 import { standImports } from './stand.imports';
-import { BadgeType } from '../../../../front-components/src/lib/shared/models/enums/badge-type';
-import { LinkAppearance } from '../../../../front-components/src/lib/components/buttons/models';
 import {ColumnsStateService} from '../../../../front-components/src/lib/components';
 import {
   IStoreTableBaseColumn
@@ -28,27 +29,28 @@ export enum ExampleRowItemField {
   example6 = 'example6',
 }
 
+import { TestModalComponent } from '../test-modal/test-modal.component';
 
 @Component({
     selector: 'app-stand',
     standalone: true,
     imports: standImports,
-    providers: [ColumnsStateService],
     templateUrl: './stand.component.html',
     styleUrl: './stand.component.scss'
 })
 export class StandComponent {
+    private readonly dialog = inject(Dialog);
+
     protected readonly TextType = TextType;
     protected readonly TextWeight = TextWeight;
     protected readonly IconType = IconType;
     protected readonly Colors = Colors;
     protected readonly ButtonType = ButtonType;
     protected readonly IconPosition = IconPosition;
-    protected readonly DividerType = DividerType;
     protected readonly console = console;
     protected readonly ExtraSize = ExtraSize;
-    protected readonly BadgeType = BadgeType;
     protected readonly Shape = Shape;
+    protected readonly Orientation = Orientation;
     protected readonly LinkAppearance = LinkAppearance;
     protected readonly dropdownItems: IDictionaryItemDto[] = [
         {
@@ -86,6 +88,14 @@ export class StandComponent {
     textareaCtrl = new FormControl('rrrr', [Validators.required, Validators.minLength(10)]);
     selectCtrl = new FormControl(null);
     numberPickerCtrl = new FormControl(2);
+
+    openModalWithComponent(): void {
+        this.dialog.open<IModalData>(TestModalComponent, {
+            data: {
+                title: 'Такой вот Заголовок',
+            } as IModalData
+        });
+    }
 
   constructor(private readonly columnState: ColumnsStateService) {
     this.columnState.colsTr$.next(this.defaultCols)
