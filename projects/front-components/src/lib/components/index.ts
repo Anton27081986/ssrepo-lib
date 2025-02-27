@@ -23,5 +23,6 @@ export { SkeletonTableComponent } from './skeleton/skeleton-table/skeleton-table
 export { SkeletonBlockComponent } from './skeleton/skeleton-block/skeleton-block.component';
 export { BadgeComponent } from './badge/badge.component';
 export { ModalComponent } from './modal/modal.component';
+export { ConfirmComponent } from './confirm/confirm.component';
 
 export * from './buttons/index';

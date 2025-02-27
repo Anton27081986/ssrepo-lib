@@ -275,7 +275,7 @@
         [popoverTriggerFor]="dropdown2"
     >
         <ss-lib-dropdown-list #dropdown2>
-            @for (item of dropdownItems; track item.id) {
+            @for (item of DROPDOWN_ITEMS; track item.id) {
                 <ss-lib-dropdown-item [value]="item" [icon]="IconType.Bell"/>
             }
         </ss-lib-dropdown-list>
@@ -295,22 +295,49 @@
 <div class="badge">
 
     <span> Large </span>
-    <ss-lib-badge [size]="ExtraSize.lg" [icon]="IconType.ImagePlus"></ss-lib-badge>
+    <ss-lib-badge [badgeProps]="{
+        size: ExtraSize.lg,
+        icon: IconType.ImagePlus
+    }"/>
 
-    <ss-lib-badge [type]="Shape.Round" [size]="ExtraSize.lg" [icon]="IconType.ImagePlus"></ss-lib-badge>
+    <ss-lib-badge
+        [badgeProps]="{
+        size: ExtraSize.lg,
+        icon: IconType.ImagePlus,
+        shape: Shape.Round
+    }"/>
 
     <span> Medium </span>
+    <ss-lib-badge [badgeProps]="{
+        size: ExtraSize.md,
+        icon: IconType.ImagePlus
+    }"/>
 
-    <ss-lib-badge [size]="ExtraSize.md" [icon]="IconType.ImagePlus"></ss-lib-badge>
+    <ss-lib-badge
 
-    <ss-lib-badge [type]="Shape.Round" [size]="ExtraSize.md" [icon]="IconType.ImagePlus"></ss-lib-badge>
+        [badgeProps]="{
+        size: ExtraSize.md,
+        icon: IconType.ImagePlus,
+        shape: Shape.Round
+    }"/>
 
     <span> Xl </span>
+    <ss-lib-badge
+        [badgeProps]="{
+            size: ExtraSize.xl,
+            icon: IconType.ImagePlus,
+            status: Status.Error
+        }"
+    />
 
-    <ss-lib-badge [size]="ExtraSize.xl" [icon]="IconType.ImagePlus"></ss-lib-badge>
-
-    <ss-lib-badge [type]="Shape.Round" [size]="ExtraSize.xl" [icon]="IconType.ImagePlus"></ss-lib-badge>
-
+    <ss-lib-badge
+        [badgeProps]="{
+            size: ExtraSize.xl,
+            icon: IconType.ImagePlus,
+            shape: Shape.Round,
+            status: Status.Error
+        }"
+    />
 </div>
 
 <ss-lib-empty-state
@@ -356,3 +383,11 @@
     [text]="'Модалка - компонент'"
     (click)="openModalWithComponent()"
 />
+<br>
+
+<ss-lib-button
+    [type]="ButtonType.Primary"
+    [text]="'Модалка - confirm'"
+    (click)="openConfirm()"
+/>
+<br>

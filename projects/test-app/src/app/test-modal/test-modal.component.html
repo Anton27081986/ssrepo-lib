@@ -1,10 +1,13 @@
 <div class="test-modal">
     <ss-lib-modal
-        [title]="title()"
-        [description]="description()"
-        [icon]="icon()"
-        [contentRef]="modalContent"
-        [footerRef]="modalFooter"
+        [modalData]="{
+            title: data.title,
+            description: data.description,
+            badgeProps: data.badgeProps,
+            contentRef: modalContent,
+            footerRef: modalFooter,
+            modalConfig: data.modalConfig!
+        }"
     ></ss-lib-modal>
 </div>
 
