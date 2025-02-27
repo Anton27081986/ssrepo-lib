@@ -4,3 +4,10 @@ export { IDictionaryItemDto } from './dictionary-item-dto';
 export { PopoverContent } from './popover-content';
 export { IModalConfig } from './modal-config';
 export { IModalData } from './modal-data';
+export { SkeletonConf } from './skeleton.conf'
+export { IStoreTableBase } from './store-table-base-column'
+export { IStoreTableBaseColumn } from './store-table-base-column'
+export { ISkeletonTableBaseColumn } from './store-table-base-column'
+export { ISkeletonDerivativeThColumn } from './store-table-base-column'
+export { ISkeletonDerivativeTrTable } from './store-table-base-column'
+export { ISkeletonDerivativeTdTable } from './store-table-base-column'

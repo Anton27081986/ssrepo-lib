@@ -2,23 +2,20 @@ import {Component, inject} from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { Dialog } from '@angular/cdk/dialog';
 import {
-    ButtonType,
-    Colors, ExtraSize,
-    IconPosition,
-    IconType,
-    IDictionaryItemDto,
-    IModalData,
-    LinkAppearance,
-    Orientation,
-    Shape,
-    TextType,
-    TextWeight
+  ButtonType,
+  Colors, ExtraSize,
+  IconPosition,
+  IconType,
+  IDictionaryItemDto,
+  IModalData, IStoreTableBaseColumn,
+  LinkAppearance,
+  Orientation,
+  Shape,
+  TextType,
+  TextWeight
 } from '../../../../front-components/src/lib/shared/models';
 import { standImports } from './stand.imports';
 import {ColumnsStateService} from '../../../../front-components/src/lib/components';
-import {
-  IStoreTableBaseColumn
-} from '../../../../front-components/src/lib/shared/models/interfaces/store-table-base-column';
 
 export enum ExampleRowItemField {
   example1 = 'example1',
@@ -34,7 +31,7 @@ import { TestModalComponent } from '../test-modal/test-modal.component';
 @Component({
     selector: 'app-stand',
     standalone: true,
-    imports: standImports,
+    imports: [standImports],
     templateUrl: './stand.component.html',
     styleUrl: './stand.component.scss'
 })
@@ -112,12 +109,12 @@ export class StandComponent {
         header: {
           width: '100px',
           height: '10px',
-          type: 'round'
+          type: Shape.Round
         },
         body: {
           width: '100px',
           height: '100px',
-          type: 'square'
+          type: Shape.Round
         }
       }
     },
@@ -130,12 +127,12 @@ export class StandComponent {
         header: {
           width: '100px',
           height: '10px',
-          type: 'square'
+          type: Shape.Square
         },
         body: {
           width: '100px',
           height: '20px',
-          type: 'square'
+          type: Shape.Square
         }
       }
     },
@@ -148,12 +145,12 @@ export class StandComponent {
         header: {
           width: '100px',
           height: '50px',
-          type: 'square'
+          type: Shape.Square
         },
         body: {
           width: '100px',
           height: '50px',
-          type: 'square'
+          type: Shape.Square
         }
       }
     },
@@ -166,12 +163,12 @@ export class StandComponent {
         header: {
           width: '100px',
           height: '50px',
-          type: 'square'
+          type: Shape.Square
         },
         body: {
           width: '100px',
           height: '50px',
-          type: 'square'
+          type: Shape.Square
         }
       }
     },
@@ -184,12 +181,12 @@ export class StandComponent {
         header: {
           width: '100px',
           height: '50px',
-          type: 'square'
+          type: Shape.Square
         },
         body: {
           width: '100px',
           height: '50px',
-          type: 'square'
+          type: Shape.Square
         }
       }
     },
@@ -202,12 +199,12 @@ export class StandComponent {
         header: {
           width: '100px',
           height: '50px',
-          type: 'square'
+          type: Shape.Square
         },
         body: {
           width: '100px',
           height: '50px',
-          type: 'square'
+          type: Shape.Square
         }
       }
     }

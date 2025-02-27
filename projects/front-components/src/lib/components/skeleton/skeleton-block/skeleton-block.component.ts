@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, input, InputSignal} from '@angular/core';
-import {SkeletonConf} from '../../../shared/models/interfaces/skeleton';
+import {SkeletonConf} from '../../../shared/models';
 
 @Component({
   selector: 'ss-lib-skeleton-block',
