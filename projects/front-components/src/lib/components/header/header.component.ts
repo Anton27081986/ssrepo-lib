@@ -4,6 +4,7 @@ import {ButtonComponent} from '../buttons/button/button.component';
 import { ButtonType, ExtraSize, IconPosition, IconType } from '../../shared/models';
 import {CanvasState} from '../canvas/canvas.state';
 import {SidebarType} from '../../shared/models/enums/sidebar-type';
+import {ProgressComponent} from '../progress/progress.component';
 
 @Component({
   selector: 'ss-lib-header',
@@ -11,7 +12,8 @@ import {SidebarType} from '../../shared/models/enums/sidebar-type';
   styleUrls: ['./header.component.scss'],
   imports: [
     NgTemplateOutlet,
-    ButtonComponent
+    ButtonComponent,
+    ProgressComponent
   ],
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -20,7 +22,9 @@ export class HeaderComponent {
   @Input() public leftMenuTemplateRef: TemplateRef<any> | null = null;
   @Input() public rightMenuTemplateRef: TemplateRef<any> | null = null;
 
-  constructor(private readonly canvasState: CanvasState) {}
+  // progress = this.canvasState.progress;
+
+  constructor(public readonly canvasState: CanvasState) {}
 
   protected readonly ButtonType = ButtonType;
   protected readonly IconType = IconType;
