@@ -84,16 +84,27 @@ export class StandComponent {
         this.dialog.open<IModalData>(TestModalComponent, {
             data: {
                 title: 'Такой вот Заголовок',
+                description: 'Описание',
+                badgeProps: {
+                    icon: IconType.Plus,
+                    size: ExtraSize.xl,
+                    status: Status.Error
+                },
+                modalConfig: {
+                    headerOrientation: Orientation.Vertical
+                }
             } as IModalData
         });
     }
+
 
     openConfirm(): void {
         this.dialog.open<IConfirmData>(ConfirmComponent, {
             data: {
                 title: 'Выйти без сохранения?',
                 description: 'Все изменения будут утеряны.',
-
+                yes: 'Кнопка да',
+                no: 'Кнопка нет',
                 badgeProps: {
                     icon: IconType.Save,
                     status: Status.Error

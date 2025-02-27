@@ -1,10 +1,12 @@
 <div class="confirm-modal">
     <ss-lib-modal
-        [title]="title()"
-        [badgeProps]="badgeProps()"
-        [description]="description()"
-        [modalConfig]="modalConfig()"
-        [footerRef]="modalFooter"
+        [modalData]="{
+            title: confirmData().title,
+            description: confirmData().description,
+            badgeProps: confirmData().badgeProps,
+            footerRef: modalFooter,
+            modalConfig: modalConfig()
+        }"
     ></ss-lib-modal>
 </div>
 
@@ -13,14 +15,14 @@
         <ss-lib-button
             class="confirm-modal__btn"
             [type]="ButtonType.Secondary"
-            [text]="'Нет'"
+            [text]="confirmData().no"
             (click)="dialogRef.close()"
         />
 
         <ss-lib-button
             class="confirm-modal__btn"
             [type]="ButtonType.Primary"
-            [text]="'Да'"
+            [text]="confirmData().yes"
             (click)="dialogRef.close(true)"
         />
     </div>

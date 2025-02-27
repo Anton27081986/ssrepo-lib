@@ -1,12 +1,8 @@
-import { ChangeDetectionStrategy, Component, inject, input } from '@angular/core';
-import {
-    IModalConfig,
-    IModalData,
-    Orientation,
-    IconType,
-    IBadgeProps, ExtraSize, Colors
-} from '../../../../front-components/src/lib/shared/models';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { DIALOG_DATA } from '@angular/cdk/dialog';
+import {
+    IModalData,
+} from '../../../../front-components/src/lib/shared/models';
 import { ModalComponent } from '../../../../front-components/src/lib/components';
 
 @Component({
@@ -18,18 +14,5 @@ import { ModalComponent } from '../../../../front-components/src/lib/components'
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TestModalComponent {
-    private readonly data: IModalData = inject(DIALOG_DATA);
-
-    public title = input<string>(this.data.title || 'Тестовый заголовок');
-    public description = input<string | null>(this.data?.description || null);
-    public badgeProps = input<IBadgeProps>(this.data?.badgeProps || {
-        icon: IconType.ImagePlus,
-        size: ExtraSize.lg,
-    })
-    public modalConfig = input<IModalConfig>(this.data.modalConfig || {
-        headerOrientation: Orientation.Horizontal,
-        showHeaderPadding: true,
-        showHeaderDivider: true,
-        showFooterDivider: true
-    });
+    protected readonly data: IModalData = inject(DIALOG_DATA);
 }

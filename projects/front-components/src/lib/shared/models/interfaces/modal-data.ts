@@ -4,16 +4,17 @@ import { IBadgeProps } from './badge-props';
 
 export interface IModalData {
     title: string,
-    description?: string | null,
-    badgeProps?: IBadgeProps | null,
+    description?: string | undefined,
+    badgeProps?: IBadgeProps | undefined,
     contentRef?: TemplateRef<any> | undefined,
     footerRef?: TemplateRef<any> | undefined,
     modalConfig?: IModalConfig
 }
 
 export interface IConfirmData {
-    title: string,
-    description?: string | null,
-    badgeProps?: IBadgeProps | null,
-    footerRef?: TemplateRef<any> | undefined,
+    title: string;
+    description?: string;
+    badgeProps?: IBadgeProps;
+    yes?: string,
+    no?: string,
 }
