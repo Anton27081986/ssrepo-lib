@@ -13,7 +13,6 @@ export interface IStoreTableBase extends IStoreTableId{
 }
 
 export interface IStoreTableBaseColumn extends IStoreTableBase {
-  /** @deprecated */
   readonly sort?: boolean | null;
   readonly sortType?: string | null;
   readonly align?: string | null;

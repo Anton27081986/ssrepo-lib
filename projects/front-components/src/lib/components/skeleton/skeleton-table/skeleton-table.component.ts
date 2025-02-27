@@ -27,14 +27,14 @@ export class SkeletonTableComponent {
   protected stateColumn: ColumnsStateService = inject(ColumnsStateService);
 
   protected visibleCols: Signal<IStoreTableBaseColumn[]> =
-    toSignal(this.stateColumn.visibleCols$,{ initialValue: [] });
+    toSignal(this.stateColumn.visibleCols$, {initialValue: []});
 
   public readonly skeletonTrCols: Signal<ISkeletonDerivativeTrTable[]> = computed(() => {
-    const  trCols: ISkeletonDerivativeTrTable[] = []
-    if(this.visibleCols().length) {
+    const trCols: ISkeletonDerivativeTrTable[] = []
+    if (this.visibleCols().length) {
 
-      for(let i = 0; i < this.countItems(); i++) {
-        trCols.push({items: this.generatorTds() })
+      for (let i = 0; i < this.countItems(); i++) {
+        trCols.push({items: this.generatorTds()})
       }
 
     }
@@ -42,16 +42,13 @@ export class SkeletonTableComponent {
   });
 
   private generatorTds(): ISkeletonDerivativeTdTable[] {
-    const itemsTd: ISkeletonDerivativeTdTable[] = []
-    this.visibleCols().forEach(col => {
-      itemsTd.push({
+    return this.visibleCols().map(col => {
+      return {
         id: col.id,
         order: col.order,
         skeletonConfig: col.skeleton.body
-      })
+      }
     })
-
-    return itemsTd;
   }
 
 }

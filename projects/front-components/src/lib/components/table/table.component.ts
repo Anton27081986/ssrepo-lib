@@ -1,12 +1,10 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  EventEmitter,
   HostBinding, input,
-  Input, InputSignal,
-  Output,
+  InputSignal,
 } from '@angular/core';
-import {AsyncPipe, NgForOf, NgIf, NgStyle} from "@angular/common";
+import {AsyncPipe, NgForOf, NgStyle} from "@angular/common";
 import {ColumnsStateService} from './columns.state.service';
 import {TextComponent} from '../text/text.component';
 import {Colors, TextType, TextWeight} from '../../shared/models';
