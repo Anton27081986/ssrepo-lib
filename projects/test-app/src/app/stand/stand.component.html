@@ -275,7 +275,7 @@
         [popoverTriggerFor]="dropdown2"
     >
         <ss-lib-dropdown-list #dropdown2>
-            @for (item of dropdownItems; track item.id) {
+            @for (item of DROPDOWN_ITEMS; track item.id) {
                 <ss-lib-dropdown-item [value]="item" [icon]="IconType.Bell"/>
             }
         </ss-lib-dropdown-list>
