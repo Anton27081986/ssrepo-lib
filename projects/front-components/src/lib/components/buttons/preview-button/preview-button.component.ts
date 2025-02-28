@@ -1,30 +1,22 @@
 import { ChangeDetectionStrategy, Component, input, ViewEncapsulation } from '@angular/core';
-import { NgClass } from '@angular/common';
 import { BaseButtonComponent } from '../base-button/base-button.component';
-import { ButtonType, IconType, Shape } from '../../../shared/models';
+import { ButtonType, IconType } from '../../../shared/models';
 
 /**
  * Параметры:
  *
  * [type]: ButtonType.Preview - Тип. По умолчанию: `ButtonType.Preview`
  *
- * [shape]: Shape - Форма кнопки. По умолчанию: `Shape.Round`
- *
  * [icon]: IconType - Название иконки.  По умолчанию: `IconType.Close`
  */
 @Component({
     selector: 'ss-lib-preview-button',
     standalone: true,
-    imports: [
-        BaseButtonComponent,
-        NgClass
-    ],
+    imports: [BaseButtonComponent],
     template: `
         <ss-lib-base-button
-            [ngClass]="['shape-button-' + shape()]"
             [type]="type()"
             [icon]="restrictedIcon()"
-            [size]="size()"
             [iconSize]="'16'"
             [iconPosition]="IconPosition.OnlyIcon"
         >
@@ -37,7 +29,6 @@ import { ButtonType, IconType, Shape } from '../../../shared/models';
 })
 export class PreviewButtonComponent extends BaseButtonComponent<ButtonType.Preview> {
     public override type = input<ButtonType.Preview>(ButtonType.Preview);
-    public shape  = input<Shape>(Shape.Round);
     public restrictedIcon = input<IconType>(IconType.Close);
 
     public readonly ButtonType = ButtonType;

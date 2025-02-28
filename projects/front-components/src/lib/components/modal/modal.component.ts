@@ -1,12 +1,12 @@
-import { ChangeDetectionStrategy, Component, inject, input, TemplateRef } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, input } from '@angular/core';
 import { DialogRef } from '@angular/cdk/dialog';
 import {
     ButtonType,
+    Colors,
     ExtraSize,
     IconType,
-    IModalConfig,
+    IModalData,
     Orientation,
-    Colors,
     TextType,
     TextWeight
 } from '../../shared/models';
@@ -16,23 +16,15 @@ import { modalImports } from './modal.imports';
 /**
  * Параметры:
  *
- * [title]: string - заголовок модального окна. Обязательное поле
- *
- * [description]: string | null - описание модального окна. По умолчанию: `null`
- *
- * [icon]: IconType | null - иконка модального окна. По умолчанию: `null`
- *
- * [contentRef]: TemplateRef<any> | undefined - контент модального окна. По умолчанию: `undefined`
- *
- * [footerRef]: TemplateRef<any> | undefined - футер модального окна.  По умолчанию: `undefined`
- *
- * [modalConfig]: IModalConfig - конфиг. По умолчанию: `
- * {
+ * [modalData]: IModalData. По умолчанию: `
+ *  badgeProps: {
+ *      icon: IconType.ImagePlus,
+ *      size: ExtraSize.lg,
  *      headerOrientation: Orientation.Horizontal,
  *      showHeaderPadding: true,
  *      showHeaderDivider: true,
  *      showFooterDivider: true
- * }`
+ * },`
  */
 @Component({
     selector: 'ss-lib-modal',
@@ -45,17 +37,27 @@ import { modalImports } from './modal.imports';
 export class ModalComponent {
     protected readonly dialogRef = inject(DialogRef);
 
-    public title = input.required<string>();
-    public description = input<string | null>(null);
-    public icon = input<IconType | null>(null);
-    public contentRef = input<TemplateRef<any> | undefined>(undefined);
-    public footerRef = input<TemplateRef<any> | undefined>(undefined);
-    public modalConfig = input<IModalConfig>({
-        headerOrientation: Orientation.Horizontal,
-        showHeaderPadding: true,
-        showHeaderDivider: true,
-        showFooterDivider: true
+    public modalData = input.required<IModalData, IModalData>({
+        transform: this.setDefaultProps
     });
+
+    public setDefaultProps(modalData: IModalData): IModalData {
+        return {
+            ...modalData,
+            badgeProps: {
+                ...modalData.badgeProps,
+                icon: modalData.badgeProps?.icon ?? IconType.ImagePlus,
+                size: modalData.badgeProps?.size ?? ExtraSize.lg
+            },
+            modalConfig: {
+                ...modalData.modalConfig,
+                headerOrientation: modalData.modalConfig?.headerOrientation ?? Orientation.Horizontal,
+                showHeaderPadding: modalData.modalConfig?.showHeaderPadding ?? true,
+                showHeaderDivider: modalData.modalConfig?.showHeaderDivider ?? true,
+                showFooterDivider: modalData.modalConfig?.showFooterDivider ?? true,
+            }
+        };
+    }
 
     public readonly ButtonType = ButtonType;
     public readonly ExtraSize = ExtraSize;

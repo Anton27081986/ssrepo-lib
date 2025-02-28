@@ -1,4 +1,4 @@
-import {Component, inject, input, Input, InputSignal, TemplateRef} from '@angular/core';
+import {Component, input, Input, InputSignal, output, TemplateRef} from '@angular/core';
 import {HeaderComponent} from '../header/header.component';
 import {SidebarComponent} from '../sidebar/sidebar.component';
 import {ScrollableBlockComponent} from '../scrollable-block/scrollable-block.component';
@@ -19,9 +19,10 @@ import {IMenu} from '../../shared/models';
 })
 
 export class CanvasComponent {
-  @Input() public leftMenuHeaderTemplateRef: TemplateRef<any> | null = null;
-  @Input() public rightMenuHeaderTemplateRef: TemplateRef<any> | null = null;
-  @Input() public topMenuSidebarTemplateRef: TemplateRef<any> | null = null;
+  public leftMenuHeaderTemplateRef: InputSignal<TemplateRef<any> | null> = input.required();
+  public rightMenuHeaderTemplateRef: InputSignal<TemplateRef<any> | null> = input.required();
+
+  public outMenuFromCanvas = output<IMenu>();
 
   public contentScrollHorizontal: InputSignal<boolean> = input(false);
   public contentScrollVertical: InputSignal<boolean> = input(true);

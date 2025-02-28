@@ -1,45 +1,69 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  computed,
-  input,
-  InputSignal,
-  Signal,
-  ViewEncapsulation,
-} from '@angular/core';
-import {  NgStyle } from '@angular/common'
-import {IconComponent} from '../icon/icon.component';
-import { ExtraSize, IconType, Shape } from '../../shared/models';
-import {BadgeSizeType} from '../../shared/models/types/bange-size-type';
+import { ChangeDetectionStrategy, Component, computed, input } from '@angular/core';
+import { NgClass, NgStyle } from '@angular/common'
+import { IconComponent } from '../icon/icon.component';
+import { Colors, ExtraSize, IBadgeProps, Shape, Status } from '../../shared/models';
 
+/**
+ * Параметры:
+ *
+ * [badgeProps]: IBadgeProps - бейдж модального окна. Обязательное поле. По умолчанию `{
+ * shape: Shape.Square,
+ * size: ExtraSize.lg
+ * status: Status.Default
+ * }
+ **
+ */
 @Component({
-  selector: 'ss-lib-badge',
-  templateUrl: 'badge.component.html',
-  styleUrls: ['badge.component.scss'],
-  standalone: true,
-  encapsulation: ViewEncapsulation.None,
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [
-    IconComponent,
-    NgStyle
-  ]
+    selector: 'ss-lib-badge',
+    standalone: true,
+    imports: [
+        IconComponent,
+        NgClass,
+        NgStyle
+    ],
+    templateUrl: 'badge.component.html',
+    styleUrls: ['badge.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+
 })
 export class BadgeComponent {
-  public size: InputSignal<BadgeSizeType> = input<BadgeSizeType>(ExtraSize.md);
-  public type: InputSignal<Shape> = input<Shape>(Shape.Square);
-  public icon = input.required<IconType>();
+    public badgeProps = input.required<IBadgeProps, IBadgeProps>({
+        transform: this.setDefaultProps
+    });
 
-  public padding: Signal<string> = computed(() => {
-    if (this.size() === ExtraSize.lg) {
-      return '11px'
+    public setDefaultProps(badgeData: IBadgeProps): IBadgeProps {
+        return {
+            ...badgeData,
+            shape: badgeData.shape ?? Shape.Square,
+            size: badgeData.size ?? ExtraSize.lg,
+            status: badgeData.status ?? Status.Default
+        };
     }
 
-    if (this.size() === ExtraSize.xl) {
-      return '13px'
-    }
+    public statusProps = computed(() => {
+        switch (this.badgeProps().status) {
+            case Status.Error:
+                return {iconColor: Colors.IconError, borderColor: Colors.BorderError};
 
-    return '9px'
-  })
-  protected readonly ExtraSize = ExtraSize;
-  protected readonly Shape = Shape;
+            default:
+                return {iconColor: Colors.IconPrimary, borderColor: null};
+        }
+    });
+
+    public layoutConfig = computed(() => {
+        switch (this.badgeProps().size) {
+            case ExtraSize.lg:
+                return {iconSize: '24'}
+
+            case ExtraSize.xl:
+                return {iconSize: '28'}
+
+            default: {
+                return {iconSize: '20'}
+            }
+        }
+    });
+
+    public readonly ExtraSize = ExtraSize;
+    public readonly Colors = Colors;
 }

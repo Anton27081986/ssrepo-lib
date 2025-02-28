@@ -9,6 +9,7 @@ button.nuv-icon-button {
   background-color: transparent;
   cursor: pointer;
   justify-content: space-between;
+  min-width: 40px;
 
   &--nav-base {
     padding: 8px 10px;

@@ -1,19 +1,16 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  effect,
   inject, input,
-  Input, InputSignal,
-  TemplateRef
+  InputSignal, output,
 } from '@angular/core';
 import {NgForOf, NgIf} from '@angular/common';
-import {ButtonType, IconType, IMenu} from '../../shared/models';
-import {SidebarType} from '../../shared/models/enums/sidebar-type';
+import {ButtonType, IconType, IMenu, NavButton, SidebarType} from '../../shared/models';
 import {CanvasState} from '../canvas/canvas.state';
 import {DividerComponent} from '../divider/divider.component';
-import { ButtonComponent } from '../buttons/button/button.component';
-import {NuvButtonComponent} from '../nuv-icon-button/nuv-button.component';
-import {NuvButtonEnum} from '../../shared/models/enums/nuv-button-enum';
+import {NavButtonComponent} from '../nav-button/nav-button.component';
+import {animate, style, transition, trigger} from '@angular/animations';
+import {ButtonComponent} from '../buttons';
 
 @Component({
   selector: 'ss-lib-sidebar',
@@ -24,15 +21,25 @@ import {NuvButtonEnum} from '../../shared/models/enums/nuv-button-enum';
     DividerComponent,
     ButtonComponent,
     NgForOf,
-    NuvButtonComponent
+    NavButtonComponent,
   ],
+  animations: [trigger('animationTrigger', [
+    transition('void => *', [
+      style({opacity: 0}),
+      animate('1s', style({opacity: 1})),
+    ]),
+    transition('* => void', [
+      animate('0s', style({opacity: 0})),
+    ]),
+  ])],
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush
 
 })
 export class SidebarComponent {
-  @Input() public topMenuTemplateRef: TemplateRef<any> | null = null;
   public menu: InputSignal<IMenu[]> = input.required<IMenu[]>();
+
+  public outMenuFromSidebar = output<IMenu>()
 
   protected stateCanvas: CanvasState = inject(CanvasState)
 
@@ -46,5 +53,15 @@ export class SidebarComponent {
     this.stateCanvas.sidebarType.set(SidebarType.Close)
   }
 
-  protected readonly NuvButtonType = NuvButtonEnum;
+  public outMenuModel(menu: IMenu) {
+    if (!menu.pressed) {
+      const pressed = this.menu().find(item => item.pressed);
+      if (pressed) {
+        pressed.pressed = false;
+      }
+      this.outMenuFromSidebar.emit(menu)
+    }
+  }
+
+  protected readonly NuvButtonType = NavButton;
 }

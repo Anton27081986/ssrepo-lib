@@ -3,24 +3,29 @@ import { FormControl, Validators } from '@angular/forms';
 import { Dialog } from '@angular/cdk/dialog';
 import {
     ButtonType,
-    Colors, ExtraSize,
+    Colors,
+    ExtraSize,
+    IConfirmData,
     IconPosition,
     IconType,
-    IDictionaryItemDto,
     IModalData,
     LinkAppearance,
     Orientation,
     Shape,
+    Status,
     TextType,
-    TextWeight
+    TextWeight,
 } from '../../../../front-components/src/lib/shared/models';
 import { standImports } from './stand.imports';
+import { ColumnsStateService, ConfirmComponent } from '../../../../front-components/src/lib/components';
 import { TestModalComponent } from '../test-modal/test-modal.component';
+import { DROPDOWN_ITEMS, DEFAULT_COLS } from './constants';
 
 @Component({
     selector: 'app-stand',
     standalone: true,
-    imports: standImports,
+    imports: [standImports],
+    providers: [ColumnsStateService],
     templateUrl: './stand.component.html',
     styleUrl: './stand.component.scss'
 })
@@ -38,36 +43,8 @@ export class StandComponent {
     protected readonly Shape = Shape;
     protected readonly Orientation = Orientation;
     protected readonly LinkAppearance = LinkAppearance;
-    protected readonly dropdownItems: IDictionaryItemDto[] = [
-        {
-            id: 1,
-            name: 'option1'
-        },
-        {
-            id: 2,
-            name: 'option2'
-        },
-        {
-            id: 3,
-            name: 'option3'
-        },
-        {
-            id: 4,
-            name: 'option4'
-        },
-        {
-            id: 5,
-            name: 'option5'
-        },
-        {
-            id: 6,
-            name: 'option6'
-        },
-        {
-            id: 7,
-            name: 'option7'
-        }
-    ];
+    protected readonly Status = Status;
+    protected readonly DROPDOWN_ITEMS = DROPDOWN_ITEMS;
 
     toggleCtrl = new FormControl(false);
     inputCtrl = new FormControl('rrrr', [Validators.required, Validators.minLength(10)]);
@@ -75,11 +52,39 @@ export class StandComponent {
     selectCtrl = new FormControl(null);
     numberPickerCtrl = new FormControl(2);
 
+    constructor(private readonly columnState: ColumnsStateService) {
+        this.columnState.colsTr$.next(DEFAULT_COLS)
+    }
+
     openModalWithComponent(): void {
         this.dialog.open<IModalData>(TestModalComponent, {
             data: {
                 title: 'Такой вот Заголовок',
+                description: 'Описание',
+                badgeProps: {
+                    icon: IconType.Plus,
+                    size: ExtraSize.xl,
+                    status: Status.Error
+                },
+                modalConfig: {
+                    headerOrientation: Orientation.Vertical
+                }
             } as IModalData
+        });
+    }
+
+    openConfirm(): void {
+        this.dialog.open<IConfirmData>(ConfirmComponent, {
+            data: {
+                title: 'Выйти без сохранения?',
+                description: 'Все изменения будут утеряны.',
+                yes: 'Кнопка да',
+                no: 'Кнопка нет',
+                badgeProps: {
+                    icon: IconType.Save,
+                    status: Status.Error
+                }
+            } as IConfirmData
         });
     }
 }

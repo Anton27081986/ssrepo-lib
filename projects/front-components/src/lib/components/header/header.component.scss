@@ -10,8 +10,10 @@
   padding: 16px 24px 16px 12px;
   border-bottom: 1px solid var(--border-primary);
   align-items: center;
-  box-shadow: var(--shadow-xs);  // sm
+  box-shadow: var(--shadow-sm);
   background-color: var(--surface-primary);
+  position: relative;
+  z-index: 1;
 
   &__left {
     @include flex-wrap
@@ -19,5 +21,9 @@
 
   &__right {
     @include flex-wrap
+  }
+
+  &__progress {;
+    width: 100%;
   }
 }
