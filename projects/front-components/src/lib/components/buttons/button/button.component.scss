@@ -9,11 +9,16 @@ button.custom-button.type-text:not(.only-icon) {
     &.size-xs {
         gap: 4px;
     }
+
+    &.size-md {
+      gap: 4px;
+    }
 }
 
 button.custom-button.type-primary:not(.only-icon),
 button.custom-button.type-secondary:not(.only-icon),
-button.custom-button.type-ghost:not(.only-icon) {
+button.custom-button.type-ghost:not(.only-icon)
+{
     &.size-xxs,
     &.size-xs {
         padding: 6px 10px;
@@ -154,6 +159,7 @@ button.custom-button:focus-visible.type-ghost {
 // *************** TEXT ***************
 button.custom-button.type-text {
     padding: 0 !important;
+    gap: 4px;
 }
 
 button.custom-button.type-text,
