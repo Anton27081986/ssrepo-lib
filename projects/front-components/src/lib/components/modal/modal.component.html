@@ -1,11 +1,11 @@
 <div class="ss-modal">
     <div
         class="ss-modal-header"
-        [ngClass]="[modalConfig().headerOrientation]"
-        [class.header-padding]="modalConfig().showHeaderPadding"
+        [ngClass]="[modalData().modalConfig!.headerOrientation]"
+        [class.header-padding]="modalData().modalConfig!.showHeaderPadding"
     >
         <div class="ss-modal-header__content">
-            <ss-lib-badge [icon]="IconType.ImagePlus" [size]="ExtraSize.lg"/>
+            <ss-lib-badge [badgeProps]="modalData().badgeProps!"/>
 
             <div class="ss-modal-header__text">
                 <ss-lib-text
@@ -14,16 +14,16 @@
                     [weight]="TextWeight.Semibold"
                     [color]="Colors.TextBody"
                 >
-                    {{ title() }}
+                    {{ modalData().title }}
                 </ss-lib-text>
 
-                @if (description()) {
+                @if (modalData().description) {
                     <ss-lib-text
                         [type]="TextType.BodySm"
                         [weight]="TextWeight.Regular"
                         [color]="Colors.TextBody3"
                     >
-                        {{ description() }}
+                        {{ modalData().description }}
                     </ss-lib-text>
                 }
             </div>
@@ -38,26 +38,26 @@
         </div>
     </div>
 
-    @if (modalConfig().showHeaderDivider) {
+    @if (modalData().modalConfig?.showHeaderDivider!) {
         <ss-lib-divider class="ss-modal-divider__top"/>
     }
 
-    @if (contentRef()) {
+    @if (modalData().contentRef) {
         <div class="ss-modal-content">
-            <ng-container *ngTemplateOutlet="contentRef()!"></ng-container>
+            <ng-container *ngTemplateOutlet="modalData().contentRef!"></ng-container>
         </div>
     }
 
-    @if (footerRef()) {
-        @if (modalConfig().showFooterDivider) {
+    @if (modalData().footerRef) {
+        @if (modalData().modalConfig!.showFooterDivider) {
             <ss-lib-divider class="ss-modal-divider__bottom"/>
         }
 
         <div
             class="ss-modal-footer"
-            [class.footer-padding-with-divider]="modalConfig().showFooterDivider"
+            [class.footer-padding-with-divider]="modalData().modalConfig!.showFooterDivider"
         >
-            <ng-container *ngTemplateOutlet="footerRef()!"></ng-container>
+            <ng-container *ngTemplateOutlet="modalData().footerRef!"></ng-container>
         </div>
     }
 </div>

@@ -1,5 +1,5 @@
-import { ButtonType, ButtonTypeValues, Colors } from '../../../shared/models';
 import { IButtonStateColors } from '../models';
+import { ButtonType, ButtonTypeValues, Colors } from '../../../shared/models';
 
 
 export const BUTTON_ICON_COLORS_RECORD: Record<Partial<ButtonTypeValues>, Partial<IButtonStateColors>> = {
@@ -74,5 +74,11 @@ export const BUTTON_ICON_COLORS_RECORD: Record<Partial<ButtonTypeValues>, Partia
         focused: Colors.IconAction,
         disabled: Colors.IconDisabled,
         disabledIconOnly: Colors.IconDisabled,
+    },
+    [ButtonType.Overlay]: {
+        default: Colors.IconOnAction,
+        hover: Colors.IconOnAction,
+        pressed: Colors.IconOnAction,
+        focused: Colors.IconOnAction,
     },
 };

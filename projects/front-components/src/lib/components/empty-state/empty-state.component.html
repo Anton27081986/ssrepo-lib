@@ -1,7 +1,10 @@
 <div class="ss-lib-empty-state">
 
   <div class="ss-lib-empty-state__header">
-    <ss-lib-badge [size]="ExtraSize.xl" [icon]="icon()"></ss-lib-badge>
+    <ss-lib-badge [badgeProps]="{
+        size: ExtraSize.xl,
+        icon: icon()
+    }"/>
   </div>
 
   <div class="ss-lib-empty-state__body">

@@ -15,3 +15,5 @@ export { Shape } from './shape';
 export { Orientation } from './orientation';
 export { LinkAppearance } from './link-appearance';
 export {  NavButton } from './nav-button'
+
+export { Status } from './status';
