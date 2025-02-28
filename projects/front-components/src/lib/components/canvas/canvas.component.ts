@@ -19,9 +19,8 @@ import {IMenu} from '../../shared/models';
 })
 
 export class CanvasComponent {
-  @Input() public leftMenuHeaderTemplateRef: TemplateRef<any> | null = null;
-  @Input() public rightMenuHeaderTemplateRef: TemplateRef<any> | null = null;
-  @Input() public topMenuSidebarTemplateRef: TemplateRef<any> | null = null;
+  public leftMenuHeaderTemplateRef: InputSignal<TemplateRef<any> | null> = input.required();
+  public rightMenuHeaderTemplateRef: InputSignal<TemplateRef<any> | null> = input.required();
 
   public outMenuFromCanvas = output<IMenu>();
 
