@@ -1,8 +1,7 @@
 import {Component, input, InputSignal, ViewEncapsulation} from '@angular/core';
 import {IconComponent} from '../icon/icon.component';
-import {IconType, IMenu, NavButton, TextType, TextWeight} from '../../shared/models';
+import {IconType, IMenu, NavButton, NavButtonType, TextType, TextWeight} from '../../shared/models';
 import {TextComponent} from '../text/text.component';
-import {NavButtonType} from '../../shared/models/types/nav-button-type';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 import {NgIf} from '@angular/common';
 

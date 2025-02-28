@@ -5,14 +5,12 @@ import {
   InputSignal, output,
 } from '@angular/core';
 import {NgForOf, NgIf} from '@angular/common';
-import {ButtonType, IconType, IMenu} from '../../shared/models';
-import {SidebarType} from '../../shared/models/enums/sidebar-type';
+import {ButtonType, IconType, IMenu, NavButton, SidebarType} from '../../shared/models';
 import {CanvasState} from '../canvas/canvas.state';
 import {DividerComponent} from '../divider/divider.component';
-import {ButtonComponent} from '../buttons/button/button.component';
 import {NavButtonComponent} from '../nav-button/nav-button.component';
-import {NavButton} from '../../shared/models/enums/nav-button';
 import {animate, style, transition, trigger} from '@angular/animations';
+import {ButtonComponent} from '../buttons';
 
 @Component({
   selector: 'ss-lib-sidebar',
