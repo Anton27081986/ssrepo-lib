@@ -1,3 +1,3 @@
-import {NuvButtonEnum} from '../enums/nuv-button-enum';
+import {NavButton} from '../enums/nav-button';
 
-export type NavButtonType = NuvButtonEnum.NavBase | NuvButtonEnum.NavIcon;
+export type NavButtonType = NavButton.NavBase | NavButton.NavIcon;

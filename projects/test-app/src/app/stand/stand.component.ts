@@ -24,7 +24,8 @@ import { DROPDOWN_ITEMS, DEFAULT_COLS } from './constants';
 @Component({
     selector: 'app-stand',
     standalone: true,
-    imports: standImports,
+    imports: [standImports],
+    providers: [ColumnsStateService],
     templateUrl: './stand.component.html',
     styleUrl: './stand.component.scss'
 })

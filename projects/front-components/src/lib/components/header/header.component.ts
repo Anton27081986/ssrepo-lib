@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, Input, TemplateRef} from '@angular/core';
+import {ChangeDetectionStrategy, Component, input, InputSignal, TemplateRef} from '@angular/core';
 import {NgTemplateOutlet} from '@angular/common';
 import {ButtonComponent} from '../buttons/button/button.component';
 import { ButtonType, ExtraSize, IconPosition, IconType } from '../../shared/models';
@@ -19,10 +19,8 @@ import {ProgressComponent} from '../progress/progress.component';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HeaderComponent {
-  @Input() public leftMenuTemplateRef: TemplateRef<any> | null = null;
-  @Input() public rightMenuTemplateRef: TemplateRef<any> | null = null;
-
-  // progress = this.canvasState.progress;
+  public leftMenuTemplateRef: InputSignal<TemplateRef<any> | null> = input.required();
+  public rightMenuTemplateRef: InputSignal<TemplateRef<any> | null> = input.required()
 
   constructor(public readonly canvasState: CanvasState) {}
 
