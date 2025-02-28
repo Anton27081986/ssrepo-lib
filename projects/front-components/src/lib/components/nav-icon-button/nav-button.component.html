@@ -9,7 +9,7 @@
   <div class="actions" [@expendedPanel]="type() === NuvButtonType.NavBase ? 'view' : 'hidden'">
     <ss-lib-text [type]="TextType.BodyMd" [weight]="TextWeight.Medium">{{ menu().title }}</ss-lib-text>
     <ss-lib-icon *ngIf="menu().subMenu.length"
-                 [@expendedPanel]="type() === NuvButtonType.NavBase ? 'view' : 'hidden'" [height]="'16'" [width]="'16'"
+                 [height]="'16'" [width]="'16'"
                  [icon]="IconType.ChevronDown">
     </ss-lib-icon>
   </div>

@@ -9,6 +9,7 @@
       class="ss-lib-canvas__sidebar"
       [topMenuTemplateRef]="topMenuSidebarTemplateRef"
       [menu]="menu()"
+      (outMenuFromSidebar)="outMenuFromCanvas.emit($event)"
     >
     </ss-lib-sidebar>
 

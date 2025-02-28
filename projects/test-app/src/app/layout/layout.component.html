@@ -2,6 +2,7 @@
   [leftMenuHeaderTemplateRef]="leftMenuHeaderTemplateRef"
   [rightMenuHeaderTemplateRef]="rightMenuHeaderTemplateRef"
   [menu]="exampleMenu"
+  (outMenuFromCanvas)="selectedMenu($event)"
 >
   <router-outlet></router-outlet>
 </ss-lib-canvas>
@@ -18,9 +19,4 @@
   <div class="layout__rightMenuHeader">
   <ss-lib-toggle-icon [formControl]="theme"></ss-lib-toggle-icon>
   </div>
-</ng-template>
-
-<ng-template #topMenuSidebarTemplateRef>
-  <ng-container *ngFor="let menu of exampleMenu">
-  </ng-container>
 </ng-template>

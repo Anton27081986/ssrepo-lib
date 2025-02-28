@@ -6,7 +6,7 @@ import {
 } from '../../shared/models/interfaces/store-table-base-column';
 
 
-@Injectable({providedIn: 'root'})
+@Injectable()
 export class ColumnsStateService {
   public readonly colsTr$: BehaviorSubject<IStoreTableBaseColumn[]> = new BehaviorSubject<
     IStoreTableBaseColumn[]
