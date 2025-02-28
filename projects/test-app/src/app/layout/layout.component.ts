@@ -13,14 +13,13 @@ import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {
   CanvasComponent,
   IconComponent,
-  TextComponent,
-  ToggleComponent
+  TextComponent, ToggleIconComponent,
 } from '../../../../front-components/src/lib/components';
 
 @Component({
   selector: 'app-layout',
   standalone: true,
-  imports: [CanvasComponent, RouterOutlet, IconComponent, TextComponent, ToggleComponent, ReactiveFormsModule],
+  imports: [CanvasComponent, RouterOutlet, IconComponent, TextComponent, ReactiveFormsModule, ToggleIconComponent],
   templateUrl: './layout.component.html',
   styleUrl: './layout.component.scss'
 })
