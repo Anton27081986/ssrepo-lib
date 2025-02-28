@@ -1,12 +1,12 @@
 <div class="sidebar  sidebar--{{ sidebarType() }}">
   <div @animationTrigger *ngIf="sidebarType() !== SidebarType.Close " class="sidebar__top-menu">
     <ng-container *ngFor="let menu of menu()">
-      <ss-lib-nav-icon-button
+      <ss-lib-nav-button
         [menu]="menu"
         [type]="stateCanvas.sidebarType() === SidebarType.Full ? NuvButtonType.NavBase : NuvButtonType.NavIcon"
         (click)="outMenuModel(menu)"
       >
-      </ss-lib-nav-icon-button>
+      </ss-lib-nav-button>
     </ng-container>
   </div>
 

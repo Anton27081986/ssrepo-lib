@@ -7,7 +7,7 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
 import {NgIf} from '@angular/common';
 
 @Component({
-  selector: 'ss-lib-nav-icon-button',
+  selector: 'ss-lib-nav-button',
   templateUrl: './nav-button.component.html',
   standalone: true,
   styleUrls: ['./nav-button.component.scss'],

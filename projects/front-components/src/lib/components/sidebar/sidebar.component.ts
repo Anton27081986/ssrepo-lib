@@ -1,20 +1,18 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  effect,
   inject, input,
-  Input, InputSignal, output, Output, signal,
-  TemplateRef, WritableSignal
+  InputSignal, output,
 } from '@angular/core';
-import {NgClass, NgForOf, NgIf} from '@angular/common';
-import {ButtonType, IconType, IDictionaryItemDto, IMenu} from '../../shared/models';
+import {NgForOf, NgIf} from '@angular/common';
+import {ButtonType, IconType, IMenu} from '../../shared/models';
 import {SidebarType} from '../../shared/models/enums/sidebar-type';
 import {CanvasState} from '../canvas/canvas.state';
 import {DividerComponent} from '../divider/divider.component';
-import { ButtonComponent } from '../buttons/button/button.component';
-import {NavButtonComponent} from '../nav-icon-button/nav-button.component';
+import {ButtonComponent} from '../buttons/button/button.component';
+import {NavButtonComponent} from '../nav-button/nav-button.component';
 import {NavButton} from '../../shared/models/enums/nav-button';
-import {animate, state, style, transition, trigger} from '@angular/animations';
+import {animate, style, transition, trigger} from '@angular/animations';
 
 @Component({
   selector: 'ss-lib-sidebar',
@@ -27,13 +25,13 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
     NgForOf,
     NavButtonComponent,
   ],
-  animations: [ trigger('animationTrigger', [
+  animations: [trigger('animationTrigger', [
     transition('void => *', [
-      style({ opacity: 0 }),
-      animate('1s', style({ opacity: 1 })),
+      style({opacity: 0}),
+      animate('1s', style({opacity: 1})),
     ]),
     transition('* => void', [
-      animate('0s', style({ opacity: 0 })),
+      animate('0s', style({opacity: 0})),
     ]),
   ])],
   standalone: true,
@@ -41,7 +39,6 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
 
 })
 export class SidebarComponent {
-  @Input() public topMenuTemplateRef: TemplateRef<any> | null = null;
   public menu: InputSignal<IMenu[]> = input.required<IMenu[]>();
 
   public outMenuFromSidebar = output<IMenu>()
@@ -59,9 +56,9 @@ export class SidebarComponent {
   }
 
   public outMenuModel(menu: IMenu) {
-    if(!menu.pressed) {
+    if (!menu.pressed) {
       const pressed = this.menu().find(item => item.pressed);
-      if(pressed) {
+      if (pressed) {
         pressed.pressed = false;
       }
       this.outMenuFromSidebar.emit(menu)

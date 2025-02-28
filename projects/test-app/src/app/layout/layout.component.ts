@@ -1,16 +1,26 @@
 import {Component} from '@angular/core';
-import {CanvasComponent} from '../../../../front-components/src/lib/components/canvas/canvas.component';
 import {RouterOutlet} from '@angular/router';
-import {Colors, IconType, IMenu, TextType, TextWeight} from '../../../../front-components/src/lib/shared/models';
-import {IconComponent, TextComponent, ToggleIconComponent} from '../../../../front-components/src/lib/components';
+import {
+  Colors,
+  IconType,
+  IMenu,
+  NavButton,
+  SidebarType,
+  TextType,
+  TextWeight
+} from '../../../../front-components/src/lib/shared/models';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
-import {SidebarType} from '../../../../front-components/src/lib/shared/models/enums/sidebar-type';
-import {NavButton} from '../../../../front-components/src/lib/shared/models/enums/nav-button';
+import {
+  CanvasComponent,
+  IconComponent,
+  TextComponent,
+  ToggleComponent
+} from '../../../../front-components/src/lib/components';
 
 @Component({
   selector: 'app-layout',
   standalone: true,
-  imports: [CanvasComponent, RouterOutlet, IconComponent, TextComponent, ToggleIconComponent, ReactiveFormsModule],
+  imports: [CanvasComponent, RouterOutlet, IconComponent, TextComponent, ToggleComponent, ReactiveFormsModule],
   templateUrl: './layout.component.html',
   styleUrl: './layout.component.scss'
 })
