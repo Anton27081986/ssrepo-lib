@@ -1,5 +1,5 @@
-import {Component} from '@angular/core';
-import {RouterOutlet} from '@angular/router';
+import { Component } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
 import {
   Colors,
   IconType,
@@ -7,21 +7,29 @@ import {
   NavButton,
   SidebarType,
   TextType,
-  TextWeight
+  TextWeight,
 } from '../../../../front-components/src/lib/shared/models';
-import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import {
   CanvasComponent,
   IconComponent,
-  TextComponent, ToggleIconComponent,
+  TextComponent,
+  ToggleIconComponent,
 } from '../../../../front-components/src/lib/components';
 
 @Component({
   selector: 'app-layout',
   standalone: true,
-  imports: [CanvasComponent, RouterOutlet, IconComponent, TextComponent, ReactiveFormsModule, ToggleIconComponent],
+  imports: [
+    CanvasComponent,
+    RouterOutlet,
+    IconComponent,
+    TextComponent,
+    ReactiveFormsModule,
+    ToggleIconComponent,
+  ],
   templateUrl: './layout.component.html',
-  styleUrl: './layout.component.scss'
+  styleUrl: './layout.component.scss',
 })
 export class LayoutComponent {
   protected exampleMenu: IMenu[] = [
@@ -31,7 +39,7 @@ export class LayoutComponent {
       link: '',
       pressed: true,
       icon: IconType.ImagePlus,
-      subMenu: []
+      subMenu: [],
     },
     {
       title: 'Баннеры',
@@ -39,29 +47,27 @@ export class LayoutComponent {
       link: '',
       pressed: false,
       icon: IconType.Alert,
-      subMenu: []
+      subMenu: [],
     },
   ];
 
-  protected readonly theme: FormControl = new FormControl<boolean>(true)
+  protected readonly theme: FormControl = new FormControl<boolean>(true);
   protected readonly IconType = IconType;
   protected readonly TextType = TextType;
   protected readonly TextWeight = TextWeight;
 
   constructor() {
-    this.theme.valueChanges.subscribe(val => {
+    this.theme.valueChanges.subscribe((val) => {
       const elem = document.body;
-      if(val) {
-        elem.classList.add('dark')
+      if (val) {
+        elem.classList.add('dark');
       } else {
-        elem.classList.remove('dark')
+        elem.classList.remove('dark');
       }
-    })
+    });
   }
 
-
- protected selectedMenu(menu: IMenu) {
-    console.log(menu)
+  protected selectedMenu(menu: IMenu) {
     menu.pressed = true;
   }
 
