@@ -1,17 +1,25 @@
 import {Component} from '@angular/core';
-import {CanvasComponent} from '../../../../front-components/src/lib/components/canvas/canvas.component';
 import {RouterOutlet} from '@angular/router';
-import {Colors, IconType, IMenu, TextType, TextWeight} from '../../../../front-components/src/lib/shared/models';
-import {IconComponent, TextComponent, ToggleIconComponent} from '../../../../front-components/src/lib/components';
+import {
+  Colors,
+  IconType,
+  IMenu,
+  NavButton,
+  SidebarType,
+  TextType,
+  TextWeight
+} from '../../../../front-components/src/lib/shared/models';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
-import {SidebarType} from '../../../../front-components/src/lib/shared/models/enums/sidebar-type';
-import {NuvButtonEnum} from '../../../../front-components/src/lib/shared/models/enums/nuv-button-enum';
-import {NgForOf} from '@angular/common';
+import {
+  CanvasComponent,
+  IconComponent,
+  TextComponent, ToggleIconComponent,
+} from '../../../../front-components/src/lib/components';
 
 @Component({
   selector: 'app-layout',
   standalone: true,
-  imports: [CanvasComponent, RouterOutlet, IconComponent, TextComponent, ToggleIconComponent, ReactiveFormsModule, NgForOf],
+  imports: [CanvasComponent, RouterOutlet, IconComponent, TextComponent, ReactiveFormsModule, ToggleIconComponent],
   templateUrl: './layout.component.html',
   styleUrl: './layout.component.scss'
 })
@@ -51,7 +59,13 @@ export class LayoutComponent {
     })
   }
 
+
+ protected selectedMenu(menu: IMenu) {
+    console.log(menu)
+    menu.pressed = true;
+  }
+
   protected readonly Colors = Colors;
   protected readonly SidebarType = SidebarType;
-  protected readonly NuvButtonType = NuvButtonEnum;
+  protected readonly NuvButtonType = NavButton;
 }

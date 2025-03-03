@@ -1,0 +1,19 @@
+button.custom-button.type-overlay {
+    padding: 4px;
+    background: #191919;
+    border-radius: var(--border-radius-round);
+}
+
+button.custom-button:hover.type-overlay {
+    background: #353534;
+}
+
+button.custom-button:active.type-overlay {
+    background: #525250;
+}
+
+button.custom-button:focus-visible.type-overlay {
+    outline: none;
+    background: #191919;
+    box-shadow: var(--focus-rings-focus-ring);
+}
