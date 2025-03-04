@@ -2,6 +2,12 @@ import {ChangeDetectionStrategy, Component, input, InputSignal} from '@angular/c
 import {TextComponent} from '../text/text.component';
 import {ButtonType, Colors, ExtraSize, Shape, TextType, TextWeight} from '../../shared/models';
 
+/**
+ * Параметры:
+ *
+ * [displaySpinnerText]: <boolean> - Показать надпись "Загрузка...". По умолчанию: `false`
+ *
+ */
 @Component({
   selector: 'ss-lib-spinner',
   templateUrl: './spinner.component.html',
@@ -14,7 +20,7 @@ import {ButtonType, Colors, ExtraSize, Shape, TextType, TextWeight} from '../../
 
 })
 export class SpinnerComponent {
-  public text: InputSignal<boolean> = input<boolean>(false);
+  public displaySpinnerText: InputSignal<boolean> = input<boolean>(false);
 
   protected readonly TextType = TextType;
   protected readonly TextWeight = TextWeight;
