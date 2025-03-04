@@ -7,6 +7,7 @@ import { IconType, ButtonType } from '../../../shared/models';
     imports: [
         BaseButtonComponent
     ],
+    standalone: true,
     template: `
         <ss-lib-base-button
             [type]="type()"
