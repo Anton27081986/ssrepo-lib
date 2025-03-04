@@ -24,5 +24,6 @@ export { SkeletonBlockComponent } from './skeleton/skeleton-block/skeleton-block
 export { BadgeComponent } from './badge/badge.component';
 export { ModalComponent } from './modal/modal.component';
 export { ConfirmComponent } from './confirm/confirm.component';
+export { SpinnerComponent } from './spinner/spinner.component';
 
 export * from './buttons/index';
