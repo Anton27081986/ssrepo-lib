@@ -9,12 +9,14 @@
     } @else {
       <th class="ss-lib-table-th" *ngFor="let col of stateColumn.visibleCols$ | async"
           [ngStyle]="{ minWidth: col.width ? col.width : null }">
+
         <ss-lib-text
           [color]="Colors.TextBody2"
           [weight]="TextWeight.Semibold"
           [type]="TextType.BodyXs">
           {{ col.title }}
         </ss-lib-text>
+
       </th>
     }
 	</tr>

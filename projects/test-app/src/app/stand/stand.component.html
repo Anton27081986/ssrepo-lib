@@ -348,7 +348,13 @@
     />
 </div>
 
+<ng-template #action>
+  <ss-lib-button [text]="'Добавить баннер'"></ss-lib-button>
+</ng-template>
+
 <ss-lib-empty-state
+    [headerTitle]="'Управление баннерами'"
+    [actionRef]="action"
     [icon]="IconType.ImagePlus"
     [title]="'Заголовок'"
     [description]="'Какой то текст который мне лень писать и выдумывать.'"
