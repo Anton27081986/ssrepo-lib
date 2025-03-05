@@ -1,6 +1,3 @@
-<div class="spinners">
-  <ss-lib-spinner [text]="true"></ss-lib-spinner>
-</div>
 <ss-lib-icon [icon]="IconType.Bell" [color]="Colors.IconOnDisabled"/>
 
 <ss-lib-text [type]="TextType.BodyXs" [weight]="TextWeight.Regular">Обычный текст</ss-lib-text>
@@ -405,3 +402,13 @@
     (click)="openConfirm()"
 />
 <br>
+
+<div class="tooltip-example">
+    <ss-lib-icon
+        ss-lib-tooltip
+        [icon]="IconType.Plus"
+        [color]="Colors.IconOnDisabled"
+        [tooltipText]="'Это тултип'"
+        [position]="TooltipPosition.TopRight"
+    />
+</div>

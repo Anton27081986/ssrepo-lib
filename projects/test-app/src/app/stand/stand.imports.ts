@@ -24,7 +24,7 @@ import {
     SkeletonTableComponent,
     SkeletonBlockComponent,
     OverlayButtonComponent,
-    SpinnerComponent
+    SpinnerComponent, TooltipDirective
 } from '../../../../front-components/src/lib/components';
 import { FieldCtrlDirective, PopoverTriggerForDirective } from '../../../../front-components/src/lib/core/directives';
 
@@ -33,6 +33,7 @@ export const standImports = [
     ReactiveFormsModule,
     FieldCtrlDirective,
     PopoverTriggerForDirective,
+    TooltipDirective,
     IconComponent,
     TextComponent,
     ToggleComponent,
