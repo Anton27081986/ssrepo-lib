@@ -1,0 +1,21 @@
+import { ChangeDetectionStrategy, Component, input, output } from '@angular/core';
+import { CalendarDay, CalendarMonth } from '../../models';
+
+@Component({
+    selector: 'ss-lib-calendar-cell',
+    standalone: true,
+    templateUrl: './calendar-cell.component.html',
+    styleUrl: './calendar-cell.component.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush
+})
+export class CalendarCellComponent {
+    public displayValue = input.required<string | number>();
+    public item = input.required<CalendarDay | CalendarMonth>();
+    public type = input<'weekend' | 'weekday' | 'default'>('default');
+    public isToday = input.required<boolean>();
+    public isActive = input<boolean>(false);
+    public isUnavailable = input<boolean>(false);
+    public isDisabled =  input<boolean>(false);
+
+    protected clickItem = output<CalendarDay | CalendarMonth>()
+}

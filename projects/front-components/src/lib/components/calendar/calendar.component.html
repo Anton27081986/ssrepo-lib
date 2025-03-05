@@ -1,0 +1,32 @@
+<div class="calendar-container">
+    <div
+        class="calendar"
+        [ngClass]="[TextType.BodySm]"
+    >
+        <div class="calendar-headline">
+            <ss-lib-calendar-controls
+                [(isMonthView)]="isMonthView"
+                [value]="currentMonth()"
+                (valueChange)="onPaginationMonthChange($event)"
+            />
+        </div>
+
+        <div class="calendar-content">
+            @if (isMonthView()) {
+                <ss-lib-calendar-sheet
+                    [value]="currentValue()"
+                    [month]="currentMonth()"
+                    [min]="computedMin"
+                    [max]="computedMax"
+                    (dayClick)="onDayClick($event)"
+                />
+            } @else {
+                <ss-lib-calendar-year
+                    [month]="currentMonth()"
+                    [min]="computedMinViewedMonth"
+                    [max]="computedMaxViewedMonth"
+                />
+            }
+        </div>
+    </div>
+</div>

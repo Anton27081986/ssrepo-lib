@@ -1,0 +1,31 @@
+<div class="calendar-year-grid">
+    @for (rowIndex of rows | repeatTimes; track $index) {
+        <div
+            #yearRow
+            class="year-row"
+        >
+            @let year = getYear(rowIndex);
+
+            <div
+                class="year-column"
+                [class.year-column_disabled]="isDisabledYear(year)"
+            >
+                {{ year }}
+            </div>
+
+            <div class="month-list">
+                @for (monthShortName of MONTHS_SHORT; track $index; let monthIndex = $index) {
+                    @let item = getMonth(monthIndex, year);
+
+                    <ss-lib-calendar-cell
+                        [displayValue]="monthShortName"
+                        [item]="item"
+                        [isToday]="itemIsToday(item)"
+                        [isDisabled]="isDisabledMonth(item)"
+                        (click)="onItemClick(item)"
+                    />
+                }
+            </div>
+        </div>
+    }
+</div>

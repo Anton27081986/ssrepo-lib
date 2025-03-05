@@ -20,11 +20,16 @@ import { standImports } from './stand.imports';
 import { ColumnsStateService, ConfirmComponent } from '../../../../front-components/src/lib/components';
 import { TestModalComponent } from '../test-modal/test-modal.component';
 import { DROPDOWN_ITEMS, DEFAULT_COLS } from './constants';
+import { CalendarDay } from '../../../../front-components/src/lib/components/calendar/models';
+import { JsonPipe } from '@angular/common';
 
 @Component({
     selector: 'app-stand',
     standalone: true,
-    imports: standImports,
+    imports: [
+        standImports,
+        JsonPipe
+    ],
     templateUrl: './stand.component.html',
     styleUrl: './stand.component.scss'
 })
@@ -50,6 +55,12 @@ export class StandComponent {
     textareaCtrl = new FormControl('rrrr', [Validators.required, Validators.minLength(10)]);
     selectCtrl = new FormControl(null);
     numberPickerCtrl = new FormControl(2);
+
+    protected value: CalendarDay | null = null;
+
+    protected onDayClick(day: CalendarDay | null): void {
+        this.value = day;
+    }
 
     constructor(private readonly columnState: ColumnsStateService) {
         this.columnState.colsTr$.next(DEFAULT_COLS)

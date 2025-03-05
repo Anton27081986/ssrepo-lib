@@ -45,7 +45,10 @@ button.custom-button.type-secondary.only-icon,
 button.custom-button.type-ghost.only-icon,
 button.custom-button.type-text.only-icon {
     &.size-xxs,
-    &.size-xs,
+    &.size-xs {
+        padding: 6px;
+    }
+
     &.size-sm {
         padding: 8px;
     }
