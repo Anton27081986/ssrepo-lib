@@ -14,7 +14,7 @@ import {
     Shape,
     Status,
     TextType,
-    TextWeight,
+    TextWeight, TooltipPosition,
 } from '../../../../front-components/src/lib/shared/models';
 import { standImports } from './stand.imports';
 import { ColumnsStateService, ConfirmComponent } from '../../../../front-components/src/lib/components';
@@ -32,6 +32,12 @@ import { DROPDOWN_ITEMS, DEFAULT_COLS } from './constants';
 export class StandComponent {
     private readonly dialog = inject(Dialog);
 
+    toggleCtrl = new FormControl(false);
+    inputCtrl = new FormControl('rrrr', [Validators.required, Validators.minLength(10)]);
+    textareaCtrl = new FormControl('rrrr', [Validators.required, Validators.minLength(10)]);
+    selectCtrl = new FormControl(null);
+    numberPickerCtrl = new FormControl(2);
+
     protected readonly TextType = TextType;
     protected readonly TextWeight = TextWeight;
     protected readonly IconType = IconType;
@@ -45,12 +51,7 @@ export class StandComponent {
     protected readonly LinkAppearance = LinkAppearance;
     protected readonly Status = Status;
     protected readonly DROPDOWN_ITEMS = DROPDOWN_ITEMS;
-
-    toggleCtrl = new FormControl(false);
-    inputCtrl = new FormControl('rrrr', [Validators.required, Validators.minLength(10)]);
-    textareaCtrl = new FormControl('rrrr', [Validators.required, Validators.minLength(10)]);
-    selectCtrl = new FormControl(null);
-    numberPickerCtrl = new FormControl(2);
+    protected readonly TooltipPosition = TooltipPosition;
 
     constructor(private readonly columnState: ColumnsStateService) {
         this.columnState.colsTr$.next(DEFAULT_COLS)
