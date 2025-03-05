@@ -1,0 +1,51 @@
+.custom-toggle {
+    position: relative;
+    width: 46px;
+    height: 24px;
+    padding: 2px;
+    background: var(--surface-action-hover-2);
+    box-sizing: border-box;
+    transition: background 0.2s ease-in-out;
+    border-radius: 9999px;
+    cursor: pointer;
+
+    &:hover {
+        background: var(--surface-action-pressed-2, #D5D7DA);
+    }
+
+    &:focus-visible {
+        outline: none;
+        box-shadow: var(--focus-rings-focus-ring);
+    }
+}
+
+.toggle-circle {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    background: var(--surface-primary);
+    box-shadow: var(--shadow-sm);
+    border-radius: 100%;
+    transition: left 0.2s ease-in-out;
+    left: 2px;
+}
+
+.custom-toggle.checked .toggle-circle {
+    left: calc(100% - 20px - 2px);
+}
+
+.toggle-icon {
+    position: absolute;
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+    opacity: 1;
+    transform: scale(1);
+}
+
+.toggle-icon.hidden {
+    opacity: 0;
+    transform: scale(0.8);
+    pointer-events: none;
+}

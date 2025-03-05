@@ -1,4 +1,9 @@
-.tooltip-example {
+.test {
+    width: 500px;
+    height: 500px;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 50px;
 }

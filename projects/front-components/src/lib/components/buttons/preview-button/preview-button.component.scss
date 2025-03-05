@@ -1,0 +1,23 @@
+button.custom-button.type-preview {
+    padding: 4px;
+    background: #191919;
+    border-radius: var(--border-radius-round);
+}
+
+button.custom-button:hover.type-preview {
+    background: #2D2D2D;
+
+    ss-lib-icon {
+        opacity: 60%
+    }
+}
+
+button.custom-button:active.type-preview {
+    background: #525250;
+}
+
+button.custom-button:focus-visible.type-preview {
+    outline: none;
+    background: #191919;
+    box-shadow: var(--focus-rings-focus-ring);
+}

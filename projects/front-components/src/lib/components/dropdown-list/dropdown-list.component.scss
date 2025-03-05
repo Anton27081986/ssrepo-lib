@@ -1,0 +1,23 @@
+.dropdown__options {
+    width: max-content;
+    display: flex;
+    flex-direction: column;
+    background: var(--surface-primary);
+    box-sizing: border-box;
+    border: 1px solid var(--border-primary);
+    border-radius: var(--border-radius-md);
+    padding: 4px 0;
+    overflow-y: auto;
+    z-index: 299;
+    box-shadow: var(--shadow-xl);
+
+    ss-lib-divider {
+        padding: 4px 0;
+    }
+}
+
+.dropdown__options-content {
+    display: inline-flex;
+    flex-direction: column;
+}
+

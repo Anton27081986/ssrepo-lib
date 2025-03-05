@@ -1,0 +1,24 @@
+<div class="avatar">
+    @if (!src() || showFallbackImage) {
+        @if (username()) {
+            <ss-lib-text
+                [type]="TextType.BodyMd"
+                [weight]="TextWeight.Semibold"
+                [color]="Colors.IconAction"
+            >
+                {{username()}}
+            </ss-lib-text>
+        } @else {
+            <ss-lib-icon [icon]="IconType.User01" [color]="Colors.IconAction"></ss-lib-icon>
+        }
+    } @else {
+        <img
+            class="avatar__image"
+            loading="lazy"
+            fill=""
+            alt="avatar"
+            [ngSrc]="src()"
+            (error)="onImageError()"
+        >
+    }
+</div>

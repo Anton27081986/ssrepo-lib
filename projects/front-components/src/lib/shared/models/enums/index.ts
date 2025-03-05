@@ -5,5 +5,16 @@ export { TextWeight } from './text-weight';
 export { ButtonType } from './button-type';
 export { IconPosition } from './icon-position';
 export { Size } from './size';
+export { ExtraSize } from './extra-size';
 export { StateTypes } from './state-types';
+export { ControlState } from './control-state';
+export { Direction } from './direction';
+export { Align } from './align';
+export { InputType } from './input-type';
+export { Shape } from './shape';
+export { Orientation } from './orientation';
+export { LinkAppearance } from './link-appearance';
+export { NavButton } from './nav-button'
+export { SidebarType } from './sidebar-type'
+export { Status } from './status';
 export { TooltipPosition } from './tooltip';

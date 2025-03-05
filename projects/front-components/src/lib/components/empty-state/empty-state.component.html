@@ -1,0 +1,25 @@
+<div class="ss-lib-empty-state">
+
+  <div class="ss-lib-empty-state__header">
+    <ss-lib-text [type]="TextType.BodyLg" [weight]="TextWeight.Semibold">{{ headerTitle() }}</ss-lib-text>
+    <ng-container *ngTemplateOutlet="actionRef()"></ng-container>
+  </div>
+
+  <ss-lib-divider></ss-lib-divider>
+
+  <div class="ss-lib-empty-state__body">
+    <div class="ss-lib-empty-state__content-body">
+      <ss-lib-badge [badgeProps]="{
+        size: ExtraSize.xl,
+        icon: icon()
+    }"/>
+      <div class="ss-lib-empty-state__body-text">
+        <ss-lib-text [type]="TextType.BodyXl" [weight]="TextWeight.Semibold">{{ title() }}</ss-lib-text>
+        <ss-lib-text *ngIf="description()" [type]="TextType.BodyMd" [weight]="TextWeight.Regular">{{ description() }}
+        </ss-lib-text>
+      </div>
+    </div>
+    <ng-container *ngTemplateOutlet="actionRef()"></ng-container>
+  </div>
+
+</div>

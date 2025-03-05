@@ -1,92 +1,166 @@
 @use "../assets/scss/modules/_fonts.scss";
 
+/* Mapped */
 :root {
-    /* Mapped - Light */
-    --surface-action: var(--primary-default);
-    --surface-primary: var(--neutral-white);
-    --surface-action-hover-2: var(--neutral-200);
-    --icon-action-hover: var(--neutral-700);
-    --icon-action: var(--neutral-600);
-    --border-primary: var(--neutral-200);
-    --text-on-action: var(--neutral-white);
-    --icon-on-action: var(--neutral-white);
-    --surface-action-hover: var(--primary-600);
-    --icon-on-disabled: var(--neutral-400);
-    --text-on-disabled: var(--neutral-400);
-    --surface-disabled: var(--neutral-100);
+    /* Light */
+    /* color */
     --border-disabled: var(--neutral-300);
-    --text-action-hover: var(--neutral-700);
-    --text-body-2: var(--neutral-700);
-    --text-body: var(--neutral-900);
-    --surface-information-2: var(--primary-50);
-    --surface-action-pressed: var(--primary-700);
-    --text-body-3: var(--neutral-600);
+    --border-error: var(--error-300);
     --border-focus: var(--primary-400);
     --border-focus-error: var(--error-400);
-    --surface-action-pressed-2: var(--neutral-300);
-    --surface-page: var(--neutral-50);
-    --icon-primary: var(--neutral-500);
-    --text-on-information: var(--neutral-white);
-    --surface-information: var(--neutral-800);
-    --text-action: var(--neutral-600);
-    --text-disabled: var(--neutral-400);
+    --border-primary: var(--neutral-200);
+    --border-secondary: var(--neutral-300);
+    --border-success: var(--success-300);
+    --border-tertiary: var(--neutral-700);
+    --effects-shadows-10: #0a0d121a;
+    --effects-shadows-14: #0a0d1224;
+    --effects-shadows-18: #0a0d122e;
+    --effects-shadows-3: #0a0d1208;
+    --effects-shadows-4: #0a0d120a;
+    --effects-shadows-5: #0a0d120d;
+    --effects-shadows-6: #0a0d120f;
+    --effects-shadows-8: #0a0d1214;
+    --effects-skeleton-0: #e9eaeb00;
+    --effects-skeleton-100: #e9eaeb;
+    --icon-action: var(--neutral-600);
     --icon-action-2: var(--neutral-600);
-    --text-headings: var(--neutral-950);
-    --text-body-4: var(--neutral-500);
-    --surface-secondary: var(--neutral-50);
+    --icon-action-hover: var(--neutral-700);
     --icon-disabled: var(--neutral-400);
     --icon-error: var(--error-600);
-    --text-error: var(--error-600);
-    --border-error: var(--error-300);
-    --text-information: var(--primary-default);
     --icon-information: var(--primary-default);
-    --border-secondary: var(--neutral-300);
+    --icon-on-action: var(--neutral-white);
+    --icon-on-disabled: var(--neutral-400);
+    --icon-primary: var(--neutral-750);
+    --icon-secondary: var(--neutral-200);
+    --icon-success: var(--success-600);
+    --surface-action: var(--primary-default);
+    --surface-action-hover: var(--primary-600);
+    --surface-action-hover-2: var(--neutral-200);
+    --surface-action-hover-3: var(--neutral-100);
+    --surface-action-pressed: var(--primary-700);
+    --surface-action-pressed-2: var(--neutral-300);
+    --surface-disabled: var(--neutral-100);
     --surface-disabled-selected: var(--neutral-400);
-
+    --surface-information: var(--neutral-750);
+    --surface-information-2: var(--primary-50);
+    --surface-page: var(--neutral-50);
+    --surface-primary: var(--neutral-white);
+    --surface-secondary: var(--neutral-50);
+    --text-action: var(--neutral-600);
+    --text-action-hover: var(--neutral-700);
+    --text-body: var(--neutral-900);
+    --text-body-2: var(--neutral-700);
+    --text-body-3: var(--neutral-600);
+    --text-body-4: var(--neutral-500);
+    --text-disabled: var(--neutral-400);
+    --text-error: var(--error-600);
+    --text-headings: var(--neutral-950);
+    --text-information: var(--primary-default);
+    --text-on-action: var(--neutral-white);
+    --text-on-disabled: var(--neutral-400);
+    --text-on-information: var(--neutral-200);
+    --text-on-information-2: var(--neutral-400);
 
     /* Mapped - Dark */
     .dark {
-        --surface-action: var(--primary-default);
-        --surface-primary: var(--neutral-800);
-        --surface-action-hover-2: var(--neutral-700);
-        --icon-action-hover: var(--neutral-200);
-        --icon-action: var(--neutral-100);
-        --border-primary: var(--neutral-700);
-        --text-on-action: var(--neutral-white);
-        --icon-on-action: var(--neutral-white);
-        --surface-action-hover: var(--primary-600);
-        --icon-on-disabled: var(--neutral-400);
-        --text-on-disabled: var(--neutral-400);
-        --surface-disabled: var(--neutral-600);
         --border-disabled: var(--neutral-600);
-        --text-action-hover: var(--neutral-200);
-        --text-body-2: var(--neutral-200);
-        --text-body: var(--neutral-300);
-        --surface-information-2: var(--primary-900);
-        --surface-action-pressed: var(--primary-700);
-        --text-body-3: var(--neutral-400);
+        --border-error: var(--error-300);
         --border-focus: var(--primary-400);
         --border-focus-error: var(--error-400);
-        --surface-action-pressed-2: var(--neutral-600);
-        --surface-page: var(--neutral-800);
-        --icon-primary: var(--neutral-25);
-        --text-on-information: var(--neutral-300);
-        --surface-information: var(--neutral-500);
-        --text-action: var(--neutral-600);
-        --text-disabled: var(--neutral-500);
+        --border-primary: var(--neutral-750);
+        --border-secondary: var(--neutral-700);
+        --border-success: var(--success-300);
+        --border-tertiary: var(--neutral-200);
+        --effects-shadows-10: #0000001a;
+        --effects-shadows-14: #00000024;
+        --effects-shadows-18: #0000002e;
+        --effects-shadows-3: #00000008;
+        --effects-shadows-4: #0000000a;
+        --effects-shadows-5: #0000000d;
+        --effects-shadows-6: #0000000f;
+        --effects-shadows-8: #00000014;
+        --effects-skeleton-0: #41465100;
+        --effects-skeleton-100: #414651;
+        --icon-action: var(--neutral-100);
         --icon-action-2: var(--neutral-100);
-        --text-headings: #ffffff;
-        --text-body-4: var(--neutral-500);
-        --surface-secondary: var(--neutral-900);
+        --icon-action-hover: var(--neutral-200);
         --icon-disabled: var(--neutral-400);
         --icon-error: var(--error-400);
-        --text-error: var(--error-400);
-        --border-error: var(--error-400);
-        --text-information: var(--primary-default);
         --icon-information: var(--primary-default);
-        --border-secondary: var(--neutral-700);
+        --icon-on-action: var(--neutral-white);
+        --icon-on-disabled: var(--neutral-400);
+        --icon-primary: var(--neutral-white);
+        --icon-secondary: var(--neutral-750);
+        --icon-success: var(--success-400);
+        --surface-action: var(--primary-default);
+        --surface-action-hover: var(--primary-600);
+        --surface-action-hover-2: var(--neutral-700);
+        --surface-action-hover-3: var(--neutral-800);
+        --surface-action-pressed: var(--primary-700);
+        --surface-action-pressed-2: var(--neutral-600);
+        --surface-disabled: var(--neutral-600);
         --surface-disabled-selected: var(--neutral-400);
+        --surface-information: var(--neutral-50);
+        --surface-information-2: var(--primary-900);
+        --surface-page: var(--neutral-900);
+        --surface-primary: var(--neutral-800);
+        --surface-secondary: var(--neutral-900);
+        --text-action: var(--neutral-200);
+        --text-action-hover: var(--neutral-200);
+        --text-body: var(--neutral-200);
+        --text-body-2: var(--neutral-300);
+        --text-body-3: var(--neutral-400);
+        --text-body-4: var(--neutral-500);
+        --text-disabled: var(--neutral-500);
+        --text-error: var(--error-400);
+        --text-headings: var(--neutral-100);
+        --text-information: var(--primary-300);
+        --text-on-action: var(--neutral-white);
+        --text-on-disabled: var(--neutral-400);
+        --text-on-information: var(--neutral-700);
+        --text-on-information-2: var(--neutral-600);
     }
+
+    --device-size-frame: 1280px;
+
+    /* FONT-SIZE */
+    --font-size-body-xs: 12px;
+    --font-size-body-sm: 14px;
+    --font-size-body-md: 16px;
+    --font-size-body-lg: 18px;
+    --font-size-body-xl: 20px;
+
+    --font-size-heading-xs: 24px;
+    --font-size-heading-sm: 30px;
+    --font-size-heading-md: 36px;
+    --font-size-heading-lg: 48px;
+    --font-size-heading-xl: 60px;
+    --font-size-heading-2xl: 72px;
+
+    /* LINE-HEIGHT */
+    --line-height-body-sm: 20px;
+    --line-height-body-md: 24px;
+    --line-height-body-lg: 28px;
+    --line-height-body-xl: 30px;
+    --line-height-heading-xs: 32px;
+    --line-height-heading-sm: 38px;
+    --line-height-heading-md: 44px;
+    --line-height-heading-lg: 60px;
+    --line-height-heading-xl: 72px;
+    --line-height-heading-2xl: 90px;
+
+    /* SPACING */
+    --paragraph-spacing-body-xs: 12px;
+    --paragraph-spacing-body-sm: 14px;
+    --paragraph-spacing-body-md: 16px;
+    --paragraph-spacing-body-lg: 18px;
+    --paragraph-spacing-body-xl: 20px;
+    --paragraph-spacing-heading-xs: 24px;
+    --paragraph-spacing-heading-sm: 30px;
+    --paragraph-spacing-heading-md: 36px;
+    --paragraph-spacing-heading-lg: 48px;
+    --paragraph-spacing-heading-xl: 60px;
+    --paragraph-spacing-heading-2xl: 72px;
 
     /* FONT-FAMILY */
     --type-font-family-body: onest;
@@ -98,41 +172,24 @@
     --type-font-weight-semibold: semibold;
     --type-font-weight-bold: bold;
 
-    /* FONT-SIZE */
-    --font-size-body-xs: 12px;
-    --font-size-body-sm: 14px;
-    --font-size-body-md: 16px;
-    --font-size-body-lg: 18px;
-    --font-size-body-xl: 20px;
-    --font-size-heading-xs: 24px;
+    /* Color Styles  */
+    --gradient-skeumorphic-gradient-border: linear-gradient(180deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0) 100%);
 
-    /* LINE-HEIGHT */
-    --line-height-body-sm: 20px;
-    --line-height-body-md: 24px;
-    --line-height-body-lg: 28px;
-    --line-height-body-xl: 30px;
-    --line-height-heading-xs: 32px;
-
-    /* SPACING */
-    --paragraph-spacing-body-xs: 12px;
-    --paragraph-spacing-body-sm: 14px;
-    --paragraph-spacing-body-md: 16px;
-    --paragraph-spacing-body-lg: 18px;
-    --paragraph-spacing-body-xl: 20px;
-    --paragraph-spacing-heading-xs: 24px;
-
-    --border-radius-none: var(--scale-0);
-    --border-radius-xxs: var(--scale-0_5-2px);
-    --border-radius-xs: var(--scale-1-4px);
-    --border-radius-sm: var(--scale-1_5-6px);
-    --border-radius-round: var(--scale-unlimited-9999px);
-    --border-radius-md: var(--scale-2-8px);
-    --border-radius-lg: var(--scale-2_5-10px);
-    --border-radius-xl: var(--scale-3-12px);
-    --border-radius-2xl: var(--scale-4-16px);
-    --border-radius-3-xl: var(--scale-5-20px);
-    --border-radius-4-xl: var(--scale-6-24px);
-
-    --box-shadow-xs: 0px 1px 2px 0px #0A0D120D;
-    --box-shadow-xs-skeumorphic: 0 1px 2px 0px #0A0D120D, 0px -2px 0px 0px #0A0D120D inset, 0px 0px 0px 1px #0A0D122E inset;
+    /* Effect Styles  */
+    --shadow-xs: 0px 1px 2px 0px var(--effects-shadows-5);
+    --shadow-xs-skeumorphic: 0px 1px 2px 0px var(--effects-shadows-5),0px -2px 0px 0px var(--effects-shadows-5) inset, 0px 0px 0px 1px var(--app-shadow-xs-skeumorphic-border, var(--effects-shadows-18)) inset;
+    --shadow-sm: 0px 1px 2px -1px var(--effects-shadows-10), 0px 1px 3px 0px var(--effects-shadows-10);
+    --shadow-md: 0px 2px 4px -2px var(--effects-shadows-6), 0px 4px 6px -1px var(--effects-shadows-10);
+    --shadow-lg: 0px 2px 2px -1px var(--effects-shadows-4), 0px 4px 6px -2px var(--effects-shadows-3), 0px 12px 16px -4px var(--effects-shadows-8);
+    --shadow-xl: 0px 3px 3px -1.5px var(--effects-shadows-4), 0px 8px 8px -4px var(--effects-shadows-3), 0px 20px 24px -4px var(--effects-shadows-8);
+    --shadow-2xl: 0px 4px 4px -2px var(--effects-shadows-4), 0px 24px 48px -12px var(--effects-shadows-18);
+    --shadow-3xl: 0px 5px 5px -2.5px var(--effects-shadows-4), 0px 32px 64px -12px var(--effects-shadows-14);
+    --focus-rings-focus-ring: 0px 0px 0px 2px var(--surface-primary), 0px 0px 0px 4px var(--border-focus);
+    --focus-rings-focus-ring-shadow-xs: 0px 0px 0px 4px var(--border-focus), 0px 0px 0px 2px var(--surface-primary), 0px 1px 2px 0px var(--effects-shadows-5);
+    --focus-rings-focus-ring-shadow-xs-skeumorphic:
+            0px 0px 0px 2px var(--surface-primary),
+            0px 0px 0px 4px var(--border-focus),
+            0px 1px 2px 0px var(--effects-shadows-5),
+            0px -2px 0px 0px var(--effects-shadows-5) inset,
+            0px 0px 0px 1px var(--effects-shadows-18) inset;
 }

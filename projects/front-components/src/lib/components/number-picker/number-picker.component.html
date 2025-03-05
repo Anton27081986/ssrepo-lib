@@ -1,0 +1,34 @@
+<div class="number-picker">
+    <ss-lib-button
+        class="number-picker__number-indicator indicator-start border-none"
+        [type]="ButtonType.Secondary"
+        [size]="ExtraSize.lg"
+        [icon]="IconType.Minus"
+        [iconPosition]="IconPosition.OnlyIcon"
+        [disabled]="isDisabled() || numberPickerCtrl.value && min() && numberPickerCtrl.value <= min()!"
+        (click)="!isDisabled() && changeNumberValueByStep(Direction.Previous)"
+    />
+
+    <div class="number-picker__input-field">
+        <ss-lib-form-field>
+            <ss-lib-input
+                fieldCtrl
+                [formControl]="numberPickerCtrl"
+                [type]="InputType.Number"
+                [min]="min()"
+                [max]="max()"
+                [align]="Align.Center"
+            />
+        </ss-lib-form-field>
+    </div>
+
+    <ss-lib-button
+        class="number-picker__number-indicator indicator-end"
+        [type]="ButtonType.Secondary"
+        [size]="ExtraSize.lg"
+        [icon]="IconType.Plus"
+        [iconPosition]="IconPosition.OnlyIcon"
+        [disabled]="isDisabled() || numberPickerCtrl.value && max() && numberPickerCtrl.value >= max()!"
+        (click)="!isDisabled() && changeNumberValueByStep(Direction.Next)"
+    />
+</div>

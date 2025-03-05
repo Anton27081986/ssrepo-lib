@@ -1,0 +1,30 @@
+<div class="sidebar  sidebar--{{ sidebarType() }}">
+  <div @animationTrigger *ngIf="sidebarType() !== SidebarType.Close " class="sidebar__top-menu">
+    <ng-container *ngFor="let menu of menu()">
+      <ss-lib-nav-button
+        [menu]="menu"
+        [type]="stateCanvas.sidebarType() === SidebarType.Full ? NuvButtonType.NavBase : NuvButtonType.NavIcon"
+        (click)="outMenuModel(menu)"
+      >
+      </ss-lib-nav-button>
+    </ng-container>
+  </div>
+
+  <div class="sidebar__bottom-menu">
+    <ss-lib-divider></ss-lib-divider>
+    <div class="sidebar__bottom-menu-block">
+
+      <ng-container *ngIf="stateCanvas.sidebarType() === SidebarType.Full">
+        <ss-lib-button (click)="closeMenu()" [type]="ButtonType.Text" [text]="'Свернуть меню'"
+                       [icon]="IconType.ChevronLeftDouble"></ss-lib-button>
+      </ng-container>
+
+      <ng-container *ngIf="stateCanvas.sidebarType() === SidebarType.Mini">
+        <ss-lib-button (click)="closeMenu()" [type]="ButtonType.Text"
+                       [icon]="IconType.ChevronLeftDouble"></ss-lib-button>
+      </ng-container>
+
+    </div>
+  </div>
+
+</div>

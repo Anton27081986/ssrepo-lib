@@ -1,0 +1,46 @@
+.number-picker {
+    width: 148px;
+    display: flex;
+    align-items: center;
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-xs);
+
+    &__number-indicator.indicator-start {
+        --app-custom-button-border-radius-top-right: 0;
+        --app-custom-button-border-radius-bottom-right: 0;
+
+        --app-border-shadow-secondary-btn: none;
+        --app-border-shadow-secondary-btn-active: none;
+
+        border-radius: var(--border-radius-md) 0 0 var(--border-radius-md);
+        outline: 1px solid var(--border-primary) !important;
+        z-index: 5;
+    }
+
+    &__number-indicator.indicator-end {
+        --app-custom-button-border-radius-top-left: 0;
+        --app-custom-button-border-radius-bottom-left: 0;
+
+        --app-border-shadow-secondary-btn: none;
+        --app-border-shadow-secondary-btn-active: none;
+
+        border-radius: 0 var(--border-radius-md) var(--border-radius-md) 0;
+        outline: 1px solid var(--border-primary) !important;
+        z-index: 5;
+    }
+
+
+    &__input-field {
+        --app-custom-button-border-radius-top-left: 0;
+        --app-custom-button-border-radius-top-right: 0;
+        --app-custom-button-border-radius-bottom-right: 0;
+        --app-custom-button-border-radius-bottom-left: 0;
+        z-index: 1;
+    }
+
+    &__number-indicator.indicator-start:focus-within,
+    &__number-indicator.indicator-end:focus-within,
+    &__input-field:focus-within {
+        z-index: 10;
+    }
+}

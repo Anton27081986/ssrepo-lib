@@ -1,0 +1,21 @@
+<div class="test-modal">
+    <ss-lib-modal
+        [modalData]="{
+            title: data.title,
+            description: data.description,
+            badgeProps: data.badgeProps,
+            contentRef: modalContent,
+            footerRef: modalFooter,
+            modalConfig: data.modalConfig!
+        }"
+    ></ss-lib-modal>
+</div>
+
+<ng-template #modalContent>
+    <div>Content</div>
+</ng-template>
+
+<ng-template #modalFooter>
+    <div>Footer</div>
+</ng-template>
+

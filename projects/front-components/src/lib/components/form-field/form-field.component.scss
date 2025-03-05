@@ -1,0 +1,93 @@
+.form-field {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.field-info {
+    &__label {
+        display: flex;
+        align-items: center;
+    }
+}
+
+.field-container {
+    position: relative;
+    height: auto;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 4px;
+    border-radius: var(--app-custom-button-border-radius-top-left, var(--border-radius-md)) var(--app-custom-button-border-radius-top-right, var(--border-radius-md)) var(--app-custom-button-border-radius-bottom-right, var(--border-radius-md)) var(--app-custom-button-border-radius-bottom-left, var(--border-radius-md));
+    color: var(--text-body);
+    background: var(--surface-primary);
+    outline: 1px solid var(--border-primary, #E9EAEB);
+    transition: outline-color 0.3s ease;
+    box-sizing: border-box;
+    box-shadow: var(--shadow-xs);
+}
+
+.field-container {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    overflow: hidden;
+}
+
+.field-container.state-disabled {
+    background: var(--surface-disabled);
+    color: var(--text-on-disabled);
+    outline: 1px solid var(--border-disabled);
+}
+
+.field-container:focus-within:not(.state-invalid) {
+    outline: 2px solid var(--border-focus, #3C92D5);
+}
+
+.field-container.validation.state-invalid:not(:focus-within) {
+    outline: 1px solid var(--border-error);
+
+    .field-container__error-icon {
+        display: flex;
+    }
+}
+
+.field-container.validation.state-invalid:focus-within {
+    outline: 2px solid var(--border-focus-error);
+
+    .field-container__error-icon {
+        display: flex;
+    }
+}
+
+.field-container.validation.state-invalid:not(:focus-within) ~ .field-container__error-message,
+.field-container.validation.state-invalid:focus-within ~ .field-container__error-message {
+    display: flex;
+}
+
+.field-container__content-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.field-container__content {
+    flex: 1;
+    width: 100%;
+}
+
+.field-container__error-icon {
+    display: none;
+    margin: 0 14px 0 -10px;
+}
+
+.field-container__error-message {
+    position: absolute;
+    display: none;
+    align-items: center;
+    gap: 4px;
+    top: calc(100% + 6px);
+    left: 0;
+}
+
