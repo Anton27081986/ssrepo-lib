@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, computed, input, model, output } fr
 import { CalendarMonth, CalendarMonthLike, CalendarYearLike } from '../../models';
 import { ButtonComponent } from '../../../buttons';
 import { ButtonType, ExtraSize, IconPosition, IconType } from '../../../../shared/models';
+import { FIRST_DAY, LAST_DAY } from '../../constans';
 
 @Component({
     selector: 'ss-lib-calendar-controls',
@@ -20,26 +21,19 @@ export class CalendarControlsComponent {
     protected readonly ExtraSize = ExtraSize;
     protected readonly IconType = IconType;
     protected readonly IconPosition = IconPosition;
+    protected readonly LAST_DAY = LAST_DAY;
+    protected readonly FIRST_DAY = FIRST_DAY;
 
     protected switchYearIcon = computed(() => {
         return this.isMonthView() ? IconType.ChevronDown : IconType.ChevronUp;
     })
 
     protected append(date: CalendarMonthLike | CalendarYearLike): void {
-
         const value = this.value().append(date);
 
         this.updateMonthValue(value);
-
-        // if (this.min.monthSameOrAfter(value)) {
-        //     this.updateValue(this.min);
-        // } else {
-        //     this.updateValue(this.max.monthSameOrBefore(value) ? this.max : value);
-        // }
-
         this.isMonthView.set(true);
     }
-
 
     protected switchView(): void {
         this.isMonthView.set(!this.isMonthView());

@@ -9,7 +9,7 @@ import {
     WritableSignal
 } from '@angular/core';
 import { NgClass } from '@angular/common';
-import { FIRST_DAY, LAST_DAY, LAST_DISPLAYED_DAY } from './constans';
+import { FIRST_DAY, LAST_DAY } from './constans';
 import { CalendarDay, CalendarMonth } from './models';
 import { CalendarControlsComponent, CalendarSheetComponent, CalendarYearComponent } from './components';
 import { ButtonType, ExtraSize, IconPosition, IconType, TextType } from '../../shared/models';
@@ -30,37 +30,32 @@ import { ButtonType, ExtraSize, IconPosition, IconType, TextType } from '../../s
 })
 export class CalendarComponent {
     public value = input<CalendarDay | null>(null);
+    public readonly min = input<CalendarDay | null, CalendarDay>(new CalendarDay(2023, 4, 1),{
+        transform: (value: CalendarDay | null): CalendarDay => {
+            return value && value.daySameOrAfter(FIRST_DAY) ? value : FIRST_DAY;
+        }
+    });
+    public readonly max = input<CalendarDay | null, CalendarDay>(new CalendarDay(2027, 4, 1),{
+        transform: (value: CalendarDay | null): CalendarDay => {
+            return value && value.daySameOrBefore(LAST_DAY) ? value : LAST_DAY;
+        }
+    });
     protected readonly dayClick = output<CalendarDay | null>();
 
-    // public readonly min = input<CalendarDay | null>(FIRST_DAY);
-    // public readonly max = input<CalendarDay | null>(LAST_DAY);
-
-    public readonly min = input<CalendarDay | null>(new CalendarDay(2024, 11, 15));
-    public readonly max = input<CalendarDay | null>(new CalendarDay(2026, 4, 12));
-
-    // public readonly minViewedMonth = input<CalendarMonth | null>(FIRST_DAY);
-    // public readonly maxViewedMonth = input<CalendarMonth | null>(LAST_DAY);
-
-    public readonly minViewedMonth = input<CalendarMonth | null>(new CalendarMonth(2020, 5));
-    public readonly maxViewedMonth = input<CalendarMonth | null>(new CalendarMonth(2030, 10));
-
-    public isMonthView = signal<boolean>(true);
-    private day: WritableSignal<CalendarDay | null> = signal<CalendarDay | null>(null);
-    private month: WritableSignal<CalendarMonth | CalendarDay> = signal<CalendarMonth>(CalendarMonth.currentLocal());
-
+    public readonly isMonthView = signal<boolean>(true);
     public readonly ButtonType = ButtonType;
     public readonly IconPosition = IconPosition;
     public readonly IconType = IconType;
     public readonly ExtraSize = ExtraSize;
     public readonly TextType = TextType;
 
+    private month: WritableSignal<CalendarMonth | CalendarDay> = signal<CalendarMonth>(CalendarMonth.currentLocal());
+
     constructor() {
         effect(() => {
-            this.day.set(this.value());
-
             if (
                 this.value() instanceof CalendarDay &&
-                this.value()!.daySameOrBefore(LAST_DISPLAYED_DAY)
+                this.value()!.daySameOrBefore(LAST_DAY)
             ) {
                 this.month.set(this.value()!);
             }
@@ -71,40 +66,17 @@ export class CalendarComponent {
         return this.month.asReadonly();
     }
 
-    public get currentValue(): Signal<CalendarDay | null> {
-        return this.day.asReadonly();
-    }
-
-    protected get computedMin(): CalendarDay {
-        return this.min() ?? FIRST_DAY;
-    }
-
-    protected get computedMax(): CalendarDay {
-        return this.max() ?? LAST_DAY;
-    }
-
-    protected get computedMinViewedMonth(): CalendarMonth {
-        debugger
-        const min = this.computedMin;
-        const minViewed = this.minViewedMonth() ?? FIRST_DAY;
-
-        return minViewed.monthSameOrBefore(min) ? minViewed : min;
-    }
-
-    protected get computedMaxViewedMonth(): CalendarMonth {
-        debugger
-        const max = this.computedMax;
-        const maxViewed = this.maxViewedMonth() ?? LAST_DAY;
-
-        return maxViewed.monthSameOrAfter(max) ? maxViewed : max;
-    }
-
-    public onDayClick(day: CalendarDay): void {
-        this.dayClick.emit(day);
+    public onPickerMonthClick(month: CalendarMonth): void {
+        this.isMonthView.set(true);
+        this.updateViewedMonth(month);
     }
 
     public onPaginationMonthChange(month: CalendarMonth): void {
         this.updateViewedMonth(month);
+    }
+
+    public onDayClick(day: CalendarDay): void {
+        this.dayClick.emit(day);
     }
 
     private updateViewedMonth(month: CalendarMonth): void {

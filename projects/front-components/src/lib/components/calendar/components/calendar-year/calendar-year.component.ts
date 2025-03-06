@@ -4,13 +4,13 @@ import {
     Component,
     ElementRef,
     input,
-    output,
+    output, signal,
     viewChildren
 } from '@angular/core';
-import { FIRST_DAY, LAST_DAY, MAX_YEAR, MIN_YEAR, MONTHS_SHORT } from '../../constans';
+import { CalendarCellComponent } from '../calendar-cell/calendar-cell.component';
+import { LIMIT_YEARS, MONTHS_SHORT,MIN_YEAR } from '../../constans';
 import { CalendarMonth } from '../../models';
 import { RepeatTimesPipe } from '../../../../core/pipes';
-import { CalendarCellComponent } from '../calendar-cell/calendar-cell.component';
 
 @Component({
     selector: 'ss-lib-calendar-year',
@@ -26,14 +26,12 @@ export class CalendarYearComponent {
     private readonly yearRows = viewChildren('yearRow', {
         read: ElementRef
     });
-    private readonly monthToday = CalendarMonth.currentLocal();
+    private readonly monthToday = signal(CalendarMonth.currentLocal());
 
     public readonly month = input<CalendarMonth>(CalendarMonth.currentLocal());
-    public readonly limit = input<number>(10);
-    public readonly min = input<CalendarMonth | null>(FIRST_DAY);
-    public readonly max = input<CalendarMonth | null>(LAST_DAY);
     protected readonly monthClick = output<CalendarMonth>();
 
+    public readonly rows = signal(LIMIT_YEARS * 2);
     public readonly MONTHS_SHORT = MONTHS_SHORT;
 
     constructor() {
@@ -42,26 +40,8 @@ export class CalendarYearComponent {
         });
     }
 
-    public get rows(): number {
-        return Math.ceil((this.calculatedMaxYear - this.calculatedMinYear));
-    }
-
-    private get calculatedMinYear(): number {
-        const initial = this.month().year - this.limit();
-        const min = this.min()!.year ?? MIN_YEAR;
-
-        return min > initial ? min : initial;
-    }
-
-    private get calculatedMaxYear(): number {
-        const initial = this.month().year + this.limit();
-        const max = this.max()!.year ?? MAX_YEAR;
-
-        return max < initial ? max + 1 : initial;
-    }
-
     protected getYear(rowIndex: number): number {
-        return rowIndex + this.calculatedMinYear;
+        return rowIndex + MIN_YEAR;
     }
 
     protected getMonth(month: number, year: number): CalendarMonth {
@@ -69,15 +49,7 @@ export class CalendarYearComponent {
     }
 
     protected itemIsToday(item: CalendarMonth): boolean {
-        return this.monthToday.monthSame(item)
-    }
-
-    public isDisabledYear(year: number): boolean {
-        return (this.max()!.year < year) || (this.min()!.year > year);
-    }
-
-    public isDisabledMonth(month: CalendarMonth): boolean {
-        return month.monthSameOrAfter(this.max()!) || month.monthSameOrBefore(this.min()!);
+        return this.monthToday().monthSame(item)
     }
 
     public onItemClick(item: CalendarMonth): void {
@@ -85,7 +57,7 @@ export class CalendarYearComponent {
     }
 
     private scrollToYear(targetYear: number): void {
-        const targetIndex = targetYear - this.calculatedMinYear - 1;
+        const targetIndex = targetYear - MIN_YEAR - 1;
 
         if (targetIndex >= 0 && this.yearRows()[targetIndex]) {
             this.yearRows()[targetIndex].nativeElement.scrollIntoView({

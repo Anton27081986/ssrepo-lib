@@ -34,6 +34,20 @@ export class CalendarYear implements CalendarYearLike {
     }
 
     /**
+     * Passed year is the same or after current
+     */
+    public yearSameOrBefore({year}: CalendarYear): boolean {
+        return this.year <= year;
+    }
+
+    /**
+     * Passed year is either the same of before the current
+     */
+    public yearSameOrAfter({year}: CalendarYear): boolean {
+        return this.year >= year;
+    }
+
+    /**
      * Immutably offsets year
      */
     public append({year = 0}: CalendarYearLike): CalendarYear {

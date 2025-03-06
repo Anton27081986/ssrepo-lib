@@ -14,17 +14,16 @@
         <div class="calendar-content">
             @if (isMonthView()) {
                 <ss-lib-calendar-sheet
-                    [value]="currentValue()"
+                    [value]="value()"
                     [month]="currentMonth()"
-                    [min]="computedMin"
-                    [max]="computedMax"
+                    [min]="min()!"
+                    [max]="max()!"
                     (dayClick)="onDayClick($event)"
                 />
             } @else {
                 <ss-lib-calendar-year
                     [month]="currentMonth()"
-                    [min]="computedMinViewedMonth"
-                    [max]="computedMaxViewedMonth"
+                    (monthClick)="onPickerMonthClick($event)"
                 />
             }
         </div>

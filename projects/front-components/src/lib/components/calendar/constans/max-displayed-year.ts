@@ -1,1 +1,0 @@
-export const MAX_DISPLAYED_YEAR = 2099;

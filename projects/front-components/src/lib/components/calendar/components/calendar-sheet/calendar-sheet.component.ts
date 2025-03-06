@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, input, output } from '@angular/core';
-import { FIRST_DAY, LAST_DAY, WEEK_DAYS_SHORT } from '../../constans';
+import { WEEK_DAYS_SHORT, TODAY_LABEL } from '../../constans';
 import { CalendarDay, CalendarMonth } from '../../models';
 import { CalendarSheetPipe } from '../../pipes';
 import { MapperPipe, RepeatTimesPipe } from '../../../../core/pipes';
@@ -26,8 +26,9 @@ export class CalendarSheetComponent {
 
     public month = input<CalendarMonth>(CalendarMonth.currentLocal());
     public value = input<CalendarDay | null>(null);
-    public readonly min = input<CalendarDay | null>(FIRST_DAY);
-    public readonly max = input<CalendarDay | null>(LAST_DAY);
+
+    public readonly min = input.required<CalendarDay>();
+    public readonly max = input.required<CalendarDay>();
     protected readonly dayClick = output<CalendarDay>();
 
     public readonly WEEK_DAYS_SHORT = WEEK_DAYS_SHORT;
@@ -64,4 +65,6 @@ export class CalendarSheetComponent {
     protected setToday(): void {
         this.dayClick.emit(CalendarDay.currentLocal());
     }
+
+    protected readonly TODAY_LABEL = TODAY_LABEL;
 }

@@ -1,7 +1,7 @@
 import { MonthNumber } from './month-number';
 import { CalendarYear } from './calendar-year';
-import { MONTHS_IN_YEAR, MONTHS_LONG, MONTHS_SHORT } from '../constans';
 import { CalendarMonthLike } from './types';
+import { MONTHS_IN_YEAR, MONTHS_LONG, MONTHS_SHORT } from '../constans';
 
 export class CalendarMonth extends CalendarYear implements CalendarMonthLike {
     /**
@@ -127,5 +127,4 @@ export class CalendarMonth extends CalendarYear implements CalendarMonthLike {
     public get formattedMonthPart(): string {
         return String(this.month + 1).padStart(2, '0');
     }
-
 }

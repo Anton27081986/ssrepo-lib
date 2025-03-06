@@ -98,4 +98,14 @@ export class CalendarDay extends CalendarMonth {
             (this.monthSame(another) && this.day <= another.day)
         );
     }
+
+    /**
+     * Passed date is either before or the same as current
+     */
+    public daySameOrAfter(another: CalendarDay): boolean {
+        return (
+            this.monthAfter(another) ||
+            (this.monthSame(another) && this.day >= another.day)
+        );
+    }
 }
