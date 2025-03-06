@@ -36,10 +36,13 @@ export class CalendarComponent {
     // public readonly max = input<CalendarDay | null>(LAST_DAY);
 
     public readonly min = input<CalendarDay | null>(new CalendarDay(2024, 11, 15));
-    public readonly max = input<CalendarDay | null>(new CalendarDay(2025, 4, 12));
+    public readonly max = input<CalendarDay | null>(new CalendarDay(2026, 4, 12));
 
-    public readonly minViewedMonth = input<CalendarMonth | null>(FIRST_DAY);
-    public readonly maxViewedMonth = input<CalendarMonth | null>(LAST_DAY);
+    // public readonly minViewedMonth = input<CalendarMonth | null>(FIRST_DAY);
+    // public readonly maxViewedMonth = input<CalendarMonth | null>(LAST_DAY);
+
+    public readonly minViewedMonth = input<CalendarMonth | null>(new CalendarMonth(2020, 5));
+    public readonly maxViewedMonth = input<CalendarMonth | null>(new CalendarMonth(2030, 10));
 
     public isMonthView = signal<boolean>(true);
     private day: WritableSignal<CalendarDay | null> = signal<CalendarDay | null>(null);
@@ -81,10 +84,11 @@ export class CalendarComponent {
     }
 
     protected get computedMinViewedMonth(): CalendarMonth {
+        debugger
         const min = this.computedMin;
         const minViewed = this.minViewedMonth() ?? FIRST_DAY;
 
-        return minViewed.monthSameOrAfter(min) ? minViewed : min;
+        return minViewed.monthSameOrBefore(min) ? minViewed : min;
     }
 
     protected get computedMaxViewedMonth(): CalendarMonth {
@@ -92,7 +96,7 @@ export class CalendarComponent {
         const max = this.computedMax;
         const maxViewed = this.maxViewedMonth() ?? LAST_DAY;
 
-        return maxViewed.monthSameOrBefore(max) ? maxViewed : max;
+        return maxViewed.monthSameOrAfter(max) ? maxViewed : max;
     }
 
     public onDayClick(day: CalendarDay): void {

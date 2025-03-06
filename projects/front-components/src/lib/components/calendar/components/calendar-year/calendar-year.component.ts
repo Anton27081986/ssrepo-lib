@@ -3,14 +3,14 @@ import {
     ChangeDetectionStrategy,
     Component,
     ElementRef,
-    input, output,
+    input,
+    output,
     viewChildren
 } from '@angular/core';
-import { CalendarCellComponent } from '../calendar-cell/calendar-cell.component';
 import { FIRST_DAY, LAST_DAY, MAX_YEAR, MIN_YEAR, MONTHS_SHORT } from '../../constans';
-import { CalendarDay, CalendarMonth } from '../../models';
+import { CalendarMonth } from '../../models';
 import { RepeatTimesPipe } from '../../../../core/pipes';
-import { CalendarSheetPipe } from '../../pipes';
+import { CalendarCellComponent } from '../calendar-cell/calendar-cell.component';
 
 @Component({
     selector: 'ss-lib-calendar-year',
@@ -77,7 +77,7 @@ export class CalendarYearComponent {
     }
 
     public isDisabledMonth(month: CalendarMonth): boolean {
-        return this.max()!.monthSameOrAfter(month) || this.min()!.monthSameOrBefore(month);
+        return month.monthSameOrAfter(this.max()!) || month.monthSameOrBefore(this.min()!);
     }
 
     public onItemClick(item: CalendarMonth): void {
