@@ -55,6 +55,8 @@ export class StandComponent {
     textareaCtrl = new FormControl('rrrr', [Validators.required, Validators.minLength(10)]);
     selectCtrl = new FormControl(null);
     numberPickerCtrl = new FormControl(2);
+    minDate = new CalendarDay(2025, 2, 5);
+    maxDate = new CalendarDay(2025, 2, 20)
 
     protected value: CalendarDay | null = null;
 

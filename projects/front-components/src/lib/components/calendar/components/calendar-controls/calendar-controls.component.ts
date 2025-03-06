@@ -1,14 +1,14 @@
 import { ChangeDetectionStrategy, Component, computed, input, model, output } from '@angular/core';
+import { calendarControlsImports } from './calendar-controls.imports';
 import { CalendarMonth, CalendarMonthLike, CalendarYearLike } from '../../models';
-import { ButtonComponent } from '../../../buttons';
 import { FIRST_DAY, LAST_DAY } from '../../constans';
-import { MapperPipe } from '../../../../core/pipes';
 import { ButtonType, ExtraSize, Extremum, IconPosition, IconType } from '../../../../shared/models';
+
 
 @Component({
     selector: 'ss-lib-calendar-controls',
     standalone: true,
-    imports: [ButtonComponent, MapperPipe],
+    imports: [calendarControlsImports],
     templateUrl: './calendar-controls.component.html',
     styleUrl: './calendar-controls.component.scss',
     changeDetection: ChangeDetectionStrategy.OnPush

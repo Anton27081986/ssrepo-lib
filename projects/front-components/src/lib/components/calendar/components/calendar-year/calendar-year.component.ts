@@ -7,17 +7,15 @@ import {
     output, signal,
     viewChildren
 } from '@angular/core';
-import { CalendarCellComponent } from '../calendar-cell/calendar-cell.component';
+import { calendarYearImports } from './calendar-year.imports';
 import { LIMIT_YEARS, MONTHS_SHORT, MIN_YEAR } from '../../constans';
 import { CalendarMonth } from '../../models';
-import { RepeatTimesPipe } from '../../../../core/pipes';
+
 
 @Component({
     selector: 'ss-lib-calendar-year',
-    imports: [
-        CalendarCellComponent,
-        RepeatTimesPipe,
-    ],
+    standalone: true,
+    imports: [calendarYearImports],
     templateUrl: './calendar-year.component.html',
     styleUrl: './calendar-year.component.scss',
     changeDetection: ChangeDetectionStrategy.OnPush

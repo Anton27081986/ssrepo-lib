@@ -8,39 +8,43 @@ import {
     signal,
     WritableSignal
 } from '@angular/core';
-import { NgClass } from '@angular/common';
 import { FIRST_DAY, LAST_DAY } from './constans';
 import { CalendarDay, CalendarMonth } from './models';
-import { CalendarControlsComponent, CalendarSheetComponent, CalendarYearComponent } from './components';
+import { calendarImports } from './calendar.imports';
 import { ButtonType, ExtraSize, IconPosition, IconType, TextType } from '../../shared/models';
 
-
+/**
+ * Параметры:
+ *
+ * [value]: CalendarDay | null - Выбранная дата. По умолчанию: `'null'`
+ *
+ * [min]: CalendarDay | null - Минимальная дата для выбора. По умолчанию: `FIRST_DAY = (01.01.текущий год - 100)`
+ *
+ * [max]: CalendarDay | null - Максимальная дата для выбора. По умолчанию: `LAST_DAY = (31.12.текущий год + 100)`
+ *
+ * (dayClick): CalendarDay | null - Событие выбора даты
+ */
 @Component({
     selector: 'ss-lib-calendar',
     standalone: true,
-    imports: [
-        NgClass,
-        CalendarControlsComponent,
-        CalendarSheetComponent,
-        CalendarYearComponent
-    ],
+    imports: [calendarImports],
     templateUrl: './calendar.component.html',
     styleUrl: './calendar.component.scss',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CalendarComponent {
     public value = input<CalendarDay | null>(null);
-    public min = input<CalendarDay | null, CalendarDay>(new CalendarDay(2023, 4, 1), {
+    public min = input<CalendarDay | null, CalendarDay>(FIRST_DAY, {
         transform: (value: CalendarDay | null): CalendarDay => {
             return value && value.daySameOrAfter(FIRST_DAY) ? value : FIRST_DAY;
         }
     });
-    public max = input<CalendarDay | null, CalendarDay>(new CalendarDay(2027, 4, 1), {
+    public max = input<CalendarDay | null, CalendarDay>(LAST_DAY, {
         transform: (value: CalendarDay | null): CalendarDay => {
             return value && value.daySameOrBefore(LAST_DAY) ? value : LAST_DAY;
         }
     });
-    protected readonly dayClick = output<CalendarDay | null>();
+    public dayClick = output<CalendarDay | null>();
 
     public readonly isMonthView = signal<boolean>(true);
     public readonly ButtonType = ButtonType;
@@ -76,6 +80,12 @@ export class CalendarComponent {
     }
 
     public onDayClick(day: CalendarDay): void {
+        if (day && this.value() && day.daySame(this.value()!)) {
+            this.dayClick.emit(null);
+
+            return;
+        }
+
         this.dayClick.emit(day);
     }
 

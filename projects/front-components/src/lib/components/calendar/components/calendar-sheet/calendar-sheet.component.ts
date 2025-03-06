@@ -1,22 +1,14 @@
 import { ChangeDetectionStrategy, Component, input, output } from '@angular/core';
+import { calendarSheetImports } from './calendar-sheet.imports';
 import { WEEK_DAYS_SHORT, TODAY_LABEL } from '../../constans';
 import { CalendarDay, CalendarMonth } from '../../models';
-import { CalendarSheetPipe } from '../../pipes';
-import { MapperPipe, RepeatTimesPipe } from '../../../../core/pipes';
-import { ButtonComponent } from '../../../buttons';
 import { ButtonType } from '../../../../shared/models';
-import { CalendarCellComponent } from '../calendar-cell/calendar-cell.component';
+
 
 @Component({
     selector: 'ss-lib-calendar-sheet',
     standalone: true,
-    imports: [
-        CalendarSheetPipe,
-        RepeatTimesPipe,
-        MapperPipe,
-        ButtonComponent,
-        CalendarCellComponent,
-    ],
+    imports: [calendarSheetImports],
     templateUrl: './calendar-sheet.component.html',
     styleUrl: './calendar-sheet.component.scss',
     changeDetection: ChangeDetectionStrategy.OnPush
@@ -26,7 +18,6 @@ export class CalendarSheetComponent {
 
     public month = input<CalendarMonth>(CalendarMonth.currentLocal());
     public value = input<CalendarDay | null>(null);
-
     public min = input.required<CalendarDay>();
     public max = input.required<CalendarDay>();
     public dayClick = output<CalendarDay>();
