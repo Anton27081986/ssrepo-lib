@@ -6,7 +6,7 @@ module.exports = {
 		{
 			files: ["*.ts"],
 			parserOptions: {
-				project: ["./tsconfig.lib.json"],
+				project: ["./tsconfig.json"],
 				createDefaultProgram: true,
 			},
 			extends: [
@@ -14,7 +14,6 @@ module.exports = {
 				"@tinkoff/eslint-config-angular",
 				"@tinkoff/eslint-config-angular/rxjs",
 				"@tinkoff/eslint-config-angular/promise",
-				"@tinkoff/eslint-config-angular/imports",
 				"@tinkoff/eslint-config-angular/unicorn",
 				"@tinkoff/eslint-config-angular/html-eslint",
 				"@tinkoff/eslint-config-angular/file-progress",
@@ -23,25 +22,18 @@ module.exports = {
 				"@tinkoff/eslint-config-angular/decorator-position",
 				"@tinkoff/eslint-config-angular/function-return-type",
 				"plugin:@angular-eslint/recommended",
-				"plugin:@typescript-eslint/recommended",
+				"plugin:@typescript-eslint/recommended"
 			],
+			// settings: {
+			// 	'import/resolver': {
+			// 		typescript: {}
+			// 	}
+			// },
 			rules: {
-				"@angular-eslint/directive-selector": [
-					"warn",
-					{
-						type: "attribute",
-						prefix: "ss",
-						style: "camelCase",
-					},
-				],
-				"@angular-eslint/component-selector": [
-					"warn",
-					{
-						type: "element",
-						prefix: "ss",
-						style: "kebab-case",
-					},
-				],
+
+				// 'import/no-unresolved': 'off',
+				// 'import/extensions': 'off',
+				"import/no-relative-packages": "off",
 				"@typescript-eslint/ban-types": "off",
 				"@typescript-eslint/explicit-member-accessibility": [
 					"warn",

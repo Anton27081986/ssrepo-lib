@@ -13,6 +13,7 @@
     "tokens:update": "style-dictionary build",
     "storybook": "ng run front-components:storybook",
     "lint": "ng lint",
+    "lint:fix": "ng lint --fix",
     "format": "prettier --write \"**/*.{ts,html,css,scss,json,md}\""
   },
   "private": true,
@@ -57,6 +58,7 @@
     "angular-eslint": "^19.2.0",
     "eslint": "^8.57.1",
     "eslint-config-prettier": "^10.0.2",
+    "eslint-import-resolver-typescript": "^3.8.3",
     "eslint-plugin-prettier": "^5.2.3",
     "jasmine-core": "~5.5.0",
     "karma": "~6.4.0",
