@@ -8,7 +8,7 @@ import {
     viewChildren
 } from '@angular/core';
 import { CalendarCellComponent } from '../calendar-cell/calendar-cell.component';
-import { LIMIT_YEARS, MONTHS_SHORT,MIN_YEAR } from '../../constans';
+import { LIMIT_YEARS, MONTHS_SHORT, MIN_YEAR } from '../../constans';
 import { CalendarMonth } from '../../models';
 import { RepeatTimesPipe } from '../../../../core/pipes';
 
@@ -28,10 +28,10 @@ export class CalendarYearComponent {
     });
     private readonly monthToday = signal(CalendarMonth.currentLocal());
 
-    public readonly month = input<CalendarMonth>(CalendarMonth.currentLocal());
-    protected readonly monthClick = output<CalendarMonth>();
+    public month = input<CalendarMonth>(CalendarMonth.currentLocal());
+    public monthClick = output<CalendarMonth>();
 
-    public readonly rows = signal(LIMIT_YEARS * 2);
+    public readonly rows = signal(LIMIT_YEARS * 2 + 1);
     public readonly MONTHS_SHORT = MONTHS_SHORT;
 
     constructor() {
@@ -40,15 +40,15 @@ export class CalendarYearComponent {
         });
     }
 
-    protected getYear(rowIndex: number): number {
+    public getYear(rowIndex: number): number {
         return rowIndex + MIN_YEAR;
     }
 
-    protected getMonth(month: number, year: number): CalendarMonth {
+    public getMonth(month: number, year: number): CalendarMonth {
         return new CalendarMonth(year, month);
     }
 
-    protected itemIsToday(item: CalendarMonth): boolean {
+    public itemIsToday(item: CalendarMonth): boolean {
         return this.monthToday().monthSame(item)
     }
 

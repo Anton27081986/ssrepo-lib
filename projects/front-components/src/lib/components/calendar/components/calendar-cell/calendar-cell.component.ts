@@ -15,7 +15,7 @@ export class CalendarCellComponent {
     public isToday = input.required<boolean>();
     public isActive = input<boolean>(false);
     public isUnavailable = input<boolean>(false);
-    public isDisabled =  input<boolean>(false);
+    public isDisabled = input<boolean>(false);
 
-    protected clickItem = output<CalendarDay | CalendarMonth>()
+    public clickItem = output<CalendarDay | CalendarMonth>()
 }

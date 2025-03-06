@@ -15,3 +15,4 @@ export { Shape } from './shape';
 export { Orientation } from './orientation';
 export { LinkAppearance } from './link-appearance';
 export { Status } from './status';
+export { Extremum } from './extremum';

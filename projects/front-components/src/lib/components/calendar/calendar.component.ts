@@ -30,12 +30,12 @@ import { ButtonType, ExtraSize, IconPosition, IconType, TextType } from '../../s
 })
 export class CalendarComponent {
     public value = input<CalendarDay | null>(null);
-    public readonly min = input<CalendarDay | null, CalendarDay>(new CalendarDay(2023, 4, 1),{
+    public min = input<CalendarDay | null, CalendarDay>(new CalendarDay(2023, 4, 1), {
         transform: (value: CalendarDay | null): CalendarDay => {
             return value && value.daySameOrAfter(FIRST_DAY) ? value : FIRST_DAY;
         }
     });
-    public readonly max = input<CalendarDay | null, CalendarDay>(new CalendarDay(2027, 4, 1),{
+    public max = input<CalendarDay | null, CalendarDay>(new CalendarDay(2027, 4, 1), {
         transform: (value: CalendarDay | null): CalendarDay => {
             return value && value.daySameOrBefore(LAST_DAY) ? value : LAST_DAY;
         }

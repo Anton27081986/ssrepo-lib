@@ -27,26 +27,27 @@ export class CalendarSheetComponent {
     public month = input<CalendarMonth>(CalendarMonth.currentLocal());
     public value = input<CalendarDay | null>(null);
 
-    public readonly min = input.required<CalendarDay>();
-    public readonly max = input.required<CalendarDay>();
-    protected readonly dayClick = output<CalendarDay>();
+    public min = input.required<CalendarDay>();
+    public max = input.required<CalendarDay>();
+    public dayClick = output<CalendarDay>();
 
     public readonly WEEK_DAYS_SHORT = WEEK_DAYS_SHORT;
-    protected readonly ButtonType = ButtonType;
+    public readonly ButtonType = ButtonType;
+    public readonly TODAY_LABEL = TODAY_LABEL;
 
-    protected onItemClick(day: CalendarDay): void {
+    public onItemClick(day: CalendarDay): void {
         this.dayClick.emit(day);
     }
 
-    protected itemIsToday(item: CalendarDay): boolean {
+    public itemIsToday(item: CalendarDay): boolean {
         return this.today.daySame(item);
     }
 
-    protected dayTypeHandler(item: CalendarDay): 'weekend' | 'weekday' {
+    public dayTypeHandler(item: CalendarDay): 'weekend' | 'weekday' {
         return item.isWeekend ? 'weekend' : 'weekday';
     }
 
-    protected itemIsActive(item: CalendarDay): boolean {
+    public itemIsActive(item: CalendarDay): boolean {
         if (!this.value()) {
             return false;
         }
@@ -54,17 +55,15 @@ export class CalendarSheetComponent {
         return this.value()!.daySame(item);
     }
 
-    protected itemIsUnavailable(item: CalendarDay): boolean {
+    public itemIsUnavailable(item: CalendarDay): boolean {
         return !this.month().monthSame(item);
     }
 
-    protected itemIsDisabled(item: CalendarDay): boolean {
+    public itemIsDisabled(item: CalendarDay): boolean {
         return item.dayBefore(this.min()!) || item.dayAfter(this.max()!);
     }
 
-    protected setToday(): void {
+    public setToday(): void {
         this.dayClick.emit(CalendarDay.currentLocal());
     }
-
-    protected readonly TODAY_LABEL = TODAY_LABEL;
 }

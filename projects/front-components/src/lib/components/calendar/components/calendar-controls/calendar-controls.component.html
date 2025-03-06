@@ -4,7 +4,7 @@
         [size]="ExtraSize.xs"
         [icon]="IconType.ChevronLeftDouble"
         [iconPosition]="IconPosition.OnlyIcon"
-        [disabled]="value().yearSameOrBefore(FIRST_DAY)"
+        [disabled]="value() | mapper : isYearDisabled : Extremum.Min"
         (click)="append({year: -1})"
     />
 
@@ -13,7 +13,7 @@
         [size]="ExtraSize.xs"
         [icon]="IconType.ChevronLeft"
         [iconPosition]="IconPosition.OnlyIcon"
-        [disabled]="value().monthSameOrBefore(FIRST_DAY)"
+        [disabled]="value() | mapper : isMonthDisabled : Extremum.Min"
         (click)="append({month: -1})"
     />
 
@@ -33,7 +33,7 @@
         [size]="ExtraSize.xs"
         [icon]="IconType.ChevronRight"
         [iconPosition]="IconPosition.OnlyIcon"
-        [disabled]="value().monthSameOrAfter(LAST_DAY)"
+        [disabled]="value() | mapper : isMonthDisabled : Extremum.Max"
         (click)="append({month: 1})"
     />
 
@@ -42,7 +42,7 @@
         [size]="ExtraSize.xs"
         [icon]="IconType.ChevronRightDouble"
         [iconPosition]="IconPosition.OnlyIcon"
-        [disabled]="value().yearSameOrAfter(LAST_DAY)"
+        [disabled]="value() | mapper : isYearDisabled : Extremum.Max"
         (click)="append({year: 1})"
     />
 </div>
