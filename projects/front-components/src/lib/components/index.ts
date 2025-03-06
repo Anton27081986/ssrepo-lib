@@ -1,3 +1,4 @@
+export * from './buttons/index';
 export { IconComponent } from './icon/icon.component';
 export { TextComponent } from './text/text.component';
 export { ToggleComponent } from './toggle/toggle.component';
@@ -25,5 +26,5 @@ export { BadgeComponent } from './badge/badge.component';
 export { ModalComponent } from './modal/modal.component';
 export { ConfirmComponent } from './confirm/confirm.component';
 export { SpinnerComponent } from './spinner/spinner.component';
-
-export * from './buttons/index';
+export { TooltipComponent } from './tooltip/tooltip.component';
+export { TooltipDirective } from './tooltip/tooltip.directive'

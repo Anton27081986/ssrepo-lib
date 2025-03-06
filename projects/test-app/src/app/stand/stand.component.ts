@@ -2,19 +2,19 @@ import { Component, inject } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { Dialog } from '@angular/cdk/dialog';
 import {
-  ButtonType,
-  Colors,
-  ExtraSize,
-  IConfirmData,
-  IconPosition,
-  IconType,
-  IModalData,
-  LinkAppearance,
-  Orientation,
-  Shape,
-  Status,
-  TextType,
-  TextWeight,
+    ButtonType,
+    Colors,
+    ExtraSize,
+    IConfirmData,
+    IconPosition,
+    IconType,
+    IModalData,
+    LinkAppearance,
+    Orientation,
+    Shape,
+    Status,
+    TextType,
+    TextWeight, TooltipPosition,
 } from '../../../../front-components/src/lib/shared/models';
 import { standImports } from './stand.imports';
 import {
@@ -35,31 +35,26 @@ import { DROPDOWN_ITEMS, DEFAULT_COLS } from './constants';
 export class StandComponent {
   private readonly dialog = inject(Dialog);
 
-  protected readonly TextType = TextType;
-  protected readonly TextWeight = TextWeight;
-  protected readonly IconType = IconType;
-  protected readonly Colors = Colors;
-  protected readonly ButtonType = ButtonType;
-  protected readonly IconPosition = IconPosition;
-  protected readonly console = console;
-  protected readonly ExtraSize = ExtraSize;
-  protected readonly Shape = Shape;
-  protected readonly Orientation = Orientation;
-  protected readonly LinkAppearance = LinkAppearance;
-  protected readonly Status = Status;
-  protected readonly DROPDOWN_ITEMS = DROPDOWN_ITEMS;
+    toggleCtrl = new FormControl(false);
+    inputCtrl = new FormControl('rrrr', [Validators.required, Validators.minLength(10)]);
+    textareaCtrl = new FormControl('rrrr', [Validators.required, Validators.minLength(10)]);
+    selectCtrl = new FormControl(null);
+    numberPickerCtrl = new FormControl(2);
 
-  toggleCtrl = new FormControl(false);
-  inputCtrl = new FormControl('rrrr', [
-    Validators.required,
-    Validators.minLength(10),
-  ]);
-  textareaCtrl = new FormControl('rrrr', [
-    Validators.required,
-    Validators.minLength(10),
-  ]);
-  selectCtrl = new FormControl(null);
-  numberPickerCtrl = new FormControl(2);
+    protected readonly TextType = TextType;
+    protected readonly TextWeight = TextWeight;
+    protected readonly IconType = IconType;
+    protected readonly Colors = Colors;
+    protected readonly ButtonType = ButtonType;
+    protected readonly IconPosition = IconPosition;
+    protected readonly console = console;
+    protected readonly ExtraSize = ExtraSize;
+    protected readonly Shape = Shape;
+    protected readonly Orientation = Orientation;
+    protected readonly LinkAppearance = LinkAppearance;
+    protected readonly Status = Status;
+    protected readonly DROPDOWN_ITEMS = DROPDOWN_ITEMS;
+    protected readonly TooltipPosition = TooltipPosition;
 
   constructor(private readonly columnState: ColumnsStateService) {
     this.columnState.colsTr$.next(DEFAULT_COLS);

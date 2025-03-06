@@ -16,5 +16,5 @@ export { Orientation } from './orientation';
 export { LinkAppearance } from './link-appearance';
 export { NavButton } from './nav-button'
 export { SidebarType } from './sidebar-type'
-
 export { Status } from './status';
+export { TooltipPosition } from './tooltip';
