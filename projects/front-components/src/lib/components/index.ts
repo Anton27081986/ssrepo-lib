@@ -23,7 +23,9 @@ export { SkeletonTableComponent } from './skeleton/skeleton-table/skeleton-table
 export { SkeletonBlockComponent } from './skeleton/skeleton-block/skeleton-block.component';
 export { BadgeComponent } from './badge/badge.component';
 export { ModalComponent } from './modal/modal.component';
-export { ConfirmComponent } from './confirm/confirm.component';
+export { ConfirmModalComponent } from './confirm-modal/confirm-modal.component';
 export { SpinnerComponent } from './spinner/spinner.component';
-
+export { BadgeInfoComponent } from './badge-info/badge-info.component';
+export { ModalActionApplyComponent } from './modal-action-apply/modal-action-apply.component'
+export { LightBoxComponent } from './light-box/light-box.component'
 export * from './buttons/index';
