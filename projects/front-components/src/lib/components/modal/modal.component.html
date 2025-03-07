@@ -1,63 +1,21 @@
-<div class="ss-modal">
-    <div
-        class="ss-modal-header"
-        [ngClass]="[modalData().modalConfig!.headerOrientation]"
-        [class.header-padding]="modalData().modalConfig!.showHeaderPadding"
-    >
-        <div class="ss-modal-header__content">
-            <ss-lib-badge [badgeProps]="modalData().badgeProps!"/>
+<div class="ss-lib-modal">
 
-            <div class="ss-modal-header__text">
-                <ss-lib-text
-                    class="ss-modal-header__text_title"
-                    [type]="TextType.BodyLg"
-                    [weight]="TextWeight.Semibold"
-                    [color]="Colors.TextBody"
-                >
-                    {{ modalData().title }}
-                </ss-lib-text>
+  <div class="ss-lib-modal__header">
+    <ss-lib-badge-info
+      [title]="titleHeader()"
+      [description]="descriptionHeader()"
+      [badge]="badgeProps()"
+      (close)="close()"
+    ></ss-lib-badge-info>
+  </div>
+  <ss-lib-divider *ngIf="contentRef()" class="ss-lib-modal__divider-top"></ss-lib-divider>
+  <div class="ss-lib-modal__body" *ngIf="contentRef()">
+    <ng-container *ngTemplateOutlet="contentRef()"></ng-container>
+  </div>
+  <ss-lib-divider *ngIf="contentRef()" class="ss-lib-modal__divider-bottom"></ss-lib-divider>
 
-                @if (modalData().description) {
-                    <ss-lib-text
-                        [type]="TextType.BodySm"
-                        [weight]="TextWeight.Regular"
-                        [color]="Colors.TextBody3"
-                    >
-                        {{ modalData().description }}
-                    </ss-lib-text>
-                }
-            </div>
-        </div>
+  <div class="ss-lib-modal__footer" [class.ss-lib-modal__footer-add-padding]="!contentRef()" *ngIf="actionsRef()">
+    <ng-container *ngTemplateOutlet="actionsRef()"></ng-container>
+  </div>
 
-        <div class="ss-modal-header__close">
-            <ss-lib-close-button
-                [type]="ButtonType.CloseLight"
-                [size]="ExtraSize.xl"
-                (click)="dialogRef.close()"
-            />
-        </div>
-    </div>
-
-    @if (modalData().modalConfig?.showHeaderDivider!) {
-        <ss-lib-divider class="ss-modal-divider__top"/>
-    }
-
-    @if (modalData().contentRef) {
-        <div class="ss-modal-content">
-            <ng-container *ngTemplateOutlet="modalData().contentRef!"></ng-container>
-        </div>
-    }
-
-    @if (modalData().footerRef) {
-        @if (modalData().modalConfig!.showFooterDivider) {
-            <ss-lib-divider class="ss-modal-divider__bottom"/>
-        }
-
-        <div
-            class="ss-modal-footer"
-            [class.footer-padding-with-divider]="modalData().modalConfig!.showFooterDivider"
-        >
-            <ng-container *ngTemplateOutlet="modalData().footerRef!"></ng-container>
-        </div>
-    }
 </div>

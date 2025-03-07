@@ -1,5 +1,5 @@
 <div class="spinners">
-  <ss-lib-spinner [text]="true"></ss-lib-spinner>
+  <ss-lib-spinner [displaySpinnerText]="true"></ss-lib-spinner>
 </div>
 <ss-lib-icon [icon]="IconType.Bell" [color]="Colors.IconOnDisabled"/>
 
@@ -348,7 +348,13 @@
     />
 </div>
 
+<ng-template #action>
+  <ss-lib-button [text]="'Добавить баннер'"></ss-lib-button>
+</ng-template>
+
 <ss-lib-empty-state
+    [headerTitle]="'Управление баннерами'"
+    [actionRef]="action"
     [icon]="IconType.ImagePlus"
     [title]="'Заголовок'"
     [description]="'Какой то текст который мне лень писать и выдумывать.'"
@@ -389,13 +395,30 @@
 <ss-lib-button
     [type]="ButtonType.Primary"
     [text]="'Модалка - компонент'"
-    (click)="openModalWithComponent()"
+    (click)="openTestModal()"
 />
 <br>
 
 <ss-lib-button
     [type]="ButtonType.Primary"
     [text]="'Модалка - confirm'"
-    (click)="openConfirm()"
+    (click)="openTestConfirmModal()"
 />
 <br>
+
+<ss-lib-button
+  [type]="ButtonType.Primary"
+  [text]="'Модалка - light-box'"
+  (click)="openLightBoxModal()"
+/>
+<br>
+
+<div class="tooltip-example">
+    <ss-lib-icon
+        ss-lib-tooltip
+        [icon]="IconType.Plus"
+        [color]="Colors.IconOnDisabled"
+        [tooltipText]="'Это тултип'"
+        [position]="TooltipPosition.TopRight"
+    />
+</div>
