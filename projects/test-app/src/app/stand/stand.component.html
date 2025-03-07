@@ -1,3 +1,6 @@
+<div class="spinners">
+  <ss-lib-spinner [displaySpinnerText]="true"></ss-lib-spinner>
+</div>
 <ss-lib-icon [icon]="IconType.Bell" [color]="Colors.IconOnDisabled"/>
 
 <ss-lib-text [type]="TextType.BodyXs" [weight]="TextWeight.Regular">Обычный текст</ss-lib-text>
@@ -392,14 +395,21 @@
 <ss-lib-button
     [type]="ButtonType.Primary"
     [text]="'Модалка - компонент'"
-    (click)="openModalWithComponent()"
+    (click)="openTestModal()"
 />
 <br>
 
 <ss-lib-button
     [type]="ButtonType.Primary"
     [text]="'Модалка - confirm'"
-    (click)="openConfirm()"
+    (click)="openTestConfirmModal()"
+/>
+<br>
+
+<ss-lib-button
+  [type]="ButtonType.Primary"
+  [text]="'Модалка - light-box'"
+  (click)="openLightBoxModal()"
 />
 <br>
 

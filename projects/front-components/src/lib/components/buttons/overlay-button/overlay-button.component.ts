@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, input, ViewEncapsulation } from '@angular/core';
-import { BaseButtonComponent } from '../base-button/base-button.component';
 import { IconType, ButtonType } from '../../../shared/models';
+import {BaseButtonComponent} from '../base-button/base-button.component';
 
 @Component({
     selector: 'ss-lib-overlay-button',

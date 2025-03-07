@@ -1,0 +1,14 @@
+<ng-template #actionsRef>
+  <ss-lib-modal-action-apply
+    [applyText]="applyText.text"
+    [cancelText]="cancelText"
+    (onApply)="submit()"
+  ></ss-lib-modal-action-apply>
+</ng-template>
+
+<ss-lib-modal
+  [titleHeader]="titleHeader"
+  [descriptionHeader]="descriptionHeader"
+  [badgeProps]="badgeProps"
+  [actionsRef]="actionsRef">
+</ss-lib-modal>
