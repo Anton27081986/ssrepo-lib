@@ -58,6 +58,4 @@ export class BaseButtonComponent<T extends ButtonTypeValues> {
     public readonly ButtonSize = ExtraSize;
     public readonly StateTypes = StateTypes;
     protected readonly hasIcon = hasIcon;
-
-  constructor() {}
 }

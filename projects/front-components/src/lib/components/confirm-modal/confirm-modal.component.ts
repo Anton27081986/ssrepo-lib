@@ -6,7 +6,7 @@ import {
 import {ModalComponent} from '../modal/modal.component';
 import {ButtonType, IApply, IBadgeProps, IConfirmData, ModalRef,} from '../../shared/models';
 import {Subscription} from 'rxjs';
-import {ModalActionApplyComponent} from '../modal-action-apply/modal-action-apply.component';
+import {ModalActionApplyComponent} from '@front-library/components/src/lib/components';
 
 @Component({
   selector: 'ss-lib-confirm-modal',
