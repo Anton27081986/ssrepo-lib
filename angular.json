@@ -70,7 +70,16 @@
             ],
             "outputDir": "dist/storybook/front-components"
           }
-        }
+        },
+		"lint": {
+			  "builder": "@angular-eslint/builder:lint",
+			  "options": {
+				  "lintFilePatterns": [
+					  "projects/front-components/**/*.ts",
+					  "projects/front-components/**/*.html"
+				  ]
+			  }
+		}
       }
     },
     "test-app": {
@@ -173,7 +182,16 @@
             ],
             "scripts": []
           }
-        }
+        },
+		"lint": {
+			  "builder": "@angular-eslint/builder:lint",
+			  "options": {
+				  "lintFilePatterns": [
+					  "projects/test-app/**/*.ts",
+					  "projects/test-app/**/*.html"
+				  ]
+			  }
+	    }
       }
     }
   },

@@ -1,17 +1,17 @@
 import {Component, inject} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import {
-  ButtonType,
-  Colors,
-  ExtraSize,
-  IconPosition,
-  IconType,
-  LinkAppearance,
-  Orientation,
-  Shape,
-  Status,
-  TextType,
-  TextWeight,
+	ButtonType,
+	Colors,
+	ExtraSize,
+	IconPosition,
+	IconType,
+	LinkAppearance,
+	Orientation,
+	Shape,
+	Status,
+	TextType,
+	TextWeight, TooltipPosition,
 } from '../../../../front-components/src/lib/shared/models';
 import {standImports} from './stand.imports';
 import {ColumnsStateService} from '../../../../front-components/src/lib/components';
@@ -95,6 +95,7 @@ export class StandComponent {
       return  of([])
   }
 
+	protected readonly TooltipPosition = TooltipPosition;
 }
 
 

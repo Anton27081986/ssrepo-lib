@@ -28,4 +28,6 @@ export { SpinnerComponent } from './spinner/spinner.component';
 export { BadgeInfoComponent } from './badge-info/badge-info.component';
 export { ModalActionApplyComponent } from './modal-action-apply/modal-action-apply.component'
 export { LightBoxComponent } from './light-box/light-box.component'
+export { TooltipComponent } from './tooltip/tooltip.component';
+export { TooltipDirective } from './tooltip/tooltip.directive'
 export * from './buttons/index';
