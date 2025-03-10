@@ -10,6 +10,8 @@ module.exports = {
 				createDefaultProgram: true,
 			},
 			extends: [
+				"plugin:@angular-eslint/recommended",
+				"plugin:@typescript-eslint/recommended",
 				"@tinkoff/eslint-config/app",
 				"@tinkoff/eslint-config-angular",
 				"@tinkoff/eslint-config-angular/rxjs",
@@ -21,18 +23,10 @@ module.exports = {
 				"@tinkoff/eslint-config-angular/member-ordering",
 				"@tinkoff/eslint-config-angular/decorator-position",
 				"@tinkoff/eslint-config-angular/function-return-type",
-				"plugin:@angular-eslint/recommended",
-				"plugin:@typescript-eslint/recommended"
 			],
-			// settings: {
-			// 	'import/resolver': {
-			// 		typescript: {}
-			// 	}
-			// },
 			rules: {
-
-				// 'import/no-unresolved': 'off',
-				// 'import/extensions': 'off',
+				'import/no-unresolved': 'off',
+				'import/extensions': 'off',
 				"import/no-relative-packages": "off",
 				"@typescript-eslint/ban-types": "off",
 				"@typescript-eslint/explicit-member-accessibility": [

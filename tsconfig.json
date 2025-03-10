@@ -8,7 +8,7 @@
     "paths": {
       "front-components": [
         "./dist/front-components"
-      ],
+      ]
     },
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,

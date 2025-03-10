@@ -1,0 +1,37 @@
+.calendar-sheet {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding-top: 20px;
+}
+
+.sheet {
+    &-weeks {
+        display: grid;
+        grid-template-columns: repeat(7, minmax(0, 1fr));
+        gap: 4px;
+        margin-bottom: 4px;
+
+        .week-cell {
+            width: 40px;
+            height: 40px;
+            font-weight: var(--type-font-weight-medium);
+            color: var(--text-body-2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: default;
+            pointer-events: none;
+
+            &:nth-child(n + 6) {
+                color: var(--text-error);
+            }
+        }
+    }
+
+    &-days {
+        display: grid;
+        grid-template-columns: repeat(7, minmax(0, 1fr));
+        gap: 8px 4px;
+    }
+}

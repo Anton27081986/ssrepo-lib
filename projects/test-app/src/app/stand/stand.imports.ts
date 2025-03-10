@@ -27,6 +27,8 @@ import {
 	SpinnerComponent,
 	TooltipDirective,
 	ImageUploadComponent,
+    CalendarComponent,
+    DatepickerComponent,
 } from '../../../../front-components/src/lib/components';
 import {
 	FieldCtrlDirective,
@@ -64,4 +66,7 @@ export const standImports = [
 	OverlayButtonComponent,
 	SpinnerComponent,
 	ImageUploadComponent,
-];
+    SpinnerComponent,
+    CalendarComponent,
+    DatepickerComponent
+]

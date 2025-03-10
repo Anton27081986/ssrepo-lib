@@ -18,3 +18,4 @@ export { NavButton } from './nav-button'
 export { SidebarType } from './sidebar-type'
 export { Status } from './status';
 export { TooltipPosition } from './tooltip';
+export { Extremum } from './extremum';
