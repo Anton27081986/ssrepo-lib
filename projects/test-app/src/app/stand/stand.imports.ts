@@ -25,7 +25,8 @@ import {
     SkeletonBlockComponent,
     OverlayButtonComponent,
     CalendarComponent,
-    DatepickerComponent
+    DatepickerComponent,
+    SpinnerComponent, TooltipDirective
 } from '../../../../front-components/src/lib/components';
 import { FieldCtrlDirective, PopoverTriggerForDirective } from '../../../../front-components/src/lib/core/directives';
 
@@ -34,6 +35,7 @@ export const standImports = [
     ReactiveFormsModule,
     FieldCtrlDirective,
     PopoverTriggerForDirective,
+    TooltipDirective,
     IconComponent,
     TextComponent,
     ToggleComponent,
@@ -57,6 +59,8 @@ export const standImports = [
     LinkComponent,
     SkeletonTableComponent,
     SkeletonBlockComponent,
+    OverlayButtonComponent,
+    SpinnerComponent,
     OverlayButtonComponent,
     CalendarComponent,
     DatepickerComponent

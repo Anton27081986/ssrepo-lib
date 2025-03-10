@@ -70,7 +70,16 @@
             ],
             "outputDir": "dist/storybook/front-components"
           }
-        }
+        },
+		"lint": {
+			  "builder": "@angular-eslint/builder:lint",
+			  "options": {
+				  "lintFilePatterns": [
+					  "projects/front-components/**/*.ts",
+					  "projects/front-components/**/*.html"
+				  ]
+			  }
+		}
       }
     },
     "test-app": {
@@ -109,7 +118,8 @@
               "projects/front-components/src/lib/shared/styles/_variables/_alias.scss",
               "projects/front-components/src/lib/shared/styles/custom-variables.scss",
               "projects/front-components/src/lib/shared/styles/table.scss",
-              "projects/front-components/src/lib/shared/styles/mixins/text.scss"
+              "projects/front-components/src/lib/shared/styles/mixins/text.scss",
+              "projects/front-components/src/lib/shared/styles/overlay.scss"
             ],
             "scripts": []
           },
@@ -172,7 +182,16 @@
             ],
             "scripts": []
           }
-        }
+        },
+		"lint": {
+			  "builder": "@angular-eslint/builder:lint",
+			  "options": {
+				  "lintFilePatterns": [
+					  "projects/test-app/**/*.ts",
+					  "projects/test-app/**/*.html"
+				  ]
+			  }
+	    }
       }
     }
   },

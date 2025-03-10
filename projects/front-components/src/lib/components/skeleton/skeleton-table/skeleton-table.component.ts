@@ -13,6 +13,7 @@ import {SkeletonBlockComponent} from '../skeleton-block/skeleton-block.component
 @Component({
   selector: 'ss-lib-skeleton-table',
   templateUrl: './skeleton-table.component.html',
+  styleUrl: './skeleton-table.component.scss',
   imports: [
     TableComponent,
     NgFor,

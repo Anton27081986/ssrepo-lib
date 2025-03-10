@@ -1,18 +1,47 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { DIALOG_DATA } from '@angular/cdk/dialog';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {
-    IModalData,
-} from '../../../../front-components/src/lib/shared/models';
-import { ModalComponent } from '../../../../front-components/src/lib/components';
+  FormFieldComponent,
+  InputComponent,
+  ModalActionApplyComponent,
+  ModalComponent, TextareaComponent
+} from '../../../../front-components/src/lib/components';
+import {ExtraSize, IconType, Shape, Status} from '../../../../front-components/src/lib/shared/models';
+import {ModalRef} from '../../../../front-components/src/lib/shared/models/utils/modal.ref';
+import {FieldCtrlDirective} from '../../../../front-components/src/lib/core/directives';
+import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
+
+export interface TestModalData {
+  id: number,
+  text: string
+}
 
 @Component({
-    selector: 'app-test-modal',
-    standalone: true,
-    imports: [ModalComponent],
-    templateUrl: './test-modal.component.html',
-    styleUrl: './test-modal.component.scss',
-    changeDetection: ChangeDetectionStrategy.OnPush
+  selector: 'app-test-modal',
+  standalone: true,
+  imports: [ModalComponent, ModalActionApplyComponent, InputComponent, FieldCtrlDirective, FormFieldComponent,  ReactiveFormsModule],
+  templateUrl: './test-modal.component.html',
+  styleUrl: './test-modal.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TestModalComponent {
-    protected readonly data: IModalData = inject(DIALOG_DATA);
+  protected readonly IconType = IconType;
+  protected readonly ExtraSize = ExtraSize;
+  protected readonly Shape = Shape;
+  protected readonly Status = Status;
+
+  inputCtrl = new FormControl('rrrr', [Validators.required, Validators.minLength(10)]);
+
+  protected readonly modalRef: ModalRef<TestModalData> = inject(ModalRef<TestModalData>);
+
+  protected id: number = this.modalRef.data.id;
+  protected text: string = this.modalRef.data.text
+
+
+  apply() {
+    this.modalRef.submit();
+  }
+
+  close() {
+    this.modalRef.close();
+  }
 }

@@ -1,0 +1,31 @@
+<div class="ss-lib-badge-info">
+  <div class="ss-lib-badge-info__left">
+
+    <ss-lib-badge [badgeProps]="badge()"></ss-lib-badge>
+
+    <div class="ss-lib-badge-info__info">
+      <ss-lib-text
+        [type]="TextType.BodyLg"
+        [weight]="TextWeight.Semibold">
+        {{ title() }}
+      </ss-lib-text>
+      <ss-lib-text
+        [color]="Colors.TextBody3"
+        [type]="TextType.BodySm"
+        [weight]="TextWeight.Regular">
+        {{ description() }}
+      </ss-lib-text>
+    </div>
+
+  </div>
+
+  <ss-lib-close-button
+    class="ss-lib-badge-info__close"
+    *ngIf="viewClose()"
+    (click)="close.emit()"
+    [restrictedIcon]="IconType.Close"
+    [size]="ExtraSize.xl"
+    [type]="ButtonType.CloseLight"
+  ></ss-lib-close-button>
+
+</div>
