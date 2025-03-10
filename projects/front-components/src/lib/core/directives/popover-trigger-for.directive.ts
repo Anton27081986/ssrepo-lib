@@ -84,7 +84,24 @@ export class PopoverTriggerForDirective implements OnDestroy {
                         overlayY: 'top',
                         offsetY: 8
                     },
-                ]),
+
+                    {
+                        originX: 'start',
+                        originY: 'top',
+                        overlayX: 'start',
+                        overlayY: 'bottom',
+                        offsetY: -8
+                    },
+                    {
+                        originX: 'end',
+                        originY: 'top',
+                        overlayX: 'end',
+                        overlayY: 'bottom',
+                        offsetY: -8
+                    },
+                ])
+                .withFlexibleDimensions(false) // Отключаем автоматическое изменение размеров
+                .withPush(false) // Запрещаем смещение при нехватке места
             });
         }
 
