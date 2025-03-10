@@ -1,0 +1,59 @@
+@switch (state()) {
+	@case (States.Empty) {
+		<div
+			class="image-upload"
+			[class.image-upload__hover]="hover()"
+			[class.image-upload__disabled]="disabled()"
+			(dragenter)="onDragEnter($event)"
+			(dragleave)="onDragLeave($event)"
+			(drop)="onDropSuccess($event)">
+			<ss-lib-badge
+				[badgeProps]="{
+					icon: IconType.ImagePlus,
+				}"></ss-lib-badge>
+			<div>
+				<ss-lib-text
+					[type]="TextType.BodySm"
+					[color]="Colors.TextBody2"
+					>Добавьте или перетащите изображение</ss-lib-text
+				>
+				<ss-lib-text
+					[type]="TextType.BodyXs"
+					[color]="Colors.TextBody3"
+					>PNG,SVG,JPEG (макс. разрешение 990х200px)</ss-lib-text
+				>
+			</div>
+			<label
+				#hiddenInput
+				class="image-upload__button">
+				<input
+					accept="image/jpeg, image/gif, image/png"
+					class="image-upload__button__hidden-input"
+					type="file"
+					(change)="onChange($event)" />
+				<ss-lib-button
+					[disabled]="disabled()"
+					[text]="'Загрузить с устройства'"
+					[icon]="IconType.Upload"
+					(click)="hiddenInput.click()"></ss-lib-button>
+			</label>
+		</div>
+	}
+	@case (States.Preview) {
+		<div class="image-preview">
+			<ss-lib-preview-button
+				class="image-preview__close"
+				(click)="onFileDelete()"></ss-lib-preview-button>
+			<img [src]="imageSrc()" />
+		</div>
+	}
+	@case (States.Loading) {
+		<div class="image-loading">
+			<ss-lib-spinner
+				class="image-loading__loader"></ss-lib-spinner>
+			<ss-lib-preview-button
+				class="image-loading__cancel"
+				(click)="onFileDelete()"></ss-lib-preview-button>
+		</div>
+	}
+}

@@ -1,3 +1,4 @@
+export * from './buttons/index';
 export { IconComponent } from './icon/icon.component';
 export { TextComponent } from './text/text.component';
 export { ToggleComponent } from './toggle/toggle.component';
@@ -5,7 +6,7 @@ export { ToggleIconComponent } from './toggle-icon/toggle-icon.component';
 export { SidebarComponent } from './sidebar/sidebar.component';
 export { HeaderComponent } from './header/header.component';
 export { DividerComponent } from './divider/divider.component';
-export { ScrollableBlockComponent } from './scrollable-block/scrollable-block.component'
+export { ScrollableBlockComponent } from './scrollable-block/scrollable-block.component';
 export { FormFieldComponent } from './form-field/form-field.component';
 export { InputComponent } from './input/input.component';
 export { TextareaComponent } from './textarea/textarea.component';
@@ -17,7 +18,7 @@ export { NumberPickerComponent } from './number-picker/number-picker.component';
 export { CanvasComponent } from './canvas/canvas.component';
 export { CanvasContentComponent } from './canvas-content/canvas-content.component';
 export { TableComponent } from './table/table.component';
-export { ColumnsStateService } from './table/columns.state.service'
+export { ColumnsStateService } from './table/columns.state.service';
 export { EmptyStateComponent } from './empty-state/empty-state.component';
 export { SkeletonTableComponent } from './skeleton/skeleton-table/skeleton-table.component';
 export { SkeletonBlockComponent } from './skeleton/skeleton-block/skeleton-block.component';
@@ -26,8 +27,11 @@ export { ModalComponent } from './modal/modal.component';
 export { ConfirmModalComponent } from './confirm-modal/confirm-modal.component';
 export { SpinnerComponent } from './spinner/spinner.component';
 export { BadgeInfoComponent } from './badge-info/badge-info.component';
-export { ModalActionApplyComponent } from './modal-action-apply/modal-action-apply.component'
-export { LightBoxComponent } from './light-box/light-box.component'
+export { ModalActionApplyComponent } from './modal-action-apply/modal-action-apply.component';
+export { LightBoxComponent } from './light-box/light-box.component';
 export { TooltipComponent } from './tooltip/tooltip.component';
-export { TooltipDirective } from './tooltip/tooltip.directive'
+export { TooltipDirective } from './tooltip/tooltip.directive';
+export { ImageUploadComponent } from './image-upload/image-upload.component';
+export { CalendarComponent } from './calendar/calendar.component';
+export { DatepickerComponent } from './datepicker/datepicker.component';
 export * from './buttons/index';

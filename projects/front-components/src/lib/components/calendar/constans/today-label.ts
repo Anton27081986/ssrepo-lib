@@ -1,0 +1,1 @@
+export const TODAY_LABEL = 'Сегодня';
