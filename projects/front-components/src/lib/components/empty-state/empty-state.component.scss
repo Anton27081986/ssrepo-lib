@@ -1,41 +1,43 @@
 @mixin flex-column {
-  display: flex;
-  flex-direction: column;
+	display: flex;
+	flex-direction: column;
 }
 
 .ss-lib-empty-state {
-  @include flex-column;
-  text-align: center;
-  border: 1px solid var(--border-primary);
-  border-radius: 8px;
-  background-color: var(--surface-primary);
+	@include flex-column;
+	text-align: center;
+	border: 1px solid var(--border-primary);
+	border-radius: 8px;
+	background-color: var(--surface-primary);
+	width: 100%;
 
-  &__header {
-    padding: 20px 24px;
-    display: flex;
-    justify-content: space-between;
-  }
+	&__header {
+		padding: 20px 24px;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
 
-  &__body {
-    @include flex-column;
-    justify-content: center;
-    align-items: center;
-    gap: 24px;
-    margin: 40px 0 48px 0;
-  }
+	&__body {
+		@include flex-column;
+		justify-content: center;
+		align-items: center;
+		gap: 24px;
+		margin: 40px 0 48px 0;
+	}
 
-  &__content-body {
-    @include flex-column;
-    gap: 16px;
-    align-items: center;
-    text-align: center;
-    max-width: 352px;
-  }
+	&__content-body {
+		@include flex-column;
+		gap: 16px;
+		align-items: center;
+		text-align: center;
+		max-width: 352px;
+	}
 
-  &__content-text {
-    @include flex-column;
-    gap: 4px;
-    align-items: center;
-    text-align: center;
-  }
+	&__content-text {
+		@include flex-column;
+		gap: 4px;
+		align-items: center;
+		text-align: center;
+	}
 }
