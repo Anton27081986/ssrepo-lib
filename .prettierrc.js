@@ -7,4 +7,5 @@ module.exports = {
 	bracketSameLine: true,
 	htmlWhitespaceSensitivity: "css",
 	singleAttributePerLine: true,
+	singleQuote: false
 };
