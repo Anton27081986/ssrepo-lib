@@ -61,7 +61,6 @@ export const standImports = [
     SkeletonBlockComponent,
     OverlayButtonComponent,
     SpinnerComponent,
-    OverlayButtonComponent,
     CalendarComponent,
     DatepickerComponent
 ]
