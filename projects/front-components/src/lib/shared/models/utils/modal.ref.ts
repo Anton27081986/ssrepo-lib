@@ -1,14 +1,13 @@
-import type { OverlayRef } from '@angular/cdk/overlay';
-import { Subject } from 'rxjs';
-import { ModalRefBase } from './modal.ref.base';
-import type { PopupContent } from '../types/pop-up';
-import type { PopupTypeEnum } from '../enums/popup-type-enum';
-import type { IPopoverRef } from '../interfaces/pop-up';
+import type { OverlayRef } from "@angular/cdk/overlay";
+import { Subject } from "rxjs";
+import { ModalRefBase } from "./modal.ref.base";
+import type { PopupContent } from "../types/pop-up";
+import type { PopupTypeEnum } from "../enums/popup-type-enum";
+import type { IPopoverRef } from "../interfaces/pop-up";
 
 export class ModalRef<T = any> extends ModalRefBase implements IPopoverRef<T> {
-	private readonly afterDelete = new Subject<any>();
-	afterDelete$ = this.afterDelete.asObservable();
-
+	public readonly afterDelete = new Subject<any>();
+	public afterDelete$ = this.afterDelete.asObservable();
 	constructor(
 		public overlayRef: OverlayRef,
 		public content: PopupContent,

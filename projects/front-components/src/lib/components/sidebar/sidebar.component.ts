@@ -1,30 +1,30 @@
-import type { InputSignal } from '@angular/core';
+import type { InputSignal } from "@angular/core";
 import {
 	ChangeDetectionStrategy,
 	Component,
 	inject,
 	input,
 	output,
-} from '@angular/core';
-import { NgForOf, NgIf } from '@angular/common';
-import { animate, style, transition, trigger } from '@angular/animations';
-import type { IMenu } from '../../shared/models';
+} from "@angular/core";
+import { NgForOf, NgIf } from "@angular/common";
+import { animate, style, transition, trigger } from "@angular/animations";
+import type { IMenu } from "../../shared/models";
 import {
 	ButtonType,
 	IconType,
 	NavButton,
 	SidebarType,
-} from '../../shared/models';
-import { CanvasState } from '../canvas/canvas.state';
-import { DividerComponent } from '../divider/divider.component';
-import { NavButtonComponent } from '../nav-button/nav-button.component';
-import { ButtonComponent } from '../buttons';
+} from "../../shared/models";
+import { CanvasState } from "../canvas/canvas.state";
+import { DividerComponent } from "../divider/divider.component";
+import { NavButtonComponent } from "../nav-button/nav-button.component";
+import { ButtonComponent } from "../buttons";
 
 @Component({
-	selector: 'ss-lib-sidebar',
+	selector: "ss-lib-sidebar",
 	standalone: true,
-	templateUrl: './sidebar.component.html',
-	styleUrls: ['./sidebar.component.scss'],
+	templateUrl: "./sidebar.component.html",
+	styleUrls: ["./sidebar.component.scss"],
 	imports: [
 		NgIf,
 		DividerComponent,
@@ -33,12 +33,12 @@ import { ButtonComponent } from '../buttons';
 		NavButtonComponent,
 	],
 	animations: [
-		trigger('animationTrigger', [
-			transition('void => *', [
+		trigger("animationTrigger", [
+			transition("void => *", [
 				style({ opacity: 0 }),
-				animate('1s', style({ opacity: 1 })),
+				animate("1s", style({ opacity: 1 })),
 			]),
-			transition('* => void', [animate('0s', style({ opacity: 0 }))]),
+			transition("* => void", [animate("0s", style({ opacity: 0 }))]),
 		]),
 	],
 	changeDetection: ChangeDetectionStrategy.OnPush,

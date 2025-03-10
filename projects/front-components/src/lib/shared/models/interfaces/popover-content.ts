@@ -1,4 +1,4 @@
-import type { OutputEmitterRef, Signal, TemplateRef } from '@angular/core';
+import type { OutputEmitterRef, Signal, TemplateRef } from "@angular/core";
 
 export interface PopoverContent {
 	templateRef: Signal<TemplateRef<any>>;

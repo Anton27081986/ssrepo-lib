@@ -1,13 +1,13 @@
-import {inject, Injectable} from '@angular/core';
-import { PopupContent } from '../models/types/pop-up';
-import { ModalService } from './modal.service';
-import { PopupTypeEnum } from '../models/enums/popup-type-enum';
-import { ConfirmModalComponent, LightBoxComponent } from '../../components';
-import {IConfirmData, ILightBoxData, ModalRef} from '../models';
+import { inject, Injectable } from "@angular/core";
+import { PopupContent } from "../models/types/pop-up";
+import { ModalService } from "./modal.service";
+import { PopupTypeEnum } from "../models/enums/popup-type-enum";
+import { ConfirmModalComponent, LightBoxComponent } from "../../components";
+import { IConfirmData, ILightBoxData, ModalRef } from "../models";
 
-@Injectable({ providedIn: 'root' })
+@Injectable({ providedIn: "root" })
 export class SharedPopupService {
-	private _popup: ModalService = inject(ModalService)
+	private readonly _popup: ModalService = inject(ModalService);
 
 	/**
 	 * func open modal window
@@ -59,7 +59,7 @@ export class SharedPopupService {
 			data,
 			origin: null,
 			type: PopupTypeEnum.Modal,
-			width: '400px',
+			width: "400px",
 			isDarkOverlay,
 		});
 

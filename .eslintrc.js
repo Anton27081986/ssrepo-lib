@@ -29,6 +29,7 @@ module.exports = {
 				'import/extensions': 'off',
 				"import/no-relative-packages": "off",
 				"@typescript-eslint/ban-types": "off",
+				'import/no-cycle': "off",
 				"@typescript-eslint/consistent-type-imports": "off",
 				"@typescript-eslint/explicit-member-accessibility": [
 					"warn",

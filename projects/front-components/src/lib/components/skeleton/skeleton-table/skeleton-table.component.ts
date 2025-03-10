@@ -1,26 +1,26 @@
-import type { InputSignal, Signal } from '@angular/core';
+import type { InputSignal, Signal } from "@angular/core";
 import {
 	ChangeDetectionStrategy,
 	Component,
 	computed,
 	inject,
 	input,
-} from '@angular/core';
-import { toSignal } from '@angular/core/rxjs-interop';
-import { NgFor } from '@angular/common';
-import { TableComponent } from '../../table/table.component';
-import { ColumnsStateService } from '../../table/columns.state.service';
+} from "@angular/core";
+import { toSignal } from "@angular/core/rxjs-interop";
+import { NgFor } from "@angular/common";
+import { TableComponent } from "../../table/table.component";
+import { ColumnsStateService } from "../../table/columns.state.service";
 import type {
 	ISkeletonDerivativeTdTable,
 	ISkeletonDerivativeTrTable,
 	IStoreTableBaseColumn,
-} from '../../../shared/models/interfaces/store-table-base-column';
-import { SkeletonBlockComponent } from '../skeleton-block/skeleton-block.component';
+} from "../../../shared/models/interfaces/store-table-base-column";
+import { SkeletonBlockComponent } from "../skeleton-block/skeleton-block.component";
 
 @Component({
-	selector: 'ss-lib-skeleton-table',
-	templateUrl: './skeleton-table.component.html',
-	styleUrl: './skeleton-table.component.scss',
+	selector: "ss-lib-skeleton-table",
+	templateUrl: "./skeleton-table.component.html",
+	styleUrl: "./skeleton-table.component.scss",
 	imports: [TableComponent, NgFor, SkeletonBlockComponent],
 	standalone: true,
 	changeDetection: ChangeDetectionStrategy.OnPush,

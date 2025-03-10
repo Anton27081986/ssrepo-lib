@@ -1,4 +1,4 @@
-import type { SkeletonConf } from './skeleton.conf';
+import type { SkeletonConf } from "./skeleton.conf";
 
 export interface IStoreTableId {
 	id: string;

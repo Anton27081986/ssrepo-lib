@@ -1,12 +1,12 @@
-import { Overlay } from '@angular/cdk/overlay';
-import { OverlayConfig } from '@angular/cdk/overlay';
-import { Injectable, Injector } from '@angular/core';
-import { ComponentPortal } from '@angular/cdk/portal';
-import { GenericPopupComponent } from '../../components/generic-popup/generic-popup.component';
-import { PopupParams } from '../models/types/pop-up';
-import { ModalRef } from '../models';
+import { Overlay } from "@angular/cdk/overlay";
+import { OverlayConfig } from "@angular/cdk/overlay";
+import { Injectable, Injector } from "@angular/core";
+import { ComponentPortal } from "@angular/cdk/portal";
+import { GenericPopupComponent } from "../../components/generic-popup/generic-popup.component";
+import { PopupParams } from "../models/types/pop-up";
+import { ModalRef } from "../models";
 
-@Injectable({ providedIn: 'root' })
+@Injectable({ providedIn: "root" })
 export class ModalService {
 	constructor(
 		private readonly overlay: Overlay,
@@ -40,13 +40,13 @@ export class ModalService {
 	}
 
 	private _getOverlayConfig<T>(params: PopupParams<T>): OverlayConfig {
-		const backdropClass: string[] = ['ss-lib-overlay-backdrop'];
+		const backdropClass: string[] = ["ss-lib-overlay-backdrop"];
 
 		if (params.isDarkOverlay) {
-			backdropClass.push('ss-lib-overlay-backdrop--dark');
+			backdropClass.push("ss-lib-overlay-backdrop--dark");
 		}
 
-		const panelClass: string[] = ['ss-lib-popover-root'];
+		const panelClass: string[] = ["ss-lib-popover-root"];
 
 		const positionStrategy: any = this.overlay
 			.position()

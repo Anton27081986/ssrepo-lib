@@ -1,4 +1,4 @@
-import type { IconType } from '../enums';
+import type { IconType } from "../enums";
 
 export interface IMenu {
 	title: string;

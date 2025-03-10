@@ -1,8 +1,8 @@
-import type { ConnectionPositionPair } from '@angular/cdk/overlay';
-import type { Observable } from 'rxjs';
-import type { PopoverAnimationEnum } from '../../../components/generic-popup/generic-popup.component';
-import type { PopupContent, TypePopup } from '../types/pop-up';
-import type { PopupTypeEnum } from '../enums/popup-type-enum';
+import type { ConnectionPositionPair } from "@angular/cdk/overlay";
+import type { Observable } from "rxjs";
+import type { PopoverAnimationEnum } from "../../../components/generic-popup/generic-popup.component";
+import type { PopupContent, TypePopup } from "../types/pop-up";
+import type { PopupTypeEnum } from "../enums/popup-type-enum";
 
 interface PopupParamsBase<T> {
 	width?: string | number;
