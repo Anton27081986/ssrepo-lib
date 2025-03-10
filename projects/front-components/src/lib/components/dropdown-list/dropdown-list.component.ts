@@ -1,4 +1,4 @@
-import type { Injector, TemplateRef } from '@angular/core';
+import { Inject, Injector, TemplateRef } from '@angular/core';
 import {
 	afterNextRender,
 	ChangeDetectionStrategy,
@@ -33,7 +33,7 @@ export class DropdownListComponent implements PopoverContent {
 	public closed = output<void>();
 	public value = output<IDictionaryItemDto | null>();
 
-	constructor(private readonly injector: Injector) {
+	constructor(@Inject(Injector) private readonly injector: Injector) {
 		afterNextRender(() => {
 			runInInjectionContext(this.injector, () => {
 				this.optionsContent().forEach((option) =>

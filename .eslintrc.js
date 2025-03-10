@@ -29,13 +29,13 @@ module.exports = {
 				'import/extensions': 'off',
 				"import/no-relative-packages": "off",
 				"@typescript-eslint/ban-types": "off",
+				"@typescript-eslint/consistent-type-imports": "off",
 				"@typescript-eslint/explicit-member-accessibility": [
 					"warn",
 					{
 						accessibility: "explicit",
 						overrides: {
 							accessors: "explicit",
-							constructors: "explicit",
 							methods: "explicit",
 							properties: "explicit",
 							parameterProperties: "explicit",
@@ -45,18 +45,40 @@ module.exports = {
 				"@typescript-eslint/member-ordering": [
 					"error",
 					{
-						default: [
-							"public-static-field",
-							"public-instance-field",
-							"public-constructor",
-							"public-instance-method",
-							"protected-instance-method",
-							"private-static-field",
-							"private-instance-field",
-							"private-constructor",
-							"private-instance-method"
-						],
-					},
+						"default": {
+							"memberTypes": [
+								// Статические члены
+								"public-static-field",    // Публичные статические свойства
+								"protected-static-field", // Защищённые статические свойства
+								"private-static-field",   // Приватные статические свойства
+								"public-static-method",   // Публичные статические методы
+								"protected-static-method",// Защищённые статические методы
+								"private-static-method",  // Приватные статические методы
+
+								// Поля экземпляра
+								"public-field",           // Публичные поля
+								"protected-field",        // Защищённые поля
+								"private-field",          // Приватные поля
+
+								// Конструктор
+								"constructor",
+
+								// Методы экземпляра
+								"public-method",          // Публичные методы
+								"protected-method",       // Защищённые методы
+								"private-method",         // Приватные методы
+
+								// Геттеры и сеттеры
+								"public-get",             // Публичные геттеры
+								"protected-get",          // Защищённые геттеры
+								"private-get",            // Приватные геттеры
+								"public-set",             // Публичные сеттеры
+								"protected-set",          // Защищённые сеттеры
+								"private-set"             // Приватные сеттеры
+							],
+							"order": "as-written"       // Порядок "как написано" в духе Airbnb
+						}
+					}
 				],
 				"no-useless-rename": [
 					"error",

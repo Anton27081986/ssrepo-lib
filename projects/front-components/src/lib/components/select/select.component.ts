@@ -1,4 +1,4 @@
-import type { Injector } from '@angular/core';
+import { Injector } from '@angular/core';
 import {
 	ChangeDetectionStrategy,
 	Component,
@@ -14,7 +14,7 @@ import type { ControlValueAccessor } from '@angular/forms';
 import { FormControl, NgControl, ReactiveFormsModule } from '@angular/forms';
 import { tap } from 'rxjs';
 import { outputToObservable, toSignal } from '@angular/core/rxjs-interop';
-import type { FormFieldComponent } from '../form-field/form-field.component';
+import { FormFieldComponent } from '../form-field/form-field.component';
 import { InputComponent } from '../input/input.component';
 import { DropdownListComponent } from '../dropdown-list/dropdown-list.component';
 import type { IDictionaryItemDto } from '../../shared/models';
@@ -34,13 +34,15 @@ import type { IDictionaryItemDto } from '../../shared/models';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SelectComponent implements ControlValueAccessor {
+	public placeholder = input<string>('Выберите из списка');
+	public selectCtrl = new FormControl<string | null>(null);
+
 	private readonly dropdownList = contentChild.required(
 		DropdownListComponent,
 	);
 
-	public placeholder = input<string>('Выберите из списка');
-
-	public selectCtrl = new FormControl<string | null>(null);
+	private onChange!: (value: IDictionaryItemDto | null) => void;
+	private onTouched!: () => void;
 
 	constructor(
 		@Optional() @Self() @Inject(NgControl) public ngControl: NgControl,
@@ -61,9 +63,6 @@ export class SelectComponent implements ControlValueAccessor {
 			});
 		});
 	}
-
-	private onChange!: (value: IDictionaryItemDto | null) => void;
-	private onTouched!: () => void;
 
 	public writeValue(value: IDictionaryItemDto): void {
 		this.selectCtrl.setValue(value?.name || '', { emitEvent: false });

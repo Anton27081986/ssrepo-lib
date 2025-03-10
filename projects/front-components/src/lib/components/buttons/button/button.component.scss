@@ -1,47 +1,76 @@
 button.custom-button {
-    border-radius: var(--app-custom-button-border-radius-top-left, var(--border-radius-md)) var(--app-custom-button-border-radius-top-right, var(--border-radius-md)) var(--app-custom-button-border-radius-bottom-right, var(--border-radius-md)) var(--app-custom-button-border-radius-bottom-left, var(--border-radius-md));
+	border-radius: var(
+			--app-custom-button-border-radius-top-left,
+			var(--border-radius-md)
+		)
+		var(
+			--app-custom-button-border-radius-top-right,
+			var(--border-radius-md)
+		)
+		var(
+			--app-custom-button-border-radius-bottom-right,
+			var(--border-radius-md)
+		)
+		var(
+			--app-custom-button-border-radius-bottom-left,
+			var(--border-radius-md)
+		);
 }
 
 // *************** SIZES ***************
 
 // NOT ONLY ICONS
 button.custom-button.type-text:not(.only-icon) {
-    &.size-xs {
-        gap: 4px;
-    }
+	&.size-xs {
+		gap: 4px;
+	}
 
-    &.size-md {
-      gap: 4px;
-    }
+	&.size-md {
+		gap: 4px;
+	}
 }
 
 button.custom-button.type-primary:not(.only-icon),
 button.custom-button.type-secondary:not(.only-icon),
-button.custom-button.type-ghost:not(.only-icon)
-{
-    &.size-xxs,
-    &.size-xs {
-        padding: 6px 10px;
-        gap: 2px;
-        border-radius: var(--app-custom-button-border-radius-top-left, var(--border-radius-sm)) var(--app-custom-button-border-radius-top-right, var(--border-radius-sm)) var(--app-custom-button-border-radius-bottom-right, var(--border-radius-sm)) var(--app-custom-button-border-radius-bottom-left, var(--border-radius-sm));
-    }
+button.custom-button.type-ghost:not(.only-icon) {
+	&.size-xxs,
+	&.size-xs {
+		padding: 6px 10px;
+		gap: 2px;
+		border-radius: var(
+				--app-custom-button-border-radius-top-left,
+				var(--border-radius-sm)
+			)
+			var(
+				--app-custom-button-border-radius-top-right,
+				var(--border-radius-sm)
+			)
+			var(
+				--app-custom-button-border-radius-bottom-right,
+				var(--border-radius-sm)
+			)
+			var(
+				--app-custom-button-border-radius-bottom-left,
+				var(--border-radius-sm)
+			);
+	}
 
-    &.size-sm {
-        padding: 8px 12px;
-        gap: 4px;
-    }
+	&.size-sm {
+		padding: 8px 12px;
+		gap: 4px;
+	}
 
-    &.size-md {
-        padding: 10px 14px;
-        gap: 4px;
-    }
+	&.size-md {
+		padding: 10px 14px;
+		gap: 4px;
+	}
 
-    &.size-lg,
-    &.size-xl,
-    &.size-xxl {
-        padding: 10px 16px;
-        gap: 6px;
-    }
+	&.size-lg,
+	&.size-xl,
+	&.size-xxl {
+		padding: 10px 16px;
+		gap: 6px;
+	}
 }
 
 // ONLY ICONS
@@ -49,130 +78,149 @@ button.custom-button.type-primary.only-icon,
 button.custom-button.type-secondary.only-icon,
 button.custom-button.type-ghost.only-icon,
 button.custom-button.type-text.only-icon {
-    &.size-xxs,
-    &.size-xs {
-        padding: 6px;
-    }
+	&.size-xxs,
+	&.size-xs {
+		padding: 6px;
+	}
 
-    &.size-sm {
-        padding: 8px;
-    }
+	&.size-sm {
+		padding: 8px;
+	}
 
-    &.size-xxs,
-    &.size-xs {
-        border-radius: var(--app-custom-button-border-radius-top-left, var(--border-radius-xs)) var(--app-custom-button-border-radius-top-right, var(--border-radius-xs)) var(--app-custom-button-border-radius-bottom-right, var(--border-radius-xs)) var(--app-custom-button-border-radius-bottom-left, var(--border-radius-xs));
-    }
+	&.size-xxs,
+	&.size-xs {
+		border-radius: var(
+				--app-custom-button-border-radius-top-left,
+				var(--border-radius-xs)
+			)
+			var(
+				--app-custom-button-border-radius-top-right,
+				var(--border-radius-xs)
+			)
+			var(
+				--app-custom-button-border-radius-bottom-right,
+				var(--border-radius-xs)
+			)
+			var(
+				--app-custom-button-border-radius-bottom-left,
+				var(--border-radius-xs)
+			);
+	}
 
-    &.size-md {
-        padding: 10px;
-    }
+	&.size-md {
+		padding: 10px;
+	}
 
-    &.size-lg,
-    &.size-xl,
-    &.size-xxl {
-        padding: 12px;
-    }
+	&.size-lg,
+	&.size-xl,
+	&.size-xxl {
+		padding: 12px;
+	}
 }
-
 
 // *************** PRIMARY ***************
 button.custom-button.type-primary {
-    background-color: var(--surface-action);
-    box-shadow: var(--shadow-xs-skeumorphic);
+	background-color: var(--surface-action);
+	box-shadow: var(--shadow-xs-skeumorphic);
 }
 
 button.custom-button.type-primary::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    padding: 2px;
-    background: var(--gradient-skeumorphic-gradient-border);
-    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
+	content: "";
+	position: absolute;
+	inset: 0;
+	border-radius: inherit;
+	padding: 2px;
+	background: var(--gradient-skeumorphic-gradient-border);
+	mask:
+		linear-gradient(#fff 0 0) content-box,
+		linear-gradient(#fff 0 0);
+	-webkit-mask-composite: xor;
+	mask-composite: exclude;
 }
 
 button.custom-button:hover.type-primary {
-    background-color: var(--surface-action-hover);
+	background-color: var(--surface-action-hover);
 }
 
 button.custom-button:active.type-primary {
-    background-color: var(--surface-action-pressed);
-    box-shadow: none;
+	background-color: var(--surface-action-pressed);
+	box-shadow: none;
 }
 
 button.custom-button:focus-visible.type-primary {
-    outline: none;
-    background-color: var(--surface-action);
-    box-shadow: var(--focus-rings-focus-ring-shadow-xs-skeumorphic);
+	outline: none;
+	background-color: var(--surface-action);
+	box-shadow: var(--focus-rings-focus-ring-shadow-xs-skeumorphic);
 }
 
 button.custom-button:disabled.type-primary {
-    background-color: var(--surface-disabled);
-    outline: 1px solid var(--border-disabled);
-    box-shadow: var(--shadow-xs);
+	background-color: var(--surface-disabled);
+	outline: 1px solid var(--border-disabled);
+	box-shadow: var(--shadow-xs);
 }
 
 // *************** SECONDARY ***************
 button.custom-button.type-secondary {
-    background: var(--surface-primary);
-    box-shadow: var(--app-border-shadow-secondary-btn, var(--shadow-xs-skeumorphic));
+	background: var(--surface-primary);
+	box-shadow: var(
+		--app-border-shadow-secondary-btn,
+		var(--shadow-xs-skeumorphic)
+	);
 }
 
 button.custom-button:hover.type-secondary {
-    background: var(--surface-action-hover-2);
+	background: var(--surface-action-hover-2);
 }
 
 button.custom-button:active.type-secondary {
-    background: var(--surface-action-pressed-2) !important;
-    box-shadow: var(--app-border-shadow-secondary-btn-active, none);
+	background: var(--surface-action-pressed-2) !important;
+	box-shadow: var(--app-border-shadow-secondary-btn-active, none);
 }
 
 button.custom-button:focus-visible.type-secondary {
-    outline: none;
-    background: var(--surface-primary);
-    box-shadow: var(--focus-rings-focus-ring-shadow-xs-skeumorphic);
+	outline: none;
+	background: var(--surface-primary);
+	box-shadow: var(--focus-rings-focus-ring-shadow-xs-skeumorphic);
 }
 
 button.custom-button:disabled.type-secondary {
-    background-color: var(--surface-disabled);
-    outline: 1px solid var(--border-disabled);
-    box-shadow: var(--shadow-xs);
+	background-color: var(--surface-disabled);
+	outline: 1px solid var(--border-disabled);
+	box-shadow: var(--shadow-xs);
 }
 
 // *************** GHOST ***************
 button.custom-button.type-ghost {
-    background: transparent;
+	background: transparent;
 }
 
 button.custom-button:hover.type-ghost {
-    background: var(--surface-action-hover-2);
+	background: var(--surface-action-hover-2);
 }
 
 button.custom-button:active.type-ghost {
-    background: var(--surface-action-pressed-2) !important;
+	background: var(--surface-action-pressed-2) !important;
 }
 
 button.custom-button:focus-visible.type-ghost {
-    outline: none;
-    box-shadow: var(--focus-rings-focus-ring);
+	outline: none;
+	box-shadow: var(--focus-rings-focus-ring);
 }
 
 // *************** TEXT ***************
 button.custom-button.type-text {
-    padding: 0 !important;
+	padding: 0 !important;
 }
 
 button.custom-button.type-text,
 button.custom-button:hover.type-text,
 button.custom-button:active.type-text,
 button.custom-button:focus-visible.type-text {
-    background-color: transparent;
+	background-color: transparent;
 }
 
 button.custom-button:focus-visible.type-text {
-    outline: none;
-    background-color: var(--surface-primary);
-    box-shadow: var(--focus-rings-focus-ring) !important;
+	outline: none;
+	background-color: var(--surface-primary);
+	box-shadow: var(--focus-rings-focus-ring) !important;
 }

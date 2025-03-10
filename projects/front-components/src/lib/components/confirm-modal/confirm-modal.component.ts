@@ -2,7 +2,7 @@ import type { OnDestroy } from '@angular/core';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ModalComponent } from '../modal/modal.component';
-import type {
+import {
 	IApply,
 	IBadgeProps,
 	IConfirmData,
@@ -20,12 +20,15 @@ import { ModalActionApplyComponent } from '../modal-action-apply/modal-action-ap
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ConfirmModalComponent implements OnDestroy {
+	public readonly ButtonType = ButtonType;
+
 	protected applyText: IApply;
 	protected titleHeader: string;
 	protected descriptionHeader: string;
 	protected applyDisabled: boolean;
 	protected badgeProps: IBadgeProps;
 	protected cancelText: string | undefined;
+
 	private readonly subscription: Subscription = new Subscription();
 
 	constructor(private readonly modalRef: ModalRef<IConfirmData>) {
@@ -37,7 +40,11 @@ export class ConfirmModalComponent implements OnDestroy {
 		this.descriptionHeader = this.modalRef.data.description;
 	}
 
-	protected submit() {
+	public ngOnDestroy(): void {
+		this.subscription.unsubscribe();
+	}
+
+	protected submit(): void {
 		if (this.modalRef.data.apply.onSubmit) {
 			this.subscription.add(
 				this.modalRef.data.apply.onSubmit().subscribe(() => {
@@ -50,10 +57,4 @@ export class ConfirmModalComponent implements OnDestroy {
 			this.modalRef.close();
 		}
 	}
-
-	ngOnDestroy() {
-		this.subscription.unsubscribe();
-	}
-
-	public readonly ButtonType = ButtonType;
 }

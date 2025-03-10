@@ -22,6 +22,7 @@ import { ButtonComponent } from '../buttons';
 
 @Component({
 	selector: 'ss-lib-sidebar',
+	standalone: true,
 	templateUrl: './sidebar.component.html',
 	styleUrls: ['./sidebar.component.scss'],
 	imports: [
@@ -40,7 +41,6 @@ import { ButtonComponent } from '../buttons';
 			transition('* => void', [animate('0s', style({ opacity: 0 }))]),
 		]),
 	],
-	standalone: true,
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SidebarComponent {

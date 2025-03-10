@@ -59,10 +59,11 @@
 			z-index: 1;
 		}
 
-		&__tbody tr.ss-lib-table-tr:not(:has(~ tr.ss-lib-table-tr)) .ss-lib-table-td {
+		&__tbody
+			tr.ss-lib-table-tr:not(:has(~ tr.ss-lib-table-tr))
+			.ss-lib-table-td {
 			border-bottom: none;
 		}
-
 	}
 
 	&-th,

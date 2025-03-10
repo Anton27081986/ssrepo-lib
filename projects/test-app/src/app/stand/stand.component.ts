@@ -32,7 +32,23 @@ import { TestModalComponent } from '../test-modal/test-modal.component';
 	styleUrl: './stand.component.scss',
 })
 export class StandComponent {
-	private readonly sharedPopupService = inject(SharedPopupService);
+	public toggleCtrl = new FormControl(false);
+	public inputCtrl = new FormControl('rrrr', [
+		Validators.required,
+		Validators.minLength(10),
+	]);
+
+	public textareaCtrl = new FormControl('rrrr', [
+		Validators.required,
+		Validators.minLength(10),
+	]);
+
+	public selectCtrl = new FormControl(null);
+	public numberPickerCtrl = new FormControl(2);
+
+	public datepickerCtrl = new FormControl(null);
+	public minDate = new Date(2025, 2, 5);
+	public maxDate = new Date(2025, 2, 20);
 
 	protected readonly TextType = TextType;
 	protected readonly TextWeight = TextWeight;
@@ -49,29 +65,13 @@ export class StandComponent {
 	protected readonly DROPDOWN_ITEMS = DROPDOWN_ITEMS;
 	protected readonly TooltipPosition = TooltipPosition;
 
-	toggleCtrl = new FormControl(false);
-	inputCtrl = new FormControl('rrrr', [
-		Validators.required,
-		Validators.minLength(10),
-	]);
-
-	textareaCtrl = new FormControl('rrrr', [
-		Validators.required,
-		Validators.minLength(10),
-	]);
-
-	selectCtrl = new FormControl(null);
-	numberPickerCtrl = new FormControl(2);
-
-	datepickerCtrl = new FormControl(null);
-	minDate = new Date(2025, 2, 5);
-	maxDate = new Date(2025, 2, 20);
+	private readonly sharedPopupService = inject(SharedPopupService);
 
 	constructor(private readonly columnState: ColumnsStateService) {
 		this.columnState.colsTr$.next(DEFAULT_COLS);
 	}
 
-	openTestModal(): void {
+	public openTestModal(): void {
 		const popover = this.sharedPopupService.openModal<TestModalData>(
 			TestModalComponent,
 			{
@@ -122,7 +122,7 @@ export class StandComponent {
 		popover.afterClosed$.subscribe((item) => console.log(item));
 	}
 
-	submit(): Observable<any> {
+	public submit(): Observable<any> {
 		return of([]);
 	}
 }

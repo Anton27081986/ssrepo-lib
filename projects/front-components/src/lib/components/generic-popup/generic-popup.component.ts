@@ -29,7 +29,7 @@ export class GenericPopupComponent {
 		this.content = this.popoverRef.content;
 	}
 
-	public preventClick($event: Event) {
+	public preventClick($event: Event): void {
 		$event.stopImmediatePropagation();
 	}
 }

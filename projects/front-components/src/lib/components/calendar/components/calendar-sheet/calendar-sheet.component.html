@@ -18,10 +18,10 @@
 
 			@for (rowIndex of sheet.length | repeatTimes; track $index) {
 				@for (
-					colIndex of sheet[rowIndex]?.length || 0 | repeatTimes;
+					colIndex of sheet[rowIndex].length || 0 | repeatTimes;
 					track $index
 				) {
-					@let item = sheet[rowIndex]?.[colIndex];
+					@let item = sheet[rowIndex][colIndex];
 
 					@if (item) {
 						<ss-lib-calendar-cell

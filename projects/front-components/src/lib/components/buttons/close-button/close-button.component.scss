@@ -1,92 +1,90 @@
 button.custom-button.type-close-light,
-button.custom-button.type-close-dark,
-{
-    &.size-xxs,
-    &.size-xs {
-        padding: 4px;
-        border-radius: var(--border-radius-xs);
-    }
+button.custom-button.type-close-dark {
+	&.size-xxs,
+	&.size-xs {
+		padding: 4px;
+		border-radius: var(--border-radius-xs);
+	}
 
-    &.size-sm,
-    &.size-md {
-        padding: 6px;
-        border-radius: var(--border-radius-sm);
-    }
+	&.size-sm,
+	&.size-md {
+		padding: 6px;
+		border-radius: var(--border-radius-sm);
+	}
 
-    &.size-md {
-        padding: 6px;
-        border-radius: var(--border-radius-sm);
-    }
+	&.size-md {
+		padding: 6px;
+		border-radius: var(--border-radius-sm);
+	}
 
-    &.size-lg {
-        padding: 8px;
-        border-radius: var(--border-radius-md);
-    }
+	&.size-lg {
+		padding: 8px;
+		border-radius: var(--border-radius-md);
+	}
 
-    &.size-xl,
-    &.size-xxl {
-        padding: 10px;
-        border-radius: var(--border-radius-md);
-    }
+	&.size-xl,
+	&.size-xxl {
+		padding: 10px;
+		border-radius: var(--border-radius-md);
+	}
 }
 
 // light background
 button.custom-button.type-close-light {
-    background: transparent;
+	background: transparent;
 }
 
 button.custom-button:hover.type-close-light {
-    background-color: var(--surface-action-hover-2);
+	background-color: var(--surface-action-hover-2);
 }
 
 button.custom-button:active.type-close-light {
-    background-color: var(--surface-action-pressed-2);
+	background-color: var(--surface-action-pressed-2);
 }
 
 button.custom-button:focus-visible.type-close-light {
-    outline: none;
-    background-color: var(--surface-action-hover-2);
-    box-shadow: var(--focus-rings-focus-ring);
+	outline: none;
+	background-color: var(--surface-action-hover-2);
+	box-shadow: var(--focus-rings-focus-ring);
 }
-
 
 // dark background
 button.custom-button.type-close-dark {
-    background: transparent;
-    z-index: 1
+	background: transparent;
+	z-index: 1;
 }
 
 button.custom-button:hover.type-close-dark::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background-color: var(--surface-primary);
-    opacity: 0.2;
-    border-radius: inherit;
-    z-index: -1;
+	content: "";
+	position: absolute;
+	inset: 0;
+	background-color: var(--surface-primary);
+	opacity: 0.2;
+	border-radius: inherit;
+	z-index: -1;
 }
 
 button.custom-button:active.type-close-dark::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background-color: var(--surface-primary);
-    opacity: 0.4;
-    border-radius: inherit;
-    z-index: -1;
+	content: "";
+	position: absolute;
+	inset: 0;
+	background-color: var(--surface-primary);
+	opacity: 0.4;
+	border-radius: inherit;
+	z-index: -1;
 }
 
 button.custom-button:focus-visible.type-close-dark::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background-color: var(--surface-primary);
-    opacity: 0.2;
-    border-radius: inherit;
-    z-index: -1;
+	content: "";
+	position: absolute;
+	inset: 0;
+	background-color: var(--surface-primary);
+	opacity: 0.2;
+	border-radius: inherit;
+	z-index: -1;
 }
 
 button.custom-button:focus-visible.type-close-dark {
-    outline: none;
-    box-shadow: var(--focus-rings-focus-ring);
+	outline: none;
+	box-shadow: var(--focus-rings-focus-ring);
 }

@@ -6,13 +6,8 @@ import {
 	signal,
 } from '@angular/core';
 import { TextComponent } from '../text/text.component';
-import {
-	ButtonComponent,
-	PreviewButtonComponent,
-	UtilityButtonComponent,
-} from '../buttons';
+import { ButtonComponent, PreviewButtonComponent } from '../buttons';
 import { Colors, ExtraSize, IconType, TextType } from '../../shared/models';
-import { BadgeInfoComponent } from '../badge-info/badge-info.component';
 import { BadgeComponent } from '../badge/badge.component';
 import { SpinnerComponent } from '../spinner/spinner.component';
 
@@ -29,9 +24,7 @@ enum States {
 	imports: [
 		TextComponent,
 		ButtonComponent,
-		BadgeInfoComponent,
 		BadgeComponent,
-		UtilityButtonComponent,
 		PreviewButtonComponent,
 		SpinnerComponent,
 	],
@@ -44,6 +37,12 @@ export class ImageUploadComponent {
 	protected hover = signal<boolean>(false);
 	protected state = signal<States>(States.Empty);
 	protected imageSrc = signal<ArrayBuffer | string | null>(null);
+
+	protected readonly IconType = IconType;
+	protected readonly ExtraSize = ExtraSize;
+	protected readonly TextType = TextType;
+	protected readonly Colors = Colors;
+	protected readonly States = States;
 
 	protected onDragEnter(event: Event): void {
 		event.preventDefault();
@@ -106,10 +105,4 @@ export class ImageUploadComponent {
 
 		this.imageChanged.emit(files[0]);
 	}
-
-	protected readonly IconType = IconType;
-	protected readonly ExtraSize = ExtraSize;
-	protected readonly TextType = TextType;
-	protected readonly Colors = Colors;
-	protected readonly States = States;
 }

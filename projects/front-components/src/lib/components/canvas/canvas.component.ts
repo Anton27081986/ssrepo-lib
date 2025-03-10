@@ -1,5 +1,5 @@
 import type { InputSignal, TemplateRef } from '@angular/core';
-import { Component, input, Input, output } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 import { HeaderComponent } from '../header/header.component';
 import { SidebarComponent } from '../sidebar/sidebar.component';
 import { ScrollableBlockComponent } from '../scrollable-block/scrollable-block.component';

@@ -14,10 +14,10 @@ import { ProgressComponent } from '../progress/progress.component';
 
 @Component({
 	selector: 'ss-lib-header',
+	standalone: true,
 	templateUrl: './header.component.html',
 	styleUrls: ['./header.component.scss'],
 	imports: [NgTemplateOutlet, ButtonComponent, ProgressComponent],
-	standalone: true,
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderComponent {

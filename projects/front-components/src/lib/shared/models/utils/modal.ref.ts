@@ -18,15 +18,15 @@ export class ModalRef<T = any> extends ModalRefBase implements IPopoverRef<T> {
 		super();
 	}
 
-	submit(data?: any) {
+	public submit(data?: any): void {
 		this.afterSubmit.next(data);
 	}
 
-	delete() {
+	public delete(): void {
 		this.afterDelete.next(null);
 	}
 
-	close() {
+	public close(): void {
 		this.overlayRef.dispose();
 		this.afterClosed.next(null);
 	}

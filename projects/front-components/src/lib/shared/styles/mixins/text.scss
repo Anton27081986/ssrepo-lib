@@ -1,58 +1,75 @@
 @mixin text-styles($font-size, $line-height) {
-    font-family: var(--type-font-family-heading), serif;
-    font-style: normal;
-    margin: 0;
+	font-family: var(--type-font-family-heading), serif;
+	font-style: normal;
+	margin: 0;
 
-    @if $font-size {
-        font-size: $font-size;
-    }
+	@if $font-size {
+		font-size: $font-size;
+	}
 
-    @if $line-height {
-        line-height: $line-height;
-    }
+	@if $line-height {
+		line-height: $line-height;
+	}
 }
 
 .heading-xs {
-    @include text-styles(var(--font-size-heading-xs), var(--line-height-heading-xs));
+	@include text-styles(
+		var(--font-size-heading-xs),
+		var(--line-height-heading-xs)
+	);
 }
 
 .heading-sm {
-    @include text-styles(var(--font-size-heading-sm), var(--line-height-heading-sm));
+	@include text-styles(
+		var(--font-size-heading-sm),
+		var(--line-height-heading-sm)
+	);
 }
 
 .heading-md {
-    @include text-styles(var(--font-size-heading-md), var(--line-height-heading-md));
+	@include text-styles(
+		var(--font-size-heading-md),
+		var(--line-height-heading-md)
+	);
 }
 
 .heading-lg {
-    @include text-styles(var(--font-size-heading-lg), var(--line-height-heading-lg));
+	@include text-styles(
+		var(--font-size-heading-lg),
+		var(--line-height-heading-lg)
+	);
 }
 
 .heading-xl {
-    @include text-styles(var(--font-size-heading-xl), var(--line-height-heading-xl));
+	@include text-styles(
+		var(--font-size-heading-xl),
+		var(--line-height-heading-xl)
+	);
 }
 
 .heading-2xl {
-    @include text-styles(var(--font-size-heading-2xl), var(--line-height-heading-2xl));
+	@include text-styles(
+		var(--font-size-heading-2xl),
+		var(--line-height-heading-2xl)
+	);
 }
 
 .body-xs {
-    @include text-styles(var(--font-size-body-xs), var(--line-height-body-sm));
+	@include text-styles(var(--font-size-body-xs), var(--line-height-body-sm));
 }
 
 .body-sm {
-    @include text-styles(var(--font-size-body-sm), var(--line-height-body-sm));
+	@include text-styles(var(--font-size-body-sm), var(--line-height-body-sm));
 }
 
 .body-md {
-    @include text-styles(var(--font-size-body-md), var(--line-height-body-md));
+	@include text-styles(var(--font-size-body-md), var(--line-height-body-md));
 }
 
 .body-lg {
-    @include text-styles(var(--font-size-body-lg), var(--line-height-body-lg));
+	@include text-styles(var(--font-size-body-lg), var(--line-height-body-lg));
 }
 
 .body-xl {
-    @include text-styles(var(--font-size-body-xl), var(--line-height-body-xl));
+	@include text-styles(var(--font-size-body-xl), var(--line-height-body-xl));
 }
-

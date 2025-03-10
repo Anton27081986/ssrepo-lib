@@ -1,56 +1,56 @@
 :host {
-    display: flex;
-    align-items: center;
+	display: flex;
+	align-items: center;
 }
 
 button.custom-button {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: none;
-    cursor: pointer;
-    box-sizing: border-box;
-    -webkit-transition: background-color 100ms linear;
-    -ms-transition: background-color 100ms linear;
-    transition: background-color 100ms linear;
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border: none;
+	cursor: pointer;
+	box-sizing: border-box;
+	-webkit-transition: background-color 100ms linear;
+	-ms-transition: background-color 100ms linear;
+	transition: background-color 100ms linear;
 }
 
 button.custom-button:not(.only-icon) {
-    flex-grow: 1;
+	flex-grow: 1;
 }
 
 button.custom-button:disabled {
-    cursor: default;
+	cursor: default;
 }
 
 button.custom-button.type-link-blue,
 button.custom-button.type-link-black {
-    &.size-xxs,
-    &.size-xs {
-        gap: 2px;
-    }
+	&.size-xxs,
+	&.size-xs {
+		gap: 2px;
+	}
 
-    &.size-sm {
-        gap: 4px;
-    }
+	&.size-sm {
+		gap: 4px;
+	}
 
-    &.size-md {
-        gap: 6px;
-    }
+	&.size-md {
+		gap: 6px;
+	}
 
-    &.size-lg,
-    &.size-xl,
-    &.size-xxl {
-        gap: 8px;
-    }
+	&.size-lg,
+	&.size-xl,
+	&.size-xxl {
+		gap: 8px;
+	}
 }
 
 button.custom-button.type-link-blue,
 button.custom-button.type-link-black {
-    border-radius: var(--border-radius-xs);
-    z-index: 1;
-    background: transparent;
+	border-radius: var(--border-radius-xs);
+	z-index: 1;
+	background: transparent;
 }
 
 button.custom-button.type-link-blue.link-inline,
@@ -63,17 +63,17 @@ button.custom-button:hover.type-link-black.link-standalone {
 
 button.custom-button:focus-visible.type-link-blue,
 button.custom-button:focus-visible.type-link-black {
-    outline: none;
-    box-shadow: var(--focus-rings-focus-ring);
+	outline: none;
+	box-shadow: var(--focus-rings-focus-ring);
 }
 
 button.custom-button:focus-visible.type-link-blue::before,
 button.custom-button:focus-visible.type-link-black::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: #ffffff;
-    opacity: 0.1;
-    border-radius: inherit;
-    z-index: -1;
+	content: "";
+	position: absolute;
+	inset: 0;
+	background: #ffffff;
+	opacity: 0.1;
+	border-radius: inherit;
+	z-index: -1;
 }
