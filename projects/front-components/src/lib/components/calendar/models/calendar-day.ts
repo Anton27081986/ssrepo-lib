@@ -19,7 +19,7 @@ export class CalendarDay extends CalendarMonth {
     }
 
     /**
-     * Creates {@link TuiDay} from native {@link Date} based on local time zone
+     * Creates {@link CalendarDay} from native {@link Date} based on local time zone
      */
     public static fromLocalNativeDate(date: Date): CalendarDay {
         return new CalendarDay(date.getFullYear(), date.getMonth(), date.getDate());
