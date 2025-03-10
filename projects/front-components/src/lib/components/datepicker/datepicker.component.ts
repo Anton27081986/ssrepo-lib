@@ -18,6 +18,7 @@ import { InputType } from '../../shared/models';
  */
 @Component({
     selector: 'ss-lib-datepicker',
+    standalone: true,
     imports: [datepickerImports],
     templateUrl: './datepicker.component.html',
     styleUrl: './datepicker.component.scss',
