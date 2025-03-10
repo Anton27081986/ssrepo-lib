@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { NgOptimizedImage } from '@angular/common';
-import type { ILightBoxData, ModalRef } from '../../shared/models';
+import { ILightBoxData, ModalRef } from '../../shared/models';
 import { IconType } from '../../shared/models';
 import { OverlayButtonComponent } from '../buttons';
 

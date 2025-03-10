@@ -6,7 +6,7 @@ import {
 	input,
 } from '@angular/core';
 import { AsyncPipe, NgForOf, NgStyle } from '@angular/common';
-import type { ColumnsStateService } from './columns.state.service';
+import { ColumnsStateService } from './columns.state.service';
 import { TextComponent } from '../text/text.component';
 import { Colors, TextType, TextWeight } from '../../shared/models';
 import { SkeletonBlockComponent } from '../skeleton/skeleton-block/skeleton-block.component';

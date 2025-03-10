@@ -6,7 +6,7 @@ import {
 	output,
 } from '@angular/core';
 import { NgIf } from '@angular/common';
-import type { ModalRef } from '../../shared/models';
+import { ModalRef } from '../../shared/models';
 import { ButtonType } from '../../shared/models';
 import { ButtonComponent } from '../buttons';
 

@@ -1,8 +1,8 @@
 import type { Type } from '@angular/core';
 import { Component } from '@angular/core';
 import { NgComponentOutlet } from '@angular/common';
-import type { ModalRef } from '../../shared/models/utils/modal.ref';
-import type { PopupContent, TypePopup } from '../../shared/models/types/pop-up';
+import { ModalRef } from '../../shared/models/utils/modal.ref';
+import { PopupContent, TypePopup } from '../../shared/models/types/pop-up';
 
 export enum PopoverAnimationEnum {
 	default = 'default',
@@ -24,7 +24,7 @@ export class GenericPopupComponent {
 		return this.content as Type<any>;
 	}
 
-	constructor(public popoverRef: ModalRef) {
+	constructor(private readonly popoverRef: ModalRef) {
 		this.type = this.popoverRef.type;
 		this.content = this.popoverRef.content;
 	}

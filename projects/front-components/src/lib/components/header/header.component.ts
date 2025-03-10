@@ -8,7 +8,7 @@ import {
 	IconPosition,
 	IconType,
 } from '../../shared/models';
-import type { CanvasState } from '../canvas/canvas.state';
+import { CanvasState } from '../canvas/canvas.state';
 import { SidebarType } from '../../shared/models/enums/sidebar-type';
 import { ProgressComponent } from '../progress/progress.component';
 

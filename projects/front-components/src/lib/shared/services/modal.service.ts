@@ -1,9 +1,9 @@
-import type { Overlay } from '@angular/cdk/overlay';
+import { Overlay } from '@angular/cdk/overlay';
 import { OverlayConfig } from '@angular/cdk/overlay';
 import { Injectable, Injector } from '@angular/core';
 import { ComponentPortal } from '@angular/cdk/portal';
 import { GenericPopupComponent } from '../../components/generic-popup/generic-popup.component';
-import type { PopupParams } from '../models/types/pop-up';
+import { PopupParams } from '../models/types/pop-up';
 import { ModalRef } from '../models';
 
 @Injectable({ providedIn: 'root' })

@@ -9,11 +9,10 @@ import {
 } from '../../../../front-components/src/lib/components';
 import {
 	ExtraSize,
-	IconType,
+	IconType, ModalRef,
 	Shape,
 	Status,
 } from '../../../../front-components/src/lib/shared/models';
-import { ModalRef } from '../../../../front-components/src/lib/shared/models/utils/modal.ref';
 import { FieldCtrlDirective } from '../../../../front-components/src/lib/core/directives';
 
 export interface TestModalData {
