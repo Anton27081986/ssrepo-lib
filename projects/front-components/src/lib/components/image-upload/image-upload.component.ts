@@ -3,7 +3,7 @@ import {
 	Component,
 	input,
 	output,
-	signal
+	signal,
 } from '@angular/core';
 import { TextComponent } from '../text/text.component';
 import {
@@ -14,7 +14,7 @@ import {
 import { Colors, ExtraSize, IconType, TextType } from '../../shared/models';
 import { BadgeInfoComponent } from '../badge-info/badge-info.component';
 import { BadgeComponent } from '../badge/badge.component';
-import {SpinnerComponent} from '../spinner/spinner.component';
+import { SpinnerComponent } from '../spinner/spinner.component';
 
 enum States {
 	Empty = 'empty',
@@ -91,7 +91,7 @@ export class ImageUploadComponent {
 			return;
 		}
 
-		this.state.set(States.Loading) ;
+		this.state.set(States.Loading);
 
 		const file = files[0];
 

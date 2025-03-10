@@ -1,14 +1,15 @@
+import type { InputSignal } from '@angular/core';
 import {
-  ChangeDetectionStrategy,
-  Component,
-  HostBinding, input,
-  InputSignal,
+	ChangeDetectionStrategy,
+	Component,
+	HostBinding,
+	input,
 } from '@angular/core';
-import {AsyncPipe, NgForOf, NgStyle} from "@angular/common";
-import {ColumnsStateService} from './columns.state.service';
-import {TextComponent} from '../text/text.component';
-import {Colors, TextType, TextWeight} from '../../shared/models';
-import {SkeletonBlockComponent} from '../skeleton/skeleton-block/skeleton-block.component';
+import { AsyncPipe, NgForOf, NgStyle } from '@angular/common';
+import type { ColumnsStateService } from './columns.state.service';
+import { TextComponent } from '../text/text.component';
+import { Colors, TextType, TextWeight } from '../../shared/models';
+import { SkeletonBlockComponent } from '../skeleton/skeleton-block/skeleton-block.component';
 
 @Component({
 	selector: 'ss-lib-table',
@@ -16,17 +17,19 @@ import {SkeletonBlockComponent} from '../skeleton/skeleton-block/skeleton-block.
 	styleUrls: ['table.component.scss'],
 	standalone: true,
 	changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [
-    AsyncPipe,
-    NgForOf,
-    NgStyle,
-    TextComponent,
-    SkeletonBlockComponent
-  ]
+	imports: [
+		AsyncPipe,
+		NgForOf,
+		NgStyle,
+		TextComponent,
+		SkeletonBlockComponent,
+	],
 })
 export class TableComponent {
-	@HostBinding('class.ss-lib-table') protected readonly addHostClass = true;
-  public isSkeleton: InputSignal<boolean> = input<boolean>(false);
+	@HostBinding('class.ss-lib-table')
+	protected readonly addHostClass = true;
+
+	public isSkeleton: InputSignal<boolean> = input<boolean>(false);
 	constructor(protected readonly stateColumn: ColumnsStateService) {}
 	protected readonly TextType = TextType;
 	protected readonly TextWeight = TextWeight;

@@ -1,67 +1,76 @@
+import type { InputSignal } from '@angular/core';
 import {
-  ChangeDetectionStrategy,
-  Component,
-  inject, input,
-  InputSignal, output,
+	ChangeDetectionStrategy,
+	Component,
+	inject,
+	input,
+	output,
 } from '@angular/core';
-import {NgForOf, NgIf} from '@angular/common';
-import {ButtonType, IconType, IMenu, NavButton, SidebarType} from '../../shared/models';
-import {CanvasState} from '../canvas/canvas.state';
-import {DividerComponent} from '../divider/divider.component';
-import {NavButtonComponent} from '../nav-button/nav-button.component';
-import {animate, style, transition, trigger} from '@angular/animations';
-import {ButtonComponent} from '../buttons';
+import { NgForOf, NgIf } from '@angular/common';
+import { animate, style, transition, trigger } from '@angular/animations';
+import type { IMenu } from '../../shared/models';
+import {
+	ButtonType,
+	IconType,
+	NavButton,
+	SidebarType,
+} from '../../shared/models';
+import { CanvasState } from '../canvas/canvas.state';
+import { DividerComponent } from '../divider/divider.component';
+import { NavButtonComponent } from '../nav-button/nav-button.component';
+import { ButtonComponent } from '../buttons';
 
 @Component({
-  selector: 'ss-lib-sidebar',
-  templateUrl: './sidebar.component.html',
-  styleUrls: ['./sidebar.component.scss'],
-  imports: [
-    NgIf,
-    DividerComponent,
-    ButtonComponent,
-    NgForOf,
-    NavButtonComponent,
-  ],
-  animations: [trigger('animationTrigger', [
-    transition('void => *', [
-      style({opacity: 0}),
-      animate('1s', style({opacity: 1})),
-    ]),
-    transition('* => void', [
-      animate('0s', style({opacity: 0})),
-    ]),
-  ])],
-  standalone: true,
-  changeDetection: ChangeDetectionStrategy.OnPush
-
+	selector: 'ss-lib-sidebar',
+	templateUrl: './sidebar.component.html',
+	styleUrls: ['./sidebar.component.scss'],
+	imports: [
+		NgIf,
+		DividerComponent,
+		ButtonComponent,
+		NgForOf,
+		NavButtonComponent,
+	],
+	animations: [
+		trigger('animationTrigger', [
+			transition('void => *', [
+				style({ opacity: 0 }),
+				animate('1s', style({ opacity: 1 })),
+			]),
+			transition('* => void', [animate('0s', style({ opacity: 0 }))]),
+		]),
+	],
+	standalone: true,
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SidebarComponent {
-  public menu: InputSignal<IMenu[]> = input.required<IMenu[]>();
+	public menu: InputSignal<IMenu[]> = input.required<IMenu[]>();
 
-  public outMenuFromSidebar = output<IMenu>()
+	public outMenuFromSidebar = output<IMenu>();
 
-  protected stateCanvas: CanvasState = inject(CanvasState)
+	protected stateCanvas: CanvasState = inject(CanvasState);
 
-  protected readonly ButtonType = ButtonType;
-  protected readonly IconType = IconType;
-  protected readonly SidebarType = SidebarType;
+	protected readonly ButtonType = ButtonType;
+	protected readonly IconType = IconType;
+	protected readonly SidebarType = SidebarType;
 
-  protected sidebarType = this.stateCanvas.sidebarType;
+	protected sidebarType = this.stateCanvas.sidebarType;
 
-  public closeMenu() {
-    this.stateCanvas.sidebarType.set(SidebarType.Close)
-  }
+	public closeMenu() {
+		this.stateCanvas.sidebarType.set(SidebarType.Close);
+	}
 
-  public outMenuModel(menu: IMenu) {
-    if (!menu.pressed) {
-      const pressed = this.menu().find(item => item.pressed);
-      if (pressed) {
-        pressed.pressed = false;
-      }
-      this.outMenuFromSidebar.emit(menu)
-    }
-  }
+	public outMenuModel(menu: IMenu) {
+		if (!menu.pressed) {
+			const pressed = this.menu().find((item) => item.pressed);
 
-  protected readonly NuvButtonType = NavButton;
+			if (pressed) {
+				pressed.pressed = false;
+			}
+
+			this.outMenuFromSidebar.emit(menu);
+		}
+	}
+
+	protected readonly NuvButtonType = NavButton;
 }

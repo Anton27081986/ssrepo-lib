@@ -1,7 +1,7 @@
-import {Shape} from '../enums';
+import type { Shape } from '../enums';
 
 export interface SkeletonConf {
-  width: string,
-  height: string,
-  type: Shape
+	width: string;
+	height: string;
+	type: Shape;
 }

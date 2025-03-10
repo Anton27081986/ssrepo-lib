@@ -1,3 +1,3 @@
-import { ButtonType } from '../enums';
+import type { ButtonType } from '../enums';
 
-export type ButtonTypeValues = typeof ButtonType[keyof typeof ButtonType];
+export type ButtonTypeValues = (typeof ButtonType)[keyof typeof ButtonType];

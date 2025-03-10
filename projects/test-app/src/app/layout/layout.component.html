@@ -1,22 +1,27 @@
 <ss-lib-canvas
-  [leftMenuHeaderTemplateRef]="leftMenuHeaderTemplateRef"
-  [rightMenuHeaderTemplateRef]="rightMenuHeaderTemplateRef"
-  [menu]="exampleMenu"
-  (outMenuFromCanvas)="selectedMenu($event)"
->
-  <router-outlet></router-outlet>
+	[leftMenuHeaderTemplateRef]="leftMenuHeaderTemplateRef"
+	[rightMenuHeaderTemplateRef]="rightMenuHeaderTemplateRef"
+	[menu]="exampleMenu"
+	(outMenuFromCanvas)="selectedMenu($event)">
+	<router-outlet></router-outlet>
 </ss-lib-canvas>
 
-
 <ng-template #leftMenuHeaderTemplateRef>
-<div class="layout__leftMenuHeader">
-  <ss-lib-icon [icon]="IconType.Logo" [width]="'60'" [height]="'32'"></ss-lib-icon>
-  <ss-lib-text [type]="TextType.BodyMd" [weight]="TextWeight.Semibold">Библиотека компонентов</ss-lib-text>
-</div>
+	<div class="layout__leftMenuHeader">
+		<ss-lib-icon
+			[icon]="IconType.Logo"
+			[width]="'60'"
+			[height]="'32'"></ss-lib-icon>
+		<ss-lib-text
+			[type]="TextType.BodyMd"
+			[weight]="TextWeight.Semibold"
+			>Библиотека компонентов</ss-lib-text
+		>
+	</div>
 </ng-template>
 
 <ng-template #rightMenuHeaderTemplateRef>
-  <div class="layout__rightMenuHeader">
-  <ss-lib-toggle-icon [formControl]="theme"></ss-lib-toggle-icon>
-  </div>
+	<div class="layout__rightMenuHeader">
+		<ss-lib-toggle-icon [formControl]="theme"></ss-lib-toggle-icon>
+	</div>
 </ng-template>

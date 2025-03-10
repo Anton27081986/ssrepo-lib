@@ -1,3 +1,3 @@
-import {NavButton} from '../enums/nav-button';
+import type { NavButton } from '../enums/nav-button';
 
 export type NavButtonType = NavButton.NavBase | NavButton.NavIcon;

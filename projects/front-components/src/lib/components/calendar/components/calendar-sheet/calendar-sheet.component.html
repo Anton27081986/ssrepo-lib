@@ -1,40 +1,41 @@
 <div class="calendar-sheet">
-    <ss-lib-button
-        [type]="ButtonType.Secondary"
-        [text]="TODAY_LABEL"
-        (click)="setToday()"
-    />
+	<ss-lib-button
+		[type]="ButtonType.Secondary"
+		[text]="TODAY_LABEL"
+		(click)="setToday()" />
 
-    <div class="sheet">
-        <div class="sheet-weeks">
-            @for (weekDay of WEEK_DAYS_SHORT; track $index) {
-                <div class="week-cell">
-                    {{ weekDay }}
-                </div>
-            }
-        </div>
+	<div class="sheet">
+		<div class="sheet-weeks">
+			@for (weekDay of WEEK_DAYS_SHORT; track $index) {
+				<div class="week-cell">
+					{{ weekDay }}
+				</div>
+			}
+		</div>
 
-        <div class="sheet-days">
-            @let sheet = month() | calendarSheet;
+		<div class="sheet-days">
+			@let sheet = month() | calendarSheet;
 
-            @for (rowIndex of sheet.length | repeatTimes; track $index) {
-                @for (colIndex of (sheet[rowIndex]?.length || 0) | repeatTimes; track $index) {
-                    @let item = sheet[rowIndex]?.[colIndex];
+			@for (rowIndex of sheet.length | repeatTimes; track $index) {
+				@for (
+					colIndex of sheet[rowIndex]?.length || 0 | repeatTimes;
+					track $index
+				) {
+					@let item = sheet[rowIndex]?.[colIndex];
 
-                    @if (item) {
-                        <ss-lib-calendar-cell
-                            [item]="item"
-                            [displayValue]="item.day"
-                            [type]="item | mapper: dayTypeHandler"
-                            [isToday]="itemIsToday(item)"
-                            [isActive]="itemIsActive(item)"
-                            [isUnavailable]="itemIsUnavailable(item)"
-                            [isDisabled]="itemIsDisabled(item)"
-                            (clickItem)="onItemClick(item)"
-                        />
-                    }
-                }
-            }
-        </div>
-    </div>
+					@if (item) {
+						<ss-lib-calendar-cell
+							[item]="item"
+							[displayValue]="item.day"
+							[type]="item | mapper: dayTypeHandler"
+							[isToday]="itemIsToday(item)"
+							[isActive]="itemIsActive(item)"
+							[isUnavailable]="itemIsUnavailable(item)"
+							[isDisabled]="itemIsDisabled(item)"
+							(clickItem)="onItemClick(item)" />
+					}
+				}
+			}
+		</div>
+	</div>
 </div>

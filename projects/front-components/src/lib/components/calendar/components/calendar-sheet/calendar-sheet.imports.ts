@@ -4,9 +4,9 @@ import { ButtonComponent } from '../../../buttons';
 import { MapperPipe, RepeatTimesPipe } from '../../../../core/pipes';
 
 export const calendarSheetImports = [
-    CalendarSheetPipe,
-    RepeatTimesPipe,
-    MapperPipe,
-    ButtonComponent,
-    CalendarCellComponent,
+	CalendarSheetPipe,
+	RepeatTimesPipe,
+	MapperPipe,
+	ButtonComponent,
+	CalendarCellComponent,
 ];

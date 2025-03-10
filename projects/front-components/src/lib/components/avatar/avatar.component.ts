@@ -12,29 +12,25 @@ import { Colors, IconType, TextType, TextWeight } from '../../shared/models';
  * [username]: string - Имя пользователя. По умолчанию: `''`
  */
 @Component({
-    selector: 'ss-lib-avatar',
-    imports: [
-        IconComponent,
-        NgOptimizedImage,
-        TextComponent
-    ],
-    standalone: true,
-    templateUrl: './avatar.component.html',
-    styleUrl: './avatar.component.scss',
-    changeDetection: ChangeDetectionStrategy.OnPush
+	selector: 'ss-lib-avatar',
+	imports: [IconComponent, NgOptimizedImage, TextComponent],
+	standalone: true,
+	templateUrl: './avatar.component.html',
+	styleUrl: './avatar.component.scss',
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AvatarComponent {
-    public src = input<string>('');
-    public username = input<string>('');
+	public src = input<string>('');
+	public username = input<string>('');
 
-    public showFallbackImage = false;
+	public showFallbackImage = false;
 
-    public readonly IconType = IconType;
-    public readonly Colors = Colors;
-    public readonly TextType = TextType;
-    public readonly TextWeight = TextWeight;
+	public readonly IconType = IconType;
+	public readonly Colors = Colors;
+	public readonly TextType = TextType;
+	public readonly TextWeight = TextWeight;
 
-    onImageError(): void {
-        this.showFallbackImage = true;
-    }
+	onImageError(): void {
+		this.showFallbackImage = true;
+	}
 }

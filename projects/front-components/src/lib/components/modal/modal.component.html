@@ -1,21 +1,27 @@
 <div class="ss-lib-modal">
+	<div class="ss-lib-modal__header">
+		<ss-lib-badge-info
+			[title]="titleHeader()"
+			[description]="descriptionHeader()"
+			[badge]="badgeProps()"
+			(close)="close()"></ss-lib-badge-info>
+	</div>
+	<ss-lib-divider
+		*ngIf="contentRef()"
+		class="ss-lib-modal__divider-top"></ss-lib-divider>
+	<div
+		*ngIf="contentRef()"
+		class="ss-lib-modal__body">
+		<ng-container *ngTemplateOutlet="contentRef()"></ng-container>
+	</div>
+	<ss-lib-divider
+		*ngIf="contentRef()"
+		class="ss-lib-modal__divider-bottom"></ss-lib-divider>
 
-  <div class="ss-lib-modal__header">
-    <ss-lib-badge-info
-      [title]="titleHeader()"
-      [description]="descriptionHeader()"
-      [badge]="badgeProps()"
-      (close)="close()"
-    ></ss-lib-badge-info>
-  </div>
-  <ss-lib-divider *ngIf="contentRef()" class="ss-lib-modal__divider-top"></ss-lib-divider>
-  <div class="ss-lib-modal__body" *ngIf="contentRef()">
-    <ng-container *ngTemplateOutlet="contentRef()"></ng-container>
-  </div>
-  <ss-lib-divider *ngIf="contentRef()" class="ss-lib-modal__divider-bottom"></ss-lib-divider>
-
-  <div class="ss-lib-modal__footer" [class.ss-lib-modal__footer-add-padding]="!contentRef()" *ngIf="actionsRef()">
-    <ng-container *ngTemplateOutlet="actionsRef()"></ng-container>
-  </div>
-
+	<div
+		*ngIf="actionsRef()"
+		class="ss-lib-modal__footer"
+		[class.ss-lib-modal__footer-add-padding]="!contentRef()">
+		<ng-container *ngTemplateOutlet="actionsRef()"></ng-container>
+	</div>
 </div>

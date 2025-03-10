@@ -1,15 +1,13 @@
 <ss-lib-input
-    [formControl]="datepickerCtrl"
-    [type]="InputType.Date"
-    [min]="min()"
-    [max]="max()"
-    [popoverTriggerFor]="calendar"
-/>
+	[formControl]="datepickerCtrl"
+	[type]="InputType.Date"
+	[min]="min()"
+	[max]="max()"
+	[popoverTriggerFor]="calendar" />
 
 <ss-lib-datepicker-calendar
-    #calendar
-    [selectedDate]="selectedDate()"
-    [min]="min()"
-    [max]="max()"
-    (value)="onDateSelected($event)"
-></ss-lib-datepicker-calendar>
+	#calendar
+	[selectedDate]="selectedDate()"
+	[min]="min()"
+	[max]="max()"
+	(value)="onDateSelected($event)"></ss-lib-datepicker-calendar>

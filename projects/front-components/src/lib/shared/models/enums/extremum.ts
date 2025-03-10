@@ -1,4 +1,4 @@
 export enum Extremum {
-  Min = 'min',
-  Max = 'max',
+	Min = 'min',
+	Max = 'max',
 }

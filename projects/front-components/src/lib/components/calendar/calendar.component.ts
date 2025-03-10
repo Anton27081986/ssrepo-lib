@@ -1,17 +1,22 @@
+import type { Signal, WritableSignal } from '@angular/core';
 import {
-    ChangeDetectionStrategy,
-    Component,
-    effect,
-    input,
-    output,
-    Signal,
-    signal,
-    WritableSignal
+	ChangeDetectionStrategy,
+	Component,
+	effect,
+	input,
+	output,
+	signal,
 } from '@angular/core';
 import { FIRST_DAY, LAST_DAY } from './constans';
 import { CalendarDay, CalendarMonth } from './models';
 import { calendarImports } from './calendar.imports';
-import { ButtonType, ExtraSize, IconPosition, IconType, TextType } from '../../shared/models';
+import {
+	ButtonType,
+	ExtraSize,
+	IconPosition,
+	IconType,
+	TextType,
+} from '../../shared/models';
 
 /**
  * Параметры:
@@ -25,75 +30,80 @@ import { ButtonType, ExtraSize, IconPosition, IconType, TextType } from '../../s
  * (dayClick): CalendarDay | null - Событие выбора даты
  */
 @Component({
-    selector: 'ss-lib-calendar',
-    standalone: true,
-    imports: [calendarImports],
-    templateUrl: './calendar.component.html',
-    styleUrl: './calendar.component.scss',
-    changeDetection: ChangeDetectionStrategy.OnPush,
+	selector: 'ss-lib-calendar',
+	standalone: true,
+	imports: [calendarImports],
+	templateUrl: './calendar.component.html',
+	styleUrl: './calendar.component.scss',
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CalendarComponent {
-    public value = input<CalendarDay | null>(null);
-    public min = input<CalendarDay, CalendarDay | null>(FIRST_DAY, {
-        transform: (value: CalendarDay | null): CalendarDay => {
-            return value && value.daySameOrAfter(FIRST_DAY) ? value : FIRST_DAY;
-        }
-    });
-    public max = input<CalendarDay, CalendarDay | null>(LAST_DAY, {
-        transform: (value: CalendarDay | null): CalendarDay => {
-            return value && value.daySameOrBefore(LAST_DAY) ? value : LAST_DAY;
-        }
-    });
-    public dayClick = output<CalendarDay | null>();
+	public value = input<CalendarDay | null>(null);
+	public min = input<CalendarDay, CalendarDay | null>(FIRST_DAY, {
+		transform: (value: CalendarDay | null): CalendarDay => {
+			return value && value.daySameOrAfter(FIRST_DAY) ? value : FIRST_DAY;
+		},
+	});
 
-    public readonly isMonthView = signal<boolean>(true);
-    public readonly ButtonType = ButtonType;
-    public readonly IconPosition = IconPosition;
-    public readonly IconType = IconType;
-    public readonly ExtraSize = ExtraSize;
-    public readonly TextType = TextType;
+	public max = input<CalendarDay, CalendarDay | null>(LAST_DAY, {
+		transform: (value: CalendarDay | null): CalendarDay => {
+			return value && value.daySameOrBefore(LAST_DAY) ? value : LAST_DAY;
+		},
+	});
 
-    private month: WritableSignal<CalendarMonth | CalendarDay> = signal<CalendarMonth>(CalendarMonth.currentLocal());
+	public dayClick = output<CalendarDay | null>();
 
-    constructor() {
-        effect(() => {
-            if (
-                this.value() instanceof CalendarDay &&
-                this.value()!.daySameOrBefore(LAST_DAY)
-            ) {
-                this.month.set(this.value()!);
-            }
-        });
-    }
+	public readonly isMonthView = signal<boolean>(true);
+	public readonly ButtonType = ButtonType;
+	public readonly IconPosition = IconPosition;
+	public readonly IconType = IconType;
+	public readonly ExtraSize = ExtraSize;
+	public readonly TextType = TextType;
 
-    public get currentMonth(): Signal<CalendarMonth | CalendarDay> {
-        return this.month.asReadonly();
-    }
+	private readonly month: WritableSignal<CalendarMonth | CalendarDay> =
+		signal<CalendarMonth>(CalendarMonth.currentLocal());
 
-    public onPickerMonthClick(month: CalendarMonth): void {
-        this.isMonthView.set(true);
-        this.updateViewedMonth(month);
-    }
+	constructor() {
+		effect(() => {
+			if (
+				this.value() instanceof CalendarDay &&
+				this.value()!.daySameOrBefore(LAST_DAY)
+			) {
+				this.month.set(this.value()!);
+			}
+		});
+	}
 
-    public onPaginationMonthChange(month: CalendarMonth): void {
-        this.updateViewedMonth(month);
-    }
+	public get currentMonth(): Signal<CalendarMonth | CalendarDay> {
+		return this.month.asReadonly();
+	}
 
-    public onDayClick(day: CalendarDay): void {
-        const selectedDay = this.value();
+	public onPickerMonthClick(month: CalendarMonth): void {
+		this.isMonthView.set(true);
+		this.updateViewedMonth(month);
+	}
 
-        this.dayClick.emit(selectedDay && day.daySame(selectedDay) ? null : day);
-    }
+	public onPaginationMonthChange(month: CalendarMonth): void {
+		this.updateViewedMonth(month);
+	}
 
-    public onTodaySelected(day: CalendarDay): void {
-        this.dayClick.emit(day);
-    }
+	public onDayClick(day: CalendarDay): void {
+		const selectedDay = this.value();
 
-    private updateViewedMonth(month: CalendarMonth): void {
-        if (this.month().monthSame(month)) {
-            return;
-        }
+		this.dayClick.emit(
+			selectedDay && day.daySame(selectedDay) ? null : day,
+		);
+	}
 
-        this.month.set(month);
-    }
+	public onTodaySelected(day: CalendarDay): void {
+		this.dayClick.emit(day);
+	}
+
+	private updateViewedMonth(month: CalendarMonth): void {
+		if (this.month().monthSame(month)) {
+			return;
+		}
+
+		this.month.set(month);
+	}
 }

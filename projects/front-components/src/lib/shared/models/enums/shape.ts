@@ -1,4 +1,4 @@
 export enum Shape {
-    Round = 'round',
-    Square = 'square',
+	Round = 'round',
+	Square = 'square',
 }

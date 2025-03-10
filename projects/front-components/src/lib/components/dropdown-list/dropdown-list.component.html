@@ -1,15 +1,16 @@
 <ng-template #dropdownTemplate>
-    <div class="dropdown__options">
-        @if (headerTemplateRef()) {
-            <ng-container [ngTemplateOutlet]="headerTemplateRef()"></ng-container>
+	<div class="dropdown__options">
+		@if (headerTemplateRef()) {
+			<ng-container
+				[ngTemplateOutlet]="headerTemplateRef()"></ng-container>
 
-            <ss-lib-divider/>
-        }
+			<ss-lib-divider />
+		}
 
-        @if (!!optionsContent) {
-            <div class="dropdown__options-content">
-                <ng-content></ng-content>
-            </div>
-        }
-    </div>
+		@if (!!optionsContent) {
+			<div class="dropdown__options-content">
+				<ng-content></ng-content>
+			</div>
+		}
+	</div>
 </ng-template>

@@ -1,6 +1,12 @@
 <div class="ss-lib-light-box">
-  <img [ngSrc]="src" [width]="1280" [height]="400" alt="">
-  <div class="ss-lib-light-box__close">
-    <ss-lib-overlay-button (click)="close()" [icon]="IconType.Close"></ss-lib-overlay-button>
-  </div>
+	<img
+		alt=""
+		[ngSrc]="src"
+		[width]="1280"
+		[height]="400" />
+	<div class="ss-lib-light-box__close">
+		<ss-lib-overlay-button
+			[icon]="IconType.Close"
+			(click)="close()"></ss-lib-overlay-button>
+	</div>
 </div>

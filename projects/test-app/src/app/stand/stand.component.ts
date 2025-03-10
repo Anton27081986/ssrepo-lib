@@ -1,111 +1,128 @@
 import { Component, inject } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import type { Observable } from 'rxjs';
+import { of } from 'rxjs';
 import {
-    ButtonType,
-    Colors,
-    ExtraSize,
-    IconPosition,
-    IconType,
-    LinkAppearance,
-    Orientation,
-    Shape,
-    Status,
-    TextType,
-    TextWeight, TooltipPosition,
+	ButtonType,
+	Colors,
+	ExtraSize,
+	IconPosition,
+	IconType,
+	LinkAppearance,
+	Orientation,
+	Shape,
+	Status,
+	TextType,
+	TextWeight,
+	TooltipPosition,
 } from '../../../../front-components/src/lib/shared/models';
 import { standImports } from './stand.imports';
 import { ColumnsStateService } from '../../../../front-components/src/lib/components';
 import { DROPDOWN_ITEMS, DEFAULT_COLS } from './constants';
 import { SharedPopupService } from '../../../../front-components/src/lib/shared/services';
-import { Observable, of } from 'rxjs';
-import { TestModalComponent, TestModalData } from '../test-modal/test-modal.component';
+import type { TestModalData } from '../test-modal/test-modal.component';
+import { TestModalComponent } from '../test-modal/test-modal.component';
 
 @Component({
-    selector: 'app-stand',
-    standalone: true,
-    imports: [standImports],
-    providers: [ColumnsStateService],
-    templateUrl: './stand.component.html',
-    styleUrl: './stand.component.scss'
+	selector: 'app-stand',
+	standalone: true,
+	imports: [standImports],
+	providers: [ColumnsStateService],
+	templateUrl: './stand.component.html',
+	styleUrl: './stand.component.scss',
 })
 export class StandComponent {
-    private readonly sharedPopupService = inject(SharedPopupService);
+	private readonly sharedPopupService = inject(SharedPopupService);
 
-    protected readonly TextType = TextType;
-    protected readonly TextWeight = TextWeight;
-    protected readonly IconType = IconType;
-    protected readonly Colors = Colors;
-    protected readonly ButtonType = ButtonType;
-    protected readonly IconPosition = IconPosition;
-    protected readonly console = console;
-    protected readonly ExtraSize = ExtraSize;
-    protected readonly Shape = Shape;
-    protected readonly Orientation = Orientation;
-    protected readonly LinkAppearance = LinkAppearance;
-    protected readonly Status = Status;
-    protected readonly DROPDOWN_ITEMS = DROPDOWN_ITEMS;
-    protected readonly TooltipPosition = TooltipPosition;
+	protected readonly TextType = TextType;
+	protected readonly TextWeight = TextWeight;
+	protected readonly IconType = IconType;
+	protected readonly Colors = Colors;
+	protected readonly ButtonType = ButtonType;
+	protected readonly IconPosition = IconPosition;
+	protected readonly console = console;
+	protected readonly ExtraSize = ExtraSize;
+	protected readonly Shape = Shape;
+	protected readonly Orientation = Orientation;
+	protected readonly LinkAppearance = LinkAppearance;
+	protected readonly Status = Status;
+	protected readonly DROPDOWN_ITEMS = DROPDOWN_ITEMS;
+	protected readonly TooltipPosition = TooltipPosition;
 
-    toggleCtrl = new FormControl(false);
-    inputCtrl = new FormControl('rrrr', [Validators.required, Validators.minLength(10)]);
-    textareaCtrl = new FormControl('rrrr', [Validators.required, Validators.minLength(10)]);
-    selectCtrl = new FormControl(null);
-    numberPickerCtrl = new FormControl(2);
+	toggleCtrl = new FormControl(false);
+	inputCtrl = new FormControl('rrrr', [
+		Validators.required,
+		Validators.minLength(10),
+	]);
 
-    datepickerCtrl = new FormControl(null);
-    minDate = new Date(2025, 2, 5);
-    maxDate = new Date(2025, 2, 20);
+	textareaCtrl = new FormControl('rrrr', [
+		Validators.required,
+		Validators.minLength(10),
+	]);
 
-    constructor(private readonly columnState: ColumnsStateService) {
-        this.columnState.colsTr$.next(DEFAULT_COLS)
-    }
+	selectCtrl = new FormControl(null);
+	numberPickerCtrl = new FormControl(2);
 
-    openTestModal(): void {
-        const popover = this.sharedPopupService.openModal<TestModalData>(TestModalComponent, {
-            id: 1,
-            text: 'Какой то текст'
-        }, true, '820px')
-        popover.afterClosed$.subscribe(item => console.log(item, 'afterClosed$'))
-        popover.afterSubmit$.subscribe(item => console.log(item, 'afterSubmit$'))
-    }
+	datepickerCtrl = new FormControl(null);
+	minDate = new Date(2025, 2, 5);
+	maxDate = new Date(2025, 2, 20);
 
-    public openLightBoxModal(): void {
-        const popover = this.sharedPopupService.openLightBoxModal({
-            src: 'https://i.pravatar.cc/300',
-            width: 1280,
-            height: 400
-        });
+	constructor(private readonly columnState: ColumnsStateService) {
+		this.columnState.colsTr$.next(DEFAULT_COLS);
+	}
 
-        popover.afterClosed$.subscribe(item => console.log(item))
-    }
+	openTestModal(): void {
+		const popover = this.sharedPopupService.openModal<TestModalData>(
+			TestModalComponent,
+			{
+				id: 1,
+				text: 'Какой то текст',
+			},
+			true,
+			'820px',
+		);
 
-    public openTestConfirmModal(): void {
-        const popover = this.sharedPopupService.openConfirmModal({
-            title: 'Какой то title',
-            description: 'Какой то description',
-            badgeProps: {
-                icon: IconType.ImagePlus,
-                size: ExtraSize.lg,
-                shape: Shape.Square,
-                status: Status.Default
-            },
-            apply: {
-                text: 'Ок',
-                onSubmit: () => this.submit()
+		popover.afterClosed$.subscribe((item) =>
+			console.log(item, 'afterClosed$'),
+		);
+		popover.afterSubmit$.subscribe((item) =>
+			console.log(item, 'afterSubmit$'),
+		);
+	}
 
-            },
-            cancelText: 'не ок'
-        });
+	public openLightBoxModal(): void {
+		const popover = this.sharedPopupService.openLightBoxModal({
+			src: 'https://i.pravatar.cc/300',
+			width: 1280,
+			height: 400,
+		});
 
-        popover.afterSubmit$.subscribe(item => console.log(item));
+		popover.afterClosed$.subscribe((item) => console.log(item));
+	}
 
-        popover.afterClosed$.subscribe(item => console.log(item));
+	public openTestConfirmModal(): void {
+		const popover = this.sharedPopupService.openConfirmModal({
+			title: 'Какой то title',
+			description: 'Какой то description',
+			badgeProps: {
+				icon: IconType.ImagePlus,
+				size: ExtraSize.lg,
+				shape: Shape.Square,
+				status: Status.Default,
+			},
+			apply: {
+				text: 'Ок',
+				onSubmit: () => this.submit(),
+			},
+			cancelText: 'не ок',
+		});
 
-    }
+		popover.afterSubmit$.subscribe((item) => console.log(item));
 
-    submit(): Observable<any> {
-        return of([])
-    }
+		popover.afterClosed$.subscribe((item) => console.log(item));
+	}
+
+	submit(): Observable<any> {
+		return of([]);
+	}
 }
-
-

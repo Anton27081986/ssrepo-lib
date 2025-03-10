@@ -1,59 +1,53 @@
 <ss-lib-modal
-  [badgeProps]="{
-        icon: IconType.ImagePlus,
-        size: ExtraSize.lg,
-        shape: Shape.Square,
-        status: Status.Default
-      }"
-  [titleHeader]="'Какой то title'"
-  [descriptionHeader]="'Какой то description'"
-  [actionsRef]="actions"
-  [contentRef]="contentRef"
->
+	[badgeProps]="{
+		icon: IconType.ImagePlus,
+		size: ExtraSize.lg,
+		shape: Shape.Square,
+		status: Status.Default,
+	}"
+	[titleHeader]="'Какой то title'"
+	[descriptionHeader]="'Какой то description'"
+	[actionsRef]="actions"
+	[contentRef]="contentRef">
 </ss-lib-modal>
 
 <ng-template #contentRef>
-  <ss-lib-form-field
-    [label]="'Название'"
-    [hint]="'Подсказка'"
-    [errorText]="'Неверно заполнено'"
-    [showValidationFieldIcon]="true"
-  >
-    <ss-lib-input
-      fieldCtrl
-      [formControl]="inputCtrl"
-      [placeholder]="'oleg@mail.ru'"
-    />
-  </ss-lib-form-field>
-  <ss-lib-form-field
-    [label]="'Название'"
-    [hint]="'Подсказка'"
-    [errorText]="'Неверно заполнено'"
-    [showValidationFieldIcon]="true"
-  >
-    <ss-lib-input
-      fieldCtrl
-      [formControl]="inputCtrl"
-      [placeholder]="'oleg@mail.ru'"
-    />
-  </ss-lib-form-field>
-  <ss-lib-form-field
-    [label]="'Название'"
-    [hint]="'Подсказка'"
-    [errorText]="'Неверно заполнено'"
-    [showValidationFieldIcon]="true"
-  >
-    <ss-lib-input
-      fieldCtrl
-      [formControl]="inputCtrl"
-      [placeholder]="'oleg@mail.ru'"
-    />
-  </ss-lib-form-field>
-
+	<ss-lib-form-field
+		[label]="'Название'"
+		[hint]="'Подсказка'"
+		[errorText]="'Неверно заполнено'"
+		[showValidationFieldIcon]="true">
+		<ss-lib-input
+			fieldCtrl
+			[formControl]="inputCtrl"
+			[placeholder]="'oleg@mail.ru'" />
+	</ss-lib-form-field>
+	<ss-lib-form-field
+		[label]="'Название'"
+		[hint]="'Подсказка'"
+		[errorText]="'Неверно заполнено'"
+		[showValidationFieldIcon]="true">
+		<ss-lib-input
+			fieldCtrl
+			[formControl]="inputCtrl"
+			[placeholder]="'oleg@mail.ru'" />
+	</ss-lib-form-field>
+	<ss-lib-form-field
+		[label]="'Название'"
+		[hint]="'Подсказка'"
+		[errorText]="'Неверно заполнено'"
+		[showValidationFieldIcon]="true">
+		<ss-lib-input
+			fieldCtrl
+			[formControl]="inputCtrl"
+			[placeholder]="'oleg@mail.ru'" />
+	</ss-lib-form-field>
 </ng-template>
 
-
-
 <ng-template #actions>
-<ss-lib-modal-action-apply (close)="close()" (onApply)="apply()" [cancelText]="'Отмена'" [applyText]="'Сохранить'"></ss-lib-modal-action-apply>
+	<ss-lib-modal-action-apply
+		[cancelText]="'Отмена'"
+		[applyText]="'Сохранить'"
+		(close)="close()"
+		(onApply)="apply()"></ss-lib-modal-action-apply>
 </ng-template>

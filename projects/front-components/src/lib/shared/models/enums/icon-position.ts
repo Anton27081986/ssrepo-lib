@@ -1,5 +1,5 @@
 export enum IconPosition {
-  Start = 'start',
-  End = 'end',
-  OnlyIcon = 'only-icon'
+	Start = 'start',
+	End = 'end',
+	OnlyIcon = 'only-icon',
 }

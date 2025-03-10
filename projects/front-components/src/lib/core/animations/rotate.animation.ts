@@ -1,4 +1,5 @@
-import { AnimationTriggerMetadata, trigger } from '@angular/animations';
+import type { AnimationTriggerMetadata } from '@angular/animations';
+import { trigger } from '@angular/animations';
 import { baseTwoStepAnimation } from './base-two-step.animation';
 
 export const rotateAnimation: AnimationTriggerMetadata = trigger(
@@ -11,6 +12,9 @@ export const rotateAnimation: AnimationTriggerMetadata = trigger(
 			easeBackward: 'ease-out',
 		},
 		{ 'transform-origin': 'center', transform: 'none' },
-		{ 'transform-origin': 'center', transform: 'rotate3d(0, 0, 1, 180deg)' },
+		{
+			'transform-origin': 'center',
+			transform: 'rotate3d(0, 0, 1, 180deg)',
+		},
 	),
 );

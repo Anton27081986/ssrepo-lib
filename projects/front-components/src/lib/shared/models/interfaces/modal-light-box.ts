@@ -1,5 +1,5 @@
 export interface ILightBoxData {
-  src: string;
-  width: number;
-  height: number;
+	src: string;
+	width: number;
+	height: number;
 }
