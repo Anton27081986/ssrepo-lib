@@ -15,3 +15,4 @@ export { MIN_MONTH } from './min-month';
 export { MIN_DAY } from './min-day';
 export { LIMIT_YEARS } from './limit-years';
 export { TODAY_LABEL } from './today-label';
+export { DATE_FILLER_LENGTH } from './date-filler-length';

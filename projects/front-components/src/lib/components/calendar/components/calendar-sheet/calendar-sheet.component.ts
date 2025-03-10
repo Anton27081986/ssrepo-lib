@@ -20,6 +20,7 @@ export class CalendarSheetComponent {
     public value = input<CalendarDay | null>(null);
     public min = input.required<CalendarDay>();
     public max = input.required<CalendarDay>();
+    public todaySelected = output<CalendarDay>();
     public dayClick = output<CalendarDay>();
 
     public readonly WEEK_DAYS_SHORT = WEEK_DAYS_SHORT;
@@ -55,6 +56,6 @@ export class CalendarSheetComponent {
     }
 
     public setToday(): void {
-        this.dayClick.emit(CalendarDay.currentLocal());
+        this.todaySelected.emit(CalendarDay.currentLocal());
     }
 }

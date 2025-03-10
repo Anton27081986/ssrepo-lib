@@ -1,7 +1,8 @@
 import { MonthNumber } from './month-number';
 import { CalendarYear } from './calendar-year';
 import { CalendarMonthLike } from './types';
-import { MONTHS_IN_YEAR, MONTHS_LONG, MONTHS_SHORT } from '../constans';
+import { MAX_MONTH, MIN_MONTH, MONTHS_IN_YEAR, MONTHS_LONG, MONTHS_SHORT } from '../constans';
+import { normalizeToIntNumber } from '../../../core/utils';
 
 export class CalendarMonth extends CalendarYear implements CalendarMonthLike {
     /**
@@ -100,6 +101,13 @@ export class CalendarMonth extends CalendarYear implements CalendarMonthLike {
             this.yearAfter(another) ||
             (this.yearSame(another) && this.month >= another.month)
         );
+    }
+
+    /**
+     * Normalizes number by clamping it between min and max month
+     */
+    public static normalizeMonthPart(month: number): number {
+        return normalizeToIntNumber(month, MIN_MONTH, MAX_MONTH);
     }
 
     /**

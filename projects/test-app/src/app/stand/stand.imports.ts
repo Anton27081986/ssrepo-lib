@@ -24,7 +24,8 @@ import {
     SkeletonTableComponent,
     SkeletonBlockComponent,
     OverlayButtonComponent,
-    CalendarComponent
+    CalendarComponent,
+    DatepickerComponent
 } from '../../../../front-components/src/lib/components';
 import { FieldCtrlDirective, PopoverTriggerForDirective } from '../../../../front-components/src/lib/core/directives';
 
@@ -57,5 +58,6 @@ export const standImports = [
     SkeletonTableComponent,
     SkeletonBlockComponent,
     OverlayButtonComponent,
-    CalendarComponent
+    CalendarComponent,
+    DatepickerComponent
 ]

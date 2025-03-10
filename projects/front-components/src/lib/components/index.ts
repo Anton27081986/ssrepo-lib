@@ -25,5 +25,6 @@ export { BadgeComponent } from './badge/badge.component';
 export { ModalComponent } from './modal/modal.component';
 export { ConfirmComponent } from './confirm/confirm.component';
 export { CalendarComponent } from './calendar/calendar.component';
+export { DatepickerComponent } from './datepicker/datepicker.component'
 
 export * from './buttons/index';

@@ -16,8 +16,9 @@
                 <ss-lib-calendar-sheet
                     [value]="value()"
                     [month]="currentMonth()"
-                    [min]="min()!"
-                    [max]="max()!"
+                    [min]="min()"
+                    [max]="max()"
+                    (todaySelected)="onTodaySelected($event)"
                     (dayClick)="onDayClick($event)"
                 />
             } @else {

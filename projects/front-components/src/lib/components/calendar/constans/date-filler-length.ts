@@ -1,0 +1,1 @@
+export const DATE_FILLER_LENGTH = 10;

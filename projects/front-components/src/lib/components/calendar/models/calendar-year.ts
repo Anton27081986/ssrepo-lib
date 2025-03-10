@@ -1,4 +1,6 @@
 import { CalendarYearLike } from './types';
+import { normalizeToIntNumber } from '../../../core/utils';
+import { MAX_YEAR, MIN_YEAR } from '../constans';
 
 export class CalendarYear implements CalendarYearLike {
     constructor(public readonly year: number) {
@@ -61,5 +63,12 @@ export class CalendarYear implements CalendarYearLike {
      */
     public yearBefore({year}: CalendarYear): boolean {
         return this.year < year;
+    }
+
+    /**
+     * Normalizes year by clamping it between min and max years
+     */
+    public static normalizeYearPart(year: number): number {
+        return normalizeToIntNumber(year, MIN_YEAR, MAX_YEAR);
     }
 }

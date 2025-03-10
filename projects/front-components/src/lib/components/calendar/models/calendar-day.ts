@@ -1,5 +1,8 @@
 import { CalendarMonth } from './calendar-month';
 import { DAY_OF_WEEK } from '../constans';
+import { DateFormat } from './date-format';
+import { CalendarYear } from './calendar-year';
+import { normalizeToIntNumber } from '../../../core/utils';
 
 export class CalendarDay extends CalendarMonth {
     /**
@@ -42,10 +45,100 @@ export class CalendarDay extends CalendarMonth {
         return new CalendarDay(year, month, day);
     }
 
+
+    public override toString(dateFormat: DateFormat = DateFormat.DMY, separator = '/'): string {
+        return this.getFormattedDay(dateFormat, separator);
+    }
+
     public get isWeekend(): boolean {
         const dayOfWeek = this.dayOfWeek(false);
 
         return dayOfWeek === DAY_OF_WEEK.Saturday || dayOfWeek === DAY_OF_WEEK.Sunday;
+    }
+
+    public get formattedDayPart(): string {
+        return String(this.day).padStart(2, '0');
+    }
+
+    /**
+     * Returns formatted whole date
+     */
+    public getFormattedDay(dateFormat: DateFormat, separator: string): string {
+        const dd = this.formattedDayPart;
+        const mm = this.formattedMonthPart;
+        const yyyy = this.formattedYear;
+
+        switch (dateFormat) {
+            case DateFormat.MDY:
+                return `${mm}${separator}${dd}${separator}${yyyy}`;
+            case DateFormat.YMD:
+                return `${yyyy}${separator}${mm}${separator}${dd}`;
+            case DateFormat.DMY:
+            default:
+                return `${dd}${separator}${mm}${separator}${yyyy}`;
+        }
+    }
+
+    public static parseRawDateString(
+        date: string,
+        dateMode: DateFormat = DateFormat.DMY,
+    ): {day: number; month: number; year: number} {
+        switch (dateMode) {
+            case 'MDY':
+                return {
+                    day: parseInt(date.slice(3, 5), 10),
+                    month: parseInt(date.slice(0, 2), 10) - 1,
+                    year: parseInt(date.slice(6, 10), 10),
+                };
+
+            case 'YMD':
+                return {
+                    day: parseInt(date.slice(8, 10), 10),
+                    month: parseInt(date.slice(5, 7), 10) - 1,
+                    year: parseInt(date.slice(0, 4), 10),
+                };
+
+            case 'DMY':
+            default:
+                return {
+                    day: parseInt(date.slice(0, 2), 10),
+                    month: parseInt(date.slice(3, 5), 10) - 1,
+                    year: parseInt(date.slice(6, 10), 10),
+                };
+        }
+    }
+
+    /**
+     * Parsing a string with date with normalization
+     *
+     * @param rawDate date string
+     * @param dateMode date format of the date string (DMY | MDY | YMD)
+     * @return normalized date
+     */
+    public static normalizeParse(rawDate: string, dateMode: DateFormat = DateFormat.DMY): CalendarDay {
+        const {day, month, year} = this.parseRawDateString(rawDate, dateMode);
+
+        return CalendarDay.normalizeOf(year, month, day);
+    }
+
+    /**
+     * Calculates {@link CalendarDay} normalizing year, month and day. {@link NaN} is turned into minimal value.
+     *
+     * @param year any year value, including invalid
+     * @param month any month value, including invalid (months start with 0)
+     * @param day any day value, including invalid
+     * @return normalized date
+     */
+    public static normalizeOf(year: number, month: number, day: number): CalendarDay {
+        const normalizedYear = CalendarYear.normalizeYearPart(year);
+        const normalizedMonth = CalendarMonth.normalizeMonthPart(month);
+        const normalizedDay = CalendarDay.normalizeDayPart(
+            day,
+            normalizedMonth,
+            normalizedYear,
+        );
+
+        return new CalendarDay(normalizedYear, normalizedMonth, normalizedDay);
     }
 
     /**
@@ -107,5 +200,14 @@ export class CalendarDay extends CalendarMonth {
             this.monthAfter(another) ||
             (this.monthSame(another) && this.day >= another.day)
         );
+    }
+
+    public static normalizeDayPart(day: number, month: number, year: number): number {
+        const monthDaysCount = CalendarMonth.getMonthDaysCount(
+            month,
+            CalendarYear.isLeapYear(year),
+        );
+
+        return normalizeToIntNumber(day, 1, monthDaysCount);
     }
 }

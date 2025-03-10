@@ -34,12 +34,12 @@ import { ButtonType, ExtraSize, IconPosition, IconType, TextType } from '../../s
 })
 export class CalendarComponent {
     public value = input<CalendarDay | null>(null);
-    public min = input<CalendarDay | null, CalendarDay>(FIRST_DAY, {
+    public min = input<CalendarDay, CalendarDay | null>(FIRST_DAY, {
         transform: (value: CalendarDay | null): CalendarDay => {
             return value && value.daySameOrAfter(FIRST_DAY) ? value : FIRST_DAY;
         }
     });
-    public max = input<CalendarDay | null, CalendarDay>(LAST_DAY, {
+    public max = input<CalendarDay, CalendarDay | null>(LAST_DAY, {
         transform: (value: CalendarDay | null): CalendarDay => {
             return value && value.daySameOrBefore(LAST_DAY) ? value : LAST_DAY;
         }
@@ -80,12 +80,12 @@ export class CalendarComponent {
     }
 
     public onDayClick(day: CalendarDay): void {
-        if (day && this.value() && day.daySame(this.value()!)) {
-            this.dayClick.emit(null);
+        const selectedDay = this.value();
 
-            return;
-        }
+        this.dayClick.emit(selectedDay && day?.daySame(selectedDay) ? null : day);
+    }
 
+    public onTodaySelected(day: CalendarDay): void {
         this.dayClick.emit(day);
     }
 
