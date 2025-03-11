@@ -5,11 +5,11 @@ import {
 	InputComponent,
 	ModalActionApplyComponent,
 	ModalComponent,
-	TextareaComponent,
 } from '../../../../front-components/src/lib/components';
 import {
 	ExtraSize,
-	IconType, ModalRef,
+	IconType,
+	ModalRef,
 	Shape,
 	Status,
 } from '../../../../front-components/src/lib/shared/models';
@@ -36,15 +36,15 @@ export interface TestModalData {
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TestModalComponent {
+	public inputCtrl = new FormControl('rrrr', [
+		Validators.required,
+		Validators.minLength(10),
+	]);
+
 	protected readonly IconType = IconType;
 	protected readonly ExtraSize = ExtraSize;
 	protected readonly Shape = Shape;
 	protected readonly Status = Status;
-
-	inputCtrl = new FormControl('rrrr', [
-		Validators.required,
-		Validators.minLength(10),
-	]);
 
 	protected readonly modalRef: ModalRef<TestModalData> = inject(
 		ModalRef<TestModalData>,
@@ -53,11 +53,11 @@ export class TestModalComponent {
 	protected id: number = this.modalRef.data.id;
 	protected text: string = this.modalRef.data.text;
 
-	apply() {
+	public onApplyEvent(): void {
 		this.modalRef.submit();
 	}
 
-	close() {
+	public close(): void {
 		this.modalRef.close();
 	}
 }

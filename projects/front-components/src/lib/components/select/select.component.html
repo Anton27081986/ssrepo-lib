@@ -1,13 +1,15 @@
 <div
 	tabindex="0"
-	class="select__container">
+	class="select__container"
+>
 	<div class="select__body">
 		<div class="select__field">
 			<ss-lib-input
 				class="select__field_control"
 				[formControl]="selectCtrl"
 				[placeholder]="placeholder()"
-				[readOnly]="true" />
+				[readOnly]="true"
+			/>
 		</div>
 
 		<ng-content></ng-content>

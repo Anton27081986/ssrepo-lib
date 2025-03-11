@@ -62,7 +62,7 @@ export class StandComponent {
 	protected readonly Orientation = Orientation;
 	protected readonly LinkAppearance = LinkAppearance;
 	protected readonly Status = Status;
-	protected readonly DROPDOWN_ITEMS = DROPDOWN_ITEMS;
+	protected readonly dropdownItems = DROPDOWN_ITEMS;
 	protected readonly TooltipPosition = TooltipPosition;
 
 	private readonly sharedPopupService = inject(SharedPopupService);
@@ -83,9 +83,11 @@ export class StandComponent {
 		);
 
 		popover.afterClosed$.subscribe((item) =>
+			// eslint-disable-next-line no-console
 			console.log(item, 'afterClosed$'),
 		);
 		popover.afterSubmit$.subscribe((item) =>
+			// eslint-disable-next-line no-console
 			console.log(item, 'afterSubmit$'),
 		);
 	}
@@ -97,6 +99,7 @@ export class StandComponent {
 			height: 400,
 		});
 
+		// eslint-disable-next-line no-console
 		popover.afterClosed$.subscribe((item) => console.log(item));
 	}
 
@@ -117,8 +120,10 @@ export class StandComponent {
 			cancelText: 'не ок',
 		});
 
+		// eslint-disable-next-line no-console
 		popover.afterSubmit$.subscribe((item) => console.log(item));
 
+		// eslint-disable-next-line no-console
 		popover.afterClosed$.subscribe((item) => console.log(item));
 	}
 

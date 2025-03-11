@@ -17,15 +17,15 @@ export class LightBoxComponent {
 	protected width: number;
 	protected height: number;
 
+	protected readonly IconType = IconType;
+
 	constructor(private readonly modalRef: ModalRef<ILightBoxData>) {
 		this.src = modalRef.data.src;
 		this.width = modalRef.data.width;
 		this.height = modalRef.data.height;
 	}
 
-	protected close() {
+	protected close(): void {
 		this.modalRef.close();
 	}
-
-	protected readonly IconType = IconType;
 }

@@ -55,7 +55,7 @@ button.custom-button.type-close-dark {
 }
 
 button.custom-button:hover.type-close-dark::before {
-	content: "";
+	content: '';
 	position: absolute;
 	inset: 0;
 	background-color: var(--surface-primary);
@@ -65,7 +65,7 @@ button.custom-button:hover.type-close-dark::before {
 }
 
 button.custom-button:active.type-close-dark::before {
-	content: "";
+	content: '';
 	position: absolute;
 	inset: 0;
 	background-color: var(--surface-primary);
@@ -75,7 +75,7 @@ button.custom-button:active.type-close-dark::before {
 }
 
 button.custom-button:focus-visible.type-close-dark::before {
-	content: "";
+	content: '';
 	position: absolute;
 	inset: 0;
 	background-color: var(--surface-primary);

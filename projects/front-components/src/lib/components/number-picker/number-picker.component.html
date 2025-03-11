@@ -11,9 +11,8 @@
 				min() &&
 				numberPickerCtrl.value <= min()!)
 		"
-		(click)="
-			!isDisabled() && changeNumberValueByStep(Direction.Previous)
-		" />
+		(click)="!isDisabled() && changeNumberValueByStep(Direction.Previous)"
+	/>
 
 	<div class="number-picker__input-field">
 		<ss-lib-form-field>
@@ -23,7 +22,8 @@
 				[type]="InputType.Number"
 				[min]="min()"
 				[max]="max()"
-				[align]="Align.Center" />
+				[align]="Align.Center"
+			/>
 		</ss-lib-form-field>
 	</div>
 
@@ -39,5 +39,6 @@
 				max() &&
 				numberPickerCtrl.value >= max()!)
 		"
-		(click)="!isDisabled() && changeNumberValueByStep(Direction.Next)" />
+		(click)="!isDisabled() && changeNumberValueByStep(Direction.Next)"
+	/>
 </div>

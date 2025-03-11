@@ -42,9 +42,7 @@ import {
 })
 export class FormFieldComponent implements AfterContentInit {
 	@ContentChild(FieldCtrlDirective)
-	fieldCtrl?: FieldCtrlDirective;
-
-	private readonly injector = inject(Injector);
+	public fieldCtrl?: FieldCtrlDirective;
 
 	public label = input<string>('');
 	public hint = input<string>('');
@@ -62,7 +60,9 @@ export class FormFieldComponent implements AfterContentInit {
 	public readonly Colors = Colors;
 	public readonly IconType = IconType;
 
-	ngAfterContentInit() {
+	private readonly injector = inject(Injector);
+
+	public ngAfterContentInit(): void {
 		if (this.showValidation()) {
 			this.initFieldCtrlState();
 		}

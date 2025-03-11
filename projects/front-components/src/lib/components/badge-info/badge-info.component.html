@@ -5,13 +5,15 @@
 		<div class="ss-lib-badge-info__info">
 			<ss-lib-text
 				[type]="TextType.BodyLg"
-				[weight]="TextWeight.Semibold">
+				[weight]="TextWeight.Semibold"
+			>
 				{{ title() }}
 			</ss-lib-text>
 			<ss-lib-text
 				[color]="Colors.TextBody3"
 				[type]="TextType.BodySm"
-				[weight]="TextWeight.Regular">
+				[weight]="TextWeight.Regular"
+			>
 				{{ description() }}
 			</ss-lib-text>
 		</div>
@@ -23,5 +25,6 @@
 		[restrictedIcon]="IconType.Close"
 		[size]="ExtraSize.xl"
 		[type]="ButtonType.CloseLight"
-		(click)="close.emit()"></ss-lib-close-button>
+		(click)="closeEvent.emit()"
+	></ss-lib-close-button>
 </div>

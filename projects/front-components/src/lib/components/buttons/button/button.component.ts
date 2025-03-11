@@ -40,7 +40,8 @@ type RegularButtonType =
 			[text]="text()"
 			[icon]="icon()"
 			[iconPosition]="iconPosition()"
-			[disabled]="disabled()">
+			[disabled]="disabled()"
+		>
 			<ng-content></ng-content>
 		</ss-lib-base-button>
 	`,
@@ -53,8 +54,4 @@ export class ButtonComponent extends BaseButtonComponent<RegularButtonType> {
 		input<RegularButtonType>(ButtonType.Primary);
 
 	public readonly ButtonType = ButtonType;
-
-	constructor() {
-		super();
-	}
 }

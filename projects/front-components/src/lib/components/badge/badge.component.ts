@@ -32,14 +32,8 @@ export class BadgeComponent {
 		transform: this.setDefaultProps,
 	});
 
-	public setDefaultProps(badgeData: IBadgeProps): IBadgeProps {
-		return {
-			...badgeData,
-			shape: badgeData.shape ?? Shape.Square,
-			size: badgeData.size ?? ExtraSize.lg,
-			status: badgeData.status ?? Status.Default,
-		};
-	}
+	public readonly ExtraSize = ExtraSize;
+	public readonly Colors = Colors;
 
 	public statusProps = computed(() => {
 		switch (this.badgeProps().status) {
@@ -68,6 +62,12 @@ export class BadgeComponent {
 		}
 	});
 
-	public readonly ExtraSize = ExtraSize;
-	public readonly Colors = Colors;
+	public setDefaultProps(badgeData: IBadgeProps): IBadgeProps {
+		return {
+			...badgeData,
+			shape: badgeData.shape ?? Shape.Square,
+			size: badgeData.size ?? ExtraSize.lg,
+			status: badgeData.status ?? Status.Default,
+		};
+	}
 }

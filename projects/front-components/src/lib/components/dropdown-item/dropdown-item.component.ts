@@ -47,15 +47,6 @@ export class DropdownItemComponent {
 		this.value() ? this.value()?.name : this.label() || '',
 	);
 
-	protected readonly TextType = TextType;
-	protected readonly TextWeight = TextWeight;
-	protected readonly StateTypes = StateTypes;
-
-	@HostListener('click')
-	togglePopover(): void {
-		this.valueEvent.emit(this.value());
-	}
-
 	public readonly iconColor = computed(() => {
 		if (this.isDisabled()) {
 			return Colors.IconDisabled;
@@ -83,6 +74,15 @@ export class DropdownItemComponent {
 
 		return Colors.TextBody2;
 	});
+
+	protected readonly TextType = TextType;
+	protected readonly TextWeight = TextWeight;
+	protected readonly StateTypes = StateTypes;
+
+	@HostListener('click')
+	public togglePopover(): void {
+		this.valueEvent.emit(this.value());
+	}
 
 	public checkFocus(event: FocusEvent): void {
 		const target = event.target as HTMLElement;

@@ -2,7 +2,8 @@
 	[leftMenuHeaderTemplateRef]="leftMenuHeaderTemplateRef"
 	[rightMenuHeaderTemplateRef]="rightMenuHeaderTemplateRef"
 	[menu]="exampleMenu"
-	(outMenuFromCanvas)="selectedMenu($event)">
+	(outMenuFromCanvas)="selectedMenu($event)"
+>
 	<router-outlet></router-outlet>
 </ss-lib-canvas>
 
@@ -11,7 +12,8 @@
 		<ss-lib-icon
 			[icon]="IconType.Logo"
 			[width]="'60'"
-			[height]="'32'"></ss-lib-icon>
+			[height]="'32'"
+		></ss-lib-icon>
 		<ss-lib-text
 			[type]="TextType.BodyMd"
 			[weight]="TextWeight.Semibold"

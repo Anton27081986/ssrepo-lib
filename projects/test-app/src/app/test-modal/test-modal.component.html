@@ -8,7 +8,8 @@
 	[titleHeader]="'Какой то title'"
 	[descriptionHeader]="'Какой то description'"
 	[actionsRef]="actions"
-	[contentRef]="contentRef">
+	[contentRef]="contentRef"
+>
 </ss-lib-modal>
 
 <ng-template #contentRef>
@@ -16,31 +17,37 @@
 		[label]="'Название'"
 		[hint]="'Подсказка'"
 		[errorText]="'Неверно заполнено'"
-		[showValidationFieldIcon]="true">
+		[showValidationFieldIcon]="true"
+	>
 		<ss-lib-input
 			fieldCtrl
 			[formControl]="inputCtrl"
-			[placeholder]="'oleg@mail.ru'" />
+			[placeholder]="'oleg@mail.ru'"
+		/>
 	</ss-lib-form-field>
 	<ss-lib-form-field
 		[label]="'Название'"
 		[hint]="'Подсказка'"
 		[errorText]="'Неверно заполнено'"
-		[showValidationFieldIcon]="true">
+		[showValidationFieldIcon]="true"
+	>
 		<ss-lib-input
 			fieldCtrl
 			[formControl]="inputCtrl"
-			[placeholder]="'oleg@mail.ru'" />
+			[placeholder]="'oleg@mail.ru'"
+		/>
 	</ss-lib-form-field>
 	<ss-lib-form-field
 		[label]="'Название'"
 		[hint]="'Подсказка'"
 		[errorText]="'Неверно заполнено'"
-		[showValidationFieldIcon]="true">
+		[showValidationFieldIcon]="true"
+	>
 		<ss-lib-input
 			fieldCtrl
 			[formControl]="inputCtrl"
-			[placeholder]="'oleg@mail.ru'" />
+			[placeholder]="'oleg@mail.ru'"
+		/>
 	</ss-lib-form-field>
 </ng-template>
 
@@ -49,5 +56,6 @@
 		[cancelText]="'Отмена'"
 		[applyText]="'Сохранить'"
 		(close)="close()"
-		(onApply)="apply()"></ss-lib-modal-action-apply>
+		(applyEvent)="onApplyEvent()"
+	></ss-lib-modal-action-apply>
 </ng-template>

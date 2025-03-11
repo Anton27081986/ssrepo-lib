@@ -69,7 +69,7 @@ button.custom-button:focus-visible.type-link-black {
 
 button.custom-button:focus-visible.type-link-blue::before,
 button.custom-button:focus-visible.type-link-black::before {
-	content: "";
+	content: '';
 	position: absolute;
 	inset: 0;
 	background: #ffffff;

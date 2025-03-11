@@ -9,12 +9,12 @@
 	border-radius: var(--border-radius-md);
 	transition: background-color 100ms linear;
 
-	&[data-type="weekday"],
-	&[data-type="default"] {
+	&[data-type='weekday'],
+	&[data-type='default'] {
 		color: var(--text-body-2);
 	}
 
-	&[data-type="weekend"] {
+	&[data-type='weekend'] {
 		color: var(--text-error);
 	}
 

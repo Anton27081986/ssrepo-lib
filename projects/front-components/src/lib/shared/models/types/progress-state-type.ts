@@ -1,1 +1,1 @@
-export type ProgressStateType = "default" | "average" | "max";
+export type ProgressStateType = 'default' | 'average' | 'max';

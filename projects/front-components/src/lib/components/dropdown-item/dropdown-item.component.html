@@ -6,17 +6,20 @@
 	(mouseleave)="state.set(StateTypes.Default)"
 	(mousedown)="state.set(StateTypes.Pressed)"
 	(mouseup)="state.set(StateTypes.Default)"
-	(focus)="checkFocus($event)">
+	(focus)="checkFocus($event)"
+>
 	<ss-lib-icon
 		[icon]="icon()!"
 		[height]="'16'"
 		[width]="'16'"
-		[color]="iconColor()" />
+		[color]="iconColor()"
+	/>
 
 	<ss-lib-text
 		[type]="TextType.BodySm"
 		[weight]="TextWeight.Medium"
-		[color]="textColor()">
+		[color]="textColor()"
+	>
 		{{ itemText() }}
 	</ss-lib-text>
 </div>

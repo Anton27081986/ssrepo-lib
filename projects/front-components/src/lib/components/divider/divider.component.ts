@@ -18,7 +18,8 @@ import { Orientation } from '../../shared/models';
 		<div
 			class="divider"
 			[class.divider--horizontal]="orientation() === 'horizontal'"
-			[class.divider--vertical]="orientation() === 'vertical'"></div>
+			[class.divider--vertical]="orientation() === 'vertical'"
+		></div>
 	`,
 	styleUrls: ['divider.component.scss'],
 	standalone: true,

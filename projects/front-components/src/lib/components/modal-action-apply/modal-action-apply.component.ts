@@ -1,21 +1,21 @@
-import type { InputSignal } from "@angular/core";
+import type { InputSignal } from '@angular/core';
 import {
 	ChangeDetectionStrategy,
 	Component,
 	input,
 	output,
-} from "@angular/core";
-import { NgIf } from "@angular/common";
-import { ModalRef } from "../../shared/models";
-import { ButtonType } from "../../shared/models";
-import { ButtonComponent } from "../buttons";
+} from '@angular/core';
+import { NgIf } from '@angular/common';
+import { ModalRef } from '../../shared/models';
+import { ButtonType } from '../../shared/models';
+import { ButtonComponent } from '../buttons';
 
 @Component({
-	selector: "ss-lib-modal-action-apply",
+	selector: 'ss-lib-modal-action-apply',
 	standalone: true,
 	imports: [ButtonComponent, NgIf],
-	templateUrl: "./modal-action-apply.component.html",
-	styleUrl: "./modal-action-apply.component.scss",
+	templateUrl: './modal-action-apply.component.html',
+	styleUrl: './modal-action-apply.component.scss',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ModalActionApplyComponent {
@@ -25,13 +25,13 @@ export class ModalActionApplyComponent {
 		string | undefined
 	>();
 
-	public onApply = output<void>();
+	public applyEvent = output<void>();
+
+	protected readonly buttonType = ButtonType;
 
 	constructor(private readonly modalRef: ModalRef) {}
 
-	public close() {
+	public close(): void {
 		this.modalRef.close();
 	}
-
-	public readonly buttonType = ButtonType;
 }

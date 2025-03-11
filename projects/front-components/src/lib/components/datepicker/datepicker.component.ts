@@ -46,9 +46,6 @@ export class DatepickerComponent implements ControlValueAccessor {
 	public datepickerCtrl = new FormControl<string | null>(null);
 	public readonly InputType = InputType;
 
-	private onChange: (value: Date | null) => void = () => {};
-	private onTouched: () => void = () => {};
-
 	constructor() {
 		toSignal(
 			this.datepickerCtrl.valueChanges.pipe(
@@ -75,6 +72,9 @@ export class DatepickerComponent implements ControlValueAccessor {
 	public registerOnTouched(fn: () => void): void {
 		this.onTouched = fn;
 	}
+
+	public onChange: (value: Date | null) => void = () => {};
+	public onTouched: () => void = () => {};
 
 	public setDisabledState(isDisabled: boolean): void {
 		isDisabled

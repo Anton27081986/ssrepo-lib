@@ -25,13 +25,13 @@ import { TooltipPosition } from '../../shared/models';
 	standalone: true,
 })
 export class TooltipDirective implements OnDestroy {
+	public position = input<TooltipPosition>(TooltipPosition.Bottom);
+	public tooltipText = input<string | null>(null);
+
 	private readonly elementRef = inject(ElementRef);
 	private readonly appRef = inject(ApplicationRef);
 	private readonly injector = inject(Injector);
 	private readonly viewContainerRef = inject(ViewContainerRef);
-
-	public position = input<TooltipPosition>(TooltipPosition.Bottom);
-	public tooltipText = input<string | null>(null);
 
 	private componentRef: ComponentRef<TooltipComponent> | null = null;
 
@@ -44,6 +44,10 @@ export class TooltipDirective implements OnDestroy {
 
 	@HostListener('mouseleave')
 	public onMouseLeave(): void {
+		this.destroy();
+	}
+
+	public ngOnDestroy(): void {
 		this.destroy();
 	}
 
@@ -128,10 +132,6 @@ export class TooltipDirective implements OnDestroy {
 		if (this.componentRef) {
 			this.componentRef.instance.visible.set(true);
 		}
-	}
-
-	public ngOnDestroy(): void {
-		this.destroy();
 	}
 
 	private destroy(): void {

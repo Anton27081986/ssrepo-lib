@@ -1,5 +1,5 @@
-import type { IBadgeProps } from "./badge-props";
-import type { PopoverConfirmationSubmit } from "../types/confirm-modal";
+import type { IBadgeProps } from './badge-props';
+import type { PopoverConfirmationSubmit } from '../types/confirm-modal';
 
 export interface IConfirmData {
 	title: string;

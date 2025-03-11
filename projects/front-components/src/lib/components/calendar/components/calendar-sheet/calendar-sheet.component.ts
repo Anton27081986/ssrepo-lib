@@ -18,8 +18,6 @@ import { ButtonType } from '../../../../shared/models';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CalendarSheetComponent {
-	private readonly today = CalendarDay.currentLocal();
-
 	public month = input<CalendarMonth>(CalendarMonth.currentLocal());
 	public value = input<CalendarDay | null>(null);
 	public min = input.required<CalendarDay>();
@@ -27,9 +25,11 @@ export class CalendarSheetComponent {
 	public todaySelected = output<CalendarDay>();
 	public dayClick = output<CalendarDay>();
 
-	public readonly WEEK_DAYS_SHORT = WEEK_DAYS_SHORT;
+	public readonly weekDaysShort = WEEK_DAYS_SHORT;
 	public readonly ButtonType = ButtonType;
-	public readonly TODAY_LABEL = TODAY_LABEL;
+	public readonly todayLabel = TODAY_LABEL;
+
+	private readonly today = CalendarDay.currentLocal();
 
 	public onItemClick(day: CalendarDay): void {
 		this.dayClick.emit(day);

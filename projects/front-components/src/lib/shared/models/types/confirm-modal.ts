@@ -1,3 +1,3 @@
-import type { Observable } from "rxjs";
+import type { Observable } from 'rxjs';
 
 export type PopoverConfirmationSubmit = () => Observable<unknown>;

@@ -9,21 +9,23 @@
 					class="ss-lib-table-th"
 					[ngStyle]="{
 						minWidth: colSkeleton.width ? colSkeleton.width : null,
-					}">
+					}"
+				>
 					<ss-lib-skeleton-block
-						[config]="
-							colSkeleton.skeletonTh
-						"></ss-lib-skeleton-block>
+						[config]="colSkeleton.skeletonTh"
+					></ss-lib-skeleton-block>
 				</th>
 			} @else {
 				<th
 					*ngFor="let col of stateColumn.visibleCols$ | async"
 					class="ss-lib-table-th"
-					[ngStyle]="{ minWidth: col.width ? col.width : null }">
+					[ngStyle]="{ minWidth: col.width ? col.width : null }"
+				>
 					<ss-lib-text
 						[color]="Colors.TextBody2"
 						[weight]="TextWeight.Semibold"
-						[type]="TextType.BodyXs">
+						[type]="TextType.BodyXs"
+					>
 						{{ col.title }}
 					</ss-lib-text>
 				</th>

@@ -25,8 +25,8 @@ import { DividerComponent } from '../divider/divider.component';
 	imports: [NgTemplateOutlet, DividerComponent],
 })
 export class DropdownListComponent implements PopoverContent {
-	readonly optionsContent = contentChildren(DropdownItemComponent);
-	readonly templateRef =
+	public readonly optionsContent = contentChildren(DropdownItemComponent);
+	public readonly templateRef =
 		viewChild.required<TemplateRef<any>>('dropdownTemplate');
 
 	public headerTemplateRef = input<TemplateRef<unknown> | null>(null);
@@ -47,7 +47,7 @@ export class DropdownListComponent implements PopoverContent {
 		});
 	}
 
-	selectOption(item: IDictionaryItemDto | null): void {
+	public selectOption(item: IDictionaryItemDto | null): void {
 		this.value.emit(item);
 		this.closed.emit();
 	}

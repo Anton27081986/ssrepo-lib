@@ -38,22 +38,22 @@ export class ToggleIconComponent implements ControlValueAccessor {
 
 	public readonly Colors = Colors;
 
-	private onChange: (value: boolean) => void = () => {};
-	private onTouched: () => void = () => {};
-
-	writeValue(value: boolean | null): void {
+	public writeValue(value: boolean | null): void {
 		this.checked.set(value ?? false);
 	}
 
-	registerOnChange(fn: (value: boolean) => void): void {
+	public registerOnChange(fn: (value: boolean) => void): void {
 		this.onChange = fn;
 	}
 
-	registerOnTouched(fn: () => void): void {
+	public registerOnTouched(fn: () => void): void {
 		this.onTouched = fn;
 	}
 
-	toggleChecked(): void {
+	public onChange: (value: boolean) => void = () => {};
+	public onTouched: () => void = () => {};
+
+	public toggleChecked(): void {
 		this.checked.set(!this.checked());
 		this.onChange(this.checked());
 		this.onTouched();

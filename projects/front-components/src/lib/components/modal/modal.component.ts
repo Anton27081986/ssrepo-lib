@@ -1,22 +1,22 @@
-import type { InputSignal, TemplateRef } from "@angular/core";
+import type { InputSignal, TemplateRef } from '@angular/core';
 import {
 	ChangeDetectionStrategy,
 	Component,
 	inject,
 	input,
-} from "@angular/core";
-import { NgIf, NgTemplateOutlet } from "@angular/common";
-import type { IBadgeProps } from "../../shared/models";
-import { ModalRef } from "../../shared/models";
-import { BadgeInfoComponent } from "../badge-info/badge-info.component";
-import { DividerComponent } from "../divider/divider.component";
+} from '@angular/core';
+import { NgIf, NgTemplateOutlet } from '@angular/common';
+import type { IBadgeProps } from '../../shared/models';
+import { ModalRef } from '../../shared/models';
+import { BadgeInfoComponent } from '../badge-info/badge-info.component';
+import { DividerComponent } from '../divider/divider.component';
 
 @Component({
-	selector: "ss-lib-modal",
+	selector: 'ss-lib-modal',
 	standalone: true,
 	imports: [NgIf, BadgeInfoComponent, DividerComponent, NgTemplateOutlet],
-	templateUrl: "./modal.component.html",
-	styleUrl: "./modal.component.scss",
+	templateUrl: './modal.component.html',
+	styleUrl: './modal.component.scss',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ModalComponent {
@@ -27,9 +27,9 @@ export class ModalComponent {
 		input<TemplateRef<any> | null>(null);
 
 	public badgeProps: InputSignal<IBadgeProps> = input.required<IBadgeProps>();
-	private readonly _popoverRef = inject(ModalRef);
+	private readonly popoverRef = inject(ModalRef);
 
-	public close() {
-		this._popoverRef.close();
+	public onCloseEvent(): void {
+		this.popoverRef.close();
 	}
 }

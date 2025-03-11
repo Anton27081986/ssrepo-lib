@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/angular';
+import type { Meta } from '@storybook/angular';
 import { TextComponent } from './text.component';
 import { Colors, TextType, TextWeight } from '../../shared/models';
 
@@ -32,7 +32,7 @@ const meta: Meta<TextComponent> = {
 
 export default meta;
 
-type Story = StoryObj<TextComponent>;
+// type Story = StoryObj<TextComponent>;
 
 // // Базовый пример
 // export const Default: Story = {

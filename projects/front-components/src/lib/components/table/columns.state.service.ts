@@ -1,10 +1,10 @@
-import { Injectable } from "@angular/core";
-import type { Observable } from "rxjs";
-import { BehaviorSubject, map } from "rxjs";
+import { Injectable } from '@angular/core';
+import type { Observable } from 'rxjs';
+import { BehaviorSubject, map } from 'rxjs';
 import type {
 	ISkeletonDerivativeThColumn,
 	IStoreTableBaseColumn,
-} from "../../shared/models";
+} from '../../shared/models';
 
 @Injectable()
 export class ColumnsStateService {

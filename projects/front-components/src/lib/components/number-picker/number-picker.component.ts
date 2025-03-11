@@ -71,9 +71,6 @@ export class NumberPickerComponent implements ControlValueAccessor {
 	public readonly InputType = InputType;
 	protected readonly ExtraSize = ExtraSize;
 
-	onChange = (value: number | null) => {};
-	onTouched = () => {};
-
 	public writeValue(value: number | null): void {
 		if (value) {
 			const numberValue = this.checkNumberValue(Number(value) || 0);
@@ -84,16 +81,33 @@ export class NumberPickerComponent implements ControlValueAccessor {
 		}
 	}
 
-	registerOnChange(fn: (value: number | null) => void): void {
+	public registerOnChange(fn: (value: number | null) => void): void {
 		this.onChange = fn;
 	}
 
-	registerOnTouched(fn: () => void): void {
+	public registerOnTouched(fn: () => void): void {
 		this.onTouched = fn;
 	}
 
-	setDisabledState(isDisabled: boolean): void {
+	public onChange: (value: number | null) => void = () => {};
+	public onTouched: () => void = () => {};
+
+	public setDisabledState(isDisabled: boolean): void {
 		this.isDisabled.set(isDisabled);
+	}
+
+	public changeNumberValueByStep(direction: Direction): void {
+		const currentValue = Number(this.numberPickerCtrl.value) || 0;
+
+		let value: number | null =
+			direction === Direction.Next
+				? Number((currentValue + this.step()).toFixed(2))
+				: Number((currentValue - this.step()).toFixed(2));
+
+		value = this.checkNumberValue(value);
+
+		this.numberPickerCtrl.setValue(value);
+		this.onChange(value);
 	}
 
 	private checkNumberValue(value: number): number {
@@ -110,19 +124,5 @@ export class NumberPickerComponent implements ControlValueAccessor {
 		}
 
 		return value;
-	}
-
-	public changeNumberValueByStep(direction: Direction): void {
-		const currentValue = Number(this.numberPickerCtrl.value) || 0;
-
-		let value: number | null =
-			direction === Direction.Next
-				? Number((currentValue + this.step()).toFixed(2))
-				: Number((currentValue - this.step()).toFixed(2));
-
-		value = this.checkNumberValue(value);
-
-		this.numberPickerCtrl.setValue(value);
-		this.onChange(value);
 	}
 }

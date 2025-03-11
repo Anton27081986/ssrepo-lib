@@ -20,13 +20,13 @@ export class GenericPopupComponent {
 	public content: PopupContent;
 	public type: TypePopup;
 
-	get component() {
-		return this.content as Type<any>;
-	}
-
 	constructor(private readonly popoverRef: ModalRef) {
 		this.type = this.popoverRef.type;
 		this.content = this.popoverRef.content;
+	}
+
+	public get component(): Type<any> {
+		return this.content as Type<any>;
 	}
 
 	public preventClick($event: Event): void {

@@ -26,8 +26,6 @@ import { ICONS } from '../../shared/assets/icons';
 	styleUrl: './icon.component.scss',
 })
 export class IconComponent {
-	private readonly sanitizer = inject(DomSanitizer);
-
 	public icon = input.required<IconType>();
 	public height = input<string>('24');
 	public width = input<string>('24');
@@ -38,4 +36,6 @@ export class IconComponent {
 
 		return svgData ? this.sanitizer.bypassSecurityTrustHtml(svgData) : null;
 	});
+
+	private readonly sanitizer = inject(DomSanitizer);
 }

@@ -72,10 +72,10 @@ export class ImageUploadComponent {
 	}
 
 	protected onChange(event: Event): void {
-		const input: HTMLInputElement = event.target as HTMLInputElement;
+		const inputElem: HTMLInputElement = event.target as HTMLInputElement;
 
-		if (input && input.files && input.files.length) {
-			this.onFileChange(input.files);
+		if (inputElem && inputElem.files && inputElem.files.length) {
+			this.onFileChange(inputElem.files);
 		}
 	}
 

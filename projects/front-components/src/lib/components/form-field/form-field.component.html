@@ -5,7 +5,8 @@
 				<ss-lib-text
 					[type]="TextType.BodySm"
 					[weight]="TextWeight.Semibold"
-					[color]="Colors.TextBody2">
+					[color]="Colors.TextBody2"
+				>
 					{{ label() }}
 				</ss-lib-text>
 
@@ -13,7 +14,8 @@
 					<ss-lib-text
 						[type]="TextType.BodySm"
 						[weight]="TextWeight.Medium"
-						[color]="Colors.TextInformation">
+						[color]="Colors.TextInformation"
+					>
 						*
 					</ss-lib-text>
 				}
@@ -26,7 +28,8 @@
 			<ss-lib-text
 				[type]="TextType.BodySm"
 				[weight]="TextWeight.Medium"
-				[color]="Colors.TextBody3">
+				[color]="Colors.TextBody3"
+			>
 				{{ hint() }}
 			</ss-lib-text>
 		</div>
@@ -38,7 +41,8 @@
 		[class.validation]="showValidation()"
 		[class.state-disabled]="fieldCtrl!.ngControl.disabled"
 		[ngClass]="['state-' + currentFieldCtrlState()]"
-		(focusout)="updateFormFieldStateOnFocusout()">
+		(focusout)="updateFormFieldStateOnFocusout()"
+	>
 		<div class="field-container__content-wrapper">
 			<div class="field-container__content">
 				<ng-content></ng-content>
@@ -50,7 +54,8 @@
 						[icon]="IconType.Alert"
 						[height]="'16'"
 						[width]="'16'"
-						[color]="Colors.IconError" />
+						[color]="Colors.IconError"
+					/>
 				</div>
 			}
 		</div>
@@ -62,12 +67,14 @@
 				[icon]="IconType.Alert"
 				[height]="'16'"
 				[width]="'16'"
-				[color]="Colors.IconError" />
+				[color]="Colors.IconError"
+			/>
 
 			<ss-lib-text
 				[type]="TextType.BodySm"
 				[weight]="TextWeight.Medium"
-				[color]="Colors.TextError">
+				[color]="Colors.TextError"
+			>
 				{{ errorText() }}
 			</ss-lib-text>
 		</div>

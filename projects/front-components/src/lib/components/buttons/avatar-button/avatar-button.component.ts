@@ -14,10 +14,12 @@ import { AvatarComponent } from '../../avatar/avatar.component';
 	imports: [AvatarComponent],
 	template: ` <div
 		tabindex="0"
-		class="avatar-button">
+		class="avatar-button"
+	>
 		<ss-lib-avatar
 			[username]="username()"
-			[src]="src()" />
+			[src]="src()"
+		/>
 	</div>`,
 	styleUrl: './avatar-button.component.scss',
 	changeDetection: ChangeDetectionStrategy.OnPush,

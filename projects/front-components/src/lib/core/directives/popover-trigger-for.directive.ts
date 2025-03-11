@@ -20,6 +20,10 @@ import type { PopoverContent } from '../../shared/models';
 	standalone: true,
 })
 export class PopoverTriggerForDirective implements OnDestroy {
+	public popoverContent = input.required<PopoverContent>({
+		alias: 'popoverTriggerFor',
+	});
+
 	private readonly overlay = inject(Overlay);
 	private readonly elementRef: ElementRef<HTMLElement> = inject(
 		ElementRef<HTMLElement>,
@@ -27,27 +31,23 @@ export class PopoverTriggerForDirective implements OnDestroy {
 
 	private readonly viewContainerRef = inject(ViewContainerRef);
 
-	popoverContent = input.required<PopoverContent>({
-		alias: 'popoverTriggerFor',
-	});
-
 	private isPopoverOpen = false;
 	private overlayRef: OverlayRef | null = null;
 	private closingActionsSub = Subscription.EMPTY;
 
 	@HostListener('click')
-	togglePopover(): void {
+	public togglePopover(): void {
 		this.isPopoverOpen ? this.destroyPopover() : this.openPopover();
 	}
 
 	@HostListener('keydown', ['$event'])
-	handleKeyDown(event: KeyboardEvent) {
+	public handleKeyDown(event: KeyboardEvent): void {
 		if (event.key === 'Escape') {
 			this.destroyPopover();
 		}
 	}
 
-	ngOnDestroy(): void {
+	public ngOnDestroy(): void {
 		this.closingActionsSub.unsubscribe();
 
 		if (this.overlayRef) {

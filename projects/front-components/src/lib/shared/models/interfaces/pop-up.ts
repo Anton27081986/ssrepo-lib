@@ -1,8 +1,8 @@
-import type { ConnectionPositionPair } from "@angular/cdk/overlay";
-import type { Observable } from "rxjs";
-import type { PopoverAnimationEnum } from "../../../components/generic-popup/generic-popup.component";
-import type { PopupContent, TypePopup } from "../types/pop-up";
-import type { PopupTypeEnum } from "../enums/popup-type-enum";
+import type { ConnectionPositionPair } from '@angular/cdk/overlay';
+import type { Observable } from 'rxjs';
+import type { PopoverAnimationEnum } from '../../../components/generic-popup/generic-popup.component';
+import type { PopupContent, TypePopup } from '../types/pop-up';
+import type { PopupTypeEnum } from '../enums/popup-type-enum';
 
 interface PopupParamsBase<T> {
 	width?: string | number;
@@ -34,10 +34,10 @@ export interface PopupParamsModal<T> extends PopupParamsBase<T> {
 	type: PopupTypeEnum.Modal;
 }
 
-export interface IPopoverRef<TIn = any> {
-	readonly afterSubmit$: Observable<any>;
-	readonly afterClosed$: Observable<any>;
-	readonly afterDelete$: Observable<any>;
+export interface IPopoverRef<T = any> {
+	readonly afterSubmit$: Observable<T>;
+	readonly afterClosed$: Observable<T>;
+	readonly afterDelete$: Observable<T>;
 
 	close(): void;
 }

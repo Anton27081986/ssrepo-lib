@@ -1,6 +1,6 @@
-import type { InputSignal } from "@angular/core";
-import { ChangeDetectionStrategy, Component, input } from "@angular/core";
-import { TextComponent } from "../text/text.component";
+import type { InputSignal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import { TextComponent } from '../text/text.component';
 import {
 	ButtonType,
 	Colors,
@@ -8,7 +8,7 @@ import {
 	Shape,
 	TextType,
 	TextWeight,
-} from "../../shared/models";
+} from '../../shared/models';
 
 /**
  * Параметры:
@@ -17,9 +17,9 @@ import {
  *
  */
 @Component({
-	selector: "ss-lib-spinner",
-	templateUrl: "./spinner.component.html",
-	styleUrls: ["./spinner.component.scss"],
+	selector: 'ss-lib-spinner',
+	templateUrl: './spinner.component.html',
+	styleUrls: ['./spinner.component.scss'],
 	imports: [TextComponent],
 	standalone: true,
 	changeDetection: ChangeDetectionStrategy.OnPush,

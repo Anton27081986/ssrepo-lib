@@ -44,7 +44,7 @@ export class ConfirmModalComponent implements OnDestroy {
 		this.subscription.unsubscribe();
 	}
 
-	protected submit(): void {
+	protected onApplyEvent(): void {
 		if (this.modalRef.data.apply.onSubmit) {
 			this.subscription.add(
 				this.modalRef.data.apply.onSubmit().subscribe(() => {
