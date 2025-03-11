@@ -27,9 +27,9 @@ export class ModalComponent {
 		input<TemplateRef<any> | null>(null);
 
 	public badgeProps: InputSignal<IBadgeProps> = input.required<IBadgeProps>();
-	private readonly _popoverRef = inject(ModalRef);
+	private readonly popoverRef = inject(ModalRef);
 
-	public close() {
-		this._popoverRef.close();
+	public onCloseEvent(): void {
+		this.popoverRef.close();
 	}
 }

@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { NgOptimizedImage } from '@angular/common';
-import type { ILightBoxData, ModalRef } from '../../shared/models';
+import { ILightBoxData, ModalRef } from '../../shared/models';
 import { IconType } from '../../shared/models';
 import { OverlayButtonComponent } from '../buttons';
 
@@ -17,15 +17,15 @@ export class LightBoxComponent {
 	protected width: number;
 	protected height: number;
 
+	protected readonly IconType = IconType;
+
 	constructor(private readonly modalRef: ModalRef<ILightBoxData>) {
 		this.src = modalRef.data.src;
 		this.width = modalRef.data.width;
 		this.height = modalRef.data.height;
 	}
 
-	protected close() {
+	protected close(): void {
 		this.modalRef.close();
 	}
-
-	protected readonly IconType = IconType;
 }

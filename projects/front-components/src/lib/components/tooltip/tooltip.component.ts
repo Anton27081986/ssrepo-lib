@@ -21,12 +21,14 @@ import { TextComponent } from '../text/text.component';
 				[style.left.px]="left()"
 				[style.top.px]="top()"
 				@fadeIn
-				@fadeOut>
+				@fadeOut
+			>
 				@if (text()) {
 					<ss-lib-text
 						[type]="TextType.BodyXs"
 						[color]="Colors.TextOnInformation"
-						[weight]="TextWeight.Semibold">
+						[weight]="TextWeight.Semibold"
+					>
 						{{ text() }}
 					</ss-lib-text>
 				}

@@ -41,7 +41,7 @@ import { EMPTY_STATE } from '../../../shared/constants';
 	],
 })
 export class BaseButtonComponent<T extends ButtonTypeValues> {
-	protected readonly elementState = inject(ElementStateService);
+	public readonly elementState = inject(ElementStateService);
 
 	public type = input.required<T>();
 	public size = input<ExtraSize>(ExtraSize.md);
@@ -66,5 +66,6 @@ export class BaseButtonComponent<T extends ButtonTypeValues> {
 	public readonly Colors = Colors;
 	public readonly ButtonSize = ExtraSize;
 	public readonly StateTypes = StateTypes;
+
 	protected readonly hasIcon = hasIcon;
 }

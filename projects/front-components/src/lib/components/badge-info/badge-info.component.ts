@@ -32,7 +32,8 @@ export class BadgeInfoComponent {
 	public description: InputSignal<string> = input.required<string>();
 	public viewClose: InputSignal<boolean> = input<boolean>(true);
 	public badge: InputSignal<IBadgeProps> = input.required<IBadgeProps>();
-	public close = output<void>();
+	public closeEvent = output<void>();
+
 	protected readonly ButtonType = ButtonType;
 	protected readonly ExtraSize = ExtraSize;
 	protected readonly IconType = IconType;

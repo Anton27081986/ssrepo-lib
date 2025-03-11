@@ -1,25 +1,25 @@
 .scrollable-block {
-  --_scroll-x-overflow: auto;
-  --_scroll-y-overflow: auto;
-  --_scroll-padding-inline: 0;
+	--_scroll-x-overflow: auto;
+	--_scroll-y-overflow: auto;
+	--_scroll-padding-inline: 0;
 
-  display: flex;
-  flex-direction: column;
-  flex: 1 1 1px;
+	display: flex;
+	flex-direction: column;
+	flex: 1 1 1px;
 
-  overflow-x: var(--_scroll-x-overflow);
-  overflow-y: var(--_scroll-y-overflow);
-  padding-inline: var(--_scroll-padding-inline);
+	overflow-x: var(--_scroll-x-overflow);
+	overflow-y: var(--_scroll-y-overflow);
+	padding-inline: var(--_scroll-padding-inline);
 
-  &--not-auto-size {
-    flex-basis: auto;
-  }
+	&--not-auto-size {
+		flex-basis: auto;
+	}
 
-  &--h-hidden {
-    --_scroll-x-overflow: hidden;
-  }
+	&--h-hidden {
+		--_scroll-x-overflow: hidden;
+	}
 
-  &--v-hidden {
-    --_scroll-y-overflow: hidden;
-  }
+	&--v-hidden {
+		--_scroll-y-overflow: hidden;
+	}
 }

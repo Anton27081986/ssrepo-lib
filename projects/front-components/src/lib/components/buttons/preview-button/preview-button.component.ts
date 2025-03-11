@@ -23,7 +23,8 @@ import { ButtonType, IconType } from '../../../shared/models';
 			[type]="type()"
 			[icon]="restrictedIcon()"
 			[iconSize]="'16'"
-			[iconPosition]="IconPosition.OnlyIcon">
+			[iconPosition]="IconPosition.OnlyIcon"
+		>
 			<ng-content></ng-content>
 		</ss-lib-base-button>
 	`,
@@ -36,8 +37,4 @@ export class PreviewButtonComponent extends BaseButtonComponent<ButtonType.Previ
 	public restrictedIcon = input<IconType>(IconType.Close);
 
 	public readonly ButtonType = ButtonType;
-
-	constructor() {
-		super();
-	}
 }

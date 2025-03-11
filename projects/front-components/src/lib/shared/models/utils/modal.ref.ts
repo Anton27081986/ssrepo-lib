@@ -6,9 +6,8 @@ import type { PopupTypeEnum } from '../enums/popup-type-enum';
 import type { IPopoverRef } from '../interfaces/pop-up';
 
 export class ModalRef<T = any> extends ModalRefBase implements IPopoverRef<T> {
-	private readonly afterDelete = new Subject<any>();
-	afterDelete$ = this.afterDelete.asObservable();
-
+	public readonly afterDelete = new Subject<any>();
+	public afterDelete$ = this.afterDelete.asObservable();
 	constructor(
 		public overlayRef: OverlayRef,
 		public content: PopupContent,
@@ -18,15 +17,15 @@ export class ModalRef<T = any> extends ModalRefBase implements IPopoverRef<T> {
 		super();
 	}
 
-	submit(data?: any) {
+	public submit(data?: any): void {
 		this.afterSubmit.next(data);
 	}
 
-	delete() {
+	public delete(): void {
 		this.afterDelete.next(null);
 	}
 
-	close() {
+	public close(): void {
 		this.overlayRef.dispose();
 		this.afterClosed.next(null);
 	}

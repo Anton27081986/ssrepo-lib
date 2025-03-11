@@ -1,39 +1,38 @@
 .calendar-year-grid {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    max-height: 361px;
-    overflow-y: auto;
-    scrollbar-width: none;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	max-height: 361px;
+	overflow-y: auto;
+	scrollbar-width: none;
 }
 
 .calendar-year-grid::-webkit-scrollbar {
-    display: none;
+	display: none;
 }
 
 .year-row {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    padding: 20px 0;
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+	padding: 20px 0;
 }
 
 .year-row:not(:last-child):not(:only-child) {
-    border-bottom: 1px solid var(--border-primary);
+	border-bottom: 1px solid var(--border-primary);
 }
 
-
 .year-column {
-    cursor: default;
-    color: var(--text-body-2);
+	cursor: default;
+	color: var(--text-body-2);
 
-    &.year-column_disabled {
-        color: var(--text-disabled);
-    }
+	&.year-column_disabled {
+		color: var(--text-disabled);
+	}
 }
 
 .month-list {
-    display: grid;
-    grid-template-columns: repeat(6, minmax(0, 1fr));
-    gap: 8px 4px;
+	display: grid;
+	grid-template-columns: repeat(6, minmax(0, 1fr));
+	gap: 8px 4px;
 }

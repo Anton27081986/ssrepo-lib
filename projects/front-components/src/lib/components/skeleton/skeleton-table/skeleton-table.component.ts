@@ -28,13 +28,6 @@ import { SkeletonBlockComponent } from '../skeleton-block/skeleton-block.compone
 export class SkeletonTableComponent {
 	public countItems: InputSignal<number> = input<number>(7);
 
-	protected stateColumn: ColumnsStateService = inject(ColumnsStateService);
-
-	protected visibleCols: Signal<IStoreTableBaseColumn[]> = toSignal(
-		this.stateColumn.visibleCols$,
-		{ initialValue: [] },
-	);
-
 	public readonly skeletonTrCols: Signal<ISkeletonDerivativeTrTable[]> =
 		computed(() => {
 			const trCols: ISkeletonDerivativeTrTable[] = [];
@@ -47,6 +40,13 @@ export class SkeletonTableComponent {
 
 			return trCols;
 		});
+
+	protected stateColumn: ColumnsStateService = inject(ColumnsStateService);
+
+	protected visibleCols: Signal<IStoreTableBaseColumn[]> = toSignal(
+		this.stateColumn.visibleCols$,
+		{ initialValue: [] },
+	);
 
 	private generatorTds(): ISkeletonDerivativeTdTable[] {
 		return this.visibleCols().map((col) => {

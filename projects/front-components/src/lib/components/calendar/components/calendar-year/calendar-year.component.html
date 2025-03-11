@@ -2,14 +2,15 @@
 	@for (rowIndex of rows() | repeatTimes; track $index) {
 		<div
 			#yearRow
-			class="year-row">
+			class="year-row"
+		>
 			@let year = getYear(rowIndex);
 
 			<div class="year-column">{{ year }}</div>
 
 			<div class="month-list">
 				@for (
-					monthShortName of MONTHS_SHORT;
+					monthShortName of monthsShort;
 					track $index;
 					let monthIndex = $index
 				) {
@@ -19,7 +20,8 @@
 						[displayValue]="monthShortName"
 						[item]="item"
 						[isToday]="itemIsToday(item)"
-						(click)="onItemClick(item)" />
+						(click)="onItemClick(item)"
+					/>
 				}
 			</div>
 		</div>

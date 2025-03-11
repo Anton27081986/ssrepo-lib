@@ -55,6 +55,9 @@ export class LayoutComponent {
 	protected readonly IconType = IconType;
 	protected readonly TextType = TextType;
 	protected readonly TextWeight = TextWeight;
+	protected readonly Colors = Colors;
+	protected readonly SidebarType = SidebarType;
+	protected readonly NuvButtonType = NavButton;
 
 	constructor() {
 		this.theme.valueChanges.subscribe((val) => {
@@ -68,11 +71,7 @@ export class LayoutComponent {
 		});
 	}
 
-	protected selectedMenu(menu: IMenu) {
+	protected selectedMenu(menu: IMenu): void {
 		menu.pressed = true;
 	}
-
-	protected readonly Colors = Colors;
-	protected readonly SidebarType = SidebarType;
-	protected readonly NuvButtonType = NavButton;
 }

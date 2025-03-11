@@ -6,7 +6,7 @@ import {
 	output,
 } from '@angular/core';
 import { NgIf } from '@angular/common';
-import type { ModalRef } from '../../shared/models';
+import { ModalRef } from '../../shared/models';
 import { ButtonType } from '../../shared/models';
 import { ButtonComponent } from '../buttons';
 
@@ -25,13 +25,13 @@ export class ModalActionApplyComponent {
 		string | undefined
 	>();
 
-	public onApply = output<void>();
+	public applyEvent = output<void>();
+
+	protected readonly buttonType = ButtonType;
 
 	constructor(private readonly modalRef: ModalRef) {}
 
-	public close() {
+	public close(): void {
 		this.modalRef.close();
 	}
-
-	public readonly buttonType = ButtonType;
 }

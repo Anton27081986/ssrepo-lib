@@ -1,4 +1,4 @@
-import type { Injector, TemplateRef } from '@angular/core';
+import { Inject, Injector, TemplateRef } from '@angular/core';
 import {
 	afterNextRender,
 	ChangeDetectionStrategy,
@@ -25,15 +25,15 @@ import { DividerComponent } from '../divider/divider.component';
 	imports: [NgTemplateOutlet, DividerComponent],
 })
 export class DropdownListComponent implements PopoverContent {
-	readonly optionsContent = contentChildren(DropdownItemComponent);
-	readonly templateRef =
+	public readonly optionsContent = contentChildren(DropdownItemComponent);
+	public readonly templateRef =
 		viewChild.required<TemplateRef<any>>('dropdownTemplate');
 
 	public headerTemplateRef = input<TemplateRef<unknown> | null>(null);
 	public closed = output<void>();
 	public value = output<IDictionaryItemDto | null>();
 
-	constructor(private readonly injector: Injector) {
+	constructor(@Inject(Injector) private readonly injector: Injector) {
 		afterNextRender(() => {
 			runInInjectionContext(this.injector, () => {
 				this.optionsContent().forEach((option) =>
@@ -47,7 +47,7 @@ export class DropdownListComponent implements PopoverContent {
 		});
 	}
 
-	selectOption(item: IDictionaryItemDto | null): void {
+	public selectOption(item: IDictionaryItemDto | null): void {
 		this.value.emit(item);
 		this.closed.emit();
 	}

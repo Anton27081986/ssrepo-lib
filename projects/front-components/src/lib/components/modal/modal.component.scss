@@ -1,38 +1,38 @@
 .ss-lib-modal {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
-  background: var(--surface-primary);
-  border-radius: var(--border-radius-xl);
-  box-shadow: var(--shadow-xl);
-  position: relative;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	box-sizing: border-box;
+	background: var(--surface-primary);
+	border-radius: var(--border-radius-xl);
+	box-shadow: var(--shadow-xl);
+	position: relative;
 
-  &__header {
-    padding: 24px 24px 0 24px;
-  }
+	&__header {
+		padding: 24px 24px 0 24px;
+	}
 
-  &__body {
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-    padding: 0 24px;
-  }
+	&__body {
+		display: flex;
+		flex-direction: column;
+		flex-grow: 1;
+		padding: 0 24px;
+	}
 
-  &__footer {
-    padding: 0 24px 24px;
+	&__footer {
+		padding: 0 24px 24px;
 
-    &-add-padding {
-      padding-top: 32px;
-    }
-  }
+		&-add-padding {
+			padding-top: 32px;
+		}
+	}
 
-  &__divider-top {
-    padding: 20px 0;
-  }
+	&__divider-top {
+		padding: 20px 0;
+	}
 
-  &__divider-bottom {
-    padding: 32px 0 24px  0;
-  }
+	&__divider-bottom {
+		padding: 32px 0 24px 0;
+	}
 }

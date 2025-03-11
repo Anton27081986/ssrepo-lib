@@ -1,18 +1,18 @@
 {
-  "name": "@front-library/components",
-  "version": "0.0.27",
-  "main": "fesm2022/front-components.mjs",
-  "module": "fesm2022/front-components.mjs",
-  "typings": "index.d.ts",
-  "publishConfig": {
-    "registry": "https://git.ssnab.it/api/v4/projects/41/packages/npm/"
-  },
-  "peerDependencies": {
-    "@angular/common": "^19.1.0",
-    "@angular/core": "^19.1.0"
-  },
-  "dependencies": {
-    "tslib": "^2.3.0"
-  },
-  "sideEffects": false
+	"name": "@front-library/components",
+	"version": "0.0.27",
+	"main": "fesm2022/front-components.mjs",
+	"module": "fesm2022/front-components.mjs",
+	"typings": "index.d.ts",
+	"publishConfig": {
+		"registry": "https://git.ssnab.it/api/v4/projects/41/packages/npm/"
+	},
+	"peerDependencies": {
+		"@angular/common": "^19.1.0",
+		"@angular/core": "^19.1.0"
+	},
+	"dependencies": {
+		"tslib": "^2.3.0"
+	},
+	"sideEffects": false
 }

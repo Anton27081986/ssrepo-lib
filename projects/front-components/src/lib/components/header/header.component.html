@@ -5,12 +5,14 @@
 			[type]="ButtonType.Ghost"
 			[icon]="IconType.Burger"
 			[iconPosition]="IconPosition.OnlyIcon"
-			(click)="toggleMenu()"></ss-lib-button>
+			(click)="toggleMenu()"
+		></ss-lib-button>
 		<ng-container [ngTemplateOutlet]="leftMenuTemplateRef()"></ng-container>
 	</div>
 	<div class="ss-lib-header__right">
 		<ng-container
-			[ngTemplateOutlet]="rightMenuTemplateRef()"></ng-container>
+			[ngTemplateOutlet]="rightMenuTemplateRef()"
+		></ng-container>
 	</div>
 </div>
 <ss-lib-progress class="ss-lib-header__progress"></ss-lib-progress>

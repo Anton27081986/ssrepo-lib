@@ -39,21 +39,6 @@ export class CalendarMonth extends CalendarYear implements CalendarMonthLike {
 		}
 	}
 
-	public get daysCount(): number {
-		return CalendarMonth.getMonthDaysCount(this.month, this.isLeapYear);
-	}
-
-	public monthSame(another: CalendarMonth): boolean {
-		return this.yearSame(another) && this.month === another.month;
-	}
-
-	/**
-	 * Returns native {@link Date} based on local time zone
-	 */
-	public toLocalNativeDate(): Date {
-		return new Date(this.year, this.month);
-	}
-
 	/**
 	 * Returns current month and year based on local time zone
 	 */
@@ -64,6 +49,33 @@ export class CalendarMonth extends CalendarYear implements CalendarMonthLike {
 			nativeDate.getFullYear(),
 			nativeDate.getMonth(),
 		);
+	}
+
+	/**
+	 * Normalizes number by clamping it between min and max month
+	 */
+	public static normalizeMonthPart(month: number): number {
+		return normalizeToIntNumber(month, MIN_MONTH, MAX_MONTH);
+	}
+
+	public get daysCount(): number {
+		return CalendarMonth.getMonthDaysCount(this.month, this.isLeapYear);
+	}
+
+	public get formattedMonthYear(): string {
+		return `${this.formattedMonthLong} ${this.formattedYear}`;
+	}
+
+	public get formattedMonthShort(): string {
+		return MONTHS_SHORT[this.month] || MONTHS_SHORT[0];
+	}
+
+	public get formattedMonthLong(): string {
+		return MONTHS_LONG[this.month] || MONTHS_LONG[0];
+	}
+
+	public get formattedMonthPart(): string {
+		return String(this.month + 1).padStart(2, '0');
 	}
 
 	/**
@@ -89,6 +101,37 @@ export class CalendarMonth extends CalendarYear implements CalendarMonthLike {
 		return `${this.formattedMonthPart}.${this.formattedYear}`;
 	}
 
+	public monthSame(another: CalendarMonth): boolean {
+		return this.yearSame(another) && this.month === another.month;
+	}
+
+	/**
+	 * Returns native {@link Date} based on local time zone
+	 */
+	public toLocalNativeDate(): Date {
+		return new Date(this.year, this.month);
+	}
+
+	/**
+	 * Passed month and year are after or the same as current
+	 */
+	public monthSameOrBefore(another: CalendarMonth): boolean {
+		return (
+			this.yearBefore(another) ||
+			(this.yearSame(another) && this.month <= another.month)
+		);
+	}
+
+	/**
+	 * Passed month and year are either before or equal to current
+	 */
+	public monthSameOrAfter(another: CalendarMonth): boolean {
+		return (
+			this.yearAfter(another) ||
+			(this.yearSame(another) && this.month >= another.month)
+		);
+	}
+
 	/**
 	 * Passed month and year are after current
 	 */
@@ -107,48 +150,5 @@ export class CalendarMonth extends CalendarYear implements CalendarMonthLike {
 			this.yearAfter(another) ||
 			(this.yearSame(another) && this.month > another.month)
 		);
-	}
-
-	/**
-	 * Passed month and year are either before or equal to current
-	 */
-	public monthSameOrAfter(another: CalendarMonth): boolean {
-		return (
-			this.yearAfter(another) ||
-			(this.yearSame(another) && this.month >= another.month)
-		);
-	}
-
-	/**
-	 * Normalizes number by clamping it between min and max month
-	 */
-	public static normalizeMonthPart(month: number): number {
-		return normalizeToIntNumber(month, MIN_MONTH, MAX_MONTH);
-	}
-
-	/**
-	 * Passed month and year are after or the same as current
-	 */
-	public monthSameOrBefore(another: CalendarMonth): boolean {
-		return (
-			this.yearBefore(another) ||
-			(this.yearSame(another) && this.month <= another.month)
-		);
-	}
-
-	public get formattedMonthYear(): string {
-		return `${this.formattedMonthLong} ${this.formattedYear}`;
-	}
-
-	public get formattedMonthShort(): string {
-		return MONTHS_SHORT[this.month] || MONTHS_SHORT[0];
-	}
-
-	public get formattedMonthLong(): string {
-		return MONTHS_LONG[this.month] || MONTHS_LONG[0];
-	}
-
-	public get formattedMonthPart(): string {
-		return String(this.month + 1).padStart(2, '0');
 	}
 }

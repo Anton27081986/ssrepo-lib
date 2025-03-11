@@ -21,17 +21,17 @@ import { CalendarMonth } from '../../models';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CalendarYearComponent {
+	public month = input<CalendarMonth>(CalendarMonth.currentLocal());
+	public monthClick = output<CalendarMonth>();
+
+	public readonly rows = signal(LIMIT_YEARS * 2 + 1);
+	public readonly monthsShort = MONTHS_SHORT;
+
 	private readonly yearRows = viewChildren('yearRow', {
 		read: ElementRef,
 	});
 
 	private readonly monthToday = signal(CalendarMonth.currentLocal());
-
-	public month = input<CalendarMonth>(CalendarMonth.currentLocal());
-	public monthClick = output<CalendarMonth>();
-
-	public readonly rows = signal(LIMIT_YEARS * 2 + 1);
-	public readonly MONTHS_SHORT = MONTHS_SHORT;
 
 	constructor() {
 		afterNextRender(() => {

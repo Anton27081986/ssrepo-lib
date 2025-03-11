@@ -22,7 +22,8 @@ import { ButtonType, IconType } from '../../../shared/models';
 		<ss-lib-base-button
 			[type]="type()"
 			[icon]="restrictedIcon()"
-			[iconPosition]="IconPosition.OnlyIcon">
+			[iconPosition]="IconPosition.OnlyIcon"
+		>
 			<ng-content></ng-content>
 		</ss-lib-base-button>
 	`,
@@ -35,8 +36,4 @@ export class UtilityButtonComponent extends BaseButtonComponent<ButtonType.Utili
 	public restrictedIcon = input<IconType>(IconType.KebabMenuDots);
 
 	public readonly ButtonType = ButtonType;
-
-	constructor() {
-		super();
-	}
 }

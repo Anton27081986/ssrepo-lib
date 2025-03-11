@@ -4,7 +4,7 @@ import { BehaviorSubject, map } from 'rxjs';
 import type {
 	ISkeletonDerivativeThColumn,
 	IStoreTableBaseColumn,
-} from '../../shared/models/interfaces/store-table-base-column';
+} from '../../shared/models';
 
 @Injectable()
 export class ColumnsStateService {

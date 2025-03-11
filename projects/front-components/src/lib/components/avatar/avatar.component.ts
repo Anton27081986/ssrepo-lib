@@ -30,7 +30,7 @@ export class AvatarComponent {
 	public readonly TextType = TextType;
 	public readonly TextWeight = TextWeight;
 
-	onImageError(): void {
+	public onImageError(): void {
 		this.showFallbackImage = true;
 	}
 }

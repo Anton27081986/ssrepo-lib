@@ -29,7 +29,8 @@ type CloseButtonType = ButtonType.CloseLight | ButtonType.CloseDark;
 			[type]="type()"
 			[icon]="restrictedIcon()"
 			[iconSize]="restrictedIconSize()"
-			[iconPosition]="IconPosition.OnlyIcon">
+			[iconPosition]="IconPosition.OnlyIcon"
+		>
 			<ng-content></ng-content>
 		</ss-lib-base-button>
 	`,
@@ -57,8 +58,4 @@ export class CloseButtonComponent extends BaseButtonComponent<CloseButtonType> {
 	});
 
 	public readonly ButtonType = ButtonType;
-
-	constructor() {
-		super();
-	}
 }

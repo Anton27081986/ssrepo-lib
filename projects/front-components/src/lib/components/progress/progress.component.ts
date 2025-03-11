@@ -16,18 +16,10 @@ import { CanvasState } from '../canvas/canvas.state';
 	imports: [],
 	standalone: true,
 	changeDetection: ChangeDetectionStrategy.OnPush,
-	// animations: [ trigger('state', [            // Пока решили убрать загрузку
-	//   state('default', style({ width: '75%' })),
-	//   state('average', style({ width: '75%' })),
-	//   state('max', style({ width: '100%' })),
-	//   transition(
-	//     '* <=> *',
-	//     animate('0.5s')
-	//   ),
-	// ]),],
 })
 export class ProgressComponent {
-	private readonly canvasState: CanvasState = inject(CanvasState);
+	public readonly canvasState: CanvasState = inject(CanvasState);
+
 	public inProgressType: Signal<ProgressStateType> = toSignal(
 		this.canvasState.inProgressType$,
 		{ initialValue: 'default' },

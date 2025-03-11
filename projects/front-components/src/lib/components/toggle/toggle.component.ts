@@ -26,26 +26,26 @@ export class ToggleComponent implements ControlValueAccessor {
 	public isDisabled = signal<boolean>(false);
 	public checked = signal<boolean>(false);
 
-	private onChange: (value: boolean) => void = () => {};
-	private onTouched: () => void = () => {};
-
-	writeValue(value: boolean | null): void {
+	public writeValue(value: boolean | null): void {
 		this.checked.set(value ?? false);
 	}
 
-	registerOnChange(fn: (value: boolean) => void): void {
+	public registerOnChange(fn: (value: boolean) => void): void {
 		this.onChange = fn;
 	}
 
-	registerOnTouched(fn: () => void): void {
+	public registerOnTouched(fn: () => void): void {
 		this.onTouched = fn;
 	}
 
-	setDisabledState(isDisabled: boolean): void {
+	public onChange: (value: boolean) => void = () => {};
+	public onTouched: () => void = () => {};
+
+	public setDisabledState(isDisabled: boolean): void {
 		this.isDisabled.set(isDisabled);
 	}
 
-	toggleChecked(): void {
+	public toggleChecked(): void {
 		this.checked.set(!this.checked());
 		this.onChange(this.checked());
 		this.onTouched();

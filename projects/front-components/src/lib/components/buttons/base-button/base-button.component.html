@@ -6,15 +6,15 @@
 	(mouseleave)="elementState.updateState(state, StateTypes.Hover, false)"
 	(mousedown)="elementState.updateState(state, StateTypes.Pressed, true)"
 	(mouseup)="elementState.updateState(state, StateTypes.Pressed, false)"
-	(focus)="elementState.checkFocus($event, state)">
+	(focus)="elementState.checkFocus($event, state)"
+>
 	@if (icon() | mapper: hasIcon : iconPosition() === IconPosition.OnlyIcon) {
 		<ss-lib-icon
 			[icon]="icon()!"
 			[height]="iconSize()"
 			[width]="iconSize()"
-			[color]="
-				buttonIconColors() | getColor: state() : disabled() : true
-			" />
+			[color]="buttonIconColors() | getColor: state() : disabled() : true"
+		/>
 	} @else {
 		@if (icon() | mapper: hasIcon : iconPosition() === IconPosition.Start) {
 			<ss-lib-icon
@@ -23,7 +23,8 @@
 				[width]="iconSize()"
 				[color]="
 					buttonIconColors() | getColor: state() : disabled() : false
-				" />
+				"
+			/>
 		}
 
 		@switch (size()) {
@@ -34,7 +35,8 @@
 					[color]="
 						buttonTextColors()
 							| getColor: state() : disabled() : false
-					">
+					"
+				>
 					{{ text() }}
 				</ss-lib-text>
 			}
@@ -45,7 +47,8 @@
 					[color]="
 						buttonTextColors()
 							| getColor: state() : disabled() : false
-					">
+					"
+				>
 					{{ text() }}
 				</ss-lib-text>
 			}
@@ -56,7 +59,8 @@
 					[color]="
 						buttonTextColors()
 							| getColor: state() : disabled() : false
-					">
+					"
+				>
 					{{ text() }}
 				</ss-lib-text>
 			}
@@ -67,7 +71,8 @@
 					[color]="
 						buttonTextColors()
 							| getColor: state() : disabled() : false
-					">
+					"
+				>
 					{{ text() }}
 				</ss-lib-text>
 			}
@@ -80,7 +85,8 @@
 				[width]="iconSize()"
 				[color]="
 					buttonIconColors() | getColor: state() : disabled() : false
-				" />
+				"
+			/>
 		}
 	}
 </button>

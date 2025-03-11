@@ -3,7 +3,8 @@
 		<div
 			#resizeContainerPseudo
 			class="custom-textarea__pseudo"
-			[style.height.px]="textareaHeight()">
+			[style.height.px]="textareaHeight()"
+		>
 			{{ textareaCtrl.value }}
 		</div>
 
@@ -14,17 +15,20 @@
 			autocomplete="off"
 			[style.height.px]="textareaHeight()"
 			[formControl]="textareaCtrl"
-			[maxlength]="maxLength()"></textarea>
+			[maxlength]="maxLength()"
+		></textarea>
 
 		<div
 			class="custom-textarea__resize-icon"
 			[style.cursor]="textareaCtrl.disabled | mapper: cursorType"
-			(mousedown)="!textareaCtrl.disabled && startResize($event)">
+			(mousedown)="!textareaCtrl.disabled && startResize($event)"
+		>
 			<ss-lib-icon
 				[icon]="IconType.ResizeHandle"
 				[height]="'16'"
 				[width]="'16'"
-				[color]="textareaCtrl.disabled | mapper: getResizeIconColor" />
+				[color]="textareaCtrl.disabled | mapper: getResizeIconColor"
+			/>
 		</div>
 	</div>
 </div>

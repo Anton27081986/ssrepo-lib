@@ -18,7 +18,8 @@ import type { CalendarDay, CalendarMonth } from '../../models';
 			[class.calendar-cell_active]="isActive()"
 			[class.calendar-cell_unavailable]="isUnavailable()"
 			[class.calendar-cell_disabled]="isDisabled()"
-			(click)="clickItem.emit(item())">
+			(click)="clickItem.emit(item())"
+		>
 			{{ displayValue() }}
 		</div>
 	`,

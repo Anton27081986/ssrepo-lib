@@ -54,24 +54,21 @@ export const TEXTAREA_MIN_HEIGHT = 128;
 })
 export class TextareaComponent implements ControlValueAccessor {
 	@ViewChild('resizeContainer')
-	resizeContainer!: ElementRef<HTMLElement>;
+	public readonly resizeContainer!: ElementRef<HTMLElement>;
 
 	@ViewChild('resizeContainerPseudo')
-	resizeContainerPseudo!: ElementRef<HTMLElement>;
+	public readonly resizeContainerPseudo!: ElementRef<HTMLElement>;
+
+	public maxLength = input<number | null>(null);
+
+	public textareaCtrl = new FormControl('');
+	public textareaHeight = signal(TEXTAREA_MIN_HEIGHT);
+
+	protected readonly textareaMinHeight = TEXTAREA_MIN_HEIGHT;
+	protected readonly IconType = IconType;
+	protected readonly Colors = Colors;
 
 	private readonly destroyRef = inject(DestroyRef);
-
-	maxLength = input<number | null>(null);
-
-	textareaCtrl = new FormControl('');
-	textareaHeight = signal(TEXTAREA_MIN_HEIGHT);
-
-	readonly TEXTAREA_MIN_HEIGHT = TEXTAREA_MIN_HEIGHT;
-	readonly IconType = IconType;
-	readonly Colors = Colors;
-
-	private onChange: (value: string | null) => void = () => {};
-	private onTouched: () => void = () => {};
 
 	constructor() {
 		toSignal(
@@ -84,7 +81,7 @@ export class TextareaComponent implements ControlValueAccessor {
 		);
 	}
 
-	writeValue(value: string): void {
+	public writeValue(value: string): void {
 		const fittedValue = value
 			? value.slice(0, this.maxLength() || Infinity)
 			: '';
@@ -92,13 +89,16 @@ export class TextareaComponent implements ControlValueAccessor {
 		this.textareaCtrl.setValue(fittedValue, { emitEvent: false });
 	}
 
-	registerOnChange(fn: (value: string | null) => void): void {
+	public registerOnChange(fn: (value: string | null) => void): void {
 		this.onChange = fn;
 	}
 
-	registerOnTouched(fn: () => void): void {
+	public registerOnTouched(fn: () => void): void {
 		this.onTouched = fn;
 	}
+
+	public onChange: (value: string | null) => void = () => {};
+	public onTouched: () => void = () => {};
 
 	public setDisabledState?(isDisabled: boolean): void {
 		isDisabled ? this.textareaCtrl.disable() : this.textareaCtrl.enable();
@@ -114,12 +114,13 @@ export class TextareaComponent implements ControlValueAccessor {
 
 		mousemove$
 			.pipe(
+				// eslint-disable-next-line rxjs/no-unsafe-takeuntil
 				takeUntil(mouseup$),
 				takeUntilDestroyed(this.destroyRef),
 				map((e) => e.clientY - startY),
 				tap((dy) => {
 					const newHeight = Math.max(
-						this.TEXTAREA_MIN_HEIGHT,
+						this.textareaMinHeight,
 						startHeight + dy,
 					);
 

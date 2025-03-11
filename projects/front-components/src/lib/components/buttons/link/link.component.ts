@@ -57,7 +57,7 @@ type LinkButtonType = ButtonType.LinkBlue | ButtonType.LinkBlack;
 	encapsulation: ViewEncapsulation.None,
 })
 export class LinkComponent {
-	protected readonly elementState = inject(ElementStateService);
+	public readonly elementState = inject(ElementStateService);
 
 	public type = input<LinkButtonType>(ButtonType.LinkBlue);
 	public linkAppearance = input<LinkAppearance>(LinkAppearance.Standalone);
@@ -99,7 +99,7 @@ export class LinkComponent {
 	protected readonly TextType = TextType;
 	protected readonly TextWeight = TextWeight;
 
-	textUnderline(
+	public textUnderline(
 		state: IStateElement,
 		appearance: LinkAppearance,
 		isDisabled: boolean,

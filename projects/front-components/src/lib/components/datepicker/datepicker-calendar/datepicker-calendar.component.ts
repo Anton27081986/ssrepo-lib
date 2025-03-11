@@ -20,7 +20,7 @@ import type { PopoverContent } from '../../../shared/models';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DatepickerCalendarComponent implements PopoverContent {
-	readonly templateRef = viewChild.required<TemplateRef<any>>(
+	public readonly templateRef = viewChild.required<TemplateRef<any>>(
 		'datepickerCalendarTemplate',
 	);
 

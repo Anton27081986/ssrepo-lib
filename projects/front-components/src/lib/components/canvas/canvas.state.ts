@@ -11,12 +11,12 @@ export class CanvasState implements OnDestroy {
 	public inProgressType$: BehaviorSubject<ProgressStateType> =
 		new BehaviorSubject<ProgressStateType>('default');
 
-	private readonly subscription: Subscription = new Subscription();
-
 	public screenWidth$: Observable<number> = fromEvent(window, 'resize').pipe(
 		map(() => window.innerWidth),
 		startWith(window.innerWidth),
 	);
+
+	private readonly subscription: Subscription = new Subscription();
 
 	constructor() {
 		this.subscription.add(
@@ -30,7 +30,7 @@ export class CanvasState implements OnDestroy {
 		);
 	}
 
-	ngOnDestroy() {
+	public ngOnDestroy(): void {
 		this.subscription.unsubscribe();
 	}
 }

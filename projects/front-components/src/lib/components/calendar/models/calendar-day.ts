@@ -30,13 +30,6 @@ export class CalendarDay extends CalendarMonth {
 	}
 
 	/**
-	 * Returns native {@link Date} based on local time zone
-	 */
-	public override toLocalNativeDate(): Date {
-		return new Date(this.year, this.month, this.day);
-	}
-
-	/**
 	 * Current day based on local time zone
 	 */
 	public static override currentLocal(): CalendarDay {
@@ -46,45 +39,6 @@ export class CalendarDay extends CalendarMonth {
 		const day = nativeDate.getDate();
 
 		return new CalendarDay(year, month, day);
-	}
-
-	public override toString(
-		dateFormat: DateFormat = DateFormat.DMY,
-		separator = '/',
-	): string {
-		return this.getFormattedDay(dateFormat, separator);
-	}
-
-	public get isWeekend(): boolean {
-		const dayOfWeek = this.dayOfWeek(false);
-
-		return (
-			dayOfWeek === DAY_OF_WEEK.Saturday ||
-			dayOfWeek === DAY_OF_WEEK.Sunday
-		);
-	}
-
-	public get formattedDayPart(): string {
-		return String(this.day).padStart(2, '0');
-	}
-
-	/**
-	 * Returns formatted whole date
-	 */
-	public getFormattedDay(dateFormat: DateFormat, separator: string): string {
-		const dd = this.formattedDayPart;
-		const mm = this.formattedMonthPart;
-		const yyyy = this.formattedYear;
-
-		switch (dateFormat) {
-			case DateFormat.MDY:
-				return `${mm}${separator}${dd}${separator}${yyyy}`;
-			case DateFormat.YMD:
-				return `${yyyy}${separator}${mm}${separator}${dd}`;
-			case DateFormat.DMY:
-			default:
-				return `${dd}${separator}${mm}${separator}${yyyy}`;
-		}
 	}
 
 	public static parseRawDateString(
@@ -156,6 +110,65 @@ export class CalendarDay extends CalendarMonth {
 		return new CalendarDay(normalizedYear, normalizedMonth, normalizedDay);
 	}
 
+	public static normalizeDayPart(
+		day: number,
+		month: number,
+		year: number,
+	): number {
+		const monthDaysCount = CalendarMonth.getMonthDaysCount(
+			month,
+			CalendarYear.isLeapYear(year),
+		);
+
+		return normalizeToIntNumber(day, 1, monthDaysCount);
+	}
+
+	public get isWeekend(): boolean {
+		const dayOfWeek = this.dayOfWeek(false);
+
+		return (
+			dayOfWeek === DAY_OF_WEEK.Saturday ||
+			dayOfWeek === DAY_OF_WEEK.Sunday
+		);
+	}
+
+	public get formattedDayPart(): string {
+		return String(this.day).padStart(2, '0');
+	}
+
+	/**
+	 * Returns native {@link Date} based on local time zone
+	 */
+	public override toLocalNativeDate(): Date {
+		return new Date(this.year, this.month, this.day);
+	}
+
+	public override toString(
+		dateFormat: DateFormat = DateFormat.DMY,
+		separator = '/',
+	): string {
+		return this.getFormattedDay(dateFormat, separator);
+	}
+
+	/**
+	 * Returns formatted whole date
+	 */
+	public getFormattedDay(dateFormat: DateFormat, separator: string): string {
+		const dd = this.formattedDayPart;
+		const mm = this.formattedMonthPart;
+		const yyyy = this.formattedYear;
+
+		switch (dateFormat) {
+			case DateFormat.MDY:
+				return `${mm}${separator}${dd}${separator}${yyyy}`;
+			case DateFormat.YMD:
+				return `${yyyy}${separator}${mm}${separator}${dd}`;
+			case DateFormat.DMY:
+			default:
+				return `${dd}${separator}${mm}${separator}${yyyy}`;
+		}
+	}
+
 	/**
 	 * Returns day of week
 	 *
@@ -215,18 +228,5 @@ export class CalendarDay extends CalendarMonth {
 			this.monthAfter(another) ||
 			(this.monthSame(another) && this.day >= another.day)
 		);
-	}
-
-	public static normalizeDayPart(
-		day: number,
-		month: number,
-		year: number,
-	): number {
-		const monthDaysCount = CalendarMonth.getMonthDaysCount(
-			month,
-			CalendarYear.isLeapYear(year),
-		);
-
-		return normalizeToIntNumber(day, 1, monthDaysCount);
 	}
 }

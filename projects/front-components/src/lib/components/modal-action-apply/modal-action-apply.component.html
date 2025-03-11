@@ -2,9 +2,12 @@
 	*ngIf="cancelText()"
 	[type]="buttonType.Secondary"
 	[text]="cancelText()"
-	(click)="close()"></ss-lib-button>
+	(click)="close()"
+></ss-lib-button>
+
 <ss-lib-button
 	[disabled]="applyDisabled()"
 	[type]="buttonType.Primary"
 	[text]="applyText()"
-	(click)="onApply.emit()"></ss-lib-button>
+	(click)="applyEvent.emit()"
+></ss-lib-button>

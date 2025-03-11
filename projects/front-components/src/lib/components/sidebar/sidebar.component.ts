@@ -22,6 +22,7 @@ import { ButtonComponent } from '../buttons';
 
 @Component({
 	selector: 'ss-lib-sidebar',
+	standalone: true,
 	templateUrl: './sidebar.component.html',
 	styleUrls: ['./sidebar.component.scss'],
 	imports: [
@@ -40,7 +41,6 @@ import { ButtonComponent } from '../buttons';
 			transition('* => void', [animate('0s', style({ opacity: 0 }))]),
 		]),
 	],
-	standalone: true,
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SidebarComponent {
@@ -53,14 +53,15 @@ export class SidebarComponent {
 	protected readonly ButtonType = ButtonType;
 	protected readonly IconType = IconType;
 	protected readonly SidebarType = SidebarType;
+	protected readonly NuvButtonType = NavButton;
 
 	protected sidebarType = this.stateCanvas.sidebarType;
 
-	public closeMenu() {
+	public closeMenu(): void {
 		this.stateCanvas.sidebarType.set(SidebarType.Close);
 	}
 
-	public outMenuModel(menu: IMenu) {
+	public outMenuModel(menu: IMenu): void {
 		if (!menu.pressed) {
 			const pressed = this.menu().find((item) => item.pressed);
 
@@ -71,6 +72,4 @@ export class SidebarComponent {
 			this.outMenuFromSidebar.emit(menu);
 		}
 	}
-
-	protected readonly NuvButtonType = NavButton;
 }

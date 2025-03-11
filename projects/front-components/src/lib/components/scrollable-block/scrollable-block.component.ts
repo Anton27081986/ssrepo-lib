@@ -15,11 +15,11 @@ import { Component, Input, ViewEncapsulation } from '@angular/core';
 })
 export class ScrollableBlockComponent {
 	@Input()
-	horizontalScroll = false;
+	public horizontalScroll = false;
 
 	@Input()
-	verticalScroll = false;
+	public verticalScroll = false;
 
 	@Input()
-	disableAutoSize = false;
+	public disableAutoSize = false;
 }

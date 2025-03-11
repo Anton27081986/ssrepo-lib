@@ -1,6 +1,7 @@
 <div
 	class="input-container"
-	(focusout)="updateInputStateOnFocusout($event)">
+	(focusout)="updateInputStateOnFocusout($event)"
+>
 	<input
 		tabindex="-1"
 		class="input-field"
@@ -9,5 +10,6 @@
 		[maskito]="inputMask()"
 		[formControl]="inputCtrl"
 		[placeholder]="placeholder()"
-		[readOnly]="readOnly()" />
+		[readOnly]="readOnly()"
+	/>
 </div>

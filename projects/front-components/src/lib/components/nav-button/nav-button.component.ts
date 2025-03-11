@@ -29,14 +29,12 @@ import { TextComponent } from '../text/text.component';
 	imports: [IconComponent, TextComponent, NgIf],
 })
 export class NavButtonComponent {
-	protected readonly IconType = IconType;
+	public readonly IconType = IconType;
 	public type: InputSignal<NavButtonType> = input<NavButton>(
 		NavButton.NavBase,
 	);
 
 	public menu: InputSignal<IMenu> = input.required<IMenu>();
-
-	constructor() {}
 
 	protected readonly NuvButtonType = NavButton;
 	protected readonly TextType = TextType;

@@ -3,11 +3,13 @@
 	[type]="InputType.Date"
 	[min]="min()"
 	[max]="max()"
-	[popoverTriggerFor]="calendar" />
+	[popoverTriggerFor]="calendar"
+/>
 
 <ss-lib-datepicker-calendar
 	#calendar
 	[selectedDate]="selectedDate()"
 	[min]="min()"
 	[max]="max()"
-	(value)="onDateSelected($event)"></ss-lib-datepicker-calendar>
+	(value)="onDateSelected($event)"
+></ss-lib-datepicker-calendar>

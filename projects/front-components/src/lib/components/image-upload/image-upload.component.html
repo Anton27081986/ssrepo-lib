@@ -6,11 +6,13 @@
 			[class.image-upload__disabled]="disabled()"
 			(dragenter)="onDragEnter($event)"
 			(dragleave)="onDragLeave($event)"
-			(drop)="onDropSuccess($event)">
+			(drop)="onDropSuccess($event)"
+		>
 			<ss-lib-badge
 				[badgeProps]="{
 					icon: IconType.ImagePlus,
-				}"></ss-lib-badge>
+				}"
+			></ss-lib-badge>
 			<div>
 				<ss-lib-text
 					[type]="TextType.BodySm"
@@ -25,17 +27,20 @@
 			</div>
 			<label
 				#hiddenInput
-				class="image-upload__button">
+				class="image-upload__button"
+			>
 				<input
 					accept="image/jpeg, image/gif, image/png"
 					class="image-upload__button__hidden-input"
 					type="file"
-					(change)="onChange($event)" />
+					(change)="onChange($event)"
+				/>
 				<ss-lib-button
 					[disabled]="disabled()"
 					[text]="'Загрузить с устройства'"
 					[icon]="IconType.Upload"
-					(click)="hiddenInput.click()"></ss-lib-button>
+					(click)="hiddenInput.click()"
+				></ss-lib-button>
 			</label>
 		</div>
 	}
@@ -43,7 +48,8 @@
 		<div class="image-preview">
 			<ss-lib-preview-button
 				class="image-preview__close"
-				(click)="onFileDelete()"></ss-lib-preview-button>
+				(click)="onFileDelete()"
+			></ss-lib-preview-button>
 			<img [src]="imageSrc()" />
 		</div>
 	}
@@ -52,7 +58,8 @@
 			<ss-lib-spinner class="image-loading__loader"></ss-lib-spinner>
 			<ss-lib-preview-button
 				class="image-loading__cancel"
-				(click)="onFileDelete()"></ss-lib-preview-button>
+				(click)="onFileDelete()"
+			></ss-lib-preview-button>
 		</div>
 	}
 }
