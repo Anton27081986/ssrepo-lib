@@ -27,7 +27,7 @@ import { DividerComponent } from '../divider/divider.component';
 export class DropdownListComponent implements PopoverContent {
 	public readonly optionsContent = contentChildren(DropdownItemComponent);
 	public readonly templateRef =
-		viewChild.required<TemplateRef<any>>('dropdownTemplate');
+		viewChild.required<TemplateRef<{}>>('dropdownTemplate');
 
 	public headerTemplateRef = input<TemplateRef<unknown> | null>(null);
 	public closed = output<void>();
