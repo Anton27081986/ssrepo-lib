@@ -11,11 +11,11 @@ import { NgTemplateOutlet } from '@angular/common';
 })
 export class CanvasContentComponent {
 	@Input()
-	public titleRef: TemplateRef<any> | null = null;
+	public titleRef: TemplateRef<{}> | null = null;
 
 	@Input()
-	public buttonRef: TemplateRef<any> | null = null;
+	public buttonRef: TemplateRef<{}> | null = null;
 
 	@Input()
-	public contentRef: TemplateRef<any> | null = null;
+	public contentRef: TemplateRef<{}> | null = null;
 }

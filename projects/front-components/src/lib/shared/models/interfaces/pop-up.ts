@@ -34,7 +34,7 @@ export interface PopupParamsModal<T> extends PopupParamsBase<T> {
 	type: PopupTypeEnum.Modal;
 }
 
-export interface IPopoverRef<T = any> {
+export interface IPopoverRef<T = unknown> {
 	readonly afterSubmit$: Observable<T>;
 	readonly afterClosed$: Observable<T>;
 	readonly afterDelete$: Observable<T>;

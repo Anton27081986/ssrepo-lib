@@ -127,7 +127,7 @@ export class StandComponent {
 		popover.afterClosed$.subscribe((item) => console.log(item));
 	}
 
-	public submit(): Observable<any> {
+	public submit(): Observable<unknown> {
 		return of([]);
 	}
 }

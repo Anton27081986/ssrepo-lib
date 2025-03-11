@@ -5,7 +5,7 @@ import type {
 } from '../interfaces/pop-up';
 import type { PopupTypeEnum } from '../enums/popup-type-enum';
 
-export type PopupContent = TemplateRef<any> | Type<any>;
+export type PopupContent = TemplateRef<{}> | Type<{}>;
 
 export type PopupParams<T> = PopupParamsPopover<T> | PopupParamsModal<T>;
 

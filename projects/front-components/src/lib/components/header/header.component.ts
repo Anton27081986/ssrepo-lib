@@ -21,10 +21,10 @@ import { ProgressComponent } from '../progress/progress.component';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderComponent {
-	public leftMenuTemplateRef: InputSignal<TemplateRef<any> | null> =
+	public leftMenuTemplateRef: InputSignal<TemplateRef<{}> | null> =
 		input.required();
 
-	public rightMenuTemplateRef: InputSignal<TemplateRef<any> | null> =
+	public rightMenuTemplateRef: InputSignal<TemplateRef<{}> | null> =
 		input.required();
 
 	protected readonly ButtonType = ButtonType;
