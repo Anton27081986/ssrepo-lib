@@ -22,9 +22,10 @@ import { DividerComponent } from '../divider/divider.component';
 export class ModalComponent {
 	public titleHeader: InputSignal<string> = input.required<string>();
 	public descriptionHeader: InputSignal<string> = input.required<string>();
-	public actionsRef: InputSignal<TemplateRef<any> | null> = input.required();
-	public contentRef: InputSignal<TemplateRef<any> | null> =
-		input<TemplateRef<any> | null>(null);
+	public actionsRef: InputSignal<TemplateRef<{}> | null> = input.required();
+
+	public contentRef: InputSignal<TemplateRef<{}> | null> =
+		input<TemplateRef<{}> | null>(null);
 
 	public badgeProps: InputSignal<IBadgeProps> = input.required<IBadgeProps>();
 	private readonly popoverRef = inject(ModalRef);

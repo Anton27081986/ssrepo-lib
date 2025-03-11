@@ -15,10 +15,10 @@ import type { IMenu } from '../../shared/models';
 	standalone: true,
 })
 export class CanvasComponent {
-	public leftMenuHeaderTemplateRef: InputSignal<TemplateRef<any> | null> =
+	public leftMenuHeaderTemplateRef: InputSignal<TemplateRef<{}> | null> =
 		input.required();
 
-	public rightMenuHeaderTemplateRef: InputSignal<TemplateRef<any> | null> =
+	public rightMenuHeaderTemplateRef: InputSignal<TemplateRef<{}> | null> =
 		input.required();
 
 	public outMenuFromCanvas = output<IMenu>();

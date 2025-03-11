@@ -1,7 +1,7 @@
 import type { Type } from '@angular/core';
 import { Component } from '@angular/core';
 import { NgComponentOutlet } from '@angular/common';
-import { ModalRef } from '../../shared/models/utils/modal.ref';
+import { ModalRef } from '../../shared/models';
 import { PopupContent, TypePopup } from '../../shared/models/types/pop-up';
 
 export enum PopoverAnimationEnum {
@@ -25,8 +25,8 @@ export class GenericPopupComponent {
 		this.content = this.popoverRef.content;
 	}
 
-	public get component(): Type<any> {
-		return this.content as Type<any>;
+	public get component(): Type<{}> {
+		return this.content as Type<{}>;
 	}
 
 	public preventClick($event: Event): void {
