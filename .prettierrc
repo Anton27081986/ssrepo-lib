@@ -9,5 +9,6 @@
   "bracketSpacing": true,
   "bracketSameLine": false,
   "htmlWhitespaceSensitivity": "css",
-  "singleAttributePerLine": true
+  "singleAttributePerLine": true,
+  "endOfLine": "crlf"
 }

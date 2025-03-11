@@ -35,7 +35,7 @@ import { DividerComponent } from '../divider/divider.component';
 })
 export class EmptyStateComponent {
 	public headerTitle: InputSignal<string> = input.required<string>();
-	public actionRef: InputSignal<TemplateRef<any> | null> = input.required();
+	public actionRef: InputSignal<TemplateRef<{}> | null> = input.required();
 	public icon: InputSignal<IconType> = input.required<IconType>();
 	public title: InputSignal<string> = input.required();
 	public description: InputSignal<string | null> = input<string | null>(null);

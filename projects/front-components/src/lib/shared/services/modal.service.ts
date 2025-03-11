@@ -1,4 +1,4 @@
-import { Overlay } from '@angular/cdk/overlay';
+import { GlobalPositionStrategy, Overlay } from '@angular/cdk/overlay';
 import { OverlayConfig } from '@angular/cdk/overlay';
 import { Injectable, Injector } from '@angular/core';
 import { ComponentPortal } from '@angular/cdk/portal';
@@ -51,7 +51,7 @@ export class ModalService {
 
 		const panelClass: string[] = ['ss-lib-popover-root'];
 
-		const positionStrategy: any = this.overlay
+		const positionStrategy: GlobalPositionStrategy = this.overlay
 			.position()
 			.global()
 			.centerHorizontally()

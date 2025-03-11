@@ -32,7 +32,8 @@ module.exports = {
 				"@typescript-eslint/ban-types": "off",
 				"@typescript-eslint/consistent-type-imports": "off",
 				"@typescript-eslint/no-empty-function": "off",
-				// "@typescript-eslint/no-explicit-any": "error",
+				"@typescript-eslint/no-empty-object-type": "off",
+				"@typescript-eslint/no-explicit-any": "error",
 				"@typescript-eslint/explicit-member-accessibility": [
 					"warn",
 					{
