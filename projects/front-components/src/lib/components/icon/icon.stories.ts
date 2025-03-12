@@ -1,7 +1,7 @@
 // icon.component.stories.ts
 import type { Meta, StoryObj } from '@storybook/angular';
-import { Colors, IconType } from 'front-components';
 import { IconComponent } from './icon.component';
+import { Colors, IconType } from '../../shared/models';
 
 // Мета-информация о компоненте
 const meta: Meta<IconComponent> = {
