@@ -98,7 +98,7 @@ export class ToastComponent implements OnInit, OnDestroy {
 	}
 
 	public ngOnDestroy(): void {
-		clearInterval(this.intervalId);
+		clearTimeout(this.intervalId);
 	}
 
 	protected close(): void {
