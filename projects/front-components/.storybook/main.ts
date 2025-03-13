@@ -7,12 +7,12 @@ const config: StorybookConfig = {
 		'@storybook/addon-onboarding',
 		'@chromatic-com/storybook',
 		'@storybook/addon-interactions',
-		"@storybook/addon-essentials"
+		'@storybook/addon-essentials',
 	],
 	framework: {
 		name: '@storybook/angular',
 		options: {},
 	},
-	staticDirs: ['../src/lib/shared/assets/fonts']
+	staticDirs: ['../src/lib/shared/assets/fonts'],
 };
 export default config;
