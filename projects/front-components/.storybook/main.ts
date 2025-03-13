@@ -11,6 +11,7 @@ const config: StorybookConfig = {
 		'storybook-dark-mode',
 		'@storybook/addon-designs',
 		'@storybook/addon-backgrounds',
+		'@storybook/addon-a11y',
 	],
 	framework: {
 		name: '@storybook/angular',
