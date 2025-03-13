@@ -498,3 +498,43 @@
 	></ss-lib-datepicker>
 </ss-lib-form-field>
 <br />
+
+<div class="scrollbar-test">
+	<ss-lib-scrollbar>
+		@for (colCount of 100 | repeatTimes; track $index) {
+			<div class="scrollbar-test__item">
+				Товарищи! сложившаяся структура организации играет важную роль в
+				формировании модели развития
+			</div>
+		}
+	</ss-lib-scrollbar>
+</div>
+
+<ss-lib-button
+	[type]="ButtonType.Primary"
+	[text]="'Default'"
+	(click)="showToastDefault()"
+/>
+<ss-lib-button
+	[type]="ButtonType.Primary"
+	[text]="'Primary'"
+	(click)="showToastError()"
+/>
+<ss-lib-button
+	[type]="ButtonType.Primary"
+	[text]="'Success'"
+	(click)="showToastSuccess()"
+/>
+
+<ss-lib-button
+	[type]="ButtonType.Primary"
+	[text]="'Success api'"
+	(click)="viewToastSuccess()"
+/>
+
+<ss-lib-button
+	[type]="ButtonType.Primary"
+	[text]="'Error api'"
+	(click)="exampleMetod({ email: 'sydney@fife' })"
+/>
+<br />
