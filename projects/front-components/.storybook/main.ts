@@ -13,6 +13,8 @@ const config: StorybookConfig = {
 		name: '@storybook/angular',
 		options: {},
 	},
-	staticDirs: ['../src/lib/shared/assets/fonts'],
+	staticDirs: [
+		{ from: '../src/lib/shared/assets', to: '/assets' }
+	]
 };
 export default config;

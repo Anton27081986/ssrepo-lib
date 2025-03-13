@@ -28,7 +28,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\r\n\targs: {\r\n\t\ttype: TextType.BodyMd,\r\n\t\tweight: TextWeight.Regular,\r\n\t\tcolor: Colors.TextInformation,\r\n\t\tisEllipsis: false,\r\n\t},\r\n\trender: (args) => ({\r\n\t\tcomponent: TextComponent,\r\n\t\tprops: args,\r\n\t\ttemplate: `<ss-lib-text [type]=\"type\" [weight]=\"weight\" [color]=\"color\" [isEllipsis]=\"isEllipsis\">Это текст с базовым стилем.</ss-lib-text>`,\r\n\t}),\r\n}"
+                "defaultValue": "{\r\n\targs: {\r\n\t\ttype: TextType.BodyMd,\r\n\t\tweight: TextWeight.Regular,\r\n\t\tcolor: Colors.TextInformation,\r\n\t\tisEllipsis: false,\r\n\t},\r\n\trender: (args) => ({\r\n\t\tcomponent: TextComponent,\r\n\t\tprops: args,\r\n\t\ttemplate: `<ss-lib-text [type]=\"type\" [weight]=\"weight\" [color]=\"color\" [isEllipsis]=\"isEllipsis\">Это текст с базовым стилем.\r\n        <div style=\"font-family: 'Onest'; font-weight: 700;\">Этот текст должен отображаться шрифтом Onest Bold</div>\r\n</ss-lib-text>`,\r\n\t}),\r\n}"
             },
             {
                 "name": "EllipsisText",
@@ -68,7 +68,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Preview",
-                "defaultValue": "{\r\n\tparameters: {\r\n\t\tcontrols: {\r\n\t\t\tmatchers: {\r\n\t\t\t\tcolor: /(background|color)$/i,\r\n\t\t\t\tdate: /Date$/i,\r\n\t\t\t},\r\n\t\t},\r\n\t},\r\n}"
+                "defaultValue": "{\r\n\tparameters: {\r\n\t\tcontrols: {\r\n\t\t\tmatchers: {\r\n\t\t\t\tcolor: /(background|color)$/i,\r\n\t\t\t\tdate: /Date$/i,\r\n\t\t\t},\r\n\t\t},\r\n\t},\r\n\ttags: ['autodocs'],\r\n}"
             }
         ],
         "functions": [],
@@ -129,7 +129,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\r\n\targs: {\r\n\t\ttype: TextType.BodyMd,\r\n\t\tweight: TextWeight.Regular,\r\n\t\tcolor: Colors.TextInformation,\r\n\t\tisEllipsis: false,\r\n\t},\r\n\trender: (args) => ({\r\n\t\tcomponent: TextComponent,\r\n\t\tprops: args,\r\n\t\ttemplate: `<ss-lib-text [type]=\"type\" [weight]=\"weight\" [color]=\"color\" [isEllipsis]=\"isEllipsis\">Это текст с базовым стилем.</ss-lib-text>`,\r\n\t}),\r\n}"
+                    "defaultValue": "{\r\n\targs: {\r\n\t\ttype: TextType.BodyMd,\r\n\t\tweight: TextWeight.Regular,\r\n\t\tcolor: Colors.TextInformation,\r\n\t\tisEllipsis: false,\r\n\t},\r\n\trender: (args) => ({\r\n\t\tcomponent: TextComponent,\r\n\t\tprops: args,\r\n\t\ttemplate: `<ss-lib-text [type]=\"type\" [weight]=\"weight\" [color]=\"color\" [isEllipsis]=\"isEllipsis\">Это текст с базовым стилем.\r\n        <div style=\"font-family: 'Onest'; font-weight: 700;\">Этот текст должен отображаться шрифтом Onest Bold</div>\r\n</ss-lib-text>`,\r\n\t}),\r\n}"
                 },
                 {
                     "name": "EllipsisText",
@@ -161,7 +161,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Preview",
-                    "defaultValue": "{\r\n\tparameters: {\r\n\t\tcontrols: {\r\n\t\t\tmatchers: {\r\n\t\t\t\tcolor: /(background|color)$/i,\r\n\t\t\t\tdate: /Date$/i,\r\n\t\t\t},\r\n\t\t},\r\n\t},\r\n}"
+                    "defaultValue": "{\r\n\tparameters: {\r\n\t\tcontrols: {\r\n\t\t\tmatchers: {\r\n\t\t\t\tcolor: /(background|color)$/i,\r\n\t\t\t\tdate: /Date$/i,\r\n\t\t\t},\r\n\t\t},\r\n\t},\r\n\ttags: ['autodocs'],\r\n}"
                 }
             ]
         },
