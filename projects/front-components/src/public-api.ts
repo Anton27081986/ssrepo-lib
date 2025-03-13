@@ -3,6 +3,7 @@
  */
 
 export * from './lib/components';
+export * from './lib/core/pipes';
 export * from './lib/core/directives';
 export * from './lib/shared/models';
 export * from './lib/shared/services';
