@@ -8,13 +8,14 @@ const config: StorybookConfig = {
 		'@chromatic-com/storybook',
 		'@storybook/addon-interactions',
 		'@storybook/addon-essentials',
+		'storybook-dark-mode',
+		'@storybook/addon-designs',
+		'@storybook/addon-backgrounds',
 	],
 	framework: {
 		name: '@storybook/angular',
 		options: {},
 	},
-	staticDirs: [
-		{ from: '../src/lib/shared/assets', to: '/assets' }
-	]
+	staticDirs: [{ from: '../src/lib/shared/assets', to: '/assets' }],
 };
 export default config;

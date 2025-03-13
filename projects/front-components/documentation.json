@@ -18,7 +18,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\r\n\targs: {\r\n\t\ticon: IconType.Bell,\r\n\t\theight: '24',\r\n\t\twidth: '24',\r\n\t\tcolor: Colors.IconPrimary,\r\n\t},\r\n}"
+                "defaultValue": "{\r\n\targs: {\r\n\t\ticon: IconType.Bell,\r\n\t\theight: '24',\r\n\t\twidth: '24',\r\n\t\tcolor: Colors.BorderPrimary,\r\n\t},\r\n\tparameters: {\r\n\t\tdesign: {\r\n\t\t\ttype: 'iframe',\r\n\t\t\turl: 'https://embed.figma.com/design/U6NqdjVMT2AVBtWgGesulg/SS-ERP-%2F%2F-Prototype?node-id=14350-168000&embed-host=share',\r\n\t\t},\r\n\t},\r\n}"
             },
             {
                 "name": "Default",
@@ -28,7 +28,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\r\n\targs: {\r\n\t\ttype: TextType.BodyMd,\r\n\t\tweight: TextWeight.Regular,\r\n\t\tcolor: Colors.TextInformation,\r\n\t\tisEllipsis: false,\r\n\t},\r\n\trender: (args) => ({\r\n\t\tcomponent: TextComponent,\r\n\t\tprops: args,\r\n\t\ttemplate: `<ss-lib-text [type]=\"type\" [weight]=\"weight\" [color]=\"color\" [isEllipsis]=\"isEllipsis\">Это текст с базовым стилем.\r\n        <div style=\"font-family: 'Onest'; font-weight: 700;\">Этот текст должен отображаться шрифтом Onest Bold</div>\r\n</ss-lib-text>`,\r\n\t}),\r\n}"
+                "defaultValue": "{\r\n\targs: {\r\n\t\ttype: TextType.BodyMd,\r\n\t\tweight: TextWeight.Regular,\r\n\t\tcolor: Colors.TextInformation,\r\n\t\tisEllipsis: false,\r\n\t},\r\n\trender: (args) => ({\r\n\t\tcomponent: TextComponent,\r\n\t\tprops: args,\r\n\t\ttemplate: `<ss-lib-text [type]=\"type\" [weight]=\"weight\" [color]=\"color\" [isEllipsis]=\"isEllipsis\">Это текст с базовым стилем.</ss-lib-text>`,\r\n\t}),\r\n}"
             },
             {
                 "name": "EllipsisText",
@@ -68,7 +68,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Preview",
-                "defaultValue": "{\r\n\tparameters: {\r\n\t\tcontrols: {\r\n\t\t\tmatchers: {\r\n\t\t\t\tcolor: /(background|color)$/i,\r\n\t\t\t\tdate: /Date$/i,\r\n\t\t\t},\r\n\t\t},\r\n\t},\r\n\ttags: ['autodocs'],\r\n}"
+                "defaultValue": "{\r\n\tparameters: {\r\n\t\tcontrols: {\r\n\t\t\tmatchers: {\r\n\t\t\t\tcolor: /(background|color)$/i,\r\n\t\t\t\tdate: /Date$/i,\r\n\t\t\t},\r\n\t\t},\r\n\t\tdarkMode: {\r\n\t\t\tstylePreview: true,\r\n\t\t}\r\n\t},\r\n\ttags: ['autodocs'],\r\n\r\n}"
             }
         ],
         "functions": [],
@@ -107,7 +107,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\r\n\targs: {\r\n\t\ticon: IconType.Bell,\r\n\t\theight: '24',\r\n\t\twidth: '24',\r\n\t\tcolor: Colors.IconPrimary,\r\n\t},\r\n}"
+                    "defaultValue": "{\r\n\targs: {\r\n\t\ticon: IconType.Bell,\r\n\t\theight: '24',\r\n\t\twidth: '24',\r\n\t\tcolor: Colors.BorderPrimary,\r\n\t},\r\n\tparameters: {\r\n\t\tdesign: {\r\n\t\t\ttype: 'iframe',\r\n\t\t\turl: 'https://embed.figma.com/design/U6NqdjVMT2AVBtWgGesulg/SS-ERP-%2F%2F-Prototype?node-id=14350-168000&embed-host=share',\r\n\t\t},\r\n\t},\r\n}"
                 },
                 {
                     "name": "meta",
@@ -129,7 +129,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\r\n\targs: {\r\n\t\ttype: TextType.BodyMd,\r\n\t\tweight: TextWeight.Regular,\r\n\t\tcolor: Colors.TextInformation,\r\n\t\tisEllipsis: false,\r\n\t},\r\n\trender: (args) => ({\r\n\t\tcomponent: TextComponent,\r\n\t\tprops: args,\r\n\t\ttemplate: `<ss-lib-text [type]=\"type\" [weight]=\"weight\" [color]=\"color\" [isEllipsis]=\"isEllipsis\">Это текст с базовым стилем.\r\n        <div style=\"font-family: 'Onest'; font-weight: 700;\">Этот текст должен отображаться шрифтом Onest Bold</div>\r\n</ss-lib-text>`,\r\n\t}),\r\n}"
+                    "defaultValue": "{\r\n\targs: {\r\n\t\ttype: TextType.BodyMd,\r\n\t\tweight: TextWeight.Regular,\r\n\t\tcolor: Colors.TextInformation,\r\n\t\tisEllipsis: false,\r\n\t},\r\n\trender: (args) => ({\r\n\t\tcomponent: TextComponent,\r\n\t\tprops: args,\r\n\t\ttemplate: `<ss-lib-text [type]=\"type\" [weight]=\"weight\" [color]=\"color\" [isEllipsis]=\"isEllipsis\">Это текст с базовым стилем.</ss-lib-text>`,\r\n\t}),\r\n}"
                 },
                 {
                     "name": "EllipsisText",
@@ -161,7 +161,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Preview",
-                    "defaultValue": "{\r\n\tparameters: {\r\n\t\tcontrols: {\r\n\t\t\tmatchers: {\r\n\t\t\t\tcolor: /(background|color)$/i,\r\n\t\t\t\tdate: /Date$/i,\r\n\t\t\t},\r\n\t\t},\r\n\t},\r\n\ttags: ['autodocs'],\r\n}"
+                    "defaultValue": "{\r\n\tparameters: {\r\n\t\tcontrols: {\r\n\t\t\tmatchers: {\r\n\t\t\t\tcolor: /(background|color)$/i,\r\n\t\t\t\tdate: /Date$/i,\r\n\t\t\t},\r\n\t\t},\r\n\t\tdarkMode: {\r\n\t\t\tstylePreview: true,\r\n\t\t}\r\n\t},\r\n\ttags: ['autodocs'],\r\n\r\n}"
                 }
             ]
         },

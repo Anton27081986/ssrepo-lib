@@ -47,6 +47,8 @@
 		"@angular/compiler-cli": "^19.1.0",
 		"@chromatic-com/storybook": "^3.2.5",
 		"@compodoc/compodoc": "^1.1.26",
+		"@storybook/addon-backgrounds": "^8.6.4",
+		"@storybook/addon-designs": "^8.2.1",
 		"@storybook/addon-docs": "^8.6.4",
 		"@storybook/addon-essentials": "^8.6.4",
 		"@storybook/addon-interactions": "^8.6.4",
@@ -80,6 +82,7 @@
 		"sass": "^1.85.1",
 		"sass-loader": "^16.0.5",
 		"storybook": "^8.6.4",
+		"storybook-dark-mode": "^4.0.2",
 		"style-dictionary": "^4.3.0",
 		"typescript-eslint": "^8.26.0"
 	},

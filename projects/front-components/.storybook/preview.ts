@@ -1,4 +1,5 @@
 import type { Preview } from '@storybook/angular';
+import { themes } from '@storybook/theming';
 import { setCompodocJson } from '@storybook/addon-docs/angular';
 import 'zone.js';
 import docJson from '../documentation.json';
@@ -12,8 +13,12 @@ const preview: Preview = {
 				date: /Date$/i,
 			},
 		},
+		darkMode: {
+			stylePreview: true,
+		}
 	},
 	tags: ['autodocs'],
+
 };
 
 export default preview;

@@ -40,6 +40,12 @@ export const Default: Story = {
 		icon: IconType.Bell,
 		height: '24',
 		width: '24',
-		color: Colors.IconPrimary,
+		color: Colors.IconError,
+	},
+	parameters: {
+		design: {
+			type: 'iframe',
+			url: 'https://embed.figma.com/design/U6NqdjVMT2AVBtWgGesulg/SS-ERP-%2F%2F-Prototype?node-id=14350-168000&embed-host=share',
+		},
 	},
 };
