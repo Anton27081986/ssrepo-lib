@@ -12,6 +12,12 @@ import {
 	inject,
 } from '@angular/core';
 import { DraggableDirective } from './draggable.directive';
+import { Dimension } from '../../shared/models';
+
+interface Size {
+	width: number;
+	height: number;
+}
 
 @Component({
 	selector: 'ss-lib-scrollbar',
@@ -27,10 +33,13 @@ export class ScrollbarComponent implements AfterViewInit {
 
 	// Vertical scroll calculations
 	public readonly verticalScrolled = computed(() =>
-		this.calculateScrolled('height', this.scrollTop()),
+		this.calculateScrolled(Dimension.Height, this.scrollTop()),
 	);
 
-	public readonly verticalSize = computed(() => this.calculateSize('height'));
+	public readonly verticalSize = computed(() =>
+		this.calculateSize(Dimension.Height),
+	);
+
 	public readonly verticalPosition = computed(
 		() => this.verticalScrolled() * (100 - this.verticalSize()),
 	);
@@ -39,11 +48,11 @@ export class ScrollbarComponent implements AfterViewInit {
 
 	// Horizontal scroll calculations
 	public readonly horizontalScrolled = computed(() =>
-		this.calculateScrolled('width', this.scrollLeft()),
+		this.calculateScrolled(Dimension.Width, this.scrollLeft()),
 	);
 
 	public readonly horizontalSize = computed(() =>
-		this.calculateSize('width'),
+		this.calculateSize(Dimension.Width),
 	);
 
 	public readonly horizontalPosition = computed(
@@ -55,12 +64,14 @@ export class ScrollbarComponent implements AfterViewInit {
 	);
 
 	private scrollListener!: () => void;
-	private readonly rafId = signal<number | null>(null);
-	private readonly resizeObserver = signal<ResizeObserver | null>(null);
+	private readonly resizeObserver = signal<ResizeObserver>(
+		new ResizeObserver(() => this.updateDimensions()),
+	);
+
 	private readonly scrollTop = signal(0);
 	private readonly scrollLeft = signal(0);
-	private readonly scrollSize = signal({ width: 0, height: 0 });
-	private readonly clientSize = signal({ width: 0, height: 0 });
+	private readonly scrollSize = signal<Size>({ width: 0, height: 0 });
+	private readonly clientSize = signal<Size>({ width: 0, height: 0 });
 
 	private readonly destroyRef = inject(DestroyRef);
 	private readonly ngZone = inject(NgZone);
@@ -79,17 +90,14 @@ export class ScrollbarComponent implements AfterViewInit {
 		this.elementRef.nativeElement.scrollLeft = scrollLeft;
 	}
 
-	private calculateScrolled(
-		dimension: 'width' | 'height',
-		position: number,
-	): number {
+	private calculateScrolled(dimension: Dimension, position: number): number {
 		const maxScrollOffset =
 			this.scrollSize()[dimension] - this.clientSize()[dimension];
 
 		return maxScrollOffset > 0 ? position / maxScrollOffset : 0;
 	}
 
-	private calculateSize(dimension: 'width' | 'height'): number {
+	private calculateSize(dimension: Dimension): number {
 		const ratio =
 			this.clientSize()[dimension] / this.scrollSize()[dimension];
 
@@ -112,40 +120,34 @@ export class ScrollbarComponent implements AfterViewInit {
 	}
 
 	private setupObservers(): void {
-		this.resizeObserver.set(
-			new ResizeObserver(() => this.updateDimensions()),
-		);
-
 		if (this.containerRef()?.nativeElement) {
 			this.resizeObserver()!.observe(this.containerRef()!.nativeElement);
 		}
+
+		let rafId: number | null = null;
 
 		this.ngZone.runOutsideAngular(() => {
 			this.scrollListener = this.renderer.listen(
 				this.elementRef.nativeElement,
 				'scroll',
 				() => {
-					if (this.rafId() === null) {
-						this.rafId.set(
-							requestAnimationFrame(() => {
-								this.updateScrollPosition();
-								this.rafId.set(null);
-							}),
-						);
+					if (rafId === null) {
+						rafId = requestAnimationFrame(() => {
+							this.updateScrollPosition();
+							rafId = null;
+						});
 					}
 				},
 			);
 		});
 
 		this.destroyRef.onDestroy(() => {
-			if (this.resizeObserver() !== null) {
-				this.resizeObserver()!.disconnect();
-			}
+			this.resizeObserver().disconnect();
 
 			this.scrollListener();
 
-			if (this.rafId() !== null) {
-				cancelAnimationFrame(this.rafId()!);
+			if (rafId !== null) {
+				cancelAnimationFrame(rafId);
 			}
 		});
 	}
