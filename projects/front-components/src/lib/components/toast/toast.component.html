@@ -1,13 +1,6 @@
 <div
 	class="ss-lib-toast"
-	[@fadeAnimation]="{
-		value: animationState,
-		params: {
-			fadeIn: 300,
-			fadeOut: 2500,
-		},
-	}"
-	(@fadeAnimation.done)="onFadeFinished($event)"
+	[class.ss-lib-toast__view]="initialize"
 >
 	<div class="ss-lib-toast__left">
 		@if (type() === ToastTypeEnum.Default) {
@@ -52,18 +45,18 @@
 			class="ss-lib-toast__right-actions"
 		>
 			<ss-lib-button
+				*ngIf="secondaryButton() as secondary"
+				[size]="ExtraSize.xs"
+				[type]="ButtonType.Ghost"
+				[text]="secondary.text"
+				(click)="secondary.click($event)"
+			></ss-lib-button>
+			<ss-lib-button
 				*ngIf="mainButton() as main"
 				[size]="ExtraSize.xs"
 				[type]="ButtonType.Secondary"
 				[text]="main.text"
 				(click)="main.click($event)"
-			></ss-lib-button>
-			<ss-lib-button
-				*ngIf="secondaryButton() as secondary"
-				[size]="ExtraSize.xs"
-				[type]="ButtonType.Secondary"
-				[text]="secondary.text"
-				(click)="secondary.click($event)"
 			></ss-lib-button>
 		</div>
 		<ss-lib-close-button

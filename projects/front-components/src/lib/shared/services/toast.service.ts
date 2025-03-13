@@ -33,11 +33,7 @@ export class ToastService {
 	}
 
 	private getPositionStrategy(): GlobalPositionStrategy {
-		return this.overlay
-			.position()
-			.global()
-			.top('24px')
-			.centerHorizontally();
+		return this.overlay.position().global().top().centerHorizontally();
 	}
 
 	private getInjector(

@@ -5,14 +5,6 @@ import {
 	signal,
 	WritableSignal,
 } from '@angular/core';
-import {
-	animate,
-	state,
-	style,
-	transition,
-	trigger,
-	AnimationEvent,
-} from '@angular/animations';
 import { NgIf } from '@angular/common';
 import { TextComponent } from '../text/text.component';
 import {
@@ -25,7 +17,6 @@ import {
 	TextType,
 	TextWeight,
 	Toast,
-	ToastAnimationState,
 	ToastTypeEnum,
 } from '../../shared/models';
 import { IconComponent } from '../icon/icon.component';
@@ -42,19 +33,6 @@ import { ToastRef } from './toast-ref';
 		ButtonComponent,
 		CloseButtonComponent,
 		NgIf,
-	],
-	animations: [
-		trigger('fadeAnimation', [
-			state('default', style({ opacity: 1 })),
-			transition('void => *', [
-				style({ opacity: 0 }),
-				animate('{{ fadeIn }}ms'),
-			]),
-			transition(
-				'default => closing',
-				animate('{{ fadeOut }}ms', style({ opacity: 0 })),
-			),
-		]),
 	],
 	standalone: true,
 })
@@ -75,7 +53,7 @@ export class ToastComponent implements OnInit, OnDestroy {
 	protected readonly ButtonType = ButtonType;
 	protected readonly ExtraSize = ExtraSize;
 	protected readonly IconPosition = IconPosition;
-	protected animationState: ToastAnimationState = 'default';
+	protected initialize = false;
 
 	private timerId = 0;
 
@@ -90,10 +68,12 @@ export class ToastComponent implements OnInit, OnDestroy {
 	}
 
 	public ngOnInit(): void {
+		this.initialize = true;
+
 		if (this.mainButton() || this.secondaryButton()) {
 			this.timerId = setTimeout(() => this.close(), 10000);
 		} else {
-			this.timerId = setTimeout(() => this.close(), 5000);
+			// this.timerId = setTimeout(() => this.close(), 5000);
 		}
 	}
 
@@ -103,15 +83,5 @@ export class ToastComponent implements OnInit, OnDestroy {
 
 	protected close(): void {
 		this.ref.close();
-	}
-
-	protected onFadeFinished(event: AnimationEvent): void {
-		const { toState } = event;
-		const isFadeOut = (toState as ToastAnimationState) === 'closing';
-		const itFinished = this.animationState === 'closing';
-
-		if (isFadeOut && itFinished) {
-			this.close();
-		}
 	}
 }
