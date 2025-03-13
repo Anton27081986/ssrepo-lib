@@ -1,5 +1,4 @@
 import type { StorybookConfig } from '@storybook/angular';
-import * as sass from 'sass';
 
 const config: StorybookConfig = {
 	stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
@@ -8,24 +7,7 @@ const config: StorybookConfig = {
 		'@storybook/addon-onboarding',
 		'@chromatic-com/storybook',
 		'@storybook/addon-interactions',
-		{
-			name: '@storybook/addon-styling-webpack',
-			options: {
-				rules: [
-					{
-						test: /\.s[ac]ss$/i,
-						use: [
-							"style-loader",
-							"css-loader",
-							{
-								loader: "sass-loader",
-								options: { implementation: sass }
-							},
-						],
-					}
-				]
-			}
-		}
+		"@storybook/addon-essentials"
 	],
 	framework: {
 		name: '@storybook/angular',

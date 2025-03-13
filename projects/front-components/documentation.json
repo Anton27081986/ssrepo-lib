@@ -24,11 +24,21 @@
                 "name": "Default",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/front-components/src/lib/components/toggle/toggle.stories.ts",
+                "file": "projects/front-components/src/lib/components/text/text.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\r\n\targs: {\r\n\t\tchecked: signal<boolean>(false),\r\n\t\tisDisabled: signal<boolean>(false),\r\n\t},\r\n}"
+                "defaultValue": "{\r\n\targs: {\r\n\t\ttype: TextType.BodyMd,\r\n\t\tweight: TextWeight.Regular,\r\n\t\tcolor: Colors.TextInformation,\r\n\t\tisEllipsis: false,\r\n\t},\r\n\trender: (args) => ({\r\n\t\tcomponent: TextComponent,\r\n\t\tprops: args,\r\n\t\ttemplate: `<ss-lib-text [type]=\"type\" [weight]=\"weight\" [color]=\"color\" [isEllipsis]=\"isEllipsis\">Это текст с базовым стилем.</ss-lib-text>`,\r\n\t}),\r\n}"
+            },
+            {
+                "name": "EllipsisText",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/front-components/src/lib/components/text/text.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\r\n\targs: {\r\n\t\ttype: TextType.BodyMd,\r\n\t\tweight: TextWeight.Regular,\r\n\t\tcolor: Colors.TextInformation,\r\n\t\tisEllipsis: true,\r\n\t},\r\n\trender: (args) => ({\r\n\t\tcomponent: TextComponent,\r\n\t\tprops: args,\r\n\t\ttemplate: `<ss-lib-text [type]=\"type\" [weight]=\"weight\" [color]=\"color\" [isEllipsis]=\"isEllipsis\">Этот текст будет обрезан с троеточием, если он слишком длинный.</ss-lib-text>`,\r\n\t}),\r\n}"
             },
             {
                 "name": "meta",
@@ -49,16 +59,6 @@
                 "deprecationMessage": "",
                 "type": "Meta<TextComponent>",
                 "defaultValue": "{\r\n\ttitle: 'Components/Text',\r\n\tcomponent: TextComponent,\r\n\ttags: ['autodocs'],\r\n\targTypes: {\r\n\t\ttype: {\r\n\t\t\tcontrol: 'select',\r\n\t\t\toptions: Object.values(TextType),\r\n\t\t\tdescription: 'Тип текста',\r\n\t\t},\r\n\t\tweight: {\r\n\t\t\tcontrol: 'select',\r\n\t\t\toptions: Object.values(TextWeight),\r\n\t\t\tdescription: 'Толщина шрифта',\r\n\t\t},\r\n\t\tcolor: {\r\n\t\t\tcontrol: 'select',\r\n\t\t\toptions: Object.values(Colors),\r\n\t\t\tdescription: 'Цвет текста',\r\n\t\t},\r\n\t\tisEllipsis: {\r\n\t\t\tcontrol: 'boolean',\r\n\t\t\tdescription: 'Добавлять троеточие при переполнении',\r\n\t\t},\r\n\t},\r\n}"
-            },
-            {
-                "name": "meta",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "projects/front-components/src/lib/components/toggle/toggle.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Meta<ToggleComponent>",
-                "defaultValue": "{\r\n\ttitle: 'Components/Toggle',\r\n\tcomponent: ToggleComponent,\r\n\ttags: ['autodocs'],\r\n\targTypes: {\r\n\t\tchecked: {\r\n\t\t\tcontrol: 'boolean',\r\n\t\t\tdescription: 'Переключить',\r\n\t\t},\r\n\t\tisDisabled: {\r\n\t\t\tcontrol: 'boolean',\r\n\t\t\tdescription: 'Заблокировать',\r\n\t\t},\r\n\t},\r\n}"
             },
             {
                 "name": "preview",
@@ -88,8 +88,8 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "StoryObj<ToggleComponent>",
-                "file": "projects/front-components/src/lib/components/toggle/toggle.stories.ts",
+                "rawtype": "StoryObj<TextComponent>",
+                "file": "projects/front-components/src/lib/components/text/text.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -120,29 +120,27 @@
                     "defaultValue": "{\r\n\ttitle: 'Components/Icon',\r\n\tcomponent: IconComponent,\r\n\ttags: ['autodocs'],\r\n\targTypes: {\r\n\t\ticon: {\r\n\t\t\tcontrol: 'select',\r\n\t\t\toptions: Object.values(IconType),\r\n\t\t\tdescription: 'Иконка',\r\n\t\t},\r\n\t\theight: {\r\n\t\t\tcontrol: 'text',\r\n\t\t\tdescription: 'Высота, px',\r\n\t\t},\r\n\t\twidth: {\r\n\t\t\tcontrol: 'text',\r\n\t\t\tdescription: 'Ширина, px',\r\n\t\t},\r\n\t\tcolor: {\r\n\t\t\tcontrol: 'select',\r\n\t\t\toptions: Object.values(Colors),\r\n\t\t\tdescription: 'Цвет иконки',\r\n\t\t},\r\n\t},\r\n}"
                 }
             ],
-            "projects/front-components/src/lib/components/toggle/toggle.stories.ts": [
+            "projects/front-components/src/lib/components/text/text.stories.ts": [
                 {
                     "name": "Default",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "projects/front-components/src/lib/components/toggle/toggle.stories.ts",
+                    "file": "projects/front-components/src/lib/components/text/text.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\r\n\targs: {\r\n\t\tchecked: signal<boolean>(false),\r\n\t\tisDisabled: signal<boolean>(false),\r\n\t},\r\n}"
+                    "defaultValue": "{\r\n\targs: {\r\n\t\ttype: TextType.BodyMd,\r\n\t\tweight: TextWeight.Regular,\r\n\t\tcolor: Colors.TextInformation,\r\n\t\tisEllipsis: false,\r\n\t},\r\n\trender: (args) => ({\r\n\t\tcomponent: TextComponent,\r\n\t\tprops: args,\r\n\t\ttemplate: `<ss-lib-text [type]=\"type\" [weight]=\"weight\" [color]=\"color\" [isEllipsis]=\"isEllipsis\">Это текст с базовым стилем.</ss-lib-text>`,\r\n\t}),\r\n}"
                 },
                 {
-                    "name": "meta",
+                    "name": "EllipsisText",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "projects/front-components/src/lib/components/toggle/toggle.stories.ts",
+                    "file": "projects/front-components/src/lib/components/text/text.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "Meta<ToggleComponent>",
-                    "defaultValue": "{\r\n\ttitle: 'Components/Toggle',\r\n\tcomponent: ToggleComponent,\r\n\ttags: ['autodocs'],\r\n\targTypes: {\r\n\t\tchecked: {\r\n\t\t\tcontrol: 'boolean',\r\n\t\t\tdescription: 'Переключить',\r\n\t\t},\r\n\t\tisDisabled: {\r\n\t\t\tcontrol: 'boolean',\r\n\t\t\tdescription: 'Заблокировать',\r\n\t\t},\r\n\t},\r\n}"
-                }
-            ],
-            "projects/front-components/src/lib/components/text/text.stories.ts": [
+                    "type": "Story",
+                    "defaultValue": "{\r\n\targs: {\r\n\t\ttype: TextType.BodyMd,\r\n\t\tweight: TextWeight.Regular,\r\n\t\tcolor: Colors.TextInformation,\r\n\t\tisEllipsis: true,\r\n\t},\r\n\trender: (args) => ({\r\n\t\tcomponent: TextComponent,\r\n\t\tprops: args,\r\n\t\ttemplate: `<ss-lib-text [type]=\"type\" [weight]=\"weight\" [color]=\"color\" [isEllipsis]=\"isEllipsis\">Этот текст будет обрезан с троеточием, если он слишком длинный.</ss-lib-text>`,\r\n\t}),\r\n}"
+                },
                 {
                     "name": "meta",
                     "ctype": "miscellaneous",
@@ -183,13 +181,13 @@
                     "kind": 183
                 }
             ],
-            "projects/front-components/src/lib/components/toggle/toggle.stories.ts": [
+            "projects/front-components/src/lib/components/text/text.stories.ts": [
                 {
                     "name": "Story",
                     "ctype": "miscellaneous",
                     "subtype": "typealias",
-                    "rawtype": "StoryObj<ToggleComponent>",
-                    "file": "projects/front-components/src/lib/components/toggle/toggle.stories.ts",
+                    "rawtype": "StoryObj<TextComponent>",
+                    "file": "projects/front-components/src/lib/components/text/text.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
@@ -248,23 +246,23 @@
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
-                "name": "meta",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "projects/front-components/src/lib/components/toggle/toggle.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
                 "name": "Default",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
             },
             {
-                "filePath": "projects/front-components/src/lib/components/toggle/toggle.stories.ts",
+                "filePath": "projects/front-components/src/lib/components/text/text.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "EllipsisText",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/front-components/src/lib/components/text/text.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
@@ -274,7 +272,7 @@
                 "status": "low"
             },
             {
-                "filePath": "projects/front-components/src/lib/components/toggle/toggle.stories.ts",
+                "filePath": "projects/front-components/src/lib/components/text/text.stories.ts",
                 "type": "type alias",
                 "linktype": "miscellaneous",
                 "linksubtype": "typealias",
