@@ -21,6 +21,8 @@
 
 		@if (type() === ToastTypeEnum.Error) {
 			<ss-lib-icon
+				[width]="'20'"
+				[height]="'20'"
 				[color]="Colors.IconError"
 				[icon]="IconType.Alert"
 			></ss-lib-icon>
@@ -28,6 +30,8 @@
 
 		@if (type() === ToastTypeEnum.Success) {
 			<ss-lib-icon
+				[width]="'20'"
+				[height]="'20'"
 				[color]="Colors.IconSuccess"
 				[icon]="IconType.CheckCircle"
 			></ss-lib-icon>
