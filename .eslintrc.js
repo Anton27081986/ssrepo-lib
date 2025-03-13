@@ -1,6 +1,6 @@
 module.exports = {
 	root: true,
-	extends: [],
+	extends: ["plugin:storybook/recommended"],
 	ignorePatterns: [".cache/", ".git/", ".github/", "node_modules/"],
 	overrides: [
 		{

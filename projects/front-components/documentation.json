@@ -1,0 +1,288 @@
+{
+    "pipes": [],
+    "interfaces": [],
+    "injectables": [],
+    "guards": [],
+    "interceptors": [],
+    "classes": [],
+    "directives": [],
+    "components": [],
+    "modules": [],
+    "miscellaneous": {
+        "variables": [
+            {
+                "name": "Default",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/front-components/src/lib/components/icon/icon.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\r\n\targs: {\r\n\t\ticon: IconType.Bell,\r\n\t\theight: '24',\r\n\t\twidth: '24',\r\n\t\tcolor: Colors.IconPrimary,\r\n\t},\r\n}"
+            },
+            {
+                "name": "Default",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/front-components/src/lib/components/toggle/toggle.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\r\n\targs: {\r\n\t\tchecked: signal<boolean>(false),\r\n\t\tisDisabled: signal<boolean>(false),\r\n\t},\r\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/front-components/src/lib/components/icon/icon.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<IconComponent>",
+                "defaultValue": "{\r\n\ttitle: 'Components/Icon',\r\n\tcomponent: IconComponent,\r\n\ttags: ['autodocs'],\r\n\targTypes: {\r\n\t\ticon: {\r\n\t\t\tcontrol: 'select',\r\n\t\t\toptions: Object.values(IconType),\r\n\t\t\tdescription: 'Иконка',\r\n\t\t},\r\n\t\theight: {\r\n\t\t\tcontrol: 'text',\r\n\t\t\tdescription: 'Высота, px',\r\n\t\t},\r\n\t\twidth: {\r\n\t\t\tcontrol: 'text',\r\n\t\t\tdescription: 'Ширина, px',\r\n\t\t},\r\n\t\tcolor: {\r\n\t\t\tcontrol: 'select',\r\n\t\t\toptions: Object.values(Colors),\r\n\t\t\tdescription: 'Цвет иконки',\r\n\t\t},\r\n\t},\r\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/front-components/src/lib/components/text/text.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<TextComponent>",
+                "defaultValue": "{\r\n\ttitle: 'Components/Text',\r\n\tcomponent: TextComponent,\r\n\ttags: ['autodocs'],\r\n\targTypes: {\r\n\t\ttype: {\r\n\t\t\tcontrol: 'select',\r\n\t\t\toptions: Object.values(TextType),\r\n\t\t\tdescription: 'Тип текста',\r\n\t\t},\r\n\t\tweight: {\r\n\t\t\tcontrol: 'select',\r\n\t\t\toptions: Object.values(TextWeight),\r\n\t\t\tdescription: 'Толщина шрифта',\r\n\t\t},\r\n\t\tcolor: {\r\n\t\t\tcontrol: 'select',\r\n\t\t\toptions: Object.values(Colors),\r\n\t\t\tdescription: 'Цвет текста',\r\n\t\t},\r\n\t\tisEllipsis: {\r\n\t\t\tcontrol: 'boolean',\r\n\t\t\tdescription: 'Добавлять троеточие при переполнении',\r\n\t\t},\r\n\t},\r\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/front-components/src/lib/components/toggle/toggle.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<ToggleComponent>",
+                "defaultValue": "{\r\n\ttitle: 'Components/Toggle',\r\n\tcomponent: ToggleComponent,\r\n\ttags: ['autodocs'],\r\n\targTypes: {\r\n\t\tchecked: {\r\n\t\t\tcontrol: 'boolean',\r\n\t\t\tdescription: 'Переключить',\r\n\t\t},\r\n\t\tisDisabled: {\r\n\t\t\tcontrol: 'boolean',\r\n\t\t\tdescription: 'Заблокировать',\r\n\t\t},\r\n\t},\r\n}"
+            },
+            {
+                "name": "preview",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/front-components/.storybook/preview.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Preview",
+                "defaultValue": "{\r\n\tparameters: {\r\n\t\tcontrols: {\r\n\t\t\tmatchers: {\r\n\t\t\t\tcolor: /(background|color)$/i,\r\n\t\t\t\tdate: /Date$/i,\r\n\t\t\t},\r\n\t\t},\r\n\t},\r\n}"
+            }
+        ],
+        "functions": [],
+        "typealiases": [
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<IconComponent>",
+                "file": "projects/front-components/src/lib/components/icon/icon.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 183
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<ToggleComponent>",
+                "file": "projects/front-components/src/lib/components/toggle/toggle.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 183
+            }
+        ],
+        "enumerations": [],
+        "groupedVariables": {
+            "projects/front-components/src/lib/components/icon/icon.stories.ts": [
+                {
+                    "name": "Default",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/front-components/src/lib/components/icon/icon.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\r\n\targs: {\r\n\t\ticon: IconType.Bell,\r\n\t\theight: '24',\r\n\t\twidth: '24',\r\n\t\tcolor: Colors.IconPrimary,\r\n\t},\r\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/front-components/src/lib/components/icon/icon.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<IconComponent>",
+                    "defaultValue": "{\r\n\ttitle: 'Components/Icon',\r\n\tcomponent: IconComponent,\r\n\ttags: ['autodocs'],\r\n\targTypes: {\r\n\t\ticon: {\r\n\t\t\tcontrol: 'select',\r\n\t\t\toptions: Object.values(IconType),\r\n\t\t\tdescription: 'Иконка',\r\n\t\t},\r\n\t\theight: {\r\n\t\t\tcontrol: 'text',\r\n\t\t\tdescription: 'Высота, px',\r\n\t\t},\r\n\t\twidth: {\r\n\t\t\tcontrol: 'text',\r\n\t\t\tdescription: 'Ширина, px',\r\n\t\t},\r\n\t\tcolor: {\r\n\t\t\tcontrol: 'select',\r\n\t\t\toptions: Object.values(Colors),\r\n\t\t\tdescription: 'Цвет иконки',\r\n\t\t},\r\n\t},\r\n}"
+                }
+            ],
+            "projects/front-components/src/lib/components/toggle/toggle.stories.ts": [
+                {
+                    "name": "Default",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/front-components/src/lib/components/toggle/toggle.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\r\n\targs: {\r\n\t\tchecked: signal<boolean>(false),\r\n\t\tisDisabled: signal<boolean>(false),\r\n\t},\r\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/front-components/src/lib/components/toggle/toggle.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<ToggleComponent>",
+                    "defaultValue": "{\r\n\ttitle: 'Components/Toggle',\r\n\tcomponent: ToggleComponent,\r\n\ttags: ['autodocs'],\r\n\targTypes: {\r\n\t\tchecked: {\r\n\t\t\tcontrol: 'boolean',\r\n\t\t\tdescription: 'Переключить',\r\n\t\t},\r\n\t\tisDisabled: {\r\n\t\t\tcontrol: 'boolean',\r\n\t\t\tdescription: 'Заблокировать',\r\n\t\t},\r\n\t},\r\n}"
+                }
+            ],
+            "projects/front-components/src/lib/components/text/text.stories.ts": [
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/front-components/src/lib/components/text/text.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<TextComponent>",
+                    "defaultValue": "{\r\n\ttitle: 'Components/Text',\r\n\tcomponent: TextComponent,\r\n\ttags: ['autodocs'],\r\n\targTypes: {\r\n\t\ttype: {\r\n\t\t\tcontrol: 'select',\r\n\t\t\toptions: Object.values(TextType),\r\n\t\t\tdescription: 'Тип текста',\r\n\t\t},\r\n\t\tweight: {\r\n\t\t\tcontrol: 'select',\r\n\t\t\toptions: Object.values(TextWeight),\r\n\t\t\tdescription: 'Толщина шрифта',\r\n\t\t},\r\n\t\tcolor: {\r\n\t\t\tcontrol: 'select',\r\n\t\t\toptions: Object.values(Colors),\r\n\t\t\tdescription: 'Цвет текста',\r\n\t\t},\r\n\t\tisEllipsis: {\r\n\t\t\tcontrol: 'boolean',\r\n\t\t\tdescription: 'Добавлять троеточие при переполнении',\r\n\t\t},\r\n\t},\r\n}"
+                }
+            ],
+            "projects/front-components/.storybook/preview.ts": [
+                {
+                    "name": "preview",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/front-components/.storybook/preview.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Preview",
+                    "defaultValue": "{\r\n\tparameters: {\r\n\t\tcontrols: {\r\n\t\t\tmatchers: {\r\n\t\t\t\tcolor: /(background|color)$/i,\r\n\t\t\t\tdate: /Date$/i,\r\n\t\t\t},\r\n\t\t},\r\n\t},\r\n}"
+                }
+            ]
+        },
+        "groupedFunctions": {},
+        "groupedEnumerations": {},
+        "groupedTypeAliases": {
+            "projects/front-components/src/lib/components/icon/icon.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<IconComponent>",
+                    "file": "projects/front-components/src/lib/components/icon/icon.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 183
+                }
+            ],
+            "projects/front-components/src/lib/components/toggle/toggle.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<ToggleComponent>",
+                    "file": "projects/front-components/src/lib/components/toggle/toggle.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 183
+                }
+            ]
+        }
+    },
+    "routes": [],
+    "coverage": {
+        "count": 0,
+        "status": "low",
+        "files": [
+            {
+                "filePath": "projects/front-components/.storybook/preview.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "preview",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/front-components/src/lib/components/icon/icon.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Default",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/front-components/src/lib/components/icon/icon.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/front-components/src/lib/components/icon/icon.stories.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "Story",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/front-components/src/lib/components/text/text.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/front-components/src/lib/components/toggle/toggle.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Default",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/front-components/src/lib/components/toggle/toggle.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/front-components/src/lib/components/toggle/toggle.stories.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "Story",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            }
+        ]
+    }
+}
