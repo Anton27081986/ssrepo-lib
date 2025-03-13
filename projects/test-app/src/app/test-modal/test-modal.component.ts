@@ -12,8 +12,11 @@ import {
 	ModalRef,
 	Shape,
 	Status,
+	ToastTypeEnum,
 } from '../../../../front-components/src/lib/shared/models';
 import { FieldCtrlDirective } from '../../../../front-components/src/lib/core/directives';
+import { ToastRef } from '../../../../front-components/src/lib/components/toast/toast-ref';
+import { ToastService } from '../../../../front-components/src/lib/shared/services/toast.service';
 
 export interface TestModalData {
 	id: number;
@@ -50,6 +53,8 @@ export class TestModalComponent {
 		ModalRef<TestModalData>,
 	);
 
+	protected readonly toastService: ToastService = inject(ToastService);
+
 	protected id: number = this.modalRef.data.id;
 	protected text: string = this.modalRef.data.text;
 
@@ -59,5 +64,12 @@ export class TestModalComponent {
 
 	public close(): void {
 		this.modalRef.close();
+	}
+
+	public showToastDefault(): ToastRef {
+		return this.toastService.show({
+			text: 'Какой то тостик',
+			type: ToastTypeEnum.Default,
+		});
 	}
 }

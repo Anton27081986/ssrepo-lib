@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
-import type { Observable } from 'rxjs';
-import { of } from 'rxjs';
+import { catchError, Observable, of } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 import {
 	ButtonType,
 	Colors,
@@ -14,14 +14,16 @@ import {
 	Status,
 	TextType,
 	TextWeight,
+	ToastTypeEnum,
 	TooltipPosition,
 } from '../../../../front-components/src/lib/shared/models';
 import { standImports } from './stand.imports';
 import { ColumnsStateService } from '../../../../front-components/src/lib/components';
-import { DROPDOWN_ITEMS, DEFAULT_COLS } from './constants';
+import { DEFAULT_COLS, DROPDOWN_ITEMS } from './constants';
 import { SharedPopupService } from '../../../../front-components/src/lib/shared/services';
 import type { TestModalData } from '../test-modal/test-modal.component';
 import { TestModalComponent } from '../test-modal/test-modal.component';
+import { ToastRef } from '../../../../front-components/src/lib/components/toast/toast-ref';
 
 @Component({
 	selector: 'app-stand',
@@ -67,7 +69,10 @@ export class StandComponent {
 
 	private readonly sharedPopupService = inject(SharedPopupService);
 
-	constructor(private readonly columnState: ColumnsStateService) {
+	constructor(
+		private readonly columnState: ColumnsStateService,
+		private readonly http: HttpClient,
+	) {
 		this.columnState.colsTr$.next(DEFAULT_COLS);
 	}
 
@@ -129,5 +134,65 @@ export class StandComponent {
 
 	public submit(): Observable<unknown> {
 		return of([]);
+	}
+
+	public showToastDefault(): ToastRef {
+		return this.sharedPopupService.openToast({
+			text: 'Какой то тостик',
+			type: ToastTypeEnum.Default,
+		});
+	}
+
+	public showToastError(): ToastRef {
+		return this.sharedPopupService.openToast({
+			text: 'Какой то тостик',
+			type: ToastTypeEnum.Error,
+		});
+	}
+
+	public showToastSuccess(): ToastRef {
+		return this.sharedPopupService.openToast({
+			text:
+				'Какой то тостик Какой то тостик Какой то тостик Какой то тостик ' +
+				'Какой то тостик Какой то тостик Какой то тостикКакой то тостик',
+			type: ToastTypeEnum.Success,
+		});
+	}
+
+	public viewToastSuccess(): unknown {
+		return (
+			this.http
+				.post('https://reqres.in/api/users?page=2', {
+					email: 'eve.holt@reqres.in',
+					password: 'pistol',
+				})
+				// eslint-disable-next-line no-console
+				.subscribe((item) => console.log(item))
+		);
+	}
+
+	public exampleMetod(params: { email: string }): void {
+		this.http
+			.post('https://reqres.in/api/register', params)
+			.pipe(
+				catchError(() => {
+					this.sharedPopupService.openToast({
+						text: 'Какой то тостик Какой то тостик',
+						type: ToastTypeEnum.Error,
+						mainButton: {
+							text: 'Попробовать снова',
+							click: () => this.exampleMetod(params),
+						},
+						secondaryButton: {
+							text: 'Попробовать еще',
+							// eslint-disable-next-line no-console
+							click: () => console.log('secondary Button'),
+						},
+					});
+
+					return of([]);
+				}),
+			)
+			.subscribe();
 	}
 }
