@@ -498,3 +498,32 @@
 	></ss-lib-datepicker>
 </ss-lib-form-field>
 <br />
+
+<ss-lib-button
+	[type]="ButtonType.Primary"
+	[text]="'Default'"
+	(click)="showToastDefault()"
+/>
+<ss-lib-button
+	[type]="ButtonType.Primary"
+	[text]="'Primary'"
+	(click)="showToastError()"
+/>
+<ss-lib-button
+	[type]="ButtonType.Primary"
+	[text]="'Success'"
+	(click)="showToastSuccess()"
+/>
+
+<ss-lib-button
+	[type]="ButtonType.Primary"
+	[text]="'Success api'"
+	(click)="viewToastSuccess()"
+/>
+
+<ss-lib-button
+	[type]="ButtonType.Primary"
+	[text]="'Error api'"
+	(click)="exampleMetod({ email: 'sydney@fife' })"
+/>
+<br />

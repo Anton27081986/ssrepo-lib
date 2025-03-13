@@ -2,12 +2,18 @@ import { inject, Injectable } from '@angular/core';
 import { PopupContent } from '../models/types/pop-up';
 import { ModalService } from './modal.service';
 import { PopupTypeEnum } from '../models/enums/popup-type-enum';
-import { ConfirmModalComponent, LightBoxComponent } from '../../components';
-import { IConfirmData, ILightBoxData, ModalRef } from '../models';
+import {
+	ConfirmModalComponent,
+	LightBoxComponent,
+	ToastRef,
+} from '../../components';
+import { IConfirmData, ILightBoxData, ModalRef, Toast } from '../models';
+import { ToastService } from './toast.service';
 
 @Injectable({ providedIn: 'root' })
 export class SharedPopupService {
 	private readonly popup: ModalService = inject(ModalService);
+	private readonly toastService: ToastService = inject(ToastService);
 
 	/**
 	 * func open modal window
@@ -98,6 +104,10 @@ export class SharedPopupService {
 		}
 
 		return popover;
+	}
+
+	public openToast(toast: Toast): ToastRef {
+		return this.toastService.show(toast);
 	}
 
 	private addBackdropCatch(popover: ModalRef): void {
