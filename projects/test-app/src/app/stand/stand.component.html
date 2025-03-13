@@ -499,6 +499,19 @@
 </ss-lib-form-field>
 <br />
 
+<div class="scrollbar-test">
+	<!--	<ss-lib-scrollbar>-->
+	<ss-lib-scrollbar>
+		@for (colCount of 100 | repeatTimes; track $index) {
+			<div class="scrollbar-test__item">
+				Товарищи! сложившаяся структура организации играет важную роль в
+				формировании модели развития
+			</div>
+		}
+	</ss-lib-scrollbar>
+	<!--	</ss-lib-scrollbar>-->
+</div>
+
 <ss-lib-button
 	[type]="ButtonType.Primary"
 	[text]="'Default'"
