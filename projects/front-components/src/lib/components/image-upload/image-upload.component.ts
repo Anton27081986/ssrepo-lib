@@ -4,7 +4,6 @@ import {
 	effect,
 	forwardRef,
 	input,
-	InputSignal,
 	signal,
 } from '@angular/core';
 import {
@@ -42,7 +41,7 @@ enum States {
  *
  * [disabled]: boolean - Только для чтения. По умолчанию: `false`
  *
- * [maxSize]: number - Максимальный размер, байт. По умолчанию: `0б`
+ * [maxSize]: number - Максимальный размер, байт. По умолчанию: `0Мб`
  *
  * [maxHeight]: number - Минимальная высота, px. По умолчанию: `0px`
  *
@@ -73,10 +72,10 @@ enum States {
 })
 export class ImageUploadComponent implements ControlValueAccessor {
 	public disabled = input<boolean>(false);
-	public maxSize: InputSignal<number> = input<number>(0);
+	public maxSize = input<number>(0);
 
-	public maxHeight = input<number>(400);
-	public maxWidth = input<number>(400);
+	public maxHeight = input<number>(0);
+	public maxWidth = input<number>(0);
 
 	public src = input<string | null>(null);
 
@@ -91,14 +90,18 @@ export class ImageUploadComponent implements ControlValueAccessor {
 	protected readonly Colors = Colors;
 	protected readonly States = States;
 
-	private onChange!: (value: FileList | null) => void;
+	private onChange!: (value: string | null) => void;
 	private onTouched!: () => void;
 
 	constructor(private readonly sharedPopupService: SharedPopupService) {
 		toSignal(
 			this.inputCtrl.valueChanges.pipe(
 				debounceTime(300),
-				tap<FileList | null>((value) => this.onChange(value)),
+				tap<string | null>((value) => {
+					if (value) {
+						return this.onChange(value);
+					}
+				}),
 			),
 		);
 
@@ -110,15 +113,15 @@ export class ImageUploadComponent implements ControlValueAccessor {
 		});
 	}
 
-	public writeValue(value: FileList | null): void {
+	public writeValue(value: string | null): void {
 		this.inputCtrl.setValue(value, { emitEvent: false });
 	}
 
-	public registerOnChange(fn: (value: FileList | null) => void): void {
+	public registerOnChange(fn: (value: string | null) => void): void {
 		this.onChange = fn;
 	}
 
-	public registerOnTouched(fn: () => FileList): void {
+	public registerOnTouched(fn: () => string): void {
 		this.onTouched = fn;
 	}
 
@@ -176,7 +179,7 @@ export class ImageUploadComponent implements ControlValueAccessor {
 
 		this.state.set(States.Loading);
 
-		if (file.size > this.maxSize()) {
+		if (this.maxSize() && file.size > this.maxSize() * 1024 * 1024) {
 			this.showToastError('Изображение не соответствует требованиям');
 			this.state.set(States.Empty);
 
@@ -191,7 +194,10 @@ export class ImageUploadComponent implements ControlValueAccessor {
 			const height = img.height;
 			const width = img.width;
 
-			if (height > this.maxHeight() || width > this.maxWidth()) {
+			if (
+				(this.maxHeight() && height > this.maxHeight()) ||
+				(this.maxWidth() && width > this.maxWidth())
+			) {
 				this.showToastError('Изображение не соответствует требованиям');
 				this.inputCtrl.setValue(null);
 				this.state.set(States.Empty);

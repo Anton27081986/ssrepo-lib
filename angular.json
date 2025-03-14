@@ -38,6 +38,15 @@
 						"polyfills": ["zone.js", "zone.js/testing"]
 					}
 				},
+				"lint": {
+					"builder": "@angular-eslint/builder:lint",
+					"options": {
+						"lintFilePatterns": [
+							"projects/front-components/**/*.ts",
+							"projects/front-components/**/*.html"
+						]
+					}
+				},
 				"storybook": {
 					"builder": "@storybook/angular:start-storybook",
 					"options": {
@@ -50,7 +59,15 @@
 							"-d",
 							"projects/front-components"
 						],
-						"port": 6006
+						"port": 6006,
+						"styles": [
+							"projects/front-components/src/lib/shared/styles/_variables/_brand.scss",
+							"projects/front-components/src/lib/shared/styles/_variables/_alias.scss",
+							"projects/front-components/src/lib/shared/styles/custom-variables.scss",
+							"projects/front-components/src/lib/shared/styles/table.scss",
+							"projects/front-components/src/lib/shared/styles/mixins/text.scss",
+							"projects/front-components/src/lib/shared/styles/overlay.scss"
+						]
 					}
 				},
 				"build-storybook": {
@@ -65,15 +82,14 @@
 							"-d",
 							"projects/front-components"
 						],
-						"outputDir": "dist/storybook/front-components"
-					}
-				},
-				"lint": {
-					"builder": "@angular-eslint/builder:lint",
-					"options": {
-						"lintFilePatterns": [
-							"projects/front-components/**/*.ts",
-							"projects/front-components/**/*.html"
+						"outputDir": "dist/storybook/front-components",
+						"styles": [
+							"projects/front-components/src/lib/shared/styles/_variables/_brand.scss",
+							"projects/front-components/src/lib/shared/styles/_variables/_alias.scss",
+							"projects/front-components/src/lib/shared/styles/custom-variables.scss",
+							"projects/front-components/src/lib/shared/styles/table.scss",
+							"projects/front-components/src/lib/shared/styles/mixins/text.scss",
+							"projects/front-components/src/lib/shared/styles/overlay.scss"
 						]
 					}
 				}

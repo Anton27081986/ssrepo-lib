@@ -29,14 +29,17 @@ import {
 	ImageUploadComponent,
 	CalendarComponent,
 	DatepickerComponent,
+	ScrollbarComponent,
 } from '../../../../front-components/src/lib/components';
 import {
 	FieldCtrlDirective,
 	PopoverTriggerForDirective,
 } from '../../../../front-components/src/lib/core/directives';
+import { RepeatTimesPipe } from '../../../../front-components/src/lib/core/pipes';
 
 export const standImports = [
 	ReactiveFormsModule,
+	RepeatTimesPipe,
 	FieldCtrlDirective,
 	PopoverTriggerForDirective,
 	TooltipDirective,
@@ -69,4 +72,5 @@ export const standImports = [
 	SpinnerComponent,
 	CalendarComponent,
 	DatepickerComponent,
+	ScrollbarComponent,
 ];

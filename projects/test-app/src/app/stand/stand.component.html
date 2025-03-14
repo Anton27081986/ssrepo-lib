@@ -1,9 +1,6 @@
 <ss-lib-image-upload
 	fieldCtrl
 	[formControl]="imgCtrl"
-	[maxHeight]="200"
-	[maxWidth]="990"
-	[maxSize]="1000000"
 ></ss-lib-image-upload>
 
 <div class="spinners">
@@ -505,6 +502,17 @@
 	></ss-lib-datepicker>
 </ss-lib-form-field>
 <br />
+
+<div class="scrollbar-test">
+	<ss-lib-scrollbar>
+		@for (colCount of 100 | repeatTimes; track $index) {
+			<div class="scrollbar-test__item">
+				Товарищи! сложившаяся структура организации играет важную роль в
+				формировании модели развития
+			</div>
+		}
+	</ss-lib-scrollbar>
+</div>
 
 <ss-lib-button
 	[type]="ButtonType.Primary"
