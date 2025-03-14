@@ -23,7 +23,7 @@ import { DEFAULT_COLS, DROPDOWN_ITEMS } from './constants';
 import { SharedPopupService } from '../../../../front-components/src/lib/shared/services';
 import type { TestModalData } from '../test-modal/test-modal.component';
 import { TestModalComponent } from '../test-modal/test-modal.component';
-import { ToastRef } from '../../../../front-components/src/lib/components/toast/toast-ref';
+import { ToastRef } from '../../../../front-components/src/lib/components';
 
 @Component({
 	selector: 'app-stand',
@@ -34,6 +34,8 @@ import { ToastRef } from '../../../../front-components/src/lib/components/toast/
 	styleUrl: './stand.component.scss',
 })
 export class StandComponent {
+	public imgCtrl = new FormControl(null);
+
 	public toggleCtrl = new FormControl(false);
 	public inputCtrl = new FormControl('rrrr', [
 		Validators.required,
