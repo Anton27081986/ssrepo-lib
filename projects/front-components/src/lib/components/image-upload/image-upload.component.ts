@@ -90,14 +90,18 @@ export class ImageUploadComponent implements ControlValueAccessor {
 	protected readonly Colors = Colors;
 	protected readonly States = States;
 
-	private onChange!: (value: FileList | null) => void;
+	private onChange!: (value: string | null) => void;
 	private onTouched!: () => void;
 
 	constructor(private readonly sharedPopupService: SharedPopupService) {
 		toSignal(
 			this.inputCtrl.valueChanges.pipe(
 				debounceTime(300),
-				tap<FileList | null>((value) => this.onChange(value)),
+				tap<string | null>((value) => {
+					if (value) {
+						return this.onChange(value);
+					}
+				}),
 			),
 		);
 
@@ -109,15 +113,15 @@ export class ImageUploadComponent implements ControlValueAccessor {
 		});
 	}
 
-	public writeValue(value: FileList | null): void {
+	public writeValue(value: string | null): void {
 		this.inputCtrl.setValue(value, { emitEvent: false });
 	}
 
-	public registerOnChange(fn: (value: FileList | null) => void): void {
+	public registerOnChange(fn: (value: string | null) => void): void {
 		this.onChange = fn;
 	}
 
-	public registerOnTouched(fn: () => FileList): void {
+	public registerOnTouched(fn: () => string): void {
 		this.onTouched = fn;
 	}
 
