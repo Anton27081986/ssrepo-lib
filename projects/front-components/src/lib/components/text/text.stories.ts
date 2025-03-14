@@ -1,37 +1,38 @@
-import { Meta, StoryObj } from '@storybook/angular';
+import type { Meta } from '@storybook/angular';
 import { TextComponent } from './text.component';
 import { Colors, TextType, TextWeight } from '../../shared/models';
 
 // Мета-информация о компоненте
 const meta: Meta<TextComponent> = {
-    title: 'Components/Text',
-    component: TextComponent,
-    tags: ['autodocs'],
-    argTypes: {
-        type: {
-            control: 'select',
-            options: Object.values(TextType),
-            description: 'Тип текста',
-        },
-        weight: {
-            control: 'select',
-            options: Object.values(TextWeight),
-            description: 'Толщина шрифта',
-        },
-        color: {
-            control: 'select',
-            options: Object.values(Colors),
-            description: 'Цвет текста',
-        },
-        isEllipsis: {
-            control: 'boolean',
-            description: 'Добавлять троеточие при переполнении',
-        },
-    },
+	title: 'Components/Text',
+	component: TextComponent,
+	tags: ['autodocs'],
+	argTypes: {
+		type: {
+			control: 'select',
+			options: Object.values(TextType),
+			description: 'Тип текста',
+		},
+		weight: {
+			control: 'select',
+			options: Object.values(TextWeight),
+			description: 'Толщина шрифта',
+		},
+		color: {
+			control: 'select',
+			options: Object.values(Colors),
+			description: 'Цвет текста',
+		},
+		isEllipsis: {
+			control: 'boolean',
+			description: 'Добавлять троеточие при переполнении',
+		},
+	},
 };
 
 export default meta;
-type Story = StoryObj<TextComponent>;
+
+// type Story = StoryObj<TextComponent>;
 
 // // Базовый пример
 // export const Default: Story = {

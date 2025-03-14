@@ -1,21 +1,27 @@
+import type { AfterContentInit } from '@angular/core';
 import {
-    AfterContentInit,
-    Component,
-    ContentChild,
-    inject,
-    Injector,
-    input,
-    runInInjectionContext,
-    signal,
+	Component,
+	ContentChild,
+	inject,
+	Injector,
+	input,
+	runInInjectionContext,
+	signal,
 } from '@angular/core';
 import { NgClass } from '@angular/common';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { filter, map, tap } from 'rxjs';
+import { Validators } from '@angular/forms';
 import { IconComponent } from '../icon/icon.component';
 import { TextComponent } from '../text/text.component';
 import { FieldCtrlDirective } from '../../core/directives';
-import { Colors, ControlState, IconType, TextType, TextWeight } from '../../shared/models';
-import { Validators } from '@angular/forms';
+import {
+	Colors,
+	ControlState,
+	IconType,
+	TextType,
+	TextWeight,
+} from '../../shared/models';
 
 /**
  * Параметры:*
@@ -28,82 +34,90 @@ import { Validators } from '@angular/forms';
  * [showValidationFieldIcon]: boolean - Отображать иконку валидации в . По умолчанию: `false`
  */
 @Component({
-    selector: 'ss-lib-form-field',
-    standalone: true,
-    imports: [
-        TextComponent,
-        NgClass,
-        IconComponent,
-    ],
-    templateUrl: './form-field.component.html',
-    styleUrl: './form-field.component.scss'
+	selector: 'ss-lib-form-field',
+	standalone: true,
+	imports: [TextComponent, NgClass, IconComponent],
+	templateUrl: './form-field.component.html',
+	styleUrl: './form-field.component.scss',
 })
 export class FormFieldComponent implements AfterContentInit {
-    @ContentChild(FieldCtrlDirective) fieldCtrl?: FieldCtrlDirective;
+	@ContentChild(FieldCtrlDirective)
+	public fieldCtrl?: FieldCtrlDirective;
 
-    private readonly injector = inject(Injector);
+	public label = input<string>('');
+	public hint = input<string>('');
+	public showValidation = input<boolean>(true);
+	public showValidationFieldIcon = input<boolean>(false);
+	public errorText = input<string>('');
 
-    public label = input<string>('');
-    public hint = input<string>('');
-    public showValidation = input<boolean>(true);
-    public showValidationFieldIcon = input<boolean>(false);
-    public errorText = input<string>('');
+	public existValidators = signal<boolean>(false);
+	public isRequired = signal<boolean>(false);
+	public fieldCtrlState = signal<ControlState>(ControlState.Touched);
+	public currentFieldCtrlState = signal<ControlState>(ControlState.Touched);
 
-    public existValidators = signal<boolean>(false);
-    public isRequired = signal<boolean>(false);
-    public fieldCtrlState = signal<ControlState>(ControlState.Touched);
-    public currentFieldCtrlState = signal<ControlState>(ControlState.Touched);
+	public readonly TextType = TextType;
+	public readonly TextWeight = TextWeight;
+	public readonly Colors = Colors;
+	public readonly IconType = IconType;
 
-    public readonly TextType = TextType;
-    public readonly TextWeight = TextWeight;
-    public readonly Colors = Colors;
-    public readonly IconType = IconType;
+	private readonly injector = inject(Injector);
 
-    ngAfterContentInit() {
-        if (this.showValidation()) {
-            this.initFieldCtrlState();
-        }
-    }
+	public ngAfterContentInit(): void {
+		if (this.showValidation()) {
+			this.initFieldCtrlState();
+		}
+	}
 
-    public updateFormFieldStateOnFocusout(): void {
-        this.currentFieldCtrlState.set(this.fieldCtrlState());
-    }
+	public updateFormFieldStateOnFocusout(): void {
+		this.currentFieldCtrlState.set(this.fieldCtrlState());
+	}
 
-    private initFieldCtrlState(): void {
-        if (this.fieldCtrl?.ngControl.control) {
-            this.fieldCtrl!.ngControl.control!.markAllAsTouched = () => {
-                const initState = this.fieldCtrl!.ngControl.control!.status === 'VALID'
-                    ? ControlState.Valid
-                    : ControlState.Invalid;
+	private initFieldCtrlState(): void {
+		if (this.fieldCtrl?.ngControl.control) {
+			this.fieldCtrl!.ngControl.control!.markAllAsTouched = () => {
+				const initState =
+					this.fieldCtrl!.ngControl.control!.status === 'VALID'
+						? ControlState.Valid
+						: ControlState.Invalid;
 
-                this.fieldCtrlState.set(initState);
-                this.currentFieldCtrlState.set(initState)
+				this.fieldCtrlState.set(initState);
+				this.currentFieldCtrlState.set(initState);
+			};
 
-            };
+			if (
+				this.fieldCtrl?.ngControl.control.hasValidator(
+					Validators.required,
+				)
+			) {
+				this.isRequired.set(true);
+			}
 
-            if (this.fieldCtrl?.ngControl.control.hasValidator(Validators.required)) {
-                this.isRequired.set(true)
-            }
+			if (
+				this.fieldCtrl?.ngControl.control!.validator ||
+				this.fieldCtrl?.ngControl.control!.asyncValidator
+			) {
+				this.existValidators.set(true);
+			}
+		}
 
-            if (this.fieldCtrl?.ngControl.control!.validator || this.fieldCtrl?.ngControl.control!.asyncValidator) {
-                this.existValidators.set(true);
-            }
-        }
+		runInInjectionContext(this.injector, () => {
+			toSignal(
+				this.fieldCtrl!.ngControl.control!.statusChanges.pipe(
+					filter((_) => this.existValidators()),
+					map((status) =>
+						status === 'VALID'
+							? ControlState.Valid
+							: ControlState.Invalid,
+					),
+					tap((status) => {
+						if (this.fieldCtrlState() === ControlState.Invalid) {
+							this.currentFieldCtrlState.set(ControlState.Valid);
+						}
 
-        runInInjectionContext(this.injector, () => {
-            toSignal(
-                this.fieldCtrl!.ngControl.control!.statusChanges.pipe(
-                    filter(_ => this.existValidators()),
-                    map(status => status === 'VALID' ? ControlState.Valid : ControlState.Invalid),
-                    tap(status => {
-                        if (this.fieldCtrlState() === ControlState.Invalid) {
-                            this.currentFieldCtrlState.set(ControlState.Valid)
-                        }
-
-                        this.fieldCtrlState.set(status)
-                    }),
-                )
-            )
-        });
-    }
+						this.fieldCtrlState.set(status);
+					}),
+				),
+			);
+		});
+	}
 }

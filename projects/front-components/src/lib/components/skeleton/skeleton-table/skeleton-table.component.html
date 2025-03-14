@@ -1,7 +1,15 @@
 <ss-lib-table [isSkeleton]="true">
-  <tr class="ss-lib-table-tr" *ngFor="let itemTr of skeletonTrCols()">
-    <td class="ss-lib-table-td " *ngFor="let itemTd of itemTr.items">
-      <ss-lib-skeleton-block [config]="itemTd.skeletonConfig"></ss-lib-skeleton-block>
-    </td>
-  </tr>
+	<tr
+		*ngFor="let itemTr of skeletonTrCols()"
+		class="ss-lib-table-tr"
+	>
+		<td
+			*ngFor="let itemTd of itemTr.items"
+			class="ss-lib-table-td"
+		>
+			<ss-lib-skeleton-block
+				[config]="itemTd.skeletonConfig"
+			></ss-lib-skeleton-block>
+		</td>
+	</tr>
 </ss-lib-table>

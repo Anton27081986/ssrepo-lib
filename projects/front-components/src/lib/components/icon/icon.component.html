@@ -1,7 +1,11 @@
 @if (svg()) {
-   <div
-       class="icon"
-       [ngStyle]="{'width.px': width(), 'height.px': height(), color: color()}"
-       [innerHTML]="svg()">
-   </div>
+	<div
+		class="icon"
+		[ngStyle]="{
+			'width.px': width(),
+			'height.px': height(),
+			color: color(),
+		}"
+		[innerHTML]="svg()"
+	></div>
 }

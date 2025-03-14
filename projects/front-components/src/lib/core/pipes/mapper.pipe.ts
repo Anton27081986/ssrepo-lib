@@ -1,6 +1,6 @@
 import type { PipeTransform } from '@angular/core';
 import { Pipe } from '@angular/core';
-import { Mapper } from '../../shared/models';
+import type { Mapper } from '../../shared/models';
 
 @Pipe({
 	standalone: true,

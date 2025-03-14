@@ -5,9 +5,9 @@ import { InputComponent } from '../input/input.component';
 import { PopoverTriggerForDirective } from '../../core/directives';
 
 export const datepickerImports = [
-    ReactiveFormsModule,
-    MaskitoDirective,
-    InputComponent,
-    PopoverTriggerForDirective,
-    DatepickerCalendarComponent,
+	ReactiveFormsModule,
+	MaskitoDirective,
+	InputComponent,
+	PopoverTriggerForDirective,
+	DatepickerCalendarComponent,
 ];

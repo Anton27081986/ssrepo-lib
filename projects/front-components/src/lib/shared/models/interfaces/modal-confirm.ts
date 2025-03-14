@@ -1,15 +1,15 @@
-import { IBadgeProps } from './badge-props';
-import {PopoverConfirmationSubmit} from '../types/confirm-modal';
+import type { IBadgeProps } from './badge-props';
+import type { SubmitObservable } from '../types/submit-observable';
 
 export interface IConfirmData {
-    title: string;
-    description: string;
-    badgeProps: IBadgeProps;
-    apply: IApply,
-    cancelText?: string,
+	title: string;
+	description: string;
+	badgeProps: IBadgeProps;
+	apply: IApply;
+	cancelText?: string;
 }
 
 export interface IApply {
-  text: string,
-  onSubmit?: PopoverConfirmationSubmit;
+	text: string;
+	onSubmit?: SubmitObservable;
 }

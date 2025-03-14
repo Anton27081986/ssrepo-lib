@@ -1,4 +1,4 @@
 export enum LinkAppearance {
-    Standalone = 'standalone',
-    Inline = 'inline',
+	Standalone = 'standalone',
+	Inline = 'inline',
 }

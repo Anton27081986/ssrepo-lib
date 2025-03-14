@@ -1,47 +1,75 @@
-import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import {
-  FormFieldComponent,
-  InputComponent,
-  ModalActionApplyComponent,
-  ModalComponent, TextareaComponent
+	FormFieldComponent,
+	InputComponent,
+	ModalActionApplyComponent,
+	ModalComponent,
 } from '../../../../front-components/src/lib/components';
-import {ExtraSize, IconType, Shape, Status} from '../../../../front-components/src/lib/shared/models';
-import {ModalRef} from '../../../../front-components/src/lib/shared/models/utils/modal.ref';
-import {FieldCtrlDirective} from '../../../../front-components/src/lib/core/directives';
-import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
+import {
+	ExtraSize,
+	IconType,
+	ModalRef,
+	Shape,
+	Status,
+	ToastTypeEnum,
+} from '../../../../front-components/src/lib/shared/models';
+import { FieldCtrlDirective } from '../../../../front-components/src/lib/core/directives';
+import { ToastRef } from '../../../../front-components/src/lib/components/toast/toast-ref';
+import { ToastService } from '../../../../front-components/src/lib/shared/services/toast.service';
 
 export interface TestModalData {
-  id: number,
-  text: string
+	id: number;
+	text: string;
 }
 
 @Component({
-  selector: 'app-test-modal',
-  standalone: true,
-  imports: [ModalComponent, ModalActionApplyComponent, InputComponent, FieldCtrlDirective, FormFieldComponent,  ReactiveFormsModule],
-  templateUrl: './test-modal.component.html',
-  styleUrl: './test-modal.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+	selector: 'app-test-modal',
+	standalone: true,
+	imports: [
+		ModalComponent,
+		ModalActionApplyComponent,
+		InputComponent,
+		FieldCtrlDirective,
+		FormFieldComponent,
+		ReactiveFormsModule,
+	],
+	templateUrl: './test-modal.component.html',
+	styleUrl: './test-modal.component.scss',
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TestModalComponent {
-  protected readonly IconType = IconType;
-  protected readonly ExtraSize = ExtraSize;
-  protected readonly Shape = Shape;
-  protected readonly Status = Status;
+	public inputCtrl = new FormControl('rrrr', [
+		Validators.required,
+		Validators.minLength(10),
+	]);
 
-  inputCtrl = new FormControl('rrrr', [Validators.required, Validators.minLength(10)]);
+	protected readonly IconType = IconType;
+	protected readonly ExtraSize = ExtraSize;
+	protected readonly Shape = Shape;
+	protected readonly Status = Status;
 
-  protected readonly modalRef: ModalRef<TestModalData> = inject(ModalRef<TestModalData>);
+	protected readonly modalRef: ModalRef<TestModalData> = inject(
+		ModalRef<TestModalData>,
+	);
 
-  protected id: number = this.modalRef.data.id;
-  protected text: string = this.modalRef.data.text
+	protected readonly toastService: ToastService = inject(ToastService);
 
+	protected id: number = this.modalRef.data.id;
+	protected text: string = this.modalRef.data.text;
 
-  apply() {
-    this.modalRef.submit();
-  }
+	public onApplyEvent(): void {
+		this.modalRef.submit();
+	}
 
-  close() {
-    this.modalRef.close();
-  }
+	public close(): void {
+		this.modalRef.close();
+	}
+
+	public showToastDefault(): ToastRef {
+		return this.toastService.show({
+			text: 'Какой то тостик',
+			type: ToastTypeEnum.Default,
+		});
+	}
 }

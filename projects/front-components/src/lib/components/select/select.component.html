@@ -1,17 +1,17 @@
 <div
-    tabindex="0"
-    class="select__container"
+	tabindex="0"
+	class="select__container"
 >
-    <div class="select__body">
-        <div class="select__field">
-            <ss-lib-input
-                class="select__field_control"
-                [formControl]="selectCtrl"
-                [placeholder]="placeholder()"
-                [readOnly]="true"
-            />
-        </div>
+	<div class="select__body">
+		<div class="select__field">
+			<ss-lib-input
+				class="select__field_control"
+				[formControl]="selectCtrl"
+				[placeholder]="placeholder()"
+				[readOnly]="true"
+			/>
+		</div>
 
-        <ng-content></ng-content>
-    </div>
+		<ng-content></ng-content>
+	</div>
 </div>

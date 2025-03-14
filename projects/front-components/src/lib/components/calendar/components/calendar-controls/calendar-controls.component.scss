@@ -1,20 +1,20 @@
 .datepicker-controls {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 6px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 6px;
 
-    & > *:not(.select-year) {
-        flex-shrink: 0;
-    }
+	& > *:not(.select-year) {
+		flex-shrink: 0;
+	}
 
-    .select-year {
-        flex-grow: 1;
-        display: flex;
-        justify-content: center;
+	.select-year {
+		flex-grow: 1;
+		display: flex;
+		justify-content: center;
 
-        &__btn {
-            display: contents;
-        }
-    }
+		&__btn {
+			display: contents;
+		}
+	}
 }

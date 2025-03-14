@@ -1,19 +1,19 @@
 :host {
-    display: flex;
-    align-items: center;
-    width: fit-content;
+	display: flex;
+	align-items: center;
+	width: fit-content;
 }
 
 .avatar-button {
-    cursor: pointer;
-    border-radius: var(--border-radius-round);
+	cursor: pointer;
+	border-radius: var(--border-radius-round);
 }
 
 .avatar-button:hover {
-    --app-avatar-border: var(--border-secondary);
+	--app-avatar-border: var(--border-secondary);
 }
 
 .avatar-button:focus-visible {
-    outline: none;
-    box-shadow: var(--focus-rings-focus-ring);
+	outline: none;
+	box-shadow: var(--focus-rings-focus-ring);
 }

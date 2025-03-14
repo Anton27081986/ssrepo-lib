@@ -3,122 +3,135 @@ $verticalTooltipOffset: 10px;
 $verticalArrowOffset: 5.5px;
 
 .tooltip {
-    position: fixed;
-    max-width: 260px;
-    z-index: 199;
-    border-radius: var(--border-radius-md);
-    padding: 8px 12px;
-    opacity: 0;
-    background: var(--surface-information, #1C1C1C);
-    box-shadow: 0 2px 2px -1px #0A0D120A, 0 4px 6px -2px #0A0D1208, 0 12px 16px -4px #0A0D1214;
+	position: fixed;
+	max-width: 260px;
+	z-index: 199;
+	border-radius: var(--border-radius-md);
+	padding: 8px 12px;
+	opacity: 0;
+	background: var(--surface-information, #1c1c1c);
+	box-shadow:
+		0 2px 2px -1px #0a0d120a,
+		0 4px 6px -2px #0a0d1208,
+		0 12px 16px -4px #0a0d1214;
 
-    &::before {
-        content: '';
-        width: 0;
-        height: 0;
-        position: absolute;
-        border: 6px solid var(--surface-information, #1C1C1C);
-    }
+	&::before {
+		content: '';
+		width: 0;
+		height: 0;
+		position: absolute;
+		border: 6px solid var(--surface-information, #1c1c1c);
+	}
 
-    &--visible {
-        opacity: 1;
-    }
+	&--visible {
+		opacity: 1;
+	}
 
-    &--bottom {
-        transform: translate(-50%, $verticalTooltipOffset);
+	&--bottom {
+		transform: translate(-50%, $verticalTooltipOffset);
 
-        &::before {
-            border-left-color: transparent;
-            border-right-color: transparent;
-            border-top: none;
-            left: calc(50% - 6px);
-            top: calc(-1 * $verticalArrowOffset);
-        }
-    }
+		&::before {
+			border-left-color: transparent;
+			border-right-color: transparent;
+			border-top: none;
+			left: calc(50% - 6px);
+			top: calc(-1 * $verticalArrowOffset);
+		}
+	}
 
-    &--bottom-right {
-        transform: translate(calc(-100% + $horizontalTooltipOffset), $verticalTooltipOffset);
+	&--bottom-right {
+		transform: translate(
+			calc(-100% + $horizontalTooltipOffset),
+			$verticalTooltipOffset
+		);
 
-        &::before {
-            border-left-color: transparent;
-            border-right-color: transparent;
-            border-top: none;
-            left: calc(100% - 26px);
-            top: calc(-1 * $verticalArrowOffset);
-        }
-    }
+		&::before {
+			border-left-color: transparent;
+			border-right-color: transparent;
+			border-top: none;
+			left: calc(100% - 26px);
+			top: calc(-1 * $verticalArrowOffset);
+		}
+	}
 
-    &--bottom-left {
-        transform: translate(calc(-1 * $horizontalTooltipOffset - 1px), $verticalTooltipOffset);
+	&--bottom-left {
+		transform: translate(
+			calc(-1 * $horizontalTooltipOffset - 1px),
+			$verticalTooltipOffset
+		);
 
-        &::before {
-            border-left-color: transparent;
-            border-right-color: transparent;
-            border-top: none;
-            left: 15px;
-            top: calc(-1 * $verticalArrowOffset);
-        }
-    }
+		&::before {
+			border-left-color: transparent;
+			border-right-color: transparent;
+			border-top: none;
+			left: 15px;
+			top: calc(-1 * $verticalArrowOffset);
+		}
+	}
 
-    &--top {
-        transform: translate(-50%, calc(-100% - $verticalTooltipOffset));
+	&--top {
+		transform: translate(-50%, calc(-100% - $verticalTooltipOffset));
 
-        &::before {
-            border-left-color: transparent;
-            border-right-color: transparent;
-            border-bottom: none;
-            left: calc(50% - 6px);
-            bottom: calc(-1 * $verticalArrowOffset);
-        }
-    }
+		&::before {
+			border-left-color: transparent;
+			border-right-color: transparent;
+			border-bottom: none;
+			left: calc(50% - 6px);
+			bottom: calc(-1 * $verticalArrowOffset);
+		}
+	}
 
-    &--top-right {
-        transform: translate(calc(-100% + $horizontalTooltipOffset), calc(-100% - $verticalTooltipOffset));
+	&--top-right {
+		transform: translate(
+			calc(-100% + $horizontalTooltipOffset),
+			calc(-100% - $verticalTooltipOffset)
+		);
 
-        &::before {
-            border-left-color: transparent;
-            border-right-color: transparent;
-            border-bottom: none;
-            left: calc(100% - 26px);
-            bottom: calc(-1 * $verticalArrowOffset);
-        }
-    }
+		&::before {
+			border-left-color: transparent;
+			border-right-color: transparent;
+			border-bottom: none;
+			left: calc(100% - 26px);
+			bottom: calc(-1 * $verticalArrowOffset);
+		}
+	}
 
-    &--top-left {
-        transform: translate(calc(-1 * $horizontalTooltipOffset - 1px), calc(-100% - $verticalTooltipOffset));
+	&--top-left {
+		transform: translate(
+			calc(-1 * $horizontalTooltipOffset - 1px),
+			calc(-100% - $verticalTooltipOffset)
+		);
 
-        &::before {
-            border-left-color: transparent;
-            border-right-color: transparent;
-            border-bottom: none;
-            left: 15px;
-            bottom: calc(-1 * $verticalArrowOffset);
-        }
-    }
+		&::before {
+			border-left-color: transparent;
+			border-right-color: transparent;
+			border-bottom: none;
+			left: 15px;
+			bottom: calc(-1 * $verticalArrowOffset);
+		}
+	}
 
+	&--left {
+		transform: translate(calc(-100% - $verticalTooltipOffset), -50%);
 
-    &--left {
-        transform: translate(calc(-100% - $verticalTooltipOffset), -50%);
+		&::before {
+			border-top-color: transparent;
+			border-bottom-color: transparent;
+			border-right: none;
+			right: calc(-1 * 6px);
+			top: calc(50% - $verticalArrowOffset);
+		}
+	}
 
-        &::before {
-            border-top-color: transparent;
-            border-bottom-color: transparent;
-            border-right: none;
-            right: calc(-1 * 6px);
-            top: calc(50% - $verticalArrowOffset);
-        }
-    }
+	&--right {
+		transform: translate($verticalTooltipOffset, -50%);
 
-    &--right {
-        transform: translate($verticalTooltipOffset, -50%);
-
-        &::before {
-            border-top-color: transparent;
-            border-bottom-color: transparent;
-            border-left: none;
-            left: calc(-1 * 6px);
-            top: calc(50% - $verticalArrowOffset);
-        }
-    }
+		&::before {
+			border-top-color: transparent;
+			border-bottom-color: transparent;
+			border-left: none;
+			left: calc(-1 * 6px);
+			top: calc(50% - $verticalArrowOffset);
+		}
+	}
 }
-

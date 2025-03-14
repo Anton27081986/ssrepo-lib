@@ -1,17 +1,30 @@
+import type { ElementRef } from '@angular/core';
 import {
-    ChangeDetectionStrategy,
-    Component,
-    DestroyRef,
-    ElementRef,
-    forwardRef,
-    inject,
-    input,
-    signal,
-    ViewChild
+	ChangeDetectionStrategy,
+	Component,
+	DestroyRef,
+	forwardRef,
+	inject,
+	input,
+	signal,
+	ViewChild,
 } from '@angular/core';
-import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR, ReactiveFormsModule } from '@angular/forms';
+import type { ControlValueAccessor } from '@angular/forms';
+import {
+	FormControl,
+	NG_VALUE_ACCESSOR,
+	ReactiveFormsModule,
+} from '@angular/forms';
 import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
-import { debounceTime, distinctUntilChanged, fromEvent, map, skip, takeUntil, tap } from 'rxjs';
+import {
+	debounceTime,
+	distinctUntilChanged,
+	fromEvent,
+	map,
+	skip,
+	takeUntil,
+	tap,
+} from 'rxjs';
 import { IconComponent } from '../icon/icon.component';
 import { Colors, IconType } from '../../shared/models';
 import { MapperPipe } from '../../core/pipes';
@@ -25,97 +38,103 @@ export const TEXTAREA_MIN_HEIGHT = 128;
  *
  */
 @Component({
-    selector: 'ss-lib-textarea',
-    standalone: true,
-    imports: [
-        ReactiveFormsModule,
-        IconComponent,
-        MapperPipe,
-    ],
-    templateUrl: './textarea.component.html',
-    styleUrl: './textarea.component.scss',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        {
-            provide: NG_VALUE_ACCESSOR,
-            useExisting: forwardRef(() => TextareaComponent),
-            multi: true,
-        },
-    ],
+	selector: 'ss-lib-textarea',
+	standalone: true,
+	imports: [ReactiveFormsModule, IconComponent, MapperPipe],
+	templateUrl: './textarea.component.html',
+	styleUrl: './textarea.component.scss',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	providers: [
+		{
+			provide: NG_VALUE_ACCESSOR,
+			useExisting: forwardRef(() => TextareaComponent),
+			multi: true,
+		},
+	],
 })
-
 export class TextareaComponent implements ControlValueAccessor {
-    @ViewChild('resizeContainer') resizeContainer!: ElementRef<HTMLElement>;
-    @ViewChild('resizeContainerPseudo') resizeContainerPseudo!: ElementRef<HTMLElement>;
+	@ViewChild('resizeContainer')
+	public readonly resizeContainer!: ElementRef<HTMLElement>;
 
-    private readonly destroyRef = inject(DestroyRef);
+	@ViewChild('resizeContainerPseudo')
+	public readonly resizeContainerPseudo!: ElementRef<HTMLElement>;
 
-    maxLength = input<number | null>(null);
+	public maxLength = input<number | null>(null);
 
-    textareaCtrl = new FormControl('');
-    textareaHeight = signal(TEXTAREA_MIN_HEIGHT);
+	public textareaCtrl = new FormControl('');
+	public textareaHeight = signal(TEXTAREA_MIN_HEIGHT);
 
-    readonly TEXTAREA_MIN_HEIGHT = TEXTAREA_MIN_HEIGHT;
-    readonly IconType = IconType;
-    readonly Colors = Colors;
+	protected readonly textareaMinHeight = TEXTAREA_MIN_HEIGHT;
+	protected readonly IconType = IconType;
+	protected readonly Colors = Colors;
 
-    private onChange: (value: string | null) => void = () => {
-    };
-    private onTouched: () => void = () => {
-    };
+	private readonly destroyRef = inject(DestroyRef);
 
-    constructor() {
-        toSignal(
-            this.textareaCtrl.valueChanges.pipe(
-                skip(1),
-                debounceTime(300),
-                distinctUntilChanged(),
-                tap(value => this.onChange(value))
-            )
-        )
-    }
+	constructor() {
+		toSignal(
+			this.textareaCtrl.valueChanges.pipe(
+				skip(1),
+				debounceTime(300),
+				distinctUntilChanged(),
+				tap((value) => this.onChange(value)),
+			),
+		);
+	}
 
-    writeValue(value: string): void {
-        const fittedValue = value ? value.slice(0, this.maxLength() || Infinity) : '';
-        this.textareaCtrl.setValue(fittedValue, {emitEvent: false});
-    }
+	public writeValue(value: string): void {
+		const fittedValue = value
+			? value.slice(0, this.maxLength() || Infinity)
+			: '';
 
-    registerOnChange(fn: (value: string | null) => void): void {
-        this.onChange = fn;
-    }
+		this.textareaCtrl.setValue(fittedValue, { emitEvent: false });
+	}
 
-    registerOnTouched(fn: () => void): void {
-        this.onTouched = fn;
-    }
+	public registerOnChange(fn: (value: string | null) => void): void {
+		this.onChange = fn;
+	}
 
-    public setDisabledState?(isDisabled: boolean): void {
-        isDisabled ? this.textareaCtrl.disable() : this.textareaCtrl.enable();
-    }
+	public registerOnTouched(fn: () => void): void {
+		this.onTouched = fn;
+	}
 
-    public startResize(event: MouseEvent): void {
-        event.preventDefault();
-        const startY = event.clientY;
-        const startHeight = this.resizeContainer.nativeElement.offsetHeight;
+	public onChange: (value: string | null) => void = () => {};
+	public onTouched: () => void = () => {};
 
-        const mousemove$ = fromEvent<MouseEvent>(document, 'mousemove');
-        const mouseup$ = fromEvent<MouseEvent>(document, 'mouseup');
+	public setDisabledState?(isDisabled: boolean): void {
+		isDisabled ? this.textareaCtrl.disable() : this.textareaCtrl.enable();
+	}
 
-        mousemove$.pipe(
-            takeUntil(mouseup$),
-            takeUntilDestroyed(this.destroyRef),
-            map(e => e.clientY - startY),
-            tap(dy => {
-                const newHeight = Math.max(this.TEXTAREA_MIN_HEIGHT, startHeight + dy);
-                this.textareaHeight.set(newHeight);
-            })
-        ).subscribe();
-    }
+	public startResize(event: MouseEvent): void {
+		event.preventDefault();
+		const startY = event.clientY;
+		const startHeight = this.resizeContainer.nativeElement.offsetHeight;
 
-    public getResizeIconColor(isDisabled: boolean): Colors {
-        return isDisabled ? Colors.SurfaceDisabled : Colors.SurfacePrimary
-    }
+		const mousemove$ = fromEvent<MouseEvent>(document, 'mousemove');
+		const mouseup$ = fromEvent<MouseEvent>(document, 'mouseup');
 
-    public cursorType(isDisabled: boolean): 'default' | 'ns-resize' {
-        return isDisabled ? 'default' : 'ns-resize';
-    }
+		mousemove$
+			.pipe(
+				// eslint-disable-next-line rxjs/no-unsafe-takeuntil
+				takeUntil(mouseup$),
+				takeUntilDestroyed(this.destroyRef),
+				map((e) => e.clientY - startY),
+				tap((dy) => {
+					const newHeight = Math.max(
+						this.textareaMinHeight,
+						startHeight + dy,
+					);
+
+					this.textareaHeight.set(newHeight);
+				}),
+			)
+			.subscribe();
+	}
+
+	public getResizeIconColor(isDisabled: boolean): Colors {
+		return isDisabled ? Colors.SurfaceDisabled : Colors.SurfacePrimary;
+	}
+
+	public cursorType(isDisabled: boolean): 'default' | 'ns-resize' {
+		return isDisabled ? 'default' : 'ns-resize';
+	}
 }

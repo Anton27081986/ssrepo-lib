@@ -1,48 +1,48 @@
 <div class="datepicker-controls">
-    <ss-lib-button
-        [type]="ButtonType.Ghost"
-        [size]="ExtraSize.xs"
-        [icon]="IconType.ChevronLeftDouble"
-        [iconPosition]="IconPosition.OnlyIcon"
-        [disabled]="value() | mapper : isYearDisabled : Extremum.Min"
-        (click)="append({year: -1})"
-    />
+	<ss-lib-button
+		[type]="ButtonType.Ghost"
+		[size]="ExtraSize.xs"
+		[icon]="IconType.ChevronLeftDouble"
+		[iconPosition]="IconPosition.OnlyIcon"
+		[disabled]="value() | mapper: isYearDisabled : Extremum.Min"
+		(click)="append({ year: -1 })"
+	/>
 
-    <ss-lib-button
-        [type]="ButtonType.Ghost"
-        [size]="ExtraSize.xs"
-        [icon]="IconType.ChevronLeft"
-        [iconPosition]="IconPosition.OnlyIcon"
-        [disabled]="value() | mapper : isMonthDisabled : Extremum.Min"
-        (click)="append({month: -1})"
-    />
+	<ss-lib-button
+		[type]="ButtonType.Ghost"
+		[size]="ExtraSize.xs"
+		[icon]="IconType.ChevronLeft"
+		[iconPosition]="IconPosition.OnlyIcon"
+		[disabled]="value() | mapper: isMonthDisabled : Extremum.Min"
+		(click)="append({ month: -1 })"
+	/>
 
-    <div class="select-year">
-        <ss-lib-button
-            [type]="ButtonType.Ghost"
-            [size]="ExtraSize.xs"
-            [text]="value().formattedMonthYear"
-            [icon]="switchYearIcon()"
-            [iconPosition]="IconPosition.End"
-            (click)="switchView()"
-        />
-    </div>
+	<div class="select-year">
+		<ss-lib-button
+			[type]="ButtonType.Ghost"
+			[size]="ExtraSize.xs"
+			[text]="value().formattedMonthYear"
+			[icon]="switchYearIcon()"
+			[iconPosition]="IconPosition.End"
+			(click)="switchView()"
+		/>
+	</div>
 
-    <ss-lib-button
-        [type]="ButtonType.Ghost"
-        [size]="ExtraSize.xs"
-        [icon]="IconType.ChevronRight"
-        [iconPosition]="IconPosition.OnlyIcon"
-        [disabled]="value() | mapper : isMonthDisabled : Extremum.Max"
-        (click)="append({month: 1})"
-    />
+	<ss-lib-button
+		[type]="ButtonType.Ghost"
+		[size]="ExtraSize.xs"
+		[icon]="IconType.ChevronRight"
+		[iconPosition]="IconPosition.OnlyIcon"
+		[disabled]="value() | mapper: isMonthDisabled : Extremum.Max"
+		(click)="append({ month: 1 })"
+	/>
 
-    <ss-lib-button
-        [type]="ButtonType.Ghost"
-        [size]="ExtraSize.xs"
-        [icon]="IconType.ChevronRightDouble"
-        [iconPosition]="IconPosition.OnlyIcon"
-        [disabled]="value() | mapper : isYearDisabled : Extremum.Max"
-        (click)="append({year: 1})"
-    />
+	<ss-lib-button
+		[type]="ButtonType.Ghost"
+		[size]="ExtraSize.xs"
+		[icon]="IconType.ChevronRightDouble"
+		[iconPosition]="IconPosition.OnlyIcon"
+		[disabled]="value() | mapper: isYearDisabled : Extremum.Max"
+		(click)="append({ year: 1 })"
+	/>
 </div>

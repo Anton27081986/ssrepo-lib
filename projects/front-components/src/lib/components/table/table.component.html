@@ -1,28 +1,38 @@
 <table class="ss-lib-table-table">
 	<thead class="ss-lib-table-table__thead">
-	<tr class="ss-lib-table-tr">
-    @if (isSkeleton()) {
-      <th class="ss-lib-table-th" *ngFor="let colSkeleton of stateColumn.skeletonThCols$ | async"
-          [ngStyle]="{ minWidth: colSkeleton.width ? colSkeleton.width : null }">
-        <ss-lib-skeleton-block [config]="colSkeleton.skeletonTh"></ss-lib-skeleton-block>
-      </th>
-    } @else {
-      <th class="ss-lib-table-th" *ngFor="let col of stateColumn.visibleCols$ | async"
-          [ngStyle]="{ minWidth: col.width ? col.width : null }">
-
-        <ss-lib-text
-          [color]="Colors.TextBody2"
-          [weight]="TextWeight.Semibold"
-          [type]="TextType.BodyXs">
-          {{ col.title }}
-        </ss-lib-text>
-
-      </th>
-    }
-	</tr>
+		<tr class="ss-lib-table-tr">
+			@if (isSkeleton()) {
+				<th
+					*ngFor="
+						let colSkeleton of stateColumn.skeletonThCols$ | async
+					"
+					class="ss-lib-table-th"
+					[ngStyle]="{
+						minWidth: colSkeleton.width ? colSkeleton.width : null,
+					}"
+				>
+					<ss-lib-skeleton-block
+						[config]="colSkeleton.skeletonTh"
+					></ss-lib-skeleton-block>
+				</th>
+			} @else {
+				<th
+					*ngFor="let col of stateColumn.visibleCols$ | async"
+					class="ss-lib-table-th"
+					[ngStyle]="{ minWidth: col.width ? col.width : null }"
+				>
+					<ss-lib-text
+						[color]="Colors.TextBody2"
+						[weight]="TextWeight.Semibold"
+						[type]="TextType.BodyXs"
+					>
+						{{ col.title }}
+					</ss-lib-text>
+				</th>
+			}
+		</tr>
 	</thead>
 	<tbody class="ss-lib-table-table__tbody">
-      <ng-content></ng-content>
+		<ng-content></ng-content>
 	</tbody>
 </table>
-

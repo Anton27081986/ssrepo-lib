@@ -1,0 +1,16 @@
+# Установить CRLF для всех текстовых файлов
+   * text=auto eol=crlf
+
+   # Конкретные типы файлов
+   *.ts text eol=crlf
+   *.js text eol=crlf
+   *.html text eol=crlf
+   *.css text eol=crlf
+   *.scss text eol=crlf
+   *.json text eol=crlf
+   *.md text eol=crlf
+
+   # Бинарные файлы не трогать
+   *.png binary
+   *.jpg binary
+   *.gif binary

@@ -1,40 +1,39 @@
-import {SkeletonConf} from './skeleton.conf';
+import type { SkeletonConf } from './skeleton.conf';
 
 export interface IStoreTableId {
-  id: string;
+	id: string;
 }
 
-export interface IStoreTableBase extends IStoreTableId{
-  readonly title: string;
-  order: number;
-  disableChange?: boolean;
-  readonly width?: string | null;
-  skeleton: ISkeletonTableBaseColumn
+export interface IStoreTableBase extends IStoreTableId {
+	readonly title: string;
+	order: number;
+	disableChange?: boolean;
+	readonly width?: string | null;
+	skeleton: ISkeletonTableBaseColumn;
 }
 
 export interface IStoreTableBaseColumn extends IStoreTableBase {
-  readonly sort?: boolean | null;
-  readonly sortType?: string | null;
-  readonly align?: string | null;
+	readonly sort?: boolean | null;
+	readonly sortType?: string | null;
+	readonly align?: string | null;
 }
 
 export interface ISkeletonTableBaseColumn {
-  header: SkeletonConf,
-  body: SkeletonConf
+	header: SkeletonConf;
+	body: SkeletonConf;
 }
 
 export interface ISkeletonDerivativeThColumn extends IStoreTableId {
-  width?: null | string,
-  skeletonTh: SkeletonConf
-  order: number;
+	width?: null | string;
+	skeletonTh: SkeletonConf;
+	order: number;
 }
 
 export interface ISkeletonDerivativeTrTable {
-  items: ISkeletonDerivativeTdTable[]
+	items: ISkeletonDerivativeTdTable[];
 }
 
 export interface ISkeletonDerivativeTdTable extends IStoreTableId {
-  order: number,
-  skeletonConfig: SkeletonConf
-
+	order: number;
+	skeletonConfig: SkeletonConf;
 }

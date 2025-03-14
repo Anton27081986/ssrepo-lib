@@ -1,0 +1,40 @@
+@mixin flex-wrap {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+
+.ss-lib-toast {
+  width: 632px;
+  border-radius: 12px;
+  background-color: var(--surface-information);
+  padding: 10px 16px 10px 16px;
+  @include flex-wrap;
+  justify-content: space-between;
+  box-shadow: var(--effects-shadows-5);
+  position: absolute;
+  left:50%;
+  transform:translate(-50%, -50%);
+  top: 0;
+  transition: 0.3s;
+
+  &__view {
+    top: 52px;
+  }
+
+  &__left {
+    @include flex-wrap;
+    gap: 8px;
+    max-width: 552px;
+  }
+
+  &__right {
+    @include flex-wrap;
+    gap: 20px;
+
+    &-actions {
+      @include flex-wrap;
+      gap: 12px;
+    }
+  }
+}

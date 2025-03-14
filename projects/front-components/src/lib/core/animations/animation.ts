@@ -1,4 +1,4 @@
-import { AnimationReferenceMetadata } from '@angular/animations';
+import type { AnimationReferenceMetadata } from '@angular/animations';
 
 export enum AnimationState {
 	Enter = ':enter',
@@ -16,7 +16,10 @@ export enum AnimationTransition {
 }
 
 export type AnimationType<T extends Record<string, string>, U> = {
-	[K in keyof T as Exclude<Uncapitalize<K & string>, U>]: AnimationReferenceMetadata;
+	[K in keyof T as Exclude<
+		Uncapitalize<K & string>,
+		U
+	>]: AnimationReferenceMetadata;
 };
 
 export const DURATION = 500 as const;

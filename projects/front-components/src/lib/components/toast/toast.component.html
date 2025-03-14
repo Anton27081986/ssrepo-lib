@@ -1,0 +1,70 @@
+<div
+	class="ss-lib-toast"
+	[class.ss-lib-toast__view]="initialize"
+>
+	<div class="ss-lib-toast__left">
+		@if (type() === ToastTypeEnum.Default) {
+			<ss-lib-icon
+				[width]="'20'"
+				[height]="'20'"
+				[color]="Colors.IconSecondary"
+				[icon]="IconType.ImagePlus"
+			></ss-lib-icon>
+		}
+
+		@if (type() === ToastTypeEnum.Error) {
+			<ss-lib-icon
+				[width]="'20'"
+				[height]="'20'"
+				[color]="Colors.IconError"
+				[icon]="IconType.Alert"
+			></ss-lib-icon>
+		}
+
+		@if (type() === ToastTypeEnum.Success) {
+			<ss-lib-icon
+				[width]="'20'"
+				[height]="'20'"
+				[color]="Colors.IconSuccess"
+				[icon]="IconType.CheckCircle"
+			></ss-lib-icon>
+		}
+
+		<ss-lib-text
+			[color]="Colors.TextOnInformation"
+			[type]="TextType.BodySm"
+			[weight]="TextWeight.Semibold"
+			[isEllipsis]="true"
+		>
+			{{ text() }}
+		</ss-lib-text>
+	</div>
+	<div class="ss-lib-toast__right">
+		<div
+			*ngIf="mainButton() || secondaryButton()"
+			class="ss-lib-toast__right-actions"
+		>
+			<ss-lib-button
+				*ngIf="secondaryButton() as secondary"
+				[size]="ExtraSize.xs"
+				[type]="ButtonType.Ghost"
+				[text]="secondary.text"
+				(click)="secondary.click($event)"
+			></ss-lib-button>
+			<ss-lib-button
+				*ngIf="mainButton() as main"
+				[size]="ExtraSize.xs"
+				[type]="ButtonType.Secondary"
+				[text]="main.text"
+				(click)="main.click($event)"
+			></ss-lib-button>
+		</div>
+		<ss-lib-close-button
+			[size]="ExtraSize.lg"
+			[icon]="IconType.Close"
+			[iconPosition]="IconPosition.OnlyIcon"
+			[type]="ButtonType.CloseDark"
+			(click)="close()"
+		></ss-lib-close-button>
+	</div>
+</div>

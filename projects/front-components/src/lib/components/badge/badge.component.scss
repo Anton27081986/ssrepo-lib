@@ -1,24 +1,29 @@
 .ss-lib-badge {
-    display: inline-block;
-    box-shadow: 0 1px 2px 0 var(--effects-shadows-5), 0 -2px 0 0 var(--effects-shadows-5) inset, 0 0 0 1px var(--app-shadow-xs-skeumorphic-border, var(--effects-shadows-18)) inset;
+	display: inline-block;
+	box-shadow:
+		0 1px 2px 0 var(--effects-shadows-5),
+		0 -2px 0 0 var(--effects-shadows-5) inset,
+		0 0 0 1px
+			var(--app-shadow-xs-skeumorphic-border, var(--effects-shadows-18))
+			inset;
 
-    &.size-md {
-        padding: 10px;
-    }
+	&.size-md {
+		padding: 10px;
+	}
 
-    &.size-lg {
-        padding: 12px;
-    }
+	&.size-lg {
+		padding: 12px;
+	}
 
-    &.size-xl {
-        padding: 14px;
-    }
+	&.size-xl {
+		padding: 14px;
+	}
 
-    &.square {
-        border-radius: var(--border-radius-lg);
-    }
+	&.square {
+		border-radius: var(--border-radius-lg);
+	}
 
-    &.round {
-        border-radius: var(--border-radius-round)
-    }
+	&.round {
+		border-radius: var(--border-radius-round);
+	}
 }

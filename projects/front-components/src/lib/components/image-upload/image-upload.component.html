@@ -6,11 +6,14 @@
 			[class.image-upload__disabled]="disabled()"
 			(dragenter)="onDragEnter($event)"
 			(dragleave)="onDragLeave($event)"
-			(drop)="onDropSuccess($event)">
+			(drop)="onDropSuccess($event)"
+			(dragover)="$event.preventDefault()"
+		>
 			<ss-lib-badge
 				[badgeProps]="{
 					icon: IconType.ImagePlus,
-				}"></ss-lib-badge>
+				}"
+			></ss-lib-badge>
 			<div>
 				<ss-lib-text
 					[type]="TextType.BodySm"
@@ -20,22 +23,28 @@
 				<ss-lib-text
 					[type]="TextType.BodyXs"
 					[color]="Colors.TextBody3"
-					>PNG,SVG,JPEG (макс. разрешение 990х200px)</ss-lib-text
+					>PNG,SVG,JPEG (макс. разрешение {{ maxWidth() }}х{{
+						maxHeight()
+					}}px)</ss-lib-text
 				>
 			</div>
 			<label
 				#hiddenInput
-				class="image-upload__button">
+				class="image-upload__button"
+			>
 				<input
 					accept="image/jpeg, image/gif, image/png"
 					class="image-upload__button__hidden-input"
 					type="file"
-					(change)="onChange($event)" />
+					[formControl]="inputCtrl"
+					(change)="selectFromPC($event)"
+				/>
 				<ss-lib-button
 					[disabled]="disabled()"
 					[text]="'Загрузить с устройства'"
 					[icon]="IconType.Upload"
-					(click)="hiddenInput.click()"></ss-lib-button>
+					(click)="hiddenInput.click()"
+				></ss-lib-button>
 			</label>
 		</div>
 	}
@@ -43,17 +52,21 @@
 		<div class="image-preview">
 			<ss-lib-preview-button
 				class="image-preview__close"
-				(click)="onFileDelete()"></ss-lib-preview-button>
-			<img [src]="imageSrc()" />
+				(click)="onFileDelete()"
+			></ss-lib-preview-button>
+			<img
+				alt="Баннер"
+				[src]="imageSrc()"
+			/>
 		</div>
 	}
 	@case (States.Loading) {
 		<div class="image-loading">
-			<ss-lib-spinner
-				class="image-loading__loader"></ss-lib-spinner>
+			<ss-lib-spinner class="image-loading__loader"></ss-lib-spinner>
 			<ss-lib-preview-button
 				class="image-loading__cancel"
-				(click)="onFileDelete()"></ss-lib-preview-button>
+				(click)="onFileDelete()"
+			></ss-lib-preview-button>
 		</div>
 	}
 }

@@ -1,5 +1,5 @@
 export enum SidebarType {
-  Full = 'full',
-  Mini = 'mini',
-  Close = 'close',
+	Full = 'full',
+	Mini = 'mini',
+	Close = 'close',
 }

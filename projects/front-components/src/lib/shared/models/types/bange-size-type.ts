@@ -1,3 +1,3 @@
-import {ExtraSize} from '../enums';
+import type { ExtraSize } from '../enums';
 
-export type BadgeSizeType =  ExtraSize.lg | ExtraSize.xl | ExtraSize.md;
+export type BadgeSizeType = ExtraSize.lg | ExtraSize.xl | ExtraSize.md;

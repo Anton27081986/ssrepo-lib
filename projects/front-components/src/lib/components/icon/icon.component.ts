@@ -1,15 +1,11 @@
-import {
-    Component,
-    computed,
-    inject,
-    input,
-    Signal,
-} from '@angular/core';
+import type { Signal } from '@angular/core';
+import { Component, computed, inject, input } from '@angular/core';
 import { NgStyle } from '@angular/common';
-import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
-import { Colors, IconType } from '../../shared/models';
+import type { SafeHtml } from '@angular/platform-browser';
+import { DomSanitizer } from '@angular/platform-browser';
+import type { IconType } from '../../shared/models';
+import { Colors } from '../../shared/models';
 import { ICONS } from '../../shared/assets/icons';
-
 
 /**
  * Параметры:
@@ -23,25 +19,23 @@ import { ICONS } from '../../shared/assets/icons';
  * [color]: Colors - Цвет. По умолчанию: `Colors.IconPrimary`
  */
 @Component({
-    selector: 'ss-lib-icon',
-    standalone: true,
-    imports: [
-        NgStyle
-    ],
-    templateUrl: './icon.component.html',
-    styleUrl: './icon.component.scss'
+	selector: 'ss-lib-icon',
+	standalone: true,
+	imports: [NgStyle],
+	templateUrl: './icon.component.html',
+	styleUrl: './icon.component.scss',
 })
 export class IconComponent {
-    private readonly sanitizer = inject(DomSanitizer)
+	public icon = input.required<IconType>();
+	public height = input<string>('24');
+	public width = input<string>('24');
+	public color = input<Colors>(Colors.IconPrimary);
 
-    public icon = input.required<IconType>();
-    public height = input<string>('24');
-    public width = input<string>('24');
-    public color = input<Colors>(Colors.IconPrimary);
+	public svg: Signal<SafeHtml | null> = computed(() => {
+		const svgData = ICONS.get(this.icon());
 
-    public svg: Signal<SafeHtml | null> = computed(() => {
-        const svgData = ICONS.get(this.icon());
+		return svgData ? this.sanitizer.bypassSecurityTrustHtml(svgData) : null;
+	});
 
-        return svgData ? this.sanitizer.bypassSecurityTrustHtml(svgData) : null;
-    })
+	private readonly sanitizer = inject(DomSanitizer);
 }

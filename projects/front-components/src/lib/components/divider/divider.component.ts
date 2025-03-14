@@ -1,12 +1,11 @@
+import type { InputSignal } from '@angular/core';
 import {
-    ChangeDetectionStrategy,
-    Component,
-    input,
-    InputSignal,
-    ViewEncapsulation,
+	ChangeDetectionStrategy,
+	Component,
+	input,
+	ViewEncapsulation,
 } from '@angular/core';
 import { Orientation } from '../../shared/models';
-
 
 /**
  * Параметры:
@@ -14,19 +13,21 @@ import { Orientation } from '../../shared/models';
  * [direction]: 'vertical' | 'horizontal' - direction. По умолчанию: `horizontal`
  */
 @Component({
-    selector: 'ss-lib-divider',
-    template: `
-        <div
-            class="divider"
-            [class.divider--horizontal]="orientation() === 'horizontal'"
-            [class.divider--vertical]="orientation() === 'vertical'"
-        ></div>
-    `,
-    styleUrls: ['divider.component.scss'],
-    standalone: true,
-    encapsulation: ViewEncapsulation.None,
-    changeDetection: ChangeDetectionStrategy.OnPush,
+	selector: 'ss-lib-divider',
+	template: `
+		<div
+			class="divider"
+			[class.divider--horizontal]="orientation() === 'horizontal'"
+			[class.divider--vertical]="orientation() === 'vertical'"
+		></div>
+	`,
+	styleUrls: ['divider.component.scss'],
+	standalone: true,
+	encapsulation: ViewEncapsulation.None,
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DividerComponent {
-    public orientation: InputSignal<Orientation> = input<Orientation>(Orientation.Horizontal);
+	public orientation: InputSignal<Orientation> = input<Orientation>(
+		Orientation.Horizontal,
+	);
 }

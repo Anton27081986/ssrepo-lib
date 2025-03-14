@@ -1,15 +1,15 @@
 <div
-    class="input-container"
-    (focusout)="updateInputStateOnFocusout($event)"
+	class="input-container"
+	(focusout)="updateInputStateOnFocusout($event)"
 >
-    <input
-        tabindex="-1"
-        class="input-field"
-        type="text"
-        [style.text-align]="align()"
-        [maskito]="inputMask()"
-        [formControl]="inputCtrl"
-        [placeholder]="placeholder()"
-        [readOnly]="readOnly()"
-    />
+	<input
+		tabindex="-1"
+		class="input-field"
+		type="text"
+		[style.text-align]="align()"
+		[maskito]="inputMask()"
+		[formControl]="inputCtrl"
+		[placeholder]="placeholder()"
+		[readOnly]="readOnly()"
+	/>
 </div>

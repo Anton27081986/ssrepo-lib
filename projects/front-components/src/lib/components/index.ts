@@ -34,4 +34,5 @@ export { TooltipDirective } from './tooltip/tooltip.directive';
 export { ImageUploadComponent } from './image-upload/image-upload.component';
 export { CalendarComponent } from './calendar/calendar.component';
 export { DatepickerComponent } from './datepicker/datepicker.component';
-export * from './buttons/index';
+export { ToastComponent } from './toast/toast.component';
+export { ToastRef } from './toast/toast-ref';
