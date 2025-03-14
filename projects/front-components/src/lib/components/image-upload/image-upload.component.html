@@ -23,10 +23,15 @@
 				<ss-lib-text
 					[type]="TextType.BodyXs"
 					[color]="Colors.TextBody3"
-					>PNG,SVG,JPEG (макс. разрешение {{ maxWidth() }}х{{
-						maxHeight()
-					}}px)</ss-lib-text
-				>
+					>PNG,SVG,JPEG (макс. разрешение
+					@if (maxWidth() || maxWidth()) {
+						{{ maxWidth() || 'неограничено ' }}х{{
+							maxWidth() || ' неограничено'
+						}}{{ 'px' }})
+					} @else {
+						неограничено)
+					}
+				</ss-lib-text>
 			</div>
 			<label
 				#hiddenInput
