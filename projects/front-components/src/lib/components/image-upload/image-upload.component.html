@@ -33,7 +33,8 @@
 					accept="image/jpeg, image/gif, image/png"
 					class="image-upload__button__hidden-input"
 					type="file"
-					(change)="onChange($event)"
+					[formControl]="inputCtrl"
+					(change)="selectFromPC($event)"
 				/>
 				<ss-lib-button
 					[disabled]="disabled()"
@@ -50,7 +51,10 @@
 				class="image-preview__close"
 				(click)="onFileDelete()"
 			></ss-lib-preview-button>
-			<img [src]="imageSrc()" />
+			<img
+				alt="Баннер"
+				[src]="imageSrc()"
+			/>
 		</div>
 	}
 	@case (States.Loading) {

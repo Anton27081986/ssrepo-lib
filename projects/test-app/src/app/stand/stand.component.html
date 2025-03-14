@@ -1,4 +1,13 @@
-<ss-lib-image-upload></ss-lib-image-upload>
+<ss-lib-form-field>
+	<ss-lib-image-upload
+		fieldCtrl
+		[formControl]="imgCtrl"
+		[maxHeight]="1000"
+		[maxWidth]="1000"
+		[maxSize]="0.3"
+	></ss-lib-image-upload>
+</ss-lib-form-field>
+
 <div class="spinners">
 	<ss-lib-spinner [displaySpinnerText]="true"></ss-lib-spinner>
 </div>
