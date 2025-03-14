@@ -103,8 +103,10 @@ export class ImageUploadComponent implements ControlValueAccessor {
 		);
 
 		effect(() => {
-			this.imageSrc.set(this.src());
-			this.state.set(States.Preview);
+			if (this.src()) {
+				this.imageSrc.set(this.src());
+				this.state.set(States.Preview);
+			}
 		});
 	}
 
