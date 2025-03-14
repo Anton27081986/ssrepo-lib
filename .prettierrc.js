@@ -1,5 +1,5 @@
 /* jshint ignore:start */
-const { tinkoffConfig } = require("@tinkoff/eslint-config");
+const { tinkoffConfig } = require("@tinkoff/prettier-config");
 
 module.exports = {
 	...tinkoffConfig,

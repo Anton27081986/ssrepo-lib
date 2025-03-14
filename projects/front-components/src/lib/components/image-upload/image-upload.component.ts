@@ -1,12 +1,14 @@
 import {
 	ChangeDetectionStrategy,
 	Component,
+	effect,
 	forwardRef,
 	input,
 	InputSignal,
 	signal,
 } from '@angular/core';
 import {
+	type ControlValueAccessor,
 	FormControl,
 	FormsModule,
 	NG_VALUE_ACCESSOR,
@@ -38,11 +40,11 @@ enum States {
  *
  * [disabled]: boolean - Только для чтения. По умолчанию: `false`
  *
- * [maxSize]: number - Максимальный размер, байт. По умолчанию: `0`
+ * [maxSize]: number - Максимальный размер, байт. По умолчанию: `0б`
  *
- * [maxHeight]: number - Минимальная высота, px. По умолчанию: `0`
+ * [maxHeight]: number - Минимальная высота, px. По умолчанию: `0px`
  *
- * [maxWidth]: number - Максимальная ширина, px. По умолчанию: `0`
+ * [maxWidth]: number - Максимальная ширина, px. По умолчанию: `0px`
  */
 @Component({
 	selector: 'ss-lib-image-upload',
@@ -67,17 +69,19 @@ enum States {
 		},
 	],
 })
-export class ImageUploadComponent {
+export class ImageUploadComponent implements ControlValueAccessor {
 	public disabled = input<boolean>(false);
 	public maxSize: InputSignal<number> = input<number>(0);
 
 	public maxHeight = input<number>(400);
 	public maxWidth = input<number>(400);
 
+	public src = input<string | null>(null);
+
 	public inputCtrl = new FormControl();
 	protected hover = signal<boolean>(false);
 	protected state = signal<States>(States.Empty);
-	protected imageSrc = signal<ArrayBuffer | string | null>(null);
+	protected imageSrc = signal<string | null>(null);
 
 	protected readonly IconType = IconType;
 	protected readonly ExtraSize = ExtraSize;
@@ -96,21 +100,10 @@ export class ImageUploadComponent {
 			),
 		);
 
-		window.addEventListener(
-			'dragover',
-			function (e) {
-				e.preventDefault();
-			},
-			false,
-		);
-
-		window.addEventListener(
-			'drop',
-			function (e) {
-				e.preventDefault();
-			},
-			false,
-		);
+		effect(() => {
+			this.imageSrc.set(this.src());
+			this.state.set(States.Preview);
+		});
 	}
 
 	public writeValue(value: FileList | null): void {
@@ -206,7 +199,9 @@ export class ImageUploadComponent {
 
 			reader.onload = () => {
 				this.state.set(States.Preview);
-				this.imageSrc.set(reader.result);
+				this.imageSrc.set(
+					reader.result ? reader.result.toString() : null,
+				);
 			};
 
 			reader.readAsDataURL(file);

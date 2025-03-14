@@ -7,6 +7,7 @@
 			(dragenter)="onDragEnter($event)"
 			(dragleave)="onDragLeave($event)"
 			(drop)="onDropSuccess($event)"
+			(dragover)="$event.preventDefault()"
 		>
 			<ss-lib-badge
 				[badgeProps]="{
@@ -22,7 +23,9 @@
 				<ss-lib-text
 					[type]="TextType.BodyXs"
 					[color]="Colors.TextBody3"
-					>PNG,SVG,JPEG (макс. разрешение 990х200px)</ss-lib-text
+					>PNG,SVG,JPEG (макс. разрешение {{ maxWidth() }}х{{
+						maxHeight()
+					}}px)</ss-lib-text
 				>
 			</div>
 			<label
