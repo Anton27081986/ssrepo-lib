@@ -1,7 +1,7 @@
 image: node:latest
 
 variables:
-    STORYBOOK_DIR: "dist/storybook"
+    STORYBOOK_DIR: "dist/storybook/front-components"
 
 stages:
     - deploy
