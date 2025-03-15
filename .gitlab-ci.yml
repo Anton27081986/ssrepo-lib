@@ -42,6 +42,7 @@ deploy-storybook:
         - mkdir -p public
         - echo "Публикуем storybook"
         - cp -r ${STORYBOOK_DIR}/* public/
+    pages: true
     artifacts:
         paths:
             - public
