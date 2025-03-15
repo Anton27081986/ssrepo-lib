@@ -39,6 +39,8 @@ pages:
         - npm ci
         - echo "Билдим storybook"
         - npm run build-storybook
+        - echo "Содержимое storybook билда"
+        - ls -la ${STORYBOOK_DIR}
         - mkdir -p public
         - echo "Публикуем storybook"
         - cp -r ${STORYBOOK_DIR}/* public/
