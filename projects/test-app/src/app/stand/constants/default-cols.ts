@@ -1,4 +1,4 @@
-import type { IStoreTableBaseColumn } from '../../../../../front-components/src/lib/shared/models';
+import { IStoreTableBaseColumn } from '../../../../../front-components/src/lib/shared/models';
 import { Shape } from '../../../../../front-components/src/lib/shared/models';
 
 export enum ExampleRowItemField {
@@ -16,6 +16,7 @@ export const DEFAULT_COLS: IStoreTableBaseColumn[] = [
 		title: '',
 		order: 0,
 		width: null,
+		align: 'center',
 		skeleton: {
 			header: {
 				width: '100px',
@@ -34,6 +35,7 @@ export const DEFAULT_COLS: IStoreTableBaseColumn[] = [
 		title: 'Порядок',
 		order: 1,
 		width: null,
+		align: 'left',
 		skeleton: {
 			header: {
 				width: '100px',
@@ -52,6 +54,7 @@ export const DEFAULT_COLS: IStoreTableBaseColumn[] = [
 		title: 'Изображение',
 		order: 2,
 		width: null,
+		align: 'right',
 		skeleton: {
 			header: {
 				width: '100px',
@@ -70,6 +73,7 @@ export const DEFAULT_COLS: IStoreTableBaseColumn[] = [
 		title: 'Баннер',
 		order: 3,
 		width: null,
+		align: 'center',
 		skeleton: {
 			header: {
 				width: '100px',
@@ -88,6 +92,7 @@ export const DEFAULT_COLS: IStoreTableBaseColumn[] = [
 		title: 'Статус',
 		order: 4,
 		width: null,
+		align: 'center',
 		skeleton: {
 			header: {
 				width: '100px',
@@ -106,6 +111,7 @@ export const DEFAULT_COLS: IStoreTableBaseColumn[] = [
 		title: 'Действие',
 		order: 5,
 		width: null,
+		align: 'center',
 		skeleton: {
 			header: {
 				width: '100px',

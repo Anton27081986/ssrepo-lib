@@ -6,7 +6,9 @@
 					*ngFor="
 						let colSkeleton of stateColumn.skeletonThCols$ | async
 					"
-					class="ss-lib-table-th"
+					class="ss-lib-table-th ss-lib-table-th-align--{{
+						colSkeleton.align
+					}}"
 					[ngStyle]="{
 						minWidth: colSkeleton.width ? colSkeleton.width : null,
 					}"
@@ -18,7 +20,9 @@
 			} @else {
 				<th
 					*ngFor="let col of stateColumn.visibleCols$ | async"
-					class="ss-lib-table-th"
+					class="ss-lib-table-th ss-lib-table-th-align--{{
+						col.align
+					}}"
 					[ngStyle]="{ minWidth: col.width ? col.width : null }"
 				>
 					<ss-lib-text
