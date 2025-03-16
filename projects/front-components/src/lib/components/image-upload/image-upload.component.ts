@@ -4,6 +4,7 @@ import {
 	effect,
 	forwardRef,
 	input,
+	output,
 	signal,
 } from '@angular/core';
 import {
@@ -36,6 +37,8 @@ enum States {
 
 /**
  * Параметры:
+ *
+ * (fileChanged): Function - Функция, которая отрабатывает в момент загрузки файла и принимает параметр File | null
  *
  * [src]: string - Адрес изображения. По умолчанию: `null`
  *
@@ -78,6 +81,8 @@ export class ImageUploadComponent implements ControlValueAccessor {
 	public maxWidth = input<number>(0);
 
 	public src = input<string | null>(null);
+
+	public fileChanged = output<File | null>();
 
 	public inputCtrl = new FormControl();
 	protected hover = signal<boolean>(false);
@@ -154,6 +159,7 @@ export class ImageUploadComponent implements ControlValueAccessor {
 
 	protected onFileDelete(): void {
 		this.inputCtrl.setValue(null);
+		this.fileChanged.emit(null);
 		this.state.set(States.Empty);
 		this.imageSrc.set(null);
 	}
@@ -172,6 +178,8 @@ export class ImageUploadComponent implements ControlValueAccessor {
 		}
 
 		const file = files[0];
+
+		this.fileChanged.emit(file || null);
 
 		if (!file) {
 			return;
