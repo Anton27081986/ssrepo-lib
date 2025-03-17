@@ -19,4 +19,3 @@ export {
 } from './store-table-base-column';
 export { Toast } from './toast';
 export { ButtonToast } from './toast';
-export {};

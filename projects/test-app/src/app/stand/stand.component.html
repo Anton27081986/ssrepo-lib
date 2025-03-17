@@ -542,3 +542,15 @@
 	(click)="exampleMetod({ email: 'sydney@fife' })"
 />
 <br />
+
+<ss-lib-form-field
+	[label]="'Datepicker'"
+	[hint]="'Подсказка'"
+	[errorText]="'Неверно заполнено'"
+>
+	<ss-lib-timepicker
+		fieldCtrl
+		[formControl]="timepickerCtrl"
+	></ss-lib-timepicker>
+</ss-lib-form-field>
+<br />

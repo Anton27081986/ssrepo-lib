@@ -54,6 +54,8 @@ export class StandComponent {
 	public minDate = new Date(2025, 2, 5);
 	public maxDate = new Date(2025, 2, 20);
 
+	public timepickerCtrl = new FormControl(null);
+
 	protected readonly TextType = TextType;
 	protected readonly TextWeight = TextWeight;
 	protected readonly IconType = IconType;

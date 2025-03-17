@@ -1,0 +1,14 @@
+<ss-lib-select
+	[placeholder]="''"
+	[formControl]="timepickerCtrl"
+	[popoverTriggerFor]="dropdownTime"
+>
+	<ss-lib-dropdown-list
+		#dropdownTime
+		[width]="'114px'"
+	>
+		@for (time of timeIntervals; track $index) {
+			<ss-lib-dropdown-item [value]="time" />
+		}
+	</ss-lib-dropdown-list>
+</ss-lib-select>

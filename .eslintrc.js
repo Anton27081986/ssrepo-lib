@@ -28,6 +28,7 @@ module.exports = {
 				'import/no-unresolved': 'off',
 				'import/extensions': 'off',
 				'import/no-relative-packages': 'off',
+				'import/no-deprecated': 'off',
 				'import/no-cycle': 'off',
 				'@typescript-eslint/ban-types': 'off',
 				'@typescript-eslint/consistent-type-imports': 'off',
