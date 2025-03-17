@@ -24,6 +24,11 @@ export class ModalService {
 		);
 
 		const injector = this._createInjector(popoverRef, this.injector);
+		const parentElem = overlayRef.overlayElement.parentElement;
+
+		if (parentElem) {
+			parentElem.className = 'ss-lib-popup-global-scrolled';
+		}
 
 		overlayRef.attach(
 			new ComponentPortal(GenericPopupComponent, null, injector),

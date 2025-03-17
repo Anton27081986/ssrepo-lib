@@ -32,6 +32,7 @@ export class ColumnsStateService {
 						width: col.width,
 						skeletonTh: col.skeleton.header,
 						order: col.order,
+						align: col.align,
 					};
 				});
 			}),

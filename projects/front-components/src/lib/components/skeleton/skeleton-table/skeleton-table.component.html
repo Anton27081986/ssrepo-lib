@@ -5,7 +5,7 @@
 	>
 		<td
 			*ngFor="let itemTd of itemTr.items"
-			class="ss-lib-table-td"
+			class="ss-lib-table-td ss-lib-table-td-align--{{ itemTd.align }}"
 		>
 			<ss-lib-skeleton-block
 				[config]="itemTd.skeletonConfig"

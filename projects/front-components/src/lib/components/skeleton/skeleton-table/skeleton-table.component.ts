@@ -54,6 +54,7 @@ export class SkeletonTableComponent {
 				id: col.id,
 				order: col.order,
 				skeletonConfig: col.skeleton.body,
+				align: col.align,
 			};
 		});
 	}

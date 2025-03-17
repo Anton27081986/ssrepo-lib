@@ -5,6 +5,8 @@ import {
 	InputComponent,
 	ModalActionApplyComponent,
 	ModalComponent,
+	TextareaComponent,
+	ToastRef,
 } from '../../../../front-components/src/lib/components';
 import {
 	ExtraSize,
@@ -15,7 +17,6 @@ import {
 	ToastTypeEnum,
 } from '../../../../front-components/src/lib/shared/models';
 import { FieldCtrlDirective } from '../../../../front-components/src/lib/core/directives';
-import { ToastRef } from '../../../../front-components/src/lib/components/toast/toast-ref';
 import { ToastService } from '../../../../front-components/src/lib/shared/services/toast.service';
 
 export interface TestModalData {
@@ -33,6 +34,7 @@ export interface TestModalData {
 		FieldCtrlDirective,
 		FormFieldComponent,
 		ReactiveFormsModule,
+		TextareaComponent,
 	],
 	templateUrl: './test-modal.component.html',
 	styleUrl: './test-modal.component.scss',
