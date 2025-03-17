@@ -33,15 +33,17 @@ import type { IDictionaryItemDto } from '../../shared/models';
 	styleUrl: './select.component.scss',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SelectComponent implements ControlValueAccessor {
+export class SelectComponent<T extends IDictionaryItemDto = IDictionaryItemDto>
+	implements ControlValueAccessor
+{
 	public placeholder = input<string>('Выберите из списка');
 	public selectCtrl = new FormControl<string | null>(null);
 
 	private readonly dropdownList = contentChild.required(
-		DropdownListComponent,
+		DropdownListComponent<T>,
 	);
 
-	private onChange!: (value: IDictionaryItemDto | null) => void;
+	private onChange!: (value: T | string | null) => void;
 	private onTouched!: () => void;
 
 	constructor(
@@ -64,17 +66,18 @@ export class SelectComponent implements ControlValueAccessor {
 		});
 	}
 
-	public writeValue(value: IDictionaryItemDto): void {
-		this.selectCtrl.setValue(value?.name || '', { emitEvent: false });
+	public writeValue(value: T | string): void {
+		const displayValue =
+			typeof value === 'string' ? value : value?.name || '';
+
+		this.selectCtrl.setValue(displayValue, { emitEvent: false });
 	}
 
-	public registerOnChange(
-		fn: (value: IDictionaryItemDto | null) => void,
-	): void {
+	public registerOnChange(fn: (value: T | string | null) => void): void {
 		this.onChange = fn;
 	}
 
-	public registerOnTouched(fn: () => IDictionaryItemDto): void {
+	public registerOnTouched(fn: () => void): void {
 		this.onTouched = fn;
 	}
 
@@ -82,14 +85,16 @@ export class SelectComponent implements ControlValueAccessor {
 		isDisabled ? this.selectCtrl.disable() : this.selectCtrl.enable();
 	}
 
-	public onSelectOption(item: IDictionaryItemDto | null): void {
-		if (item) {
-			this.selectCtrl.setValue(item.name, { emitEvent: false });
+	public onSelectOption(item: T | string | null): void {
+		if (item !== null) {
+			const displayValue = typeof item === 'string' ? item : item.name;
+
+			this.selectCtrl.setValue(displayValue, { emitEvent: false });
 			this.updateValue(item);
 		}
 	}
 
-	private updateValue(item: IDictionaryItemDto | null): void {
+	private updateValue(item: T | string | null): void {
 		this.onChange(item);
 		this.onTouched();
 	}

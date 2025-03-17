@@ -30,6 +30,7 @@ import {
 	CalendarComponent,
 	DatepickerComponent,
 	ScrollbarComponent,
+	TimepickerComponent,
 } from '../../../../front-components/src/lib/components';
 import {
 	FieldCtrlDirective,
@@ -73,4 +74,5 @@ export const standImports = [
 	CalendarComponent,
 	DatepickerComponent,
 	ScrollbarComponent,
+	TimepickerComponent,
 ];

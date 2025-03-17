@@ -15,17 +15,16 @@ import { Colors, StateTypes, TextType, TextWeight } from '../../shared/models';
 /**
  * Параметры:
  *
- * [label]: string | undefined - Label для item. По умолчанию: ``
+ * [label]: string | undefined - Label для item. По умолчанию: ''
  *
- * [value]: IDictionaryItemDto | null - Дынные item. По умолчанию: `null`
+ * [value]: T | string | null - Данные item. По умолчанию: null
  *
- * [icon]: IconType | null - Название иконки.  По умолчанию: `null`
+ * [icon]: IconType | null - Название иконки. По умолчанию: null
  *
- * [isDestructive]: boolean - Кнопка удаления. По умолчанию: `false`
+ * [isDestructive]: boolean - Кнопка удаления. По умолчанию: false
  *
- * [isDisabled]: boolean - Блокировка item. По умолчанию: `false`
+ * [isDisabled]: boolean - Блокировка item. По умолчанию: false
  */
-
 @Component({
 	selector: 'ss-lib-dropdown-item',
 	standalone: true,
@@ -34,18 +33,26 @@ import { Colors, StateTypes, TextType, TextWeight } from '../../shared/models';
 	styleUrl: './dropdown-item.component.scss',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DropdownItemComponent {
+export class DropdownItemComponent<
+	T extends IDictionaryItemDto = IDictionaryItemDto,
+> {
 	public label = input<string>('');
-	public value = input<IDictionaryItemDto | null>(null);
+	public value = input<T | string | null>(null);
 	public icon = input<IconType | null>(null);
 	public isDestructive = input<boolean>(false);
 	public isDisabled = input<boolean>(false);
-	public valueEvent = output<IDictionaryItemDto | null>();
+	public valueEvent = output<T | string | null>();
 
 	public state = signal<StateTypes>(StateTypes.Default);
-	public itemText = computed(() =>
-		this.value() ? this.value()?.name : this.label() || '',
-	);
+	public itemText = computed(() => {
+		const val = this.value();
+
+		if (typeof val === 'string') {
+			return val;
+		}
+
+		return val ? val.name : this.label() || '';
+	});
 
 	public readonly iconColor = computed(() => {
 		if (this.isDisabled()) {

@@ -8,7 +8,6 @@ import {
 	DestroyRef,
 	NgZone,
 	Renderer2,
-	viewChild,
 	inject,
 } from '@angular/core';
 import { DraggableDirective } from './draggable.directive';
@@ -29,7 +28,6 @@ interface Size {
 })
 export class ScrollbarComponent implements AfterViewInit {
 	public readonly elementRef: ElementRef<HTMLElement> = inject(ElementRef);
-	public readonly containerRef = viewChild<ElementRef>('container');
 
 	// Vertical scroll calculations
 	public readonly verticalScrolled = computed(() =>
@@ -120,8 +118,8 @@ export class ScrollbarComponent implements AfterViewInit {
 	}
 
 	private setupObservers(): void {
-		if (this.containerRef()?.nativeElement) {
-			this.resizeObserver()!.observe(this.containerRef()!.nativeElement);
+		if (this.elementRef?.nativeElement) {
+			this.resizeObserver()!.observe(this.elementRef!.nativeElement);
 		}
 
 		let rafId: number | null = null;
