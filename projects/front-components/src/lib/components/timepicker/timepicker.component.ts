@@ -10,18 +10,18 @@ import { debounceTime, tap } from 'rxjs';
 import { TIME_INTERVALS } from './constants/time';
 import { DropdownItemComponent } from '../dropdown-item/dropdown-item.component';
 import { DropdownListComponent } from '../dropdown-list/dropdown-list.component';
-import { SelectComponent } from '../select/select.component';
-import { IconType } from '../../shared/models';
+import { IconType, InputType } from '../../shared/models';
 import { PopoverTriggerForDirective } from '../../core/directives';
+import { InputComponent } from '../input/input.component';
 
 @Component({
 	selector: 'ss-lib-timepicker',
 	imports: [
 		DropdownItemComponent,
 		DropdownListComponent,
-		SelectComponent,
 		ReactiveFormsModule,
 		PopoverTriggerForDirective,
+		InputComponent,
 	],
 	templateUrl: './timepicker.component.html',
 	styleUrl: './timepicker.component.scss',
@@ -39,6 +39,7 @@ export class TimepickerComponent implements ControlValueAccessor {
 
 	protected readonly timeIntervals = TIME_INTERVALS;
 	protected readonly IconType = IconType;
+	protected readonly InputType = InputType;
 
 	private onChange: (value: string | null) => void = () => {};
 	private onTouched: () => void = () => {};
@@ -70,5 +71,9 @@ export class TimepickerComponent implements ControlValueAccessor {
 		} else {
 			this.timepickerCtrl.enable();
 		}
+	}
+
+	public selectTime(time: string): void {
+		this.timepickerCtrl.setValue(time);
 	}
 }
