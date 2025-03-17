@@ -49,6 +49,17 @@
 			[placeholder]="'oleg@mail.ru'"
 		/>
 	</ss-lib-form-field>
+	<ss-lib-form-field
+		[label]="'Название'"
+		[hint]="'Подсказка'"
+		[errorText]="'Неверно заполнено'"
+		[showValidationFieldIcon]="true"
+	>
+		<ss-lib-textarea
+			fieldCtrl
+			[formControl]="inputCtrl"
+		/>
+	</ss-lib-form-field>
 </ng-template>
 
 <ng-template #actions>
