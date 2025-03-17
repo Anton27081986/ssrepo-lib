@@ -1,5 +1,4 @@
 .dropdown__options {
-	width: max-content;
 	display: flex;
 	flex-direction: column;
 	background: var(--surface-primary);
@@ -17,6 +16,7 @@
 }
 
 .dropdown__options-content {
+	width: 100%;
 	display: inline-flex;
 	flex-direction: column;
 }

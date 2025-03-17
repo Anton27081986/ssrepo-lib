@@ -18,6 +18,7 @@ import { MaskitoDirective } from '@maskito/angular';
 import {
 	maskitoDateOptionsGenerator,
 	maskitoNumberOptionsGenerator,
+	maskitoTimeOptionsGenerator,
 } from '@maskito/kit';
 import { Align, InputType } from '../../shared/models';
 
@@ -78,6 +79,11 @@ export class InputComponent implements ControlValueAccessor {
 					separator: '/',
 					min: this.min() as Date,
 					max: this.max() as Date,
+				});
+
+			case InputType.Time:
+				return maskitoTimeOptionsGenerator({
+					mode: 'HH:MM',
 				});
 
 			default:
