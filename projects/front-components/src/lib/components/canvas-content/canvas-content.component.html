@@ -1,13 +1,16 @@
 <div class="canvas-content">
-	<div class="canvas-content__header">
+	<div
+		*ngIf="viewHeader()"
+		class="canvas-content__header"
+	>
 		<div class="canvas-content__header--left">
-			<ng-container *ngTemplateOutlet="titleRef"></ng-container>
+			<ng-container *ngTemplateOutlet="titleRef()"></ng-container>
 		</div>
 		<div class="canvas-content__header--right">
-			<ng-container *ngTemplateOutlet="buttonRef"></ng-container>
+			<ng-container *ngTemplateOutlet="buttonRef()"></ng-container>
 		</div>
 	</div>
 	<div class="canvas-content__body">
-		<ng-container *ngTemplateOutlet="contentRef"></ng-container>
+		<ng-container *ngTemplateOutlet="contentRef()"></ng-container>
 	</div>
 </div>
