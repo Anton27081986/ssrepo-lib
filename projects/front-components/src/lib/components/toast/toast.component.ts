@@ -55,7 +55,7 @@ export class ToastComponent implements OnInit, OnDestroy {
 	protected readonly IconPosition = IconPosition;
 	protected initialize = false;
 
-	private timerId = 0;
+	private readonly timerId = 0;
 
 	constructor(
 		private readonly toast: Toast,
@@ -71,9 +71,9 @@ export class ToastComponent implements OnInit, OnDestroy {
 		this.initialize = true;
 
 		if (this.mainButton() || this.secondaryButton()) {
-			this.timerId = setTimeout(() => this.close(), 10000);
+			// this.timerId = setTimeout(() => this.close(), 10000);
 		} else {
-			this.timerId = setTimeout(() => this.close(), 5000);
+			// this.timerId = setTimeout(() => this.close(), 5000);
 		}
 	}
 

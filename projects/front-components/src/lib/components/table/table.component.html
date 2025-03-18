@@ -10,7 +10,7 @@
 						colSkeleton.align
 					}}"
 					[ngStyle]="{
-						minWidth: colSkeleton.width ? colSkeleton.width : null,
+						maxWidth: colSkeleton.width ? colSkeleton.width : null,
 					}"
 					[style.padding]="colSkeleton.padding"
 					[class.ss-lib-table-td-sticky]="colSkeleton.sticky"
@@ -26,7 +26,7 @@
 						col.align
 					}}"
 					[class.ss-lib-table-td-sticky]="col.sticky"
-					[ngStyle]="{ minWidth: col.width ? col.width : null }"
+					[ngStyle]="{ maxWidth: col.width ? col.width : null }"
 					[style.padding]="col.padding"
 				>
 					<ss-lib-text
