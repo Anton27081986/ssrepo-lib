@@ -187,7 +187,9 @@ export class StandComponent {
 			.pipe(
 				catchError(() => {
 					this.sharedPopupService.openToast({
-						text: 'Какой то тостик Какой то тостик',
+						text:
+							'Какой то тостик Какой то тостик Какой то тостик ' +
+							'Какой то тостик Какой то тостик Какой то тостик Какой то тостик Какой то тостик',
 						type: ToastTypeEnum.Error,
 						mainButton: {
 							text: 'Попробовать снова',
