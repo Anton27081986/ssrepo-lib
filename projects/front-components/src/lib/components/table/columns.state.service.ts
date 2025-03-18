@@ -33,6 +33,8 @@ export class ColumnsStateService {
 						skeletonTh: col.skeleton.header,
 						order: col.order,
 						align: col.align,
+						padding: col.padding,
+						sticky: col.sticky,
 					};
 				});
 			}),

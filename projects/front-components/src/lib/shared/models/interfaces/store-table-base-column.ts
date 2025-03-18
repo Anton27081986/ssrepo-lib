@@ -9,6 +9,8 @@ export interface IBaseParamsStoreTable extends IStoreTableId {
 	order: number;
 	readonly width?: string | null;
 	readonly align: AlignType;
+	padding: string | null;
+	sticky: boolean;
 }
 
 export interface IStoreTableBase extends IBaseParamsStoreTable {
