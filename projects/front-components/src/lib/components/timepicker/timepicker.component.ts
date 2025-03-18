@@ -16,6 +16,7 @@ import { InputComponent } from '../input/input.component';
 
 @Component({
 	selector: 'ss-lib-timepicker',
+	standalone: true,
 	imports: [
 		DropdownItemComponent,
 		DropdownListComponent,
