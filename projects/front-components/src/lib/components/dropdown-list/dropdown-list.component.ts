@@ -35,7 +35,7 @@ export class DropdownListComponent<
 
 	public headerTemplateRef = input<TemplateRef<unknown> | null>(null);
 	public width = input<string>('max-content');
-	public height = input<string>('274px');
+	public height = input<string>('auto');
 	public closed = output<void>();
 	public value = output<T | string | null>();
 

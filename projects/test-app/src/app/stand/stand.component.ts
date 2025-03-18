@@ -50,11 +50,17 @@ export class StandComponent {
 	public selectCtrl = new FormControl(null);
 	public numberPickerCtrl = new FormControl(2);
 
-	public datepickerCtrl = new FormControl(null);
+	public datepickerCtrl: FormControl<Date | null> = new FormControl(
+		new Date(),
+	);
+
 	public minDate = new Date(2025, 2, 5);
 	public maxDate = new Date(2025, 2, 20);
 
 	public timepickerCtrl = new FormControl(null);
+	public dateTimepickerCtrl: FormControl<Date | null> = new FormControl(
+		new Date(),
+	);
 
 	protected readonly TextType = TextType;
 	protected readonly TextWeight = TextWeight;

@@ -11,6 +11,11 @@ button.nuv-icon-button {
 	justify-content: space-between;
 	min-width: 40px;
 
+	&:focus-visible {
+		outline: none;
+		box-shadow: var(--focus-rings-focus-ring);
+	}
+
 	&--nav-base {
 		padding: 8px 10px;
 	}
