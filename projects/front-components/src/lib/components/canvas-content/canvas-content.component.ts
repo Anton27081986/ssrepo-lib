@@ -1,21 +1,17 @@
-import type { TemplateRef } from '@angular/core';
-import { Component, Input } from '@angular/core';
-import { NgTemplateOutlet } from '@angular/common';
+import { input, InputSignal, TemplateRef } from '@angular/core';
+import { Component } from '@angular/core';
+import { NgIf, NgTemplateOutlet } from '@angular/common';
 
 @Component({
 	selector: 'ss-lib-canvas-content',
 	standalone: true,
 	templateUrl: './canvas-content.component.html',
-	imports: [NgTemplateOutlet],
+	imports: [NgTemplateOutlet, NgIf],
 	styleUrl: './canvas-content.component.scss',
 })
 export class CanvasContentComponent {
-	@Input()
-	public titleRef: TemplateRef<{}> | null = null;
-
-	@Input()
-	public buttonRef: TemplateRef<{}> | null = null;
-
-	@Input()
-	public contentRef: TemplateRef<{}> | null = null;
+	public titleRef: InputSignal<TemplateRef<{}> | null> = input.required();
+	public buttonRef: InputSignal<TemplateRef<{}> | null> = input.required();
+	public contentRef: InputSignal<TemplateRef<{}> | null> = input.required();
+	public viewHeader: InputSignal<boolean> = input<boolean>(true);
 }
