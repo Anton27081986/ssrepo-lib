@@ -12,6 +12,8 @@
 					[ngStyle]="{
 						minWidth: colSkeleton.width ? colSkeleton.width : null,
 					}"
+					[style.padding]="colSkeleton.padding"
+					[class.ss-lib-table-td-sticky]="colSkeleton.sticky"
 				>
 					<ss-lib-skeleton-block
 						[config]="colSkeleton.skeletonTh"
@@ -23,7 +25,9 @@
 					class="ss-lib-table-th ss-lib-table-th-align--{{
 						col.align
 					}}"
+					[class.ss-lib-table-td-sticky]="col.sticky"
 					[ngStyle]="{ minWidth: col.width ? col.width : null }"
+					[style.padding]="col.padding"
 				>
 					<ss-lib-text
 						[color]="Colors.TextBody2"

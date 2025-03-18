@@ -17,15 +17,17 @@ export const DEFAULT_COLS: IStoreTableBaseColumn[] = [
 		order: 0,
 		width: null,
 		align: 'center',
+		padding: '28px 8px',
+		sticky: false,
 		skeleton: {
 			header: {
-				width: '100px',
-				height: '10px',
+				width: '20px',
+				height: '20px',
 				type: Shape.Round,
 			},
 			body: {
-				width: '100px',
-				height: '100px',
+				width: '20px',
+				height: '20px',
 				type: Shape.Round,
 			},
 		},
@@ -36,6 +38,8 @@ export const DEFAULT_COLS: IStoreTableBaseColumn[] = [
 		order: 1,
 		width: null,
 		align: 'left',
+		padding: null,
+		sticky: false,
 		skeleton: {
 			header: {
 				width: '100px',
@@ -55,6 +59,8 @@ export const DEFAULT_COLS: IStoreTableBaseColumn[] = [
 		order: 2,
 		width: null,
 		align: 'right',
+		padding: null,
+		sticky: false,
 		skeleton: {
 			header: {
 				width: '100px',
@@ -74,6 +80,8 @@ export const DEFAULT_COLS: IStoreTableBaseColumn[] = [
 		order: 3,
 		width: null,
 		align: 'center',
+		padding: null,
+		sticky: false,
 		skeleton: {
 			header: {
 				width: '100px',
@@ -93,6 +101,8 @@ export const DEFAULT_COLS: IStoreTableBaseColumn[] = [
 		order: 4,
 		width: null,
 		align: 'center',
+		padding: null,
+		sticky: false,
 		skeleton: {
 			header: {
 				width: '100px',
@@ -112,6 +122,8 @@ export const DEFAULT_COLS: IStoreTableBaseColumn[] = [
 		order: 5,
 		width: null,
 		align: 'center',
+		padding: null,
+		sticky: true,
 		skeleton: {
 			header: {
 				width: '100px',

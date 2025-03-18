@@ -71,6 +71,9 @@ export class NumberPickerComponent implements ControlValueAccessor {
 	public readonly InputType = InputType;
 	protected readonly ExtraSize = ExtraSize;
 
+	public onChange: (value: number | null) => void = () => {};
+	public onTouched: () => void = () => {};
+
 	public writeValue(value: number | null): void {
 		if (value) {
 			const numberValue = this.checkNumberValue(Number(value) || 0);
@@ -88,9 +91,6 @@ export class NumberPickerComponent implements ControlValueAccessor {
 	public registerOnTouched(fn: () => void): void {
 		this.onTouched = fn;
 	}
-
-	public onChange: (value: number | null) => void = () => {};
-	public onTouched: () => void = () => {};
 
 	public setDisabledState(isDisabled: boolean): void {
 		this.isDisabled.set(isDisabled);
