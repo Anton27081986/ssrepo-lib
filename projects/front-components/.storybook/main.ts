@@ -12,6 +12,7 @@ const config: StorybookConfig = {
 		'@storybook/addon-designs',
 		'@storybook/addon-backgrounds',
 		'@storybook/addon-a11y',
+		'@storybook/addon-docs'
 	],
 	framework: {
 		name: '@storybook/angular',

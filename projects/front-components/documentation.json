@@ -1,346 +1,346 @@
 {
-	"pipes": [],
-	"interfaces": [],
-	"injectables": [],
-	"guards": [],
-	"interceptors": [],
-	"classes": [],
-	"directives": [],
-	"components": [],
-	"modules": [],
-	"miscellaneous": {
-		"variables": [
-			{
-				"name": "CustomSize",
-				"ctype": "miscellaneous",
-				"subtype": "variable",
-				"file": "projects/front-components/src/lib/components/icon/icon.stories.ts",
-				"deprecated": false,
-				"deprecationMessage": "",
-				"type": "Story",
-				"defaultValue": "{\r\n\targs: {\r\n\t\ticon: IconType.Bell,\r\n\t\theight: '16',\r\n\t\twidth: '16',\r\n\t\tcolor: Colors.BorderError,\r\n\t},\r\n}"
-			},
-			{
-				"name": "Default",
-				"ctype": "miscellaneous",
-				"subtype": "variable",
-				"file": "projects/front-components/src/lib/components/icon/icon.stories.ts",
-				"deprecated": false,
-				"deprecationMessage": "",
-				"type": "Story",
-				"defaultValue": "{\r\n\targs: {\r\n\t\ticon: IconType.Bell, // Предполагаю, что у вас есть IconType.Bell\r\n\t\theight: '24',\r\n\t\twidth: '24',\r\n\t\tcolor: Colors.BorderPrimary,\r\n\t},\r\n}"
-			},
-			{
-				"name": "Default",
-				"ctype": "miscellaneous",
-				"subtype": "variable",
-				"file": "projects/front-components/src/lib/components/text/text.stories.ts",
-				"deprecated": false,
-				"deprecationMessage": "",
-				"type": "Story",
-				"defaultValue": "{\r\n\targs: {\r\n\t\ttype: TextType.BodyMd,\r\n\t\tweight: TextWeight.Regular,\r\n\t\tcolor: Colors.TextInformation,\r\n\t\tisEllipsis: false,\r\n\t},\r\n\trender: (args) => ({\r\n\t\tcomponent: TextComponent,\r\n\t\tprops: args,\r\n\t\ttemplate: `<ss-lib-text [type]=\"type\" [weight]=\"weight\" [color]=\"color\" [isEllipsis]=\"isEllipsis\">Это текст с базовым стилем.</ss-lib-text>`,\r\n\t}),\r\n}"
-			},
-			{
-				"name": "EllipsisText",
-				"ctype": "miscellaneous",
-				"subtype": "variable",
-				"file": "projects/front-components/src/lib/components/text/text.stories.ts",
-				"deprecated": false,
-				"deprecationMessage": "",
-				"type": "Story",
-				"defaultValue": "{\r\n\targs: {\r\n\t\ttype: TextType.BodyMd,\r\n\t\tweight: TextWeight.Regular,\r\n\t\tcolor: Colors.TextInformation,\r\n\t\tisEllipsis: true,\r\n\t},\r\n\trender: (args) => ({\r\n\t\tcomponent: TextComponent,\r\n\t\tprops: args,\r\n\t\ttemplate: `<ss-lib-text [type]=\"type\" [weight]=\"weight\" [color]=\"color\" [isEllipsis]=\"isEllipsis\">Этот текст будет обрезан с троеточием, если он слишком длинный.</ss-lib-text>`,\r\n\t}),\r\n}"
-			},
-			{
-				"name": "meta",
-				"ctype": "miscellaneous",
-				"subtype": "variable",
-				"file": "projects/front-components/src/lib/components/icon/icon.stories.ts",
-				"deprecated": false,
-				"deprecationMessage": "",
-				"type": "Meta<IconComponent>",
-				"defaultValue": "{\r\n\ttitle: 'Components/Icon',\r\n\tcomponent: IconComponent,\r\n\ttags: ['autodocs'],\r\n\targTypes: {\r\n\t\ticon: {\r\n\t\t\tcontrol: 'select',\r\n\t\t\toptions: Object.values(IconType),\r\n\t\t\tdescription: 'Иконка',\r\n\t\t},\r\n\t\theight: {\r\n\t\t\tcontrol: 'text',\r\n\t\t\tdescription: 'Высота, px',\r\n\t\t},\r\n\t\twidth: {\r\n\t\t\tcontrol: 'text',\r\n\t\t\tdescription: 'Ширина, px',\r\n\t\t},\r\n\t\tcolor: {\r\n\t\t\tcontrol: {\r\n\t\t\t\ttype: 'select',\r\n\t\t\t},\r\n\t\t\toptions: Object.values(Colors),\r\n\t\t\tdescription: 'Цвет иконки',\r\n\t\t},\r\n\t},\r\n}"
-			},
-			{
-				"name": "meta",
-				"ctype": "miscellaneous",
-				"subtype": "variable",
-				"file": "projects/front-components/src/lib/components/text/text.stories.ts",
-				"deprecated": false,
-				"deprecationMessage": "",
-				"type": "Meta<TextComponent>",
-				"defaultValue": "{\r\n\ttitle: 'Components/Text',\r\n\tcomponent: TextComponent,\r\n\ttags: ['autodocs'],\r\n\targTypes: {\r\n\t\ttype: {\r\n\t\t\tcontrol: 'select',\r\n\t\t\toptions: Object.values(TextType),\r\n\t\t\tdescription: 'Тип текста',\r\n\t\t},\r\n\t\tweight: {\r\n\t\t\tcontrol: 'select',\r\n\t\t\toptions: Object.values(TextWeight),\r\n\t\t\tdescription: 'Толщина шрифта',\r\n\t\t},\r\n\t\tcolor: {\r\n\t\t\tcontrol: 'select',\r\n\t\t\toptions: Object.values(Colors),\r\n\t\t\tdescription: 'Цвет текста',\r\n\t\t},\r\n\t\tisEllipsis: {\r\n\t\t\tcontrol: 'boolean',\r\n\t\t\tdescription: 'Добавлять троеточие при переполнении',\r\n\t\t},\r\n\t},\r\n}"
-			},
-			{
-				"name": "preview",
-				"ctype": "miscellaneous",
-				"subtype": "variable",
-				"file": "projects/front-components/.storybook/preview.ts",
-				"deprecated": false,
-				"deprecationMessage": "",
-				"type": "Preview",
-				"defaultValue": "{\r\n\tparameters: {\r\n\t\tcontrols: {\r\n\t\t\tmatchers: {\r\n\t\t\t\tcolor: /(background|color)$/i,\r\n\t\t\t\tdate: /Date$/i,\r\n\t\t\t},\r\n\t\t},\r\n\t\tdarkMode: {\r\n\t\t\tstylePreview: true,\r\n\t\t}\r\n\t},\r\n\ttags: ['autodocs'],\r\n\r\n}"
-			},
-			{
-				"name": "WithDesign",
-				"ctype": "miscellaneous",
-				"subtype": "variable",
-				"file": "projects/front-components/src/lib/components/icon/icon.stories.ts",
-				"deprecated": false,
-				"deprecationMessage": "",
-				"type": "Story",
-				"defaultValue": "{\r\n\targs: {\r\n\t\ticon: IconType.Bell,\r\n\t\theight: '24',\r\n\t\twidth: '24',\r\n\t\tcolor: Colors.IconError,\r\n\t},\r\n\tparameters: {\r\n\t\tdesign: {\r\n\t\t\ttype: 'iframe',\r\n\t\t\turl: 'https://embed.figma.com/design/U6NqdjVMT2AVBtWgGesulg/SS-ERP-%2F%2F-Prototype?node-id=14350-168000&embed-host=share',\r\n\t\t},\r\n\t},\r\n}"
-			}
-		],
-		"functions": [],
-		"typealiases": [
-			{
-				"name": "Story",
-				"ctype": "miscellaneous",
-				"subtype": "typealias",
-				"rawtype": "StoryObj<IconComponent>",
-				"file": "projects/front-components/src/lib/components/icon/icon.stories.ts",
-				"deprecated": false,
-				"deprecationMessage": "",
-				"description": "",
-				"kind": 183
-			},
-			{
-				"name": "Story",
-				"ctype": "miscellaneous",
-				"subtype": "typealias",
-				"rawtype": "StoryObj<TextComponent>",
-				"file": "projects/front-components/src/lib/components/text/text.stories.ts",
-				"deprecated": false,
-				"deprecationMessage": "",
-				"description": "",
-				"kind": 183
-			}
-		],
-		"enumerations": [],
-		"groupedVariables": {
-			"projects/front-components/src/lib/components/icon/icon.stories.ts": [
-				{
-					"name": "CustomSize",
-					"ctype": "miscellaneous",
-					"subtype": "variable",
-					"file": "projects/front-components/src/lib/components/icon/icon.stories.ts",
-					"deprecated": false,
-					"deprecationMessage": "",
-					"type": "Story",
-					"defaultValue": "{\r\n\targs: {\r\n\t\ticon: IconType.Bell,\r\n\t\theight: '16',\r\n\t\twidth: '16',\r\n\t\tcolor: Colors.BorderError,\r\n\t},\r\n}"
-				},
-				{
-					"name": "Default",
-					"ctype": "miscellaneous",
-					"subtype": "variable",
-					"file": "projects/front-components/src/lib/components/icon/icon.stories.ts",
-					"deprecated": false,
-					"deprecationMessage": "",
-					"type": "Story",
-					"defaultValue": "{\r\n\targs: {\r\n\t\ticon: IconType.Bell, // Предполагаю, что у вас есть IconType.Bell\r\n\t\theight: '24',\r\n\t\twidth: '24',\r\n\t\tcolor: Colors.BorderPrimary,\r\n\t},\r\n}"
-				},
-				{
-					"name": "meta",
-					"ctype": "miscellaneous",
-					"subtype": "variable",
-					"file": "projects/front-components/src/lib/components/icon/icon.stories.ts",
-					"deprecated": false,
-					"deprecationMessage": "",
-					"type": "Meta<IconComponent>",
-					"defaultValue": "{\r\n\ttitle: 'Components/Icon',\r\n\tcomponent: IconComponent,\r\n\ttags: ['autodocs'],\r\n\targTypes: {\r\n\t\ticon: {\r\n\t\t\tcontrol: 'select',\r\n\t\t\toptions: Object.values(IconType),\r\n\t\t\tdescription: 'Иконка',\r\n\t\t},\r\n\t\theight: {\r\n\t\t\tcontrol: 'text',\r\n\t\t\tdescription: 'Высота, px',\r\n\t\t},\r\n\t\twidth: {\r\n\t\t\tcontrol: 'text',\r\n\t\t\tdescription: 'Ширина, px',\r\n\t\t},\r\n\t\tcolor: {\r\n\t\t\tcontrol: {\r\n\t\t\t\ttype: 'select',\r\n\t\t\t},\r\n\t\t\toptions: Object.values(Colors),\r\n\t\t\tdescription: 'Цвет иконки',\r\n\t\t},\r\n\t},\r\n}"
-				},
-				{
-					"name": "WithDesign",
-					"ctype": "miscellaneous",
-					"subtype": "variable",
-					"file": "projects/front-components/src/lib/components/icon/icon.stories.ts",
-					"deprecated": false,
-					"deprecationMessage": "",
-					"type": "Story",
-					"defaultValue": "{\r\n\targs: {\r\n\t\ticon: IconType.Bell,\r\n\t\theight: '24',\r\n\t\twidth: '24',\r\n\t\tcolor: Colors.IconError,\r\n\t},\r\n\tparameters: {\r\n\t\tdesign: {\r\n\t\t\ttype: 'iframe',\r\n\t\t\turl: 'https://embed.figma.com/design/U6NqdjVMT2AVBtWgGesulg/SS-ERP-%2F%2F-Prototype?node-id=14350-168000&embed-host=share',\r\n\t\t},\r\n\t},\r\n}"
-				}
-			],
-			"projects/front-components/src/lib/components/text/text.stories.ts": [
-				{
-					"name": "Default",
-					"ctype": "miscellaneous",
-					"subtype": "variable",
-					"file": "projects/front-components/src/lib/components/text/text.stories.ts",
-					"deprecated": false,
-					"deprecationMessage": "",
-					"type": "Story",
-					"defaultValue": "{\r\n\targs: {\r\n\t\ttype: TextType.BodyMd,\r\n\t\tweight: TextWeight.Regular,\r\n\t\tcolor: Colors.TextInformation,\r\n\t\tisEllipsis: false,\r\n\t},\r\n\trender: (args) => ({\r\n\t\tcomponent: TextComponent,\r\n\t\tprops: args,\r\n\t\ttemplate: `<ss-lib-text [type]=\"type\" [weight]=\"weight\" [color]=\"color\" [isEllipsis]=\"isEllipsis\">Это текст с базовым стилем.</ss-lib-text>`,\r\n\t}),\r\n}"
-				},
-				{
-					"name": "EllipsisText",
-					"ctype": "miscellaneous",
-					"subtype": "variable",
-					"file": "projects/front-components/src/lib/components/text/text.stories.ts",
-					"deprecated": false,
-					"deprecationMessage": "",
-					"type": "Story",
-					"defaultValue": "{\r\n\targs: {\r\n\t\ttype: TextType.BodyMd,\r\n\t\tweight: TextWeight.Regular,\r\n\t\tcolor: Colors.TextInformation,\r\n\t\tisEllipsis: true,\r\n\t},\r\n\trender: (args) => ({\r\n\t\tcomponent: TextComponent,\r\n\t\tprops: args,\r\n\t\ttemplate: `<ss-lib-text [type]=\"type\" [weight]=\"weight\" [color]=\"color\" [isEllipsis]=\"isEllipsis\">Этот текст будет обрезан с троеточием, если он слишком длинный.</ss-lib-text>`,\r\n\t}),\r\n}"
-				},
-				{
-					"name": "meta",
-					"ctype": "miscellaneous",
-					"subtype": "variable",
-					"file": "projects/front-components/src/lib/components/text/text.stories.ts",
-					"deprecated": false,
-					"deprecationMessage": "",
-					"type": "Meta<TextComponent>",
-					"defaultValue": "{\r\n\ttitle: 'Components/Text',\r\n\tcomponent: TextComponent,\r\n\ttags: ['autodocs'],\r\n\targTypes: {\r\n\t\ttype: {\r\n\t\t\tcontrol: 'select',\r\n\t\t\toptions: Object.values(TextType),\r\n\t\t\tdescription: 'Тип текста',\r\n\t\t},\r\n\t\tweight: {\r\n\t\t\tcontrol: 'select',\r\n\t\t\toptions: Object.values(TextWeight),\r\n\t\t\tdescription: 'Толщина шрифта',\r\n\t\t},\r\n\t\tcolor: {\r\n\t\t\tcontrol: 'select',\r\n\t\t\toptions: Object.values(Colors),\r\n\t\t\tdescription: 'Цвет текста',\r\n\t\t},\r\n\t\tisEllipsis: {\r\n\t\t\tcontrol: 'boolean',\r\n\t\t\tdescription: 'Добавлять троеточие при переполнении',\r\n\t\t},\r\n\t},\r\n}"
-				}
-			],
-			"projects/front-components/.storybook/preview.ts": [
-				{
-					"name": "preview",
-					"ctype": "miscellaneous",
-					"subtype": "variable",
-					"file": "projects/front-components/.storybook/preview.ts",
-					"deprecated": false,
-					"deprecationMessage": "",
-					"type": "Preview",
-					"defaultValue": "{\r\n\tparameters: {\r\n\t\tcontrols: {\r\n\t\t\tmatchers: {\r\n\t\t\t\tcolor: /(background|color)$/i,\r\n\t\t\t\tdate: /Date$/i,\r\n\t\t\t},\r\n\t\t},\r\n\t\tdarkMode: {\r\n\t\t\tstylePreview: true,\r\n\t\t}\r\n\t},\r\n\ttags: ['autodocs'],\r\n\r\n}"
-				}
-			]
-		},
-		"groupedFunctions": {},
-		"groupedEnumerations": {},
-		"groupedTypeAliases": {
-			"projects/front-components/src/lib/components/icon/icon.stories.ts": [
-				{
-					"name": "Story",
-					"ctype": "miscellaneous",
-					"subtype": "typealias",
-					"rawtype": "StoryObj<IconComponent>",
-					"file": "projects/front-components/src/lib/components/icon/icon.stories.ts",
-					"deprecated": false,
-					"deprecationMessage": "",
-					"description": "",
-					"kind": 183
-				}
-			],
-			"projects/front-components/src/lib/components/text/text.stories.ts": [
-				{
-					"name": "Story",
-					"ctype": "miscellaneous",
-					"subtype": "typealias",
-					"rawtype": "StoryObj<TextComponent>",
-					"file": "projects/front-components/src/lib/components/text/text.stories.ts",
-					"deprecated": false,
-					"deprecationMessage": "",
-					"description": "",
-					"kind": 183
-				}
-			]
-		}
-	},
-	"routes": [],
-	"coverage": {
-		"count": 0,
-		"status": "low",
-		"files": [
-			{
-				"filePath": "projects/front-components/.storybook/preview.ts",
-				"type": "variable",
-				"linktype": "miscellaneous",
-				"linksubtype": "variable",
-				"name": "preview",
-				"coveragePercent": 0,
-				"coverageCount": "0/1",
-				"status": "low"
-			},
-			{
-				"filePath": "projects/front-components/src/lib/components/icon/icon.stories.ts",
-				"type": "variable",
-				"linktype": "miscellaneous",
-				"linksubtype": "variable",
-				"name": "CustomSize",
-				"coveragePercent": 0,
-				"coverageCount": "0/1",
-				"status": "low"
-			},
-			{
-				"filePath": "projects/front-components/src/lib/components/icon/icon.stories.ts",
-				"type": "variable",
-				"linktype": "miscellaneous",
-				"linksubtype": "variable",
-				"name": "Default",
-				"coveragePercent": 0,
-				"coverageCount": "0/1",
-				"status": "low"
-			},
-			{
-				"filePath": "projects/front-components/src/lib/components/icon/icon.stories.ts",
-				"type": "variable",
-				"linktype": "miscellaneous",
-				"linksubtype": "variable",
-				"name": "meta",
-				"coveragePercent": 0,
-				"coverageCount": "0/1",
-				"status": "low"
-			},
-			{
-				"filePath": "projects/front-components/src/lib/components/icon/icon.stories.ts",
-				"type": "variable",
-				"linktype": "miscellaneous",
-				"linksubtype": "variable",
-				"name": "WithDesign",
-				"coveragePercent": 0,
-				"coverageCount": "0/1",
-				"status": "low"
-			},
-			{
-				"filePath": "projects/front-components/src/lib/components/icon/icon.stories.ts",
-				"type": "type alias",
-				"linktype": "miscellaneous",
-				"linksubtype": "typealias",
-				"name": "Story",
-				"coveragePercent": 0,
-				"coverageCount": "0/1",
-				"status": "low"
-			},
-			{
-				"filePath": "projects/front-components/src/lib/components/text/text.stories.ts",
-				"type": "variable",
-				"linktype": "miscellaneous",
-				"linksubtype": "variable",
-				"name": "Default",
-				"coveragePercent": 0,
-				"coverageCount": "0/1",
-				"status": "low"
-			},
-			{
-				"filePath": "projects/front-components/src/lib/components/text/text.stories.ts",
-				"type": "variable",
-				"linktype": "miscellaneous",
-				"linksubtype": "variable",
-				"name": "EllipsisText",
-				"coveragePercent": 0,
-				"coverageCount": "0/1",
-				"status": "low"
-			},
-			{
-				"filePath": "projects/front-components/src/lib/components/text/text.stories.ts",
-				"type": "variable",
-				"linktype": "miscellaneous",
-				"linksubtype": "variable",
-				"name": "meta",
-				"coveragePercent": 0,
-				"coverageCount": "0/1",
-				"status": "low"
-			},
-			{
-				"filePath": "projects/front-components/src/lib/components/text/text.stories.ts",
-				"type": "type alias",
-				"linktype": "miscellaneous",
-				"linksubtype": "typealias",
-				"name": "Story",
-				"coveragePercent": 0,
-				"coverageCount": "0/1",
-				"status": "low"
-			}
-		]
-	}
+    "pipes": [],
+    "interfaces": [],
+    "injectables": [],
+    "guards": [],
+    "interceptors": [],
+    "classes": [],
+    "directives": [],
+    "components": [],
+    "modules": [],
+    "miscellaneous": {
+        "variables": [
+            {
+                "name": "CustomSize",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/front-components/src/lib/components/icon/icon.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\r\n\targs: {\r\n\t\ticon: IconType.Bell,\r\n\t\theight: '16',\r\n\t\twidth: '16',\r\n\t\tcolor: Colors.BorderError,\r\n\t},\r\n}"
+            },
+            {
+                "name": "Default",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/front-components/src/lib/components/icon/icon.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\r\n\targs: {\r\n\t\ticon: IconType.Bell, // Предполагаю, что у вас есть IconType.Bell\r\n\t\theight: '24',\r\n\t\twidth: '24',\r\n\t\tcolor: Colors.BorderPrimary,\r\n\t},\r\n}"
+            },
+            {
+                "name": "Default",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/front-components/src/lib/components/text/text.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\r\n\targs: {\r\n\t\ttype: TextType.BodyMd,\r\n\t\tweight: TextWeight.Regular,\r\n\t\tcolor: Colors.TextInformation,\r\n\t\tisEllipsis: false,\r\n\t},\r\n\trender: (args) => ({\r\n\t\tcomponent: TextComponent,\r\n\t\tprops: args,\r\n\t\ttemplate: `<ss-lib-text [type]=\"type\" [weight]=\"weight\" [color]=\"color\" [isEllipsis]=\"isEllipsis\">Это текст с базовым стилем.</ss-lib-text>`,\r\n\t}),\r\n}"
+            },
+            {
+                "name": "EllipsisText",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/front-components/src/lib/components/text/text.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\r\n\targs: {\r\n\t\ttype: TextType.BodyMd,\r\n\t\tweight: TextWeight.Regular,\r\n\t\tcolor: Colors.TextInformation,\r\n\t\tisEllipsis: true,\r\n\t},\r\n\trender: (args) => ({\r\n\t\tcomponent: TextComponent,\r\n\t\tprops: args,\r\n\t\ttemplate: `<ss-lib-text [type]=\"type\" [weight]=\"weight\" [color]=\"color\" [isEllipsis]=\"isEllipsis\">Этот текст будет обрезан с троеточием, если он слишком длинный.</ss-lib-text>`,\r\n\t}),\r\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/front-components/src/lib/components/icon/icon.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<IconComponent>",
+                "defaultValue": "{\r\n\ttitle: 'Components/Icon',\r\n\tcomponent: IconComponent,\r\n\ttags: ['autodocs'],\r\n\targTypes: {\r\n\t\ticon: {\r\n\t\t\tcontrol: 'select',\r\n\t\t\toptions: Object.values(IconType),\r\n\t\t\tdescription: 'Иконка',\r\n\t\t},\r\n\t\theight: {\r\n\t\t\tcontrol: 'text',\r\n\t\t\tdescription: 'Высота, px',\r\n\t\t},\r\n\t\twidth: {\r\n\t\t\tcontrol: 'text',\r\n\t\t\tdescription: 'Ширина, px',\r\n\t\t},\r\n\t\tcolor: {\r\n\t\t\tcontrol: {\r\n\t\t\t\ttype: 'select',\r\n\t\t\t\tlabels: Object.fromEntries(\r\n\t\t\t\t\tObject.entries(Colors).map(([name, value]) => [\r\n\t\t\t\t\t\tvalue,\r\n\t\t\t\t\t\tname,\r\n\t\t\t\t\t]),\r\n\t\t\t\t),\r\n\t\t\t},\r\n\t\t\toptions: Object.values(Colors),\r\n\t\t\tdescription: 'Цвет иконки',\r\n\t\t\ttable: {\r\n\t\t\t\ttype: { summary: 'Colors' },\r\n\t\t\t},\r\n\t\t},\r\n\t},\r\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/front-components/src/lib/components/text/text.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<TextComponent>",
+                "defaultValue": "{\r\n\ttitle: 'Components/Text',\r\n\tcomponent: TextComponent,\r\n\ttags: ['autodocs'],\r\n\targTypes: {\r\n\t\ttype: {\r\n\t\t\tcontrol: 'select',\r\n\t\t\toptions: Object.values(TextType),\r\n\t\t\tdescription: 'Тип текста',\r\n\t\t},\r\n\t\tweight: {\r\n\t\t\tcontrol: 'select',\r\n\t\t\toptions: Object.values(TextWeight),\r\n\t\t\tdescription: 'Толщина шрифта',\r\n\t\t},\r\n\t\tcolor: {\r\n\t\t\tcontrol: 'select',\r\n\t\t\toptions: Object.values(Colors),\r\n\t\t\tdescription: 'Цвет текста',\r\n\t\t},\r\n\t\tisEllipsis: {\r\n\t\t\tcontrol: 'boolean',\r\n\t\t\tdescription: 'Добавлять троеточие при переполнении',\r\n\t\t},\r\n\t},\r\n}"
+            },
+            {
+                "name": "preview",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/front-components/.storybook/preview.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Preview",
+                "defaultValue": "{\r\n\tparameters: {\r\n\t\tdocs: {\r\n\t\t\ttoc: true,\r\n\t\t\tcanvas: {\r\n\t\t\t\tsourceState: 'shown'\r\n\t\t\t}\r\n\t\t},\r\n\t\tcontrols: {\r\n\t\t\tmatchers: {\r\n\t\t\t\tcolor: /(background|color)$/i,\r\n\t\t\t\tdate: /Date$/i,\r\n\t\t\t},\r\n\t\t},\r\n\t\tdarkMode: {\r\n\t\t\tstylePreview: true,\r\n\t\t}\r\n\t},\r\n\ttags: ['autodocs'],\r\n\r\n\r\n}"
+            },
+            {
+                "name": "WithDesign",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/front-components/src/lib/components/icon/icon.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\r\n\targs: {\r\n\t\ticon: IconType.Bell,\r\n\t\theight: '24',\r\n\t\twidth: '24',\r\n\t\tcolor: Colors.IconError,\r\n\t},\r\n\tparameters: {\r\n\t\tdesign: {\r\n\t\t\ttype: 'iframe',\r\n\t\t\turl: 'https://embed.figma.com/design/U6NqdjVMT2AVBtWgGesulg/SS-ERP-%2F%2F-Prototype?node-id=14350-168000&embed-host=share',\r\n\t\t},\r\n\t},\r\n}"
+            }
+        ],
+        "functions": [],
+        "typealiases": [
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<IconComponent>",
+                "file": "projects/front-components/src/lib/components/icon/icon.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 183
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<TextComponent>",
+                "file": "projects/front-components/src/lib/components/text/text.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 183
+            }
+        ],
+        "enumerations": [],
+        "groupedVariables": {
+            "projects/front-components/src/lib/components/icon/icon.stories.ts": [
+                {
+                    "name": "CustomSize",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/front-components/src/lib/components/icon/icon.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\r\n\targs: {\r\n\t\ticon: IconType.Bell,\r\n\t\theight: '16',\r\n\t\twidth: '16',\r\n\t\tcolor: Colors.BorderError,\r\n\t},\r\n}"
+                },
+                {
+                    "name": "Default",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/front-components/src/lib/components/icon/icon.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\r\n\targs: {\r\n\t\ticon: IconType.Bell, // Предполагаю, что у вас есть IconType.Bell\r\n\t\theight: '24',\r\n\t\twidth: '24',\r\n\t\tcolor: Colors.BorderPrimary,\r\n\t},\r\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/front-components/src/lib/components/icon/icon.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<IconComponent>",
+                    "defaultValue": "{\r\n\ttitle: 'Components/Icon',\r\n\tcomponent: IconComponent,\r\n\ttags: ['autodocs'],\r\n\targTypes: {\r\n\t\ticon: {\r\n\t\t\tcontrol: 'select',\r\n\t\t\toptions: Object.values(IconType),\r\n\t\t\tdescription: 'Иконка',\r\n\t\t},\r\n\t\theight: {\r\n\t\t\tcontrol: 'text',\r\n\t\t\tdescription: 'Высота, px',\r\n\t\t},\r\n\t\twidth: {\r\n\t\t\tcontrol: 'text',\r\n\t\t\tdescription: 'Ширина, px',\r\n\t\t},\r\n\t\tcolor: {\r\n\t\t\tcontrol: {\r\n\t\t\t\ttype: 'select',\r\n\t\t\t\tlabels: Object.fromEntries(\r\n\t\t\t\t\tObject.entries(Colors).map(([name, value]) => [\r\n\t\t\t\t\t\tvalue,\r\n\t\t\t\t\t\tname,\r\n\t\t\t\t\t]),\r\n\t\t\t\t),\r\n\t\t\t},\r\n\t\t\toptions: Object.values(Colors),\r\n\t\t\tdescription: 'Цвет иконки',\r\n\t\t\ttable: {\r\n\t\t\t\ttype: { summary: 'Colors' },\r\n\t\t\t},\r\n\t\t},\r\n\t},\r\n}"
+                },
+                {
+                    "name": "WithDesign",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/front-components/src/lib/components/icon/icon.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\r\n\targs: {\r\n\t\ticon: IconType.Bell,\r\n\t\theight: '24',\r\n\t\twidth: '24',\r\n\t\tcolor: Colors.IconError,\r\n\t},\r\n\tparameters: {\r\n\t\tdesign: {\r\n\t\t\ttype: 'iframe',\r\n\t\t\turl: 'https://embed.figma.com/design/U6NqdjVMT2AVBtWgGesulg/SS-ERP-%2F%2F-Prototype?node-id=14350-168000&embed-host=share',\r\n\t\t},\r\n\t},\r\n}"
+                }
+            ],
+            "projects/front-components/src/lib/components/text/text.stories.ts": [
+                {
+                    "name": "Default",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/front-components/src/lib/components/text/text.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\r\n\targs: {\r\n\t\ttype: TextType.BodyMd,\r\n\t\tweight: TextWeight.Regular,\r\n\t\tcolor: Colors.TextInformation,\r\n\t\tisEllipsis: false,\r\n\t},\r\n\trender: (args) => ({\r\n\t\tcomponent: TextComponent,\r\n\t\tprops: args,\r\n\t\ttemplate: `<ss-lib-text [type]=\"type\" [weight]=\"weight\" [color]=\"color\" [isEllipsis]=\"isEllipsis\">Это текст с базовым стилем.</ss-lib-text>`,\r\n\t}),\r\n}"
+                },
+                {
+                    "name": "EllipsisText",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/front-components/src/lib/components/text/text.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\r\n\targs: {\r\n\t\ttype: TextType.BodyMd,\r\n\t\tweight: TextWeight.Regular,\r\n\t\tcolor: Colors.TextInformation,\r\n\t\tisEllipsis: true,\r\n\t},\r\n\trender: (args) => ({\r\n\t\tcomponent: TextComponent,\r\n\t\tprops: args,\r\n\t\ttemplate: `<ss-lib-text [type]=\"type\" [weight]=\"weight\" [color]=\"color\" [isEllipsis]=\"isEllipsis\">Этот текст будет обрезан с троеточием, если он слишком длинный.</ss-lib-text>`,\r\n\t}),\r\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/front-components/src/lib/components/text/text.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<TextComponent>",
+                    "defaultValue": "{\r\n\ttitle: 'Components/Text',\r\n\tcomponent: TextComponent,\r\n\ttags: ['autodocs'],\r\n\targTypes: {\r\n\t\ttype: {\r\n\t\t\tcontrol: 'select',\r\n\t\t\toptions: Object.values(TextType),\r\n\t\t\tdescription: 'Тип текста',\r\n\t\t},\r\n\t\tweight: {\r\n\t\t\tcontrol: 'select',\r\n\t\t\toptions: Object.values(TextWeight),\r\n\t\t\tdescription: 'Толщина шрифта',\r\n\t\t},\r\n\t\tcolor: {\r\n\t\t\tcontrol: 'select',\r\n\t\t\toptions: Object.values(Colors),\r\n\t\t\tdescription: 'Цвет текста',\r\n\t\t},\r\n\t\tisEllipsis: {\r\n\t\t\tcontrol: 'boolean',\r\n\t\t\tdescription: 'Добавлять троеточие при переполнении',\r\n\t\t},\r\n\t},\r\n}"
+                }
+            ],
+            "projects/front-components/.storybook/preview.ts": [
+                {
+                    "name": "preview",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/front-components/.storybook/preview.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Preview",
+                    "defaultValue": "{\r\n\tparameters: {\r\n\t\tdocs: {\r\n\t\t\ttoc: true,\r\n\t\t\tcanvas: {\r\n\t\t\t\tsourceState: 'shown'\r\n\t\t\t}\r\n\t\t},\r\n\t\tcontrols: {\r\n\t\t\tmatchers: {\r\n\t\t\t\tcolor: /(background|color)$/i,\r\n\t\t\t\tdate: /Date$/i,\r\n\t\t\t},\r\n\t\t},\r\n\t\tdarkMode: {\r\n\t\t\tstylePreview: true,\r\n\t\t}\r\n\t},\r\n\ttags: ['autodocs'],\r\n\r\n\r\n}"
+                }
+            ]
+        },
+        "groupedFunctions": {},
+        "groupedEnumerations": {},
+        "groupedTypeAliases": {
+            "projects/front-components/src/lib/components/icon/icon.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<IconComponent>",
+                    "file": "projects/front-components/src/lib/components/icon/icon.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 183
+                }
+            ],
+            "projects/front-components/src/lib/components/text/text.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<TextComponent>",
+                    "file": "projects/front-components/src/lib/components/text/text.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 183
+                }
+            ]
+        }
+    },
+    "routes": [],
+    "coverage": {
+        "count": 0,
+        "status": "low",
+        "files": [
+            {
+                "filePath": "projects/front-components/.storybook/preview.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "preview",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/front-components/src/lib/components/icon/icon.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "CustomSize",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/front-components/src/lib/components/icon/icon.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Default",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/front-components/src/lib/components/icon/icon.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/front-components/src/lib/components/icon/icon.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "WithDesign",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/front-components/src/lib/components/icon/icon.stories.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "Story",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/front-components/src/lib/components/text/text.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Default",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/front-components/src/lib/components/text/text.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "EllipsisText",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/front-components/src/lib/components/text/text.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/front-components/src/lib/components/text/text.stories.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "Story",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            }
+        ]
+    }
 }
