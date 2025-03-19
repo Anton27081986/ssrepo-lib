@@ -1,0 +1,13 @@
+.date-time-picker-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  .date{
+    flex-grow: 1;
+  }
+
+  .time {
+    width: 75px;
+  }
+}

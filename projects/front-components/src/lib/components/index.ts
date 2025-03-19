@@ -38,3 +38,4 @@ export { ScrollbarComponent } from './scrollbar/scrollbar.component';
 export { ToastComponent } from './toast/toast.component';
 export { ToastRef } from './toast/toast-ref';
 export { TimepickerComponent } from './timepicker/timepicker.component';
+export { DateTimePickerComponent } from './date-time-picker/date-time-picker.component';

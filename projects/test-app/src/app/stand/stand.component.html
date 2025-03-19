@@ -544,3 +544,12 @@
 <br />
 
 <pre>{{ timepickerCtrl.value }}</pre>
+
+<ss-lib-date-time-picker
+	[formControl]="dateTimepickerStrCtrl"
+	[min]="minDate"
+	[max]="maxDate"
+/>
+
+<pre>{{ dateTimepickerStrCtrl.value }}</pre>
+<pre>{{ dateTimepickerStrCtrl.valid }}</pre>

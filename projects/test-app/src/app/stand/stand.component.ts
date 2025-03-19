@@ -62,6 +62,11 @@ export class StandComponent {
 		new Date(),
 	);
 
+	public dateTimepickerStrCtrl: FormControl<Date | null> = new FormControl(
+		new Date('2025-03-17T09:42:01.0285Z'),
+		[Validators.required],
+	);
+
 	protected readonly TextType = TextType;
 	protected readonly TextWeight = TextWeight;
 	protected readonly IconType = IconType;

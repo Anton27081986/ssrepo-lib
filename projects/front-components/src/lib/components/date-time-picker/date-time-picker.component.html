@@ -1,0 +1,20 @@
+<form
+	class="date-time-picker-wrapper"
+	[formGroup]="dateTimeForm"
+>
+	<ss-lib-form-field class="date">
+		<ss-lib-datepicker
+			fieldCtrl
+			formControlName="date"
+			[min]="min()"
+			[max]="max()"
+		></ss-lib-datepicker>
+	</ss-lib-form-field>
+
+	<ss-lib-form-field class="time">
+		<ss-lib-timepicker
+			fieldCtrl
+			formControlName="time"
+		></ss-lib-timepicker>
+	</ss-lib-form-field>
+</form>
