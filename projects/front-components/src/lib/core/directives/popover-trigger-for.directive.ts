@@ -24,6 +24,8 @@ export class PopoverTriggerForDirective implements OnDestroy {
 		alias: 'popoverTriggerFor',
 	});
 
+	public popoverTriggerDisabled = input<boolean>(false);
+
 	private readonly overlay = inject(Overlay);
 	private readonly elementRef: ElementRef<HTMLElement> = inject(
 		ElementRef<HTMLElement>,
@@ -37,6 +39,10 @@ export class PopoverTriggerForDirective implements OnDestroy {
 
 	@HostListener('click')
 	public togglePopover(): void {
+		if (this.popoverTriggerDisabled()) {
+			return;
+		}
+
 		this.isPopoverOpen ? this.destroyPopover() : this.openPopover();
 	}
 

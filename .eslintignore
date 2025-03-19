@@ -1,6 +1,6 @@
 # Общие игнорируемые директории
 node_modules
-husky
+.husky
 dist
 coverage
 
