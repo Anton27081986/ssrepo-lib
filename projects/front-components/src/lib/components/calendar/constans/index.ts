@@ -9,6 +9,8 @@ export { MONTHS_SHORT } from './months-short';
 export { MONTHS_LONG } from './months-long';
 export { LAST_DAY } from './last-day';
 export { FIRST_DAY } from './first-day';
+export { FIRST_NATIVE_DAY } from './first-native-day';
+export { LAST_NATIVE_DAY } from './last-native-day';
 export { MIN_YEAR } from './min-year';
 export { MAX_YEAR } from './max-year';
 export { MIN_MONTH } from './min-month';
