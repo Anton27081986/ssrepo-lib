@@ -2,6 +2,7 @@
 	[type]="InputType.Time"
 	[formControl]="timepickerCtrl"
 	[popoverTriggerFor]="dropdownTime"
+	[popoverTriggerDisabled]="timepickerCtrl.disabled"
 >
 	<ss-lib-dropdown-list
 		#dropdownTime
