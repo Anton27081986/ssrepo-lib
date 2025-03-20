@@ -14,7 +14,6 @@
 	<div
 		*ngIf="contentRef()"
 		class="ss-lib-modal__body"
-		[style.padding-bottom]="contentRef() ? '25px' : '32px'"
 	>
 		<ng-container *ngTemplateOutlet="contentRef()"></ng-container>
 	</div>
@@ -23,6 +22,7 @@
 		<div
 			*ngIf="actionsRef()"
 			class="ss-lib-modal__actions"
+			[style.padding-top]="contentRef() ? '25px' : '32px'"
 			[class.ss-lib-modal__footer-add-padding]="!contentRef()"
 		>
 			<ng-container *ngTemplateOutlet="actionsRef()"></ng-container>
