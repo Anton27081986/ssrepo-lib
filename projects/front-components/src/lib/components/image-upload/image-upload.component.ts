@@ -187,43 +187,47 @@ export class ImageUploadComponent implements ControlValueAccessor {
 
 		this.state.set(States.Loading);
 
-		if (this.maxSize() && file.size > this.maxSize() * 1024 * 1024) {
-			this.showToastError('Изображение не соответствует требованиям');
-			this.state.set(States.Empty);
-
-			return;
-		}
-
-		const img = new Image();
-
-		img.src = URL.createObjectURL(file);
-
-		img.onload = () => {
-			const height = img.height;
-			const width = img.width;
-
-			if (
-				(this.maxHeight() && height > this.maxHeight()) ||
-				(this.maxWidth() && width > this.maxWidth())
-			) {
+		setTimeout(() => {
+			if (this.maxSize() && file.size > this.maxSize() * 1024 * 1024) {
 				this.showToastError('Изображение не соответствует требованиям');
-				this.inputCtrl.setValue(null);
 				this.state.set(States.Empty);
 
 				return;
 			}
 
-			const reader = new FileReader();
+			const img = new Image();
 
-			reader.onload = () => {
-				this.state.set(States.Preview);
-				this.imageSrc.set(
-					reader.result ? reader.result.toString() : null,
-				);
+			img.src = URL.createObjectURL(file);
+
+			img.onload = () => {
+				const height = img.height;
+				const width = img.width;
+
+				if (
+					(this.maxHeight() && height > this.maxHeight()) ||
+					(this.maxWidth() && width > this.maxWidth())
+				) {
+					this.showToastError(
+						'Изображение не соответствует требованиям',
+					);
+					this.inputCtrl.setValue(null);
+					this.state.set(States.Empty);
+
+					return;
+				}
+
+				const reader = new FileReader();
+
+				reader.onload = () => {
+					this.state.set(States.Preview);
+					this.imageSrc.set(
+						reader.result ? reader.result.toString() : null,
+					);
+				};
+
+				reader.readAsDataURL(file);
 			};
-
-			reader.readAsDataURL(file);
-		};
+		}, 1000);
 	}
 
 	private showToastError(text: string): void {
