@@ -14,7 +14,10 @@
 		(click)="!isDisabled() && changeNumberValueByStep(Direction.Previous)"
 	/>
 
-	<div class="number-picker__input-field">
+	<div
+		class="number-picker__input-field"
+		(focusout)="onCheckInputValueOnFocusout($event)"
+	>
 		<ss-lib-form-field>
 			<ss-lib-input
 				fieldCtrl
