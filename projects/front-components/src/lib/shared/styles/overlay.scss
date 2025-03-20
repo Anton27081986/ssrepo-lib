@@ -1,6 +1,7 @@
 .ss-lib-overlay-backdrop {
 	&--dark {
 		background-color: var(--surface-backdrop);
+		opacity: 70% !important;
 	}
 }
 
