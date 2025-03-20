@@ -26,6 +26,7 @@
 		position: relative;
 		border-collapse: separate;
 		border-spacing: 0;
+		overflow: hidden;
 
 		border: var(--ss-lib-table-border);
 		border-radius: var(--ss-lib-table-border-radius);
