@@ -1,108 +1,110 @@
 .ss-lib-table {
-  --ss-lib-table-padding: 0;
-  --ss-lib-table-border: 1px solid var(--border-primary);
-  --ss-lib-table-border-radius: 8px;
-  --ss-lib-table-td-border-bottom: var(--ss-lib-table-border);
-  --ss-lib-table-td-last-border-bottom: none;
-  --ss-lib-table-td-padding: 12px 24px;
-  --ss-lib-table-th-border-bottom: 1px solid var(--border-primary);
-  --ss-lib-table-th-background-color: unset;
-  --ss-lib-table-sort-icon-opacity: 0;
-  --ss-lib-table-head-position: unset;
+	--ss-lib-table-padding: 0;
+	--ss-lib-table-border: 1px solid var(--border-primary);
+	--ss-lib-table-border-radius: 8px;
+	--ss-lib-table-td-border-bottom: var(--ss-lib-table-border);
+	--ss-lib-table-td-last-border-bottom: none;
+	--ss-lib-table-td-padding: 12px 24px;
+	--ss-lib-table-th-border-bottom: 1px solid var(--border-primary);
+	--ss-lib-table-th-background-color: unset;
+	--ss-lib-table-sort-icon-opacity: 0;
+	--ss-lib-table-head-position: unset;
 
-  width: 100%;
-  isolation: isolate;
+	width: 100%;
+	isolation: isolate;
 
-  &-tr:first-child:hover {
-    background-color: unset;
-  }
+	&-tr:first-child:hover {
+		background-color: unset;
+	}
 
-  &-tr:hover {
-    background-color: var(--surface-action-hover-3); // -3
-  }
+	&-tr:hover {
+		background-color: var(--surface-action-hover-3); // -3
+	}
 
-  &-table {
-    width: 100%;
-    position: relative;
-    border-collapse: separate;
-    border-spacing: 0;
+	&-table {
+		width: 100%;
+		position: relative;
+		border-collapse: separate;
+		border-spacing: 0;
+		overflow: hidden;
 
-    border: var(--ss-lib-table-border);
-    border-radius: var(--ss-lib-table-border-radius);
+		border: var(--ss-lib-table-border);
+		border-radius: var(--ss-lib-table-border-radius);
 
-    th:first-child {
-      border-radius: var(--ss-lib-table-border-radius) 0 0 0;
-    }
+		th:first-child {
+			border-radius: var(--ss-lib-table-border-radius) 0 0 0;
+		}
 
-    th:last-child {
-      border-radius: 0 var(--ss-lib-table-border-radius) 0 0;
-    }
+		th:last-child {
+			border-radius: 0 var(--ss-lib-table-border-radius) 0 0;
+		}
 
-    tr:last-child &-td:first-child {
-      border-radius: 0 0 0 var(--ss-lib-table-border-radius);
-    }
+		tr:last-child &-td:first-child {
+			border-radius: 0 0 0 var(--ss-lib-table-border-radius);
+		}
 
-    tr:last-child &-td:last-child {
-      border-radius: 0 0 var(--ss-lib-table-border-radius) 0;
-    }
+		tr:last-child &-td:last-child {
+			border-radius: 0 0 var(--ss-lib-table-border-radius) 0;
+		}
 
-    &__thead {
-      background-color: var(--surface-information-2);
-      position: relative;
-    }
+		&__thead {
+			background-color: var(--surface-information-2);
+			position: relative;
+		}
 
-    &__thead--sticky {
-      --ss-lib-table-th-background-color: var(--surface-information-2);
-      --ss-lib-table-head-position: sticky;
+		&__thead--sticky {
+			--ss-lib-table-th-background-color: var(--surface-information-2);
+			--ss-lib-table-head-position: sticky;
 
-      top: 0;
-      z-index: 1;
-    }
+			top: 0;
+			z-index: 1;
+		}
 
-    &__tbody
-    tr.ss-lib-table-tr:not(:has(~ tr.ss-lib-table-tr))
-    .ss-lib-table-td {
-      border-bottom: none;
-    }
-  }
+		&__tbody
+			tr.ss-lib-table-tr:not(:has(~ tr.ss-lib-table-tr))
+			.ss-lib-table-td {
+			border-bottom: none;
+		}
+	}
 
-  &-th {
-    border-bottom: var(--ss-lib-table-th-border-bottom);
-    text-align: left;
-  }
+	&-th {
+		border-bottom: var(--ss-lib-table-th-border-bottom);
+		text-align: left;
+	}
 
-  &-td {
-    border-bottom: var(--ss-lib-table-td-border-bottom);
-    text-align: left;
-  }
+	&-td {
+		border-bottom: var(--ss-lib-table-td-border-bottom);
+		text-align: left;
+		background-color: var(--surface-primary);
+	}
 
-  &-th-align--left,
-  &-td-align--left {
-    text-align: left;
-  }
+	&-th-align--left,
+	&-td-align--left {
+		text-align: left;
+	}
 
-  &-th-align--righ,
-  &-td-align--righ {
-    text-align: right;
-  }
+	&-th-align--righ,
+	&-td-align--righ {
+		text-align: right;
+	}
 
-  &-th-align--center,
-  &-td-align--center {
-    text-align: center;
-  }
+	&-th-align--center,
+	&-td-align--center {
+		text-align: center;
+	}
 
-  &-th,
-  &-td {
-    padding: var(--ss-lib-table-td-padding);
+	&-th,
+	&-td {
+		padding: var(--ss-lib-table-td-padding);
 
-    white-space: wrap;
-    position: relative;
-    overflow: hidden;
-  }
+		white-space: wrap;
+		position: relative;
+		overflow: hidden;
+	}
 
-  &-th-sticky,
-  &-td-sticky {
-    position: sticky;
-    right: 0;
-  }
+	&-th-sticky,
+	&-td-sticky {
+		position: sticky;
+		right: 0;
+	}
 }
