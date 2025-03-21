@@ -22,6 +22,7 @@ import { dateTimePickerImports } from './date-time-picker.imports';
 @Component({
 	selector: 'ss-lib-date-time-picker',
 	imports: [dateTimePickerImports],
+	standalone: true,
 	templateUrl: './date-time-picker.component.html',
 	styleUrl: './date-time-picker.component.scss',
 	changeDetection: ChangeDetectionStrategy.OnPush,

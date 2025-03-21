@@ -1,7 +1,8 @@
 import { Component, inject } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { Form, FormControl, FormGroup, Validators } from '@angular/forms';
 import { catchError, Observable, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { F } from '@angular/cdk/keycodes';
 import {
 	ButtonType,
 	Colors,
@@ -24,6 +25,8 @@ import { SharedPopupService } from '../../../../front-components/src/lib/shared/
 import type { TestModalData } from '../test-modal/test-modal.component';
 import { TestModalComponent } from '../test-modal/test-modal.component';
 import { ToastRef } from '../../../../front-components/src/lib/components';
+import { DataTimeRangeFormGroup } from '../../../../front-components/src/lib/shared/models/interfaces/data-time-range-form-group';
+import { DataTimeRange } from '../../../../front-components/src/lib/shared/models/interfaces/data-time-range';
 
 @Component({
 	selector: 'app-stand',
@@ -81,6 +84,9 @@ export class StandComponent {
 	protected readonly Status = Status;
 	protected readonly dropdownItems = DROPDOWN_ITEMS;
 	protected readonly TooltipPosition = TooltipPosition;
+
+	protected readonly dataRange: FormControl<DataTimeRange | null> =
+		new FormControl<DataTimeRange | null>(null);
 
 	private readonly sharedPopupService = inject(SharedPopupService);
 

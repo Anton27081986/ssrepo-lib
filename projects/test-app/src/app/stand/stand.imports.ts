@@ -38,6 +38,7 @@ import {
 	PopoverTriggerForDirective,
 } from '../../../../front-components/src/lib/core/directives';
 import { RepeatTimesPipe } from '../../../../front-components/src/lib/core/pipes';
+import { DateTimePickerRangeComponent } from '../../../../front-components/src/lib/components/data-time-picker-range/data-time-picker-range.component';
 
 export const standImports = [
 	ReactiveFormsModule,
@@ -77,4 +78,5 @@ export const standImports = [
 	ScrollbarComponent,
 	TimepickerComponent,
 	DateTimePickerComponent,
+	DateTimePickerRangeComponent,
 ];
