@@ -35,17 +35,13 @@ import { FIRST_NATIVE_DAY, LAST_NATIVE_DAY } from '../calendar/constans';
 		},
 	],
 })
-export class DateTimePickerRangeComponent
-	implements ControlValueAccessor, OnDestroy
-{
+export class DateTimePickerRangeComponent implements ControlValueAccessor {
 	public min = input<Date>(FIRST_NATIVE_DAY);
 	public max = input<Date>(LAST_NATIVE_DAY);
 
 	private onChange: (value: DataTimeRange | null) => void = () => {};
 
 	private onTouched: () => void = () => {};
-
-	private readonly subscription: Subscription = new Subscription();
 
 	protected formGroup: FormGroup<DataTimeRangeFormGroup> = new FormGroup({
 		start: new FormControl<Date | null>(null),
@@ -83,10 +79,6 @@ export class DateTimePickerRangeComponent
 
 	public registerOnTouched(fn: () => void): void {
 		this.onTouched = fn;
-	}
-
-	public ngOnDestroy(): void {
-		this.subscription.unsubscribe();
 	}
 
 	private get controlStart(): FormControl {
