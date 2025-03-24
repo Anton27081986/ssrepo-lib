@@ -11,11 +11,12 @@ import {
 import { calendarYearImports } from './calendar-year.imports';
 import { LIMIT_YEARS, MONTHS_SHORT, MIN_YEAR } from '../../constans';
 import { CalendarMonth } from '../../models';
+import { ScrollbarComponent } from '../../../scrollbar/scrollbar.component';
 
 @Component({
 	selector: 'ss-lib-calendar-year',
 	standalone: true,
-	imports: [calendarYearImports],
+	imports: [calendarYearImports, ScrollbarComponent],
 	templateUrl: './calendar-year.component.html',
 	styleUrl: './calendar-year.component.scss',
 	changeDetection: ChangeDetectionStrategy.OnPush,

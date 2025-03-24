@@ -3,12 +3,6 @@
 	display: flex;
 	flex-direction: column;
 	max-height: 361px;
-	overflow-y: auto;
-	scrollbar-width: none;
-}
-
-.calendar-year-grid::-webkit-scrollbar {
-	display: none;
 }
 
 .year-row {
@@ -16,6 +10,7 @@
 	align-items: flex-start;
 	justify-content: space-between;
 	padding: 20px 0;
+	margin: 0 24px;
 }
 
 .year-row:not(:last-child):not(:only-child) {
