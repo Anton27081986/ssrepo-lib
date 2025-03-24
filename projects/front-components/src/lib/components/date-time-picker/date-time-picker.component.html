@@ -2,7 +2,10 @@
 	class="date-time-picker-wrapper"
 	[formGroup]="dateTimeForm"
 >
-	<ss-lib-form-field class="date">
+	<ss-lib-form-field
+		class="date-time-picker-wrapper__date"
+		(focusout)="focusOutDatepicker($event)"
+	>
 		<ss-lib-datepicker
 			fieldCtrl
 			formControlName="date"
@@ -10,11 +13,12 @@
 			[max]="max()"
 		></ss-lib-datepicker>
 	</ss-lib-form-field>
-
-	<ss-lib-form-field class="time">
-		<ss-lib-timepicker
-			fieldCtrl
-			formControlName="time"
-		></ss-lib-timepicker>
-	</ss-lib-form-field>
+	<div class="date-time-picker-wrapper__time">
+		<ss-lib-form-field (focusout)="focusOutTimePicker($event)">
+			<ss-lib-timepicker
+				fieldCtrl
+				formControlName="time"
+			></ss-lib-timepicker>
+		</ss-lib-form-field>
+	</div>
 </form>

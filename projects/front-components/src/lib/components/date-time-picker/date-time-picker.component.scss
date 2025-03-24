@@ -3,11 +3,11 @@
   align-items: center;
   gap: 8px;
 
-  .date{
-    flex-grow: 1;
+  &__date{
+   width: 195px;
   }
 
-  .time {
+  &__time {
     width: 75px;
   }
 }

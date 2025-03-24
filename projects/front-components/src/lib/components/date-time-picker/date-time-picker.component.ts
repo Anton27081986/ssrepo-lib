@@ -3,21 +3,20 @@ import {
 	Component,
 	Inject,
 	input,
-	OnInit,
 	Optional,
 	Self,
 } from '@angular/core';
 import {
 	ControlValueAccessor,
-	FormGroup,
 	FormControl,
-	Validators,
+	FormGroup,
 	NgControl,
 } from '@angular/forms';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { debounceTime, tap } from 'rxjs';
-import { FIRST_NATIVE_DAY, LAST_NATIVE_DAY } from '../calendar/constans';
 import { dateTimePickerImports } from './date-time-picker.imports';
+import { DateTimeFormGroup } from '../../shared/models/interfaces/date-time-form-group';
+import { FIRST_NATIVE_DAY, LAST_NATIVE_DAY } from '../calendar/constans';
 
 @Component({
 	selector: 'ss-lib-date-time-picker',
@@ -27,16 +26,20 @@ import { dateTimePickerImports } from './date-time-picker.imports';
 	styleUrl: './date-time-picker.component.scss',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DateTimePickerComponent implements ControlValueAccessor, OnInit {
+export class DateTimePickerComponent implements ControlValueAccessor {
 	public min = input<Date>(FIRST_NATIVE_DAY);
 	public max = input<Date>(LAST_NATIVE_DAY);
 
-	public dateTimeForm: FormGroup = new FormGroup({
+	private date: Date | null = null;
+	private time: string | null = null;
+
+	public dateTimeForm: FormGroup<DateTimeFormGroup> = new FormGroup({
 		date: new FormControl<Date | null>(null),
-		time: new FormControl<string>(''),
+		time: new FormControl<string | null>(null),
 	});
 
 	private onChange: (value: Date | null) => void = () => {};
+
 	private onTouched: () => void = () => {};
 
 	constructor(
@@ -49,30 +52,43 @@ export class DateTimePickerComponent implements ControlValueAccessor, OnInit {
 		toSignal(
 			this.dateTimeForm.valueChanges.pipe(
 				debounceTime(300),
-				tap((value: { date: Date | null; time: string }) => {
-					this.selectedDate(value.date, value.time);
+				tap((value) => {
+					this.selectedDate(value.date ?? null, value.time ?? null);
 				}),
 			),
 		);
 	}
 
-	public ngOnInit(): void {
-		this.checkParentValidation();
+	public get getDate(): FormControl<Date | null> {
+		return this.dateTimeForm.controls.date;
+	}
+
+	public get getTime(): FormControl<string | null> {
+		return this.dateTimeForm.controls.time;
 	}
 
 	public writeValue(date: Date | null): void {
 		if (date) {
-			const timeStr = date.toTimeString().slice(0, 5);
+			const calcDate = date;
+
+			const timeStr = calcDate.toTimeString().slice(0, 5);
 
 			this.dateTimeForm.patchValue(
 				{
-					date,
+					date: calcDate,
 					time: timeStr,
 				},
 				{ emitEvent: false },
 			);
+			this.date = calcDate;
+			this.time = timeStr;
 		} else {
-			this.dateTimeForm.reset(null, { emitEvent: false });
+			this.dateTimeForm.reset(
+				{ date: null, time: null },
+				{ emitEvent: false },
+			);
+			this.date = null;
+			this.time = null;
 		}
 	}
 
@@ -90,36 +106,63 @@ export class DateTimePickerComponent implements ControlValueAccessor, OnInit {
 			: this.dateTimeForm.enable({ emitEvent: false });
 	}
 
-	private selectedDate(date: Date | null, time: string): void {
-		if (date && time) {
-			const selectedDateTime = new Date(
-				date.setHours(
-					parseInt(time.split(':')[0], 10),
-					parseInt(time.split(':')[1], 10),
-				),
-			);
+	private selectedDate(date: Date | null, time: string | null): void {
+		if (date) {
+			let selectedDateTime = date;
 
+			if (time) {
+				selectedDateTime = new Date(
+					date.setHours(
+						parseInt(time.split(':')[0], 10),
+						parseInt(time.split(':')[1], 10),
+					),
+				);
+
+				const timeStr = selectedDateTime.toTimeString().slice(0, 5);
+
+				this.getDate.setValue(selectedDateTime, { emitEvent: false });
+				this.getTime.setValue(timeStr, { emitEvent: false });
+			} else {
+				selectedDateTime = new Date(date.setHours(0, 0));
+			}
+
+			this.date = selectedDateTime;
+			this.time = selectedDateTime.toTimeString().slice(0, 5);
 			this.onChange(selectedDateTime);
 		} else {
 			this.onChange(null);
 		}
 	}
 
-	private checkParentValidation(): void {
-		const control = this.ngControl?.control;
+	protected focusOutDatepicker($event: FocusEvent): void {
+		const relatedTarget = $event.relatedTarget as HTMLElement;
 
 		if (
-			!control ||
-			!control?.validator ||
-			!control.hasValidator(Validators.required)
+			relatedTarget &&
+			$event.currentTarget &&
+			($event.currentTarget as HTMLElement).contains(relatedTarget)
 		) {
 			return;
 		}
 
-		const { date, time } = this.dateTimeForm.controls;
+		if (this.getDate.value === null) {
+			this.getDate.setValue(this.date);
+		}
+	}
 
-		date.setValidators(Validators.required);
-		time.setValidators(Validators.required);
-		this.dateTimeForm.updateValueAndValidity({ emitEvent: false });
+	protected focusOutTimePicker($event: FocusEvent): void {
+		const relatedTarget = $event.relatedTarget as HTMLElement;
+
+		if (
+			relatedTarget &&
+			$event.currentTarget &&
+			($event.currentTarget as HTMLElement).contains(relatedTarget)
+		) {
+			return;
+		}
+
+		if (this.getTime.value === null || this.getTime.value.trim() === '') {
+			this.getTime.setValue(this.time);
+		}
 	}
 }

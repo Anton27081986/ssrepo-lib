@@ -1,8 +1,7 @@
 import { Component, inject } from '@angular/core';
-import { Form, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, Validators } from '@angular/forms';
 import { catchError, Observable, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { F } from '@angular/cdk/keycodes';
 import {
 	ButtonType,
 	Colors,
@@ -25,7 +24,6 @@ import { SharedPopupService } from '../../../../front-components/src/lib/shared/
 import type { TestModalData } from '../test-modal/test-modal.component';
 import { TestModalComponent } from '../test-modal/test-modal.component';
 import { ToastRef } from '../../../../front-components/src/lib/components';
-import { DataTimeRangeFormGroup } from '../../../../front-components/src/lib/shared/models/interfaces/data-time-range-form-group';
 import { DataTimeRange } from '../../../../front-components/src/lib/shared/models/interfaces/data-time-range';
 
 @Component({
@@ -57,8 +55,7 @@ export class StandComponent {
 		new Date('2025-03-17T09:42:01.028Z'),
 	);
 
-	public minDate = new Date(2025, 2, 5);
-	public maxDate = new Date(2025, 2, 20);
+	public minDate = new Date(new Date());
 
 	public timepickerCtrl = new FormControl(null);
 	public dateTimepickerCtrl: FormControl<Date | null> = new FormControl(
@@ -95,6 +92,11 @@ export class StandComponent {
 		private readonly http: HttpClient,
 	) {
 		this.columnState.colsTr$.next(DEFAULT_COLS);
+
+		this.dataRange.setValue({
+			start: new Date('2025-03-20T09:42:01.0285Z'),
+			end: new Date('2025-03-30T09:42:01.0285Z'),
+		});
 	}
 
 	public openTestModal(): void {
