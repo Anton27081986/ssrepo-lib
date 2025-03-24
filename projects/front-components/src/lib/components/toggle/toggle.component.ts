@@ -26,6 +26,9 @@ export class ToggleComponent implements ControlValueAccessor {
 	public isDisabled = signal<boolean>(false);
 	public checked = signal<boolean>(false);
 
+	public onChange: (value: boolean) => void = () => {};
+	public onTouched: () => void = () => {};
+
 	public writeValue(value: boolean | null): void {
 		this.checked.set(value ?? false);
 	}
@@ -37,9 +40,6 @@ export class ToggleComponent implements ControlValueAccessor {
 	public registerOnTouched(fn: () => void): void {
 		this.onTouched = fn;
 	}
-
-	public onChange: (value: boolean) => void = () => {};
-	public onTouched: () => void = () => {};
 
 	public setDisabledState(isDisabled: boolean): void {
 		this.isDisabled.set(isDisabled);
