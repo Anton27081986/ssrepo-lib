@@ -38,6 +38,9 @@ export class ToggleIconComponent implements ControlValueAccessor {
 
 	public readonly Colors = Colors;
 
+	public onChange: (value: boolean) => void = () => {};
+	public onTouched: () => void = () => {};
+
 	public writeValue(value: boolean | null): void {
 		this.checked.set(value ?? false);
 	}
@@ -49,9 +52,6 @@ export class ToggleIconComponent implements ControlValueAccessor {
 	public registerOnTouched(fn: () => void): void {
 		this.onTouched = fn;
 	}
-
-	public onChange: (value: boolean) => void = () => {};
-	public onTouched: () => void = () => {};
 
 	public toggleChecked(): void {
 		this.checked.set(!this.checked());

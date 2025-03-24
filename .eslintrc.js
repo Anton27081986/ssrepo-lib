@@ -26,6 +26,7 @@ module.exports = {
 			],
 			rules: {
 				'import/no-unresolved': 'off',
+				"import/export": "off",
 				'import/extensions': 'off',
 				'import/no-relative-packages': 'off',
 				'import/no-deprecated': 'off',
