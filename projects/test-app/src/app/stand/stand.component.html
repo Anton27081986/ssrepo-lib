@@ -544,3 +544,27 @@
 <br />
 
 <pre>{{ timepickerCtrl.value }}</pre>
+
+<ss-lib-utility-button [popoverTriggerFor]="dropdown2" />
+<br />
+<ss-lib-utility-button [popoverTriggerFor]="dropdown2" />
+<br />
+
+<ss-lib-dropdown-list #dropdown2>
+	<ss-lib-dropdown-item
+		[label]="'Опция'"
+		[icon]="IconType.Bell"
+		(click)="console.log(1)"
+	/>
+	<ss-lib-dropdown-item
+		[label]="'Опция'"
+		[icon]="IconType.Bell"
+		(click)="console.log(2)"
+	/>
+	<ss-lib-divider class="divider-block"></ss-lib-divider>
+	<ss-lib-dropdown-item
+		[label]="'Удалить'"
+		[icon]="IconType.Bell"
+		(click)="console.log(5)"
+	/>
+</ss-lib-dropdown-list>
