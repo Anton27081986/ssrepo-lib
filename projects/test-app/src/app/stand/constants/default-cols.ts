@@ -97,7 +97,7 @@ export const DEFAULT_COLS: IStoreTableBaseColumn[] = [
 	},
 	{
 		id: ExampleRowItemField.example5,
-		title: 'Статус',
+		title: 'Опубликовано',
 		order: 4,
 		width: null,
 		align: 'center',
@@ -120,6 +120,48 @@ export const DEFAULT_COLS: IStoreTableBaseColumn[] = [
 		id: ExampleRowItemField.example6,
 		title: 'Действие',
 		order: 5,
+		width: null,
+		align: 'center',
+		padding: null,
+		sticky: true,
+		skeleton: {
+			header: {
+				width: '100px',
+				height: '50px',
+				type: Shape.Square,
+			},
+			body: {
+				width: '100px',
+				height: '50px',
+				type: Shape.Square,
+			},
+		},
+	},
+	{
+		id: ExampleRowItemField.example6,
+		title: 'Пользователь',
+		order: 6,
+		width: null,
+		align: 'center',
+		padding: null,
+		sticky: true,
+		skeleton: {
+			header: {
+				width: '100px',
+				height: '50px',
+				type: Shape.Square,
+			},
+			body: {
+				width: '100px',
+				height: '50px',
+				type: Shape.Square,
+			},
+		},
+	},
+	{
+		id: ExampleRowItemField.example6,
+		title: 'Период',
+		order: 7,
 		width: null,
 		align: 'center',
 		padding: null,
