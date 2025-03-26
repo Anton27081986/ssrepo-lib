@@ -36,3 +36,4 @@ export { CalendarComponent } from './calendar/calendar.component';
 export { DatepickerComponent } from './datepicker/datepicker.component';
 export { ToastComponent } from './toast/toast.component';
 export { ToastRef } from './toast/toast-ref';
+export { ProgressCircleComponent } from './progress-circle/progress-circle.component';

@@ -29,6 +29,7 @@ import {
 	ImageUploadComponent,
 	CalendarComponent,
 	DatepickerComponent,
+	ProgressCircleComponent,
 } from '../../../../front-components/src/lib/components';
 import {
 	FieldCtrlDirective,
@@ -69,4 +70,5 @@ export const standImports = [
 	SpinnerComponent,
 	CalendarComponent,
 	DatepickerComponent,
+	ProgressCircleComponent,
 ];

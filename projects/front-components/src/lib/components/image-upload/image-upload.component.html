@@ -41,7 +41,6 @@
 					accept="image/jpeg, image/gif, image/png"
 					class="image-upload__button__hidden-input"
 					type="file"
-					[formControl]="inputCtrl"
 					(change)="selectFromPC($event)"
 				/>
 				<ss-lib-button
@@ -61,13 +60,16 @@
 			></ss-lib-preview-button>
 			<img
 				alt="Баннер"
-				[src]="imageSrc()"
+				[src]="src()"
 			/>
 		</div>
 	}
 	@case (States.Loading) {
 		<div class="image-loading">
-			<ss-lib-spinner class="image-loading__loader"></ss-lib-spinner>
+			<ss-lib-progress-circle
+				class="image-loading__loader"
+				[progress]="this.progress()"
+			></ss-lib-progress-circle>
 			<ss-lib-preview-button
 				class="image-loading__cancel"
 				(click)="onFileDelete()"
