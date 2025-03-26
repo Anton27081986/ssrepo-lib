@@ -20,3 +20,4 @@ export { Status } from './status';
 export { TooltipPosition } from './tooltip';
 export { Extremum } from './extremum';
 export { ToastTypeEnum } from './toast-type-enum';
+export { Dimension } from './dimension';

@@ -56,7 +56,7 @@ import { ButtonComponent } from '../buttons/button/button.component';
 	],
 })
 export class NumberPickerComponent implements ControlValueAccessor {
-	public min = input<number | undefined>(undefined);
+	public min = input<number>(0);
 	public max = input<number | undefined>(undefined);
 	public step = input<number>(1);
 
@@ -70,6 +70,9 @@ export class NumberPickerComponent implements ControlValueAccessor {
 	public readonly Align = Align;
 	public readonly InputType = InputType;
 	protected readonly ExtraSize = ExtraSize;
+
+	public onChange: (value: number | null) => void = () => {};
+	public onTouched: () => void = () => {};
 
 	public writeValue(value: number | null): void {
 		if (value) {
@@ -89,9 +92,6 @@ export class NumberPickerComponent implements ControlValueAccessor {
 		this.onTouched = fn;
 	}
 
-	public onChange: (value: number | null) => void = () => {};
-	public onTouched: () => void = () => {};
-
 	public setDisabledState(isDisabled: boolean): void {
 		this.isDisabled.set(isDisabled);
 	}
@@ -108,6 +108,23 @@ export class NumberPickerComponent implements ControlValueAccessor {
 
 		this.numberPickerCtrl.setValue(value);
 		this.onChange(value);
+	}
+
+	public onCheckInputValueOnFocusout(event: FocusEvent): void {
+		const relatedTarget = event.relatedTarget as HTMLElement;
+
+		if (
+			relatedTarget &&
+			event.currentTarget &&
+			(event.currentTarget as HTMLElement).contains(relatedTarget)
+		) {
+			return;
+		}
+
+		if (!this.numberPickerCtrl.value) {
+			this.numberPickerCtrl.setValue(this.min());
+			this.onChange(this.min());
+		}
 	}
 
 	private checkNumberValue(value: number): number {

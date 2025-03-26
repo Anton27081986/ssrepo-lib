@@ -4,7 +4,7 @@ import {
 	computed,
 	input,
 } from '@angular/core';
-import { NgClass, NgStyle } from '@angular/common';
+import { NgClass } from '@angular/common';
 import { IconComponent } from '../icon/icon.component';
 import type { IBadgeProps } from '../../shared/models';
 import { Colors, ExtraSize, Shape, Status } from '../../shared/models';
@@ -22,7 +22,7 @@ import { Colors, ExtraSize, Shape, Status } from '../../shared/models';
 @Component({
 	selector: 'ss-lib-badge',
 	standalone: true,
-	imports: [IconComponent, NgClass, NgStyle],
+	imports: [IconComponent, NgClass],
 	templateUrl: 'badge.component.html',
 	styleUrls: ['badge.component.scss'],
 	changeDetection: ChangeDetectionStrategy.OnPush,
@@ -40,11 +40,10 @@ export class BadgeComponent {
 			case Status.Error:
 				return {
 					iconColor: Colors.IconError,
-					borderColor: Colors.BorderError,
 				};
 
 			default:
-				return { iconColor: Colors.IconPrimary, borderColor: null };
+				return { iconColor: Colors.IconPrimary };
 		}
 	});
 

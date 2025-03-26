@@ -50,9 +50,17 @@ export class StandComponent {
 	public selectCtrl = new FormControl(null);
 	public numberPickerCtrl = new FormControl(2);
 
-	public datepickerCtrl = new FormControl(null);
+	public datepickerCtrl: FormControl<Date | null> = new FormControl(
+		new Date('2025-03-17T09:42:01.028Z'),
+	);
+
 	public minDate = new Date(2025, 2, 5);
 	public maxDate = new Date(2025, 2, 20);
+
+	public timepickerCtrl = new FormControl(null);
+	public dateTimepickerCtrl: FormControl<Date | null> = new FormControl(
+		new Date(),
+	);
 
 	public fileLoadProgress = signal<number>(0);
 	public imgSrc = signal<string | null>(null);
@@ -182,7 +190,9 @@ export class StandComponent {
 			.pipe(
 				catchError(() => {
 					this.sharedPopupService.openToast({
-						text: 'Какой то тостик Какой то тостик',
+						text:
+							'Какой то тостик Какой то тостик Какой то тостик ' +
+							'Какой то тостик Какой то тостик Какой то тостик Какой то тостик Какой то тостик',
 						type: ToastTypeEnum.Error,
 						mainButton: {
 							text: 'Попробовать снова',

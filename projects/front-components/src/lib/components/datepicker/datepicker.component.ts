@@ -12,7 +12,11 @@ import { debounceTime, filter, tap } from 'rxjs';
 import { datepickerImports } from './datepicker.imports';
 import { CalendarDay, DateFormat } from '../calendar/models';
 import { fromControlValue, toControlValue } from '../calendar/utils';
-import { DATE_FILLER_LENGTH } from '../calendar/constans';
+import {
+	DATE_FILLER_LENGTH,
+	FIRST_NATIVE_DAY,
+	LAST_NATIVE_DAY,
+} from '../calendar/constans';
 import { InputType } from '../../shared/models';
 
 /**
@@ -39,13 +43,17 @@ import { InputType } from '../../shared/models';
 	],
 })
 export class DatepickerComponent implements ControlValueAccessor {
-	public min = input<Date>();
-	public max = input<Date>();
+	public min = input<Date>(FIRST_NATIVE_DAY);
+	public max = input<Date>(LAST_NATIVE_DAY);
 
 	public selectedDate = signal<CalendarDay | null>(null);
 	public datepickerCtrl = new FormControl<string | null>(null);
 	public readonly InputType = InputType;
+	protected readonly firstNativeDay = FIRST_NATIVE_DAY;
+	protected readonly lastNativeDay = LAST_NATIVE_DAY;
 
+	public onChange: (value: Date | null) => void = () => {};
+	public onTouched: () => void = () => {};
 	constructor() {
 		toSignal(
 			this.datepickerCtrl.valueChanges.pipe(
@@ -59,10 +67,15 @@ export class DatepickerComponent implements ControlValueAccessor {
 	}
 
 	public writeValue(value: Date | null): void {
-		this.selectedDate.set(fromControlValue(value));
-		this.datepickerCtrl.setValue(value?.toString() || null, {
-			emitEvent: false,
-		});
+		const convertedToCalendarDay = value ? fromControlValue(value) : null;
+
+		this.selectedDate.set(convertedToCalendarDay);
+		this.datepickerCtrl.setValue(
+			convertedToCalendarDay?.toString() || null,
+			{
+				emitEvent: false,
+			},
+		);
 	}
 
 	public registerOnChange(fn: (value: Date | null) => void): void {
@@ -73,9 +86,6 @@ export class DatepickerComponent implements ControlValueAccessor {
 		this.onTouched = fn;
 	}
 
-	public onChange: (value: Date | null) => void = () => {};
-	public onTouched: () => void = () => {};
-
 	public setDisabledState(isDisabled: boolean): void {
 		isDisabled
 			? this.datepickerCtrl.disable()
@@ -84,6 +94,7 @@ export class DatepickerComponent implements ControlValueAccessor {
 
 	public onDateSelected(date: CalendarDay | null): void {
 		this.selectedDate.set(date);
+
 		this.datepickerCtrl.setValue(date?.toString() || null, {
 			emitEvent: false,
 		});

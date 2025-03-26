@@ -8,12 +8,14 @@
 	(mouseup)="state.set(StateTypes.Default)"
 	(focus)="checkFocus($event)"
 >
-	<ss-lib-icon
-		[icon]="icon()!"
-		[height]="'16'"
-		[width]="'16'"
-		[color]="iconColor()"
-	/>
+	@if (icon()) {
+		<ss-lib-icon
+			[icon]="icon()!"
+			[height]="'16'"
+			[width]="'16'"
+			[color]="iconColor()"
+		/>
+	}
 
 	<ss-lib-text
 		[type]="TextType.BodySm"

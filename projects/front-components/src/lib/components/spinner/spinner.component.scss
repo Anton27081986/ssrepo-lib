@@ -13,7 +13,13 @@
 	border-radius: 50%;
 	animation: rotate 2s linear infinite;
 	max-width: 32px;
-	background: radial-gradient(circle, rgba(255,255,255, 0) 54%, var(--surface-secondary) 54%, var(--surface-secondary) 75%, rgba(255,255,255, 0) 75%);
+	background: radial-gradient(
+		circle,
+		rgba(255, 255, 255, 0) 54%,
+		var(--surface-secondary) 54%,
+		var(--surface-secondary) 75%,
+		rgba(255, 255, 255, 0) 75%
+	);
 
 	& .path {
 		stroke: var(--surface-action);

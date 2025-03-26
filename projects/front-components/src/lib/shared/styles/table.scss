@@ -26,6 +26,7 @@
 		position: relative;
 		border-collapse: separate;
 		border-spacing: 0;
+		overflow: hidden;
 
 		border: var(--ss-lib-table-border);
 		border-radius: var(--ss-lib-table-border-radius);
@@ -66,6 +67,32 @@
 		}
 	}
 
+	&-th {
+		border-bottom: var(--ss-lib-table-th-border-bottom);
+		text-align: left;
+	}
+
+	&-td {
+		border-bottom: var(--ss-lib-table-td-border-bottom);
+		text-align: left;
+		background-color: var(--surface-primary);
+	}
+
+	&-th-align--left,
+	&-td-align--left {
+		text-align: left;
+	}
+
+	&-th-align--righ,
+	&-td-align--righ {
+		text-align: right;
+	}
+
+	&-th-align--center,
+	&-td-align--center {
+		text-align: center;
+	}
+
 	&-th,
 	&-td {
 		padding: var(--ss-lib-table-td-padding);
@@ -75,13 +102,9 @@
 		overflow: hidden;
 	}
 
-	&-th {
-		border-bottom: var(--ss-lib-table-th-border-bottom);
-		text-align: left;
-	}
-
-	&-td {
-		border-bottom: var(--ss-lib-table-td-border-bottom);
-		text-align: left;
+	&-th-sticky,
+	&-td-sticky {
+		position: sticky;
+		right: 0;
 	}
 }

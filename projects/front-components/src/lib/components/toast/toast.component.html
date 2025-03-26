@@ -31,6 +31,7 @@
 		}
 
 		<ss-lib-text
+			[style.width]="mainButton() || secondaryButton() ? '230px' : '100%'"
 			[color]="Colors.TextOnInformation"
 			[type]="TextType.BodySm"
 			[weight]="TextWeight.Semibold"

@@ -10,6 +10,7 @@ import type { CalendarDay } from '../../calendar/models';
 import { CalendarComponent } from '../../calendar/calendar.component';
 import { fromControlValue } from '../../calendar/utils';
 import type { PopoverContent } from '../../../shared/models';
+import { FIRST_DAY, LAST_DAY } from '../../calendar/constans';
 
 @Component({
 	selector: 'ss-lib-datepicker-calendar',
@@ -27,13 +28,13 @@ export class DatepickerCalendarComponent implements PopoverContent {
 	public selectedDate = input<CalendarDay | null>(null);
 	public min = input<CalendarDay | null, Date | undefined>(undefined, {
 		transform: (value: Date | undefined): CalendarDay | null => {
-			return value ? fromControlValue(value) : null;
+			return value ? fromControlValue(value) : FIRST_DAY;
 		},
 	});
 
 	public max = input<CalendarDay | null, Date | undefined>(undefined, {
 		transform: (value: Date | undefined): CalendarDay | null => {
-			return value ? fromControlValue(value) : null;
+			return value ? fromControlValue(value) : LAST_DAY;
 		},
 	});
 

@@ -24,9 +24,9 @@
 					[type]="TextType.BodyXs"
 					[color]="Colors.TextBody3"
 					>PNG,SVG,JPEG (макс. разрешение
-					@if (maxWidth() || maxWidth()) {
+					@if (maxWidth() || maxHeight()) {
 						{{ maxWidth() || 'неограничено ' }}х{{
-							maxWidth() || ' неограничено'
+							maxHeight() || ' неограничено'
 						}}{{ 'px' }})
 					} @else {
 						неограничено)

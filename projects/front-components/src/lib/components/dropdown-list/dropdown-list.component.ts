@@ -15,6 +15,7 @@ import { NgTemplateOutlet } from '@angular/common';
 import type { IDictionaryItemDto, PopoverContent } from '../../shared/models';
 import { DropdownItemComponent } from '../dropdown-item/dropdown-item.component';
 import { DividerComponent } from '../divider/divider.component';
+import { ScrollbarComponent } from '../scrollbar/scrollbar.component';
 
 @Component({
 	selector: 'ss-lib-dropdown-list',
@@ -22,16 +23,21 @@ import { DividerComponent } from '../divider/divider.component';
 	templateUrl: './dropdown-list.component.html',
 	styleUrl: './dropdown-list.component.scss',
 	changeDetection: ChangeDetectionStrategy.OnPush,
-	imports: [NgTemplateOutlet, DividerComponent],
+	imports: [NgTemplateOutlet, DividerComponent, ScrollbarComponent],
 })
-export class DropdownListComponent implements PopoverContent {
-	public readonly optionsContent = contentChildren(DropdownItemComponent);
+export class DropdownListComponent<
+	T extends IDictionaryItemDto = IDictionaryItemDto,
+> implements PopoverContent
+{
+	public readonly optionsContent = contentChildren(DropdownItemComponent<T>);
 	public readonly templateRef =
 		viewChild.required<TemplateRef<{}>>('dropdownTemplate');
 
 	public headerTemplateRef = input<TemplateRef<unknown> | null>(null);
+	public width = input<string>('max-content');
+	public height = input<string>('auto');
 	public closed = output<void>();
-	public value = output<IDictionaryItemDto | null>();
+	public value = output<T | string | null>();
 
 	constructor(@Inject(Injector) private readonly injector: Injector) {
 		afterNextRender(() => {
@@ -47,7 +53,7 @@ export class DropdownListComponent implements PopoverContent {
 		});
 	}
 
-	public selectOption(item: IDictionaryItemDto | null): void {
+	public selectOption(item: T | string | null): void {
 		this.value.emit(item);
 		this.closed.emit();
 	}

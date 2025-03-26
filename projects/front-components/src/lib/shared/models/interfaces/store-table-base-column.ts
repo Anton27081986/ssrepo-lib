@@ -1,21 +1,27 @@
 import type { SkeletonConf } from './skeleton.conf';
+import { AlignType } from '../types/align-type';
 
 export interface IStoreTableId {
 	id: string;
 }
 
-export interface IStoreTableBase extends IStoreTableId {
-	readonly title: string;
+export interface IBaseParamsStoreTable extends IStoreTableId {
 	order: number;
-	disableChange?: boolean;
 	readonly width?: string | null;
+	readonly align: AlignType;
+	padding: string | null;
+	sticky: boolean;
+}
+
+export interface IStoreTableBase extends IBaseParamsStoreTable {
+	readonly title: string;
+	disableChange?: boolean;
 	skeleton: ISkeletonTableBaseColumn;
 }
 
 export interface IStoreTableBaseColumn extends IStoreTableBase {
 	readonly sort?: boolean | null;
 	readonly sortType?: string | null;
-	readonly align?: string | null;
 }
 
 export interface ISkeletonTableBaseColumn {
@@ -23,17 +29,14 @@ export interface ISkeletonTableBaseColumn {
 	body: SkeletonConf;
 }
 
-export interface ISkeletonDerivativeThColumn extends IStoreTableId {
-	width?: null | string;
+export interface ISkeletonDerivativeThColumn extends IBaseParamsStoreTable {
 	skeletonTh: SkeletonConf;
-	order: number;
 }
 
 export interface ISkeletonDerivativeTrTable {
 	items: ISkeletonDerivativeTdTable[];
 }
 
-export interface ISkeletonDerivativeTdTable extends IStoreTableId {
-	order: number;
+export interface ISkeletonDerivativeTdTable extends IBaseParamsStoreTable {
 	skeletonConfig: SkeletonConf;
 }

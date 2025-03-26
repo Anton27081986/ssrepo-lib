@@ -6,10 +6,14 @@
 					*ngFor="
 						let colSkeleton of stateColumn.skeletonThCols$ | async
 					"
-					class="ss-lib-table-th"
+					class="ss-lib-table-th ss-lib-table-th-align--{{
+						colSkeleton.align
+					}}"
 					[ngStyle]="{
-						minWidth: colSkeleton.width ? colSkeleton.width : null,
+						maxWidth: colSkeleton.width ? colSkeleton.width : null,
 					}"
+					[style.padding]="colSkeleton.padding"
+					[class.ss-lib-table-td-sticky]="colSkeleton.sticky"
 				>
 					<ss-lib-skeleton-block
 						[config]="colSkeleton.skeletonTh"
@@ -18,8 +22,12 @@
 			} @else {
 				<th
 					*ngFor="let col of stateColumn.visibleCols$ | async"
-					class="ss-lib-table-th"
-					[ngStyle]="{ minWidth: col.width ? col.width : null }"
+					class="ss-lib-table-th ss-lib-table-th-align--{{
+						col.align
+					}}"
+					[class.ss-lib-table-td-sticky]="col.sticky"
+					[ngStyle]="{ maxWidth: col.width ? col.width : null }"
+					[style.padding]="col.padding"
 				>
 					<ss-lib-text
 						[color]="Colors.TextBody2"

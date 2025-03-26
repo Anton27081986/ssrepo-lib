@@ -15,7 +15,7 @@ export {
 	ISkeletonDerivativeThColumn,
 	ISkeletonDerivativeTrTable,
 	ISkeletonDerivativeTdTable,
+	IBaseParamsStoreTable,
 } from './store-table-base-column';
 export { Toast } from './toast';
 export { ButtonToast } from './toast';
-export {};

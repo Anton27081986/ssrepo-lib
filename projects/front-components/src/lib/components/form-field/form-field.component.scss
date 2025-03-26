@@ -38,7 +38,7 @@
 		);
 	color: var(--text-body);
 	background: var(--surface-primary);
-	outline: 1px solid var(--border-primary, #e9eaeb);
+	outline: 1px solid var(--border-secondary);
 	transition: outline-color 0.3s ease;
 	box-sizing: border-box;
 	box-shadow: var(--shadow-xs);
@@ -100,7 +100,7 @@
 }
 
 .field-container__error-message {
-	position: absolute;
+	position: relative;
 	display: none;
 	align-items: center;
 	gap: 4px;
