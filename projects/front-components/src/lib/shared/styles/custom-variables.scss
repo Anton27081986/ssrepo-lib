@@ -184,12 +184,19 @@
 
 	/* Effect Styles  */
 	--shadow-xs: 0px 1px 2px 0px var(--effects-shadows-5);
+
 	--shadow-xs-skeumorphic:
 		0px 1px 2px 0px var(--effects-shadows-5),
 		0px -2px 0px 0px var(--effects-shadows-5) inset,
 		0px 0px 0px 1px
 			var(--app-shadow-xs-skeumorphic-border, var(--effects-shadows-18))
 			inset;
+
+	// сквеморфическая тень без обводки элемента
+	--shadow-xs-skeumorphic2:
+		0px 1px 2px 0px var(--effects-shadows-5),
+		0px -1px 0px 0px var(--effects-shadows-5) inset;
+
 	--shadow-sm:
 		0px 1px 2px -1px var(--effects-shadows-10),
 		0px 1px 3px 0px var(--effects-shadows-10);
