@@ -49,6 +49,8 @@ export class DatepickerComponent implements ControlValueAccessor {
 	public selectedDate = signal<CalendarDay | null>(null);
 	public datepickerCtrl = new FormControl<string | null>(null);
 	public readonly InputType = InputType;
+	protected readonly firstNativeDay = FIRST_NATIVE_DAY;
+	protected readonly lastNativeDay = LAST_NATIVE_DAY;
 
 	public onChange: (value: Date | null) => void = () => {};
 	public onTouched: () => void = () => {};
