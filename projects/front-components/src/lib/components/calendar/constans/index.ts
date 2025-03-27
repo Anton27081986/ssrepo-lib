@@ -7,8 +7,6 @@ export { DAY_OF_WEEK } from './day-of-week';
 export { MAX_MONTH } from './max-month';
 export { MONTHS_SHORT } from './months-short';
 export { MONTHS_LONG } from './months-long';
-export { LAST_DAY } from './last-day';
-export { FIRST_DAY } from './first-day';
 export { FIRST_NATIVE_DAY } from './first-native-day';
 export { LAST_NATIVE_DAY } from './last-native-day';
 export { MIN_YEAR } from './min-year';

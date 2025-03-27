@@ -1,4 +1,3 @@
-import { CalendarDay } from '../models';
 import { LIMIT_YEARS } from './limit-years';
 
-export const MAX_YEAR = CalendarDay.currentLocal().year + LIMIT_YEARS;
+export const MAX_YEAR = new Date().getFullYear() + LIMIT_YEARS;
