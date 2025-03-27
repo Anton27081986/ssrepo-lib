@@ -1,4 +1,12 @@
-import { Component, computed, inject, input, signal } from '@angular/core';
+import {
+	Component,
+	computed,
+	effect,
+	inject,
+	input,
+	signal,
+	untracked,
+} from '@angular/core';
 import { NgClass } from '@angular/common';
 import { GetColorPipe } from '../pipes';
 import {
@@ -49,6 +57,7 @@ export class BaseButtonComponent<T extends ButtonTypeValues> {
 	public icon = input<IconType | null>(null);
 	public iconSize = input<string>('20');
 	public iconPosition = input<IconPosition>(IconPosition.Start);
+	public isActive = input<boolean>(false);
 	public disabled = input<boolean>(false);
 
 	public state = signal<IStateElement>(EMPTY_STATE);
@@ -66,6 +75,19 @@ export class BaseButtonComponent<T extends ButtonTypeValues> {
 	public readonly Colors = Colors;
 	public readonly ButtonSize = ExtraSize;
 	public readonly StateTypes = StateTypes;
-
 	protected readonly hasIcon = hasIcon;
+
+	constructor() {
+		effect(() => {
+			const isActive = this.isActive();
+
+			untracked(() => {
+				this.elementState.updateState(
+					this.state,
+					StateTypes.Hover,
+					isActive,
+				);
+			});
+		});
+	}
 }

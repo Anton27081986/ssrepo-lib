@@ -14,6 +14,7 @@ export class GetColorPipe implements PipeTransform {
 		state: IStateElement,
 		isDisabled: boolean,
 		isIconButton: boolean,
+		isActive = false,
 	): Colors {
 		if (!buttonColors) {
 			return Colors.TextError;
@@ -27,6 +28,10 @@ export class GetColorPipe implements PipeTransform {
 			return isIconButton
 				? buttonColors.disabledIconOnly
 				: buttonColors.disabled;
+		}
+
+		if (isActive && buttonColors.hover) {
+			return buttonColors.hover;
 		}
 
 		if (state.hover && buttonColors.hover) {
