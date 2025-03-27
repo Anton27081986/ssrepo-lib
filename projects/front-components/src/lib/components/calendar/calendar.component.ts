@@ -88,11 +88,7 @@ export class CalendarComponent {
 	}
 
 	public onDayClick(day: CalendarDay): void {
-		const selectedDay = this.value();
-
-		this.dayClick.emit(
-			selectedDay && day.daySame(selectedDay) ? null : day,
-		);
+		this.dayClick.emit(day);
 	}
 
 	public onTodaySelected(day: CalendarDay): void {
