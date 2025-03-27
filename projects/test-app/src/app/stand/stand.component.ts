@@ -84,10 +84,6 @@ export class StandComponent {
 		private readonly http: HttpClient,
 	) {
 		this.columnState.colsTr$.next(DEFAULT_COLS);
-
-		this.datepickerCtrl.valueChanges.subscribe((val) => {
-			console.log(val);
-		});
 	}
 
 	public openTestModal(): void {
