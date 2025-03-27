@@ -11,7 +11,7 @@
 
 .spinner {
 	border-radius: 50%;
-	animation: rotate 2s linear infinite;
+	animation: rotate 1.2s linear infinite;
 	max-width: 32px;
 	background: radial-gradient(
 		circle,
@@ -24,7 +24,7 @@
 	& .path {
 		stroke: var(--surface-action);
 		stroke-linecap: round;
-		animation: dash 1.5s ease-in-out infinite;
+		animation: dash 2.4s ease-in-out infinite;
 	}
 }
 
@@ -36,15 +36,11 @@
 
 @keyframes dash {
 	0% {
-		stroke-dasharray: 1, 150;
+		stroke-dasharray: var(--progress), 360;
 		stroke-dashoffset: 0;
 	}
-	50% {
-		stroke-dasharray: 90, 150;
-		stroke-dashoffset: -35;
-	}
 	100% {
-		stroke-dasharray: 90, 150;
-		stroke-dashoffset: -124;
+		stroke-dasharray: var(--progress), 360;
+		stroke-dashoffset: 0;
 	}
 }
