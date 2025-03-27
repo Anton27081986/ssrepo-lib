@@ -1,9 +1,13 @@
 <ss-lib-image-upload
-	fieldCtrl
-	[formControl]="imgCtrl"
+	[progress]="fileLoadProgress()"
+	[src]="imgSrc()"
+	(fileChanged)="uploadFile($event)"
 ></ss-lib-image-upload>
 
 <div class="spinners">
+	<ss-lib-progress-circle
+		[progress]="fileLoadProgress()"
+	></ss-lib-progress-circle>
 	<ss-lib-spinner [displaySpinnerText]="true"></ss-lib-spinner>
 </div>
 
