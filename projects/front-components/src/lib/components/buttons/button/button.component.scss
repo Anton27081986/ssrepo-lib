@@ -163,7 +163,10 @@ button.custom-button:disabled.type-primary {
 button.custom-button.type-secondary {
 	outline: 1px solid var(--border-secondary);
 	background: var(--surface-primary);
-	box-shadow: var(--app-border-shadow-secondary-btn, var(--shadow-xs-skeumorphic2));
+	box-shadow: var(
+		--app-border-shadow-secondary-btn,
+		var(--shadow-xs-skeumorphic2)
+	);
 }
 
 button.custom-button:hover.type-secondary {

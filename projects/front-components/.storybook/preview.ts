@@ -7,12 +7,6 @@ setCompodocJson(docJson);
 
 const preview: Preview = {
 	parameters: {
-		docs: {
-			toc: true,
-			canvas: {
-				sourceState: 'shown'
-			}
-		},
 		controls: {
 			matchers: {
 				color: /(background|color)$/i,
@@ -21,7 +15,7 @@ const preview: Preview = {
 		},
 		darkMode: {
 			stylePreview: true,
-		}
+		},
 	},
 	tags: ['autodocs'],
 

@@ -4,6 +4,7 @@ button.custom-button.type-utility {
 	border-radius: var(--border-radius-sm);
 }
 
+.hovered button.custom-button.type-utility,
 button.custom-button:hover.type-utility {
 	background-color: var(--surface-action-hover-2);
 }

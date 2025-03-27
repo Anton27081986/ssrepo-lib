@@ -1,9 +1,13 @@
 <ss-lib-image-upload
-	fieldCtrl
-	[formControl]="imgCtrl"
+	[progress]="fileLoadProgress()"
+	[src]="imgSrc()"
+	(fileChanged)="uploadFile($event)"
 ></ss-lib-image-upload>
 
 <div class="spinners">
+	<ss-lib-progress-circle
+		[progress]="fileLoadProgress()"
+	></ss-lib-progress-circle>
 	<ss-lib-spinner [displaySpinnerText]="true"></ss-lib-spinner>
 </div>
 
@@ -544,3 +548,27 @@
 <br />
 
 <pre>{{ timepickerCtrl.value }}</pre>
+
+<ss-lib-utility-button [popoverTriggerFor]="dropdown2" />
+<br />
+<ss-lib-utility-button [popoverTriggerFor]="dropdown2" />
+<br />
+
+<ss-lib-dropdown-list #dropdown2>
+	<ss-lib-dropdown-item
+		[label]="'Опция'"
+		[icon]="IconType.Bell"
+		(click)="console.log(1)"
+	/>
+	<ss-lib-dropdown-item
+		[label]="'Опция'"
+		[icon]="IconType.Bell"
+		(click)="console.log(2)"
+	/>
+	<ss-lib-divider class="divider-block"></ss-lib-divider>
+	<ss-lib-dropdown-item
+		[label]="'Удалить'"
+		[icon]="IconType.Bell"
+		(click)="console.log(5)"
+	/>
+</ss-lib-dropdown-list>
