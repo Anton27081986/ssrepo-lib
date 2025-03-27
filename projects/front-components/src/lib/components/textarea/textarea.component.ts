@@ -70,6 +70,8 @@ export class TextareaComponent implements ControlValueAccessor {
 
 	private readonly destroyRef = inject(DestroyRef);
 
+	public onChange: (value: string | null) => void = () => {};
+	public onTouched: () => void = () => {};
 	constructor() {
 		toSignal(
 			this.textareaCtrl.valueChanges.pipe(
@@ -96,9 +98,6 @@ export class TextareaComponent implements ControlValueAccessor {
 	public registerOnTouched(fn: () => void): void {
 		this.onTouched = fn;
 	}
-
-	public onChange: (value: string | null) => void = () => {};
-	public onTouched: () => void = () => {};
 
 	public setDisabledState?(isDisabled: boolean): void {
 		isDisabled ? this.textareaCtrl.disable() : this.textareaCtrl.enable();

@@ -49,6 +49,8 @@ export class DatepickerComponent implements ControlValueAccessor {
 	public selectedDate = signal<CalendarDay | null>(null);
 	public datepickerCtrl = new FormControl<string | null>(null);
 	public readonly InputType = InputType;
+	protected readonly firstNativeDay = FIRST_NATIVE_DAY;
+	protected readonly lastNativeDay = LAST_NATIVE_DAY;
 
 	public onChange: (value: Date | null) => void = () => {};
 	public onTouched: () => void = () => {};
@@ -57,7 +59,9 @@ export class DatepickerComponent implements ControlValueAccessor {
 			this.datepickerCtrl.valueChanges.pipe(
 				debounceTime(150),
 				filter(
-					(value) => !!value && value.length === DATE_FILLER_LENGTH,
+					(value) =>
+						!value ||
+						(!!value && value.length === DATE_FILLER_LENGTH),
 				),
 				tap((value) => this.onValueChange(value!)),
 			),
@@ -101,9 +105,16 @@ export class DatepickerComponent implements ControlValueAccessor {
 		this.onTouched();
 	}
 
-	private onValueChange(value: string): void {
-		this.selectedDate.set(
-			CalendarDay.normalizeParse(value, DateFormat.DMY),
-		);
+	private onValueChange(value: string | null): void {
+		if (value) {
+			this.selectedDate.set(
+				CalendarDay.normalizeParse(value, DateFormat.DMY),
+			);
+			this.onChange(toControlValue(this.selectedDate()));
+
+			return;
+		}
+
+		this.onChange(null);
 	}
 }

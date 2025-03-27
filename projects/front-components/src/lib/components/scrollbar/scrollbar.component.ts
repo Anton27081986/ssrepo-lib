@@ -34,9 +34,11 @@ export class ScrollbarComponent implements AfterViewInit {
 		this.calculateScrolled(Dimension.Height, this.scrollTop()),
 	);
 
-	public readonly verticalSize = computed(() =>
-		this.calculateSize(Dimension.Height),
-	);
+	public readonly verticalSize = computed(() => {
+		const ratio = this.calculateSize(Dimension.Height);
+
+		return Math.max(10, ratio);
+	});
 
 	public readonly verticalPosition = computed(
 		() => this.verticalScrolled() * (100 - this.verticalSize()),

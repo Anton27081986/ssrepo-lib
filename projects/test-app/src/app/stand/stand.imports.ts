@@ -29,6 +29,7 @@ import {
 	ImageUploadComponent,
 	CalendarComponent,
 	DatepickerComponent,
+	ProgressCircleComponent,
 	ScrollbarComponent,
 	TimepickerComponent,
 } from '../../../../front-components/src/lib/components';
@@ -75,4 +76,5 @@ export const standImports = [
 	DatepickerComponent,
 	ScrollbarComponent,
 	TimepickerComponent,
+	ProgressCircleComponent,
 ];

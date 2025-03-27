@@ -1,7 +1,7 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { catchError, Observable, of } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpEventType } from '@angular/common/http';
 import {
 	ButtonType,
 	Colors,
@@ -61,6 +61,9 @@ export class StandComponent {
 	public dateTimepickerCtrl: FormControl<Date | null> = new FormControl(
 		new Date(),
 	);
+
+	public fileLoadProgress = signal<number>(0);
+	public imgSrc = signal<string | null>(null);
 
 	protected readonly TextType = TextType;
 	protected readonly TextWeight = TextWeight;
@@ -206,5 +209,45 @@ export class StandComponent {
 				}),
 			)
 			.subscribe();
+	}
+
+	public uploadFile(file: File | null): void {
+		if (file) {
+			const formData = new FormData();
+
+			formData.append('file', file);
+
+			this.http
+				.post<{ url: string }>(
+					`https://erp-dev.ssnab.it/api/files/fileStorage/2/upload`,
+					formData,
+					{
+						reportProgress: true,
+						observe: 'events',
+						headers: {
+							authorization:
+								'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzaWQiOiI5NTkwMjQ4IiwiTW9sSWQiOiI5NTk0MjQwIiwic3ViIjoi0KDRg9C00LXQvdC60L4g0J4u0JIuIiwiZW1haWwiOiJydWRlbmtvLm92QHNzbmFiLnJ1IiwianRpIjoiN2E5Y2I2ZDAtZjM2Mi00MWNjLWI2MWQtZmE1MTM3ZTBhMDQyIiwiYXVkIjoiaHR0cHM6Ly9lcnAtZGV2LnNzbmFiLml0IiwiaXNzIjoiU1MuRVJQLkRldiIsIm5iZiI6MTc0MjgxNTgxOSwiZXhwIjoxNzQzNDIwNjE5LCJpYXQiOjE3NDI4MTU4MTl9.DZTE2YLTg2F3gp35cwuak46ekRzgSo0pfaeEs6yUZL0',
+						},
+					},
+				)
+				.subscribe((resp) => {
+					if (resp.type === HttpEventType.Response) {
+						this.fileLoadProgress.set(0);
+
+						this.imgSrc.set(
+							resp.body?.url ||
+								'https://a.d-cd.net/69f82b5s-1920.jpg',
+						);
+					}
+
+					if (resp.type === HttpEventType.UploadProgress) {
+						if (resp.total) {
+							this.fileLoadProgress.set(
+								(100 * resp.loaded) / resp.total,
+							);
+						}
+					}
+				});
+		}
 	}
 }
