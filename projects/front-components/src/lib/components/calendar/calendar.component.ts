@@ -7,7 +7,6 @@ import {
 	output,
 	signal,
 } from '@angular/core';
-import { FIRST_DAY, LAST_DAY } from './constans';
 import { CalendarDay, CalendarMonth } from './models';
 import { calendarImports } from './calendar.imports';
 import {
@@ -17,6 +16,7 @@ import {
 	IconType,
 	TextType,
 } from '../../shared/models';
+import { FIRST_DAY, LAST_DAY } from '../../shared/constants';
 
 /**
  * Параметры:
