@@ -124,16 +124,6 @@
                 "name": "Default",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/front-components/src/stories/components/calendar/calendar.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\r\n\targs: {\r\n\t\tvalue: null,\r\n\t\tmin: null,\r\n\t\tmax: null,\r\n\t},\r\n}"
-            },
-            {
-                "name": "Default",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "projects/front-components/src/stories/components/canvas-content/canvas-content.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -149,6 +139,16 @@
                 "deprecationMessage": "",
                 "type": "Story",
                 "defaultValue": "{\r\n\targs: {\r\n\t\tdata: {\r\n\t\t\ttitle: 'Подтверждение действия',\r\n\t\t\tdescription: 'Вы уверены, что хотите выполнить это действие?',\r\n\t\t\tbadgeProps: {\r\n\t\t\t\ticon: IconType.CheckCircle,\r\n\t\t\t\tsize: ExtraSize.lg,\r\n\t\t\t\tshape: Shape.Square,\r\n\t\t\t\tstatus: Status.Default,\r\n\t\t\t},\r\n\t\t\tapply: {\r\n\t\t\t\ttext: 'Подтвердить',\r\n\t\t\t},\r\n\t\t\tcancelText: 'Отмена',\r\n\t\t},\r\n\t},\r\n}"
+            },
+            {
+                "name": "Default",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/front-components/src/stories/components/datepicker/datepicker.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\r\n\tname: 'По умолчанию',\r\n\targs: {\r\n\t\tmin: FIRST_NATIVE_DAY,\r\n\t\tmax: LAST_NATIVE_DAY,\r\n\t},\r\n\trender: (args) => ({\r\n\t\tprops: {\r\n\t\t\t...args,\r\n\t\t\tmin: new Date(args.min), // Гарантируем объект Date\r\n\t\t\tmax: new Date(args.max), // Гарантируем объект Date\r\n\t\t\tdatepickerCtrl: new FormControl<Date | null>(null),\r\n\t\t},\r\n\t\ttemplate: `\r\n\t\t\t<ss-lib-datepicker-wrapper\r\n\t\t\t\t[min]=\"min\"\r\n\t\t\t\t[max]=\"max\"\r\n\t\t\t></ss-lib-datepicker-wrapper>\r\n\t\t`,\r\n\t}),\r\n\tparameters: {\r\n\t\tdocs: {\r\n\t\t\tdescription: {\r\n\t\t\t\tstory: 'Демонстрирует Datepicker с минимальными и максимальными значениями по умолчанию.',\r\n\t\t\t},\r\n\t\t},\r\n\t},\r\n}"
             },
             {
                 "name": "Default",
@@ -244,21 +244,21 @@
                 "name": "Default",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/front-components/src/stories/components/progress/progress.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\r\n\targs: {\r\n\t\tstate: 'default',\r\n\t},\r\n}"
-            },
-            {
-                "name": "Default",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "projects/front-components/src/stories/components/number-picker/number-picker.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
                 "defaultValue": "{\r\n\targs: {\r\n\t\tmin: undefined,\r\n\t\tmax: undefined,\r\n\t\tstep: 1,\r\n\t},\r\n}"
+            },
+            {
+                "name": "Default",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/front-components/src/stories/components/progress/progress.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\r\n\targs: {\r\n\t\tstate: 'default',\r\n\t},\r\n}"
             },
             {
                 "name": "Default",
@@ -304,16 +304,6 @@
                 "name": "Default",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/front-components/src/stories/components/spinner/spinner.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\r\n\targs: {\r\n\t\tdisplaySpinnerText: false,\r\n\t},\r\n}"
-            },
-            {
-                "name": "Default",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "projects/front-components/src/stories/components/skeleton/skeleton-block.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -329,6 +319,16 @@
                 "deprecationMessage": "",
                 "type": "Story",
                 "defaultValue": "{\r\n\targs: {\r\n\t\tcountItems: 7,\r\n\t},\r\n}"
+            },
+            {
+                "name": "Default",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/front-components/src/stories/components/spinner/spinner.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\r\n\targs: {\r\n\t\tdisplaySpinnerText: false,\r\n\t},\r\n}"
             },
             {
                 "name": "Default",
@@ -409,6 +409,16 @@
                 "deprecationMessage": "",
                 "type": "Story",
                 "defaultValue": "{\r\n\targs: {\r\n\t\ttype: ButtonType.Primary,\r\n\t\tsize: ExtraSize.md,\r\n\t\tdisabled: true,\r\n\t\ttext: 'Disabled Button',\r\n\t},\r\n}"
+            },
+            {
+                "name": "Disabled",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/front-components/src/stories/components/datepicker/datepicker.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\r\n\tname: 'Отключенный',\r\n\targs: {\r\n\t\tmin: new Date(2020, 0, 1), // 1 января 2020\r\n\t\tmax: new Date(2025, 11, 31), // 31 декабря 2025\r\n\t},\r\n\trender: (args) => ({\r\n\t\tprops: {\r\n\t\t\t...args,\r\n\t\t\tdatepickerCtrl: new FormControl<Date | null>({\r\n\t\t\t\tvalue: new Date(2024, 5, 15), // 15 июня 2024\r\n\t\t\t\tdisabled: true,\r\n\t\t\t}),\r\n\t\t},\r\n\t\ttemplate: `\r\n\t\t\t<ss-lib-datepicker-wrapper\r\n\t\t\t\t[min]=\"min\"\r\n\t\t\t\t[max]=\"max\"\r\n\t\t\t></ss-lib-datepicker-wrapper>\r\n\t\t`,\r\n\t}),\r\n\tparameters: {\r\n\t\tdocs: {\r\n\t\t\tdescription: {\r\n\t\t\t\tstory: 'Демонстрирует Datepicker в отключенном состоянии с выбранной датой (15 июня 2024).',\r\n\t\t\t},\r\n\t\t},\r\n\t},\r\n}"
             },
             {
                 "name": "Disabled",
@@ -774,16 +784,6 @@
                 "name": "meta",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/front-components/src/stories/components/calendar/calendar.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Meta<CalendarComponent>",
-                "defaultValue": "{\r\n\ttitle: 'Components/Calendar',\r\n\tcomponent: CalendarComponent,\r\n\ttags: ['autodocs'],\r\n\targTypes: {\r\n\t\tvalue: {\r\n\t\t\tcontrol: 'object',\r\n\t\t\tdescription: 'Выбранная дата',\r\n\t\t},\r\n\t\tmin: {\r\n\t\t\tcontrol: 'object',\r\n\t\t\tdescription: 'Минимальная дата для выбора',\r\n\t\t},\r\n\t\tmax: {\r\n\t\t\tcontrol: 'object',\r\n\t\t\tdescription: 'Максимальная дата для выбора',\r\n\t\t},\r\n\t},\r\n}"
-            },
-            {
-                "name": "meta",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "projects/front-components/src/stories/components/canvas-content/canvas-content.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -894,21 +894,21 @@
                 "name": "meta",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/front-components/src/stories/components/progress/progress.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Meta<ProgressWrapperComponent>",
-                "defaultValue": "{\r\n\ttitle: 'Components/Progress',\r\n\tcomponent: ProgressWrapperComponent,\r\n\ttags: ['autodocs'],\r\n\targTypes: {\r\n\t\tstate: {\r\n\t\t\tcontrol: 'select',\r\n\t\t\toptions: ['default', 'average', 'max'],\r\n\t\t\tdescription: 'Состояние прогресса',\r\n\t\t\tdefaultValue: 'default',\r\n\t\t},\r\n\t},\r\n}"
-            },
-            {
-                "name": "meta",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "projects/front-components/src/stories/components/number-picker/number-picker.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<NumberPickerWrapperComponent>",
                 "defaultValue": "{\r\n\ttitle: 'Components/NumberPicker',\r\n\tcomponent: NumberPickerWrapperComponent,\r\n\ttags: ['autodocs'],\r\n\targTypes: {\r\n\t\tmin: {\r\n\t\t\tcontrol: 'number',\r\n\t\t\tdescription: 'Минимальное значение',\r\n\t\t\tdefaultValue: undefined,\r\n\t\t},\r\n\t\tmax: {\r\n\t\t\tcontrol: 'number',\r\n\t\t\tdescription: 'Максимальное значение',\r\n\t\t\tdefaultValue: undefined,\r\n\t\t},\r\n\t\tstep: {\r\n\t\t\tcontrol: 'number',\r\n\t\t\tdescription: 'Шаг изменения значения',\r\n\t\t\tdefaultValue: 1,\r\n\t\t},\r\n\t},\r\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/front-components/src/stories/components/progress/progress.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<ProgressWrapperComponent>",
+                "defaultValue": "{\r\n\ttitle: 'Components/Progress',\r\n\tcomponent: ProgressWrapperComponent,\r\n\ttags: ['autodocs'],\r\n\targTypes: {\r\n\t\tstate: {\r\n\t\t\tcontrol: 'select',\r\n\t\t\toptions: ['default', 'average', 'max'],\r\n\t\t\tdescription: 'Состояние прогресса',\r\n\t\t\tdefaultValue: 'default',\r\n\t\t},\r\n\t},\r\n}"
             },
             {
                 "name": "meta",
@@ -954,16 +954,6 @@
                 "name": "meta",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/front-components/src/stories/components/spinner/spinner.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Meta<SpinnerWrapperComponent>",
-                "defaultValue": "{\r\n\ttitle: 'Components/Spinner',\r\n\tcomponent: SpinnerWrapperComponent,\r\n\ttags: ['autodocs'],\r\n\targTypes: {\r\n\t\tdisplaySpinnerText: {\r\n\t\t\tcontrol: 'boolean',\r\n\t\t\tdescription: 'Показать надпись \"Загрузка...\"',\r\n\t\t},\r\n\t},\r\n}"
-            },
-            {
-                "name": "meta",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "projects/front-components/src/stories/components/skeleton/skeleton-block.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -979,6 +969,16 @@
                 "deprecationMessage": "",
                 "type": "Meta<SkeletonTableWrapperComponent>",
                 "defaultValue": "{\r\n\ttitle: 'Components/SkeletonTable',\r\n\tcomponent: SkeletonTableWrapperComponent,\r\n\ttags: ['autodocs'],\r\n\targTypes: {\r\n\t\tcountItems: {\r\n\t\t\tcontrol: 'number',\r\n\t\t\tdescription: 'Количество строк в таблице',\r\n\t\t},\r\n\t},\r\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/front-components/src/stories/components/spinner/spinner.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<SpinnerWrapperComponent>",
+                "defaultValue": "{\r\n\ttitle: 'Components/Spinner',\r\n\tcomponent: SpinnerWrapperComponent,\r\n\ttags: ['autodocs'],\r\n\targTypes: {\r\n\t\tdisplaySpinnerText: {\r\n\t\t\tcontrol: 'boolean',\r\n\t\t\tdescription: 'Показать надпись \"Загрузка...\"',\r\n\t\t},\r\n\t},\r\n}"
             },
             {
                 "name": "meta",
@@ -1041,6 +1041,16 @@
                 "defaultValue": "{\r\n\ttitle: 'Components/Tooltip',\r\n\tcomponent: TooltipWrapperComponent,\r\n\ttags: ['autodocs'],\r\n\targTypes: {\r\n\t\ttext: {\r\n\t\t\tcontrol: 'text',\r\n\t\t\tdescription: 'Текст подсказки',\r\n\t\t},\r\n\t\tposition: {\r\n\t\t\tcontrol: 'select',\r\n\t\t\toptions: Object.values(TooltipPosition),\r\n\t\t\tdescription: 'Позиция подсказки',\r\n\t\t},\r\n\t},\r\n}"
             },
             {
+                "name": "NarrowRange",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/front-components/src/stories/components/datepicker/datepicker.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\r\n\tname: 'Узкий диапазон',\r\n\targs: {\r\n\t\tmin: new Date(new Date().getFullYear(), new Date().getMonth(), 1), // Первый день текущего месяца\r\n\t\tmax: new Date(), // Текущая дата\r\n\t},\r\n\trender: (args) => ({\r\n\t\tprops: {\r\n\t\t\t...args,\r\n\t\t\tdatepickerCtrl: new FormControl<Date | null>(null),\r\n\t\t},\r\n\t\ttemplate: `\r\n\t\t\t<ss-lib-datepicker-wrapper\r\n\t\t\t\t[min]=\"min\"\r\n\t\t\t\t[max]=\"max\"\r\n\t\t\t></ss-lib-datepicker-wrapper>\r\n\t\t`,\r\n\t}),\r\n\tparameters: {\r\n\t\tdocs: {\r\n\t\t\tdescription: {\r\n\t\t\t\tstory: 'Отображает Datepicker с ограниченным диапазоном от начала текущего месяца до сегодняшнего дня.',\r\n\t\t\t},\r\n\t\t},\r\n\t},\r\n}"
+            },
+            {
                 "name": "NotificationToggle",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -1078,7 +1088,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Preview",
-                "defaultValue": "{\r\n\tparameters: {\r\n\t\tdocs: {\r\n\t\t\ttoc: true,\r\n\t\t\tcanvas: {\r\n\t\t\t\tsourceState: 'shown'\r\n\t\t\t}\r\n\t\t},\r\n\t\tcontrols: {\r\n\t\t\tmatchers: {\r\n\t\t\t\tcolor: /(background|color)$/i,\r\n\t\t\t\tdate: /Date$/i,\r\n\t\t\t},\r\n\t\t},\r\n\t\tdarkMode: {\r\n\t\t\tstylePreview: true,\r\n\t\t}\r\n\t},\r\n\ttags: ['autodocs'],\r\n\r\n\r\n}"
+                "defaultValue": "{\r\n\tparameters: {\r\n\t\tcontrols: {\r\n\t\t\tmatchers: {\r\n\t\t\t\tcolor: /(background|color)$/i,\r\n\t\t\t\tdate: /Date$/i,\r\n\t\t\t},\r\n\t\t},\r\n\t\tdarkMode: {\r\n\t\t\tstylePreview: true,\r\n\t\t},\r\n\t},\r\n\ttags: ['autodocs'],\r\n\r\n\r\n}"
             },
             {
                 "name": "Primary",
@@ -1189,16 +1199,6 @@
                 "deprecationMessage": "",
                 "type": "Story",
                 "defaultValue": "{\r\n\targs: {\r\n\t\ttext: 'Подсказка сверху',\r\n\t\tposition: TooltipPosition.Top,\r\n\t},\r\n}"
-            },
-            {
-                "name": "WithDateRange",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "projects/front-components/src/stories/components/calendar/calendar.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\r\n\targs: {\r\n\t\tvalue: null,\r\n\t\tmin: new CalendarDay(2024, 0, 1), // 1 января 2024\r\n\t\tmax: new CalendarDay(2024, 11, 31), // 31 декабря 2024\r\n\t},\r\n}"
             },
             {
                 "name": "WithDecimalStep",
@@ -1364,11 +1364,11 @@
                 "name": "WithSelectedDate",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/front-components/src/stories/components/calendar/calendar.stories.ts",
+                "file": "projects/front-components/src/stories/components/datepicker/datepicker.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\r\n\targs: {\r\n\t\tvalue: CalendarDay.currentLocal(),\r\n\t\tmin: null,\r\n\t\tmax: null,\r\n\t},\r\n}"
+                "defaultValue": "{\r\n\tname: 'С выбранной датой',\r\n\targs: {\r\n\t\tmin: new Date(2020, 0, 1), // 1 января 2020\r\n\t\tmax: new Date(2025, 11, 31), // 31 декабря 2025\r\n\t},\r\n\trender: (args) => ({\r\n\t\tprops: {\r\n\t\t\t...args,\r\n\t\t\tdatepickerCtrl: new FormControl<Date | null>(new Date(2024, 5, 15)), // 15 июня 2024\r\n\t\t},\r\n\t\ttemplate: `\r\n\t\t\t<ss-lib-datepicker-wrapper\r\n\t\t\t\t[min]=\"min\"\r\n\t\t\t\t[max]=\"max\"\r\n\t\t\t></ss-lib-datepicker-wrapper>\r\n\t\t`,\r\n\t}),\r\n\tparameters: {\r\n\t\tdocs: {\r\n\t\t\tdescription: {\r\n\t\t\t\tstory: 'Показывает Datepicker с заранее установленной датой (15 июня 2024) и пользовательским диапазоном дат.',\r\n\t\t\t},\r\n\t\t},\r\n\t},\r\n}"
             },
             {
                 "name": "WithSubMenu",
@@ -1473,17 +1473,6 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "StoryObj<CalendarComponent>",
-                "file": "projects/front-components/src/stories/components/calendar/calendar.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "description": "",
-                "kind": 183
-            },
-            {
-                "name": "Story",
-                "ctype": "miscellaneous",
-                "subtype": "typealias",
                 "rawtype": "StoryObj<CanvasContentWrapperComponent>",
                 "file": "projects/front-components/src/stories/components/canvas-content/canvas-content.stories.ts",
                 "deprecated": false,
@@ -1497,6 +1486,17 @@
                 "subtype": "typealias",
                 "rawtype": "StoryObj<ConfirmModalWrapperComponent>",
                 "file": "projects/front-components/src/stories/components/confirm-modal/confirm-modal.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 183
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<DatepickerWrapperComponent>",
+                "file": "projects/front-components/src/stories/components/datepicker/datepicker.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -1605,8 +1605,8 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "StoryObj<ProgressWrapperComponent>",
-                "file": "projects/front-components/src/stories/components/progress/progress.stories.ts",
+                "rawtype": "StoryObj<NumberPickerWrapperComponent>",
+                "file": "projects/front-components/src/stories/components/number-picker/number-picker.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -1616,8 +1616,8 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "StoryObj<NumberPickerWrapperComponent>",
-                "file": "projects/front-components/src/stories/components/number-picker/number-picker.stories.ts",
+                "rawtype": "StoryObj<ProgressWrapperComponent>",
+                "file": "projects/front-components/src/stories/components/progress/progress.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -1671,17 +1671,6 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "StoryObj<SpinnerWrapperComponent>",
-                "file": "projects/front-components/src/stories/components/spinner/spinner.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "description": "",
-                "kind": 183
-            },
-            {
-                "name": "Story",
-                "ctype": "miscellaneous",
-                "subtype": "typealias",
                 "rawtype": "StoryObj<SkeletonBlockWrapperComponent>",
                 "file": "projects/front-components/src/stories/components/skeleton/skeleton-block.stories.ts",
                 "deprecated": false,
@@ -1695,6 +1684,17 @@
                 "subtype": "typealias",
                 "rawtype": "StoryObj<SkeletonTableWrapperComponent>",
                 "file": "projects/front-components/src/stories/components/skeleton/skeleton-table.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 183
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<SpinnerWrapperComponent>",
+                "file": "projects/front-components/src/stories/components/spinner/spinner.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -2239,48 +2239,6 @@
                     "defaultValue": "{\r\n\targs: {\r\n\t\ttitle: 'Информация',\r\n\t\tdescription: 'Это информационное сообщение',\r\n\t\tviewClose: false,\r\n\t\tbadge: {\r\n\t\t\ticon: IconType.Help,\r\n\t\t\tsize: ExtraSize.lg,\r\n\t\t\tshape: Shape.Square,\r\n\t\t\tstatus: Status.Default,\r\n\t\t},\r\n\t},\r\n}"
                 }
             ],
-            "projects/front-components/src/stories/components/calendar/calendar.stories.ts": [
-                {
-                    "name": "Default",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/front-components/src/stories/components/calendar/calendar.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\r\n\targs: {\r\n\t\tvalue: null,\r\n\t\tmin: null,\r\n\t\tmax: null,\r\n\t},\r\n}"
-                },
-                {
-                    "name": "meta",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/front-components/src/stories/components/calendar/calendar.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Meta<CalendarComponent>",
-                    "defaultValue": "{\r\n\ttitle: 'Components/Calendar',\r\n\tcomponent: CalendarComponent,\r\n\ttags: ['autodocs'],\r\n\targTypes: {\r\n\t\tvalue: {\r\n\t\t\tcontrol: 'object',\r\n\t\t\tdescription: 'Выбранная дата',\r\n\t\t},\r\n\t\tmin: {\r\n\t\t\tcontrol: 'object',\r\n\t\t\tdescription: 'Минимальная дата для выбора',\r\n\t\t},\r\n\t\tmax: {\r\n\t\t\tcontrol: 'object',\r\n\t\t\tdescription: 'Максимальная дата для выбора',\r\n\t\t},\r\n\t},\r\n}"
-                },
-                {
-                    "name": "WithDateRange",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/front-components/src/stories/components/calendar/calendar.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\r\n\targs: {\r\n\t\tvalue: null,\r\n\t\tmin: new CalendarDay(2024, 0, 1), // 1 января 2024\r\n\t\tmax: new CalendarDay(2024, 11, 31), // 31 декабря 2024\r\n\t},\r\n}"
-                },
-                {
-                    "name": "WithSelectedDate",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/front-components/src/stories/components/calendar/calendar.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\r\n\targs: {\r\n\t\tvalue: CalendarDay.currentLocal(),\r\n\t\tmin: null,\r\n\t\tmax: null,\r\n\t},\r\n}"
-                }
-            ],
             "projects/front-components/src/stories/components/canvas-content/canvas-content.stories.ts": [
                 {
                     "name": "Default",
@@ -2353,6 +2311,48 @@
                     "deprecationMessage": "",
                     "type": "Story",
                     "defaultValue": "{\r\n\targs: {\r\n\t\tdata: {\r\n\t\t\ttitle: 'Информация',\r\n\t\t\tdescription: 'Это информационное сообщение',\r\n\t\t\tbadgeProps: {\r\n\t\t\t\ticon: IconType.Help,\r\n\t\t\t\tsize: ExtraSize.lg,\r\n\t\t\t\tshape: Shape.Square,\r\n\t\t\t\tstatus: Status.Default,\r\n\t\t\t},\r\n\t\t\tapply: {\r\n\t\t\t\ttext: 'Понятно',\r\n\t\t\t},\r\n\t\t},\r\n\t},\r\n}"
+                }
+            ],
+            "projects/front-components/src/stories/components/datepicker/datepicker.stories.ts": [
+                {
+                    "name": "Default",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/front-components/src/stories/components/datepicker/datepicker.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\r\n\tname: 'По умолчанию',\r\n\targs: {\r\n\t\tmin: FIRST_NATIVE_DAY,\r\n\t\tmax: LAST_NATIVE_DAY,\r\n\t},\r\n\trender: (args) => ({\r\n\t\tprops: {\r\n\t\t\t...args,\r\n\t\t\tmin: new Date(args.min), // Гарантируем объект Date\r\n\t\t\tmax: new Date(args.max), // Гарантируем объект Date\r\n\t\t\tdatepickerCtrl: new FormControl<Date | null>(null),\r\n\t\t},\r\n\t\ttemplate: `\r\n\t\t\t<ss-lib-datepicker-wrapper\r\n\t\t\t\t[min]=\"min\"\r\n\t\t\t\t[max]=\"max\"\r\n\t\t\t></ss-lib-datepicker-wrapper>\r\n\t\t`,\r\n\t}),\r\n\tparameters: {\r\n\t\tdocs: {\r\n\t\t\tdescription: {\r\n\t\t\t\tstory: 'Демонстрирует Datepicker с минимальными и максимальными значениями по умолчанию.',\r\n\t\t\t},\r\n\t\t},\r\n\t},\r\n}"
+                },
+                {
+                    "name": "Disabled",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/front-components/src/stories/components/datepicker/datepicker.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\r\n\tname: 'Отключенный',\r\n\targs: {\r\n\t\tmin: new Date(2020, 0, 1), // 1 января 2020\r\n\t\tmax: new Date(2025, 11, 31), // 31 декабря 2025\r\n\t},\r\n\trender: (args) => ({\r\n\t\tprops: {\r\n\t\t\t...args,\r\n\t\t\tdatepickerCtrl: new FormControl<Date | null>({\r\n\t\t\t\tvalue: new Date(2024, 5, 15), // 15 июня 2024\r\n\t\t\t\tdisabled: true,\r\n\t\t\t}),\r\n\t\t},\r\n\t\ttemplate: `\r\n\t\t\t<ss-lib-datepicker-wrapper\r\n\t\t\t\t[min]=\"min\"\r\n\t\t\t\t[max]=\"max\"\r\n\t\t\t></ss-lib-datepicker-wrapper>\r\n\t\t`,\r\n\t}),\r\n\tparameters: {\r\n\t\tdocs: {\r\n\t\t\tdescription: {\r\n\t\t\t\tstory: 'Демонстрирует Datepicker в отключенном состоянии с выбранной датой (15 июня 2024).',\r\n\t\t\t},\r\n\t\t},\r\n\t},\r\n}"
+                },
+                {
+                    "name": "NarrowRange",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/front-components/src/stories/components/datepicker/datepicker.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\r\n\tname: 'Узкий диапазон',\r\n\targs: {\r\n\t\tmin: new Date(new Date().getFullYear(), new Date().getMonth(), 1), // Первый день текущего месяца\r\n\t\tmax: new Date(), // Текущая дата\r\n\t},\r\n\trender: (args) => ({\r\n\t\tprops: {\r\n\t\t\t...args,\r\n\t\t\tdatepickerCtrl: new FormControl<Date | null>(null),\r\n\t\t},\r\n\t\ttemplate: `\r\n\t\t\t<ss-lib-datepicker-wrapper\r\n\t\t\t\t[min]=\"min\"\r\n\t\t\t\t[max]=\"max\"\r\n\t\t\t></ss-lib-datepicker-wrapper>\r\n\t\t`,\r\n\t}),\r\n\tparameters: {\r\n\t\tdocs: {\r\n\t\t\tdescription: {\r\n\t\t\t\tstory: 'Отображает Datepicker с ограниченным диапазоном от начала текущего месяца до сегодняшнего дня.',\r\n\t\t\t},\r\n\t\t},\r\n\t},\r\n}"
+                },
+                {
+                    "name": "WithSelectedDate",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/front-components/src/stories/components/datepicker/datepicker.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\r\n\tname: 'С выбранной датой',\r\n\targs: {\r\n\t\tmin: new Date(2020, 0, 1), // 1 января 2020\r\n\t\tmax: new Date(2025, 11, 31), // 31 декабря 2025\r\n\t},\r\n\trender: (args) => ({\r\n\t\tprops: {\r\n\t\t\t...args,\r\n\t\t\tdatepickerCtrl: new FormControl<Date | null>(new Date(2024, 5, 15)), // 15 июня 2024\r\n\t\t},\r\n\t\ttemplate: `\r\n\t\t\t<ss-lib-datepicker-wrapper\r\n\t\t\t\t[min]=\"min\"\r\n\t\t\t\t[max]=\"max\"\r\n\t\t\t></ss-lib-datepicker-wrapper>\r\n\t\t`,\r\n\t}),\r\n\tparameters: {\r\n\t\tdocs: {\r\n\t\t\tdescription: {\r\n\t\t\t\tstory: 'Показывает Datepicker с заранее установленной датой (15 июня 2024) и пользовательским диапазоном дат.',\r\n\t\t\t},\r\n\t\t},\r\n\t},\r\n}"
                 }
             ],
             "projects/front-components/src/stories/components/dropdown-item/dropdown-item.stories.ts": [
@@ -2817,38 +2817,6 @@
                     "defaultValue": "{\r\n\targs: {\r\n\t\tmenu: [\r\n\t\t\t{\r\n\t\t\t\ttitle: 'Главная',\r\n\t\t\t\ttoolTip: null,\r\n\t\t\t\tlink: '/home',\r\n\t\t\t\tpressed: true,\r\n\t\t\t\ticon: IconType.HamburgerMenu,\r\n\t\t\t\tsubMenu: [],\r\n\t\t\t},\r\n\t\t\t{\r\n\t\t\t\ttitle: 'Проекты',\r\n\t\t\t\ttoolTip: null,\r\n\t\t\t\tlink: '/projects',\r\n\t\t\t\tpressed: false,\r\n\t\t\t\ticon: IconType.CheckCircle,\r\n\t\t\t\tsubMenu: [],\r\n\t\t\t},\r\n\t\t\t{\r\n\t\t\t\ttitle: 'Задачи',\r\n\t\t\t\ttoolTip: null,\r\n\t\t\t\tlink: '/tasks',\r\n\t\t\t\tpressed: false,\r\n\t\t\t\ticon: IconType.Eye,\r\n\t\t\t\tsubMenu: [],\r\n\t\t\t},\r\n\t\t\t{\r\n\t\t\t\ttitle: 'Календарь',\r\n\t\t\t\ttoolTip: null,\r\n\t\t\t\tlink: '/calendar',\r\n\t\t\t\tpressed: false,\r\n\t\t\t\ticon: IconType.Bell,\r\n\t\t\t\tsubMenu: [],\r\n\t\t\t},\r\n\t\t\t{\r\n\t\t\t\ttitle: 'Настройки',\r\n\t\t\t\ttoolTip: null,\r\n\t\t\t\tlink: '/settings',\r\n\t\t\t\tpressed: false,\r\n\t\t\t\ticon: IconType.HamburgerMenu,\r\n\t\t\t\tsubMenu: [\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\ttitle: 'Профиль',\r\n\t\t\t\t\t\ttoolTip: null,\r\n\t\t\t\t\t\tlink: '/settings/profile',\r\n\t\t\t\t\t\tpressed: false,\r\n\t\t\t\t\t\ticon: IconType.User01,\r\n\t\t\t\t\t\tsubMenu: [],\r\n\t\t\t\t\t},\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\ttitle: 'Безопасность',\r\n\t\t\t\t\t\ttoolTip: null,\r\n\t\t\t\t\t\tlink: '/settings/security',\r\n\t\t\t\t\t\tpressed: false,\r\n\t\t\t\t\t\ticon: IconType.Eye,\r\n\t\t\t\t\t\tsubMenu: [],\r\n\t\t\t\t\t},\r\n\t\t\t\t],\r\n\t\t\t},\r\n\t\t],\r\n\t},\r\n}"
                 }
             ],
-            "projects/front-components/src/stories/components/spinner/spinner.stories.ts": [
-                {
-                    "name": "Default",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/front-components/src/stories/components/spinner/spinner.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\r\n\targs: {\r\n\t\tdisplaySpinnerText: false,\r\n\t},\r\n}"
-                },
-                {
-                    "name": "meta",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/front-components/src/stories/components/spinner/spinner.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Meta<SpinnerWrapperComponent>",
-                    "defaultValue": "{\r\n\ttitle: 'Components/Spinner',\r\n\tcomponent: SpinnerWrapperComponent,\r\n\ttags: ['autodocs'],\r\n\targTypes: {\r\n\t\tdisplaySpinnerText: {\r\n\t\t\tcontrol: 'boolean',\r\n\t\t\tdescription: 'Показать надпись \"Загрузка...\"',\r\n\t\t},\r\n\t},\r\n}"
-                },
-                {
-                    "name": "WithText",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/front-components/src/stories/components/spinner/spinner.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\r\n\targs: {\r\n\t\tdisplaySpinnerText: true,\r\n\t},\r\n}"
-                }
-            ],
             "projects/front-components/src/stories/components/skeleton/skeleton-block.stories.ts": [
                 {
                     "name": "Default",
@@ -2931,6 +2899,38 @@
                     "deprecationMessage": "",
                     "type": "Meta<SkeletonTableWrapperComponent>",
                     "defaultValue": "{\r\n\ttitle: 'Components/SkeletonTable',\r\n\tcomponent: SkeletonTableWrapperComponent,\r\n\ttags: ['autodocs'],\r\n\targTypes: {\r\n\t\tcountItems: {\r\n\t\t\tcontrol: 'number',\r\n\t\t\tdescription: 'Количество строк в таблице',\r\n\t\t},\r\n\t},\r\n}"
+                }
+            ],
+            "projects/front-components/src/stories/components/spinner/spinner.stories.ts": [
+                {
+                    "name": "Default",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/front-components/src/stories/components/spinner/spinner.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\r\n\targs: {\r\n\t\tdisplaySpinnerText: false,\r\n\t},\r\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/front-components/src/stories/components/spinner/spinner.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<SpinnerWrapperComponent>",
+                    "defaultValue": "{\r\n\ttitle: 'Components/Spinner',\r\n\tcomponent: SpinnerWrapperComponent,\r\n\ttags: ['autodocs'],\r\n\targTypes: {\r\n\t\tdisplaySpinnerText: {\r\n\t\t\tcontrol: 'boolean',\r\n\t\t\tdescription: 'Показать надпись \"Загрузка...\"',\r\n\t\t},\r\n\t},\r\n}"
+                },
+                {
+                    "name": "WithText",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/front-components/src/stories/components/spinner/spinner.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\r\n\targs: {\r\n\t\tdisplaySpinnerText: true,\r\n\t},\r\n}"
                 }
             ],
             "projects/front-components/src/stories/components/table/table.stories.ts": [
@@ -3224,7 +3224,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Preview",
-                    "defaultValue": "{\r\n\tparameters: {\r\n\t\tdocs: {\r\n\t\t\ttoc: true,\r\n\t\t\tcanvas: {\r\n\t\t\t\tsourceState: 'shown'\r\n\t\t\t}\r\n\t\t},\r\n\t\tcontrols: {\r\n\t\t\tmatchers: {\r\n\t\t\t\tcolor: /(background|color)$/i,\r\n\t\t\t\tdate: /Date$/i,\r\n\t\t\t},\r\n\t\t},\r\n\t\tdarkMode: {\r\n\t\t\tstylePreview: true,\r\n\t\t}\r\n\t},\r\n\ttags: ['autodocs'],\r\n\r\n\r\n}"
+                    "defaultValue": "{\r\n\tparameters: {\r\n\t\tcontrols: {\r\n\t\t\tmatchers: {\r\n\t\t\t\tcolor: /(background|color)$/i,\r\n\t\t\t\tdate: /Date$/i,\r\n\t\t\t},\r\n\t\t},\r\n\t\tdarkMode: {\r\n\t\t\tstylePreview: true,\r\n\t\t},\r\n\t},\r\n\ttags: ['autodocs'],\r\n\r\n\r\n}"
                 }
             ]
         },
@@ -3309,19 +3309,6 @@
                     "kind": 183
                 }
             ],
-            "projects/front-components/src/stories/components/calendar/calendar.stories.ts": [
-                {
-                    "name": "Story",
-                    "ctype": "miscellaneous",
-                    "subtype": "typealias",
-                    "rawtype": "StoryObj<CalendarComponent>",
-                    "file": "projects/front-components/src/stories/components/calendar/calendar.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "description": "",
-                    "kind": 183
-                }
-            ],
             "projects/front-components/src/stories/components/canvas-content/canvas-content.stories.ts": [
                 {
                     "name": "Story",
@@ -3342,6 +3329,19 @@
                     "subtype": "typealias",
                     "rawtype": "StoryObj<ConfirmModalWrapperComponent>",
                     "file": "projects/front-components/src/stories/components/confirm-modal/confirm-modal.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 183
+                }
+            ],
+            "projects/front-components/src/stories/components/datepicker/datepicker.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<DatepickerWrapperComponent>",
+                    "file": "projects/front-components/src/stories/components/datepicker/datepicker.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
@@ -3465,19 +3465,6 @@
                     "kind": 183
                 }
             ],
-            "projects/front-components/src/stories/components/progress/progress.stories.ts": [
-                {
-                    "name": "Story",
-                    "ctype": "miscellaneous",
-                    "subtype": "typealias",
-                    "rawtype": "StoryObj<ProgressWrapperComponent>",
-                    "file": "projects/front-components/src/stories/components/progress/progress.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "description": "",
-                    "kind": 183
-                }
-            ],
             "projects/front-components/src/stories/components/number-picker/number-picker.stories.ts": [
                 {
                     "name": "Story",
@@ -3485,6 +3472,19 @@
                     "subtype": "typealias",
                     "rawtype": "StoryObj<NumberPickerWrapperComponent>",
                     "file": "projects/front-components/src/stories/components/number-picker/number-picker.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 183
+                }
+            ],
+            "projects/front-components/src/stories/components/progress/progress.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<ProgressWrapperComponent>",
+                    "file": "projects/front-components/src/stories/components/progress/progress.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
@@ -3543,19 +3543,6 @@
                     "kind": 183
                 }
             ],
-            "projects/front-components/src/stories/components/spinner/spinner.stories.ts": [
-                {
-                    "name": "Story",
-                    "ctype": "miscellaneous",
-                    "subtype": "typealias",
-                    "rawtype": "StoryObj<SpinnerWrapperComponent>",
-                    "file": "projects/front-components/src/stories/components/spinner/spinner.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "description": "",
-                    "kind": 183
-                }
-            ],
             "projects/front-components/src/stories/components/skeleton/skeleton-block.stories.ts": [
                 {
                     "name": "Story",
@@ -3576,6 +3563,19 @@
                     "subtype": "typealias",
                     "rawtype": "StoryObj<SkeletonTableWrapperComponent>",
                     "file": "projects/front-components/src/stories/components/skeleton/skeleton-table.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 183
+                }
+            ],
+            "projects/front-components/src/stories/components/spinner/spinner.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<SpinnerWrapperComponent>",
+                    "file": "projects/front-components/src/stories/components/spinner/spinner.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
@@ -4018,56 +4018,6 @@
                 "status": "low"
             },
             {
-                "filePath": "projects/front-components/src/stories/components/calendar/calendar.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "Default",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "projects/front-components/src/stories/components/calendar/calendar.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "meta",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "projects/front-components/src/stories/components/calendar/calendar.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "WithDateRange",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "projects/front-components/src/stories/components/calendar/calendar.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "WithSelectedDate",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "projects/front-components/src/stories/components/calendar/calendar.stories.ts",
-                "type": "type alias",
-                "linktype": "miscellaneous",
-                "linksubtype": "typealias",
-                "name": "Story",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
                 "filePath": "projects/front-components/src/stories/components/canvas-content/canvas-content.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
@@ -4149,6 +4099,56 @@
             },
             {
                 "filePath": "projects/front-components/src/stories/components/confirm-modal/confirm-modal.stories.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "Story",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/front-components/src/stories/components/datepicker/datepicker.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Default",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/front-components/src/stories/components/datepicker/datepicker.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Disabled",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/front-components/src/stories/components/datepicker/datepicker.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "NarrowRange",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/front-components/src/stories/components/datepicker/datepicker.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "WithSelectedDate",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/front-components/src/stories/components/datepicker/datepicker.stories.ts",
                 "type": "type alias",
                 "linktype": "miscellaneous",
                 "linksubtype": "typealias",

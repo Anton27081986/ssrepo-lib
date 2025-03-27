@@ -10,7 +10,7 @@ import type { CalendarDay } from '../../calendar/models';
 import { CalendarComponent } from '../../calendar/calendar.component';
 import { fromControlValue } from '../../calendar/utils';
 import type { PopoverContent } from '../../../shared/models';
-import { FIRST_DAY, LAST_DAY } from '../../calendar/constans';
+import { FIRST_DAY, LAST_DAY } from '../../../shared/constants';
 
 @Component({
 	selector: 'ss-lib-datepicker-calendar',
