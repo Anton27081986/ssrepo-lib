@@ -2,9 +2,11 @@ import {
 	ChangeDetectionStrategy,
 	Component,
 	computed,
+	ElementRef,
 	forwardRef,
 	input,
 	signal,
+	viewChild,
 } from '@angular/core';
 import type { ControlValueAccessor } from '@angular/forms';
 import {
@@ -53,6 +55,10 @@ import { Align, InputType } from '../../shared/models';
 	],
 })
 export class InputComponent implements ControlValueAccessor {
+	private readonly inputField = viewChild('inputField', {
+		read: ElementRef<HTMLInputElement>,
+	});
+
 	public type = input<InputType>(InputType.Text);
 	public placeholder = input<string>('');
 	public readOnly = input<boolean>(false);
@@ -133,5 +139,9 @@ export class InputComponent implements ControlValueAccessor {
 		) {
 			return;
 		}
+	}
+
+	public setFocus(): void {
+		this.inputField()?.nativeElement.focus();
 	}
 }
