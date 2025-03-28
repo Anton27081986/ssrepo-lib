@@ -1,7 +1,7 @@
 <ss-lib-image-upload
 	[progress]="fileLoadProgress()"
-	[src]="imgSrc()"
 	(fileChanged)="uploadFile($event)"
+	(uploadCancel)="uploadCancel()"
 ></ss-lib-image-upload>
 
 <div class="spinners">

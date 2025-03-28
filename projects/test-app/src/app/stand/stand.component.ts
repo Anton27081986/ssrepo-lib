@@ -1,7 +1,7 @@
 import { Component, inject, signal } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
-import { catchError, Observable, of } from 'rxjs';
-import { HttpClient, HttpEventType } from '@angular/common/http';
+import { catchError, Observable, of, Subscription } from 'rxjs';
+import { HttpClient, HttpEvent, HttpEventType } from '@angular/common/http';
 import {
 	ButtonType,
 	Colors,
@@ -63,7 +63,7 @@ export class StandComponent {
 	);
 
 	public fileLoadProgress = signal<number>(0);
-	public imgSrc = signal<string | null>(null);
+	public fileLoadSubscription?: Subscription;
 
 	protected readonly TextType = TextType;
 	protected readonly TextWeight = TextWeight;
@@ -211,13 +211,13 @@ export class StandComponent {
 			.subscribe();
 	}
 
-	public uploadFile(file: File | null): void {
+	public uploadFile(file: File | null) {
 		if (file) {
 			const formData = new FormData();
 
 			formData.append('file', file);
 
-			this.http
+			this.fileLoadSubscription = this.http
 				.post<{ url: string }>(
 					`https://erp-dev.ssnab.it/api/files/fileStorage/2/upload`,
 					formData,
@@ -232,22 +232,23 @@ export class StandComponent {
 				)
 				.subscribe((resp) => {
 					if (resp.type === HttpEventType.Response) {
-						this.fileLoadProgress.set(0);
-
-						this.imgSrc.set(
-							resp.body?.url ||
-								'https://a.d-cd.net/69f82b5s-1920.jpg',
-						);
+						this.fileLoadProgress.set(100);
 					}
 
 					if (resp.type === HttpEventType.UploadProgress) {
 						if (resp.total) {
 							this.fileLoadProgress.set(
-								(100 * resp.loaded) / resp.total,
+								Math.round((100 * resp.loaded) / resp.total),
 							);
 						}
 					}
 				});
+		}
+	}
+
+	public uploadCancel() {
+		if (this.fileLoadSubscription) {
+			this.fileLoadSubscription.unsubscribe();
 		}
 	}
 }
