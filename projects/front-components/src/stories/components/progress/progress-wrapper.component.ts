@@ -3,6 +3,13 @@ import { BehaviorSubject } from 'rxjs';
 import { ProgressComponent } from '../../../lib/components/progress/progress.component';
 import { CanvasState } from '../../../lib/components/canvas/canvas.state';
 
+/**
+ * Обертка для компонента Progress.
+ *
+ * @description
+ * Компонент-обертка для демонстрации
+ * Progress в Storybook.
+ */
 @Component({
 	selector: 'ss-lib-progress-wrapper',
 	standalone: true,
@@ -20,5 +27,15 @@ import { CanvasState } from '../../../lib/components/canvas/canvas.state';
 	],
 })
 export class ProgressWrapperComponent {
-	state = input<'default' | 'average' | 'max'>('default');
+	/**
+	 * Состояние прогресса.
+	 *
+	 * @default 'default'
+	 * @description
+	 * Определяет тип отображения прогресса:
+	 * - default: стандартное отображение
+	 * - average: среднее значение
+	 * - max: максимальное значение
+	 */
+	public readonly state = input<'default' | 'average' | 'max'>('default');
 }

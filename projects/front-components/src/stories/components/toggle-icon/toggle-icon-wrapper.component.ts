@@ -3,6 +3,11 @@ import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { ToggleIconComponent } from '../../../lib/components/toggle-icon/toggle-icon.component';
 import { IconType } from '../../../lib/shared/models';
 
+/**
+ * Компонент-обертка для демонстрации ToggleIconComponent в Storybook.
+ * Предоставляет интерактивный пример использования переключателя с иконками
+ * для разных состояний и отображением текущего значения.
+ */
 @Component({
 	selector: 'ss-lib-toggle-icon-wrapper',
 	standalone: true,
@@ -24,15 +29,33 @@ import { IconType } from '../../../lib/shared/models';
 	`,
 })
 export class ToggleIconWrapperComponent {
-	iconTrue = input<IconType>(IconType.Sun);
-	iconFalse = input<IconType>(IconType.Moon);
-	initialValue = input<boolean>(false);
+	/**
+	 * Иконка, отображаемая во включенном состоянии.
+	 * По умолчанию используется иконка солнца.
+	 */
+	public readonly iconTrue = input<IconType>(IconType.Sun);
 
-	toggleControl = new FormControl(false);
+	/**
+	 * Иконка, отображаемая в выключенном состоянии.
+	 * По умолчанию используется иконка луны.
+	 */
+	public readonly iconFalse = input<IconType>(IconType.Moon);
+
+	/**
+	 * Начальное значение переключателя.
+	 * Определяет состояние компонента при инициализации.
+	 */
+	public readonly initialValue = input<boolean>(false);
+
+	/**
+	 * Контрол формы для управления состоянием переключателя.
+	 * Позволяет отслеживать и изменять состояние компонента.
+	 */
+	public readonly toggleControl = new FormControl<boolean>(false);
 
 	constructor() {
 		if (this.initialValue()) {
-			this.toggleControl.setValue(true);
+			this.toggleControl.setValue(true, { emitEvent: false });
 		}
 	}
 }

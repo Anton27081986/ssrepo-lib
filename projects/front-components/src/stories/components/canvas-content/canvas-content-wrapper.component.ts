@@ -1,6 +1,13 @@
 import { Component, input, TemplateRef } from '@angular/core';
 import { CanvasContentComponent } from '../../../lib/components/canvas-content/canvas-content.component';
 
+/**
+ * Обертка для компонента CanvasContent.
+ *
+ * @description
+ * Компонент-обертка для демонстрации
+ * CanvasContent в Storybook.
+ */
 @Component({
 	selector: 'ss-lib-canvas-content-wrapper',
 	standalone: true,
@@ -25,8 +32,36 @@ import { CanvasContentComponent } from '../../../lib/components/canvas-content/c
 	`,
 })
 export class CanvasContentWrapperComponent {
-	titleRef = input<TemplateRef<{}> | null>(null);
-	buttonRef = input<TemplateRef<{}> | null>(null);
-	contentRef = input<TemplateRef<{}> | null>(null);
-	viewHeader = input<boolean>(true);
+	/**
+	 * Шаблон заголовка.
+	 *
+	 * @description
+	 * Шаблон для отображения заголовка.
+	 */
+	public readonly titleRef = input<TemplateRef<{}> | null>(null);
+
+	/**
+	 * Шаблон кнопки.
+	 *
+	 * @description
+	 * Шаблон для отображения кнопки.
+	 */
+	public readonly buttonRef = input<TemplateRef<{}> | null>(null);
+
+	/**
+	 * Шаблон содержимого.
+	 *
+	 * @description
+	 * Шаблон для отображения основного содержимого.
+	 */
+	public readonly contentRef = input<TemplateRef<{}> | null>(null);
+
+	/**
+	 * Флаг отображения заголовка.
+	 *
+	 * @default true
+	 * @description
+	 * Определяет, отображать ли заголовок.
+	 */
+	public readonly viewHeader = input<boolean>(true);
 }

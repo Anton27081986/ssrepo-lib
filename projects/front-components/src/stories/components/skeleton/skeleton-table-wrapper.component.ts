@@ -1,8 +1,14 @@
 import { Component, input } from '@angular/core';
 import { SkeletonTableComponent } from '../../../lib/components/skeleton/skeleton-table/skeleton-table.component';
-import { Shape } from '../../../lib/shared/models';
 import { ColumnsStateService } from '../../../lib/components/table/columns.state.service';
 
+/**
+ * Обертка для компонента SkeletonTable.
+ *
+ * @description
+ * Компонент-обертка для демонстрации
+ * SkeletonTable в Storybook.
+ */
 @Component({
 	selector: 'ss-lib-skeleton-table-wrapper',
 	standalone: true,
@@ -17,5 +23,13 @@ import { ColumnsStateService } from '../../../lib/components/table/columns.state
 	`,
 })
 export class SkeletonTableWrapperComponent {
-	countItems = input<number>(7);
+	/**
+	 * Количество строк в таблице.
+	 *
+	 * @default 7
+	 * @description
+	 * Количество строк скелетона,
+	 * отображаемых в таблице.
+	 */
+	public readonly countItems = input<number>(7);
 }

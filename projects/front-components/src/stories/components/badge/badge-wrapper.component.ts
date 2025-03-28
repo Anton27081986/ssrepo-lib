@@ -2,6 +2,13 @@ import { Component, input } from '@angular/core';
 import { BadgeComponent } from '../../../lib/components/badge/badge.component';
 import { IconType, Shape, Status } from '../../../lib/shared/models';
 
+/**
+ * Обертка для компонента Badge.
+ *
+ * @description
+ * Компонент-обертка для демонстрации
+ * Badge в Storybook.
+ */
 @Component({
 	selector: 'ss-lib-badge-wrapper',
 	standalone: true,
@@ -15,7 +22,13 @@ import { IconType, Shape, Status } from '../../../lib/shared/models';
 	`,
 })
 export class BadgeWrapperComponent {
-	badgeProps = input({
+	/**
+	 * Свойства бейджа.
+	 *
+	 * @description
+	 * Конфигурация для отображения бейджа.
+	 */
+	public readonly badgeProps = input({
 		icon: IconType.Bell,
 		size: 'lg',
 		shape: Shape.Square,

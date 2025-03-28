@@ -26,13 +26,21 @@ import { FieldCtrlDirective } from '../../core/directives';
 import { ButtonComponent } from '../buttons/button/button.component';
 
 /**
- * Параметры:
+ * Компонент выбора числового значения.
  *
- * [min]: number | undefined - Мин значение. По умолчанию: `undefined`
+ * Предоставляет интерфейс для ввода числовых значений с возможностью
+ * пошагового изменения через кнопки. Реализует ControlValueAccessor
+ * для интеграции с Angular Forms.
  *
- * [max]: number | undefined - Максимальное значение. По умолчанию: `undefined`
- *
- * [step]: number - Шаг. По умолчанию: `1`
+ * @example
+ * ```html
+ * <ss-lib-number-picker
+ *   [min]="0"
+ *   [max]="100"
+ *   [step]="1"
+ *   [(ngModel)]="value"
+ * />
+ * ```
  */
 @Component({
 	selector: 'ss-lib-number-picker',
@@ -56,24 +64,105 @@ import { ButtonComponent } from '../buttons/button/button.component';
 	],
 })
 export class NumberPickerComponent implements ControlValueAccessor {
-	public min = input<number>(0);
-	public max = input<number | undefined>(undefined);
-	public step = input<number>(1);
+	/**
+	 * Минимальное значение.
+	 *
+	 * @default 0
+	 * @description
+	 * Минимально допустимое значение для ввода.
+	 */
+	public readonly min = input<number>(0);
 
-	public numberPickerCtrl = new FormControl();
-	public isDisabled = signal<boolean>(false);
+	/**
+	 * Максимальное значение.
+	 *
+	 * @default undefined
+	 * @description
+	 * Максимально допустимое значение для ввода.
+	 * Если не указано, ограничение не применяется.
+	 */
+	public readonly max = input<number | undefined>(undefined);
 
+	/**
+	 * Шаг изменения значения.
+	 *
+	 * @default 1
+	 * @description
+	 * Значение, на которое изменяется число при
+	 * использовании кнопок увеличения/уменьшения.
+	 */
+	public readonly step = input<number>(1);
+
+	/**
+	 * Форм-контрол для управления значением.
+	 *
+	 * @description
+	 * Используется для управления состоянием поля ввода
+	 * и интеграции с Angular Forms.
+	 */
+	public readonly numberPickerCtrl = new FormControl();
+
+	/**
+	 * Флаг отключения компонента.
+	 *
+	 * @description
+	 * Определяет, доступен ли компонент для взаимодействия.
+	 */
+	public readonly isDisabled = signal<boolean>(false);
+
+	/**
+	 * Константы для типов кнопок.
+	 */
 	public readonly ButtonType = ButtonType;
+
+	/**
+	 * Константы для типов иконок.
+	 */
 	public readonly IconType = IconType;
+
+	/**
+	 * Константы для позиций иконок.
+	 */
 	public readonly IconPosition = IconPosition;
+
+	/**
+	 * Константы для направлений.
+	 */
 	public readonly Direction = Direction;
+
+	/**
+	 * Константы для выравнивания.
+	 */
 	public readonly Align = Align;
+
+	/**
+	 * Константы для типов ввода.
+	 */
 	public readonly InputType = InputType;
+
+	/**
+	 * Константы для дополнительных размеров.
+	 */
 	protected readonly ExtraSize = ExtraSize;
 
+	/**
+	 * Callback для обновления значения.
+	 */
 	public onChange: (value: number | null) => void = () => {};
+
+	/**
+	 * Callback для обработки события касания.
+	 */
 	public onTouched: () => void = () => {};
 
+	/**
+	 * Записывает значение в компонент.
+	 *
+	 * @param value - Значение для установки
+	 * @description
+	 * Проверяет и корректирует значение в соответствии
+	 * с ограничениями min/max.
+	 */
 	public writeValue(value: number | null): void {
 		if (value) {
 			const numberValue = this.checkNumberValue(Number(value) || 0);
@@ -84,18 +173,41 @@ export class NumberPickerComponent implements ControlValueAccessor {
 		}
 	}
 
+	/**
+	 * Регистрирует callback для обновления значения.
+	 *
+	 * @param fn - Функция обратного вызова
+	 */
 	public registerOnChange(fn: (value: number | null) => void): void {
 		this.onChange = fn;
 	}
 
+	/**
+	 * Регистрирует callback для обработки касания.
+	 *
+	 * @param fn - Функция обратного вызова
+	 */
 	public registerOnTouched(fn: () => void): void {
 		this.onTouched = fn;
 	}
 
+	/**
+	 * Устанавливает состояние disabled.
+	 *
+	 * @param isDisabled - Флаг отключения
+	 */
 	public setDisabledState(isDisabled: boolean): void {
 		this.isDisabled.set(isDisabled);
 	}
 
+	/**
+	 * Изменяет значение на указанный шаг.
+	 *
+	 * @param direction - Направление изменения (увеличение/уменьшение)
+	 * @description
+	 * Увеличивает или уменьшает текущее значение на
+	 * величину шага с учетом ограничений.
+	 */
 	public changeNumberValueByStep(direction: Direction): void {
 		const currentValue = Number(this.numberPickerCtrl.value) || 0;
 
@@ -110,6 +222,14 @@ export class NumberPickerComponent implements ControlValueAccessor {
 		this.onChange(value);
 	}
 
+	/**
+	 * Проверяет значение при потере фокуса.
+	 *
+	 * @param event - Событие потери фокуса
+	 * @description
+	 * Устанавливает минимальное значение, если поле
+	 * оставлено пустым.
+	 */
 	public onCheckInputValueOnFocusout(event: FocusEvent): void {
 		const relatedTarget = event.relatedTarget as HTMLElement;
 
@@ -127,6 +247,13 @@ export class NumberPickerComponent implements ControlValueAccessor {
 		}
 	}
 
+	/**
+	 * Проверяет и корректирует числовое значение.
+	 *
+	 * @param value - Проверяемое значение
+	 * @returns Скорректированное значение
+	 * @private
+	 */
 	private checkNumberValue(value: number): number {
 		if (this.min() !== undefined) {
 			if (value && value < this.min()!) {

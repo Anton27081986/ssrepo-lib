@@ -1,6 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/angular';
 import { FormFieldWrapperComponent } from './form-field-wrapper.component';
 
+/**
+ * Метаданные для компонента FormField.
+ *
+ * @description
+ * Определяет конфигурацию и документацию
+ * для компонента в Storybook.
+ */
 const meta: Meta<FormFieldWrapperComponent> = {
 	title: 'Components/FormField',
 	component: FormFieldWrapperComponent,
@@ -8,27 +15,27 @@ const meta: Meta<FormFieldWrapperComponent> = {
 	argTypes: {
 		label: {
 			control: 'text',
-			description: 'Заголовок поля',
+			description: 'Текст заголовка поля формы',
 			defaultValue: 'Заголовок',
 		},
 		hint: {
 			control: 'text',
-			description: 'Подсказка',
+			description: 'Текст подсказки для пользователя',
 			defaultValue: 'Подсказка',
 		},
 		showValidation: {
 			control: 'boolean',
-			description: 'Отображать валидацию',
+			description: 'Флаг отображения состояния валидации',
 			defaultValue: true,
 		},
 		showValidationFieldIcon: {
 			control: 'boolean',
-			description: 'Отображать иконку валидации',
+			description: 'Флаг отображения иконки состояния валидации',
 			defaultValue: false,
 		},
 		errorText: {
 			control: 'text',
-			description: 'Текст ошибки',
+			description: 'Текст сообщения об ошибке валидации',
 			defaultValue: '',
 		},
 	},
@@ -38,6 +45,9 @@ export default meta;
 
 type Story = StoryObj<FormFieldWrapperComponent>;
 
+/**
+ * Базовый пример использования компонента.
+ */
 export const Default: Story = {
 	args: {
 		label: 'Заголовок',
@@ -48,6 +58,9 @@ export const Default: Story = {
 	},
 };
 
+/**
+ * Пример поля с ошибкой валидации.
+ */
 export const WithError: Story = {
 	args: {
 		label: 'Заголовок',
@@ -58,6 +71,9 @@ export const WithError: Story = {
 	},
 };
 
+/**
+ * Пример поля без валидации.
+ */
 export const WithoutValidation: Story = {
 	args: {
 		label: 'Заголовок',

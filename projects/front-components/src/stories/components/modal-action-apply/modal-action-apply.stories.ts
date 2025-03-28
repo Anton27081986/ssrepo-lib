@@ -1,6 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/angular';
 import { ModalActionApplyWrapperComponent } from './modal-action-apply-wrapper.component';
 
+/**
+ * Метаданные для компонента ModalActionApply.
+ *
+ * @description
+ * Определяет конфигурацию и документацию
+ * для компонента в Storybook.
+ */
 const meta: Meta<ModalActionApplyWrapperComponent> = {
 	title: 'Components/ModalActionApply',
 	component: ModalActionApplyWrapperComponent,
@@ -8,15 +15,18 @@ const meta: Meta<ModalActionApplyWrapperComponent> = {
 	argTypes: {
 		applyText: {
 			control: 'text',
-			description: 'Текст кнопки "Применить"',
+			description: 'Текст кнопки подтверждения действия',
+			defaultValue: 'Применить',
 		},
 		applyDisabled: {
 			control: 'boolean',
-			description: 'Отключена ли кнопка "Применить"',
+			description: 'Флаг блокировки кнопки подтверждения',
+			defaultValue: false,
 		},
 		cancelText: {
 			control: 'text',
-			description: 'Текст кнопки "Отмена"',
+			description: 'Текст кнопки отмены действия',
+			defaultValue: 'Отмена',
 		},
 	},
 };
@@ -25,6 +35,9 @@ export default meta;
 
 type Story = StoryObj<ModalActionApplyWrapperComponent>;
 
+/**
+ * Базовый пример использования компонента.
+ */
 export const Default: Story = {
 	args: {
 		applyText: 'Применить',
@@ -33,6 +46,9 @@ export const Default: Story = {
 	},
 };
 
+/**
+ * Пример с отключенной кнопкой подтверждения.
+ */
 export const DisabledApply: Story = {
 	args: {
 		applyText: 'Применить',
@@ -41,6 +57,9 @@ export const DisabledApply: Story = {
 	},
 };
 
+/**
+ * Пример с пользовательскими текстами кнопок.
+ */
 export const CustomTexts: Story = {
 	args: {
 		applyText: 'Сохранить',

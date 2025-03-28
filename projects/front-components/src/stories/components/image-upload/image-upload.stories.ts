@@ -1,6 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/angular';
 import { ImageUploadWrapperComponent } from './image-upload-wrapper.component';
 
+/**
+ * Метаданные для компонента ImageUpload.
+ *
+ * @description
+ * Определяет конфигурацию и документацию
+ * для компонента в Storybook.
+ */
 const meta: Meta<ImageUploadWrapperComponent> = {
 	title: 'Components/ImageUpload',
 	component: ImageUploadWrapperComponent,
@@ -8,27 +15,29 @@ const meta: Meta<ImageUploadWrapperComponent> = {
 	argTypes: {
 		disabled: {
 			control: 'boolean',
-			description: 'Отключенное состояние',
+			description: 'Флаг блокировки компонента',
 			defaultValue: false,
 		},
 		maxSize: {
 			control: 'number',
-			description: 'Максимальный размер файла в МБ',
+			description: 'Максимальный размер загружаемого файла в мегабайтах',
 			defaultValue: 0,
 		},
 		maxHeight: {
 			control: 'number',
-			description: 'Максимальная высота изображения в пикселях',
+			description:
+				'Максимальная высота загружаемого изображения в пикселях',
 			defaultValue: 0,
 		},
 		maxWidth: {
 			control: 'number',
-			description: 'Максимальная ширина изображения в пикселях',
+			description:
+				'Максимальная ширина загружаемого изображения в пикселях',
 			defaultValue: 0,
 		},
 		src: {
 			control: 'text',
-			description: 'URL изображения',
+			description: 'URL изображения для предпросмотра',
 			defaultValue: null,
 		},
 	},
@@ -38,6 +47,9 @@ export default meta;
 
 type Story = StoryObj<ImageUploadWrapperComponent>;
 
+/**
+ * Базовый пример использования компонента.
+ */
 export const Default: Story = {
 	args: {
 		disabled: false,
@@ -48,6 +60,9 @@ export const Default: Story = {
 	},
 };
 
+/**
+ * Пример с ограничением размера файла.
+ */
 export const WithMaxSize: Story = {
 	args: {
 		disabled: false,
@@ -58,6 +73,9 @@ export const WithMaxSize: Story = {
 	},
 };
 
+/**
+ * Пример с ограничением размеров изображения.
+ */
 export const WithMaxDimensions: Story = {
 	args: {
 		disabled: false,
@@ -68,6 +86,9 @@ export const WithMaxDimensions: Story = {
 	},
 };
 
+/**
+ * Пример отключенного состояния.
+ */
 export const Disabled: Story = {
 	args: {
 		disabled: true,
@@ -78,6 +99,9 @@ export const Disabled: Story = {
 	},
 };
 
+/**
+ * Пример с предпросмотром изображения.
+ */
 export const WithPreview: Story = {
 	args: {
 		disabled: false,

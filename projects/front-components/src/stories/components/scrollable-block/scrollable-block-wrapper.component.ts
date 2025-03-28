@@ -1,6 +1,13 @@
 import { Component, input } from '@angular/core';
 import { ScrollableBlockComponent } from '../../../lib/components/scrollable-block/scrollable-block.component';
 
+/**
+ * Обертка для компонента ScrollableBlock.
+ *
+ * @description
+ * Компонент-обертка для демонстрации
+ * ScrollableBlock в Storybook.
+ */
 @Component({
 	selector: 'ss-lib-scrollable-block-wrapper',
 	standalone: true,
@@ -28,7 +35,33 @@ import { ScrollableBlockComponent } from '../../../lib/components/scrollable-blo
 	`,
 })
 export class ScrollableBlockWrapperComponent {
-	horizontalScroll = input<boolean>(false);
-	verticalScroll = input<boolean>(true);
-	disableAutoSize = input<boolean>(false);
+	/**
+	 * Включение горизонтальной прокрутки.
+	 *
+	 * @default false
+	 * @description
+	 * Определяет, разрешена ли горизонтальная
+	 * прокрутка содержимого.
+	 */
+	public readonly horizontalScroll = input<boolean>(false);
+
+	/**
+	 * Включение вертикальной прокрутки.
+	 *
+	 * @default true
+	 * @description
+	 * Определяет, разрешена ли вертикальная
+	 * прокрутка содержимого.
+	 */
+	public readonly verticalScroll = input<boolean>(true);
+
+	/**
+	 * Отключение автоматического размера.
+	 *
+	 * @default false
+	 * @description
+	 * Определяет, отключена ли автоматическая
+	 * подстройка размера блока.
+	 */
+	public readonly disableAutoSize = input<boolean>(false);
 }

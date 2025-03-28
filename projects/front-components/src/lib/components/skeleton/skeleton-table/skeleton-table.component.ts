@@ -17,6 +17,18 @@ import type {
 } from '../../../shared/models/interfaces/store-table-base-column';
 import { SkeletonBlockComponent } from '../skeleton-block/skeleton-block.component';
 
+/**
+ * Компонент для отображения скелетона таблицы.
+ *
+ * Используется для создания плейсхолдера загрузки таблицы.
+ * Компонент генерирует структуру таблицы с указанным количеством
+ * строк и колонок, используя конфигурацию из ColumnsStateService.
+ *
+ * @example
+ * ```html
+ * <ss-lib-skeleton-table [countItems]="5" />
+ * ```
+ */
 @Component({
 	selector: 'ss-lib-skeleton-table',
 	templateUrl: './skeleton-table.component.html',
@@ -26,8 +38,23 @@ import { SkeletonBlockComponent } from '../skeleton-block/skeleton-block.compone
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SkeletonTableComponent {
-	public countItems: InputSignal<number> = input<number>(7);
+	/**
+	 * Количество строк скелетона.
+	 *
+	 * @default 7
+	 * @description
+	 * Определяет количество строк, которые будут отображены
+	 * в скелетоне таблицы.
+	 */
+	public readonly countItems: InputSignal<number> = input<number>(7);
 
+	/**
+	 * Сгенерированные строки скелетона.
+	 *
+	 * @description
+	 * Сигнал, содержащий массив строк скелетона, сгенерированных
+	 * на основе видимых колонок и количества строк.
+	 */
 	public readonly skeletonTrCols: Signal<ISkeletonDerivativeTrTable[]> =
 		computed(() => {
 			const trCols: ISkeletonDerivativeTrTable[] = [];
@@ -41,23 +68,42 @@ export class SkeletonTableComponent {
 			return trCols;
 		});
 
-	protected stateColumn: ColumnsStateService = inject(ColumnsStateService);
+	/**
+	 * Сервис состояния колонок таблицы.
+	 *
+	 * @description
+	 * Используется для получения информации о видимых колонках
+	 * и их конфигурации.
+	 */
+	protected readonly stateColumn: ColumnsStateService =
+		inject(ColumnsStateService);
 
-	protected visibleCols: Signal<IStoreTableBaseColumn[]> = toSignal(
+	/**
+	 * Видимые колонки таблицы.
+	 *
+	 * @description
+	 * Сигнал, содержащий массив видимых колонок таблицы,
+	 * полученный из сервиса состояния.
+	 */
+	protected readonly visibleCols: Signal<IStoreTableBaseColumn[]> = toSignal(
 		this.stateColumn.visibleCols$,
 		{ initialValue: [] },
 	);
 
+	/**
+	 * Генерирует массив ячеек скелетона для строки.
+	 *
+	 * @returns Массив ячеек скелетона с конфигурацией из видимых колонок.
+	 * @private
+	 */
 	private generatorTds(): ISkeletonDerivativeTdTable[] {
-		return this.visibleCols().map((col) => {
-			return {
-				id: col.id,
-				order: col.order,
-				skeletonConfig: col.skeleton.body,
-				align: col.align,
-				padding: col.padding,
-				sticky: col.sticky,
-			};
-		});
+		return this.visibleCols().map((col) => ({
+			id: col.id,
+			order: col.order,
+			skeletonConfig: col.skeleton.body,
+			align: col.align,
+			padding: col.padding,
+			sticky: col.sticky,
+		}));
 	}
 }

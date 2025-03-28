@@ -2,6 +2,13 @@ import type { Meta, StoryObj } from '@storybook/angular';
 import { InputWrapperComponent } from './input-wrapper.component';
 import { InputType, Align } from '../../../lib/shared/models';
 
+/**
+ * Метаданные для компонента Input.
+ *
+ * @description
+ * Определяет конфигурацию и документацию
+ * для компонента в Storybook.
+ */
 const meta: Meta<InputWrapperComponent> = {
 	title: 'Components/Input',
 	component: InputWrapperComponent,
@@ -10,33 +17,33 @@ const meta: Meta<InputWrapperComponent> = {
 		type: {
 			control: 'select',
 			options: Object.values(InputType),
-			description: 'Тип поля ввода',
+			description: 'Тип поля ввода (text, number, date, time)',
 			defaultValue: InputType.Text,
 		},
 		placeholder: {
 			control: 'text',
-			description: 'Placeholder',
+			description: 'Текст подсказки в пустом поле',
 			defaultValue: '',
 		},
 		readOnly: {
 			control: 'boolean',
-			description: 'Только для чтения',
+			description: 'Флаг запрета редактирования',
 			defaultValue: false,
 		},
 		align: {
 			control: 'select',
 			options: Object.values(Align),
-			description: 'Выравнивание',
+			description: 'Выравнивание текста в поле',
 			defaultValue: Align.Start,
 		},
 		min: {
 			control: 'text',
-			description: 'Минимальное значение',
+			description: 'Минимальное допустимое значение',
 			defaultValue: undefined,
 		},
 		max: {
 			control: 'text',
-			description: 'Максимальное значение',
+			description: 'Максимальное допустимое значение',
 			defaultValue: undefined,
 		},
 	},
@@ -46,6 +53,9 @@ export default meta;
 
 type Story = StoryObj<InputWrapperComponent>;
 
+/**
+ * Базовый пример использования компонента.
+ */
 export const Default: Story = {
 	args: {
 		type: InputType.Text,
@@ -57,6 +67,9 @@ export const Default: Story = {
 	},
 };
 
+/**
+ * Пример поля с подсказкой.
+ */
 export const WithPlaceholder: Story = {
 	args: {
 		type: InputType.Text,
@@ -68,6 +81,9 @@ export const WithPlaceholder: Story = {
 	},
 };
 
+/**
+ * Пример поля только для чтения.
+ */
 export const ReadOnly: Story = {
 	args: {
 		type: InputType.Text,
@@ -79,6 +95,9 @@ export const ReadOnly: Story = {
 	},
 };
 
+/**
+ * Пример числового поля с ограничениями.
+ */
 export const NumberInput: Story = {
 	args: {
 		type: InputType.Number,
@@ -90,6 +109,9 @@ export const NumberInput: Story = {
 	},
 };
 
+/**
+ * Пример поля для ввода даты.
+ */
 export const DateInput: Story = {
 	args: {
 		type: InputType.Date,
@@ -101,6 +123,9 @@ export const DateInput: Story = {
 	},
 };
 
+/**
+ * Пример поля для ввода времени.
+ */
 export const TimeInput: Story = {
 	args: {
 		type: InputType.Time,

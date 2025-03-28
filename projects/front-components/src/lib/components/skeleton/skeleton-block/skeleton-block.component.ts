@@ -2,6 +2,18 @@ import type { InputSignal } from '@angular/core';
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import type { SkeletonConf } from '../../../shared/models';
 
+/**
+ * Компонент для отображения блока скелетона.
+ *
+ * Используется для создания плейсхолдеров загрузки контента.
+ * Компонент принимает конфигурацию для настройки внешнего вида
+ * и размеров скелетона.
+ *
+ * @example
+ * ```html
+ * <ss-lib-skeleton-block [config]="{ width: '100%', height: '20px' }" />
+ * ```
+ */
 @Component({
 	selector: 'ss-lib-skeleton-block',
 	templateUrl: './skeleton-block.component.html',
@@ -10,5 +22,13 @@ import type { SkeletonConf } from '../../../shared/models';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SkeletonBlockComponent {
-	public config: InputSignal<SkeletonConf> = input.required<SkeletonConf>();
+	/**
+	 * Конфигурация скелетона.
+	 *
+	 * @description
+	 * Объект конфигурации, определяющий внешний вид и размеры скелетона.
+	 * Должен содержать как минимум width и height.
+	 */
+	public readonly config: InputSignal<SkeletonConf> =
+		input.required<SkeletonConf>();
 }
