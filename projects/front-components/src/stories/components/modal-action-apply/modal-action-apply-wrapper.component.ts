@@ -2,6 +2,13 @@ import { Component, input } from '@angular/core';
 import { ModalActionApplyComponent } from '../../../lib/components/modal-action-apply/modal-action-apply.component';
 import { ModalRef } from '../../../lib/shared/models';
 
+/**
+ * Обертка для компонента ModalActionApply.
+ *
+ * @description
+ * Компонент-обертка для демонстрации
+ * ModalActionApply в Storybook.
+ */
 @Component({
 	selector: 'ss-lib-modal-action-apply-wrapper',
 	standalone: true,
@@ -20,17 +27,52 @@ import { ModalRef } from '../../../lib/shared/models';
 		{
 			provide: ModalRef,
 			useValue: {
-				close: () => console.log('Modal closed'),
+				close: () => {
+					// Обработка закрытия модального окна
+				},
 			},
 		},
 	],
 })
 export class ModalActionApplyWrapperComponent {
-	applyText = input<string>('Применить');
-	applyDisabled = input<boolean>(false);
-	cancelText = input<string | undefined>('Отмена');
+	/**
+	 * Текст кнопки подтверждения.
+	 *
+	 * @default 'Применить'
+	 * @description
+	 * Текст, отображаемый на кнопке
+	 * подтверждения действия.
+	 */
+	public readonly applyText = input<string>('Применить');
 
-	onApply() {
-		console.log('Apply clicked');
+	/**
+	 * Флаг блокировки кнопки подтверждения.
+	 *
+	 * @default false
+	 * @description
+	 * Определяет, можно ли нажать
+	 * кнопку подтверждения.
+	 */
+	public readonly applyDisabled = input<boolean>(false);
+
+	/**
+	 * Текст кнопки отмены.
+	 *
+	 * @default 'Отмена'
+	 * @description
+	 * Текст, отображаемый на кнопке
+	 * отмены действия.
+	 */
+	public readonly cancelText = input<string | undefined>('Отмена');
+
+	/**
+	 * Обработчик нажатия кнопки подтверждения.
+	 *
+	 * @description
+	 * Обрабатывает нажатие кнопки
+	 * подтверждения.
+	 */
+	public onApply(): void {
+		// Обработка нажатия кнопки подтверждения
 	}
 }

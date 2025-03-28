@@ -2,6 +2,13 @@ import type { Meta, StoryObj } from '@storybook/angular';
 import { DropdownItemWrapperComponent } from './dropdown-item-wrapper.component';
 import { IconType } from '../../../lib/shared/models';
 
+/**
+ * Метаданные для компонента DropdownItem.
+ *
+ * @description
+ * Определяет конфигурацию и документацию
+ * для компонента в Storybook.
+ */
 const meta: Meta<DropdownItemWrapperComponent> = {
 	title: 'Components/DropdownItem',
 	component: DropdownItemWrapperComponent,
@@ -9,28 +16,28 @@ const meta: Meta<DropdownItemWrapperComponent> = {
 	argTypes: {
 		label: {
 			control: 'text',
-			description: 'Текст элемента',
+			description: 'Текст, отображаемый в элементе списка',
 			defaultValue: 'Элемент списка',
 		},
 		value: {
 			control: 'text',
-			description: 'Значение элемента',
+			description: 'Данные элемента списка',
 			defaultValue: null,
 		},
 		icon: {
 			control: 'select',
 			options: Object.values(IconType),
-			description: 'Иконка элемента',
+			description: 'Тип иконки, отображаемой в элементе',
 			defaultValue: null,
 		},
 		isDestructive: {
 			control: 'boolean',
-			description: 'Деструктивное действие',
+			description: 'Флаг деструктивного действия',
 			defaultValue: false,
 		},
 		isDisabled: {
 			control: 'boolean',
-			description: 'Отключенное состояние',
+			description: 'Флаг блокировки элемента',
 			defaultValue: false,
 		},
 	},
@@ -40,6 +47,9 @@ export default meta;
 
 type Story = StoryObj<DropdownItemWrapperComponent>;
 
+/**
+ * Базовый пример использования компонента.
+ */
 export const Default: Story = {
 	args: {
 		label: 'Элемент списка',
@@ -50,6 +60,9 @@ export const Default: Story = {
 	},
 };
 
+/**
+ * Пример элемента с иконкой.
+ */
 export const WithIcon: Story = {
 	args: {
 		label: 'Элемент с иконкой',
@@ -60,6 +73,9 @@ export const WithIcon: Story = {
 	},
 };
 
+/**
+ * Пример деструктивного элемента.
+ */
 export const Destructive: Story = {
 	args: {
 		label: 'Удалить',
@@ -70,6 +86,9 @@ export const Destructive: Story = {
 	},
 };
 
+/**
+ * Пример отключенного элемента.
+ */
 export const Disabled: Story = {
 	args: {
 		label: 'Отключенный элемент',

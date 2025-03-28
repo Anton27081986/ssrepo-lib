@@ -10,7 +10,10 @@ import {
 	LAST_NATIVE_DAY,
 } from '../../../lib/components/calendar/constans';
 
-// Основные метаданные для компонента Datepicker
+/**
+ * Метаданные для компонента Datepicker.
+ * Предоставляет конфигурацию для Storybook и документацию компонента.
+ */
 export default {
 	title: 'Components/Datepicker',
 	component: DatepickerWrapperComponent,
@@ -27,8 +30,7 @@ export default {
 	argTypes: {
 		min: {
 			control: 'date',
-			description: 'Минимальная дата для выбора',
-			type: Date,
+			description: 'Минимальная дата, доступная для выбора в календаре',
 			table: {
 				defaultValue: {
 					summary: FIRST_NATIVE_DAY.toLocaleDateString('ru-RU', {
@@ -39,12 +41,12 @@ export default {
 						.split('.')
 						.join('/'),
 				},
+				type: { summary: 'Date' },
 			},
 		},
 		max: {
 			control: 'date',
-			description: 'Минимальная дата для выбора',
-			type: Date,
+			description: 'Максимальная дата, доступная для выбора в календаре',
 			table: {
 				defaultValue: {
 					summary: LAST_NATIVE_DAY.toLocaleDateString('ru-RU', {
@@ -55,6 +57,7 @@ export default {
 						.split('.')
 						.join('/'),
 				},
+				type: { summary: 'Date' },
 			},
 		},
 	},
@@ -62,7 +65,10 @@ export default {
 		docs: {
 			description: {
 				component:
-					'Компонент Datepicker предоставляет удобный и гибкий способ выбора дат в заданном диапазоне. Он поддерживает несколько вариантов взаимодействия: ручной ввод даты, выбор из интуитивно понятного календаря или быстрое переключение между годами и месяцами для точной настройки.',
+					'Компонент Datepicker предоставляет удобный и гибкий способ выбора дат ' +
+					'в заданном диапазоне. Он поддерживает несколько вариантов взаимодействия: ' +
+					'ручной ввод даты, выбор из интуитивно понятного календаря или быстрое ' +
+					'переключение между годами и месяцами для точной настройки.',
 			},
 		},
 	},
@@ -70,37 +76,31 @@ export default {
 
 type Story = StoryObj<DatepickerWrapperComponent>;
 
-// Базовый пример с настройками по умолчанию
+/**
+ * Базовый пример с настройками по умолчанию.
+ * Демонстрирует Datepicker с минимальными и максимальными значениями по умолчанию.
+ */
 export const Default: Story = {
 	name: 'По умолчанию',
 	args: {
 		min: FIRST_NATIVE_DAY,
 		max: LAST_NATIVE_DAY,
 	},
-	render: (args) => ({
-		props: {
-			...args,
-			min: new Date(args.min), // Гарантируем объект Date
-			max: new Date(args.max), // Гарантируем объект Date
-			datepickerCtrl: new FormControl<Date | null>(null),
-		},
-		template: `
-			<ss-lib-datepicker-wrapper
-				[min]="min"
-				[max]="max"
-			></ss-lib-datepicker-wrapper>
-		`,
-	}),
 	parameters: {
 		docs: {
 			description: {
-				story: 'Демонстрирует Datepicker с минимальными и максимальными значениями по умолчанию.',
+				story:
+					'Демонстрирует Datepicker с минимальными и максимальными значениями ' +
+					'по умолчанию.',
 			},
 		},
 	},
 };
 
-// Пример с заранее выбранной датой
+/**
+ * Пример с заранее выбранной датой.
+ * Показывает Datepicker с предустановленным значением и пользовательским диапазоном.
+ */
 export const WithSelectedDate: Story = {
 	name: 'С выбранной датой',
 	args: {
@@ -122,13 +122,18 @@ export const WithSelectedDate: Story = {
 	parameters: {
 		docs: {
 			description: {
-				story: 'Показывает Datepicker с заранее установленной датой (15 июня 2024) и пользовательским диапазоном дат.',
+				story:
+					'Показывает Datepicker с заранее установленной датой (15 июня 2024) ' +
+					'и пользовательским диапазоном дат.',
 			},
 		},
 	},
 };
 
-// Пример с узким диапазоном дат
+/**
+ * Пример с узким диапазоном дат.
+ * Демонстрирует Datepicker с ограниченным выбором дат.
+ */
 export const NarrowRange: Story = {
 	name: 'Узкий диапазон',
 	args: {
@@ -150,13 +155,18 @@ export const NarrowRange: Story = {
 	parameters: {
 		docs: {
 			description: {
-				story: 'Отображает Datepicker с ограниченным диапазоном от начала текущего месяца до сегодняшнего дня.',
+				story:
+					'Отображает Datepicker с ограниченным диапазоном от начала текущего месяца ' +
+					'до сегодняшнего дня.',
 			},
 		},
 	},
 };
 
-// Пример с отключенным состоянием
+/**
+ * Пример с отключенным состоянием.
+ * Показывает Datepicker в недоступном для взаимодействия состоянии.
+ */
 export const Disabled: Story = {
 	name: 'Отключенный',
 	args: {
@@ -181,7 +191,9 @@ export const Disabled: Story = {
 	parameters: {
 		docs: {
 			description: {
-				story: 'Демонстрирует Datepicker в отключенном состоянии с выбранной датой (15 июня 2024).',
+				story:
+					'Демонстрирует Datepicker в отключенном состоянии с выбранной датой ' +
+					'(15 июня 2024).',
 			},
 		},
 	},

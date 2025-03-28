@@ -3,6 +3,13 @@ import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { SelectComponent } from '../../../lib/components/select/select.component';
 import { DropdownListComponent } from '../../../lib/components/dropdown-list/dropdown-list.component';
 
+/**
+ * Обертка для компонента Select.
+ *
+ * @description
+ * Компонент-обертка для демонстрации
+ * Select в Storybook.
+ */
 @Component({
 	selector: 'ss-lib-select-wrapper',
 	standalone: true,
@@ -24,10 +31,33 @@ import { DropdownListComponent } from '../../../lib/components/dropdown-list/dro
 	`,
 })
 export class SelectWrapperComponent {
-	control = new FormControl<string | null>(null);
-	placeholder = input<string>('Выберите из списка');
+	/**
+	 * Контрол формы для управления значением.
+	 *
+	 * @description
+	 * FormControl для управления значением
+	 * компонента Select.
+	 */
+	public readonly control = new FormControl<string | null>(null);
 
-	items = [
+	/**
+	 * Плейсхолдер поля ввода.
+	 *
+	 * @default 'Выберите из списка'
+	 * @description
+	 * Текст, отображаемый в поле ввода,
+	 * когда значение не выбрано.
+	 */
+	public readonly placeholder = input<string>('Выберите из списка');
+
+	/**
+	 * Список опций для выбора.
+	 *
+	 * @description
+	 * Массив объектов, представляющих
+	 * доступные опции для выбора.
+	 */
+	public readonly items = [
 		{ id: '1', label: 'Опция 1' },
 		{ id: '2', label: 'Опция 2' },
 		{ id: '3', label: 'Опция 3' },

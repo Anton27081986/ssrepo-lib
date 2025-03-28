@@ -25,19 +25,22 @@ import {
 import { Align, InputType } from '../../shared/models';
 
 /**
- * Параметры:
+ * Компонент поля ввода.
  *
- * [type]: InputType - Тип. По умолчанию: `InputType.Text`
+ * Предоставляет универсальное поле ввода с поддержкой различных типов,
+ * масок, валидации и интеграции с Angular Forms. Реализует ControlValueAccessor
+ * для работы с формами.
  *
- * [placeholder]: string - Placeholder. По умолчанию: `''`
- *
- * [readOnly]: boolean - Только для чтения. По умолчанию: `false`
- *
- * [align]: Align - Выравнивание. По умолчанию: `Align.Start`
- *
- * [min]: number | undefined - Мин значение. По умолчанию: `undefined`
- *
- * [max]: number | undefined - Максимальное значение. По умолчанию: `undefined`
+ * @example
+ * ```html
+ * <ss-lib-input
+ *   [type]="InputType.Text"
+ *   [placeholder]="'Введите текст'"
+ *   [readOnly]="false"
+ *   [align]="Align.Start"
+ *   [(ngModel)]="value"
+ * />
+ * ```
  */
 @Component({
 	selector: 'ss-lib-input',
@@ -55,20 +58,100 @@ import { Align, InputType } from '../../shared/models';
 	],
 })
 export class InputComponent implements ControlValueAccessor {
+	/**
+	 * Ссылка на DOM-элемент поля ввода.
+	 *
+	 * @description
+	 * Используется для программного управления
+	 * фокусом поля ввода.
+	 */
 	private readonly inputField = viewChild('inputField', {
 		read: ElementRef<HTMLInputElement>,
 	});
 
-	public type = input<InputType>(InputType.Text);
-	public placeholder = input<string>('');
-	public readOnly = input<boolean>(false);
-	public align = input<Align>(Align.Start);
-	public min = input<unknown | undefined>(undefined);
-	public max = input<unknown | undefined>(undefined);
+	/**
+	 * Тип поля ввода.
+	 *
+	 * @default InputType.Text
+	 * @description
+	 * Определяет тип и поведение поля ввода.
+	 * Поддерживает различные типы: текст, число,
+	 * дата, время и другие.
+	 */
+	public readonly type = input<InputType>(InputType.Text);
 
-	public inputCtrl = new FormControl();
-	public disabled = signal<boolean>(false);
-	public inputMask = computed(() => {
+	/**
+	 * Текст подсказки.
+	 *
+	 * @default ''
+	 * @description
+	 * Отображается, когда поле ввода пусто.
+	 */
+	public readonly placeholder = input<string>('');
+
+	/**
+	 * Флаг режима только для чтения.
+	 *
+	 * @default false
+	 * @description
+	 * Определяет, доступно ли поле для редактирования.
+	 */
+	public readonly readOnly = input<boolean>(false);
+
+	/**
+	 * Выравнивание текста.
+	 *
+	 * @default Align.Start
+	 * @description
+	 * Определяет выравнивание текста в поле ввода.
+	 */
+	public readonly align = input<Align>(Align.Start);
+
+	/**
+	 * Минимальное значение.
+	 *
+	 * @default undefined
+	 * @description
+	 * Минимально допустимое значение для числовых
+	 * полей или дат.
+	 */
+	public readonly min = input<unknown | undefined>(undefined);
+
+	/**
+	 * Максимальное значение.
+	 *
+	 * @default undefined
+	 * @description
+	 * Максимально допустимое значение для числовых
+	 * полей или дат.
+	 */
+	public readonly max = input<unknown | undefined>(undefined);
+
+	/**
+	 * Форм-контрол для управления значением.
+	 *
+	 * @description
+	 * Используется для управления состоянием поля
+	 * и интеграции с Angular Forms.
+	 */
+	public readonly inputCtrl = new FormControl();
+
+	/**
+	 * Флаг отключения поля.
+	 *
+	 * @description
+	 * Определяет, доступно ли поле для взаимодействия.
+	 */
+	public readonly disabled = signal<boolean>(false);
+
+	/**
+	 * Маска ввода.
+	 *
+	 * @description
+	 * Вычисляемое свойство, определяющее маску ввода
+	 * в зависимости от типа поля.
+	 */
+	public readonly inputMask = computed(() => {
 		switch (this.type()) {
 			case InputType.Number:
 				return maskitoNumberOptionsGenerator({
@@ -97,9 +180,23 @@ export class InputComponent implements ControlValueAccessor {
 		}
 	});
 
+	/**
+	 * Callback для обновления значения.
+	 */
 	private onChange!: (value: string | null) => void;
+
+	/**
+	 * Callback для обработки события касания.
+	 */
 	private onTouched!: () => void;
 
+	/**
+	 * Создает экземпляр компонента.
+	 *
+	 * @description
+	 * Инициализирует компонент и настраивает
+	 * обработку изменений значения с debounce.
+	 */
 	constructor() {
 		toSignal(
 			this.inputCtrl.valueChanges.pipe(
@@ -109,18 +206,38 @@ export class InputComponent implements ControlValueAccessor {
 		);
 	}
 
+	/**
+	 * Записывает значение в компонент.
+	 *
+	 * @param value - Значение для установки
+	 */
 	public writeValue(value: string | null): void {
 		this.inputCtrl.setValue(value, { emitEvent: false });
 	}
 
+	/**
+	 * Регистрирует callback для обновления значения.
+	 *
+	 * @param fn - Функция обратного вызова
+	 */
 	public registerOnChange(fn: (value: string | null) => void): void {
 		this.onChange = fn;
 	}
 
+	/**
+	 * Регистрирует callback для обработки касания.
+	 *
+	 * @param fn - Функция обратного вызова
+	 */
 	public registerOnTouched(fn: () => string): void {
 		this.onTouched = fn;
 	}
 
+	/**
+	 * Устанавливает состояние disabled.
+	 *
+	 * @param isDisabled - Флаг отключения
+	 */
 	public setDisabledState(isDisabled: boolean): void {
 		this.disabled.set(isDisabled);
 
@@ -129,6 +246,11 @@ export class InputComponent implements ControlValueAccessor {
 			: this.inputCtrl.enable({ emitEvent: false });
 	}
 
+	/**
+	 * Обновляет состояние поля при потере фокуса.
+	 *
+	 * @param event - Событие потери фокуса
+	 */
 	public updateInputStateOnFocusout(event: FocusEvent): void {
 		const relatedTarget = event.relatedTarget as HTMLElement;
 
@@ -141,6 +263,12 @@ export class InputComponent implements ControlValueAccessor {
 		}
 	}
 
+	/**
+	 * Устанавливает фокус на поле ввода.
+	 *
+	 * @description
+	 * Программно устанавливает фокус на поле ввода.
+	 */
 	public setFocus(): void {
 		this.inputField()?.nativeElement.focus();
 	}

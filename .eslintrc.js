@@ -1,7 +1,7 @@
 module.exports = {
 	root: true,
 	extends: ['plugin:storybook/recommended'],
-	ignorePatterns: ['.cache/', '.git/', '.github/', 'node_modules/'],
+	ignorePatterns: ['.cache/', '.git/', '.github/', 'node_modules/','!.storybook/**/*'],
 	overrides: [
 		{
 			files: ['*.ts'],
@@ -103,7 +103,7 @@ module.exports = {
 			rules: {
 				'prettier/prettier': ['error', { parser: 'angular' }],
 				'@angular-eslint/template/attributes-order': ['error'],
-			},
+			}
 		},
 	],
 };

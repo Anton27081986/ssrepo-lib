@@ -4,6 +4,11 @@ import { ColumnsStateService } from '../../../lib/components/table/columns.state
 import { IStoreTableBaseColumn } from '../../../lib/shared/models';
 import { Shape } from '../../../lib/shared/models';
 
+/**
+ * Компонент-обертка для демонстрации TableComponent в Storybook
+ * Предоставляет интерактивный пример использования таблицы с настраиваемыми колонками
+ * и состоянием загрузки
+ */
 @Component({
 	selector: 'ss-lib-table-wrapper',
 	standalone: true,
@@ -12,7 +17,8 @@ import { Shape } from '../../../lib/shared/models';
 	template: ` <ss-lib-table [isSkeleton]="isSkeleton()"></ss-lib-table> `,
 })
 export class TableWrapperComponent {
-	isSkeleton = input<boolean>(false);
+	/** Флаг, указывающий, отображать ли таблицу в состоянии загрузки */
+	public readonly isSkeleton = input<boolean>(false);
 
 	constructor(private readonly columnsStateService: ColumnsStateService) {
 		const columns: IStoreTableBaseColumn[] = [

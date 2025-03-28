@@ -2,6 +2,13 @@ import type { Meta, StoryObj } from '@storybook/angular';
 import { ModalWrapperComponent } from './modal-wrapper.component';
 import { IconType, Shape, Status, ExtraSize } from '../../../lib/shared/models';
 
+/**
+ * Метаданные для компонента Modal.
+ *
+ * @description
+ * Определяет конфигурацию и документацию
+ * для компонента в Storybook.
+ */
 const meta: Meta<ModalWrapperComponent> = {
 	title: 'Components/Modal',
 	component: ModalWrapperComponent,
@@ -34,6 +41,9 @@ export default meta;
 
 type Story = StoryObj<ModalWrapperComponent>;
 
+/**
+ * Базовый пример использования компонента.
+ */
 export const Default: Story = {
 	args: {
 		titleHeader: 'Заголовок',
@@ -49,6 +59,9 @@ export const Default: Story = {
 	},
 };
 
+/**
+ * Пример модального окна с ошибкой.
+ */
 export const Error: Story = {
 	args: {
 		titleHeader: 'Ошибка',

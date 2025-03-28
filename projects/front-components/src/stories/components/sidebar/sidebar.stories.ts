@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/angular';
 import { SidebarWrapperComponent } from './sidebar-wrapper.component';
-import { IMenu } from '../../../lib/shared/models';
 import { IconType } from '../../../lib/shared/models';
 
 const meta: Meta<SidebarWrapperComponent> = {

@@ -11,6 +11,24 @@ import { ModalRef } from '../../shared/models';
 import { BadgeInfoComponent } from '../badge-info/badge-info.component';
 import { DividerComponent } from '../divider/divider.component';
 
+/**
+ * Компонент модального окна.
+ *
+ * Предоставляет модальное окно с заголовком, описанием,
+ * содержимым и действиями. Поддерживает кастомизацию
+ * через шаблоны и бейджи.
+ *
+ * @example
+ * ```html
+ * <ss-lib-modal
+ *   [titleHeader]="'Заголовок'"
+ *   [descriptionHeader]="'Описание'"
+ *   [badgeProps]="{ type: 'info', text: 'Статус' }"
+ *   [actionsRef]="actionsTemplate"
+ *   [contentRef]="contentTemplate"
+ * />
+ * ```
+ */
 @Component({
 	selector: 'ss-lib-modal',
 	standalone: true,
@@ -20,16 +38,71 @@ import { DividerComponent } from '../divider/divider.component';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ModalComponent {
-	public titleHeader: InputSignal<string> = input.required<string>();
-	public descriptionHeader: InputSignal<string> = input.required<string>();
-	public actionsRef: InputSignal<TemplateRef<{}> | null> = input.required();
+	/**
+	 * Заголовок модального окна.
+	 *
+	 * @description
+	 * Обязательный параметр, отображаемый в верхней
+	 * части модального окна.
+	 */
+	public readonly titleHeader: InputSignal<string> = input.required<string>();
 
-	public contentRef: InputSignal<TemplateRef<{}> | null> =
+	/**
+	 * Описание модального окна.
+	 *
+	 * @description
+	 * Обязательный параметр, отображаемый под
+	 * заголовком модального окна.
+	 */
+	public readonly descriptionHeader: InputSignal<string> =
+		input.required<string>();
+
+	/**
+	 * Шаблон действий модального окна.
+	 *
+	 * @description
+	 * Обязательный параметр, содержащий шаблон
+	 * с кнопками действий в нижней части окна.
+	 */
+	public readonly actionsRef: InputSignal<TemplateRef<{}> | null> =
+		input.required();
+
+	/**
+	 * Шаблон содержимого модального окна.
+	 *
+	 * @default null
+	 * @description
+	 * Опциональный параметр, содержащий шаблон
+	 * с основным содержимым модального окна.
+	 */
+	public readonly contentRef: InputSignal<TemplateRef<{}> | null> =
 		input<TemplateRef<{}> | null>(null);
 
-	public badgeProps: InputSignal<IBadgeProps> = input.required<IBadgeProps>();
+	/**
+	 * Свойства бейджа.
+	 *
+	 * @description
+	 * Обязательный параметр, определяющий внешний вид
+	 * и содержимое бейджа в модальном окне.
+	 */
+	public readonly badgeProps: InputSignal<IBadgeProps> =
+		input.required<IBadgeProps>();
+
+	/**
+	 * Ссылка на модальное окно.
+	 *
+	 * @description
+	 * Используется для управления состоянием
+	 * и закрытия модального окна.
+	 */
 	private readonly popoverRef = inject(ModalRef);
 
+	/**
+	 * Обработчик закрытия модального окна.
+	 *
+	 * @description
+	 * Закрывает модальное окно при вызове.
+	 */
 	public onCloseEvent(): void {
 		this.popoverRef.close();
 	}

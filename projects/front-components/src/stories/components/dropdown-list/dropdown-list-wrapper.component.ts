@@ -2,6 +2,18 @@ import { Component, input } from '@angular/core';
 import { DropdownListComponent } from '../../../lib/components/dropdown-list/dropdown-list.component';
 import { DropdownItemComponent } from '../../../lib/components/dropdown-item/dropdown-item.component';
 
+interface DropdownItem {
+	id: string;
+	label: string;
+}
+
+/**
+ * Обертка для компонента DropdownList.
+ *
+ * @description
+ * Компонент-обертка для демонстрации
+ * DropdownList в Storybook.
+ */
 @Component({
 	selector: 'ss-lib-dropdown-list-wrapper',
 	standalone: true,
@@ -25,20 +37,55 @@ import { DropdownItemComponent } from '../../../lib/components/dropdown-item/dro
 	`,
 })
 export class DropdownListWrapperComponent {
-	width = input<string>('max-content');
-	height = input<string>('auto');
+	/**
+	 * Ширина выпадающего списка.
+	 *
+	 * @default 'max-content'
+	 * @description
+	 * Ширина списка в пикселях или процентах.
+	 */
+	public readonly width = input<string>('max-content');
 
-	items = [
+	/**
+	 * Высота выпадающего списка.
+	 *
+	 * @default 'auto'
+	 * @description
+	 * Высота списка в пикселях или процентах.
+	 */
+	public readonly height = input<string>('auto');
+
+	/**
+	 * Список элементов для отображения.
+	 *
+	 * @description
+	 * Массив элементов с идентификаторами
+	 * и метками для отображения в списке.
+	 */
+	public readonly items: DropdownItem[] = [
 		{ id: '1', label: 'Опция 1' },
 		{ id: '2', label: 'Опция 2' },
 		{ id: '3', label: 'Опция 3' },
 	];
 
-	onValue(value: any): void {
-		console.log('Selected value:', value);
+	/**
+	 * Обработчик выбора значения.
+	 *
+	 * @param value - Выбранное значение.
+	 * @description
+	 * Обрабатывает выбранное значение.
+	 */
+	public onValue(_value: DropdownItem): void {
+		// Обработка выбранного значения
 	}
 
-	onClosed(): void {
-		console.log('Dropdown closed');
+	/**
+	 * Обработчик закрытия списка.
+	 *
+	 * @description
+	 * Обрабатывает закрытие списка.
+	 */
+	public onClosed(): void {
+		// Обработка закрытия списка
 	}
 }

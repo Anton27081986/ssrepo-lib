@@ -211,7 +211,7 @@ export class StandComponent {
 			.subscribe();
 	}
 
-	public uploadFile(file: File | null) {
+	public uploadFile(file: File | null): void {
 		if (file) {
 			const formData = new FormData();
 
@@ -246,7 +246,7 @@ export class StandComponent {
 		}
 	}
 
-	public uploadCancel() {
+	public uploadCancel(): void {
 		if (this.fileLoadSubscription) {
 			this.fileLoadSubscription.unsubscribe();
 		}

@@ -1,6 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/angular';
 import { LightBoxWrapperComponent } from './light-box-wrapper.component';
 
+/**
+ * Метаданные для компонента LightBox.
+ *
+ * @description
+ * Определяет конфигурацию и документацию
+ * для компонента в Storybook.
+ */
 const meta: Meta<LightBoxWrapperComponent> = {
 	title: 'Components/LightBox',
 	component: LightBoxWrapperComponent,
@@ -9,14 +16,17 @@ const meta: Meta<LightBoxWrapperComponent> = {
 		src: {
 			control: 'text',
 			description: 'URL изображения',
+			defaultValue: 'https://picsum.photos/800/600',
 		},
 		width: {
 			control: 'number',
 			description: 'Ширина изображения',
+			defaultValue: 800,
 		},
 		height: {
 			control: 'number',
 			description: 'Высота изображения',
+			defaultValue: 600,
 		},
 	},
 };
@@ -25,6 +35,9 @@ export default meta;
 
 type Story = StoryObj<LightBoxWrapperComponent>;
 
+/**
+ * Базовый пример использования компонента.
+ */
 export const Default: Story = {
 	args: {
 		src: 'https://picsum.photos/800/600',
@@ -33,6 +46,9 @@ export const Default: Story = {
 	},
 };
 
+/**
+ * Пример с большим изображением.
+ */
 export const LargeImage: Story = {
 	args: {
 		src: 'https://picsum.photos/1200/900',
@@ -41,6 +57,9 @@ export const LargeImage: Story = {
 	},
 };
 
+/**
+ * Пример с маленьким изображением.
+ */
 export const SmallImage: Story = {
 	args: {
 		src: 'https://picsum.photos/400/300',

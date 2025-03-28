@@ -1,6 +1,11 @@
 import { Component, input } from '@angular/core';
 import { AvatarComponent } from '../../../lib/components/avatar/avatar.component';
 
+/**
+ * Компонент-обертка для демонстрации AvatarComponent в Storybook.
+ * Предоставляет интерактивный пример использования аватара с поддержкой
+ * изображения и отображения инициалов пользователя.
+ */
 @Component({
 	selector: 'ss-lib-avatar-wrapper',
 	standalone: true,
@@ -17,6 +22,15 @@ import { AvatarComponent } from '../../../lib/components/avatar/avatar.component
 	`,
 })
 export class AvatarWrapperComponent {
-	src = input<string>('');
-	username = input<string>('');
+	/**
+	 * Путь к изображению аватара.
+	 * Если изображение не загружено, будут отображаться инициалы пользователя.
+	 */
+	public readonly src = input<string>('');
+
+	/**
+	 * Имя пользователя для отображения инициалов.
+	 * Используется, когда изображение аватара недоступно.
+	 */
+	public readonly username = input<string>('');
 }

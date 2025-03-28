@@ -17,6 +17,29 @@ import { DropdownItemComponent } from '../dropdown-item/dropdown-item.component'
 import { DividerComponent } from '../divider/divider.component';
 import { ScrollbarComponent } from '../scrollbar/scrollbar.component';
 
+/**
+ * Компонент выпадающего списка.
+ *
+ * Предоставляет универсальный выпадающий список с поддержкой
+ * кастомных шаблонов, прокрутки и выбора элементов. Реализует
+ * интерфейс PopoverContent для интеграции с popover.
+ *
+ * @example
+ * ```html
+ * <ss-lib-dropdown-list
+ *   [headerTemplateRef]="headerTemplate"
+ *   [width]="'200px'"
+ *   [height]="'300px'"
+ *   (value)="onSelect($event)"
+ *   (closed)="onClose()"
+ * >
+ *   <ss-lib-dropdown-item
+ *     *ngFor="let item of items"
+ *     [value]="item"
+ *   />
+ * </ss-lib-dropdown-list>
+ * ```
+ */
 @Component({
 	selector: 'ss-lib-dropdown-list',
 	standalone: true,
@@ -29,16 +52,80 @@ export class DropdownListComponent<
 	T extends IDictionaryItemDto = IDictionaryItemDto,
 > implements PopoverContent
 {
+	/**
+	 * Содержимое списка.
+	 *
+	 * @description
+	 * Коллекция дочерних компонентов DropdownItem,
+	 * представляющих элементы списка.
+	 */
 	public readonly optionsContent = contentChildren(DropdownItemComponent<T>);
+
+	/**
+	 * Шаблон выпадающего списка.
+	 *
+	 * @description
+	 * Обязательный шаблон, определяющий структуру
+	 * выпадающего списка.
+	 */
 	public readonly templateRef =
 		viewChild.required<TemplateRef<{}>>('dropdownTemplate');
 
-	public headerTemplateRef = input<TemplateRef<unknown> | null>(null);
-	public width = input<string>('max-content');
-	public height = input<string>('auto');
-	public closed = output<void>();
-	public value = output<T | string | null>();
+	/**
+	 * Шаблон заголовка.
+	 *
+	 * @default null
+	 * @description
+	 * Опциональный шаблон для отображения
+	 * заголовка списка.
+	 */
+	public readonly headerTemplateRef = input<TemplateRef<unknown> | null>(
+		null,
+	);
 
+	/**
+	 * Ширина списка.
+	 *
+	 * @default 'max-content'
+	 * @description
+	 * Определяет ширину выпадающего списка.
+	 */
+	public readonly width = input<string>('max-content');
+
+	/**
+	 * Высота списка.
+	 *
+	 * @default 'auto'
+	 * @description
+	 * Определяет высоту выпадающего списка.
+	 */
+	public readonly height = input<string>('auto');
+
+	/**
+	 * Событие закрытия списка.
+	 *
+	 * @description
+	 * Генерируется при закрытии выпадающего
+	 * списка.
+	 */
+	public readonly closed = output<void>();
+
+	/**
+	 * Событие выбора элемента.
+	 *
+	 * @description
+	 * Генерируется при выборе элемента из списка.
+	 */
+	public readonly value = output<T | string | null>();
+
+	/**
+	 * Создает экземпляр компонента.
+	 *
+	 * @param injector - Инжектор Angular
+	 * @description
+	 * Инициализирует компонент и настраивает
+	 * обработку событий выбора элементов.
+	 */
 	constructor(@Inject(Injector) private readonly injector: Injector) {
 		afterNextRender(() => {
 			runInInjectionContext(this.injector, () => {
@@ -53,6 +140,14 @@ export class DropdownListComponent<
 		});
 	}
 
+	/**
+	 * Обработчик выбора элемента.
+	 *
+	 * @param item - Выбранный элемент
+	 * @description
+	 * Генерирует событие выбора и закрывает
+	 * выпадающий список.
+	 */
 	public selectOption(item: T | string | null): void {
 		this.value.emit(item);
 		this.closed.emit();
