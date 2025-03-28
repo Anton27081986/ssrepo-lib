@@ -31,6 +31,8 @@ enum States {
  *
  * (fileChanged): Function - Функция, которая отрабатывает в момент загрузки файла и принимает параметр File | null
  *
+ * (uploadCancel): Function - Функция, которая отрабатывает в момент прерывания загрузки
+ *
  * [src]: string - Адрес изображения. По умолчанию: `null`
  *
  * [progress]: number - Процент загрузки. По умолчанию: `0`
@@ -66,14 +68,17 @@ export class ImageUploadComponent {
 	public maxHeight = input<number>(0);
 	public maxWidth = input<number>(0);
 
-	public progress = input<number>(50);
+	public progress = input<number>(0);
 
 	public src = input<string | null>(null);
 
 	public fileChanged = output<File | null>();
+	public uploadCancel = output();
 
 	protected hover = signal<boolean>(false);
 	protected state = signal<States>(States.Empty);
+
+	protected imageSrc: string | null = null;
 
 	protected readonly IconType = IconType;
 	protected readonly ExtraSize = ExtraSize;
@@ -81,12 +86,31 @@ export class ImageUploadComponent {
 	protected readonly Colors = Colors;
 	protected readonly States = States;
 
+	// @ts-ignore
+	private timer: NodeJS.Timeout | null = null;
+
 	constructor(private readonly sharedPopupService: SharedPopupService) {
 		effect(() => {
 			if (this.src()) {
+				this.imageSrc = this.src();
 				this.state.set(States.Preview);
-			} else {
-				this.state.set(States.Empty);
+			}
+		});
+
+		effect(() => {
+			if (this.progress() && !this.timer) {
+				this.timer = setTimeout(() => {
+					if (this.progress() === 100) {
+						this.state.set(States.Preview);
+					}
+
+					this.timer = null;
+				}, 2000);
+				this.state.set(States.Loading);
+			}
+
+			if (this.progress() === 100 && !this.timer) {
+				this.state.set(States.Preview);
 			}
 		});
 	}
@@ -119,7 +143,7 @@ export class ImageUploadComponent {
 	}
 
 	protected onFileDelete(): void {
-		this.fileChanged.emit(null);
+		this.uploadCancel.emit();
 		this.state.set(States.Empty);
 	}
 
@@ -168,6 +192,14 @@ export class ImageUploadComponent {
 
 				return;
 			}
+
+			const reader = new FileReader();
+
+			reader.onload = () => {
+				this.imageSrc = reader.result ? reader.result.toString() : null;
+			};
+
+			reader.readAsDataURL(file);
 
 			this.fileChanged.emit(file || null);
 		};
