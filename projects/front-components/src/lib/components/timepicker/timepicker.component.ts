@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, forwardRef } from '@angular/core';
+import {
+	ChangeDetectionStrategy,
+	Component,
+	forwardRef,
+	viewChild,
+} from '@angular/core';
 import {
 	ControlValueAccessor,
 	FormControl,
@@ -6,7 +11,7 @@ import {
 	ReactiveFormsModule,
 } from '@angular/forms';
 import { toSignal } from '@angular/core/rxjs-interop';
-import { debounceTime, tap } from 'rxjs';
+import { tap } from 'rxjs';
 import { TIME_INTERVALS } from './constants/time';
 import { DropdownItemComponent } from '../dropdown-item/dropdown-item.component';
 import { DropdownListComponent } from '../dropdown-list/dropdown-list.component';
@@ -36,6 +41,10 @@ import { InputComponent } from '../input/input.component';
 	],
 })
 export class TimepickerComponent implements ControlValueAccessor {
+	private readonly timeInput = viewChild('timeInput', {
+		read: InputComponent,
+	});
+
 	public timepickerCtrl = new FormControl<string | null>(null);
 
 	protected readonly timeIntervals = TIME_INTERVALS;
@@ -48,8 +57,9 @@ export class TimepickerComponent implements ControlValueAccessor {
 	constructor() {
 		toSignal(
 			this.timepickerCtrl.valueChanges.pipe(
-				debounceTime(150),
-				tap((value) => this.onChange(value)),
+				tap((value) => {
+					this.onChange(value);
+				}),
 			),
 		);
 	}
@@ -76,5 +86,7 @@ export class TimepickerComponent implements ControlValueAccessor {
 
 	public selectTime(time: string): void {
 		this.timepickerCtrl.setValue(time);
+
+		this.timeInput()?.setFocus();
 	}
 }

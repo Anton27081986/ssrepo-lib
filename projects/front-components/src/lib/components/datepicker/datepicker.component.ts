@@ -4,6 +4,7 @@ import {
 	forwardRef,
 	input,
 	signal,
+	viewChild,
 } from '@angular/core';
 import type { ControlValueAccessor } from '@angular/forms';
 import { FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
@@ -18,6 +19,7 @@ import {
 	LAST_NATIVE_DAY,
 } from '../calendar/constans';
 import { InputType } from '../../shared/models';
+import { InputComponent } from '../input/input.component';
 
 /**
  * Параметры:
@@ -43,6 +45,10 @@ import { InputType } from '../../shared/models';
 	],
 })
 export class DatepickerComponent implements ControlValueAccessor {
+	private readonly dateInput = viewChild('dateInput', {
+		read: InputComponent,
+	});
+
 	public min = input<Date>(FIRST_NATIVE_DAY);
 	public max = input<Date>(LAST_NATIVE_DAY);
 
@@ -54,6 +60,7 @@ export class DatepickerComponent implements ControlValueAccessor {
 
 	public onChange: (value: Date | null) => void = () => {};
 	public onTouched: () => void = () => {};
+
 	constructor() {
 		toSignal(
 			this.datepickerCtrl.valueChanges.pipe(
@@ -103,6 +110,7 @@ export class DatepickerComponent implements ControlValueAccessor {
 
 		this.onChange(toControlValue(date));
 		this.onTouched();
+		this.dateInput()?.setFocus();
 	}
 
 	private onValueChange(value: string | null): void {
