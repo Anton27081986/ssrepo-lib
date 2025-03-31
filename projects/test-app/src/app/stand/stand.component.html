@@ -572,3 +572,25 @@
 		(click)="console.log(5)"
 	/>
 </ss-lib-dropdown-list>
+<div class="checkbox">
+	<ss-lib-checkbox [formControl]="checkBox1"></ss-lib-checkbox>
+
+	<ss-lib-checkbox [formControl]="checkBox2"></ss-lib-checkbox>
+
+	<ss-lib-checkbox [formControl]="checkBox3"></ss-lib-checkbox>
+
+	<ss-lib-checkbox
+		[type]="'indeterminate'"
+		[formControl]="checkBox1"
+	></ss-lib-checkbox>
+
+	<ss-lib-checkbox
+		[type]="'indeterminate'"
+		[formControl]="checkBox2"
+	></ss-lib-checkbox>
+
+	<ss-lib-checkbox
+		[type]="'indeterminate'"
+		[formControl]="checkBox3"
+	></ss-lib-checkbox>
+</div>
