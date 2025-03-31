@@ -9,8 +9,10 @@
 	--border-focus-error: var(--red-400, #f97066);
 	--border-primary: var(--grey-400, #e7e7e6);
 	--border-secondary: var(--grey-500, #d3d3d1);
+	--border-secondary-hover: var(--grey-600, #b3b3b1);
 	--border-success: var(--green-300, #75e0a7);
 	--border-tertiary: var(--grey-900, #525250);
+	--border-warning: var(--yellow-300, #fec84b);
 	--effects-shadows-10: #0e0e0e1a;
 	--effects-shadows-14: #0e0e0e24;
 	--effects-shadows-18: #0e0e0e2e;
@@ -30,6 +32,7 @@
 	--icon-primary: var(--grey-1000, #353534);
 	--icon-secondary: var(--grey-400, #e7e7e6);
 	--icon-success: var(--green-600, #079455);
+	--icon-warning: var(--yellow-500, #f79009);
 	--surface-action: var(--blue-500, #0b77ca);
 	--surface-action-4: var(--grey-1200, #191919);
 	--surface-action-hover: var(--blue-600, #095fa2);
@@ -58,7 +61,7 @@
 	--text-headings: var(--grey-1300, #0e0e0e);
 	--text-information: var(--blue-500, #0b77ca);
 	--text-on-action: var(--pure-white, #ffffff);
-	--text-on-disabled: var(--grey-600, #b3b3b1);
+	--text-on-disabled: var(--grey-700, #868684);
 	--text-on-information: var(--grey-400, #e7e7e6);
 	--text-on-information-2: var(--grey-600, #b3b3b1);
 
@@ -70,8 +73,10 @@
 		--border-focus-error: var(--red-400, #f97066);
 		--border-primary: var(--grey-1000, #353534);
 		--border-secondary: var(--grey-900, #525250);
+		--border-secondary-hover: var(--grey-800, #686866);
 		--border-success: var(--green-300, #75e0a7);
 		--border-tertiary: var(--grey-400, #e7e7e6);
+		--border-warning: var(--yellow-300, #fec84b);
 		--effects-shadows-10: #00000066;
 		--effects-shadows-14: #0000008f;
 		--effects-shadows-18: #000000b8;
@@ -91,6 +96,7 @@
 		--icon-primary: var(--pure-white, #ffffff);
 		--icon-secondary: var(--grey-1000, #353534);
 		--icon-success: var(--green-400, #47cd89);
+		--icon-warning: var(--yellow-500, #f79009);
 		--surface-action: var(--blue-500, #0b77ca);
 		--surface-action-4: var(--grey-1200, #191919);
 		--surface-action-hover: var(--blue-600, #095fa2);
