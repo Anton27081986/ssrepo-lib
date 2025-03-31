@@ -65,7 +65,7 @@ export class SidebarComponent {
 	 * Обязательный параметр, содержащий структуру меню с элементами
 	 * навигации и их состоянием.
 	 */
-	public readonly menu: InputSignal<IMenu[]> = input.required<IMenu[]>();
+	public menu: InputSignal<IMenu[]> = input.required<IMenu[]>();
 
 	/**
 	 * Событие выбора элемента меню.
@@ -73,7 +73,7 @@ export class SidebarComponent {
 	 * @description
 	 * Эмитит выбранный элемент меню при клике на него.
 	 */
-	public readonly outMenuFromSidebar = output<IMenu>();
+	public outMenuFromSidebar = output<IMenu>();
 
 	/**
 	 * Состояние холста.
@@ -81,27 +81,27 @@ export class SidebarComponent {
 	 * @description
 	 * Используется для управления состоянием боковой панели.
 	 */
-	protected readonly stateCanvas: CanvasState = inject(CanvasState);
+	protected stateCanvas: CanvasState = inject(CanvasState);
 
 	/**
 	 * Константы для типов кнопок.
 	 */
-	protected readonly ButtonType = ButtonType;
+	protected ButtonType = ButtonType;
 
 	/**
 	 * Константы для типов иконок.
 	 */
-	protected readonly IconType = IconType;
+	protected IconType = IconType;
 
 	/**
 	 * Константы для типов боковой панели.
 	 */
-	protected readonly SidebarType = SidebarType;
+	protected SidebarType = SidebarType;
 
 	/**
 	 * Константы для типов навигационных кнопок.
 	 */
-	protected readonly NuvButtonType = NavButton;
+	protected NuvButtonType = NavButton;
 
 	/**
 	 * Текущий тип боковой панели.
@@ -109,7 +109,7 @@ export class SidebarComponent {
 	 * @description
 	 * Определяет текущее состояние отображения боковой панели.
 	 */
-	protected readonly sidebarType = this.stateCanvas.sidebarType;
+	protected sidebarType = this.stateCanvas.sidebarType;
 
 	/**
 	 * Закрывает боковую панель.

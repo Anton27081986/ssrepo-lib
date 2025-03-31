@@ -42,7 +42,7 @@ export class ModalActionApplyComponent {
 	 * Обязательный параметр, отображаемый на
 	 * кнопке подтверждения действия.
 	 */
-	public readonly applyText: InputSignal<string> = input.required<string>();
+	public applyText: InputSignal<string> = input.required<string>();
 
 	/**
 	 * Флаг отключения кнопки подтверждения.
@@ -52,7 +52,7 @@ export class ModalActionApplyComponent {
 	 * Определяет, доступна ли кнопка подтверждения
 	 * для взаимодействия.
 	 */
-	public readonly applyDisabled: InputSignal<boolean> = input<boolean>(false);
+	public applyDisabled: InputSignal<boolean> = input<boolean>(false);
 
 	/**
 	 * Текст кнопки отмены.
@@ -62,7 +62,7 @@ export class ModalActionApplyComponent {
 	 * Опциональный параметр, отображаемый на
 	 * кнопке отмены действия.
 	 */
-	public readonly cancelText: InputSignal<string | undefined> = input<
+	public cancelText: InputSignal<string | undefined> = input<
 		string | undefined
 	>();
 
@@ -73,7 +73,7 @@ export class ModalActionApplyComponent {
 	 * Генерируется при нажатии на кнопку
 	 * подтверждения.
 	 */
-	public readonly applyEvent = output<void>();
+	public applyEvent = output<void>();
 
 	/**
 	 * Константы для типов кнопок.
@@ -82,7 +82,7 @@ export class ModalActionApplyComponent {
 	 * Используется для определения стиля
 	 * кнопок действий.
 	 */
-	protected readonly buttonType = ButtonType;
+	protected buttonType = ButtonType;
 
 	/**
 	 * Создает экземпляр компонента.
@@ -92,7 +92,7 @@ export class ModalActionApplyComponent {
 	 * Инициализирует компонент с ссылкой на
 	 * модальное окно.
 	 */
-	constructor(private readonly modalRef: ModalRef) {}
+	constructor(private modalRef: ModalRef) {}
 
 	/**
 	 * Закрывает модальное окно.

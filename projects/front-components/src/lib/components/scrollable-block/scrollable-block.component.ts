@@ -40,7 +40,7 @@ export class ScrollableBlockComponent {
 	 * При значении true скрывает горизонтальную полосу прокрутки.
 	 */
 	@Input()
-	public readonly horizontalScroll = false;
+	public horizontalScroll = false;
 
 	/**
 	 * Флаг включения вертикальной прокрутки.
@@ -50,7 +50,7 @@ export class ScrollableBlockComponent {
 	 * При значении false скрывает вертикальную полосу прокрутки.
 	 */
 	@Input()
-	public readonly verticalScroll = false;
+	public verticalScroll = false;
 
 	/**
 	 * Флаг отключения автоматического определения размеров.
@@ -61,5 +61,5 @@ export class ScrollableBlockComponent {
 	 * размеров контейнера.
 	 */
 	@Input()
-	public readonly disableAutoSize = false;
+	public disableAutoSize = false;
 }

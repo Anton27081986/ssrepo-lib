@@ -71,7 +71,7 @@ export class NumberPickerComponent implements ControlValueAccessor {
 	 * @description
 	 * Минимально допустимое значение для ввода.
 	 */
-	public readonly min = input<number>(0);
+	public min = input<number>(0);
 
 	/**
 	 * Максимальное значение.
@@ -81,7 +81,7 @@ export class NumberPickerComponent implements ControlValueAccessor {
 	 * Максимально допустимое значение для ввода.
 	 * Если не указано, ограничение не применяется.
 	 */
-	public readonly max = input<number | undefined>(undefined);
+	public max = input<number | undefined>(undefined);
 
 	/**
 	 * Шаг изменения значения.
@@ -91,7 +91,7 @@ export class NumberPickerComponent implements ControlValueAccessor {
 	 * Значение, на которое изменяется число при
 	 * использовании кнопок увеличения/уменьшения.
 	 */
-	public readonly step = input<number>(1);
+	public step = input<number>(1);
 
 	/**
 	 * Форм-контрол для управления значением.
@@ -100,7 +100,7 @@ export class NumberPickerComponent implements ControlValueAccessor {
 	 * Используется для управления состоянием поля ввода
 	 * и интеграции с Angular Forms.
 	 */
-	public readonly numberPickerCtrl = new FormControl();
+	public numberPickerCtrl = new FormControl();
 
 	/**
 	 * Флаг отключения компонента.
@@ -108,42 +108,42 @@ export class NumberPickerComponent implements ControlValueAccessor {
 	 * @description
 	 * Определяет, доступен ли компонент для взаимодействия.
 	 */
-	public readonly isDisabled = signal<boolean>(false);
+	public isDisabled = signal<boolean>(false);
 
 	/**
 	 * Константы для типов кнопок.
 	 */
-	public readonly ButtonType = ButtonType;
+	public ButtonType = ButtonType;
 
 	/**
 	 * Константы для типов иконок.
 	 */
-	public readonly IconType = IconType;
+	public IconType = IconType;
 
 	/**
 	 * Константы для позиций иконок.
 	 */
-	public readonly IconPosition = IconPosition;
+	public IconPosition = IconPosition;
 
 	/**
 	 * Константы для направлений.
 	 */
-	public readonly Direction = Direction;
+	public Direction = Direction;
 
 	/**
 	 * Константы для выравнивания.
 	 */
-	public readonly Align = Align;
+	public Align = Align;
 
 	/**
 	 * Константы для типов ввода.
 	 */
-	public readonly InputType = InputType;
+	public InputType = InputType;
 
 	/**
 	 * Константы для дополнительных размеров.
 	 */
-	protected readonly ExtraSize = ExtraSize;
+	protected ExtraSize = ExtraSize;
 
 	/**
 	 * Callback для обновления значения.

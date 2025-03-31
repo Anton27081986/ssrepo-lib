@@ -45,7 +45,7 @@ export class ModalComponent {
 	 * Обязательный параметр, отображаемый в верхней
 	 * части модального окна.
 	 */
-	public readonly titleHeader: InputSignal<string> = input.required<string>();
+	public titleHeader: InputSignal<string> = input.required<string>();
 
 	/**
 	 * Описание модального окна.
@@ -54,8 +54,7 @@ export class ModalComponent {
 	 * Обязательный параметр, отображаемый под
 	 * заголовком модального окна.
 	 */
-	public readonly descriptionHeader: InputSignal<string> =
-		input.required<string>();
+	public descriptionHeader: InputSignal<string> = input.required<string>();
 
 	/**
 	 * Шаблон действий модального окна.
@@ -64,8 +63,7 @@ export class ModalComponent {
 	 * Обязательный параметр, содержащий шаблон
 	 * с кнопками действий в нижней части окна.
 	 */
-	public readonly actionsRef: InputSignal<TemplateRef<{}> | null> =
-		input.required();
+	public actionsRef: InputSignal<TemplateRef<{}> | null> = input.required();
 
 	/**
 	 * Шаблон содержимого модального окна.
@@ -75,7 +73,7 @@ export class ModalComponent {
 	 * Опциональный параметр, содержащий шаблон
 	 * с основным содержимым модального окна.
 	 */
-	public readonly contentRef: InputSignal<TemplateRef<{}> | null> =
+	public contentRef: InputSignal<TemplateRef<{}> | null> =
 		input<TemplateRef<{}> | null>(null);
 
 	/**
@@ -85,8 +83,7 @@ export class ModalComponent {
 	 * Обязательный параметр, определяющий внешний вид
 	 * и содержимое бейджа в модальном окне.
 	 */
-	public readonly badgeProps: InputSignal<IBadgeProps> =
-		input.required<IBadgeProps>();
+	public badgeProps: InputSignal<IBadgeProps> = input.required<IBadgeProps>();
 
 	/**
 	 * Ссылка на модальное окно.
