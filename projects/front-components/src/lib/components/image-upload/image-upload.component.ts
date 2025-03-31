@@ -198,7 +198,7 @@ export class ImageUploadComponent {
 	/**
 	 * Таймер для обработки прогресса.
 	 */
-	private timer: NodeJS.Timeout | null = null;
+	private timer: ReturnType<typeof setTimeout> | null = null;
 
 	/**
 	 * Создает экземпляр компонента.
