@@ -14,6 +14,14 @@ import { CheckboxType } from '../../shared/models/types/check-box-type';
 import { IconComponent } from '../icon/icon.component';
 import { Colors, IconType } from '../../shared/models';
 
+/**
+ *
+ * Параметры
+ *
+ * [type]: CheckboxType - тип чекбокса. По умолчанию: 'default'.
+ *
+ */
+
 @Component({
 	selector: 'ss-lib-checkbox',
 	standalone: true,
