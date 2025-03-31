@@ -54,7 +54,7 @@ export class SelectComponent<T extends IDictionaryItemDto = IDictionaryItemDto>
 	 * @description
 	 * Отображается, когда значение не выбрано.
 	 */
-	public readonly placeholder = input<string>('Выберите из списка');
+	public placeholder = input<string>('Выберите из списка');
 
 	/**
 	 * Форм-контрол для управления значением.
@@ -63,7 +63,7 @@ export class SelectComponent<T extends IDictionaryItemDto = IDictionaryItemDto>
 	 * Используется для управления состоянием поля ввода
 	 * и интеграции с Angular Forms.
 	 */
-	public readonly selectCtrl = new FormControl<string | null>(null);
+	public selectCtrl = new FormControl<string | null>(null);
 
 	/**
 	 * Ссылка на компонент выпадающего списка.
@@ -72,9 +72,7 @@ export class SelectComponent<T extends IDictionaryItemDto = IDictionaryItemDto>
 	 * Используется для взаимодействия с компонентом списка
 	 * и получения выбранных значений.
 	 */
-	private readonly dropdownList = contentChild.required(
-		DropdownListComponent<T>,
-	);
+	private dropdownList = contentChild.required(DropdownListComponent<T>);
 
 	/**
 	 * Callback для обновления значения.
@@ -97,9 +95,9 @@ export class SelectComponent<T extends IDictionaryItemDto = IDictionaryItemDto>
 		@Optional()
 		@Self()
 		@Inject(NgControl)
-		public readonly ngControl: NgControl,
-		@Optional() public readonly formField: FormFieldComponent,
-		private readonly injector: Injector,
+		public ngControl: NgControl,
+		@Optional() public formField: FormFieldComponent,
+		private injector: Injector,
 	) {
 		if (this.ngControl) {
 			this.ngControl.valueAccessor = this;

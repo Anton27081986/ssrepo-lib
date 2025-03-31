@@ -68,7 +68,7 @@ export class FormFieldComponent implements AfterContentInit {
 	 * @description
 	 * Текст, отображаемый над полем ввода.
 	 */
-	public readonly label = input<string>('');
+	public label = input<string>('');
 
 	/**
 	 * Подсказка для поля.
@@ -77,7 +77,7 @@ export class FormFieldComponent implements AfterContentInit {
 	 * @description
 	 * Текст подсказки, отображаемый под полем.
 	 */
-	public readonly hint = input<string>('');
+	public hint = input<string>('');
 
 	/**
 	 * Флаг отображения валидации.
@@ -87,7 +87,7 @@ export class FormFieldComponent implements AfterContentInit {
 	 * Определяет, отображать ли состояние
 	 * валидации поля.
 	 */
-	public readonly showValidation = input<boolean>(true);
+	public showValidation = input<boolean>(true);
 
 	/**
 	 * Флаг отображения иконки валидации.
@@ -97,7 +97,7 @@ export class FormFieldComponent implements AfterContentInit {
 	 * Определяет, отображать ли иконку
 	 * состояния валидации.
 	 */
-	public readonly showValidationFieldIcon = input<boolean>(false);
+	public showValidationFieldIcon = input<boolean>(false);
 
 	/**
 	 * Текст ошибки.
@@ -107,7 +107,7 @@ export class FormFieldComponent implements AfterContentInit {
 	 * Текст, отображаемый при ошибке
 	 * валидации.
 	 */
-	public readonly errorText = input<string>('');
+	public errorText = input<string>('');
 
 	/**
 	 * Флаг наличия валидаторов.
@@ -115,7 +115,7 @@ export class FormFieldComponent implements AfterContentInit {
 	 * @description
 	 * Определяет, есть ли у поля валидаторы.
 	 */
-	public readonly existValidators = signal<boolean>(false);
+	public existValidators = signal<boolean>(false);
 
 	/**
 	 * Флаг обязательности поля.
@@ -124,7 +124,7 @@ export class FormFieldComponent implements AfterContentInit {
 	 * Определяет, является ли поле
 	 * обязательным для заполнения.
 	 */
-	public readonly isRequired = signal<boolean>(false);
+	public isRequired = signal<boolean>(false);
 
 	/**
 	 * Состояние контроля поля.
@@ -133,7 +133,7 @@ export class FormFieldComponent implements AfterContentInit {
 	 * Текущее состояние валидации
 	 * поля.
 	 */
-	public readonly fieldCtrlState = signal<ControlState>(ControlState.Touched);
+	public fieldCtrlState = signal<ControlState>(ControlState.Touched);
 
 	/**
 	 * Текущее состояние поля.
@@ -142,34 +142,32 @@ export class FormFieldComponent implements AfterContentInit {
 	 * Актуальное состояние поля,
 	 * учитывающее фокус.
 	 */
-	public readonly currentFieldCtrlState = signal<ControlState>(
-		ControlState.Touched,
-	);
+	public currentFieldCtrlState = signal<ControlState>(ControlState.Touched);
 
 	/**
 	 * Константы для типов текста.
 	 */
-	public readonly TextType = TextType;
+	public TextType = TextType;
 
 	/**
 	 * Константы для весов текста.
 	 */
-	public readonly TextWeight = TextWeight;
+	public TextWeight = TextWeight;
 
 	/**
 	 * Константы для цветов.
 	 */
-	public readonly Colors = Colors;
+	public Colors = Colors;
 
 	/**
 	 * Константы для типов иконок.
 	 */
-	public readonly IconType = IconType;
+	public IconType = IconType;
 
 	/**
 	 * Инжектор Angular.
 	 */
-	private readonly injector = inject(Injector);
+	private injector = inject(Injector);
 
 	/**
 	 * Инициализация после инициализации содержимого.

@@ -51,7 +51,7 @@ export class NavButtonComponent {
 	 * Используется для отображения различных иконок
 	 * в навигационной кнопке.
 	 */
-	public readonly IconType = IconType;
+	public IconType = IconType;
 
 	/**
 	 * Тип навигационной кнопки.
@@ -61,7 +61,7 @@ export class NavButtonComponent {
 	 * Определяет внешний вид и поведение кнопки.
 	 * Поддерживает различные типы отображения.
 	 */
-	public readonly type: InputSignal<NavButtonType> = input<NavButton>(
+	public type: InputSignal<NavButtonType> = input<NavButton>(
 		NavButton.NavBase,
 	);
 
@@ -72,7 +72,7 @@ export class NavButtonComponent {
 	 * Обязательный параметр, содержащий структуру
 	 * и элементы меню.
 	 */
-	public readonly menu: InputSignal<IMenu> = input.required<IMenu>();
+	public menu: InputSignal<IMenu> = input.required<IMenu>();
 
 	/**
 	 * Константы для типов навигационных кнопок.
@@ -81,7 +81,7 @@ export class NavButtonComponent {
 	 * Используется для определения доступных типов
 	 * навигационных кнопок.
 	 */
-	protected readonly NuvButtonType = NavButton;
+	protected NuvButtonType = NavButton;
 
 	/**
 	 * Константы для типов текста.
@@ -89,7 +89,7 @@ export class NavButtonComponent {
 	 * @description
 	 * Используется для стилизации текста в кнопке.
 	 */
-	protected readonly TextType = TextType;
+	protected TextType = TextType;
 
 	/**
 	 * Константы для весов текста.
@@ -98,5 +98,5 @@ export class NavButtonComponent {
 	 * Используется для определения толщины шрифта
 	 * текста в кнопке.
 	 */
-	protected readonly TextWeight = TextWeight;
+	protected TextWeight = TextWeight;
 }
