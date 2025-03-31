@@ -39,3 +39,4 @@ export { ToastComponent } from './toast/toast.component';
 export { ToastRef } from './toast/toast-ref';
 export { ProgressCircleComponent } from './progress-circle/progress-circle.component';
 export { TimepickerComponent } from './timepicker/timepicker.component';
+export { CheckboxComponent } from './checkbox/checkbox.component';
