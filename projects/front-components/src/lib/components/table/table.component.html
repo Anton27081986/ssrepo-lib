@@ -22,20 +22,23 @@
 			} @else {
 				<th
 					*ngFor="let col of stateColumn.visibleCols$ | async"
-					class="ss-lib-table-th ss-lib-table-th-align--{{
-						col.align
-					}}"
-					[class.ss-lib-table-td-sticky]="col.sticky"
-					[ngStyle]="{ maxWidth: col.width ? col.width : null }"
-					[style.padding]="col.padding"
+					class="ss-lib-table-th"
+					[style.padding]="col.title.trim() ? col.padding : null"
+					[ngStyle]="{ width: col.width ?? 'auto' }"
 				>
-					<ss-lib-text
-						[color]="Colors.TextBody2"
-						[weight]="TextWeight.Semibold"
-						[type]="TextType.BodyXs"
+					<div
+						class="ss-lib-table-th-item
+						ss-lib-table-th-item-align--{{ col.align }}"
+						[class.ss-lib-table-th-item--sticky]="col.sticky"
 					>
-						{{ col.title }}
-					</ss-lib-text>
+						<ss-lib-text
+							[color]="Colors.TextBody2"
+							[weight]="TextWeight.Semibold"
+							[type]="TextType.BodyXs"
+						>
+							{{ col.title }}
+						</ss-lib-text>
+					</div>
 				</th>
 			}
 		</tr>

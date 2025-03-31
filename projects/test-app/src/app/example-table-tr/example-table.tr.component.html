@@ -1,0 +1,102 @@
+<ng-container *ngFor="let col of state.colsTr$ | async">
+	<ng-container [ngSwitch]="col.id">
+		<td
+			class="ss-lib-table-td"
+			[class.ss-lib-table-td-sticky]="col.sticky"
+			[style.padding]="col.padding"
+			[ngStyle]="{
+				MaxHeight: col.maxHeight,
+				height: col.height ?? 'auto',
+			}"
+		>
+			<div
+				class="ss-lib-table-td-item
+				ss-lib-table-td-item-align--{{ col.align }}"
+			>
+				<ng-container *ngSwitchCase="BannerRowItemField.dragAction">
+					<ss-lib-utility-button
+						draggable="true"
+						[type]="ButtonType.Utility"
+						[restrictedIcon]="IconType.Drag"
+						[iconPosition]="IconPosition.OnlyIcon"
+						[size]="ExtraSize.lg"
+					>
+					</ss-lib-utility-button>
+				</ng-container>
+				<ng-container *ngSwitchCase="BannerRowItemField.order">
+					<ss-lib-text
+						[type]="TextType.BodySm"
+						[weight]="TextWeight.Regular"
+						>{{ item().order }}
+					</ss-lib-text>
+				</ng-container>
+				<ng-container *ngSwitchCase="BannerRowItemField.period">
+					<ss-lib-text
+						[type]="TextType.BodySm"
+						[weight]="TextWeight.Regular"
+						[isEllipsis]="true"
+						>{{
+							item().publicationStartDate
+								| date: 'dd MMMM yyyy HH:mm'
+						}}
+						-
+						{{
+							item().publicationEndDate
+								| date: 'dd MMMM yyyy HH:mm'
+						}}
+					</ss-lib-text>
+				</ng-container>
+				<ng-container *ngSwitchCase="BannerRowItemField.user">
+					<ss-lib-text
+						[type]="TextType.BodySm"
+						[weight]="TextWeight.Regular"
+						[isEllipsis]="true"
+						>{{ item().user }}
+					</ss-lib-text>
+				</ng-container>
+				<ng-container *ngSwitchCase="BannerRowItemField.actionToggle">
+					@if (item().text) {
+						<ss-lib-link [text]="item().text!"></ss-lib-link>
+					} @else {
+						<ss-lib-text
+							[color]="Colors.TextOnDisabled"
+							[type]="TextType.BodySm"
+							[weight]="TextWeight.Regular"
+							[isEllipsis]="true"
+						>
+							Нет действий
+						</ss-lib-text>
+					}
+				</ng-container>
+				<ng-container *ngSwitchCase="BannerRowItemField.status">
+					<ss-lib-toggle></ss-lib-toggle>
+				</ng-container>
+				<ng-container *ngSwitchCase="BannerRowItemField.banner">
+					<!--					<ss-lib-text-->
+					<!--						[type]="TextType.BodySm"-->
+					<!--						[weight]="TextWeight.Regular"-->
+					<!--						[isEllipsis]="true"-->
+					<!--						>{{ item().name }}-->
+					<!--					</ss-lib-text>-->
+					{{ item().name }}
+				</ng-container>
+				<ng-container *ngSwitchCase="BannerRowItemField.image">
+					<img
+						class="banner-row-item-tr__img"
+						alt=""
+						[src]="item().imageUrl"
+					/>
+				</ng-container>
+				<ng-container *ngSwitchCase="BannerRowItemField.action">
+					<ss-lib-utility-button
+						[type]="ButtonType.Utility"
+						[restrictedIcon]="IconType.KebabMenuDots"
+						[iconPosition]="IconPosition.OnlyIcon"
+					>
+					</ss-lib-utility-button>
+				</ng-container>
+				<ng-container *ngSwitchDefault> &nbsp;</ng-container>
+			</div>
+		</td>
+	</ng-container>
+</ng-container>

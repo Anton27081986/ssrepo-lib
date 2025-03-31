@@ -1,4 +1,5 @@
 import { ReactiveFormsModule } from '@angular/forms';
+import { NgFor } from '@angular/common';
 import {
 	IconComponent,
 	TextComponent,
@@ -38,6 +39,7 @@ import {
 	PopoverTriggerForDirective,
 } from '../../../../front-components/src/lib/core/directives';
 import { RepeatTimesPipe } from '../../../../front-components/src/lib/core/pipes';
+import { ExampleTableTrComponent } from '../example-table-tr/example-table-tr.component';
 
 export const standImports = [
 	ReactiveFormsModule,
@@ -77,4 +79,6 @@ export const standImports = [
 	ScrollbarComponent,
 	TimepickerComponent,
 	TableComponent,
+	ExampleTableTrComponent,
+	NgFor,
 ];

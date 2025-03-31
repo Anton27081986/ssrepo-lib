@@ -24,6 +24,7 @@ import { SharedPopupService } from '../../../../front-components/src/lib/shared/
 import type { TestModalData } from '../test-modal/test-modal.component';
 import { TestModalComponent } from '../test-modal/test-modal.component';
 import { ToastRef } from '../../../../front-components/src/lib/components';
+import { exampleDataTable } from './constants/example-data-table';
 
 @Component({
 	selector: 'app-stand',
@@ -76,6 +77,7 @@ export class StandComponent {
 	protected readonly Status = Status;
 	protected readonly dropdownItems = DROPDOWN_ITEMS;
 	protected readonly TooltipPosition = TooltipPosition;
+	protected readonly exampleItems = exampleDataTable;
 
 	private readonly sharedPopupService = inject(SharedPopupService);
 
