@@ -61,5 +61,5 @@ export class ScrollableBlockComponent {
 	 * размеров контейнера.
 	 */
 	@Input()
-	public readonly disableAutoSize = false;
+	public disableAutoSize = false;
 }

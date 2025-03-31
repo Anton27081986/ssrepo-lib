@@ -35,7 +35,7 @@ export class LightBoxComponent {
 	 * Путь к изображению, которое будет показано
 	 * в полноэкранном режиме.
 	 */
-	protected readonly src: string;
+	protected src: string;
 
 	/**
 	 * Ширина изображения.
@@ -43,7 +43,7 @@ export class LightBoxComponent {
 	 * @description
 	 * Ширина изображения в пикселях.
 	 */
-	protected readonly width: number;
+	protected width: number;
 
 	/**
 	 * Высота изображения.
@@ -51,7 +51,7 @@ export class LightBoxComponent {
 	 * @description
 	 * Высота изображения в пикселях.
 	 */
-	protected readonly height: number;
+	protected height: number;
 
 	/**
 	 * Константы для типов иконок.
@@ -60,7 +60,7 @@ export class LightBoxComponent {
 	 * Используется для отображения иконок
 	 * управления просмотром.
 	 */
-	protected readonly IconType = IconType;
+	protected IconType = IconType;
 
 	/**
 	 * Создает экземпляр компонента.
@@ -69,7 +69,7 @@ export class LightBoxComponent {
 	 * @description
 	 * Инициализирует компонент данными из модального окна.
 	 */
-	constructor(private readonly modalRef: ModalRef<ILightBoxData>) {
+	constructor(private modalRef: ModalRef<ILightBoxData>) {
 		this.src = modalRef.data.src;
 		this.width = modalRef.data.width;
 		this.height = modalRef.data.height;

@@ -37,7 +37,7 @@ export class ProgressComponent {
 	 * Используется для получения информации о текущем
 	 * состоянии прогресса.
 	 */
-	public readonly canvasState: CanvasState = inject(CanvasState);
+	public canvasState: CanvasState = inject(CanvasState);
 
 	/**
 	 * Тип прогресса из состояния холста.
@@ -47,7 +47,7 @@ export class ProgressComponent {
 	 * полученный из состояния холста.
 	 * @default 'default'
 	 */
-	public readonly inProgressType: Signal<ProgressStateType> = toSignal(
+	public inProgressType: Signal<ProgressStateType> = toSignal(
 		this.canvasState.inProgressType$,
 		{ initialValue: 'default' },
 	);
@@ -60,7 +60,7 @@ export class ProgressComponent {
 	 * текущего состояния. Возвращает 'average' если есть
 	 * активный тип прогресса, иначе 'max'.
 	 */
-	public readonly state: Signal<ProgressStateType> = computed(() => {
+	public state: Signal<ProgressStateType> = computed(() => {
 		if (this.inProgressType()) {
 			return 'average';
 		}

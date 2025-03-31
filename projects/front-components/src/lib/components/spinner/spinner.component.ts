@@ -39,42 +39,41 @@ export class SpinnerComponent {
 	 * - true: отображает текст "Загрузка..." под спиннером
 	 * - false: показывает только анимированный спиннер
 	 */
-	public readonly displaySpinnerText: InputSignal<boolean> =
-		input<boolean>(false);
+	public displaySpinnerText: InputSignal<boolean> = input<boolean>(false);
 
 	/**
 	 * Константы для типов текста.
 	 * Используются для стилизации текста спиннера.
 	 */
-	protected readonly TextType = TextType;
+	protected TextType = TextType;
 
 	/**
 	 * Константы для весов текста.
 	 * Определяют толщину шрифта текста спиннера.
 	 */
-	protected readonly TextWeight = TextWeight;
+	protected TextWeight = TextWeight;
 
 	/**
 	 * Константы для дополнительных размеров.
 	 * Используются для настройки размеров компонента.
 	 */
-	protected readonly ExtraSize = ExtraSize;
+	protected ExtraSize = ExtraSize;
 
 	/**
 	 * Константы для типов кнопок.
 	 * Применяются для стилизации контейнера спиннера.
 	 */
-	protected readonly ButtonType = ButtonType;
+	protected ButtonType = ButtonType;
 
 	/**
 	 * Константы для форм.
 	 * Определяют внешний вид компонента.
 	 */
-	protected readonly Shape = Shape;
+	protected Shape = Shape;
 
 	/**
 	 * Константы для цветов.
 	 * Используются для настройки цветовой схемы компонента.
 	 */
-	protected readonly Colors = Colors;
+	protected Colors = Colors;
 }
