@@ -41,6 +41,10 @@ export class BadgeComponent {
 				return {
 					iconColor: Colors.IconError,
 				};
+			case Status.Warning:
+				return {
+					iconColor: Colors.IconWarning,
+				};
 
 			default:
 				return { iconColor: Colors.IconPrimary };
