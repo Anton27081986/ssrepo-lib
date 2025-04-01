@@ -22,6 +22,10 @@
 		outline: 1px solid var(--border-success);
 	}
 
+	&.warning {
+		outline: 1px solid var(--border-warning);
+	}
+
 	&.error {
 		outline: 1px solid var(--border-error);
 	}
