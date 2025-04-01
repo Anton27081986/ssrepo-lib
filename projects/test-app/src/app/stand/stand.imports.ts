@@ -32,6 +32,7 @@ import {
 	ProgressCircleComponent,
 	ScrollbarComponent,
 	TimepickerComponent,
+	OtpInputComponent,
 } from '../../../../front-components/src/lib/components';
 import {
 	FieldCtrlDirective,
@@ -77,4 +78,5 @@ export const standImports = [
 	ScrollbarComponent,
 	TimepickerComponent,
 	ProgressCircleComponent,
+	OtpInputComponent,
 ];

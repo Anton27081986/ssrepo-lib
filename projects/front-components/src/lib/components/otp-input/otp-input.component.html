@@ -1,0 +1,99 @@
+<form [formGroup]="otpForm">
+	<div class="otp-container">
+		@if (label()) {
+			<div class="otp-container__label">
+				<ss-lib-text
+					[type]="TextType.BodySm"
+					[weight]="TextWeight.Semibold"
+					[color]="Colors.TextBody2"
+				>
+					{{ label() }}
+				</ss-lib-text>
+			</div>
+		}
+
+		<div class="otp-container__inputs">
+			@for (control of 6 | repeatTimes; track $index) {
+				<ss-lib-form-field
+					class="otp-container__inputs_item"
+					[label]="''"
+					[hint]="''"
+					[errorText]="''"
+					[showValidation]="true"
+					[showValidationFieldIcon]="false"
+				>
+					<ss-lib-input
+						#otpInput
+						fieldCtrl
+						[type]="InputType.Number"
+						[min]="0"
+						[max]="9"
+						[align]="Align.Center"
+						[placeholder]="''"
+						[formControl]="getControl($index)"
+						(input)="onInput($index)"
+						(keydown)="onKeyDown($event, $index)"
+						(paste)="onPaste($event)"
+					/>
+				</ss-lib-form-field>
+
+				@if ($index === 2) {
+					<ss-lib-text
+						[type]="TextType.HeadingXs"
+						[color]="Colors.TextDisabled"
+						[weight]="TextWeight.Medium"
+					>
+						-
+					</ss-lib-text>
+				}
+			}
+		</div>
+
+		@if (errorText()) {
+			<div class="otp-container__error-message">
+				<ss-lib-icon
+					[icon]="IconType.Alert"
+					[height]="'16'"
+					[width]="'16'"
+					[color]="Colors.IconError"
+				/>
+
+				<ss-lib-text
+					[type]="TextType.BodySm"
+					[weight]="TextWeight.Medium"
+					[color]="Colors.TextError"
+				>
+					{{ errorText() }}
+				</ss-lib-text>
+			</div>
+		}
+
+		<div class="otp-container__resend-code">
+			@if (!isOtpResent()) {
+				<ss-lib-text
+					[type]="TextType.BodySm"
+					[weight]="TextWeight.Regular"
+					[color]="Colors.TextBody3"
+				>
+					{{ notReceivedMsg }}
+				</ss-lib-text>
+			}
+
+			@if (isTimerStarted()) {
+				<ss-lib-text
+					[type]="TextType.BodySm"
+					[weight]="TextWeight.Regular"
+					[color]="Colors.TextBody3"
+				>
+					{{ otpResendTimerText() }}
+				</ss-lib-text>
+			} @else {
+				<ss-lib-link
+					[text]="resendMsg"
+					[size]="ExtraSize.sm"
+					(click)="resendCode()"
+				></ss-lib-link>
+			}
+		</div>
+	</div>
+</form>
