@@ -232,12 +232,11 @@ export class ImageUploadComponent {
 				this.state.set(States.Loading);
 
 				const numbers$ = interval(10).pipe(
-					map((i) => i + 1), // Преобразуем индекс в число (от 1 до 100)
-					take(110), // Ограничиваем поток до 100 значений
+					map((i) => i + 1),
+					take(110),
 					takeUntil(this.subjectCancel),
 				);
 
-				// Подписываемся на поток и выводим числа в консоль
 				numbers$.subscribe({
 					next: (number) => this.animProgress.set(number),
 					complete: () => {
