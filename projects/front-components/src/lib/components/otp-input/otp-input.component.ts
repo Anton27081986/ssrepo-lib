@@ -14,13 +14,10 @@ import {
 	viewChildren,
 } from '@angular/core';
 import {
-	AbstractControl,
 	ControlValueAccessor,
 	FormControl,
 	FormGroup,
 	NgControl,
-	ReactiveFormsModule,
-	ValidationErrors,
 	Validators,
 } from '@angular/forms';
 import { toSignal } from '@angular/core/rxjs-interop';
@@ -37,8 +34,6 @@ import {
 } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { InputComponent } from '../input/input.component';
-import { FormFieldComponent } from '../form-field/form-field.component';
-import { FieldCtrlDirective } from '../../core/directives';
 import {
 	Align,
 	Colors,
@@ -48,19 +43,9 @@ import {
 	TextType,
 	TextWeight,
 } from '../../shared/models';
-import { RepeatTimesPipe } from '../../core/pipes';
-import { TextComponent } from '../text/text.component';
-import { IconComponent } from '../icon/icon.component';
-import { LinkComponent } from '../buttons';
 import { NOT_RECEIVED_MSG, RESEND_MSG } from './constants';
-
-function otpValidator(control: AbstractControl): ValidationErrors | null {
-	const form = control as FormGroup;
-	const values = Object.values(form.value).join('');
-	const isValid = /^\d{6}$/.test(values);
-
-	return isValid ? null : { invalidOtp: true };
-}
+import { otpValidator } from './utils/otp-validator';
+import { otpInputImports } from './otp-input.imports';
 
 interface OtpForm {
 	[key: string]: FormControl<string | null>;
@@ -69,16 +54,7 @@ interface OtpForm {
 @Component({
 	selector: 'ss-lib-otp-input',
 	standalone: true,
-	imports: [
-		ReactiveFormsModule,
-		FormFieldComponent,
-		InputComponent,
-		FieldCtrlDirective,
-		RepeatTimesPipe,
-		TextComponent,
-		IconComponent,
-		LinkComponent,
-	],
+	imports: [otpInputImports],
 	templateUrl: './otp-input.component.html',
 	styleUrl: './otp-input.component.scss',
 	changeDetection: ChangeDetectionStrategy.OnPush,
@@ -93,19 +69,22 @@ export class OtpInputComponent implements ControlValueAccessor {
 	public readonly label = input<string>('Введите код');
 	public readonly errorText = input<string>('');
 	public readonly resendTime = input<number>(5);
+	public readonly fieldsCount = input<number>(6);
 	public readonly otpResendEvent = output<void>();
 
-	public readonly otpForm = new FormGroup<OtpForm>(
-		{
-			'0': new FormControl<string | null>('', Validators.required),
-			'1': new FormControl<string | null>('', Validators.required),
-			'2': new FormControl<string | null>('', Validators.required),
-			'3': new FormControl<string | null>('', Validators.required),
-			'4': new FormControl<string | null>('', Validators.required),
-			'5': new FormControl<string | null>('', Validators.required),
-		},
-		{ validators: otpValidator },
-	);
+	public readonly otpForm = computed(() => {
+		const count = this.fieldsCount();
+		const controls = Object.fromEntries(
+			Array.from({ length: count }, (_, i) => [
+				i.toString(),
+				new FormControl<string | null>('', Validators.required),
+			]),
+		);
+
+		return new FormGroup<OtpForm>(controls, {
+			validators: otpValidator(count),
+		});
+	});
 
 	public readonly startTimer$ = new Subject<void>();
 
@@ -136,9 +115,6 @@ export class OtpInputComponent implements ControlValueAccessor {
 	public readonly isOtpResent = signal(false);
 	public readonly isTimerStarted = signal(false);
 
-	private onChange: (value: string | null) => void = () => {};
-	private onTouched: () => void = () => {};
-
 	protected readonly resendMsg = RESEND_MSG;
 	protected readonly notReceivedMsg = NOT_RECEIVED_MSG;
 	protected readonly Colors = Colors;
@@ -148,6 +124,9 @@ export class OtpInputComponent implements ControlValueAccessor {
 	protected readonly ExtraSize = ExtraSize;
 	protected readonly InputType = InputType;
 	protected readonly Align = Align;
+
+	private onChange: (value: string | null) => void = () => {};
+	private onTouched: () => void = () => {};
 
 	constructor(
 		@Self()
@@ -159,13 +138,12 @@ export class OtpInputComponent implements ControlValueAccessor {
 		}
 
 		toSignal(
-			this.otpForm.valueChanges.pipe(
+			this.otpForm().valueChanges.pipe(
 				tap((values) => {
 					this.onValueChange(Object.values(values).join(''));
 				}),
-
 				tap(() => {
-					if (this.otpForm.hasError('invalidOtp')) {
+					if (this.otpForm().hasError('invalidOtp')) {
 						this.clearOtpError();
 					}
 				}),
@@ -178,9 +156,9 @@ export class OtpInputComponent implements ControlValueAccessor {
 	}
 
 	public writeValue(value: string): void {
-		if (value && value.length === 6) {
+		if (value && value.length === this.fieldsCount()) {
 			value.split('').forEach((digit, i) => {
-				this.otpForm.get(i.toString())?.setValue(digit);
+				this.otpForm().get(i.toString())?.setValue(digit);
 			});
 		}
 	}
@@ -194,11 +172,11 @@ export class OtpInputComponent implements ControlValueAccessor {
 	}
 
 	public setDisabledState(isDisabled: boolean): void {
-		isDisabled ? this.otpForm.disable() : this.otpForm.enable();
+		isDisabled ? this.otpForm().disable() : this.otpForm().enable();
 	}
 
 	public getControl(index: number): FormControl {
-		return this.otpForm.get(index.toString()) as FormControl;
+		return this.otpForm().get(index.toString()) as FormControl;
 	}
 
 	public onInput(index: number): void {
@@ -222,7 +200,7 @@ export class OtpInputComponent implements ControlValueAccessor {
 		event.preventDefault();
 		const pastedData = event.clipboardData?.getData('text') || '';
 
-		this.pasteOtpValue(this.otpForm, pastedData, this.otpInputs());
+		this.pasteOtpValue(this.otpForm(), pastedData, this.otpInputs());
 	}
 
 	public pasteOtpValue(
@@ -230,13 +208,13 @@ export class OtpInputComponent implements ControlValueAccessor {
 		value: string,
 		inputs: readonly InputComponent[],
 	): void {
-		if (/^\d{6}$/.test(value)) {
+		if (new RegExp(`^\\d{${this.fieldsCount()}}$`).test(value)) {
 			const digits = value.split('');
 
 			digits.forEach((digit, i) => {
 				form.get(i.toString())?.setValue(digit);
 			});
-			inputs[5]?.setFocus();
+			inputs[this.fieldsCount() - 1]?.setFocus();
 		}
 	}
 
@@ -244,7 +222,7 @@ export class OtpInputComponent implements ControlValueAccessor {
 		index: number,
 		inputs: readonly InputComponent[],
 	): void {
-		if (index < 5) {
+		if (index < this.fieldsCount() - 1) {
 			inputs[index + 1]?.setFocus();
 		}
 	}
@@ -268,14 +246,12 @@ export class OtpInputComponent implements ControlValueAccessor {
 		this.startTimer$.next();
 	}
 
+	public isMiddleIndex(index: number, fieldsCount: number): boolean {
+		return index === Math.floor(fieldsCount / 2) - 1;
+	}
+
 	private onValueChange(value: string): void {
-		if (!value) {
-			this.onChange(null);
-
-			return;
-		}
-
-		this.onChange(value);
+		value ? this.onChange(value) : this.onChange(null);
 	}
 
 	private checkParentCtrlStatus(): void {
@@ -294,16 +270,16 @@ export class OtpInputComponent implements ControlValueAccessor {
 	}
 
 	private setOtpError(): void {
-		this.otpForm.setErrors({ invalidOtp: true });
-		Object.values(this.otpForm.controls).forEach((control) => {
+		this.otpForm().setErrors({ invalidOtp: true });
+		Object.values(this.otpForm().controls).forEach((control) => {
 			control.setErrors({ invalidOtp: true });
 			control.markAllAsTouched();
 		});
 	}
 
 	private clearOtpError(): void {
-		this.otpForm.setErrors(null);
-		Object.values(this.otpForm.controls).forEach((control) => {
+		this.otpForm().setErrors(null);
+		Object.values(this.otpForm().controls).forEach((control) => {
 			control.setErrors(null);
 			control.markAllAsTouched();
 		});

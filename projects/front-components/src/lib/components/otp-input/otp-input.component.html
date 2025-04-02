@@ -1,4 +1,4 @@
-<form [formGroup]="otpForm">
+<form [formGroup]="otpForm()">
 	<div class="otp-container">
 		@if (label()) {
 			<div class="otp-container__label">
@@ -13,7 +13,7 @@
 		}
 
 		<div class="otp-container__inputs">
-			@for (control of 6 | repeatTimes; track $index) {
+			@for (control of fieldsCount() | repeatTimes; track $index) {
 				<ss-lib-form-field
 					class="otp-container__inputs_item"
 					[label]="''"
@@ -37,7 +37,7 @@
 					/>
 				</ss-lib-form-field>
 
-				@if ($index === 2) {
+				@if ($index | mapper: isMiddleIndex : fieldsCount()) {
 					<ss-lib-text
 						[type]="TextType.HeadingXs"
 						[color]="Colors.TextDisabled"
@@ -57,7 +57,6 @@
 					[width]="'16'"
 					[color]="Colors.IconError"
 				/>
-
 				<ss-lib-text
 					[type]="TextType.BodySm"
 					[weight]="TextWeight.Medium"
