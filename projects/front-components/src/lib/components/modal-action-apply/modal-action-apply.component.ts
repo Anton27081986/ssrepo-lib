@@ -6,7 +6,7 @@ import {
 	output,
 } from '@angular/core';
 import { NgIf } from '@angular/common';
-import { ModalRef } from '../../shared/models';
+import { ExtraSize, ModalRef, Size } from '../../shared/models';
 import { ButtonType } from '../../shared/models';
 import { ButtonComponent } from '../buttons';
 
@@ -84,6 +84,8 @@ export class ModalActionApplyComponent {
 	 */
 	protected buttonType = ButtonType;
 
+	protected readonly Size = Size;
+	protected readonly ExtraSize = ExtraSize;
 	/**
 	 * Создает экземпляр компонента.
 	 *
