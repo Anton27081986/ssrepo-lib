@@ -68,7 +68,7 @@ export class OtpInputComponent implements ControlValueAccessor {
 
 	public readonly label = input<string>('Введите код');
 	public readonly errorText = input<string>('');
-	public readonly resendTime = input<number>(5);
+	public readonly resendTime = input<number>(30);
 	public readonly fieldsCount = input<number>(6);
 	public readonly otpResendEvent = output<void>();
 
