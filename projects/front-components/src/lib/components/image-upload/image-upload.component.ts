@@ -5,8 +5,10 @@ import {
 	input,
 	output,
 	signal,
+	WritableSignal,
 } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { interval, map, Subject, take, takeUntil } from 'rxjs';
 import { TextComponent } from '../text/text.component';
 import { ButtonComponent, PreviewButtonComponent } from '../buttons';
 import {
@@ -117,6 +119,15 @@ export class ImageUploadComponent {
 	public progress = input<number>(0);
 
 	/**
+	 * Процент загрузки.
+	 *
+	 * @default 0
+	 * @description
+	 * Текущий процент загрузки изображения.
+	 */
+	public animProgress: WritableSignal<number> = signal<number>(0);
+
+	/**
 	 * URL изображения.
 	 *
 	 * @default null
@@ -196,9 +207,9 @@ export class ImageUploadComponent {
 	protected States = States;
 
 	/**
-	 * Таймер для обработки прогресса.
+	 * Subject для отмены подписки на загрузку.
 	 */
-	private timer: ReturnType<typeof setTimeout> | null = null;
+	protected subjectCancel: Subject<unknown> = new Subject();
 
 	/**
 	 * Создает экземпляр компонента.
@@ -217,19 +228,25 @@ export class ImageUploadComponent {
 		});
 
 		effect(() => {
-			if (this.progress() && !this.timer) {
-				this.timer = setTimeout(() => {
-					if (this.progress() === 100) {
-						this.state.set(States.Preview);
-					}
-
-					this.timer = null;
-				}, 2000);
+			if (this.progress()) {
 				this.state.set(States.Loading);
-			}
 
-			if (this.progress() === 100 && !this.timer) {
-				this.state.set(States.Preview);
+				const numbers$ = interval(10).pipe(
+					map((i) => i + 1),
+					take(110),
+					takeUntil(this.subjectCancel),
+				);
+
+				numbers$.subscribe({
+					next: (number) => this.animProgress.set(number),
+					complete: () => {
+						if (this.progress() === 100) {
+							this.state.set(States.Preview);
+						}
+
+						this.animProgress.set(0);
+					},
+				});
 			}
 		});
 	}
@@ -285,6 +302,8 @@ export class ImageUploadComponent {
 	 */
 	protected onFileDelete(): void {
 		this.uploadCancel.emit();
+		this.subjectCancel.next(false);
+		this.animProgress.set(0);
 		this.state.set(States.Empty);
 	}
 
