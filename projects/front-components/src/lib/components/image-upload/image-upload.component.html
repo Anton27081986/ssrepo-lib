@@ -68,7 +68,7 @@
 		<div class="image-loading">
 			<ss-lib-progress-circle
 				class="image-loading__loader"
-				[progress]="this.progress()"
+				[progress]="animProgress()"
 			></ss-lib-progress-circle>
 			<ss-lib-preview-button
 				class="image-loading__cancel"
@@ -77,3 +77,5 @@
 		</div>
 	}
 }
+
+{{ animProgress() }}
