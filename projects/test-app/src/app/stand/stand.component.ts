@@ -221,6 +221,7 @@ export class StandComponent {
 
 	public uploadFile(file: File | null): void {
 		if (file) {
+			this.fileLoadProgress.set(0);
 			const formData = new FormData();
 
 			formData.append('file', file);
