@@ -62,6 +62,10 @@ export class StandComponent {
 		new Date(),
 	);
 
+	public checkBox1 = new FormControl(null);
+	public checkBox2 = new FormControl(null);
+	public checkBox3 = new FormControl(true);
+
 	public otpCtrl = new FormControl('');
 
 	public fileLoadProgress = signal<number>(0);
@@ -89,6 +93,10 @@ export class StandComponent {
 		private readonly http: HttpClient,
 	) {
 		this.columnState.colsTr$.next(DEFAULT_COLS);
+
+		this.checkBox2.disable();
+
+		this.checkBox3.disable();
 	}
 
 	public openTestModal(): void {

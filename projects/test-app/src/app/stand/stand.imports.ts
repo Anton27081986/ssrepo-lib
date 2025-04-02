@@ -32,6 +32,7 @@ import {
 	ProgressCircleComponent,
 	ScrollbarComponent,
 	TimepickerComponent,
+	CheckboxComponent,
 	OtpInputComponent,
 } from '../../../../front-components/src/lib/components';
 import {
@@ -78,5 +79,6 @@ export const standImports = [
 	ScrollbarComponent,
 	TimepickerComponent,
 	ProgressCircleComponent,
+	CheckboxComponent,
 	OtpInputComponent,
 ];

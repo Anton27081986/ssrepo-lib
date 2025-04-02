@@ -1,0 +1,21 @@
+<div
+	class="checkbox"
+	tabindex="0"
+	[class.checkbox--active]="checked()"
+	[class.checkbox--hover]="isHover()"
+	[class.checkbox--disabled]="isDisabled()"
+	[class.checkbox--active-hover]="isHover() && checked()"
+	(mouseenter)="onMouseEnter()"
+	(mouseleave)="onMouseLeave()"
+	(focus)="onFocus()"
+	(blur)="onBlur()"
+	(click)="toggleCheckbox()"
+>
+	<ss-lib-icon
+		*ngIf="checked()"
+		[color]="isDisabled() ? Colors.IconOnDisabled : Colors.IconOnAction"
+		[height]="'12'"
+		[width]="'12'"
+		[icon]="iconComputed()"
+	></ss-lib-icon>
+</div>
