@@ -71,7 +71,7 @@ export class NumberPickerComponent implements ControlValueAccessor {
 	 * @description
 	 * Минимально допустимое значение для ввода.
 	 */
-	public min = input<number>(0);
+	public readonly min = input<number>(0);
 
 	/**
 	 * Максимальное значение.
@@ -81,7 +81,7 @@ export class NumberPickerComponent implements ControlValueAccessor {
 	 * Максимально допустимое значение для ввода.
 	 * Если не указано, ограничение не применяется.
 	 */
-	public max = input<number | undefined>(undefined);
+	public readonly max = input<number | undefined>(undefined);
 
 	/**
 	 * Шаг изменения значения.
@@ -91,7 +91,7 @@ export class NumberPickerComponent implements ControlValueAccessor {
 	 * Значение, на которое изменяется число при
 	 * использовании кнопок увеличения/уменьшения.
 	 */
-	public step = input<number>(1);
+	public readonly step = input<number>(1);
 
 	/**
 	 * Форм-контрол для управления значением.
@@ -100,7 +100,7 @@ export class NumberPickerComponent implements ControlValueAccessor {
 	 * Используется для управления состоянием поля ввода
 	 * и интеграции с Angular Forms.
 	 */
-	public numberPickerCtrl = new FormControl();
+	public readonly numberPickerCtrl = new FormControl();
 
 	/**
 	 * Флаг отключения компонента.
@@ -108,52 +108,52 @@ export class NumberPickerComponent implements ControlValueAccessor {
 	 * @description
 	 * Определяет, доступен ли компонент для взаимодействия.
 	 */
-	public isDisabled = signal<boolean>(false);
+	public readonly isDisabled = signal<boolean>(false);
 
 	/**
 	 * Константы для типов кнопок.
 	 */
-	public ButtonType = ButtonType;
+	public readonly ButtonType = ButtonType;
 
 	/**
 	 * Константы для типов иконок.
 	 */
-	public IconType = IconType;
+	public readonly IconType = IconType;
 
 	/**
 	 * Константы для позиций иконок.
 	 */
-	public IconPosition = IconPosition;
+	public readonly IconPosition = IconPosition;
 
 	/**
 	 * Константы для направлений.
 	 */
-	public Direction = Direction;
+	public readonly Direction = Direction;
 
 	/**
 	 * Константы для выравнивания.
 	 */
-	public Align = Align;
+	public readonly Align = Align;
 
 	/**
 	 * Константы для типов ввода.
 	 */
-	public InputType = InputType;
+	public readonly InputType = InputType;
 
 	/**
 	 * Константы для дополнительных размеров.
 	 */
-	protected ExtraSize = ExtraSize;
+	protected readonly ExtraSize = ExtraSize;
 
 	/**
 	 * Callback для обновления значения.
 	 */
-	public onChange: (value: number | null) => void = () => {};
+	public onChange: ((value: number | null) => void) | undefined;
 
 	/**
 	 * Callback для обработки события касания.
 	 */
-	public onTouched: () => void = () => {};
+	public onTouched: (() => void) | undefined;
 
 	/**
 	 * Записывает значение в компонент.
@@ -219,7 +219,7 @@ export class NumberPickerComponent implements ControlValueAccessor {
 		value = this.checkNumberValue(value);
 
 		this.numberPickerCtrl.setValue(value);
-		this.onChange(value);
+		this.onChange?.(value);
 	}
 
 	/**
@@ -243,7 +243,7 @@ export class NumberPickerComponent implements ControlValueAccessor {
 
 		if (!this.numberPickerCtrl.value) {
 			this.numberPickerCtrl.setValue(this.min());
-			this.onChange(this.min());
+			this.onChange?.(this.min());
 		}
 	}
 

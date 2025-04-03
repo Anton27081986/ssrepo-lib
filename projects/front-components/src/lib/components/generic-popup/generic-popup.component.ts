@@ -17,8 +17,8 @@ export enum PopoverAnimationEnum {
 	imports: [NgComponentOutlet],
 })
 export class GenericPopupComponent {
-	public content: PopupContent;
-	public type: TypePopup;
+	public readonly content: PopupContent;
+	public readonly type: TypePopup;
 
 	constructor(private readonly popoverRef: ModalRef) {
 		this.type = this.popoverRef.type;

@@ -28,7 +28,7 @@ import { ToastRef } from '../../../../front-components/src/lib/components';
 @Component({
 	selector: 'app-stand',
 	standalone: true,
-	imports: [standImports],
+	imports: [...standImports],
 	providers: [ColumnsStateService],
 	templateUrl: './stand.component.html',
 	styleUrl: './stand.component.scss',
@@ -223,6 +223,7 @@ export class StandComponent {
 
 	public uploadFile(file: File | null): void {
 		if (file) {
+			this.fileLoadProgress.set(0);
 			const formData = new FormData();
 
 			formData.append('file', file);

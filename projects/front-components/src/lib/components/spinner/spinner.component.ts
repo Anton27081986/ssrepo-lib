@@ -1,4 +1,3 @@
-import type { InputSignal } from '@angular/core';
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { TextComponent } from '../text/text.component';
 import {
@@ -39,41 +38,41 @@ export class SpinnerComponent {
 	 * - true: отображает текст "Загрузка..." под спиннером
 	 * - false: показывает только анимированный спиннер
 	 */
-	public displaySpinnerText: InputSignal<boolean> = input<boolean>(false);
+	public readonly displaySpinnerText = input<boolean>(false);
 
 	/**
 	 * Константы для типов текста.
 	 * Используются для стилизации текста спиннера.
 	 */
-	protected TextType = TextType;
+	protected readonly TextType = TextType;
 
 	/**
 	 * Константы для весов текста.
 	 * Определяют толщину шрифта текста спиннера.
 	 */
-	protected TextWeight = TextWeight;
+	protected readonly TextWeight = TextWeight;
 
 	/**
 	 * Константы для дополнительных размеров.
 	 * Используются для настройки размеров компонента.
 	 */
-	protected ExtraSize = ExtraSize;
+	protected readonly ExtraSize = ExtraSize;
 
 	/**
 	 * Константы для типов кнопок.
 	 * Применяются для стилизации контейнера спиннера.
 	 */
-	protected ButtonType = ButtonType;
+	protected readonly ButtonType = ButtonType;
 
 	/**
 	 * Константы для форм.
 	 * Определяют внешний вид компонента.
 	 */
-	protected Shape = Shape;
+	protected readonly Shape = Shape;
 
 	/**
 	 * Константы для цветов.
 	 * Используются для настройки цветовой схемы компонента.
 	 */
-	protected Colors = Colors;
+	protected readonly Colors = Colors;
 }

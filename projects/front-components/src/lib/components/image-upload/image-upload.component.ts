@@ -7,6 +7,7 @@ import {
 	signal,
 } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { interval, map, Subject, take, takeUntil } from 'rxjs';
 import { TextComponent } from '../text/text.component';
 import { ButtonComponent, PreviewButtonComponent } from '../buttons';
 import {
@@ -75,7 +76,7 @@ export class ImageUploadComponent {
 	 * Определяет, доступен ли компонент для
 	 * взаимодействия.
 	 */
-	public disabled = input<boolean>(false);
+	public readonly disabled = input<boolean>(false);
 
 	/**
 	 * Максимальный размер файла в МБ.
@@ -85,7 +86,7 @@ export class ImageUploadComponent {
 	 * Максимально допустимый размер загружаемого
 	 * изображения в мегабайтах.
 	 */
-	public maxSize = input<number>(0);
+	public readonly maxSize = input<number>(0);
 
 	/**
 	 * Максимальная высота изображения.
@@ -95,7 +96,7 @@ export class ImageUploadComponent {
 	 * Максимально допустимая высота изображения
 	 * в пикселях.
 	 */
-	public maxHeight = input<number>(0);
+	public readonly maxHeight = input<number>(0);
 
 	/**
 	 * Максимальная ширина изображения.
@@ -105,7 +106,7 @@ export class ImageUploadComponent {
 	 * Максимально допустимая ширина изображения
 	 * в пикселях.
 	 */
-	public maxWidth = input<number>(0);
+	public readonly maxWidth = input<number>(0);
 
 	/**
 	 * Процент загрузки.
@@ -114,7 +115,16 @@ export class ImageUploadComponent {
 	 * @description
 	 * Текущий процент загрузки изображения.
 	 */
-	public progress = input<number>(0);
+	public readonly progress = input<number>(0);
+
+	/**
+	 * Процент загрузки.
+	 *
+	 * @default 0
+	 * @description
+	 * Текущий процент загрузки изображения.
+	 */
+	public readonly animProgress = signal<number>(0);
 
 	/**
 	 * URL изображения.
@@ -123,7 +133,7 @@ export class ImageUploadComponent {
 	 * @description
 	 * URL изображения для предпросмотра.
 	 */
-	public src = input<string | null>(null);
+	public readonly src = input<string | null>(null);
 
 	/**
 	 * Событие изменения файла.
@@ -132,7 +142,7 @@ export class ImageUploadComponent {
 	 * Генерируется при выборе или загрузке
 	 * нового файла.
 	 */
-	public fileChanged = output<File | null>();
+	public readonly fileChanged = output<File | null>();
 
 	/**
 	 * Событие отмены загрузки.
@@ -141,7 +151,7 @@ export class ImageUploadComponent {
 	 * Генерируется при отмене загрузки
 	 * изображения.
 	 */
-	public uploadCancel = output();
+	public readonly uploadCancel = output();
 
 	/**
 	 * Флаг наведения.
@@ -150,7 +160,7 @@ export class ImageUploadComponent {
 	 * Определяет, находится ли курсор над
 	 * областью загрузки.
 	 */
-	protected hover = signal<boolean>(false);
+	protected readonly hover = signal<boolean>(false);
 
 	/**
 	 * Текущее состояние компонента.
@@ -159,7 +169,7 @@ export class ImageUploadComponent {
 	 * Определяет текущее состояние компонента:
 	 * пустой, загрузка или предпросмотр.
 	 */
-	protected state = signal<States>(States.Empty);
+	protected readonly state = signal<States>(States.Empty);
 
 	/**
 	 * URL текущего изображения.
@@ -168,37 +178,37 @@ export class ImageUploadComponent {
 	 * URL изображения для отображения
 	 * в предпросмотре.
 	 */
-	protected imageSrc: string | null = null;
+	protected readonly imageSrc = signal<string | null>(null);
 
 	/**
 	 * Константы для типов иконок.
 	 */
-	protected IconType = IconType;
+	protected readonly IconType = IconType;
 
 	/**
 	 * Константы для дополнительных размеров.
 	 */
-	protected ExtraSize = ExtraSize;
+	protected readonly ExtraSize = ExtraSize;
 
 	/**
 	 * Константы для типов текста.
 	 */
-	protected TextType = TextType;
+	protected readonly TextType = TextType;
 
 	/**
 	 * Константы для цветов.
 	 */
-	protected Colors = Colors;
+	protected readonly Colors = Colors;
 
 	/**
 	 * Константы для состояний.
 	 */
-	protected States = States;
+	protected readonly States = States;
 
 	/**
-	 * Таймер для обработки прогресса.
+	 * Subject для отмены подписки на загрузку.
 	 */
-	private timer: ReturnType<typeof setTimeout> | null = null;
+	protected readonly subjectCancel = new Subject<unknown>();
 
 	/**
 	 * Создает экземпляр компонента.
@@ -208,28 +218,34 @@ export class ImageUploadComponent {
 	 * Инициализирует компонент и настраивает
 	 * обработку изменений состояния.
 	 */
-	constructor(private sharedPopupService: SharedPopupService) {
+	constructor(private readonly sharedPopupService: SharedPopupService) {
 		effect(() => {
 			if (this.src()) {
-				this.imageSrc = this.src();
+				this.imageSrc.set(this.src());
 				this.state.set(States.Preview);
 			}
 		});
 
 		effect(() => {
-			if (this.progress() && !this.timer) {
-				this.timer = setTimeout(() => {
-					if (this.progress() === 100) {
-						this.state.set(States.Preview);
-					}
-
-					this.timer = null;
-				}, 2000);
+			if (this.progress()) {
 				this.state.set(States.Loading);
-			}
 
-			if (this.progress() === 100 && !this.timer) {
-				this.state.set(States.Preview);
+				const numbers$ = interval(10).pipe(
+					map((i) => i + 1),
+					take(110),
+					takeUntil(this.subjectCancel),
+				);
+
+				numbers$.subscribe({
+					next: (number) => this.animProgress.set(number),
+					complete: () => {
+						if (this.progress() === 100) {
+							this.state.set(States.Preview);
+						}
+
+						this.animProgress.set(0);
+					},
+				});
 			}
 		});
 	}
@@ -285,6 +301,8 @@ export class ImageUploadComponent {
 	 */
 	protected onFileDelete(): void {
 		this.uploadCancel.emit();
+		this.subjectCancel.next(false);
+		this.animProgress.set(0);
 		this.state.set(States.Empty);
 	}
 
@@ -350,7 +368,9 @@ export class ImageUploadComponent {
 			const reader = new FileReader();
 
 			reader.onload = () => {
-				this.imageSrc = reader.result ? reader.result.toString() : null;
+				this.imageSrc.set(
+					reader.result ? reader.result.toString() : null,
+				);
 			};
 
 			reader.readAsDataURL(file);

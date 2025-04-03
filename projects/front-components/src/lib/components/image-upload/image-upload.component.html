@@ -18,8 +18,8 @@
 				<ss-lib-text
 					[type]="TextType.BodySm"
 					[color]="Colors.TextBody2"
-					>Добавьте или перетащите изображение</ss-lib-text
-				>
+					>Добавьте или перетащите изображение
+				</ss-lib-text>
 				<ss-lib-text
 					[type]="TextType.BodyXs"
 					[color]="Colors.TextBody3"
@@ -47,6 +47,7 @@
 					[disabled]="disabled()"
 					[text]="'Загрузить с устройства'"
 					[icon]="IconType.Upload"
+					[size]="ExtraSize.lg"
 					(click)="hiddenInput.click()"
 				></ss-lib-button>
 			</label>
@@ -60,7 +61,7 @@
 			></ss-lib-preview-button>
 			<img
 				alt="Баннер"
-				[src]="imageSrc"
+				[src]="imageSrc()"
 			/>
 		</div>
 	}
@@ -68,7 +69,7 @@
 		<div class="image-loading">
 			<ss-lib-progress-circle
 				class="image-loading__loader"
-				[progress]="this.progress()"
+				[progress]="animProgress()"
 			></ss-lib-progress-circle>
 			<ss-lib-preview-button
 				class="image-loading__cancel"

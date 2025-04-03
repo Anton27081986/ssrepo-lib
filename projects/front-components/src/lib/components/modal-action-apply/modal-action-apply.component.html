@@ -2,6 +2,7 @@
 	*ngIf="cancelText()"
 	[type]="buttonType.Secondary"
 	[text]="cancelText()"
+	[size]="ExtraSize.lg"
 	(click)="close()"
 ></ss-lib-button>
 
@@ -9,5 +10,6 @@
 	[disabled]="applyDisabled()"
 	[type]="buttonType.Primary"
 	[text]="applyText()"
+	[size]="ExtraSize.lg"
 	(click)="applyEvent.emit()"
 ></ss-lib-button>

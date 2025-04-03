@@ -18,14 +18,25 @@ import { DividerComponent } from '../divider/divider.component';
 import { ScrollbarComponent } from '../scrollbar/scrollbar.component';
 
 /**
- * Компонент выпадающего списка.
- *
- * Предоставляет универсальный выпадающий список с поддержкой
- * кастомных шаблонов, прокрутки и выбора элементов. Реализует
- * интерфейс PopoverContent для интеграции с popover.
+ * Компонент выпадающего списка с поддержкой кастомных шаблонов и прокрутки
  *
  * @example
  * ```html
+ * Параметры:
+ *
+ * [headerTemplateRef]: TemplateRef - Шаблон заголовка списка -
+ * необязательный, по умолчанию: null
+ *
+ * [width]: string - Ширина выпадающего списка - необязательный,
+ * по умолчанию: 'max-content'
+ *
+ * [height]: string - Высота выпадающего списка - необязательный,
+ * по умолчанию: 'auto'
+ *
+ * (value): T | string | null - Событие выбора элемента - обязательный
+ *
+ * (closed): void - Событие закрытия списка - обязательный
+ *
  * <ss-lib-dropdown-list
  *   [headerTemplateRef]="headerTemplate"
  *   [width]="'200px'"
