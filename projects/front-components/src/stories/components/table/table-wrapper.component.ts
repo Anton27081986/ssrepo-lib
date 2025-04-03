@@ -28,8 +28,8 @@ export class TableWrapperComponent {
 				order: 1,
 				width: '100px',
 				align: 'left',
-				padding: '16px',
 				sticky: false,
+				noPadding: false,
 				skeleton: {
 					header: {
 						width: '100%',
@@ -49,8 +49,8 @@ export class TableWrapperComponent {
 				order: 2,
 				width: '200px',
 				align: 'left',
-				padding: '16px',
 				sticky: false,
+				noPadding: true,
 				skeleton: {
 					header: {
 						width: '100%',
