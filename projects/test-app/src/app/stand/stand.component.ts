@@ -66,6 +66,8 @@ export class StandComponent {
 	public checkBox2 = new FormControl(null);
 	public checkBox3 = new FormControl(true);
 
+	public otpCtrl = new FormControl('');
+
 	public fileLoadProgress = signal<number>(0);
 	public fileLoadSubscription?: Subscription;
 
@@ -259,5 +261,15 @@ export class StandComponent {
 		if (this.fileLoadSubscription) {
 			this.fileLoadSubscription.unsubscribe();
 		}
+	}
+
+	public submitOtp(): void {
+		if (this.otpCtrl.invalid) {
+			this.otpCtrl.setErrors(null);
+
+			return;
+		}
+
+		this.otpCtrl.setErrors({ invalidOtp: true });
 	}
 }

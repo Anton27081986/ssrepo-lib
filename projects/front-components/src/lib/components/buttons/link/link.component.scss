@@ -48,6 +48,7 @@ button.custom-button.type-link-black {
 
 button.custom-button.type-link-blue,
 button.custom-button.type-link-black {
+	padding: 0;
 	border-radius: var(--border-radius-xs);
 	z-index: 1;
 	background: transparent;

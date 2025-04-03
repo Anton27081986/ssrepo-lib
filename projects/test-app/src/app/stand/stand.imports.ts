@@ -32,13 +32,14 @@ import {
 	ProgressCircleComponent,
 	ScrollbarComponent,
 	TimepickerComponent,
+	CheckboxComponent,
+	OtpInputComponent,
 } from '../../../../front-components/src/lib/components';
 import {
 	FieldCtrlDirective,
 	PopoverTriggerForDirective,
 } from '../../../../front-components/src/lib/core/directives';
 import { RepeatTimesPipe } from '../../../../front-components/src/lib/core/pipes';
-import { CheckboxComponent } from '../../../../front-components/src/lib/components/checkbox/checkbox.component';
 
 export const standImports = [
 	ReactiveFormsModule,
@@ -79,4 +80,5 @@ export const standImports = [
 	TimepickerComponent,
 	ProgressCircleComponent,
 	CheckboxComponent,
+	OtpInputComponent,
 ];
