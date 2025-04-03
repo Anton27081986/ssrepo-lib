@@ -69,7 +69,7 @@ export class LightBoxComponent {
 	 * @description
 	 * Инициализирует компонент данными из модального окна.
 	 */
-	constructor(private modalRef: ModalRef<ILightBoxData>) {
+	constructor(private readonly modalRef: ModalRef<ILightBoxData>) {
 		this.src = modalRef.data.src;
 		this.width = modalRef.data.width;
 		this.height = modalRef.data.height;

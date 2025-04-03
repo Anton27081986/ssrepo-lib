@@ -21,9 +21,9 @@ import { Colors, TextType, TextWeight } from '../../shared/models';
 	standalone: true,
 })
 export class TextComponent {
-	public type = input<TextType>(TextType.BodyMd);
-	public weight = input<TextWeight>(TextWeight.Regular);
-	public color = input<Colors>(Colors.TextHeadings);
-	public isEllipsis = input<boolean>(false);
-	public isUnderline = input<boolean>(false);
+	public readonly type = input<TextType>(TextType.BodyMd);
+	public readonly weight = input<TextWeight>(TextWeight.Regular);
+	public readonly color = input<Colors>(Colors.TextHeadings);
+	public readonly isEllipsis = input<boolean>(false);
+	public readonly isUnderline = input<boolean>(false);
 }

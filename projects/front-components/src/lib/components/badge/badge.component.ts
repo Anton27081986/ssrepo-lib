@@ -28,14 +28,14 @@ import { Colors, ExtraSize, Shape, Status } from '../../shared/models';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BadgeComponent {
-	public badgeProps = input.required<IBadgeProps, IBadgeProps>({
+	public readonly badgeProps = input.required<IBadgeProps, IBadgeProps>({
 		transform: this.setDefaultProps,
 	});
 
 	public readonly ExtraSize = ExtraSize;
 	public readonly Colors = Colors;
 
-	public statusProps = computed(() => {
+	public readonly statusProps = computed(() => {
 		switch (this.badgeProps().status) {
 			case Status.Error:
 				return {
@@ -51,7 +51,7 @@ export class BadgeComponent {
 		}
 	});
 
-	public layoutConfig = computed(() => {
+	public readonly layoutConfig = computed(() => {
 		switch (this.badgeProps().size) {
 			case ExtraSize.lg:
 				return { iconSize: '24' };

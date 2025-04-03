@@ -15,9 +15,9 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProgressCircleComponent {
-	public progress: InputSignal<number> = input<number>(80);
+	public readonly progress: InputSignal<number> = input<number>(80);
 
-	public spinnerElement = viewChild('spinner', {
+	public readonly spinnerElement = viewChild('spinner', {
 		read: ElementRef,
 	});
 

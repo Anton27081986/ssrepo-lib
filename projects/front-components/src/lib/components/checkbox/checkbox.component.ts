@@ -37,13 +37,22 @@ import { Colors, IconType } from '../../shared/models';
 	],
 })
 export class CheckboxComponent implements ControlValueAccessor {
-	protected checked: WritableSignal<boolean> = signal<boolean>(false);
-	protected isDisabled: WritableSignal<boolean> = signal<boolean>(false);
-	protected isHover: WritableSignal<boolean> = signal<boolean>(false);
-	protected isFocus: WritableSignal<boolean> = signal<boolean>(false);
-	public type: InputSignal<CheckboxType> = input<CheckboxType>('default');
+	protected readonly checked: WritableSignal<boolean> =
+		signal<boolean>(false);
 
-	protected iconComputed: Signal<IconType> = computed(() => {
+	protected readonly isDisabled: WritableSignal<boolean> =
+		signal<boolean>(false);
+
+	protected readonly isHover: WritableSignal<boolean> =
+		signal<boolean>(false);
+
+	protected readonly isFocus: WritableSignal<boolean> =
+		signal<boolean>(false);
+
+	public readonly type: InputSignal<CheckboxType> =
+		input<CheckboxType>('default');
+
+	protected readonly iconComputed: Signal<IconType> = computed(() => {
 		if (this.type() === 'default') {
 			return IconType.Check;
 		}

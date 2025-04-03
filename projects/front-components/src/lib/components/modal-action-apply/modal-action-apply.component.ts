@@ -1,4 +1,3 @@
-import type { InputSignal } from '@angular/core';
 import {
 	ChangeDetectionStrategy,
 	Component,
@@ -42,7 +41,7 @@ export class ModalActionApplyComponent {
 	 * Обязательный параметр, отображаемый на
 	 * кнопке подтверждения действия.
 	 */
-	public applyText: InputSignal<string> = input.required<string>();
+	public readonly applyText = input<string>('');
 
 	/**
 	 * Флаг отключения кнопки подтверждения.
@@ -52,7 +51,7 @@ export class ModalActionApplyComponent {
 	 * Определяет, доступна ли кнопка подтверждения
 	 * для взаимодействия.
 	 */
-	public applyDisabled: InputSignal<boolean> = input<boolean>(false);
+	public readonly applyDisabled = input<boolean>(false);
 
 	/**
 	 * Текст кнопки отмены.
@@ -62,9 +61,7 @@ export class ModalActionApplyComponent {
 	 * Опциональный параметр, отображаемый на
 	 * кнопке отмены действия.
 	 */
-	public cancelText: InputSignal<string | undefined> = input<
-		string | undefined
-	>();
+	public readonly cancelText = input<string>('');
 
 	/**
 	 * Событие подтверждения действия.
@@ -73,7 +70,7 @@ export class ModalActionApplyComponent {
 	 * Генерируется при нажатии на кнопку
 	 * подтверждения.
 	 */
-	public applyEvent = output<void>();
+	public readonly applyEvent = output<void>();
 
 	/**
 	 * Константы для типов кнопок.
@@ -94,7 +91,7 @@ export class ModalActionApplyComponent {
 	 * Инициализирует компонент с ссылкой на
 	 * модальное окно.
 	 */
-	constructor(private modalRef: ModalRef) {}
+	constructor(private readonly modalRef: ModalRef) {}
 
 	/**
 	 * Закрывает модальное окно.

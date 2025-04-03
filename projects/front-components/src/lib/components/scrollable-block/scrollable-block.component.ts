@@ -1,9 +1,4 @@
-import {
-	Component,
-	input,
-	InputSignal,
-	ViewEncapsulation,
-} from '@angular/core';
+import { Component, input, ViewEncapsulation } from '@angular/core';
 
 /**
  * Компонент прокручиваемого блока.
@@ -44,7 +39,7 @@ export class ScrollableBlockComponent {
 	 * @description
 	 * При значении true скрывает горизонтальную полосу прокрутки.
 	 */
-	public horizontalScroll: InputSignal<boolean> = input(false);
+	public readonly horizontalScroll = input<boolean>(false);
 
 	/**
 	 * Флаг включения вертикальной прокрутки.
@@ -53,7 +48,7 @@ export class ScrollableBlockComponent {
 	 * @description
 	 * При значении false скрывает вертикальную полосу прокрутки.
 	 */
-	public verticalScroll: InputSignal<boolean> = input(false);
+	public readonly verticalScroll = input<boolean>(false);
 
 	/**
 	 * Флаг отключения автоматического определения размеров.
@@ -63,5 +58,5 @@ export class ScrollableBlockComponent {
 	 * При значении true отключает автоматическое определение
 	 * размеров контейнера.
 	 */
-	public disableAutoSize: InputSignal<boolean> = input(false);
+	public readonly disableAutoSize = input<boolean>(false);
 }

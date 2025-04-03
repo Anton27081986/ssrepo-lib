@@ -20,8 +20,8 @@ import { Colors, IconType, TextType, TextWeight } from '../../shared/models';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AvatarComponent {
-	public src = input<string>('');
-	public username = input<string>('');
+	public readonly src = input<string>('');
+	public readonly username = input<string>('');
 
 	public showFallbackImage = false;
 

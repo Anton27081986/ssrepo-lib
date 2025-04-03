@@ -34,11 +34,15 @@ import { DividerComponent } from '../divider/divider.component';
 	styleUrl: './empty-state.component.scss',
 })
 export class EmptyStateComponent {
-	public headerTitle: InputSignal<string> = input.required<string>();
-	public actionRef: InputSignal<TemplateRef<{}> | null> = input.required();
-	public icon: InputSignal<IconType> = input.required<IconType>();
-	public title: InputSignal<string> = input.required();
-	public description: InputSignal<string | null> = input<string | null>(null);
+	public readonly headerTitle: InputSignal<string> = input.required<string>();
+	public readonly actionRef: InputSignal<TemplateRef<{}> | null> =
+		input.required();
+
+	public readonly icon: InputSignal<IconType> = input.required<IconType>();
+	public readonly title: InputSignal<string> = input.required();
+	public readonly description: InputSignal<string | null> = input<
+		string | null
+	>(null);
 
 	protected readonly TextType = TextType;
 	protected readonly TextWeight = TextWeight;

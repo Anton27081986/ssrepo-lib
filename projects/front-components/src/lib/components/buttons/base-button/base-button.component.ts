@@ -51,21 +51,21 @@ import { EMPTY_STATE } from '../../../shared/constants';
 export class BaseButtonComponent<T extends ButtonTypeValues> {
 	public readonly elementState = inject(ElementStateService);
 
-	public type = input.required<T>();
-	public size = input<ExtraSize>(ExtraSize.md);
-	public text = input<string | undefined>();
-	public icon = input<IconType | null>(null);
-	public iconSize = input<string>('20');
-	public iconPosition = input<IconPosition>(IconPosition.Start);
-	public isActive = input<boolean>(false);
-	public disabled = input<boolean>(false);
+	public readonly type = input.required<T>();
+	public readonly size = input<ExtraSize>(ExtraSize.md);
+	public readonly text = input<string | undefined>();
+	public readonly icon = input<IconType | null>(null);
+	public readonly iconSize = input<string>('20');
+	public readonly iconPosition = input<IconPosition>(IconPosition.Start);
+	public readonly isActive = input<boolean>(false);
+	public readonly disabled = input<boolean>(false);
 
-	public state = signal<IStateElement>(EMPTY_STATE);
-	public buttonTextColors = computed(
+	public readonly state = signal<IStateElement>(EMPTY_STATE);
+	public readonly buttonTextColors = computed(
 		() => BUTTON_TEXT_COLORS_RECORD[this.type()!],
 	);
 
-	public buttonIconColors = computed(
+	public readonly buttonIconColors = computed(
 		() => BUTTON_ICON_COLORS_RECORD[this.type()!],
 	);
 

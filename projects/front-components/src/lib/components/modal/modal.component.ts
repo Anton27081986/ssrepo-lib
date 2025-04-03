@@ -1,9 +1,10 @@
-import { InputSignal, output, TemplateRef } from '@angular/core';
 import {
 	ChangeDetectionStrategy,
 	Component,
-	inject,
 	input,
+	output,
+	TemplateRef,
+	inject,
 } from '@angular/core';
 import { NgIf, NgTemplateOutlet } from '@angular/common';
 import type { IBadgeProps } from '../../shared/models';
@@ -45,7 +46,7 @@ export class ModalComponent {
 	 * Обязательный параметр, отображаемый в верхней
 	 * части модального окна.
 	 */
-	public titleHeader: InputSignal<string> = input.required<string>();
+	public readonly titleHeader = input<string>('');
 
 	/**
 	 * Описание модального окна.
@@ -54,7 +55,7 @@ export class ModalComponent {
 	 * Обязательный параметр, отображаемый под
 	 * заголовком модального окна.
 	 */
-	public descriptionHeader: InputSignal<string> = input.required<string>();
+	public readonly descriptionHeader = input<string>('');
 
 	/**
 	 * Шаблон действий модального окна.
@@ -63,7 +64,7 @@ export class ModalComponent {
 	 * Обязательный параметр, содержащий шаблон
 	 * с кнопками действий в нижней части окна.
 	 */
-	public actionsRef: InputSignal<TemplateRef<{}> | null> = input.required();
+	public readonly actionsRef = input.required<TemplateRef<unknown>>();
 
 	/**
 	 * Шаблон содержимого модального окна.
@@ -73,8 +74,7 @@ export class ModalComponent {
 	 * Опциональный параметр, содержащий шаблон
 	 * с основным содержимым модального окна.
 	 */
-	public contentRef: InputSignal<TemplateRef<{}> | null> =
-		input<TemplateRef<{}> | null>(null);
+	public readonly contentRef = input<TemplateRef<{}> | null>(null);
 
 	/**
 	 * Свойства бейджа.
@@ -83,7 +83,7 @@ export class ModalComponent {
 	 * Обязательный параметр, определяющий внешний вид
 	 * и содержимое бейджа в модальном окне.
 	 */
-	public badgeProps: InputSignal<IBadgeProps> = input.required<IBadgeProps>();
+	public readonly badgeProps = input.required<IBadgeProps>();
 
 	public readonly closeEmit = output<void>();
 

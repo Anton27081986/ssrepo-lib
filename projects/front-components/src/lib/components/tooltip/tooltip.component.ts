@@ -40,11 +40,11 @@ import { TextComponent } from '../text/text.component';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TooltipComponent {
-	public position = signal<TooltipPosition>(TooltipPosition.Bottom);
-	public text = signal<string | null>('');
-	public left = signal<number>(0);
-	public top = signal<number>(0);
-	public visible = signal<boolean>(false);
+	public readonly position = signal<TooltipPosition>(TooltipPosition.Bottom);
+	public readonly text = signal<string | null>('');
+	public readonly left = signal<number>(0);
+	public readonly top = signal<number>(0);
+	public readonly visible = signal<boolean>(false);
 
 	protected readonly TextType = TextType;
 	protected readonly Colors = Colors;

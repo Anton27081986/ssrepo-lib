@@ -31,7 +31,6 @@ module.exports = {
 				'import/no-relative-packages': 'off',
 				'import/no-deprecated': 'off',
 				'import/no-cycle': 'off',
-				'@typescript-eslint/prefer-readonly': 'off',
 				'@typescript-eslint/ban-types': 'off',
 				'@typescript-eslint/consistent-type-imports': 'off',
 				'@typescript-eslint/no-empty-function': 'off',
