@@ -11,6 +11,21 @@ import {
 import { ButtonType } from '../../shared/models';
 import { ModalActionApplyComponent } from '../modal-action-apply/modal-action-apply.component';
 
+/**
+ * Компонент модального окна подтверждения с поддержкой действий
+ *
+ * @example
+ * ```html
+ * Параметры:
+ *
+ * [cancelText]: string - Текст кнопки отмены - необязательный,
+ * по умолчанию: ''
+ *
+ * <ss-lib-confirm-modal
+ *   [cancelText]="'Отмена'"
+ * ></ss-lib-confirm-modal>
+ * ```
+ */
 @Component({
 	selector: 'ss-lib-confirm-modal',
 	standalone: true,

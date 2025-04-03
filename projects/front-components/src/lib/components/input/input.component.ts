@@ -25,21 +25,34 @@ import {
 import { Align, InputType } from '../../shared/models';
 
 /**
- * Компонент поля ввода.
- *
- * Предоставляет универсальное поле ввода с поддержкой различных типов,
- * масок, валидации и интеграции с Angular Forms. Реализует ControlValueAccessor
- * для работы с формами.
+ * Компонент поля ввода с поддержкой различных типов и масок
  *
  * @example
  * ```html
+ * Параметры:
+ *
+ * [type]: InputType - Тип поля ввода - необязательный, по умолчанию: InputType.Text
+ *
+ * [placeholder]: string - Текст подсказки - необязательный, по умолчанию: ''
+ *
+ * [readOnly]: boolean - Флаг режима только для чтения -
+ * необязательный, по умолчанию: false
+ *
+ * [align]: Align - Выравнивание текста - необязательный, по умолчанию: Align.Start
+ *
+ * [min]: unknown | undefined - Минимальное значение -
+ * необязательный, по умолчанию: undefined
+ *
+ * [max]: unknown | undefined - Максимальное значение -
+ * необязательный, по умолчанию: undefined
+ *
  * <ss-lib-input
  *   [type]="InputType.Text"
  *   [placeholder]="'Введите текст'"
  *   [readOnly]="false"
  *   [align]="Align.Start"
  *   [(ngModel)]="value"
- * />
+ * ></ss-lib-input>
  * ```
  */
 @Component({

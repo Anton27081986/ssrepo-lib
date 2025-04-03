@@ -9,6 +9,37 @@ import {
 } from '../../shared/models';
 import { TextComponent } from '../text/text.component';
 
+/**
+ * Компонент всплывающей подсказки с анимацией
+ *
+ * @example
+ * ```html
+ * Параметры:
+ *
+ * [position]: TooltipPosition - Позиция подсказки -
+ * необязательный, по умолчанию: TooltipPosition.Bottom
+ *
+ * [text]: string | null - Текст подсказки -
+ * необязательный, по умолчанию: ''
+ *
+ * [left]: number - Позиция по горизонтали -
+ * необязательный, по умолчанию: 0
+ *
+ * [top]: number - Позиция по вертикали -
+ * необязательный, по умолчанию: 0
+ *
+ * [visible]: boolean - Флаг видимости подсказки -
+ * необязательный, по умолчанию: false
+ *
+ * <ss-lib-tooltip
+ *   [position]="TooltipPosition.Bottom"
+ *   [text]="'Подсказка'"
+ *   [left]="100"
+ *   [top]="100"
+ *   [visible]="true"
+ * ></ss-lib-tooltip>
+ * ```
+ */
 @Component({
 	standalone: true,
 	imports: [NgClass, TextComponent],

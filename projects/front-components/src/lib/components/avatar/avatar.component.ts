@@ -5,11 +5,23 @@ import { TextComponent } from '../text/text.component';
 import { Colors, IconType, TextType, TextWeight } from '../../shared/models';
 
 /**
+ * Компонент для отображения аватара пользователя с поддержкой изображения
+ *
+ * @example
+ * ```html
  * Параметры:
  *
- * [src]: string - Путь к фото. По умолчанию: `''`
+ * [src]: string - Путь к изображению аватара -
+ * необязательный, по умолчанию: ''
  *
- * [username]: string - Имя пользователя. По умолчанию: `''`
+ * [username]: string - Имя пользователя для отображения инициалов -
+ * необязательный, по умолчанию: ''
+ *
+ * <ss-lib-avatar
+ *   [src]="'path/to/avatar.jpg'"
+ *   [username]="'Иван Иванов'"
+ * ></ss-lib-avatar>
+ * ```
  */
 @Component({
 	selector: 'ss-lib-avatar',

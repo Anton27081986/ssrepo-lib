@@ -33,6 +33,47 @@ import { TextComponent } from '../../text/text.component';
 import { ElementStateService } from '../../../shared/services';
 import { EMPTY_STATE } from '../../../shared/constants';
 
+/**
+ * Базовый компонент кнопки с поддержкой различных типов, размеров и иконок
+ *
+ * @example
+ * ```html
+ * Параметры:
+ *
+ * [type]: ButtonTypeValues - Тип кнопки - обязательный
+ *
+ * [size]: ExtraSize - Размер кнопки - необязательный,
+ * по умолчанию: ExtraSize.md
+ *
+ * [text]: string - Текст кнопки - необязательный
+ *
+ * [icon]: IconType - Иконка кнопки - необязательный,
+ * по умолчанию: null
+ *
+ * [iconSize]: string - Размер иконки - необязательный,
+ * по умолчанию: '20'
+ *
+ * [iconPosition]: IconPosition - Позиция иконки - необязательный,
+ * по умолчанию: IconPosition.Start
+ *
+ * [isActive]: boolean - Флаг активности кнопки - необязательный,
+ * по умолчанию: false
+ *
+ * [disabled]: boolean - Флаг отключения кнопки - необязательный,
+ * по умолчанию: false
+ *
+ * <ss-lib-base-button
+ *   [type]="ButtonType.Primary"
+ *   [size]="ExtraSize.md"
+ *   [text]="'Нажми меня'"
+ *   [icon]="IconType.ArrowRight"
+ *   [iconSize]="'20'"
+ *   [iconPosition]="IconPosition.End"
+ *   [isActive]="false"
+ *   [disabled]="false"
+ * ></ss-lib-base-button>
+ * ```
+ */
 @Component({
 	selector: 'ss-lib-base-button',
 	standalone: true,

@@ -13,21 +13,33 @@ import { BadgeInfoComponent } from '../badge-info/badge-info.component';
 import { DividerComponent } from '../divider/divider.component';
 
 /**
- * Компонент модального окна.
- *
- * Предоставляет модальное окно с заголовком, описанием,
- * содержимым и действиями. Поддерживает кастомизацию
- * через шаблоны и бейджи.
+ * Компонент модального окна с заголовком, описанием и действиями
  *
  * @example
  * ```html
+ * Параметры:
+ *
+ * [titleHeader]: string - Заголовок модального окна - необязательный, по умолчанию: ''
+ *
+ * [descriptionHeader]: string - Описание модального окна - необязательный, по умолчанию: ''
+ *
+ * [actionsRef]: TemplateRef - Шаблон действий - обязательный
+ *
+ * [contentRef]: TemplateRef | null - Шаблон содержимого -
+ * необязательный, по умолчанию: null
+ *
+ * [badgeProps]: IBadgeProps - Свойства бейджа - обязательный
+ *
+ * (closeEmit): void - Событие закрытия модального окна
+ *
  * <ss-lib-modal
  *   [titleHeader]="'Заголовок'"
  *   [descriptionHeader]="'Описание'"
  *   [badgeProps]="{ type: 'info', text: 'Статус' }"
  *   [actionsRef]="actionsTemplate"
  *   [contentRef]="contentTemplate"
- * />
+ *   (closeEmit)="onClose()"
+ * ></ss-lib-modal>
  * ```
  */
 @Component({

@@ -10,14 +10,25 @@ import type { IBadgeProps } from '../../shared/models';
 import { Colors, ExtraSize, Shape, Status } from '../../shared/models';
 
 /**
+ * Компонент для отображения бейджа с поддержкой различных статусов и размеров
+ *
+ * @example
+ * ```html
  * Параметры:
  *
- * [badgeProps]: IBadgeProps - бейдж модального окна. Обязательное поле. По умолчанию `{
- * shape: Shape.Square,
- * size: ExtraSize.lg
- * status: Status.Default
- * }
- **
+ * [badgeProps]: IBadgeProps - Свойства бейджа - обязательный,
+ * по умолчанию: { shape: Shape.Square, size: ExtraSize.lg, status: Status.Default }
+ *
+ * <ss-lib-badge
+ *   [badgeProps]="{
+ *     text: 'Новый',
+ *     color: Colors.Primary,
+ *     shape: Shape.Square,
+ *     size: ExtraSize.lg,
+ *     status: Status.Default
+ *   }"
+ * ></ss-lib-badge>
+ * ```
  */
 @Component({
 	selector: 'ss-lib-badge',

@@ -1,7 +1,7 @@
 import { Component, input, ViewEncapsulation } from '@angular/core';
 
 /**
- * Компонент прокручиваемого блока.
+ * Компонент прокручиваемого блока с настраиваемой прокруткой
  *
  * Предоставляет контейнер с настраиваемой прокруткой по горизонтали
  * и вертикали. Поддерживает автоматическое определение размеров
@@ -9,6 +9,17 @@ import { Component, input, ViewEncapsulation } from '@angular/core';
  *
  * @example
  * ```html
+ * Параметры:
+ *
+ * [horizontalScroll]: boolean - Флаг включения горизонтальной прокрутки -
+ * необязательный, по умолчанию: false
+ *
+ * [verticalScroll]: boolean - Флаг включения вертикальной прокрутки -
+ * необязательный, по умолчанию: false
+ *
+ * [disableAutoSize]: boolean - Флаг отключения автоматического определения размеров -
+ * необязательный, по умолчанию: false
+ *
  * <ss-lib-scrollable-block
  *   [horizontalScroll]="true"
  *   [verticalScroll]="true"

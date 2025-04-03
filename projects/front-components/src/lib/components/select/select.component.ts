@@ -21,18 +21,20 @@ import { DropdownListComponent } from '../dropdown-list/dropdown-list.component'
 import type { IDictionaryItemDto } from '../../shared/models';
 
 /**
- * Компонент выпадающего списка.
- *
- * Реализует ControlValueAccessor для интеграции с Angular Forms.
- * Поддерживает работу как со строковыми значениями, так и с объектами,
- * реализующими интерфейс IDictionaryItemDto.
+ * Компонент выпадающего списка с поддержкой строковых значений и объектов
  *
  * @example
  * ```html
+ * Параметры:
+ *
+ * [placeholder]: string - Текст подсказки - необязательный, по умолчанию: 'Выберите из списка'
+ *
+ * [(ngModel)]: T | string - Значение выбранного элемента - обязательный
+ *
  * <ss-lib-select
  *   [placeholder]="'Выберите значение'"
  *   [(ngModel)]="selectedValue"
- * />
+ * ></ss-lib-select>
  * ```
  *
  * @param T - Тип элемента списка, должен реализовывать IDictionaryItemDto

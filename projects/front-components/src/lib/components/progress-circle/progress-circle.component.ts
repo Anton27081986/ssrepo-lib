@@ -2,10 +2,18 @@ import { effect, ElementRef, InputSignal, viewChild } from '@angular/core';
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 
 /**
+ * Компонент кругового индикатора прогресса
+ *
+ * @example
+ * ```html
  * Параметры:
  *
- * [progress]: <number> - Процент загрузки. По умолчанию: 0
+ * [progress]: number - Процент загрузки - необязательный, по умолчанию: 80
  *
+ * <ss-lib-progress-circle
+ *   [progress]="75"
+ * ></ss-lib-progress-circle>
+ * ```
  */
 @Component({
 	selector: 'ss-lib-progress-circle',

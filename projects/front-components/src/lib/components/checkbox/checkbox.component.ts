@@ -15,11 +15,20 @@ import { IconComponent } from '../icon/icon.component';
 import { Colors, IconType } from '../../shared/models';
 
 /**
+ * Компонент чекбокса с поддержкой различных типов и состояний
  *
- * Параметры
+ * @example
+ * ```html
+ * Параметры:
  *
- * [type]: CheckboxType - тип чекбокса. По умолчанию: 'default'.
+ * [type]: CheckboxType - Тип чекбокса - необязательный,
+ * по умолчанию: 'default'
  *
+ * <ss-lib-checkbox
+ *   [type]="'default'"
+ *   [(ngModel)]="isChecked"
+ * ></ss-lib-checkbox>
+ * ```
  */
 
 @Component({
