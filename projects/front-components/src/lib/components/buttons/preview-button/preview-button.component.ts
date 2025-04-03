@@ -33,8 +33,11 @@ import { ButtonType, IconType } from '../../../shared/models';
 	encapsulation: ViewEncapsulation.None,
 })
 export class PreviewButtonComponent extends BaseButtonComponent<ButtonType.Preview> {
-	public override type = input<ButtonType.Preview>(ButtonType.Preview);
-	public restrictedIcon = input<IconType>(IconType.Close);
+	public override readonly type = input<ButtonType.Preview>(
+		ButtonType.Preview,
+	);
+
+	public readonly restrictedIcon = input<IconType>(IconType.Close);
 
 	public readonly ButtonType = ButtonType;
 }

@@ -1,12 +1,7 @@
-import {
-	Component,
-	input,
-	InputSignal,
-	ViewEncapsulation,
-} from '@angular/core';
+import { Component, input, ViewEncapsulation } from '@angular/core';
 
 /**
- * Компонент прокручиваемого блока.
+ * Компонент прокручиваемого блока с настраиваемой прокруткой
  *
  * Предоставляет контейнер с настраиваемой прокруткой по горизонтали
  * и вертикали. Поддерживает автоматическое определение размеров
@@ -14,6 +9,17 @@ import {
  *
  * @example
  * ```html
+ * Параметры:
+ *
+ * [horizontalScroll]: boolean - Флаг включения горизонтальной прокрутки -
+ * необязательный, по умолчанию: false
+ *
+ * [verticalScroll]: boolean - Флаг включения вертикальной прокрутки -
+ * необязательный, по умолчанию: false
+ *
+ * [disableAutoSize]: boolean - Флаг отключения автоматического определения размеров -
+ * необязательный, по умолчанию: false
+ *
  * <ss-lib-scrollable-block
  *   [horizontalScroll]="true"
  *   [verticalScroll]="true"
@@ -44,7 +50,7 @@ export class ScrollableBlockComponent {
 	 * @description
 	 * При значении true скрывает горизонтальную полосу прокрутки.
 	 */
-	public horizontalScroll: InputSignal<boolean> = input(false);
+	public readonly horizontalScroll = input<boolean>(false);
 
 	/**
 	 * Флаг включения вертикальной прокрутки.
@@ -53,7 +59,7 @@ export class ScrollableBlockComponent {
 	 * @description
 	 * При значении false скрывает вертикальную полосу прокрутки.
 	 */
-	public verticalScroll: InputSignal<boolean> = input(false);
+	public readonly verticalScroll = input<boolean>(false);
 
 	/**
 	 * Флаг отключения автоматического определения размеров.
@@ -63,5 +69,5 @@ export class ScrollableBlockComponent {
 	 * При значении true отключает автоматическое определение
 	 * размеров контейнера.
 	 */
-	public disableAutoSize: InputSignal<boolean> = input(false);
+	public readonly disableAutoSize = input<boolean>(false);
 }

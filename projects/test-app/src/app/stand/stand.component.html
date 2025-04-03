@@ -566,6 +566,14 @@
 <br />
 
 <pre>{{ timepickerCtrl.value }}</pre>
+<ss-lib-table>
+	<tr
+		*ngFor="let item of exampleItems"
+		class="ss-lib-table-tr"
+		app-example-table-tr
+		[item]="item"
+	></tr>
+</ss-lib-table>
 
 <ss-lib-utility-button [popoverTriggerFor]="dropdown2" />
 <br />
@@ -611,4 +619,11 @@
 		[type]="'indeterminate'"
 		[formControl]="checkBox3"
 	></ss-lib-checkbox>
+</div>
+
+<div class="otp">
+	<ss-lib-otp-input [formControl]="otpCtrl"></ss-lib-otp-input>
+	<br />
+
+	<button (click)="submitOtp()">Submit otp</button>
 </div>

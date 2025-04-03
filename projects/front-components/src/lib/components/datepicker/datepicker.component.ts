@@ -22,12 +22,24 @@ import { InputType } from '../../shared/models';
 import { InputComponent } from '../input/input.component';
 
 /**
+ * Компонент выбора даты с поддержкой календаря и валидации
+ *
+ * @example
+ * ```html
  * Параметры:
  *
- * [min]: Date - Минимальная дата для выбора.
+ * [min]: Date - Минимальная дата для выбора - необязательный,
+ * по умолчанию: FIRST_NATIVE_DAY
  *
- * [max]: Date- Максимальная дата для выбора.
+ * [max]: Date - Максимальная дата для выбора - необязательный,
+ * по умолчанию: LAST_NATIVE_DAY
  *
+ * <ss-lib-datepicker
+ *   [min]="new Date('2024-01-01')"
+ *   [max]="new Date('2024-12-31')"
+ *   [(ngModel)]="selectedDate"
+ * ></ss-lib-datepicker>
+ * ```
  */
 @Component({
 	selector: 'ss-lib-datepicker',

@@ -4,11 +4,12 @@ import {
 	computed,
 	inject,
 	input,
+	Signal,
 	signal,
 	ViewEncapsulation,
 } from '@angular/core';
 import { NgClass } from '@angular/common';
-import type { IconType, IStateElement } from '../../../shared/models';
+import { Align, IconType, IStateElement } from '../../../shared/models';
 import { ButtonType, ExtraSize, LinkAppearance } from '../../../shared/models';
 import { ElementStateService } from '../../../shared/services';
 import { GetColorPipe } from '../pipes';
@@ -76,18 +77,44 @@ export class LinkComponent {
 		() => BUTTON_ICON_COLORS_RECORD[this.type()!],
 	);
 
-	public iconSize = computed(() => {
+	public styleConfig: Signal<{
+		type: TextType;
+		weight: TextWeight;
+		lineHeight: string;
+		iconSize: string;
+	}> = computed(() => {
 		switch (this.size()) {
 			case ExtraSize.xxs:
 			case ExtraSize.xs:
-				return '16';
+				return {
+					type: TextType.BodyXs,
+					weight: TextWeight.Medium,
+					lineHeight: 'var(--line-height-body-sm)',
+					iconSize: '16',
+				};
 			case ExtraSize.sm:
+				return {
+					type: TextType.BodySm,
+					weight: TextWeight.Medium,
+					lineHeight: 'var(--line-height-body-sm)',
+					iconSize: '20',
+				};
 			case ExtraSize.md:
-				return '20';
+				return {
+					type: TextType.BodyMd,
+					weight: TextWeight.Medium,
+					lineHeight: 'var(--line-height-body-sm)',
+					iconSize: '20',
+				};
 			case ExtraSize.lg:
 			case ExtraSize.xl:
 			case ExtraSize.xxl:
-				return '24';
+				return {
+					type: TextType.BodyLg,
+					weight: TextWeight.Medium,
+					lineHeight: 'var(--line-height-body-lg)',
+					iconSize: '24',
+				};
 		}
 	});
 
@@ -98,6 +125,7 @@ export class LinkComponent {
 	public readonly ButtonSize = ExtraSize;
 	protected readonly TextType = TextType;
 	protected readonly TextWeight = TextWeight;
+	protected readonly Align = Align;
 
 	public textUnderline(
 		state: IStateElement,

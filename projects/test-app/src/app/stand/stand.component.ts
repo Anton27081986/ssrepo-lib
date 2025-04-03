@@ -24,11 +24,12 @@ import { SharedPopupService } from '../../../../front-components/src/lib/shared/
 import type { TestModalData } from '../test-modal/test-modal.component';
 import { TestModalComponent } from '../test-modal/test-modal.component';
 import { ToastRef } from '../../../../front-components/src/lib/components';
+import { exampleDataTable } from './constants/example-data-table';
 
 @Component({
 	selector: 'app-stand',
 	standalone: true,
-	imports: [standImports],
+	imports: [...standImports],
 	providers: [ColumnsStateService],
 	templateUrl: './stand.component.html',
 	styleUrl: './stand.component.scss',
@@ -66,6 +67,8 @@ export class StandComponent {
 	public checkBox2 = new FormControl(null);
 	public checkBox3 = new FormControl(true);
 
+	public otpCtrl = new FormControl('');
+
 	public fileLoadProgress = signal<number>(0);
 	public fileLoadSubscription?: Subscription;
 
@@ -83,6 +86,7 @@ export class StandComponent {
 	protected readonly Status = Status;
 	protected readonly dropdownItems = DROPDOWN_ITEMS;
 	protected readonly TooltipPosition = TooltipPosition;
+	protected readonly exampleItems = exampleDataTable;
 
 	private readonly sharedPopupService = inject(SharedPopupService);
 
@@ -259,5 +263,15 @@ export class StandComponent {
 		if (this.fileLoadSubscription) {
 			this.fileLoadSubscription.unsubscribe();
 		}
+	}
+
+	public submitOtp(): void {
+		if (this.otpCtrl.invalid) {
+			this.otpCtrl.setErrors(null);
+
+			return;
+		}
+
+		this.otpCtrl.setErrors({ invalidOtp: true });
 	}
 }
