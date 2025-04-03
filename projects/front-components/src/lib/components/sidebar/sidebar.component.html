@@ -6,6 +6,9 @@
 	>
 		<ng-container *ngFor="let menu of menu()">
 			<ss-lib-nav-button
+				ss-lib-tooltip
+				[tooltipText]="menu.toolTip"
+				[position]="TooltipPosition.Right"
 				[menu]="menu"
 				[type]="
 					stateCanvas.sidebarType() === SidebarType.Full

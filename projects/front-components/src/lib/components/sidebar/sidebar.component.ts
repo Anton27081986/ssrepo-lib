@@ -8,7 +8,7 @@ import {
 } from '@angular/core';
 import { NgForOf, NgIf } from '@angular/common';
 import { animate, style, transition, trigger } from '@angular/animations';
-import type { IMenu } from '../../shared/models';
+import { IMenu, TooltipPosition } from '../../shared/models';
 import {
 	ButtonType,
 	IconType,
@@ -19,6 +19,7 @@ import { CanvasState } from '../canvas/canvas.state';
 import { DividerComponent } from '../divider/divider.component';
 import { NavButtonComponent } from '../nav-button/nav-button.component';
 import { ButtonComponent } from '../buttons';
+import { TooltipDirective } from '../tooltip/tooltip.directive';
 
 /**
  * Компонент боковой панели.
@@ -45,6 +46,7 @@ import { ButtonComponent } from '../buttons';
 		ButtonComponent,
 		NgForOf,
 		NavButtonComponent,
+		TooltipDirective,
 	],
 	animations: [
 		trigger('animationTrigger', [
@@ -111,6 +113,7 @@ export class SidebarComponent {
 	 */
 	protected sidebarType = this.stateCanvas.sidebarType;
 
+	protected readonly TooltipPosition = TooltipPosition;
 	/**
 	 * Закрывает боковую панель.
 	 *
