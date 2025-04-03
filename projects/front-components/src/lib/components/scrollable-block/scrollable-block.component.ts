@@ -1,4 +1,9 @@
-import { Component, Input, ViewEncapsulation } from '@angular/core';
+import {
+	Component,
+	input,
+	InputSignal,
+	ViewEncapsulation,
+} from '@angular/core';
 
 /**
  * Компонент прокручиваемого блока.
@@ -26,9 +31,9 @@ import { Component, Input, ViewEncapsulation } from '@angular/core';
 	encapsulation: ViewEncapsulation.None,
 	host: {
 		class: 'scrollable-block',
-		'[class.scrollable-block--h-hidden]': 'horizontalScroll',
-		'[class.scrollable-block--v-hidden]': '!verticalScroll',
-		'[class.scrollable-block--not-auto-size]': 'disableAutoSize',
+		'[class.scrollable-block--h-hidden]': 'horizontalScroll()',
+		'[class.scrollable-block--v-hidden]': '!verticalScroll()',
+		'[class.scrollable-block--not-auto-size]': 'disableAutoSize()',
 	},
 })
 export class ScrollableBlockComponent {
@@ -39,8 +44,7 @@ export class ScrollableBlockComponent {
 	 * @description
 	 * При значении true скрывает горизонтальную полосу прокрутки.
 	 */
-	@Input()
-	public horizontalScroll = false;
+	public horizontalScroll: InputSignal<boolean> = input(false);
 
 	/**
 	 * Флаг включения вертикальной прокрутки.
@@ -49,8 +53,7 @@ export class ScrollableBlockComponent {
 	 * @description
 	 * При значении false скрывает вертикальную полосу прокрутки.
 	 */
-	@Input()
-	public verticalScroll = false;
+	public verticalScroll: InputSignal<boolean> = input(false);
 
 	/**
 	 * Флаг отключения автоматического определения размеров.
@@ -60,6 +63,5 @@ export class ScrollableBlockComponent {
 	 * При значении true отключает автоматическое определение
 	 * размеров контейнера.
 	 */
-	@Input()
-	public disableAutoSize = false;
+	public disableAutoSize: InputSignal<boolean> = input(false);
 }

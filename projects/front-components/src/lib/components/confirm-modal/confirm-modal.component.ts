@@ -57,4 +57,8 @@ export class ConfirmModalComponent implements OnDestroy {
 			this.modalRef.close();
 		}
 	}
+
+	protected close(): void {
+		this.modalRef.close();
+	}
 }

@@ -1,4 +1,4 @@
-import type { InputSignal, TemplateRef } from '@angular/core';
+import { InputSignal, output, TemplateRef } from '@angular/core';
 import {
 	ChangeDetectionStrategy,
 	Component,
@@ -85,6 +85,8 @@ export class ModalComponent {
 	 */
 	public badgeProps: InputSignal<IBadgeProps> = input.required<IBadgeProps>();
 
+	public readonly closeEmit = output<void>();
+
 	/**
 	 * Ссылка на модальное окно.
 	 *
@@ -101,6 +103,6 @@ export class ModalComponent {
 	 * Закрывает модальное окно при вызове.
 	 */
 	public onCloseEvent(): void {
-		this.popoverRef.close();
+		this.closeEmit.emit();
 	}
 }
