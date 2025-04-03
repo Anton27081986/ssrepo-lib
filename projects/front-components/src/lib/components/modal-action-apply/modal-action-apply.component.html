@@ -1,7 +1,7 @@
 <ss-lib-button
-	*ngIf="cancelText()"
+	*ngIf="cancelText() as text"
 	[type]="buttonType.Secondary"
-	[text]="cancelText()"
+	[text]="text"
 	[size]="ExtraSize.lg"
 	(click)="close()"
 ></ss-lib-button>

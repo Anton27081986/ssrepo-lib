@@ -42,7 +42,7 @@ export class ConfirmModalComponent implements OnDestroy {
 	protected readonly descriptionHeader: string;
 	protected readonly applyDisabled: boolean;
 	protected readonly badgeProps: IBadgeProps;
-	public readonly cancelText = input<string>('');
+	protected readonly cancelText: string | null;
 
 	private readonly subscription: Subscription = new Subscription();
 
@@ -52,6 +52,7 @@ export class ConfirmModalComponent implements OnDestroy {
 		this.badgeProps = this.modalRef.data.badgeProps;
 		this.titleHeader = this.modalRef.data.title;
 		this.descriptionHeader = this.modalRef.data.description;
+		this.cancelText = this.modalRef.data.cancelText;
 	}
 
 	public ngOnDestroy(): void {
