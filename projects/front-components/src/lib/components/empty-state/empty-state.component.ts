@@ -8,17 +8,31 @@ import { TextComponent } from '../text/text.component';
 import { DividerComponent } from '../divider/divider.component';
 
 /**
+ * Компонент для отображения пустого состояния с иконкой и описанием
+ *
+ * @example
+ * ```html
  * Параметры:
  *
- * [headerTitle]: string - Название в шапке`
+ * [headerTitle]: string - Заголовок в шапке - обязательный
  *
- * [actionRef]: TemplateRef<any> | null - template кнопок`
+ * [actionRef]: TemplateRef - Шаблон кнопок действий - обязательный
  *
- * [icon]: IconType - Название иконки. Required`
+ * [icon]: IconType - Иконка пустого состояния - обязательный
  *
- * [title]: string - title  empty state`
+ * [title]: string - Заголовок пустого состояния - обязательный
  *
- * [description]: string | null - description empty state`
+ * [description]: string | null - Описание пустого состояния -
+ * необязательный, по умолчанию: null
+ *
+ * <ss-lib-empty-state
+ *   [headerTitle]="'Пустое состояние'"
+ *   [actionRef]="actionTemplate"
+ *   [icon]="IconType.EmptyState"
+ *   [title]="'Нет данных'"
+ *   [description]="'Добавьте данные для отображения'"
+ * ></ss-lib-empty-state>
+ * ```
  */
 @Component({
 	selector: 'ss-lib-empty-state',
@@ -34,11 +48,15 @@ import { DividerComponent } from '../divider/divider.component';
 	styleUrl: './empty-state.component.scss',
 })
 export class EmptyStateComponent {
-	public headerTitle: InputSignal<string> = input.required<string>();
-	public actionRef: InputSignal<TemplateRef<{}> | null> = input.required();
-	public icon: InputSignal<IconType> = input.required<IconType>();
-	public title: InputSignal<string> = input.required();
-	public description: InputSignal<string | null> = input<string | null>(null);
+	public readonly headerTitle: InputSignal<string> = input.required<string>();
+	public readonly actionRef: InputSignal<TemplateRef<{}> | null> =
+		input.required();
+
+	public readonly icon: InputSignal<IconType> = input.required<IconType>();
+	public readonly title: InputSignal<string> = input.required();
+	public readonly description: InputSignal<string | null> = input<
+		string | null
+	>(null);
 
 	protected readonly TextType = TextType;
 	protected readonly TextWeight = TextWeight;

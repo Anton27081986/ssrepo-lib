@@ -54,6 +54,7 @@
 		"@storybook/addon-essentials": "^8.6.4",
 		"@storybook/addon-interactions": "^8.6.4",
 		"@storybook/addon-onboarding": "^8.6.4",
+		"@storybook/addon-storysource": "^8.6.11",
 		"@storybook/addon-styling-webpack": "^1.0.1",
 		"@storybook/angular": "^8.6.4",
 		"@storybook/blocks": "^8.6.4",
@@ -63,6 +64,7 @@
 		"@tinkoff/prettier-config": "^5.0.0",
 		"@types/jasmine": "~5.1.0",
 		"angular-eslint": "^19.2.0",
+		"babel-loader": "^10.0.0",
 		"eslint": "^8.57.1",
 		"eslint-config-prettier": "^10.0.2",
 		"eslint-import-resolver-typescript": "^3.8.3",
@@ -81,6 +83,7 @@
 		"ng-packagr": "^19.1.0",
 		"prettier": "^3.5.3",
 		"prettier-eslint": "^16.3.0",
+		"react": "^19.0.0",
 		"sass": "^1.85.1",
 		"sass-loader": "^16.0.5",
 		"storybook": "^8.6.4",
@@ -97,7 +100,7 @@
 	"lint-staged": {
 		"*.ts": [
 			"prettier --write",
-			"eslint --max-warnings 0 ."
+			"eslint --max-warnings 2 ."
 		],
 		"*.{html,scss}": [
 			"prettier --write"

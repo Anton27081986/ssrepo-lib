@@ -27,7 +27,7 @@ import { Orientation } from '../../shared/models';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DividerComponent {
-	public orientation: InputSignal<Orientation> = input<Orientation>(
+	public readonly orientation: InputSignal<Orientation> = input<Orientation>(
 		Orientation.Horizontal,
 	);
 }

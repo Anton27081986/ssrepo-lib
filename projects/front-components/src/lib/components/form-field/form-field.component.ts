@@ -24,14 +24,34 @@ import {
 } from '../../shared/models';
 
 /**
- * Параметры:*
- * [label]: string - Заголовок. По умолчанию: `''`
+ * Компонент поля формы с поддержкой валидации и отображения ошибок
  *
- * [errorText]: string - Текст ошибки. По умолчанию: `''`
+ * @example
+ * ```html
+ * Параметры:
  *
- * [showValidation]: boolean - Отображать валидацию. По умолчанию: `true`
+ * [label]: string - Заголовок поля - необязательный, по умолчанию: ''
  *
- * [showValidationFieldIcon]: boolean - Отображать иконку валидации в . По умолчанию: `false`
+ * [hint]: string - Подсказка для поля - необязательный, по умолчанию: ''
+ *
+ * [showValidation]: boolean - Флаг отображения валидации -
+ * необязательный, по умолчанию: true
+ *
+ * [showValidationFieldIcon]: boolean - Флаг отображения иконки валидации -
+ * необязательный, по умолчанию: false
+ *
+ * [errorText]: string - Текст ошибки - необязательный, по умолчанию: ''
+ *
+ * <ss-lib-form-field
+ *   [label]="'Имя'"
+ *   [hint]="'Введите ваше имя'"
+ *   [showValidation]="true"
+ *   [showValidationFieldIcon]="false"
+ *   [errorText]="'Обязательное поле'"
+ * >
+ *   <input ss-lib-field-ctrl [(ngModel)]="name" />
+ * </ss-lib-form-field>
+ * ```
  */
 @Component({
 	selector: 'ss-lib-form-field',
@@ -41,37 +61,158 @@ import {
 	styleUrl: './form-field.component.scss',
 })
 export class FormFieldComponent implements AfterContentInit {
+	/**
+	 * Ссылка на директиву управления полем.
+	 *
+	 * @description
+	 * Используется для доступа к контролю формы
+	 * и управления его состоянием.
+	 */
 	@ContentChild(FieldCtrlDirective)
 	public fieldCtrl?: FieldCtrlDirective;
 
-	public label = input<string>('');
-	public hint = input<string>('');
-	public showValidation = input<boolean>(true);
-	public showValidationFieldIcon = input<boolean>(false);
-	public errorText = input<string>('');
+	/**
+	 * Заголовок поля.
+	 *
+	 * @default ''
+	 * @description
+	 * Текст, отображаемый над полем ввода.
+	 */
+	public readonly label = input<string>('');
 
-	public existValidators = signal<boolean>(false);
-	public isRequired = signal<boolean>(false);
-	public fieldCtrlState = signal<ControlState>(ControlState.Touched);
-	public currentFieldCtrlState = signal<ControlState>(ControlState.Touched);
+	/**
+	 * Подсказка для поля.
+	 *
+	 * @default ''
+	 * @description
+	 * Текст подсказки, отображаемый под полем.
+	 */
+	public readonly hint = input<string>('');
 
+	/**
+	 * Флаг отображения валидации.
+	 *
+	 * @default true
+	 * @description
+	 * Определяет, отображать ли состояние
+	 * валидации поля.
+	 */
+	public readonly showValidation = input<boolean>(true);
+
+	/**
+	 * Флаг отображения иконки валидации.
+	 *
+	 * @default false
+	 * @description
+	 * Определяет, отображать ли иконку
+	 * состояния валидации.
+	 */
+	public readonly showValidationFieldIcon = input<boolean>(false);
+
+	/**
+	 * Текст ошибки.
+	 *
+	 * @default ''
+	 * @description
+	 * Текст, отображаемый при ошибке
+	 * валидации.
+	 */
+	public readonly errorText = input<string>('');
+
+	/**
+	 * Флаг наличия валидаторов.
+	 *
+	 * @description
+	 * Определяет, есть ли у поля валидаторы.
+	 */
+	public readonly existValidators = signal<boolean>(false);
+
+	/**
+	 * Флаг обязательности поля.
+	 *
+	 * @description
+	 * Определяет, является ли поле
+	 * обязательным для заполнения.
+	 */
+	public readonly isRequired = signal<boolean>(false);
+
+	/**
+	 * Состояние контроля поля.
+	 *
+	 * @description
+	 * Текущее состояние валидации
+	 * поля.
+	 */
+	public readonly fieldCtrlState = signal<ControlState>(ControlState.Touched);
+
+	/**
+	 * Текущее состояние поля.
+	 *
+	 * @description
+	 * Актуальное состояние поля,
+	 * учитывающее фокус.
+	 */
+	public readonly currentFieldCtrlState = signal<ControlState>(
+		ControlState.Touched,
+	);
+
+	/**
+	 * Константы для типов текста.
+	 */
 	public readonly TextType = TextType;
+
+	/**
+	 * Константы для весов текста.
+	 */
 	public readonly TextWeight = TextWeight;
+
+	/**
+	 * Константы для цветов.
+	 */
 	public readonly Colors = Colors;
+
+	/**
+	 * Константы для типов иконок.
+	 */
 	public readonly IconType = IconType;
 
+	/**
+	 * Инжектор Angular.
+	 */
 	private readonly injector = inject(Injector);
 
+	/**
+	 * Инициализация после инициализации содержимого.
+	 *
+	 * @description
+	 * Настраивает состояние валидации
+	 * после инициализации содержимого.
+	 */
 	public ngAfterContentInit(): void {
 		if (this.showValidation()) {
 			this.initFieldCtrlState();
 		}
 	}
 
+	/**
+	 * Обновляет состояние поля при потере фокуса.
+	 *
+	 * @description
+	 * Обновляет текущее состояние поля
+	 * при потере фокуса.
+	 */
 	public updateFormFieldStateOnFocusout(): void {
 		this.currentFieldCtrlState.set(this.fieldCtrlState());
 	}
 
+	/**
+	 * Инициализирует состояние контроля поля.
+	 *
+	 * @description
+	 * Настраивает обработчики валидации
+	 * и отслеживание состояния поля.
+	 * @private
+	 */
 	private initFieldCtrlState(): void {
 		if (this.fieldCtrl?.ngControl.control) {
 			this.fieldCtrl!.ngControl.control!.markAllAsTouched = () => {

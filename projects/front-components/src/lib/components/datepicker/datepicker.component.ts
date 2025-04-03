@@ -4,6 +4,7 @@ import {
 	forwardRef,
 	input,
 	signal,
+	viewChild,
 } from '@angular/core';
 import type { ControlValueAccessor } from '@angular/forms';
 import { FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
@@ -18,14 +19,27 @@ import {
 	LAST_NATIVE_DAY,
 } from '../calendar/constans';
 import { InputType } from '../../shared/models';
+import { InputComponent } from '../input/input.component';
 
 /**
+ * Компонент выбора даты с поддержкой календаря и валидации
+ *
+ * @example
+ * ```html
  * Параметры:
  *
- * [min]: Date - Минимальная дата для выбора.
+ * [min]: Date - Минимальная дата для выбора - необязательный,
+ * по умолчанию: FIRST_NATIVE_DAY
  *
- * [max]: Date- Максимальная дата для выбора.
+ * [max]: Date - Максимальная дата для выбора - необязательный,
+ * по умолчанию: LAST_NATIVE_DAY
  *
+ * <ss-lib-datepicker
+ *   [min]="new Date('2024-01-01')"
+ *   [max]="new Date('2024-12-31')"
+ *   [(ngModel)]="selectedDate"
+ * ></ss-lib-datepicker>
+ * ```
  */
 @Component({
 	selector: 'ss-lib-datepicker',
@@ -43,21 +57,30 @@ import { InputType } from '../../shared/models';
 	],
 })
 export class DatepickerComponent implements ControlValueAccessor {
+	private readonly dateInput = viewChild('dateInput', {
+		read: InputComponent,
+	});
+
 	public min = input<Date>(FIRST_NATIVE_DAY);
 	public max = input<Date>(LAST_NATIVE_DAY);
 
 	public selectedDate = signal<CalendarDay | null>(null);
 	public datepickerCtrl = new FormControl<string | null>(null);
 	public readonly InputType = InputType;
+	protected readonly firstNativeDay = FIRST_NATIVE_DAY;
+	protected readonly lastNativeDay = LAST_NATIVE_DAY;
 
 	public onChange: (value: Date | null) => void = () => {};
 	public onTouched: () => void = () => {};
+
 	constructor() {
 		toSignal(
 			this.datepickerCtrl.valueChanges.pipe(
 				debounceTime(150),
 				filter(
-					(value) => !!value && value.length === DATE_FILLER_LENGTH,
+					(value) =>
+						!value ||
+						(!!value && value.length === DATE_FILLER_LENGTH),
 				),
 				tap((value) => this.onValueChange(value!)),
 			),
@@ -99,11 +122,19 @@ export class DatepickerComponent implements ControlValueAccessor {
 
 		this.onChange(toControlValue(date));
 		this.onTouched();
+		this.dateInput()?.setFocus();
 	}
 
-	private onValueChange(value: string): void {
-		this.selectedDate.set(
-			CalendarDay.normalizeParse(value, DateFormat.DMY),
-		);
+	private onValueChange(value: string | null): void {
+		if (value) {
+			this.selectedDate.set(
+				CalendarDay.normalizeParse(value, DateFormat.DMY),
+			);
+			this.onChange(toControlValue(this.selectedDate()));
+
+			return;
+		}
+
+		this.onChange(null);
 	}
 }

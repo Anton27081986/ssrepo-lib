@@ -1,8 +1,9 @@
 <ss-lib-input
+	#dateInput
 	[formControl]="datepickerCtrl"
 	[type]="InputType.Date"
-	[min]="min()"
-	[max]="max()"
+	[min]="firstNativeDay"
+	[max]="lastNativeDay"
 	[popoverTriggerFor]="calendar"
 	[popoverTriggerDisabled]="datepickerCtrl.disabled"
 />

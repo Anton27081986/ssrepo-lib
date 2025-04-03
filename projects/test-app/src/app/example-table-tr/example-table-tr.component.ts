@@ -3,7 +3,6 @@ import {
 	AsyncPipe,
 	DatePipe,
 	NgFor,
-	NgStyle,
 	NgSwitch,
 	NgSwitchCase,
 	NgSwitchDefault,
@@ -18,6 +17,7 @@ import {
 } from '../../../../front-components/src/lib/components';
 import { ExampleDataTable } from '../stand/interface/example-data-table';
 import {
+	Align,
 	ButtonType,
 	Colors,
 	ExtraSize,
@@ -69,4 +69,5 @@ export class ExampleTableTrComponent {
 	protected readonly types = types;
 	protected readonly Colors = Colors;
 	protected readonly ExtraSize = ExtraSize;
+	protected readonly Align = Align;
 }

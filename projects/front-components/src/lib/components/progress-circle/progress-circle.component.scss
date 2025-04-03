@@ -1,0 +1,47 @@
+:host {
+	overflow: hidden;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 16px;
+}
+
+.spinner {
+	border-radius: 50%;
+	animation: rotate 1.2s linear infinite;
+	max-width: 32px;
+	background: radial-gradient(
+		circle,
+		rgba(255, 255, 255, 0) 55%,
+		var(--surface-secondary) 55%,
+		var(--surface-secondary) 69%,
+		rgba(255, 255, 255, 0) 69%
+	);
+	rotate: -80deg;
+
+	& .path {
+		stroke: var(--surface-action);
+		stroke-linecap: round;
+		animation: dash 2.4s ease-in-out infinite;
+	}
+}
+
+@keyframes rotate {
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+@keyframes dash {
+	0% {
+		stroke-dasharray: var(--progress), 360;
+		stroke-dashoffset: 0;
+	}
+	100% {
+		stroke-dasharray: var(--progress), 360;
+		stroke-dashoffset: 0;
+	}
+}

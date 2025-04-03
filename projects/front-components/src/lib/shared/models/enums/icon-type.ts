@@ -38,4 +38,5 @@ export enum IconType {
 	Burger = 'burger',
 	ResizeHandle = 'resize-handle',
 	CheckCircle = 'check-circle',
+	Check = 'check',
 }

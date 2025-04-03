@@ -13,7 +13,7 @@
 					<ss-lib-utility-button
 						draggable="true"
 						[type]="ButtonType.Utility"
-						[restrictedIcon]="IconType.Drag"
+						[icon]="IconType.Drag"
 						[iconPosition]="IconPosition.OnlyIcon"
 						[size]="ExtraSize.lg"
 					>
@@ -73,7 +73,8 @@
 					<ss-lib-text
 						[type]="TextType.BodySm"
 						[weight]="TextWeight.Regular"
-						[isEllipsis]="true"
+						[align]="Align.Start"
+						[isLineClamp]="true"
 						>{{ item().name }}
 					</ss-lib-text>
 				</ng-container>
@@ -87,7 +88,7 @@
 				<ng-container *ngSwitchCase="BannerRowItemField.action">
 					<ss-lib-utility-button
 						[type]="ButtonType.Utility"
-						[restrictedIcon]="IconType.KebabMenuDots"
+						[icon]="IconType.KebabMenuDots"
 						[iconPosition]="IconPosition.OnlyIcon"
 					>
 					</ss-lib-utility-button>

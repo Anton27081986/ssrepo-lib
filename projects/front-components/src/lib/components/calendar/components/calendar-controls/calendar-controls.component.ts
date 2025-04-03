@@ -9,7 +9,6 @@ import {
 import { calendarControlsImports } from './calendar-controls.imports';
 import type { CalendarMonthLike, CalendarYearLike } from '../../models';
 import { CalendarMonth } from '../../models';
-import { FIRST_DAY, LAST_DAY } from '../../constans';
 import {
 	ButtonType,
 	ExtraSize,
@@ -17,6 +16,7 @@ import {
 	IconPosition,
 	IconType,
 } from '../../../../shared/models';
+import { FIRST_DAY, LAST_DAY } from '../../../../shared/constants';
 
 @Component({
 	selector: 'ss-lib-calendar-controls',

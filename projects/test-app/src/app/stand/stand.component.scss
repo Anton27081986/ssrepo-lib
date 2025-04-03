@@ -1,6 +1,5 @@
 .spinners {
 	width: 200px;
-	height: 200px;
 }
 
 .dark-close-button {
@@ -58,4 +57,13 @@
 	&__item {
 		white-space: nowrap;
 	}
+}
+
+.checkbox {
+	display: flex;
+	gap: 5px;
+}
+
+.otp {
+	width: 360px;
 }

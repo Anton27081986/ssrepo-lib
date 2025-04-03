@@ -28,7 +28,7 @@ export class SharedPopupService {
 		data: T,
 		isDarkOverlay: boolean = true,
 		size: string,
-		isBackDropClick: boolean = true,
+		isBackDropClick: boolean = false,
 	): ModalRef<T> {
 		const popover = this.popup.open<T>({
 			content,
@@ -56,9 +56,9 @@ export class SharedPopupService {
 	 */
 	public openConfirmModal(
 		data: IConfirmData,
-		content: PopupContent = ConfirmModalComponent,
 		isDarkOverlay: boolean = true,
 		isBackDropClick: boolean = false,
+		content: PopupContent = ConfirmModalComponent,
 	): ModalRef<IConfirmData> {
 		const popover = this.popup.open<IConfirmData>({
 			content,
@@ -86,9 +86,9 @@ export class SharedPopupService {
 	 */
 	public openLightBoxModal(
 		data: ILightBoxData,
-		content: PopupContent = LightBoxComponent,
 		isDarkOverlay: boolean = true,
 		isBackDropClick: boolean = false,
+		content: PopupContent = LightBoxComponent,
 	): ModalRef<ILightBoxData> {
 		const popover = this.popup.open<ILightBoxData>({
 			content,

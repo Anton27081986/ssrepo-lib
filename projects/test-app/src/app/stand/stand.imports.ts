@@ -30,8 +30,11 @@ import {
 	ImageUploadComponent,
 	CalendarComponent,
 	DatepickerComponent,
+	ProgressCircleComponent,
 	ScrollbarComponent,
 	TimepickerComponent,
+	CheckboxComponent,
+	OtpInputComponent,
 	TableComponent,
 } from '../../../../front-components/src/lib/components';
 import {
@@ -78,6 +81,9 @@ export const standImports = [
 	DatepickerComponent,
 	ScrollbarComponent,
 	TimepickerComponent,
+	ProgressCircleComponent,
+	CheckboxComponent,
+	OtpInputComponent,
 	TableComponent,
 	ExampleTableTrComponent,
 	NgFor,

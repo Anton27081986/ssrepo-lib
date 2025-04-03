@@ -16,106 +16,42 @@
 	@if (icon() | mapper: hasIcon : iconPosition() === IconPosition.OnlyIcon) {
 		<ss-lib-icon
 			[icon]="icon()!"
-			[height]="iconSize()"
-			[width]="iconSize()"
+			[height]="styleConfig().iconSize"
+			[width]="styleConfig().iconSize"
 			[color]="buttonIconColors() | getColor: state() : disabled() : true"
 		/>
 	} @else {
 		@if (icon() | mapper: hasIcon : iconPosition() === IconPosition.Start) {
 			<ss-lib-icon
 				[icon]="icon()!"
-				[height]="iconSize()"
-				[width]="iconSize()"
+				[height]="styleConfig().iconSize"
+				[width]="styleConfig().iconSize"
 				[color]="
 					buttonIconColors() | getColor: state() : disabled() : false
 				"
 			/>
 		}
 
-		@switch (size()) {
-			@case (ButtonSize.xs) {
-				<ss-lib-text
-					[type]="TextType.BodyXs"
-					[weight]="TextWeight.Medium"
-					[color]="
-						buttonTextColors()
-							| getColor: state() : disabled() : false
-					"
-					[isUnderline]="
-						state()
-							| mapper
-								: textUnderline
-								: linkAppearance()
-								: disabled()
-					"
-				>
-					{{ text() }}
-				</ss-lib-text>
-			}
-			@case (ButtonSize.sm) {
-				<ss-lib-text
-					[type]="TextType.BodySm"
-					[weight]="TextWeight.Medium"
-					[color]="
-						buttonTextColors()
-							| getColor: state() : disabled() : false
-					"
-					[isUnderline]="
-						state()
-							| mapper
-								: textUnderline
-								: linkAppearance()
-								: disabled()
-					"
-				>
-					{{ text() }}
-				</ss-lib-text>
-			}
-			@case (ButtonSize.md) {
-				<ss-lib-text
-					[type]="TextType.BodyMd"
-					[weight]="TextWeight.Medium"
-					[color]="
-						buttonTextColors()
-							| getColor: state() : disabled() : false
-					"
-					[isUnderline]="
-						state()
-							| mapper
-								: textUnderline
-								: linkAppearance()
-								: disabled()
-					"
-				>
-					{{ text() }}
-				</ss-lib-text>
-			}
-			@case (ButtonSize.lg) {
-				<ss-lib-text
-					[type]="TextType.BodyLg"
-					[weight]="TextWeight.Medium"
-					[color]="
-						buttonTextColors()
-							| getColor: state() : disabled() : false
-					"
-					[isUnderline]="
-						state()
-							| mapper
-								: textUnderline
-								: linkAppearance()
-								: disabled()
-					"
-				>
-					{{ text() }}
-				</ss-lib-text>
-			}
-		}
+		<ss-lib-text
+			[type]="styleConfig().type"
+			[weight]="styleConfig().weight"
+			[align]="Align.Start"
+			[isLineClamp]="true"
+			[color]="
+				buttonTextColors() | getColor: state() : disabled() : false
+			"
+			[isUnderline]="
+				state() | mapper: textUnderline : linkAppearance() : disabled()
+			"
+		>
+			{{ text() }}
+		</ss-lib-text>
 
 		@if (icon() | mapper: hasIcon : iconPosition() === IconPosition.End) {
 			<ss-lib-icon
 				[icon]="icon()!"
-				[height]="iconSize()"
-				[width]="iconSize()"
+				[height]="styleConfig().iconSize"
+				[width]="styleConfig().iconSize"
 				[color]="
 					buttonIconColors() | getColor: state() : disabled() : false
 				"

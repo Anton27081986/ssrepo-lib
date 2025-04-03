@@ -1,0 +1,36 @@
+.checkbox {
+	border: 1px solid var(--border-secondary);
+	width: 14px;
+	height: 14px;
+	border-radius: 4px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	&:focus-visible {
+		outline: none;
+		box-shadow: var(--focus-rings-focus-ring);
+	}
+
+	&--active {
+		background-color: var(--surface-action);
+		border: 1px solid var(--surface-action);
+	}
+
+	&--hover {
+		border-color: var(--border-secondary-hover);
+		cursor: pointer;
+	}
+
+	&--active-hover {
+		background-color: var(--surface-action-hover);
+		border: 1px solid var(--surface-action-hover);
+		cursor: pointer;
+	}
+
+	&--disabled {
+		background-color: var(--surface-disabled);
+		border: 1px solid var(--border-disabled);
+		cursor: default;
+	}
+}

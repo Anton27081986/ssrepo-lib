@@ -18,8 +18,8 @@
 				<ss-lib-text
 					[type]="TextType.BodySm"
 					[color]="Colors.TextBody2"
-					>Добавьте или перетащите изображение</ss-lib-text
-				>
+					>Добавьте или перетащите изображение
+				</ss-lib-text>
 				<ss-lib-text
 					[type]="TextType.BodyXs"
 					[color]="Colors.TextBody3"
@@ -41,13 +41,13 @@
 					accept="image/jpeg, image/gif, image/png"
 					class="image-upload__button__hidden-input"
 					type="file"
-					[formControl]="inputCtrl"
 					(change)="selectFromPC($event)"
 				/>
 				<ss-lib-button
 					[disabled]="disabled()"
 					[text]="'Загрузить с устройства'"
 					[icon]="IconType.Upload"
+					[size]="ExtraSize.lg"
 					(click)="hiddenInput.click()"
 				></ss-lib-button>
 			</label>
@@ -67,7 +67,10 @@
 	}
 	@case (States.Loading) {
 		<div class="image-loading">
-			<ss-lib-spinner class="image-loading__loader"></ss-lib-spinner>
+			<ss-lib-progress-circle
+				class="image-loading__loader"
+				[progress]="animProgress()"
+			></ss-lib-progress-circle>
 			<ss-lib-preview-button
 				class="image-loading__cancel"
 				(click)="onFileDelete()"

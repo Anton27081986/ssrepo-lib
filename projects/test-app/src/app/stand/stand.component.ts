@@ -1,7 +1,7 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
-import { catchError, Observable, of } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { catchError, Observable, of, Subscription } from 'rxjs';
+import { HttpClient, HttpEventType } from '@angular/common/http';
 import {
 	ButtonType,
 	Colors,
@@ -29,7 +29,7 @@ import { exampleDataTable } from './constants/example-data-table';
 @Component({
 	selector: 'app-stand',
 	standalone: true,
-	imports: [standImports],
+	imports: [...standImports],
 	providers: [ColumnsStateService],
 	templateUrl: './stand.component.html',
 	styleUrl: './stand.component.scss',
@@ -63,6 +63,15 @@ export class StandComponent {
 		new Date(),
 	);
 
+	public checkBox1 = new FormControl(null);
+	public checkBox2 = new FormControl(null);
+	public checkBox3 = new FormControl(true);
+
+	public otpCtrl = new FormControl('');
+
+	public fileLoadProgress = signal<number>(0);
+	public fileLoadSubscription?: Subscription;
+
 	protected readonly TextType = TextType;
 	protected readonly TextWeight = TextWeight;
 	protected readonly IconType = IconType;
@@ -86,6 +95,10 @@ export class StandComponent {
 		private readonly http: HttpClient,
 	) {
 		this.columnState.colsTr$.next(DEFAULT_COLS);
+
+		this.checkBox2.disable();
+
+		this.checkBox3.disable();
 	}
 
 	public openTestModal(): void {
@@ -208,5 +221,57 @@ export class StandComponent {
 				}),
 			)
 			.subscribe();
+	}
+
+	public uploadFile(file: File | null): void {
+		if (file) {
+			this.fileLoadProgress.set(0);
+			const formData = new FormData();
+
+			formData.append('file', file);
+
+			this.fileLoadSubscription = this.http
+				.post<{ url: string }>(
+					`https://erp-dev.ssnab.it/api/files/fileStorage/2/upload`,
+					formData,
+					{
+						reportProgress: true,
+						observe: 'events',
+						headers: {
+							authorization:
+								'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzaWQiOiI5NTkwMjQ4IiwiTW9sSWQiOiI5NTk0MjQwIiwic3ViIjoi0KDRg9C00LXQvdC60L4g0J4u0JIuIiwiZW1haWwiOiJydWRlbmtvLm92QHNzbmFiLnJ1IiwianRpIjoiN2E5Y2I2ZDAtZjM2Mi00MWNjLWI2MWQtZmE1MTM3ZTBhMDQyIiwiYXVkIjoiaHR0cHM6Ly9lcnAtZGV2LnNzbmFiLml0IiwiaXNzIjoiU1MuRVJQLkRldiIsIm5iZiI6MTc0MjgxNTgxOSwiZXhwIjoxNzQzNDIwNjE5LCJpYXQiOjE3NDI4MTU4MTl9.DZTE2YLTg2F3gp35cwuak46ekRzgSo0pfaeEs6yUZL0',
+						},
+					},
+				)
+				.subscribe((resp) => {
+					if (resp.type === HttpEventType.Response) {
+						this.fileLoadProgress.set(100);
+					}
+
+					if (resp.type === HttpEventType.UploadProgress) {
+						if (resp.total) {
+							this.fileLoadProgress.set(
+								Math.round((100 * resp.loaded) / resp.total),
+							);
+						}
+					}
+				});
+		}
+	}
+
+	public uploadCancel(): void {
+		if (this.fileLoadSubscription) {
+			this.fileLoadSubscription.unsubscribe();
+		}
+	}
+
+	public submitOtp(): void {
+		if (this.otpCtrl.invalid) {
+			this.otpCtrl.setErrors(null);
+
+			return;
+		}
+
+		this.otpCtrl.setErrors({ invalidOtp: true });
 	}
 }

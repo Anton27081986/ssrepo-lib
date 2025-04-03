@@ -1,4 +1,4 @@
-import type { OnDestroy } from '@angular/core';
+import { OnDestroy, signal } from '@angular/core';
 import {
 	Directive,
 	ElementRef,
@@ -20,20 +20,19 @@ import type { PopoverContent } from '../../shared/models';
 	standalone: true,
 })
 export class PopoverTriggerForDirective implements OnDestroy {
+	private readonly overlay = inject(Overlay);
+	private readonly viewContainerRef = inject(ViewContainerRef);
+	private readonly elementRef: ElementRef<HTMLElement> = inject(
+		ElementRef<HTMLElement>,
+	);
+
 	public popoverContent = input.required<PopoverContent>({
 		alias: 'popoverTriggerFor',
 	});
 
 	public popoverTriggerDisabled = input<boolean>(false);
 
-	private readonly overlay = inject(Overlay);
-	private readonly elementRef: ElementRef<HTMLElement> = inject(
-		ElementRef<HTMLElement>,
-	);
-
-	private readonly viewContainerRef = inject(ViewContainerRef);
-
-	private isPopoverOpen = false;
+	public isPopoverOpen = signal<boolean>(false);
 	private overlayRef: OverlayRef | null = null;
 	private closingActionsSub = Subscription.EMPTY;
 
@@ -43,7 +42,7 @@ export class PopoverTriggerForDirective implements OnDestroy {
 			return;
 		}
 
-		this.isPopoverOpen ? this.destroyPopover() : this.openPopover();
+		this.isPopoverOpen() ? this.destroyPopover() : this.openPopover();
 	}
 
 	@HostListener('keydown', ['$event'])
@@ -68,16 +67,16 @@ export class PopoverTriggerForDirective implements OnDestroy {
 		}
 
 		this.closingActionsSub.unsubscribe();
-		this.isPopoverOpen = false;
 		this.overlayRef.detach();
+		this.isPopoverOpen.set(false);
 	}
 
 	private openPopover(): void {
-		if (this.isPopoverOpen) {
+		if (this.isPopoverOpen()) {
 			return;
 		}
 
-		this.isPopoverOpen = true;
+		this.isPopoverOpen.set(true);
 
 		if (!this.overlayRef) {
 			this.overlayRef = this.overlay.create({

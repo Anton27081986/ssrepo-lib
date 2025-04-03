@@ -15,15 +15,17 @@ import type { IMenu } from '../../shared/models';
 	standalone: true,
 })
 export class CanvasComponent {
-	public leftMenuHeaderTemplateRef: InputSignal<TemplateRef<{}> | null> =
+	public readonly leftMenuHeaderTemplateRef: InputSignal<TemplateRef<{}> | null> =
 		input.required();
 
-	public rightMenuHeaderTemplateRef: InputSignal<TemplateRef<{}> | null> =
+	public readonly rightMenuHeaderTemplateRef: InputSignal<TemplateRef<{}> | null> =
 		input.required();
 
-	public outMenuFromCanvas = output<IMenu>();
+	public readonly outMenuFromCanvas = output<IMenu>();
 
-	public contentScrollHorizontal: InputSignal<boolean> = input(false);
-	public contentScrollVertical: InputSignal<boolean> = input(true);
-	public menu: InputSignal<IMenu[]> = input.required<IMenu[]>();
+	public readonly contentScrollHorizontal: InputSignal<boolean> =
+		input(false);
+
+	public readonly contentScrollVertical: InputSignal<boolean> = input(true);
+	public readonly menu: InputSignal<IMenu[]> = input.required<IMenu[]>();
 }

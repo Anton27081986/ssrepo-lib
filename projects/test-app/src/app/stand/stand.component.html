@@ -1,9 +1,13 @@
 <ss-lib-image-upload
-	fieldCtrl
-	[formControl]="imgCtrl"
+	[progress]="fileLoadProgress()"
+	(fileChanged)="uploadFile($event)"
+	(uploadCancel)="uploadCancel()"
 ></ss-lib-image-upload>
 
 <div class="spinners">
+	<ss-lib-progress-circle
+		[progress]="fileLoadProgress()"
+	></ss-lib-progress-circle>
 	<ss-lib-spinner [displaySpinnerText]="true"></ss-lib-spinner>
 </div>
 
@@ -365,6 +369,24 @@
 		}"
 	/>
 
+	<ss-lib-badge
+		[badgeProps]="{
+			size: ExtraSize.lg,
+			icon: IconType.ImagePlus,
+			shape: Shape.Round,
+			status: Status.Warning,
+		}"
+	/>
+
+	<ss-lib-badge
+		[badgeProps]="{
+			size: ExtraSize.lg,
+			icon: IconType.ImagePlus,
+			shape: Shape.Square,
+			status: Status.Warning,
+		}"
+	/>
+
 	<span> Medium </span>
 	<ss-lib-badge
 		[badgeProps]="{
@@ -552,3 +574,56 @@
 		[item]="item"
 	></tr>
 </ss-lib-table>
+
+<ss-lib-utility-button [popoverTriggerFor]="dropdown2" />
+<br />
+<ss-lib-utility-button [popoverTriggerFor]="dropdown2" />
+<br />
+
+<ss-lib-dropdown-list #dropdown2>
+	<ss-lib-dropdown-item
+		[label]="'Опция'"
+		[icon]="IconType.Bell"
+		(click)="console.log(1)"
+	/>
+	<ss-lib-dropdown-item
+		[label]="'Опция'"
+		[icon]="IconType.Bell"
+		(click)="console.log(2)"
+	/>
+	<ss-lib-divider class="divider-block"></ss-lib-divider>
+	<ss-lib-dropdown-item
+		[label]="'Удалить'"
+		[icon]="IconType.Bell"
+		(click)="console.log(5)"
+	/>
+</ss-lib-dropdown-list>
+<div class="checkbox">
+	<ss-lib-checkbox [formControl]="checkBox1"></ss-lib-checkbox>
+
+	<ss-lib-checkbox [formControl]="checkBox2"></ss-lib-checkbox>
+
+	<ss-lib-checkbox [formControl]="checkBox3"></ss-lib-checkbox>
+
+	<ss-lib-checkbox
+		[type]="'indeterminate'"
+		[formControl]="checkBox1"
+	></ss-lib-checkbox>
+
+	<ss-lib-checkbox
+		[type]="'indeterminate'"
+		[formControl]="checkBox2"
+	></ss-lib-checkbox>
+
+	<ss-lib-checkbox
+		[type]="'indeterminate'"
+		[formControl]="checkBox3"
+	></ss-lib-checkbox>
+</div>
+
+<div class="otp">
+	<ss-lib-otp-input [formControl]="otpCtrl"></ss-lib-otp-input>
+	<br />
+
+	<button (click)="submitOtp()">Submit otp</button>
+</div>

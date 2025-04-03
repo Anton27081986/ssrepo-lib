@@ -13,7 +13,10 @@
 			[icon]="icon()!"
 			[height]="iconSize()"
 			[width]="iconSize()"
-			[color]="buttonIconColors() | getColor: state() : disabled() : true"
+			[color]="
+				buttonIconColors()
+					| getColor: state() : disabled() : true : isActive()
+			"
 		/>
 	} @else {
 		@if (icon() | mapper: hasIcon : iconPosition() === IconPosition.Start) {
@@ -22,7 +25,8 @@
 				[height]="iconSize()"
 				[width]="iconSize()"
 				[color]="
-					buttonIconColors() | getColor: state() : disabled() : false
+					buttonIconColors()
+						| getColor: state() : disabled() : false : isActive()
 				"
 			/>
 		}
@@ -34,7 +38,11 @@
 					[weight]="TextWeight.Regular"
 					[color]="
 						buttonTextColors()
-							| getColor: state() : disabled() : false
+							| getColor
+								: state()
+								: disabled()
+								: false
+								: isActive()
 					"
 				>
 					{{ text() }}
@@ -46,7 +54,11 @@
 					[weight]="TextWeight.Regular"
 					[color]="
 						buttonTextColors()
-							| getColor: state() : disabled() : false
+							| getColor
+								: state()
+								: disabled()
+								: false
+								: isActive()
 					"
 				>
 					{{ text() }}
@@ -58,7 +70,11 @@
 					[weight]="TextWeight.Regular"
 					[color]="
 						buttonTextColors()
-							| getColor: state() : disabled() : false
+							| getColor
+								: state()
+								: disabled()
+								: false
+								: isActive()
 					"
 				>
 					{{ text() }}
@@ -70,7 +86,11 @@
 					[weight]="TextWeight.Regular"
 					[color]="
 						buttonTextColors()
-							| getColor: state() : disabled() : false
+							| getColor
+								: state()
+								: disabled()
+								: false
+								: isActive()
 					"
 				>
 					{{ text() }}
@@ -84,7 +104,8 @@
 				[height]="iconSize()"
 				[width]="iconSize()"
 				[color]="
-					buttonIconColors() | getColor: state() : disabled() : false
+					buttonIconColors()
+						| getColor: state() : disabled() : false : isActive()
 				"
 			/>
 		}
