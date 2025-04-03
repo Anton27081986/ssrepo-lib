@@ -1,8 +1,12 @@
 <p
 	[ngClass]="[type(), weight()]"
 	[class.ellipsis]="isEllipsis()"
+	[class.line-clamp]="isLineClamp()"
 	[class.underline]="isUnderline()"
 	[style.color]="color()"
+	[style.text-align]="align()"
+	[style.-webkit-line-clamp]="getLineClampCount()"
+	[style.line-clamp]="getLineClampCount()"
 >
 	<ng-content></ng-content>
 </p>
