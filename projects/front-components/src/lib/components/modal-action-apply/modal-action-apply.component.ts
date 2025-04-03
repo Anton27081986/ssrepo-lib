@@ -61,7 +61,7 @@ export class ModalActionApplyComponent {
 	 * Опциональный параметр, отображаемый на
 	 * кнопке отмены действия.
 	 */
-	public readonly cancelText = input<string>('');
+	public readonly cancelText = input<string | null>(null);
 
 	/**
 	 * Событие подтверждения действия.

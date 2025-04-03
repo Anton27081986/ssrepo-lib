@@ -6,7 +6,7 @@ import {
 	output,
 } from '@angular/core';
 import { NgIf } from '@angular/common';
-import type { IBadgeProps } from '../../shared/models';
+import { Align, IBadgeProps } from '../../shared/models';
 import {
 	ButtonType,
 	Colors,
@@ -65,4 +65,5 @@ export class BadgeInfoComponent {
 	protected readonly TextType = TextType;
 	protected readonly TextWeight = TextWeight;
 	protected readonly Colors = Colors;
+	protected readonly Align = Align;
 }
