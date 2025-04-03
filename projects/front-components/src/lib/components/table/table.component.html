@@ -1,4 +1,12 @@
 <table class="ss-lib-table-table">
+	<col
+		*ngFor="let col of stateColumn.visibleCols$ | async"
+		[width]="col.width"
+		[ngStyle]="{
+			minWidth: col.minWidth ? col.minWidth : null,
+			maxWidth: col.maxWidth ? col.maxWidth : null,
+		}"
+	/>
 	<thead class="ss-lib-table-table__thead">
 		<tr class="ss-lib-table-tr">
 			@if (isSkeleton()) {
@@ -9,11 +17,6 @@
 					class="ss-lib-table-th ss-lib-table-th-align--{{
 						colSkeleton.align
 					}}"
-					[ngStyle]="{
-						maxWidth: colSkeleton.width ? colSkeleton.width : null,
-					}"
-					[style.padding]="colSkeleton.padding"
-					[class.ss-lib-table-td-sticky]="colSkeleton.sticky"
 				>
 					<ss-lib-skeleton-block
 						[config]="colSkeleton.skeletonTh"
@@ -23,13 +26,12 @@
 				<th
 					*ngFor="let col of stateColumn.visibleCols$ | async"
 					class="ss-lib-table-th"
-					[style.padding]="col.title.trim() ? col.padding : null"
-					[ngStyle]="{ width: col.width ?? 'auto' }"
 				>
 					<div
 						class="ss-lib-table-th-item
 						ss-lib-table-th-item-align--{{ col.align }}"
 						[class.ss-lib-table-th-item--sticky]="col.sticky"
+						[class.ss-lib-table-th-item--no-padding]="col.noPadding"
 					>
 						<ss-lib-text
 							[color]="Colors.TextBody2"

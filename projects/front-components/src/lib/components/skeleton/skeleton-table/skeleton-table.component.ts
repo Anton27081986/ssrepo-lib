@@ -55,7 +55,7 @@ export class SkeletonTableComponent {
 				order: col.order,
 				skeletonConfig: col.skeleton.body,
 				align: col.align,
-				padding: col.padding,
+				noPadding: col.noPadding,
 				sticky: col.sticky,
 			};
 		});

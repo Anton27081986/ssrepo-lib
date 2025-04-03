@@ -3,7 +3,7 @@ import { ExampleDataTable } from '../interface/example-data-table';
 export const exampleDataTable: ExampleDataTable[] = [
 	{
 		name: 'Баннер Баннер Баннер Баннер Баннер Баннер Баннер',
-		text: 'Баннер и какой то текст',
+		text: 'Баннер и какой то текст Баннер и какой то текст Баннер и какой то текст Баннер и какой то текст',
 		imageUrl: 'https://i.pravatar.cc/300',
 		linkUrl: '',
 		order: 1,

@@ -14,7 +14,7 @@ export interface IBaseParamsStoreTable extends IStoreTableId {
 	readonly minHeight?: string | null;
 	readonly maxHeight?: string | null;
 	readonly align: AlignType;
-	padding: string | null;
+	noPadding: boolean;
 	sticky: boolean;
 }
 

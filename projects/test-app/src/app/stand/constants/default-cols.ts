@@ -8,9 +8,8 @@ export const DEFAULT_COLS: IStoreTableBaseColumn[] = [
 		title: '',
 		order: 0,
 		width: '40px',
-		// height: '84px',
 		align: 'center',
-		padding: '12px 10px',
+		noPadding: true,
 		sticky: false,
 		skeleton: {
 			header: {
@@ -29,9 +28,9 @@ export const DEFAULT_COLS: IStoreTableBaseColumn[] = [
 		id: BannerRowItemField.order,
 		title: 'Порядок',
 		order: 1,
-		width: '51px',
+		width: '76px',
 		align: 'center',
-		padding: '12px 12px',
+		noPadding: true,
 		sticky: false,
 		skeleton: {
 			header: {
@@ -50,9 +49,9 @@ export const DEFAULT_COLS: IStoreTableBaseColumn[] = [
 		id: BannerRowItemField.image,
 		title: 'Изображение',
 		order: 2,
-		width: '180px',
+		width: '228px',
 		align: 'left',
-		padding: '14px 24px',
+		noPadding: false,
 		sticky: false,
 		skeleton: {
 			header: {
@@ -72,7 +71,9 @@ export const DEFAULT_COLS: IStoreTableBaseColumn[] = [
 		title: 'Баннер',
 		order: 3,
 		align: 'left',
-		padding: '12px 24px',
+		noPadding: false,
+		width: '35%',
+		minWidth: '162px',
 		sticky: false,
 		skeleton: {
 			header: {
@@ -91,9 +92,9 @@ export const DEFAULT_COLS: IStoreTableBaseColumn[] = [
 		id: BannerRowItemField.status,
 		title: 'Опубликовано',
 		order: 4,
-		width: '85px',
+		width: '120px',
 		align: 'center',
-		padding: '12px 24px',
+		noPadding: true,
 		sticky: false,
 		skeleton: {
 			header: {
@@ -112,9 +113,10 @@ export const DEFAULT_COLS: IStoreTableBaseColumn[] = [
 		id: BannerRowItemField.actionToggle,
 		title: 'Действие',
 		order: 5,
-		width: null,
+		minWidth: '184px',
+		width: '40%',
 		align: 'left',
-		padding: '12px 24px',
+		noPadding: false,
 		sticky: false,
 		skeleton: {
 			header: {
@@ -133,9 +135,9 @@ export const DEFAULT_COLS: IStoreTableBaseColumn[] = [
 		id: BannerRowItemField.user,
 		title: 'Пользователь',
 		order: 6,
-		width: null,
-		align: 'center',
-		padding: '12px 24px',
+		width: '130px',
+		align: 'left',
+		noPadding: false,
 		sticky: false,
 		skeleton: {
 			header: {
@@ -154,9 +156,10 @@ export const DEFAULT_COLS: IStoreTableBaseColumn[] = [
 		id: BannerRowItemField.period,
 		title: 'Период',
 		order: 7,
-		width: null,
+		minWidth: '200px',
+		width: '42%',
 		align: 'left',
-		padding: '12px 24px',
+		noPadding: false,
 		sticky: false,
 		skeleton: {
 			header: {
@@ -176,8 +179,8 @@ export const DEFAULT_COLS: IStoreTableBaseColumn[] = [
 		title: '',
 		order: 7,
 		width: '40px',
-		align: 'left',
-		padding: '12px 10px',
+		align: 'center',
+		noPadding: true,
 		sticky: true,
 		skeleton: {
 			header: {
