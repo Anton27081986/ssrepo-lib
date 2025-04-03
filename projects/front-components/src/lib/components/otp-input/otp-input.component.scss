@@ -1,0 +1,31 @@
+.otp-container {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+
+	--app-custom-input-font-size: var(--font-size-heading-xs);
+	--app-custom-input-line-height: var(--line-height-heading-xs);
+
+	&__label {
+		display: flex;
+		align-items: center;
+	}
+
+	&__inputs {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: space-between;
+
+		&_item {
+			width: 44px;
+		}
+	}
+
+	&__resend-code {
+		display: flex;
+		align-items: center;
+		gap: 6px;
+	}
+}

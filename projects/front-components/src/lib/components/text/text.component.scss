@@ -3,6 +3,12 @@ p.ellipsis {
 	overflow: hidden;
 }
 
+p.line-clamp:not(.ellipsis) {
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+}
+
 p.underline {
 	text-decoration: underline;
 }

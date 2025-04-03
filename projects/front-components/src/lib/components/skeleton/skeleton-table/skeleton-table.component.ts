@@ -97,13 +97,15 @@ export class SkeletonTableComponent {
 	 * @private
 	 */
 	private generatorTds(): ISkeletonDerivativeTdTable[] {
-		return this.visibleCols().map((col) => ({
-			id: col.id,
-			order: col.order,
-			skeletonConfig: col.skeleton.body,
-			align: col.align,
-			padding: col.padding,
-			sticky: col.sticky,
-		}));
+		return this.visibleCols().map((col) => {
+			return {
+				id: col.id,
+				order: col.order,
+				skeletonConfig: col.skeleton.body,
+				align: col.align,
+				noPadding: col.noPadding,
+				sticky: col.sticky,
+			};
+		});
 	}
 }
