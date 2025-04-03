@@ -566,6 +566,14 @@
 <br />
 
 <pre>{{ timepickerCtrl.value }}</pre>
+<ss-lib-table>
+	<tr
+		*ngFor="let item of exampleItems"
+		class="ss-lib-table-tr"
+		app-example-table-tr
+		[item]="item"
+	></tr>
+</ss-lib-table>
 
 <ss-lib-utility-button [popoverTriggerFor]="dropdown2" />
 <br />

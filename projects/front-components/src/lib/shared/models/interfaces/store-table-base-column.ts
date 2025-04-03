@@ -8,8 +8,13 @@ export interface IStoreTableId {
 export interface IBaseParamsStoreTable extends IStoreTableId {
 	order: number;
 	readonly width?: string | null;
+	readonly minWidth?: string | null;
+	readonly maxWidth?: string | null;
+	readonly height?: string | null;
+	readonly minHeight?: string | null;
+	readonly maxHeight?: string | null;
 	readonly align: AlignType;
-	padding: string | null;
+	noPadding: boolean;
 	sticky: boolean;
 }
 
