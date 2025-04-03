@@ -8,15 +8,27 @@ import { Colors } from '../../shared/models';
 import { ICONS } from '../../shared/assets/icons';
 
 /**
+ * Компонент для отображения SVG иконок
+ *
+ * @example
+ * ```html
  * Параметры:
  *
- * [icon]: IconType - Название иконки. Обазательное поле
+ * [icon]: IconType - Название иконки - обязательный
  *
- * [height]: string - Высота. По умолчанию: `24`
+ * [height]: string - Высота иконки - необязательный, по умолчанию: '24'
  *
- * [width]: string - Ширина. По умолчанию: `24`
+ * [width]: string - Ширина иконки - необязательный, по умолчанию: '24'
  *
- * [color]: Colors - Цвет. По умолчанию: `Colors.IconPrimary`
+ * [color]: Colors - Цвет иконки - необязательный, по умолчанию: Colors.IconPrimary
+ *
+ * <ss-lib-icon
+ *   [icon]="IconType.Search"
+ *   [height]="'32'"
+ *   [width]="'32'"
+ *   [color]="Colors.IconSecondary"
+ * ></ss-lib-icon>
+ * ```
  */
 @Component({
 	selector: 'ss-lib-icon',

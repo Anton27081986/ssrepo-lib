@@ -9,6 +9,7 @@ import {
 	runInInjectionContext,
 	afterNextRender,
 	Self,
+	inject,
 } from '@angular/core';
 import type { ControlValueAccessor } from '@angular/forms';
 import { FormControl, NgControl, ReactiveFormsModule } from '@angular/forms';
@@ -20,18 +21,20 @@ import { DropdownListComponent } from '../dropdown-list/dropdown-list.component'
 import type { IDictionaryItemDto } from '../../shared/models';
 
 /**
- * Компонент выпадающего списка.
- *
- * Реализует ControlValueAccessor для интеграции с Angular Forms.
- * Поддерживает работу как со строковыми значениями, так и с объектами,
- * реализующими интерфейс IDictionaryItemDto.
+ * Компонент выпадающего списка с поддержкой строковых значений и объектов
  *
  * @example
  * ```html
+ * Параметры:
+ *
+ * [placeholder]: string - Текст подсказки - необязательный, по умолчанию: 'Выберите из списка'
+ *
+ * [(ngModel)]: T | string - Значение выбранного элемента - обязательный
+ *
  * <ss-lib-select
  *   [placeholder]="'Выберите значение'"
  *   [(ngModel)]="selectedValue"
- * />
+ * ></ss-lib-select>
  * ```
  *
  * @param T - Тип элемента списка, должен реализовывать IDictionaryItemDto
@@ -54,7 +57,7 @@ export class SelectComponent<T extends IDictionaryItemDto = IDictionaryItemDto>
 	 * @description
 	 * Отображается, когда значение не выбрано.
 	 */
-	public placeholder = input<string>('Выберите из списка');
+	public readonly placeholder = input<string>('Выберите из списка');
 
 	/**
 	 * Форм-контрол для управления значением.
@@ -63,7 +66,7 @@ export class SelectComponent<T extends IDictionaryItemDto = IDictionaryItemDto>
 	 * Используется для управления состоянием поля ввода
 	 * и интеграции с Angular Forms.
 	 */
-	public selectCtrl = new FormControl<string | null>(null);
+	public readonly selectCtrl = new FormControl<string | null>(null);
 
 	/**
 	 * Ссылка на компонент выпадающего списка.
@@ -72,17 +75,19 @@ export class SelectComponent<T extends IDictionaryItemDto = IDictionaryItemDto>
 	 * Используется для взаимодействия с компонентом списка
 	 * и получения выбранных значений.
 	 */
-	private dropdownList = contentChild.required(DropdownListComponent<T>);
+	private readonly dropdownList = contentChild.required(
+		DropdownListComponent<T>,
+	);
 
 	/**
 	 * Callback для обновления значения.
 	 */
-	private onChange!: (value: T | string | null) => void;
+	private onChange: ((value: T | string | null) => void) | undefined;
 
 	/**
 	 * Callback для обработки события касания.
 	 */
-	private onTouched!: () => void;
+	private onTouched: (() => void) | undefined;
 
 	/**
 	 * Создает экземпляр компонента.
@@ -97,7 +102,7 @@ export class SelectComponent<T extends IDictionaryItemDto = IDictionaryItemDto>
 		@Inject(NgControl)
 		public ngControl: NgControl,
 		@Optional() public formField: FormFieldComponent,
-		private injector: Injector,
+		private readonly injector: Injector = inject(Injector),
 	) {
 		if (this.ngControl) {
 			this.ngControl.valueAccessor = this;
@@ -180,7 +185,7 @@ export class SelectComponent<T extends IDictionaryItemDto = IDictionaryItemDto>
 	 * @private
 	 */
 	private updateValue(item: T | string | null): void {
-		this.onChange(item);
-		this.onTouched();
+		this.onChange?.(item);
+		this.onTouched?.();
 	}
 }

@@ -3,15 +3,32 @@ import { NgClass } from '@angular/common';
 import { Colors, TextType, TextWeight } from '../../shared/models';
 
 /**
+ * Компонент для отображения текста с настраиваемыми стилями
+ *
+ * @example
+ * ```html
  * Параметры:
  *
- * [type]: TextType - Размерность шрифта. По умолчанию: `TextType.Body`
+ * [type]: TextType - Размерность шрифта - необязательный, по умолчанию: TextType.BodyMd
  *
- * [weight]: TextWeight - Толщина шрифта. По умолчанию: `TextWeight.Regular`
+ * [weight]: TextWeight - Толщина шрифта - необязательный, по умолчанию: TextWeight.Regular
  *
- * [color]: Colors - Цвет текста. По умолчанию: `Colors.Primary`
+ * [color]: Colors - Цвет текста - необязательный, по умолчанию: Colors.TextHeadings
  *
- * [isEllipsis]: boolean - Добавлять троеточие при переполнении. По умолчанию: `false`
+ * [isEllipsis]: boolean - Добавлять троеточие при переполнении -
+ * необязательный, по умолчанию: false
+ *
+ * [isUnderline]: boolean - Добавлять подчеркивание -
+ * необязательный, по умолчанию: false
+ *
+ * <ss-lib-text
+ *   [type]="TextType.BodyMd"
+ *   [weight]="TextWeight.Regular"
+ *   [color]="Colors.TextHeadings"
+ *   [isEllipsis]="false"
+ *   [isUnderline]="false"
+ * >Текст для отображения</ss-lib-text>
+ * ```
  */
 @Component({
 	selector: 'ss-lib-text',
@@ -21,9 +38,9 @@ import { Colors, TextType, TextWeight } from '../../shared/models';
 	standalone: true,
 })
 export class TextComponent {
-	public type = input<TextType>(TextType.BodyMd);
-	public weight = input<TextWeight>(TextWeight.Regular);
-	public color = input<Colors>(Colors.TextHeadings);
-	public isEllipsis = input<boolean>(false);
-	public isUnderline = input<boolean>(false);
+	public readonly type = input<TextType>(TextType.BodyMd);
+	public readonly weight = input<TextWeight>(TextWeight.Regular);
+	public readonly color = input<Colors>(Colors.TextHeadings);
+	public readonly isEllipsis = input<boolean>(false);
+	public readonly isUnderline = input<boolean>(false);
 }

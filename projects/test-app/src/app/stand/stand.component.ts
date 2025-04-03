@@ -28,7 +28,7 @@ import { ToastRef } from '../../../../front-components/src/lib/components';
 @Component({
 	selector: 'app-stand',
 	standalone: true,
-	imports: [standImports],
+	imports: [...standImports],
 	providers: [ColumnsStateService],
 	templateUrl: './stand.component.html',
 	styleUrl: './stand.component.scss',

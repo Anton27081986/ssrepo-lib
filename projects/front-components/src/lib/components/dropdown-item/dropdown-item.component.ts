@@ -13,13 +13,30 @@ import type { IconType, IDictionaryItemDto } from '../../shared/models';
 import { Colors, StateTypes, TextType, TextWeight } from '../../shared/models';
 
 /**
- * Компонент элемента выпадающего списка.
- *
- * Предоставляет элемент списка с поддержкой иконок,
- * состояний (disabled, destructive) и кастомных данных.
+ * Компонент элемента выпадающего списка с поддержкой иконок и состояний
  *
  * @example
  * ```html
+ * Параметры:
+ *
+ * [label]: string - Текст элемента списка - необязательный,
+ * по умолчанию: ''
+ *
+ * [value]: T | string | null - Значение элемента - необязательный,
+ * по умолчанию: null
+ *
+ * [icon]: IconType - Иконка элемента - необязательный,
+ * по умолчанию: null
+ *
+ * [isDestructive]: boolean - Флаг деструктивного действия -
+ * необязательный, по умолчанию: false
+ *
+ * [isDisabled]: boolean - Флаг блокировки элемента - необязательный,
+ * по умолчанию: false
+ *
+ * (valueEvent): T | string | null - Событие выбора элемента -
+ * обязательный
+ *
  * <ss-lib-dropdown-item
  *   [label]="'Пункт меню'"
  *   [value]="item"
@@ -27,7 +44,7 @@ import { Colors, StateTypes, TextType, TextWeight } from '../../shared/models';
  *   [isDestructive]="false"
  *   [isDisabled]="false"
  *   (valueEvent)="onSelect($event)"
- * />
+ * ></ss-lib-dropdown-item>
  * ```
  */
 @Component({
