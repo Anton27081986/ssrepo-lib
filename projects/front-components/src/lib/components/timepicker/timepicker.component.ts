@@ -19,6 +19,20 @@ import { IconType, InputType } from '../../shared/models';
 import { PopoverTriggerForDirective } from '../../core/directives';
 import { InputComponent } from '../input/input.component';
 
+/**
+ * Компонент выбора времени с поддержкой форм
+ *
+ * @example
+ * ```html
+ * Параметры:
+ *
+ * [(ngModel)]: string | null - Значение времени - обязательный
+ *
+ * <ss-lib-timepicker
+ *   [(ngModel)]="selectedTime"
+ * ></ss-lib-timepicker>
+ * ```
+ */
 @Component({
 	selector: 'ss-lib-timepicker',
 	standalone: true,

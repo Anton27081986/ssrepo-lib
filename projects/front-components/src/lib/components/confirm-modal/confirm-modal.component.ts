@@ -1,5 +1,5 @@
 import type { OnDestroy } from '@angular/core';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ModalComponent } from '../modal/modal.component';
 import {
@@ -11,6 +11,21 @@ import {
 import { ButtonType } from '../../shared/models';
 import { ModalActionApplyComponent } from '../modal-action-apply/modal-action-apply.component';
 
+/**
+ * Компонент модального окна подтверждения с поддержкой действий
+ *
+ * @example
+ * ```html
+ * Параметры:
+ *
+ * [cancelText]: string - Текст кнопки отмены - необязательный,
+ * по умолчанию: ''
+ *
+ * <ss-lib-confirm-modal
+ *   [cancelText]="'Отмена'"
+ * ></ss-lib-confirm-modal>
+ * ```
+ */
 @Component({
 	selector: 'ss-lib-confirm-modal',
 	standalone: true,
@@ -22,12 +37,12 @@ import { ModalActionApplyComponent } from '../modal-action-apply/modal-action-ap
 export class ConfirmModalComponent implements OnDestroy {
 	public readonly ButtonType = ButtonType;
 
-	protected applyText: IApply;
-	protected titleHeader: string;
-	protected descriptionHeader: string;
-	protected applyDisabled: boolean;
-	protected badgeProps: IBadgeProps;
-	protected cancelText: string | undefined;
+	protected readonly applyText: IApply;
+	protected readonly titleHeader: string;
+	protected readonly descriptionHeader: string;
+	protected readonly applyDisabled: boolean;
+	protected readonly badgeProps: IBadgeProps;
+	public readonly cancelText = input<string>('');
 
 	private readonly subscription: Subscription = new Subscription();
 
@@ -35,7 +50,6 @@ export class ConfirmModalComponent implements OnDestroy {
 		this.applyText = this.modalRef.data.apply;
 		this.applyDisabled = false;
 		this.badgeProps = this.modalRef.data.badgeProps;
-		this.cancelText = this.modalRef.data.cancelText;
 		this.titleHeader = this.modalRef.data.title;
 		this.descriptionHeader = this.modalRef.data.description;
 	}
@@ -56,5 +70,9 @@ export class ConfirmModalComponent implements OnDestroy {
 			this.modalRef.submit();
 			this.modalRef.close();
 		}
+	}
+
+	protected close(): void {
+		this.modalRef.close();
 	}
 }

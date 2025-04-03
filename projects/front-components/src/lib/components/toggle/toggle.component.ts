@@ -7,6 +7,28 @@ import {
 import type { ControlValueAccessor } from '@angular/forms';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
+/**
+ * Компонент переключателя с поддержкой форм
+ *
+ * @example
+ * ```html
+ * Параметры:
+ *
+ * [isDisabled]: boolean - Флаг отключения переключателя -
+ * необязательный, по умолчанию: false
+ *
+ * [checked]: boolean - Состояние переключателя -
+ * необязательный, по умолчанию: false
+ *
+ * [(ngModel)]: boolean - Значение переключателя - обязательный
+ *
+ * <ss-lib-toggle
+ *   [isDisabled]="false"
+ *   [checked]="false"
+ *   [(ngModel)]="isEnabled"
+ * ></ss-lib-toggle>
+ * ```
+ */
 @Component({
 	selector: 'ss-lib-toggle',
 	standalone: true,

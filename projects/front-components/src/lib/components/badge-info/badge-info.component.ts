@@ -19,6 +19,31 @@ import { BadgeComponent } from '../badge/badge.component';
 import { TextComponent } from '../text/text.component';
 import { CloseButtonComponent } from '../buttons';
 
+/**
+ * Компонент для отображения информационного бейджа с заголовком и описанием
+ *
+ * @example
+ * ```html
+ * Параметры:
+ *
+ * [title]: string - Заголовок информационного бейджа - обязательный
+ *
+ * [description]: string - Описание информационного бейджа - обязательный
+ *
+ * [viewClose]: boolean - Флаг отображения кнопки закрытия -
+ * необязательный, по умолчанию: true
+ *
+ * [badge]: IBadgeProps - Свойства бейджа - обязательный
+ *
+ * <ss-lib-badge-info
+ *   [title]="'Заголовок'"
+ *   [description]="'Описание бейджа'"
+ *   [viewClose]="true"
+ *   [badge]="{ text: 'Новый', color: Colors.Primary }"
+ *   (closeEvent)="onClose()"
+ * ></ss-lib-badge-info>
+ * ```
+ */
 @Component({
 	selector: 'ss-lib-badge-info',
 	standalone: true,

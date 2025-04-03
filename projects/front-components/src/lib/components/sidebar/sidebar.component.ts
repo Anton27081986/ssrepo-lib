@@ -1,4 +1,3 @@
-import type { InputSignal } from '@angular/core';
 import {
 	ChangeDetectionStrategy,
 	Component,
@@ -65,7 +64,7 @@ export class SidebarComponent {
 	 * Обязательный параметр, содержащий структуру меню с элементами
 	 * навигации и их состоянием.
 	 */
-	public menu: InputSignal<IMenu[]> = input.required<IMenu[]>();
+	public readonly menu = input.required<IMenu[]>();
 
 	/**
 	 * Событие выбора элемента меню.
@@ -73,7 +72,7 @@ export class SidebarComponent {
 	 * @description
 	 * Эмитит выбранный элемент меню при клике на него.
 	 */
-	public outMenuFromSidebar = output<IMenu>();
+	public readonly outMenuFromSidebar = output<IMenu>();
 
 	/**
 	 * Состояние холста.
@@ -81,27 +80,27 @@ export class SidebarComponent {
 	 * @description
 	 * Используется для управления состоянием боковой панели.
 	 */
-	protected stateCanvas: CanvasState = inject(CanvasState);
+	protected readonly stateCanvas = inject(CanvasState);
 
 	/**
 	 * Константы для типов кнопок.
 	 */
-	protected ButtonType = ButtonType;
+	protected readonly ButtonType = ButtonType;
 
 	/**
 	 * Константы для типов иконок.
 	 */
-	protected IconType = IconType;
+	protected readonly IconType = IconType;
 
 	/**
 	 * Константы для типов боковой панели.
 	 */
-	protected SidebarType = SidebarType;
+	protected readonly SidebarType = SidebarType;
 
 	/**
 	 * Константы для типов навигационных кнопок.
 	 */
-	protected NuvButtonType = NavButton;
+	protected readonly NuvButtonType = NavButton;
 
 	/**
 	 * Текущий тип боковой панели.
@@ -109,7 +108,7 @@ export class SidebarComponent {
 	 * @description
 	 * Определяет текущее состояние отображения боковой панели.
 	 */
-	protected sidebarType = this.stateCanvas.sidebarType;
+	protected readonly sidebarType = this.stateCanvas.sidebarType;
 
 	/**
 	 * Закрывает боковую панель.

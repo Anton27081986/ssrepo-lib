@@ -1,12 +1,6 @@
-import type { Signal } from '@angular/core';
-import {
-	ChangeDetectionStrategy,
-	Component,
-	computed,
-	inject,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { computed, inject } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
-import type { ProgressStateType } from '../../shared/models/types/progress-state-type';
 import { CanvasState } from '../canvas/canvas.state';
 
 /**
@@ -37,7 +31,7 @@ export class ProgressComponent {
 	 * Используется для получения информации о текущем
 	 * состоянии прогресса.
 	 */
-	public canvasState: CanvasState = inject(CanvasState);
+	public readonly canvasState = inject(CanvasState);
 
 	/**
 	 * Тип прогресса из состояния холста.
@@ -47,9 +41,11 @@ export class ProgressComponent {
 	 * полученный из состояния холста.
 	 * @default 'default'
 	 */
-	public inProgressType: Signal<ProgressStateType> = toSignal(
+	public readonly inProgressType = toSignal(
 		this.canvasState.inProgressType$,
-		{ initialValue: 'default' },
+		{
+			initialValue: 'default',
+		},
 	);
 
 	/**
@@ -60,7 +56,7 @@ export class ProgressComponent {
 	 * текущего состояния. Возвращает 'average' если есть
 	 * активный тип прогресса, иначе 'max'.
 	 */
-	public state: Signal<ProgressStateType> = computed(() => {
+	public readonly state = computed(() => {
 		if (this.inProgressType()) {
 			return 'average';
 		}

@@ -50,7 +50,7 @@ type RegularButtonType =
 	encapsulation: ViewEncapsulation.None,
 })
 export class ButtonComponent extends BaseButtonComponent<RegularButtonType> {
-	public override type: InputSignal<RegularButtonType> =
+	public override readonly type: InputSignal<RegularButtonType> =
 		input<RegularButtonType>(ButtonType.Primary);
 
 	public readonly ButtonType = ButtonType;
