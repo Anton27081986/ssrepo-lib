@@ -46,7 +46,7 @@ export class TextComponent {
 	public readonly type = input<TextType>(TextType.BodyMd);
 	public readonly weight = input<TextWeight>(TextWeight.Regular);
 	public readonly color = input<Colors>(Colors.TextHeadings);
-	public readonly align = input<Align>(Align.Center);
+	public readonly align = input<Align>(Align.Start);
 	public readonly lineClampCount = input<number>(2);
 	public readonly isLineClamp = input<boolean>(false);
 	public readonly isEllipsis = input<boolean>(false);
