@@ -106,8 +106,8 @@ const meta: Meta<TextComponent> = {
 
 #### 🔹 Особенности
 
-- Поддержка различных размеров текста (\`HeadingXs\` – \`BodyXs\`)
-- Настраиваемая толщина шрифта (\`Regular\` – \`Bold\`)
+- Поддержка различных размеров текста
+- Настраиваемая толщина шрифта
 - Широкая палитра цветов
 - Гибкие варианты выравнивания
 - Многоточие при обрезке строк
@@ -175,6 +175,7 @@ export default meta;
 type Story = StoryObj<TextComponent>;
 
 export const Default: Story = {
+	name: 'Базовый пример',
 	args: {
 		type: TextType.BodyMd,
 		weight: TextWeight.Regular,
@@ -200,46 +201,27 @@ export const Default: Story = {
 	}),
 };
 
-// export const DifferentTypes: Story = {
-// 	render: () => ({
-// 		template: `
-// 			<div style="display: flex; flex-direction: column; gap: 16px;">
-// 				<ss-lib-text [type]="TextType.HeadingXs">Xs Заголовок</ss-lib-text>
-// 				<ss-lib-text [type]="TextType.BodyXl">Xl текст</ss-lib-text>
-// 				<ss-lib-text [type]="TextType.BodyLg">Lg текст</ss-lib-text>
-// 				<ss-lib-text [type]="TextType.BodyMd">Md текст</ss-lib-text>
-// 				<ss-lib-text [type]="TextType.BodySm">Sm текст</ss-lib-text>
-// 				<ss-lib-text [type]="TextType.BodySm">Xs текст</ss-lib-text>
-// 			</div>
-// 		`,
-// 		props: {
-// 			TextType,
-// 		},
-// 	}),
-// };
-
 export const DifferentTypes: Story = {
 	name: 'Разные размеры текста',
-	args: {
-		type: TextType.BodyMd,
-		color: Colors.TextHeadings, // Добавляем цвет, чтобы работала темная тема
-	},
-	render: (args) => ({
-		props: args,
+	render: () => ({
 		template: `
-      <div style="display: flex; flex-direction: column; gap: 16px;">
-        <ss-lib-text [type]="type"  [color]="color">Xs Заголовок</ss-lib-text>
-        <ss-lib-text [type]="type"  [color]="color">Xl текст</ss-lib-text>
-        <ss-lib-text [type]="type" [color]="color">Lg текст</ss-lib-text>
-        <ss-lib-text [type]="type" [color]="color">Md текст</ss-lib-text>
-        <ss-lib-text [type]="type" [color]="color">Sm текст</ss-lib-text>
-        <ss-lib-text [type]="type" [color]="color">Xs текст</ss-lib-text>
-      </div>
-    `,
+			<div style="display: flex; flex-direction: column; gap: 16px;">
+				<ss-lib-text [type]="TextType.HeadingXs">Xs Заголовок</ss-lib-text>
+				<ss-lib-text [type]="TextType.BodyXl">Xl текст</ss-lib-text>
+				<ss-lib-text [type]="TextType.BodyLg">Lg текст</ss-lib-text>
+				<ss-lib-text [type]="TextType.BodyMd">Md текст</ss-lib-text>
+				<ss-lib-text [type]="TextType.BodySm">Sm текст</ss-lib-text>
+				<ss-lib-text [type]="TextType.BodySm">Xs текст</ss-lib-text>
+			</div>
+		`,
+		props: {
+			TextType,
+		},
 	}),
 };
 
 export const DifferentWeights: Story = {
+	name: 'Насыщенность шрифта',
 	render: () => ({
 		template: `
 			<div style="display: flex; flex-direction: column; gap: 16px;">
@@ -256,6 +238,7 @@ export const DifferentWeights: Story = {
 };
 
 export const DifferentColors: Story = {
+	name: 'Варианты цветов текста',
 	render: () => ({
 		template: `
 			<div style="display: flex; flex-direction: column; gap: 16px;">
@@ -275,6 +258,7 @@ export const DifferentColors: Story = {
 };
 
 export const DifferentAlignments: Story = {
+	name: 'Варианты выравнивания',
 	render: () => ({
 		template: `
 			<div style="display: flex; flex-direction: column; gap: 16px;">
@@ -289,7 +273,25 @@ export const DifferentAlignments: Story = {
 	}),
 };
 
+export const WithEllipsis: Story = {
+	name: 'С обрезкой текста в одну строку',
+	args: {
+		isEllipsis: true,
+	},
+	render: (args) => ({
+		props: args,
+		template: `
+			<div style="width: 300px;">
+				<ss-lib-text [isEllipsis]="isEllipsis">
+					Это длинный текст, который будет обрезан с многоточием в конце, если не поместится в контейнер.
+				</ss-lib-text>
+			</div>
+		`,
+	}),
+};
+
 export const WithLineClamp: Story = {
+	name: 'С ограничением строк',
 	args: {
 		isLineClamp: true,
 		lineClampCount: 2,
@@ -312,23 +314,8 @@ export const WithLineClamp: Story = {
 	}),
 };
 
-export const WithEllipsis: Story = {
-	args: {
-		isEllipsis: true,
-	},
-	render: (args) => ({
-		props: args,
-		template: `
-			<div style="width: 300px;">
-				<ss-lib-text [isEllipsis]="isEllipsis">
-					Это длинный текст, который будет обрезан с многоточием в конце, если не поместится в контейнер.
-				</ss-lib-text>
-			</div>
-		`,
-	}),
-};
-
 export const WithUnderline: Story = {
+	name: 'С подчеркиванием',
 	args: {
 		isUnderline: true,
 	},
