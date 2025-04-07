@@ -1,3 +1,8 @@
+// colors.enum.ts
+/**
+ * Доступные цвета текста
+ * @enum {string}
+ */
 export enum Colors {
 	BorderDisabled = 'var(--border-disabled)',
 	BorderError = 'var(--border-error)',
@@ -46,7 +51,9 @@ export enum Colors {
 	SurfacePage = 'var(--surface-page)',
 	SurfacePrimary = 'var(--surface-primary)',
 	SurfaceSecondary = 'var(--surface-secondary)',
+	/** Цвет для активных элементов (кнопки, ссылки) */
 	TextAction = 'var(--text-action)',
+	/** Цвет для активных элементов при наведении */
 	TextActionHover = 'var(--text-action-hover)',
 	TextBody = 'var(--text-body)',
 	TextBody2 = 'var(--text-body-2)',
