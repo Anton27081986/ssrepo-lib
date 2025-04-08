@@ -24,7 +24,7 @@
 	&-table {
 		width: 100%;
 		position: relative;
-		border-collapse: separate;
+		border-collapse: inherit;
 		border-spacing: 0;
 		table-layout: fixed;
 
@@ -45,6 +45,24 @@
 
 		tr:last-child &-td:last-child {
 			border-radius: 0 0 var(--ss-lib-table-border-radius) 0;
+		}
+
+		tr:hover {
+			background-color: #f9f9f9;
+		}
+
+		tr.dragging {
+			opacity: 0.3;
+			background-color: #f0f0f0;
+		}
+
+		tr.drag-over {
+			background-color: #e6f3ff;
+			border-top: 2px solid #2196f3;
+		}
+
+		tr {
+			transition: all 0.2s ease;
 		}
 
 		&__thead {
