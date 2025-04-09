@@ -1,6 +1,6 @@
 {
 	"name": "@front-library/components",
-	"version": "0.0.63",
+	"version": "0.0.64",
 	"main": "fesm2022/front-components.mjs",
 	"module": "fesm2022/front-components.mjs",
 	"typings": "index.d.ts",
