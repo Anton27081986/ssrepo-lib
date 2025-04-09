@@ -1,7 +1,7 @@
 import type { InputSignal, TemplateRef } from '@angular/core';
 import { Component, input } from '@angular/core';
 import { NgIf, NgTemplateOutlet } from '@angular/common';
-import type { IconType } from '../../shared/models';
+import { Align, IconType } from "../../shared/models";
 import { ExtraSize, TextType, TextWeight } from '../../shared/models';
 import { BadgeComponent } from '../badge/badge.component';
 import { TextComponent } from '../text/text.component';
@@ -61,4 +61,5 @@ export class EmptyStateComponent {
 	protected readonly TextType = TextType;
 	protected readonly TextWeight = TextWeight;
 	protected readonly ExtraSize = ExtraSize;
+	protected readonly Align = Align;
 }
