@@ -14,6 +14,7 @@ export enum Colors {
 	BorderSuccess = 'var(--border-success)',
 	BorderTertiary = 'var(--border-tertiary)',
 	BorderWarning = 'var(--border-warning)',
+
 	EffectsShadows10 = 'var(--effects-shadows-10)',
 	EffectsShadows14 = 'var(--effects-shadows-14)',
 	EffectsShadows18 = 'var(--effects-shadows-18)',
@@ -22,6 +23,7 @@ export enum Colors {
 	EffectsShadows5 = 'var(--effects-shadows-5)',
 	EffectsShadows6 = 'var(--effects-shadows-6)',
 	EffectsShadows8 = 'var(--effects-shadows-8)',
+
 	IconAction = 'var(--icon-action)',
 	IconAction2 = 'var(--icon-action-2)',
 	IconActionHover = 'var(--icon-action-hover)',
@@ -34,6 +36,7 @@ export enum Colors {
 	IconSecondary = 'var(--icon-secondary)',
 	IconSuccess = 'var(--icon-success)',
 	IconWarning = 'var(--icon-warning)',
+
 	SurfaceAction = 'var(--surface-action)',
 	SurfaceAction4 = 'var(--surface-action-4)',
 	SurfaceActionHover = 'var(--surface-action-hover)',
@@ -42,18 +45,20 @@ export enum Colors {
 	SurfaceActionHover4 = 'var(--surface-action-hover-4)',
 	SurfaceActionPressed = 'var(--surface-action-pressed)',
 	SurfaceActionPressed2 = 'var(--surface-action-pressed-2)',
+	SurfaceActionPressed3 = 'var(--surface-action-pressed-3)',
 	SurfaceActionPressed4 = 'var(--surface-action-pressed-4)',
 	SurfaceBackdrop = 'var(--surface-backdrop)',
 	SurfaceDisabled = 'var(--surface-disabled)',
 	SurfaceDisabledSelected = 'var(--surface-disabled-selected)',
 	SurfaceInformation = 'var(--surface-information)',
 	SurfaceInformation2 = 'var(--surface-information-2)',
+	SurfaceInformationHover2 = 'var(--surface-information-hover-2)',
+	SurfaceInformationSelected2 = 'var(--surface-information-selected-2)',
 	SurfacePage = 'var(--surface-page)',
 	SurfacePrimary = 'var(--surface-primary)',
 	SurfaceSecondary = 'var(--surface-secondary)',
-	/** Цвет для активных элементов (кнопки, ссылки) */
+
 	TextAction = 'var(--text-action)',
-	/** Цвет для активных элементов при наведении */
 	TextActionHover = 'var(--text-action-hover)',
 	TextBody = 'var(--text-body)',
 	TextBody2 = 'var(--text-body-2)',

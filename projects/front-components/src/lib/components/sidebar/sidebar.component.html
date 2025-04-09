@@ -22,28 +22,28 @@
 	</div>
 
 	<div class="sidebar__bottom-menu">
-		<ss-lib-divider></ss-lib-divider>
-		<div class="sidebar__bottom-menu-block">
-			<ng-container
-				*ngIf="stateCanvas.sidebarType() === SidebarType.Full"
-			>
-				<ss-lib-button
-					[type]="ButtonType.Text"
-					[text]="'Свернуть меню'"
-					[icon]="IconType.ChevronLeftDouble"
-					(click)="closeMenu()"
-				></ss-lib-button>
-			</ng-container>
-
-			<ng-container
-				*ngIf="stateCanvas.sidebarType() === SidebarType.Mini"
-			>
-				<ss-lib-button
-					[type]="ButtonType.Text"
-					[icon]="IconType.ChevronLeftDouble"
-					(click)="closeMenu()"
-				></ss-lib-button>
-			</ng-container>
+		<div class="sidebar__bottom-menu_divider">
+			<ss-lib-divider />
 		</div>
+
+		@if (
+			stateCanvas.sidebarType() === SidebarType.Full ||
+			stateCanvas.sidebarType() === SidebarType.Mini
+		) {
+			<div
+				class="sidebar__bottom-menu-block"
+				(click)="closeMenu()"
+			>
+				<ss-lib-button
+					class="sidebar__bottom-menu-block_icon-button"
+					[class.expanded]="
+						stateCanvas.sidebarType() === SidebarType.Full
+					"
+					[type]="ButtonType.Text"
+					[text]="closeBtnText()"
+					[icon]="IconType.ChevronLeftDouble"
+				/>
+			</div>
+		}
 	</div>
 </div>

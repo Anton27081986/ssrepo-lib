@@ -42,52 +42,11 @@ import { ButtonComponent } from '../buttons/button/button.component';
  * [disabled]: boolean - Блокировка компонента - необязательный,
  * по умолчанию: false
  *
- * Публичные свойства:
- *
- * numberPickerCtrl: FormControl - Контрол для управления значением
- *
- * isDisabled: Signal<boolean> - Сигнал состояния блокировки
- *
- * ButtonType - Enum типов кнопок
- *
- * IconType - Enum типов иконок
- *
- * IconPosition - Enum позиций иконок
- *
- * Direction - Enum направлений
- *
- * Align - Enum выравниваний
- *
- * InputType - Enum типов инпута
- *
- * Публичные методы:
- *
- * writeValue(value: number | null): void - Запись значения в компонент
- *
- * registerOnChange(fn: (value: number | null) => void): void - Регистрация
- * функции изменения
- *
- * registerOnTouched(fn: () => void): void - Регистрация функции касания
- *
- * setDisabledState(isDisabled: boolean): void - Установка состояния блокировки
- *
- * changeNumberValueByStep(direction: Direction): void - Изменение значения на шаг
- *
- * onCheckInputValueOnFocusout(event: FocusEvent): void - Проверка значения при
- * потере фокуса
- *
- * Примеры использования:
- *
  * <ss-lib-number-picker
  *   [min]="0"
  *   [max]="100"
  *   [step]="1"
  *   [(ngModel)]="value"
- * ></ss-lib-number-picker>
- *
- * <ss-lib-number-picker
- *   [formControl]="numberControl"
- *   [disabled]="false"
  * ></ss-lib-number-picker>
  * ```
  */
