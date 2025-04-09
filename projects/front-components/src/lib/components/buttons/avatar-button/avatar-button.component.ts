@@ -2,11 +2,21 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { AvatarComponent } from '../../avatar/avatar.component';
 
 /**
+ * Кнопка с аватаром пользователя
+ *
+ * @example
+ * ```html
  * Параметры:
  *
- * [src]: string - Путь к фото. По умолчанию: `''`
+ * [src]: string - Путь к фото пользователя - необязательный, по умолчанию: ''
  *
- * [username]: string - Имя пользователя. По умолчанию: `''`
+ * [username]: string - Имя пользователя - необязательный, по умолчанию: ''
+ *
+ * <ss-lib-avatar-button
+ *   [src]="'path/to/photo.jpg'"
+ *   [username]="'John Doe'"
+ * ></ss-lib-avatar-button>
+ * ```
  */
 @Component({
 	selector: 'ss-lib-avatar-button',

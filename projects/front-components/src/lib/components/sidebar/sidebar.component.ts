@@ -21,17 +21,27 @@ import { ButtonComponent } from '../buttons';
 import { TooltipDirective } from '../tooltip/tooltip.directive';
 
 /**
- * Компонент боковой панели.
- *
- * Предоставляет навигационное меню с возможностью анимации появления/исчезновения.
- * Поддерживает различные типы отображения и взаимодействия с элементами меню.
+ * Компонент боковой панели с навигационным меню и анимацией
  *
  * @example
  * ```html
+ * Параметры:
+ *
+ * [menu]: IMenu[] - Массив элементов меню - обязательный
+ *
+ * (outMenuFromSidebar): IMenu - Событие выбора элемента меню
+ *
  * <ss-lib-sidebar
- *   [menu]="menuItems"
- *   (outMenuFromSidebar)="handleMenuSelect($event)"
- * />
+ *   [menu]="[
+ *     {
+ *       id: 1,
+ *       title: 'Главная',
+ *       icon: IconType.Home,
+ *       pressed: false
+ *     }
+ *   ]"
+ *   (outMenuFromSidebar)="onMenuSelect($event)"
+ * ></ss-lib-sidebar>
  * ```
  */
 @Component({
@@ -59,78 +69,28 @@ import { TooltipDirective } from '../tooltip/tooltip.directive';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SidebarComponent {
-	/**
-	 * Массив элементов меню.
-	 *
-	 * @description
-	 * Обязательный параметр, содержащий структуру меню с элементами
-	 * навигации и их состоянием.
-	 */
 	public readonly menu = input.required<IMenu[]>();
 
-	/**
-	 * Событие выбора элемента меню.
-	 *
-	 * @description
-	 * Эмитит выбранный элемент меню при клике на него.
-	 */
 	public readonly outMenuFromSidebar = output<IMenu>();
 
-	/**
-	 * Состояние холста.
-	 *
-	 * @description
-	 * Используется для управления состоянием боковой панели.
-	 */
 	protected readonly stateCanvas = inject(CanvasState);
 
-	/**
-	 * Константы для типов кнопок.
-	 */
 	protected readonly ButtonType = ButtonType;
 
-	/**
-	 * Константы для типов иконок.
-	 */
 	protected readonly IconType = IconType;
 
-	/**
-	 * Константы для типов боковой панели.
-	 */
 	protected readonly SidebarType = SidebarType;
 
-	/**
-	 * Константы для типов навигационных кнопок.
-	 */
 	protected readonly NuvButtonType = NavButton;
 
-	/**
-	 * Текущий тип боковой панели.
-	 *
-	 * @description
-	 * Определяет текущее состояние отображения боковой панели.
-	 */
 	protected readonly sidebarType = this.stateCanvas.sidebarType;
 
 	protected readonly TooltipPosition = TooltipPosition;
-	/**
-	 * Закрывает боковую панель.
-	 *
-	 * @description
-	 * Устанавливает тип боковой панели в состояние "закрыто".
-	 */
+
 	public closeMenu(): void {
 		this.stateCanvas.sidebarType.set(SidebarType.Close);
 	}
 
-	/**
-	 * Обрабатывает выбор элемента меню.
-	 *
-	 * @param menu - Выбранный элемент меню
-	 * @description
-	 * Сбрасывает состояние предыдущего выбранного элемента
-	 * и эмитит новый выбранный элемент.
-	 */
 	public outMenuModel(menu: IMenu): void {
 		if (!menu.pressed) {
 			const pressed = this.menu().find((item) => item.pressed);

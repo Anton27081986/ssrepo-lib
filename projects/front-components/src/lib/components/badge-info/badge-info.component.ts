@@ -35,6 +35,8 @@ import { CloseButtonComponent } from '../buttons';
  *
  * [badge]: IBadgeProps - Свойства бейджа - обязательный
  *
+ * (closeEvent): void - Событие закрытия бейджа
+ *
  * <ss-lib-badge-info
  *   [title]="'Заголовок'"
  *   [description]="'Описание бейджа'"

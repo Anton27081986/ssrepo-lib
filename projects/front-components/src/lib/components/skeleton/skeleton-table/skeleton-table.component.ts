@@ -38,23 +38,8 @@ import { SkeletonBlockComponent } from '../skeleton-block/skeleton-block.compone
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SkeletonTableComponent {
-	/**
-	 * Количество строк скелетона.
-	 *
-	 * @default 7
-	 * @description
-	 * Определяет количество строк, которые будут отображены
-	 * в скелетоне таблицы.
-	 */
 	public readonly countItems: InputSignal<number> = input<number>(7);
 
-	/**
-	 * Сгенерированные строки скелетона.
-	 *
-	 * @description
-	 * Сигнал, содержащий массив строк скелетона, сгенерированных
-	 * на основе видимых колонок и количества строк.
-	 */
 	public readonly skeletonTrCols: Signal<ISkeletonDerivativeTrTable[]> =
 		computed(() => {
 			const trCols: ISkeletonDerivativeTrTable[] = [];
@@ -68,34 +53,14 @@ export class SkeletonTableComponent {
 			return trCols;
 		});
 
-	/**
-	 * Сервис состояния колонок таблицы.
-	 *
-	 * @description
-	 * Используется для получения информации о видимых колонках
-	 * и их конфигурации.
-	 */
 	protected readonly stateColumn: ColumnsStateService =
 		inject(ColumnsStateService);
 
-	/**
-	 * Видимые колонки таблицы.
-	 *
-	 * @description
-	 * Сигнал, содержащий массив видимых колонок таблицы,
-	 * полученный из сервиса состояния.
-	 */
 	protected readonly visibleCols: Signal<IStoreTableBaseColumn[]> = toSignal(
 		this.stateColumn.visibleCols$,
 		{ initialValue: [] },
 	);
 
-	/**
-	 * Генерирует массив ячеек скелетона для строки.
-	 *
-	 * @returns Массив ячеек скелетона с конфигурацией из видимых колонок.
-	 * @private
-	 */
 	private generatorTds(): ISkeletonDerivativeTdTable[] {
 		return this.visibleCols().map((col) => {
 			return {

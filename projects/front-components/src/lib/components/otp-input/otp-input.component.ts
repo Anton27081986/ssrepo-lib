@@ -51,6 +51,34 @@ interface OtpForm {
 	[key: string]: FormControl<string | null>;
 }
 
+/**
+ * Компонент для ввода одноразового кода подтверждения с таймером повторной отправки
+ *
+ * @example
+ * ```html
+ * Параметры:
+ *
+ * [label]: string - Текст метки поля - необязательный, по умолчанию: 'Введите код'
+ *
+ * [errorText]: string - Текст ошибки - необязательный, по умолчанию: ''
+ *
+ * [resendTime]: number - Время до повторной отправки кода в секундах -
+ * необязательный, по умолчанию: 30
+ *
+ * [fieldsCount]: number - Количество полей для ввода кода -
+ * необязательный, по умолчанию: 6
+ *
+ * (otpResendEvent): void - Событие запроса повторной отправки кода
+ *
+ * <ss-lib-otp-input
+ *   [label]="'Введите код подтверждения'"
+ *   [errorText]="'Неверный код'"
+ *   [resendTime]="30"
+ *   [fieldsCount]="6"
+ *   (otpResendEvent)="onResendCode()"
+ * ></ss-lib-otp-input>
+ * ```
+ */
 @Component({
 	selector: 'ss-lib-otp-input',
 	standalone: true,

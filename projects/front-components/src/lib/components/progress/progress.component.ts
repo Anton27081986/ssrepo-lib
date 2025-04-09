@@ -4,15 +4,16 @@ import { toSignal } from '@angular/core/rxjs-interop';
 import { CanvasState } from '../canvas/canvas.state';
 
 /**
- * Компонент индикатора прогресса.
- *
- * Отображает состояние загрузки или прогресса выполнения операции.
- * Поддерживает различные типы отображения (default, average, max)
- * и автоматически обновляется при изменении состояния.
+ * Компонент индикатора прогресса с различными состояниями
  *
  * @example
  * ```html
- * <ss-lib-progress />
+ * Параметры:
+ *
+ * [inProgressType]: string - Тип индикатора прогресса -
+ * необязательный, по умолчанию: 'default'
+ *
+ * <ss-lib-progress></ss-lib-progress>
  * ```
  */
 @Component({
@@ -24,23 +25,8 @@ import { CanvasState } from '../canvas/canvas.state';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProgressComponent {
-	/**
-	 * Состояние холста.
-	 *
-	 * @description
-	 * Используется для получения информации о текущем
-	 * состоянии прогресса.
-	 */
 	public readonly canvasState = inject(CanvasState);
 
-	/**
-	 * Тип прогресса из состояния холста.
-	 *
-	 * @description
-	 * Сигнал, содержащий текущий тип прогресса,
-	 * полученный из состояния холста.
-	 * @default 'default'
-	 */
 	public readonly inProgressType = toSignal(
 		this.canvasState.inProgressType$,
 		{
@@ -48,14 +34,6 @@ export class ProgressComponent {
 		},
 	);
 
-	/**
-	 * Вычисленное состояние прогресса.
-	 *
-	 * @description
-	 * Определяет тип отображения прогресса на основе
-	 * текущего состояния. Возвращает 'average' если есть
-	 * активный тип прогресса, иначе 'max'.
-	 */
 	public readonly state = computed(() => {
 		if (this.inProgressType()) {
 			return 'average';

@@ -11,6 +11,23 @@ import { TextComponent } from '../text/text.component';
 import { Colors, TextType, TextWeight } from '../../shared/models';
 import { SkeletonBlockComponent } from '../skeleton/skeleton-block/skeleton-block.component';
 
+/**
+ * Компонент таблицы с поддержкой скелетона и настраиваемыми колонками
+ *
+ * @example
+ * ```html
+ * Параметры:
+ *
+ * [isSkeleton]: boolean - Флаг отображения скелетона загрузки -
+ * необязательный, по умолчанию: false
+ *
+ * <ss-lib-table
+ *   [isSkeleton]="false"
+ * >
+ *   <!-- Содержимое таблицы -->
+ * </ss-lib-table>
+ * ```
+ */
 @Component({
 	selector: 'ss-lib-table',
 	templateUrl: 'table.component.html',

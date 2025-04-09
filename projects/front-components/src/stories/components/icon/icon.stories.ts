@@ -101,6 +101,7 @@ const meta: Meta<IconComponent> = {
 };
 
 export default meta;
+
 type Story = StoryObj<IconComponent>;
 
 export const Default: Story = {

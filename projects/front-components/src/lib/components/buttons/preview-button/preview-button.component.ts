@@ -8,11 +8,22 @@ import { BaseButtonComponent } from '../base-button/base-button.component';
 import { ButtonType, IconType } from '../../../shared/models';
 
 /**
+ * Кнопка предварительного просмотра
+ *
+ * @example
+ * ```html
  * Параметры:
  *
- * [type]: ButtonType.Preview - Тип. По умолчанию: `ButtonType.Preview`
+ * [type]: ButtonType.Preview - Тип кнопки - необязательный,
+ * по умолчанию: ButtonType.Preview
  *
- * [icon]: IconType - Название иконки.  По умолчанию: `IconType.Close`
+ * [icon]: IconType - Название иконки - необязательный, по умолчанию: IconType.Close
+ *
+ * <ss-lib-preview-button
+ *   [type]="ButtonType.Preview"
+ *   [icon]="IconType.Close"
+ * ></ss-lib-preview-button>
+ * ```
  */
 @Component({
 	selector: 'ss-lib-preview-button',

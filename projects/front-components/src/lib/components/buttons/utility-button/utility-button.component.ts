@@ -10,11 +10,23 @@ import { ButtonType, IconType } from '../../../shared/models';
 import { PopoverTriggerForDirective } from '../../../core/directives';
 
 /**
+ * Кнопка утилит с поддержкой выпадающего меню
+ *
+ * @example
+ * ```html
  * Параметры:
  *
- * [type]: ButtonType.Utility - Тип кнопки`
+ * [type]: ButtonType.Utility - Тип кнопки - необязательный,
+ * по умолчанию: ButtonType.Utility
  *
- * [icon]: IconType - Название иконки.  По умолчанию: `IconType.KebabMenuDots`
+ * [icon]: IconType - Название иконки - необязательный,
+ * по умолчанию: IconType.KebabMenuDots
+ *
+ * <ss-lib-utility-button
+ *   [type]="ButtonType.Utility"
+ *   [icon]="IconType.KebabMenuDots"
+ * ></ss-lib-utility-button>
+ * ```
  */
 @Component({
 	selector: 'ss-lib-utility-button',

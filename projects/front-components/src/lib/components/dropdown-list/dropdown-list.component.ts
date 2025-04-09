@@ -18,14 +18,14 @@ import { DividerComponent } from '../divider/divider.component';
 import { ScrollbarComponent } from '../scrollbar/scrollbar.component';
 
 /**
- * Компонент выпадающего списка с поддержкой кастомных шаблонов и прокрутки
+ * Компонент выпадающего списка с поддержкой кастомных шаблонов, прокрутки и динамического контента
  *
  * @example
  * ```html
  * Параметры:
  *
- * [headerTemplateRef]: TemplateRef - Шаблон заголовка списка -
- * необязательный, по умолчанию: null
+ * [headerTemplateRef]: TemplateRef - Шаблон заголовка списка - необязательный,
+ * по умолчанию: null
  *
  * [width]: string - Ширина выпадающего списка - необязательный,
  * по умолчанию: 'max-content'
@@ -37,16 +37,21 @@ import { ScrollbarComponent } from '../scrollbar/scrollbar.component';
  *
  * (closed): void - Событие закрытия списка - обязательный
  *
+ * Компоненты:
+ * ss-lib-dropdown-item - Элемент списка
+ *
  * <ss-lib-dropdown-list
  *   [headerTemplateRef]="headerTemplate"
- *   [width]="'200px'"
- *   [height]="'300px'"
+ *   [width]="'240px'"
+ *   [height]="'320px'"
  *   (value)="onSelect($event)"
  *   (closed)="onClose()"
  * >
  *   <ss-lib-dropdown-item
  *     *ngFor="let item of items"
+ *     [label]="item.name"
  *     [value]="item"
+ *     [icon]="item.icon"
  *   />
  * </ss-lib-dropdown-list>
  * ```
@@ -63,80 +68,19 @@ export class DropdownListComponent<
 	T extends IDictionaryItemDto = IDictionaryItemDto,
 > implements PopoverContent
 {
-	/**
-	 * Содержимое списка.
-	 *
-	 * @description
-	 * Коллекция дочерних компонентов DropdownItem,
-	 * представляющих элементы списка.
-	 */
 	public readonly optionsContent = contentChildren(DropdownItemComponent<T>);
-
-	/**
-	 * Шаблон выпадающего списка.
-	 *
-	 * @description
-	 * Обязательный шаблон, определяющий структуру
-	 * выпадающего списка.
-	 */
 	public readonly templateRef =
 		viewChild.required<TemplateRef<{}>>('dropdownTemplate');
 
-	/**
-	 * Шаблон заголовка.
-	 *
-	 * @default null
-	 * @description
-	 * Опциональный шаблон для отображения
-	 * заголовка списка.
-	 */
 	public readonly headerTemplateRef = input<TemplateRef<unknown> | null>(
 		null,
 	);
 
-	/**
-	 * Ширина списка.
-	 *
-	 * @default 'max-content'
-	 * @description
-	 * Определяет ширину выпадающего списка.
-	 */
 	public readonly width = input<string>('max-content');
-
-	/**
-	 * Высота списка.
-	 *
-	 * @default 'auto'
-	 * @description
-	 * Определяет высоту выпадающего списка.
-	 */
 	public readonly height = input<string>('auto');
-
-	/**
-	 * Событие закрытия списка.
-	 *
-	 * @description
-	 * Генерируется при закрытии выпадающего
-	 * списка.
-	 */
 	public readonly closed = output<void>();
-
-	/**
-	 * Событие выбора элемента.
-	 *
-	 * @description
-	 * Генерируется при выборе элемента из списка.
-	 */
 	public readonly value = output<T | string | null>();
 
-	/**
-	 * Создает экземпляр компонента.
-	 *
-	 * @param injector - Инжектор Angular
-	 * @description
-	 * Инициализирует компонент и настраивает
-	 * обработку событий выбора элементов.
-	 */
 	constructor(@Inject(Injector) private readonly injector: Injector) {
 		afterNextRender(() => {
 			runInInjectionContext(this.injector, () => {
@@ -151,14 +95,6 @@ export class DropdownListComponent<
 		});
 	}
 
-	/**
-	 * Обработчик выбора элемента.
-	 *
-	 * @param item - Выбранный элемент
-	 * @description
-	 * Генерирует событие выбора и закрывает
-	 * выпадающий список.
-	 */
 	public selectOption(item: T | string | null): void {
 		this.value.emit(item);
 		this.closed.emit();

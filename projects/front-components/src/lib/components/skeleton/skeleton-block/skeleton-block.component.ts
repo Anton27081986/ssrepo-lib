@@ -22,13 +22,6 @@ import type { SkeletonConf } from '../../../shared/models';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SkeletonBlockComponent {
-	/**
-	 * Конфигурация скелетона.
-	 *
-	 * @description
-	 * Объект конфигурации, определяющий внешний вид и размеры скелетона.
-	 * Должен содержать как минимум width и height.
-	 */
 	public readonly config: InputSignal<SkeletonConf> =
 		input.required<SkeletonConf>();
 }

@@ -20,16 +20,25 @@ import { PopoverTriggerForDirective } from '../../core/directives';
 import { InputComponent } from '../input/input.component';
 
 /**
- * Компонент выбора времени с поддержкой форм
+ * Компонент выбора времени с поддержкой форм и предустановленных интервалов
  *
  * @example
  * ```html
  * Параметры:
  *
- * [(ngModel)]: string | null - Значение времени - обязательный
+ * [(ngModel)]: string | null - Значение времени в формате HH:MM - обязательный
+ *
+ * [formControl]: FormControl<string | null> - Контрол формы - обязательный
+ *
+ * [disabled]: boolean - Блокировка компонента - необязательный, по умолчанию: false
  *
  * <ss-lib-timepicker
  *   [(ngModel)]="selectedTime"
+ *   [disabled]="false"
+ * ></ss-lib-timepicker>
+ *
+ * <ss-lib-timepicker
+ *   [formControl]="timeControl"
  * ></ss-lib-timepicker>
  * ```
  */

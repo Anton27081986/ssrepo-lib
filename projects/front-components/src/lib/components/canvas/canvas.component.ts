@@ -6,6 +6,37 @@ import { ScrollableBlockComponent } from '../scrollable-block/scrollable-block.c
 import { CanvasState } from './canvas.state';
 import type { IMenu } from '../../shared/models';
 
+/**
+ * Компонент холста с поддержкой боковых меню и настраиваемой прокруткой
+ *
+ * @example
+ * ```html
+ * Параметры:
+ *
+ * [leftMenuHeaderTemplateRef]: TemplateRef - Шаблон заголовка левого меню - обязательный
+ *
+ * [rightMenuHeaderTemplateRef]: TemplateRef - Шаблон заголовка правого меню - обязательный
+ *
+ * [contentScrollHorizontal]: boolean - Горизонтальная прокрутка контента -
+ * необязательный, по умолчанию: false
+ *
+ * [contentScrollVertical]: boolean - Вертикальная прокрутка контента -
+ * необязательный, по умолчанию: true
+ *
+ * [menu]: IMenu[] - Массив элементов меню - обязательный
+ *
+ * (outMenuFromCanvas): IMenu - Событие выбора пункта меню
+ *
+ * <ss-lib-canvas
+ *   [leftMenuHeaderTemplateRef]="leftHeaderTemplate"
+ *   [rightMenuHeaderTemplateRef]="rightHeaderTemplate"
+ *   [contentScrollHorizontal]="false"
+ *   [contentScrollVertical]="true"
+ *   [menu]="menuItems"
+ *   (outMenuFromCanvas)="onMenuSelect($event)"
+ * ></ss-lib-canvas>
+ * ```
+ */
 @Component({
 	selector: 'ss-lib-canvas',
 	templateUrl: './canvas.component.html',

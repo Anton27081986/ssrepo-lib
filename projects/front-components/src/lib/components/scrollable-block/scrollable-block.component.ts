@@ -3,10 +3,6 @@ import { Component, input, ViewEncapsulation } from '@angular/core';
 /**
  * Компонент прокручиваемого блока с настраиваемой прокруткой
  *
- * Предоставляет контейнер с настраиваемой прокруткой по горизонтали
- * и вертикали. Поддерживает автоматическое определение размеров
- * и возможность их отключения.
- *
  * @example
  * ```html
  * Параметры:
@@ -43,31 +39,7 @@ import { Component, input, ViewEncapsulation } from '@angular/core';
 	},
 })
 export class ScrollableBlockComponent {
-	/**
-	 * Флаг включения горизонтальной прокрутки.
-	 *
-	 * @default false
-	 * @description
-	 * При значении true скрывает горизонтальную полосу прокрутки.
-	 */
 	public readonly horizontalScroll = input<boolean>(false);
-
-	/**
-	 * Флаг включения вертикальной прокрутки.
-	 *
-	 * @default false
-	 * @description
-	 * При значении false скрывает вертикальную полосу прокрутки.
-	 */
 	public readonly verticalScroll = input<boolean>(false);
-
-	/**
-	 * Флаг отключения автоматического определения размеров.
-	 *
-	 * @default false
-	 * @description
-	 * При значении true отключает автоматическое определение
-	 * размеров контейнера.
-	 */
 	public readonly disableAutoSize = input<boolean>(false);
 }
