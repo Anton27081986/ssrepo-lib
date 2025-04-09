@@ -65,8 +65,7 @@
 		}
 
 		&__tbody {
-			tr.ss-lib-table-tr:not(:has(~ tr.ss-lib-table-tr))
-				.ss-lib-table-td {
+			tr.ss-lib-table-tr:last-of-type {
 				border-bottom: none;
 				border-radius: var(--ss-lib-table-border-radius);
 			}
