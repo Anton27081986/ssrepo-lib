@@ -47,24 +47,6 @@
 			border-radius: 0 0 var(--ss-lib-table-border-radius) 0;
 		}
 
-		tr:hover {
-			background-color: var(--surface-action-hover-3);
-		}
-
-		tr.dragging {
-			opacity: 0.3;
-			background-color: var(--surface-secondary);
-		}
-
-		tr.drag-over {
-			background-color: var(--surface-information-2);
-			box-shadow: 0px 4px 0px 0px var(--border-focus) inset;
-		}
-
-		tr.drag-over.dragging {
-			opacity: 60%;
-		}
-
 		tr {
 			transition: all 0.2s ease;
 		}
@@ -82,11 +64,46 @@
 			z-index: 1;
 		}
 
-		&__tbody
+		&__tbody {
 			tr.ss-lib-table-tr:not(:has(~ tr.ss-lib-table-tr))
-			.ss-lib-table-td {
-			border-bottom: none;
-			border-radius: var(--ss-lib-table-border-radius);
+				.ss-lib-table-td {
+				border-bottom: none;
+				border-radius: var(--ss-lib-table-border-radius);
+			}
+
+			tr {
+				background-color: var(--surface-primary);
+			}
+
+			tr:hover {
+				background-color: var(--surface-action-hover-3);
+			}
+
+			tr.dragging:not(.drag-over) {
+				background-color: var(--surface-action-pressed-3);
+			}
+
+			tr.drag-over:not(.dragging):not(:last-child) {
+				background-color: var(--surface-information-selected-2);
+				box-shadow: 0 4px 0 0 var(--border-focus) inset;
+			}
+
+			tr.drag-over:not(.dragging):last-child:not(:first-child) {
+				background-color: var(--surface-information-2);
+				box-shadow: 0px -4px 0px 0px var(--border-focus) inset;
+			}
+
+			tr.drag-over.dragging {
+				background-color: var(--surface-secondary) !important;
+			}
+
+			tr.drag-over.dragging:not(:last-child) {
+				box-shadow: 0 4px 0 0 var(--border-secondary) inset;
+			}
+
+			tr.drag-over.dragging:last-child:not(:first-child) {
+				box-shadow: 0 -4px 0 0 var(--border-secondary) inset;
+			}
 		}
 	}
 
