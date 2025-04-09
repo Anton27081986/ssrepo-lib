@@ -93,15 +93,15 @@
 			}
 
 			tr.drag-over.dragging {
-				background-color: var(--surface-secondary) !important;
+				background-color: var(--surface-action-pressed-3) !important;
 			}
 
 			tr.drag-over.dragging:not(:last-child) {
-				box-shadow: 0 4px 0 0 var(--border-secondary) inset;
+				box-shadow: 0 3px 0 0 var(--border-secondary) inset;
 			}
 
 			tr.drag-over.dragging:last-child:not(:first-child) {
-				box-shadow: 0 -4px 0 0 var(--border-secondary) inset;
+				box-shadow: 0 -3px 0 0 var(--border-secondary) inset;
 			}
 		}
 	}
