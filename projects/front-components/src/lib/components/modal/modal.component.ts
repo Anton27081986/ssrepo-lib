@@ -51,69 +51,14 @@ import { DividerComponent } from '../divider/divider.component';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ModalComponent {
-	/**
-	 * Заголовок модального окна.
-	 *
-	 * @description
-	 * Обязательный параметр, отображаемый в верхней
-	 * части модального окна.
-	 */
 	public readonly titleHeader = input<string>('');
-
-	/**
-	 * Описание модального окна.
-	 *
-	 * @description
-	 * Обязательный параметр, отображаемый под
-	 * заголовком модального окна.
-	 */
 	public readonly descriptionHeader = input<string>('');
-
-	/**
-	 * Шаблон действий модального окна.
-	 *
-	 * @description
-	 * Обязательный параметр, содержащий шаблон
-	 * с кнопками действий в нижней части окна.
-	 */
 	public readonly actionsRef = input.required<TemplateRef<unknown>>();
-
-	/**
-	 * Шаблон содержимого модального окна.
-	 *
-	 * @default null
-	 * @description
-	 * Опциональный параметр, содержащий шаблон
-	 * с основным содержимым модального окна.
-	 */
 	public readonly contentRef = input<TemplateRef<{}> | null>(null);
-
-	/**
-	 * Свойства бейджа.
-	 *
-	 * @description
-	 * Обязательный параметр, определяющий внешний вид
-	 * и содержимое бейджа в модальном окне.
-	 */
 	public readonly badgeProps = input.required<IBadgeProps>();
-
 	public readonly closeEmit = output<void>();
-
-	/**
-	 * Ссылка на модальное окно.
-	 *
-	 * @description
-	 * Используется для управления состоянием
-	 * и закрытия модального окна.
-	 */
 	private readonly popoverRef = inject(ModalRef);
 
-	/**
-	 * Обработчик закрытия модального окна.
-	 *
-	 * @description
-	 * Закрывает модальное окно при вызове.
-	 */
 	public onCloseEvent(): void {
 		this.closeEmit.emit();
 	}

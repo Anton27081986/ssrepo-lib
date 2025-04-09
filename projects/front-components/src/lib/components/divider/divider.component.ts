@@ -8,9 +8,19 @@ import {
 import { Orientation } from '../../shared/models';
 
 /**
+ * Компонент-разделитель с поддержкой вертикальной и горизонтальной ориентации
+ *
+ * @example
+ * ```html
  * Параметры:
  *
- * [direction]: 'vertical' | 'horizontal' - direction. По умолчанию: `horizontal`
+ * [direction]: 'vertical' | 'horizontal' - Направление разделителя - необязательный,
+ * по умолчанию: horizontal
+ *
+ * <ss-lib-divider
+ *   [direction]="'horizontal'"
+ * ></ss-lib-divider>
+ * ```
  */
 @Component({
 	selector: 'ss-lib-divider',

@@ -28,59 +28,17 @@ import { OverlayButtonComponent } from '../buttons';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LightBoxComponent {
-	/**
-	 * URL изображения для отображения.
-	 *
-	 * @description
-	 * Путь к изображению, которое будет показано
-	 * в полноэкранном режиме.
-	 */
 	protected src: string;
-
-	/**
-	 * Ширина изображения.
-	 *
-	 * @description
-	 * Ширина изображения в пикселях.
-	 */
 	protected width: number;
-
-	/**
-	 * Высота изображения.
-	 *
-	 * @description
-	 * Высота изображения в пикселях.
-	 */
 	protected height: number;
-
-	/**
-	 * Константы для типов иконок.
-	 *
-	 * @description
-	 * Используется для отображения иконок
-	 * управления просмотром.
-	 */
 	protected IconType = IconType;
 
-	/**
-	 * Создает экземпляр компонента.
-	 *
-	 * @param modalRef - Ссылка на модальное окно с данными
-	 * @description
-	 * Инициализирует компонент данными из модального окна.
-	 */
 	constructor(private readonly modalRef: ModalRef<ILightBoxData>) {
 		this.src = modalRef.data.src;
 		this.width = modalRef.data.width;
 		this.height = modalRef.data.height;
 	}
 
-	/**
-	 * Закрывает просмотр изображения.
-	 *
-	 * @description
-	 * Закрывает модальное окно просмотра.
-	 */
 	protected close(): void {
 		this.modalRef.close();
 	}

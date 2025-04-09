@@ -11,13 +11,25 @@ import { ButtonType, ExtraSize, IconType } from '../../../shared/models';
 type CloseButtonType = ButtonType.CloseLight | ButtonType.CloseDark;
 
 /**
+ * Кнопка закрытия с поддержкой светлой и темной темы
+ *
+ * @example
+ * ```html
  * Параметры:
  *
- * [type]: ButtonType.CloseLight | ButtonType.CloseDark - Тип. По умолчанию: `ButtonType.CloseLight`
+ * [type]: ButtonType.CloseLight | ButtonType.CloseDark - Тип кнопки - необязательный,
+ * по умолчанию: ButtonType.CloseLight
  *
- * [icon]: IconType - Название иконки.  По умолчанию: `IconType.Close`
+ * [icon]: IconType - Название иконки - необязательный, по умолчанию: IconType.Close
  *
- * [size]: ExtraSize - Размер кнопки. По умолчанию: `ExtraSize.md`
+ * [size]: ExtraSize - Размер кнопки - необязательный, по умолчанию: ExtraSize.md
+ *
+ * <ss-lib-close-button
+ *   [type]="ButtonType.CloseLight"
+ *   [icon]="IconType.Close"
+ *   [size]="ExtraSize.md"
+ * ></ss-lib-close-button>
+ * ```
  */
 @Component({
 	selector: 'ss-lib-close-button',

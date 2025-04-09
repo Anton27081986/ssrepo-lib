@@ -7,6 +7,29 @@ import {
 import { IconType, ButtonType } from '../../../shared/models';
 import { BaseButtonComponent } from '../base-button/base-button.component';
 
+/**
+ * Компонент оверлей-кнопки с фиксированным размером иконки и позиционированием
+ *
+ * @example
+ * ```html
+ * Параметры:
+ *
+ * [type]: ButtonType.Overlay - Тип кнопки - необязательный,
+ * по умолчанию: ButtonType.Overlay
+ *
+ * [restrictedIcon]: IconType - Иконка кнопки - необязательный,
+ * по умолчанию: IconType.Close
+ *
+ * Наследует все свойства от BaseButtonComponent<ButtonType.Overlay>
+ *
+ * <ss-lib-overlay-button
+ *   [type]="ButtonType.Overlay"
+ *   [restrictedIcon]="IconType.Close"
+ * >
+ *   Контент кнопки
+ * </ss-lib-overlay-button>
+ * ```
+ */
 @Component({
 	selector: 'ss-lib-overlay-button',
 	imports: [BaseButtonComponent],

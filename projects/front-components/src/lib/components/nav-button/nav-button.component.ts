@@ -43,57 +43,10 @@ import { TextComponent } from '../text/text.component';
 	imports: [IconComponent, TextComponent, NgIf],
 })
 export class NavButtonComponent {
-	/**
-	 * Константы для типов иконок.
-	 *
-	 * @description
-	 * Используется для отображения различных иконок
-	 * в навигационной кнопке.
-	 */
 	public readonly IconType = IconType;
-
-	/**
-	 * Тип навигационной кнопки.
-	 *
-	 * @default NavButton.NavBase
-	 * @description
-	 * Определяет внешний вид и поведение кнопки.
-	 * Поддерживает различные типы отображения.
-	 */
 	public readonly type = input<NavButton>(NavButton.NavBase);
-
-	/**
-	 * Конфигурация меню.
-	 *
-	 * @description
-	 * Обязательный параметр, содержащий структуру
-	 * и элементы меню.
-	 */
 	public readonly menu = input.required<IMenu>();
-
-	/**
-	 * Константы для типов навигационных кнопок.
-	 *
-	 * @description
-	 * Используется для определения доступных типов
-	 * навигационных кнопок.
-	 */
 	protected readonly NuvButtonType = NavButton;
-
-	/**
-	 * Константы для типов текста.
-	 *
-	 * @description
-	 * Используется для стилизации текста в кнопке.
-	 */
 	protected readonly TextType = TextType;
-
-	/**
-	 * Константы для весов текста.
-	 *
-	 * @description
-	 * Используется для определения толщины шрифта
-	 * текста в кнопке.
-	 */
 	protected readonly TextWeight = TextWeight;
 }

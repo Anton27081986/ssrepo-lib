@@ -12,6 +12,34 @@ import {
 import { CanvasState } from '../canvas/canvas.state';
 import { ProgressComponent } from '../progress/progress.component';
 
+/**
+ * Компонент шапки приложения с настраиваемыми меню и управлением сайдбаром
+ *
+ * @example
+ * ```html
+ * Параметры:
+ *
+ * [leftMenuTemplateRef]: TemplateRef - Шаблон левого меню - обязательный
+ *
+ * [rightMenuTemplateRef]: TemplateRef - Шаблон правого меню - обязательный
+ *
+ * Методы:
+ * toggleMenu() - Переключает состояние сайдбара (Close -> Mini -> Full -> Mini)
+ *
+ * <ss-lib-header
+ *   [leftMenuTemplateRef]="leftMenuTemplate"
+ *   [rightMenuTemplateRef]="rightMenuTemplate"
+ * >
+ *   <ng-template #leftMenuTemplate>
+ *     <button (click)="someAction()">Меню</button>
+ *   </ng-template>
+ *
+ *   <ng-template #rightMenuTemplate>
+ *     <button (click)="otherAction()">Профиль</button>
+ *   </ng-template>
+ * </ss-lib-header>
+ * ```
+ */
 @Component({
 	selector: 'ss-lib-header',
 	standalone: true,

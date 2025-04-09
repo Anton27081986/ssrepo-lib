@@ -15,19 +15,35 @@ type RegularButtonType =
 	| ButtonType.Text;
 
 /**
+ * Базовая кнопка с поддержкой различных типов, размеров и иконок
+ *
+ * @example
+ * ```html
  * Параметры:
  *
- * [type]: ButtonType.Primary | ButtonType.Secondary | ButtonType.Ghost | ButtonType.Text - Тип кнопки. По умолчанию 'ButtonType.Primary'
+ * [type]: ButtonType.Primary | ButtonType.Secondary | ButtonType.Ghost | ButtonType.Text -
+ * Тип кнопки - необязательный, по умолчанию: ButtonType.Primary
  *
- * [size]: ExtraSize - Размер кнопки. По умолчанию: `ExtraSize.md`
+ * [size]: ExtraSize - Размер кнопки - необязательный, по умолчанию: ExtraSize.md
  *
- * [text]: string - Текст в кнопке
+ * [text]: string - Текст в кнопке - необязательный, по умолчанию: ''
  *
- * [icon]: IconType | null - Название иконки.  По умолчанию: `null`
+ * [icon]: IconType | null - Название иконки - необязательный, по умолчанию: null
  *
- * [iconPosition]: IconPosition - Положение иконки в кнопке. По умолчанию: `IconPosition.Start`
+ * [iconPosition]: IconPosition - Положение иконки в кнопке - необязательный,
+ * по умолчанию: IconPosition.Start
  *
- * [disabled]: boolean - Блокировка кнопки. По умолчанию: `false`
+ * [disabled]: boolean - Блокировка кнопки - необязательный, по умолчанию: false
+ *
+ * <ss-lib-button
+ *   [type]="ButtonType.Primary"
+ *   [size]="ExtraSize.md"
+ *   [text]="'Нажми меня'"
+ *   [icon]="'edit'"
+ *   [iconPosition]="IconPosition.Start"
+ *   [disabled]="false"
+ * ></ss-lib-button>
+ * ```
  */
 @Component({
 	selector: 'ss-lib-button',

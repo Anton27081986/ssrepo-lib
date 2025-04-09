@@ -14,7 +14,10 @@
 	width: 100%;
 	font-family: var(--type-font-family-body), serif;
 	font-size: var(--app-custom-input-font-size, var(--font-size-body-md));
-	line-height: var(--app-custom-input-line-height, var(--line-height-body-md));
+	line-height: var(
+		--app-custom-input-line-height,
+		var(--line-height-body-md)
+	);
 	color: inherit;
 	border: none;
 	outline: none;

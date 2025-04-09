@@ -68,156 +68,42 @@ enum States {
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ImageUploadComponent {
-	/**
-	 * Флаг отключения компонента.
-	 *
-	 * @default false
-	 * @description
-	 * Определяет, доступен ли компонент для
-	 * взаимодействия.
-	 */
 	public readonly disabled = input<boolean>(false);
 
-	/**
-	 * Максимальный размер файла в МБ.
-	 *
-	 * @default 0
-	 * @description
-	 * Максимально допустимый размер загружаемого
-	 * изображения в мегабайтах.
-	 */
 	public readonly maxSize = input<number>(0);
 
-	/**
-	 * Максимальная высота изображения.
-	 *
-	 * @default 0
-	 * @description
-	 * Максимально допустимая высота изображения
-	 * в пикселях.
-	 */
 	public readonly maxHeight = input<number>(0);
 
-	/**
-	 * Максимальная ширина изображения.
-	 *
-	 * @default 0
-	 * @description
-	 * Максимально допустимая ширина изображения
-	 * в пикселях.
-	 */
 	public readonly maxWidth = input<number>(0);
 
-	/**
-	 * Процент загрузки.
-	 *
-	 * @default 0
-	 * @description
-	 * Текущий процент загрузки изображения.
-	 */
 	public readonly progress = input<number>(0);
 
-	/**
-	 * Процент загрузки.
-	 *
-	 * @default 0
-	 * @description
-	 * Текущий процент загрузки изображения.
-	 */
 	public readonly animProgress = signal<number>(0);
 
-	/**
-	 * URL изображения.
-	 *
-	 * @default null
-	 * @description
-	 * URL изображения для предпросмотра.
-	 */
 	public readonly src = input<string | null>(null);
 
-	/**
-	 * Событие изменения файла.
-	 *
-	 * @description
-	 * Генерируется при выборе или загрузке
-	 * нового файла.
-	 */
 	public readonly fileChanged = output<File | null>();
 
-	/**
-	 * Событие отмены загрузки.
-	 *
-	 * @description
-	 * Генерируется при отмене загрузки
-	 * изображения.
-	 */
 	public readonly uploadCancel = output();
 
-	/**
-	 * Флаг наведения.
-	 *
-	 * @description
-	 * Определяет, находится ли курсор над
-	 * областью загрузки.
-	 */
 	protected readonly hover = signal<boolean>(false);
 
-	/**
-	 * Текущее состояние компонента.
-	 *
-	 * @description
-	 * Определяет текущее состояние компонента:
-	 * пустой, загрузка или предпросмотр.
-	 */
 	protected readonly state = signal<States>(States.Empty);
 
-	/**
-	 * URL текущего изображения.
-	 *
-	 * @description
-	 * URL изображения для отображения
-	 * в предпросмотре.
-	 */
 	protected readonly imageSrc = signal<string | null>(null);
 
-	/**
-	 * Константы для типов иконок.
-	 */
 	protected readonly IconType = IconType;
 
-	/**
-	 * Константы для дополнительных размеров.
-	 */
 	protected readonly ExtraSize = ExtraSize;
 
-	/**
-	 * Константы для типов текста.
-	 */
 	protected readonly TextType = TextType;
 
-	/**
-	 * Константы для цветов.
-	 */
 	protected readonly Colors = Colors;
 
-	/**
-	 * Константы для состояний.
-	 */
 	protected readonly States = States;
 
-	/**
-	 * Subject для отмены подписки на загрузку.
-	 */
 	protected readonly subjectCancel = new Subject<unknown>();
 
-	/**
-	 * Создает экземпляр компонента.
-	 *
-	 * @param sharedPopupService - Сервис для отображения уведомлений
-	 * @description
-	 * Инициализирует компонент и настраивает
-	 * обработку изменений состояния.
-	 */
 	constructor(private readonly sharedPopupService: SharedPopupService) {
 		effect(() => {
 			if (this.src()) {
@@ -250,11 +136,6 @@ export class ImageUploadComponent {
 		});
 	}
 
-	/**
-	 * Обработчик входа в область перетаскивания.
-	 *
-	 * @param event - Событие входа
-	 */
 	protected onDragEnter(event: Event): void {
 		event.preventDefault();
 
@@ -265,21 +146,11 @@ export class ImageUploadComponent {
 		this.hover.set(true);
 	}
 
-	/**
-	 * Обработчик выхода из области перетаскивания.
-	 *
-	 * @param event - Событие выхода
-	 */
 	protected onDragLeave(event: Event): void {
 		event.preventDefault();
 		this.hover.set(false);
 	}
 
-	/**
-	 * Обработчик успешного перетаскивания файла.
-	 *
-	 * @param event - Событие перетаскивания
-	 */
 	protected onDropSuccess(event: DragEvent): void {
 		event.preventDefault();
 
@@ -292,13 +163,6 @@ export class ImageUploadComponent {
 		}
 	}
 
-	/**
-	 * Обработчик удаления файла.
-	 *
-	 * @description
-	 * Отменяет загрузку и сбрасывает состояние
-	 * компонента.
-	 */
 	protected onFileDelete(): void {
 		this.uploadCancel.emit();
 		this.subjectCancel.next(false);
@@ -306,11 +170,6 @@ export class ImageUploadComponent {
 		this.state.set(States.Empty);
 	}
 
-	/**
-	 * Обработчик выбора файла с компьютера.
-	 *
-	 * @param event - Событие выбора файла
-	 */
 	protected selectFromPC(event: Event): void {
 		const inputCtrl = event.target as HTMLInputElement;
 
@@ -319,14 +178,6 @@ export class ImageUploadComponent {
 		}
 	}
 
-	/**
-	 * Обработчик изменения файла.
-	 *
-	 * @param files - Список файлов
-	 * @description
-	 * Проверяет файл на соответствие требованиям
-	 * и обновляет состояние компонента.
-	 */
 	protected onFileChange(files: FileList): void {
 		if (this.disabled()) {
 			return;
@@ -379,12 +230,6 @@ export class ImageUploadComponent {
 		};
 	}
 
-	/**
-	 * Отображает сообщение об ошибке.
-	 *
-	 * @param text - Текст сообщения
-	 * @private
-	 */
 	private showToastError(text: string): void {
 		this.sharedPopupService.openToast({
 			text,

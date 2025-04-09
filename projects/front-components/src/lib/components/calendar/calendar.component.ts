@@ -19,15 +19,30 @@ import {
 import { FIRST_DAY, LAST_DAY } from '../../shared/constants';
 
 /**
+ * Компонент календаря с возможностью выбора даты и ограничением диапазона
+ *
+ * @example
+ * ```html
  * Параметры:
  *
- * [value]: CalendarDay | null - Выбранная дата. По умолчанию: `'null'`
+ * [value]: CalendarDay | null - Выбранная дата - необязательный,
+ * по умолчанию: null
  *
- * [min]: CalendarDay | null - Минимальная дата для выбора. По умолчанию: `FIRST_DAY = (01.01.текущий год - 100)`
+ * [min]: CalendarDay | null - Минимальная дата для выбора - необязательный,
+ * по умолчанию: FIRST_DAY (01.01.текущий год - 100)
  *
- * [max]: CalendarDay | null - Максимальная дата для выбора. По умолчанию: `LAST_DAY = (31.12.текущий год + 100)`
+ * [max]: CalendarDay | null - Максимальная дата для выбора - необязательный,
+ * по умолчанию: LAST_DAY (31.12.текущий год + 100)
  *
  * (dayClick): CalendarDay | null - Событие выбора даты
+ *
+ * <ss-lib-calendar
+ *   [value]="selectedDate"
+ *   [min]="minDate"
+ *   [max]="maxDate"
+ *   (dayClick)="onDayClick($event)"
+ * ></ss-lib-calendar>
+ * ```
  */
 @Component({
 	selector: 'ss-lib-calendar',

@@ -1,5 +1,5 @@
 import type { OnDestroy } from '@angular/core';
-import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ModalComponent } from '../modal/modal.component';
 import {
@@ -18,11 +18,28 @@ import { ModalActionApplyComponent } from '../modal-action-apply/modal-action-ap
  * ```html
  * Параметры:
  *
- * [cancelText]: string - Текст кнопки отмены - необязательный,
- * по умолчанию: ''
+ * [data]: IConfirmData - Данные модального окна - обязательный
+ * {
+ *   title: string - Заголовок окна
+ *   description: string - Описание
+ *   apply: IApply - Параметры кнопки подтверждения
+ *   badgeProps: IBadgeProps - Параметры бейджа
+ *   cancelText: string | null - Текст кнопки отмены
+ * }
  *
  * <ss-lib-confirm-modal
- *   [cancelText]="'Отмена'"
+ *   [data]="{
+ *     title: 'Подтверждение',
+ *     description: 'Вы уверены?',
+ *     apply: {
+ *       text: 'Подтвердить',
+ *       onSubmit: () => of(true)
+ *     },
+ *     badgeProps: {
+ *       text: 'Важно'
+ *     },
+ *     cancelText: 'Отмена'
+ *   }"
  * ></ss-lib-confirm-modal>
  * ```
  */
