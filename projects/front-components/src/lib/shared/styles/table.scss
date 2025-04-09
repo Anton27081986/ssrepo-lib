@@ -27,6 +27,7 @@
 		border-collapse: inherit;
 		border-spacing: 0;
 		table-layout: fixed;
+		overflow: hidden;
 
 		border: var(--ss-lib-table-border);
 		border-radius: var(--ss-lib-table-border-radius);
@@ -65,9 +66,8 @@
 		}
 
 		&__tbody {
-			tr.ss-lib-table-tr:last-of-type {
-				border-bottom: none;
-				border-radius: var(--ss-lib-table-border-radius);
+			.ss-lib-table-tr:last-child .ss-lib-table-td {
+				border-bottom: none !important;
 			}
 
 			tr {
