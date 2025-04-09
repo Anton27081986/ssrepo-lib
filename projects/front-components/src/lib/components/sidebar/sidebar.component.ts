@@ -1,12 +1,18 @@
 import {
 	ChangeDetectionStrategy,
 	Component,
+	computed,
 	inject,
 	input,
 	output,
 } from '@angular/core';
 import { NgForOf, NgIf } from '@angular/common';
-import { animate, style, transition, trigger } from '@angular/animations';
+import {
+	animate,
+	style,
+	transition,
+	trigger,
+} from '@angular/animations';
 import { IMenu, TooltipPosition } from '../../shared/models';
 import {
 	ButtonType,
@@ -69,22 +75,21 @@ import { TooltipDirective } from '../tooltip/tooltip.directive';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SidebarComponent {
-	public readonly menu = input.required<IMenu[]>();
-
-	public readonly outMenuFromSidebar = output<IMenu>();
-
 	protected readonly stateCanvas = inject(CanvasState);
 
-	protected readonly ButtonType = ButtonType;
-
-	protected readonly IconType = IconType;
-
-	protected readonly SidebarType = SidebarType;
-
-	protected readonly NuvButtonType = NavButton;
+	public readonly menu = input.required<IMenu[]>();
+	public readonly outMenuFromSidebar = output<IMenu>();
 
 	protected readonly sidebarType = this.stateCanvas.sidebarType;
 
+	public readonly closeBtnText = computed(() =>
+		this.stateCanvas.sidebarType() === SidebarType.Full ? 'Свернуть' : '',
+	);
+
+	protected readonly ButtonType = ButtonType;
+	protected readonly IconType = IconType;
+	protected readonly SidebarType = SidebarType;
+	protected readonly NuvButtonType = NavButton;
 	protected readonly TooltipPosition = TooltipPosition;
 
 	public closeMenu(): void {

@@ -22,12 +22,14 @@
 				<ss-lib-text
 					[type]="TextType.BodyXl"
 					[weight]="TextWeight.Semibold"
+					[align]="Align.Center"
 					>{{ title() }}</ss-lib-text
 				>
 				<ss-lib-text
 					*ngIf="description()"
 					[type]="TextType.BodyMd"
 					[weight]="TextWeight.Regular"
+					[align]="Align.Center"
 					>{{ description() }}
 				</ss-lib-text>
 			</div>

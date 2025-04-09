@@ -72,19 +72,13 @@ export class FormFieldComponent implements AfterContentInit {
 	public fieldCtrl?: FieldCtrlDirective;
 
 	public readonly label = input<string>('');
-
 	public readonly hint = input<string>('');
-
 	public readonly showValidation = input<boolean>(true);
-
 	public readonly showValidationFieldIcon = input<boolean>(false);
-
 	public readonly errorText = input<string>('');
 
 	public readonly existValidators = signal<boolean>(false);
-
 	public readonly isRequired = signal<boolean>(false);
-
 	public readonly fieldCtrlState = signal<ControlState>(ControlState.Touched);
 
 	public readonly currentFieldCtrlState = signal<ControlState>(
