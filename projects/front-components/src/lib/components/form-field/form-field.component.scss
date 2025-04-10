@@ -55,6 +55,7 @@
 	background: var(--surface-disabled);
 	color: var(--text-on-disabled);
 	outline: 1px solid var(--border-disabled);
+	pointer-events: none;
 }
 
 .field-container:focus-within:not(.state-invalid) {

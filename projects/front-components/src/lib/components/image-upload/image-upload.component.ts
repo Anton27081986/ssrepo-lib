@@ -69,39 +69,24 @@ enum States {
 })
 export class ImageUploadComponent {
 	public readonly disabled = input<boolean>(false);
-
 	public readonly maxSize = input<number>(0);
-
 	public readonly maxHeight = input<number>(0);
-
 	public readonly maxWidth = input<number>(0);
-
 	public readonly progress = input<number>(0);
-
-	public readonly animProgress = signal<number>(0);
-
 	public readonly src = input<string | null>(null);
-
 	public readonly fileChanged = output<File | null>();
-
 	public readonly uploadCancel = output();
 
+	public readonly animProgress = signal<number>(0);
 	protected readonly hover = signal<boolean>(false);
-
 	protected readonly state = signal<States>(States.Empty);
-
 	protected readonly imageSrc = signal<string | null>(null);
 
 	protected readonly IconType = IconType;
-
 	protected readonly ExtraSize = ExtraSize;
-
 	protected readonly TextType = TextType;
-
 	protected readonly Colors = Colors;
-
 	protected readonly States = States;
-
 	protected readonly subjectCancel = new Subject<unknown>();
 
 	constructor(private readonly sharedPopupService: SharedPopupService) {
