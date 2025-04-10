@@ -68,6 +68,8 @@ import {
 	styleUrl: './form-field.component.scss',
 })
 export class FormFieldComponent implements AfterContentInit {
+	private readonly injector = inject(Injector);
+
 	@ContentChild(FieldCtrlDirective)
 	public fieldCtrl?: FieldCtrlDirective;
 
@@ -86,14 +88,9 @@ export class FormFieldComponent implements AfterContentInit {
 	);
 
 	public readonly TextType = TextType;
-
 	public readonly TextWeight = TextWeight;
-
 	public readonly Colors = Colors;
-
 	public readonly IconType = IconType;
-
-	private readonly injector = inject(Injector);
 
 	public ngAfterContentInit(): void {
 		if (this.showValidation()) {
