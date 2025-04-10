@@ -7,12 +7,7 @@ import {
 	output,
 } from '@angular/core';
 import { NgForOf, NgIf } from '@angular/common';
-import {
-	animate,
-	style,
-	transition,
-	trigger,
-} from '@angular/animations';
+import { animate, style, transition, trigger } from '@angular/animations';
 import { IMenu, TooltipPosition } from '../../shared/models';
 import {
 	ButtonType,
@@ -83,7 +78,9 @@ export class SidebarComponent {
 	protected readonly sidebarType = this.stateCanvas.sidebarType;
 
 	public readonly closeBtnText = computed(() =>
-		this.stateCanvas.sidebarType() === SidebarType.Full ? 'Свернуть' : '',
+		this.stateCanvas.sidebarType() === SidebarType.Full
+			? 'Свернуть меню'
+			: '',
 	);
 
 	protected readonly ButtonType = ButtonType;
