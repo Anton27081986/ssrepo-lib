@@ -53,13 +53,13 @@
 
 		&_icon-button {
 			padding: 0 10px;
-			max-width: 20px; /* Collapsed state */
-			transition: max-width 1s ease; /* Animate max-width */
+			max-width: 20px;
+			transition: max-width 1s ease;
 			overflow: hidden;
 		}
 
 		&_icon-button.expanded {
-			max-width: 100%; /* Large enough to fit content, adjust as needed */
+			max-width: 100%;
 		}
 	}
 }
