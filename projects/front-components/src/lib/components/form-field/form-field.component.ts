@@ -11,7 +11,7 @@ import {
 import { NgClass } from '@angular/common';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { filter, map, tap } from 'rxjs';
-import { Validators } from '@angular/forms';
+import { FormControlStatus, Validators } from "@angular/forms";
 import { IconComponent } from '../icon/icon.component';
 import { TextComponent } from '../text/text.component';
 import { FieldCtrlDirective } from '../../core/directives';
@@ -133,7 +133,10 @@ export class FormFieldComponent implements AfterContentInit {
 		runInInjectionContext(this.injector, () => {
 			toSignal(
 				this.fieldCtrl!.ngControl.control!.statusChanges.pipe(
-					filter((_) => this.existValidators()),
+					filter(
+						(status: FormControlStatus) =>
+							status !== 'DISABLED' && this.existValidators(),
+					),
 					map((status) =>
 						status === 'VALID'
 							? ControlState.Valid
