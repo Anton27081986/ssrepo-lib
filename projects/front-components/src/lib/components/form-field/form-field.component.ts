@@ -11,7 +11,7 @@ import {
 import { NgClass } from '@angular/common';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { filter, map, tap } from 'rxjs';
-import { FormControlStatus, Validators } from "@angular/forms";
+import { Validators } from '@angular/forms';
 import { IconComponent } from '../icon/icon.component';
 import { TextComponent } from '../text/text.component';
 import { FieldCtrlDirective } from '../../core/directives';
@@ -68,8 +68,6 @@ import {
 	styleUrl: './form-field.component.scss',
 })
 export class FormFieldComponent implements AfterContentInit {
-	private readonly injector = inject(Injector);
-
 	@ContentChild(FieldCtrlDirective)
 	public fieldCtrl?: FieldCtrlDirective;
 
@@ -90,7 +88,10 @@ export class FormFieldComponent implements AfterContentInit {
 	public readonly TextType = TextType;
 	public readonly TextWeight = TextWeight;
 	public readonly Colors = Colors;
+
 	public readonly IconType = IconType;
+
+	private readonly injector = inject(Injector);
 
 	public ngAfterContentInit(): void {
 		if (this.showValidation()) {
@@ -105,6 +106,10 @@ export class FormFieldComponent implements AfterContentInit {
 	private initFieldCtrlState(): void {
 		if (this.fieldCtrl?.ngControl.control) {
 			this.fieldCtrl!.ngControl.control!.markAllAsTouched = () => {
+				if (this.fieldCtrl!.ngControl.control!.disabled) {
+					return;
+				}
+
 				const initState =
 					this.fieldCtrl!.ngControl.control!.status === 'VALID'
 						? ControlState.Valid
@@ -133,15 +138,16 @@ export class FormFieldComponent implements AfterContentInit {
 		runInInjectionContext(this.injector, () => {
 			toSignal(
 				this.fieldCtrl!.ngControl.control!.statusChanges.pipe(
-					filter(
-						(status: FormControlStatus) =>
-							status !== 'DISABLED' && this.existValidators(),
-					),
-					map((status) =>
-						status === 'VALID'
+					filter((_) => this.existValidators()),
+					map((status) => {
+						if (status === 'DISABLED') {
+							return ControlState.Disabled;
+						}
+
+						return status === 'VALID'
 							? ControlState.Valid
-							: ControlState.Invalid,
-					),
+							: ControlState.Invalid;
+					}),
 					tap((status) => {
 						if (this.fieldCtrlState() === ControlState.Invalid) {
 							this.currentFieldCtrlState.set(ControlState.Valid);
