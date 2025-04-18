@@ -77,11 +77,6 @@ export class DatepickerComponent implements ControlValueAccessor {
 		toSignal(
 			this.datepickerCtrl.valueChanges.pipe(
 				debounceTime(150),
-				filter(
-					(value) =>
-						!value ||
-						(!!value && value.length === DATE_FILLER_LENGTH),
-				),
 				tap((value) => this.onValueChange(value!)),
 			),
 		);
@@ -126,15 +121,16 @@ export class DatepickerComponent implements ControlValueAccessor {
 	}
 
 	private onValueChange(value: string | null): void {
-		if (value) {
-			this.selectedDate.set(
-				CalendarDay.normalizeParse(value, DateFormat.DMY),
-			);
-			this.onChange(toControlValue(this.selectedDate()));
+		if (!value || (!!value && value.length !== DATE_FILLER_LENGTH)) {
+			this.onChange(null);
 
 			return;
 		}
 
-		this.onChange(null);
+		this.selectedDate.set(
+			CalendarDay.normalizeParse(value, DateFormat.DMY),
+		);
+
+		this.onChange(toControlValue(this.selectedDate()));
 	}
 }

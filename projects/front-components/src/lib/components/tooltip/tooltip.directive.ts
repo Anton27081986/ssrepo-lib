@@ -34,12 +34,15 @@ export class TooltipDirective implements OnDestroy {
 	private readonly viewContainerRef = inject(ViewContainerRef);
 
 	private componentRef: ComponentRef<TooltipComponent> | null = null;
+	private showTimeoutId: ReturnType<typeof setTimeout> | null = null;
 
 	@HostListener('mouseenter')
 	public onMouseEnter(): void {
-		if (!this.componentRef) {
-			this.createTooltipComponent();
-		}
+		this.showTimeoutId = setTimeout(() => {
+			if (!this.componentRef) {
+				this.createTooltipComponent();
+			}
+		}, 400);
 	}
 
 	@HostListener('mouseleave')
@@ -135,6 +138,11 @@ export class TooltipDirective implements OnDestroy {
 	}
 
 	private destroy(): void {
+		if (this.showTimeoutId) {
+			clearTimeout(this.showTimeoutId);
+			this.showTimeoutId = null;
+		}
+
 		if (this.componentRef) {
 			this.appRef.detachView(this.componentRef.hostView);
 			this.componentRef.destroy();

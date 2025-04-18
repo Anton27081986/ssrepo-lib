@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { NgClass } from '@angular/common';
-import { fadeIn, fadeOut } from '../../core/animations';
 import {
 	TooltipPosition,
 	Colors,
@@ -51,8 +50,6 @@ import { TextComponent } from '../text/text.component';
 				[class.tooltip--visible]="visible()"
 				[style.left.px]="left()"
 				[style.top.px]="top()"
-				@fadeIn
-				@fadeOut
 			>
 				@if (text()) {
 					<ss-lib-text
@@ -66,7 +63,6 @@ import { TextComponent } from '../text/text.component';
 			</div>
 		}
 	`,
-	animations: [fadeIn, fadeOut],
 	styleUrl: './tooltip.component.scss',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
