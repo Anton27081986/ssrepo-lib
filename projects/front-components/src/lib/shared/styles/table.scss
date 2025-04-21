@@ -75,7 +75,7 @@
 			}
 
 			tr:hover {
-				background-color: var(--surface-action-hover-3);
+				background-color: var(--surface-action-hover-3) !important;
 			}
 
 			tr.dragging:not(.drag-over) {

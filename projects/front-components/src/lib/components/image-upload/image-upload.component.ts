@@ -1,6 +1,7 @@
 import {
 	ChangeDetectionStrategy,
 	Component,
+	computed,
 	effect,
 	input,
 	output,
@@ -20,6 +21,7 @@ import {
 import { BadgeComponent } from '../badge/badge.component';
 import { SharedPopupService } from '../../shared/services';
 import { ProgressCircleComponent } from '../progress-circle/progress-circle.component';
+import { SafePipe } from '../../core/pipes';
 
 /**
  * Состояния компонента загрузки изображения.
@@ -63,6 +65,7 @@ enum States {
 		FormsModule,
 		ReactiveFormsModule,
 		ProgressCircleComponent,
+		SafePipe,
 	],
 	standalone: true,
 	changeDetection: ChangeDetectionStrategy.OnPush,
@@ -81,6 +84,12 @@ export class ImageUploadComponent {
 	protected readonly hover = signal<boolean>(false);
 	protected readonly state = signal<States>(States.Empty);
 	protected readonly imageSrc = signal<string | null>(null);
+
+	protected backgroundImg = computed(() => {
+		const src = this.imageSrc();
+
+		return src ? `url(${src})` : '';
+	});
 
 	protected readonly IconType = IconType;
 	protected readonly ExtraSize = ExtraSize;
