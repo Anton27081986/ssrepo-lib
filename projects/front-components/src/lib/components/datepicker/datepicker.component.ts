@@ -9,7 +9,7 @@ import {
 import type { ControlValueAccessor } from '@angular/forms';
 import { FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { toSignal } from '@angular/core/rxjs-interop';
-import { debounceTime, filter, tap } from 'rxjs';
+import { debounceTime, tap } from 'rxjs';
 import { datepickerImports } from './datepicker.imports';
 import { CalendarDay, DateFormat } from '../calendar/models';
 import { fromControlValue, toControlValue } from '../calendar/utils';
