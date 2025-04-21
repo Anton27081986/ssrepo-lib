@@ -54,7 +54,10 @@
 		</div>
 	}
 	@case (States.Preview) {
-		<div class="image-preview">
+		<div
+			class="image-preview"
+			[style.background-image]="backgroundImg() | safe: 'html'"
+		>
 			<ss-lib-preview-button
 				class="image-preview__close"
 				(click)="onFileDelete()"
