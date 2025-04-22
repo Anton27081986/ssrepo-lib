@@ -1,650 +1,650 @@
 {
-    "pipes": [],
-    "interfaces": [],
-    "injectables": [],
-    "guards": [],
-    "interceptors": [],
-    "classes": [],
-    "directives": [],
-    "components": [],
-    "modules": [],
-    "miscellaneous": {
-        "variables": [
-            {
-                "name": "darkTheme",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "projects/front-components/.storybook/preview.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "",
-                "defaultValue": "create({\r\n\tbase: 'dark',\r\n\tappBg: '#191919',\r\n})"
-            },
-            {
-                "name": "Default",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "projects/front-components/src/stories/components/icon/icon.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\r\n\targs: {\r\n\t\ticon: IconType.Alert,\r\n\t\theight: '24',\r\n\t\twidth: '24',\r\n\t\tcolor: Colors.IconPrimary,\r\n\t},\r\n}"
-            },
-            {
-                "name": "Default",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "projects/front-components/src/stories/components/text/text.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\r\n\targs: {\r\n\t\ttype: TextType.BodyMd,\r\n\t\tweight: TextWeight.Regular,\r\n\t\tcolor: Colors.TextHeadings,\r\n\t\talign: Align.Start,\r\n\t},\r\n\trender: (args) => ({\r\n\t\tprops: args,\r\n\t\ttemplate: `\r\n\t\t\t<ss-lib-text\r\n\t\t\t\t[type]=\"type\"\r\n\t\t\t\t[weight]=\"weight\"\r\n\t\t\t\t[color]=\"color\"\r\n\t\t\t\t[align]=\"align\"\r\n\t\t\t\t[lineClampCount]=\"lineClampCount\"\r\n\t\t\t\t[isLineClamp]=\"isLineClamp\"\r\n\t\t\t\t[isEllipsis]=\"isEllipsis\"\r\n\t\t\t\t[isUnderline]=\"isUnderline\"\r\n\t\t\t>\r\n\t\t\t\tЭто пример текста с настраиваемыми стилями. Вы можете изменить размер, толщину, цвет и выравнивание текста.\r\n\t\t\t</ss-lib-text>\r\n\t\t`,\r\n\t}),\r\n}"
-            },
-            {
-                "name": "DifferentAlignments",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "projects/front-components/src/stories/components/text/text.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\r\n\trender: () => ({\r\n\t\ttemplate: `\r\n\t\t\t<div style=\"display: flex; flex-direction: column; gap: 16px;\">\r\n\t\t\t\t<ss-lib-text [align]=\"Align.Start\">Текст выровнен по левому краю</ss-lib-text>\r\n\t\t\t\t<ss-lib-text [align]=\"Align.Center\">Текст выровнен по центру</ss-lib-text>\r\n\t\t\t\t<ss-lib-text [align]=\"Align.End\">Текст выровнен по правому краю</ss-lib-text>\r\n\t\t\t</div>\r\n\t\t`,\r\n\t\tprops: {\r\n\t\t\tAlign,\r\n\t\t},\r\n\t}),\r\n}"
-            },
-            {
-                "name": "DifferentColors",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "projects/front-components/src/stories/components/icon/icon.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\r\n\targs: {\r\n\t\ticon: IconType.Alert,\r\n\t\theight: '24',\r\n\t\twidth: '24',\r\n\t\tcolor: Colors.IconError,\r\n\t},\r\n}"
-            },
-            {
-                "name": "DifferentColors",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "projects/front-components/src/stories/components/text/text.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\r\n\trender: () => ({\r\n\t\ttemplate: `\r\n\t\t\t<div style=\"display: flex; flex-direction: column; gap: 16px;\">\r\n\t\t\t\t\r\n\t\t\t    @for (colorToken of textColorsList; track $index) {\r\n\t\t\t    \t<ss-lib-text [color]=\"Colors[colorToken]\">\r\n\t\t\t\t\t\tЦвет текста с токеном цвета: {{colorToken}}\r\n\t\t\t\t\t</ss-lib-text>\r\n\t\t\t    }\r\n\t\t\t</div>\r\n\t\t`,\r\n\t\tprops: {\r\n\t\t\tColors,\r\n\t\t\ttextColorsList,\r\n\t\t},\r\n\t}),\r\n}"
-            },
-            {
-                "name": "DifferentSizes",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "projects/front-components/src/stories/components/icon/icon.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\r\n\targs: {\r\n\t\ticon: IconType.Alert,\r\n\t\theight: '48',\r\n\t\twidth: '48',\r\n\t\tcolor: Colors.IconPrimary,\r\n\t},\r\n}"
-            },
-            {
-                "name": "DifferentTypes",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "projects/front-components/src/stories/components/text/text.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\r\n\tname: 'Разные размеры текста',\r\n\trender: () => ({\r\n\t\ttemplate: `\r\n\t\t\t<div style=\"display: flex; flex-direction: column; gap: 16px;\">\r\n\t\t\t\t<ss-lib-text [type]=\"TextType.HeadingXs\">Xs Заголовок</ss-lib-text>\r\n\t\t\t\t<ss-lib-text [type]=\"TextType.BodyXl\">Xl текст</ss-lib-text>\r\n\t\t\t\t<ss-lib-text [type]=\"TextType.BodyLg\">Lg текст</ss-lib-text>\r\n\t\t\t\t<ss-lib-text [type]=\"TextType.BodyMd\">Md текст</ss-lib-text>\r\n\t\t\t\t<ss-lib-text [type]=\"TextType.BodySm\">Sm текст</ss-lib-text>\r\n\t\t\t\t<ss-lib-text [type]=\"TextType.BodySm\">Xs текст</ss-lib-text>\r\n\t\t\t</div>\r\n\t\t`,\r\n\t\tprops: {\r\n\t\t\tTextType,\r\n\t\t},\r\n\t}),\r\n}"
-            },
-            {
-                "name": "DifferentWeights",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "projects/front-components/src/stories/components/text/text.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\r\n\trender: () => ({\r\n\t\ttemplate: `\r\n\t\t\t<div style=\"display: flex; flex-direction: column; gap: 16px;\">\r\n\t\t\t\t<ss-lib-text [weight]=\"TextWeight.Regular\">Regular текст</ss-lib-text>\r\n\t\t\t\t<ss-lib-text [weight]=\"TextWeight.Medium\">Medium текст</ss-lib-text>\r\n\t\t\t\t<ss-lib-text [weight]=\"TextWeight.Semibold\">SemiBold текст</ss-lib-text>\r\n\t\t\t\t<ss-lib-text [weight]=\"TextWeight.Bold\">Bold текст</ss-lib-text>\r\n\t\t\t</div>\r\n\t\t`,\r\n\t\tprops: {\r\n\t\t\tTextWeight,\r\n\t\t},\r\n\t}),\r\n}"
-            },
-            {
-                "name": "lightTheme",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "projects/front-components/.storybook/preview.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "",
-                "defaultValue": "create({\r\n\tbase: 'light',\r\n\tappBg: '#fafaf9',\r\n})"
-            },
-            {
-                "name": "meta",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "projects/front-components/src/stories/components/icon/icon.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Meta<IconComponent>",
-                "defaultValue": "{\r\n\ttitle: 'Components/Icon',\r\n\tcomponent: IconComponent,\r\n\ttags: ['autodocs'],\r\n\targTypes: {\r\n\t\ticon: {\r\n\t\t\tcontrol: 'select',\r\n\t\t\toptions: Object.values(IconType),\r\n\t\t\tdescription: 'Тип иконки. Определяет, какая иконка будет отображена.',\r\n\t\t\ttable: {\r\n\t\t\t\tdefaultValue: { summary: IconType.Alert.toString() },\r\n\t\t\t\tcategory: 'Основные параметры',\r\n\t\t\t},\r\n\t\t},\r\n\t\theight: {\r\n\t\t\tcontrol: 'text',\r\n\t\t\tdescription: 'Высота иконки в пикселях. По умолчанию: 24px.',\r\n\t\t\ttable: {\r\n\t\t\t\tdefaultValue: { summary: '24' },\r\n\t\t\t\tcategory: 'Размеры',\r\n\t\t\t},\r\n\t\t},\r\n\t\twidth: {\r\n\t\t\tcontrol: 'text',\r\n\t\t\tdescription: 'Ширина иконки в пикселях. По умолчанию: 24px.',\r\n\t\t\ttable: {\r\n\t\t\t\tdefaultValue: { summary: '24' },\r\n\t\t\t\tcategory: 'Размеры',\r\n\t\t\t},\r\n\t\t},\r\n\t\tcolor: {\r\n\t\t\tcontrol: 'select',\r\n\t\t\tlabels: Object.fromEntries(\r\n\t\t\t\tObject.entries(Colors)\r\n\t\t\t\t\t.filter(([name]) =>\r\n\t\t\t\t\t\tname.toLowerCase().startsWith('icon'),\r\n\t\t\t\t\t)\r\n\t\t\t\t\t.map(([name, value]) => [value, name]),\r\n\t\t\t),\r\n\t\t\toptions: Object.entries(Colors)\r\n\t\t\t\t.filter(([name]) => name.toLowerCase().startsWith('icon')) // фильтруем те же элементы для options\r\n\t\t\t\t.map(([_, value]) => value), // оставляем только значения цветов\r\n\t\t\tdescription:\r\n\t\t\t\t'Цвет иконки. Определяет визуальное оформление иконки.',\r\n\t\t\ttable: {\r\n\t\t\t\tdefaultValue: { summary: 'IconPrimary' },\r\n\t\t\t\tcategory: 'Стилизация',\r\n\t\t\t},\r\n\t\t},\r\n\t},\r\n\targs: {\r\n\t\ticon: IconType.Alert,\r\n\t\theight: '24',\r\n\t\twidth: '24',\r\n\t\tcolor: Colors.IconPrimary,\r\n\t},\r\n}",
-                "rawdescription": "Компонент `IconComponent` (`ss-lib-icon`) - это универсальный компонент для отображения SVG иконок.\r\nОн предоставляет возможность настройки размера, цвета и выбора иконки из предустановленного набора.\r\n\r\n## Особенности\r\n- Поддержка более 30 различных иконок\r\n- Настраиваемый размер (высота и ширина)\r\n- Возможность изменения цвета\r\n- SVG иконки с поддержкой currentColor\r\n- Адаптивное масштабирование\r\n\r\n## Использование\r\n```html\r\n<ss-lib-icon\r\n  [icon]=\"IconType.Search\"\r\n  [height]=\"'32'\"\r\n  [width]=\"'32'\"\r\n  [color]=\"Colors.IconSecondary\"\r\n></ss-lib-icon>\r\n```\r\n\r\n## Доступные иконки\r\n\r\n### Навигация\r\n- `ArrowLeft` - Стрелка влево\r\n- `ChevronDown` - Стрелка вниз\r\n- `ChevronLeft` - Шеврон влево\r\n- `ChevronRight` - Шеврон вправо\r\n- `ChevronUp` - Стрелка вверх\r\n\r\n### Действия\r\n- `Edit` - Редактирование\r\n- `Save` - Сохранение\r\n- `Trash` - Удаление\r\n- `Upload` - Загрузка\r\n- `Plus` - Добавление\r\n- `Minus` - Удаление\r\n\r\n### Интерфейс\r\n- `Close` - Закрыть\r\n- `HamburgerMenu` - Меню-гамбургер\r\n- `KebabMenuDots` - Меню-точки\r\n- `FilterLines` - Фильтры\r\n- `Columns` - Колонки\r\n\r\n### Пользовательский интерфейс\r\n- `Eye` - Глаз (видимость)\r\n- `EyeOff` - Глаз перечеркнутый (скрытие)\r\n- `Bell` - Уведомления\r\n- `Help` - Справка\r\n- `Settings01` - Настройки (вариант 1)\r\n- `Settings02` - Настройки (вариант 2)\r\n\r\n### Состояния\r\n- `Alert` - Предупреждение\r\n- `Check` - Галочка\r\n- `CheckCircle` - Галочка в круге\r\n\r\n### Пользователи\r\n- `User01` - Пользователь\r\n- `Users` - Пользователи\r\n- `LogOut` - Выход\r\n\r\n### Дополнительные\r\n- `Moon` - Луна (темная тема)\r\n- `Sun` - Солнце (светлая тема)\r\n- `Logo` - Логотип\r\n- `Burger` - Бургер\r\n- `ResizeHandle` - Ручка изменения размера",
-                "description": "<p>Компонент <code>IconComponent</code> (<code>ss-lib-icon</code>) - это универсальный компонент для отображения SVG иконок.\nОн предоставляет возможность настройки размера, цвета и выбора иконки из предустановленного набора.</p>\n<h2>Особенности</h2>\n<ul>\n<li>Поддержка более 30 различных иконок</li>\n<li>Настраиваемый размер (высота и ширина)</li>\n<li>Возможность изменения цвета</li>\n<li>SVG иконки с поддержкой currentColor</li>\n<li>Адаптивное масштабирование</li>\n</ul>\n<h2>Использование</h2>\n<b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-html\">&lt;ss-lib-icon\n  [icon]=&quot;IconType.Search&quot;\n  [height]=&quot;&#39;32&#39;&quot;\n  [width]=&quot;&#39;32&#39;&quot;\n  [color]=&quot;Colors.IconSecondary&quot;\n&gt;&lt;/ss-lib-icon&gt;</code></pre></div><h2>Доступные иконки</h2>\n<h3>Навигация</h3>\n<ul>\n<li><code>ArrowLeft</code> - Стрелка влево</li>\n<li><code>ChevronDown</code> - Стрелка вниз</li>\n<li><code>ChevronLeft</code> - Шеврон влево</li>\n<li><code>ChevronRight</code> - Шеврон вправо</li>\n<li><code>ChevronUp</code> - Стрелка вверх</li>\n</ul>\n<h3>Действия</h3>\n<ul>\n<li><code>Edit</code> - Редактирование</li>\n<li><code>Save</code> - Сохранение</li>\n<li><code>Trash</code> - Удаление</li>\n<li><code>Upload</code> - Загрузка</li>\n<li><code>Plus</code> - Добавление</li>\n<li><code>Minus</code> - Удаление</li>\n</ul>\n<h3>Интерфейс</h3>\n<ul>\n<li><code>Close</code> - Закрыть</li>\n<li><code>HamburgerMenu</code> - Меню-гамбургер</li>\n<li><code>KebabMenuDots</code> - Меню-точки</li>\n<li><code>FilterLines</code> - Фильтры</li>\n<li><code>Columns</code> - Колонки</li>\n</ul>\n<h3>Пользовательский интерфейс</h3>\n<ul>\n<li><code>Eye</code> - Глаз (видимость)</li>\n<li><code>EyeOff</code> - Глаз перечеркнутый (скрытие)</li>\n<li><code>Bell</code> - Уведомления</li>\n<li><code>Help</code> - Справка</li>\n<li><code>Settings01</code> - Настройки (вариант 1)</li>\n<li><code>Settings02</code> - Настройки (вариант 2)</li>\n</ul>\n<h3>Состояния</h3>\n<ul>\n<li><code>Alert</code> - Предупреждение</li>\n<li><code>Check</code> - Галочка</li>\n<li><code>CheckCircle</code> - Галочка в круге</li>\n</ul>\n<h3>Пользователи</h3>\n<ul>\n<li><code>User01</code> - Пользователь</li>\n<li><code>Users</code> - Пользователи</li>\n<li><code>LogOut</code> - Выход</li>\n</ul>\n<h3>Дополнительные</h3>\n<ul>\n<li><code>Moon</code> - Луна (темная тема)</li>\n<li><code>Sun</code> - Солнце (светлая тема)</li>\n<li><code>Logo</code> - Логотип</li>\n<li><code>Burger</code> - Бургер</li>\n<li><code>ResizeHandle</code> - Ручка изменения размера</li>\n</ul>\n"
-            },
-            {
-                "name": "meta",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "projects/front-components/src/stories/components/text/text.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Meta<TextComponent>",
-                "defaultValue": "{\r\n\ttitle: 'Components/Text',\r\n\tcomponent: TextComponent,\r\n\ttags: ['autodocs'],\r\n\targTypes: {\r\n\t\ttype: {\r\n\t\t\tcontrol: 'select',\r\n\t\t\toptions: Object.values(TextType),\r\n\t\t\tdescription: 'Размерность шрифта',\r\n\t\t\ttable: {\r\n\t\t\t\tdefaultValue: { summary: TextType.BodyMd },\r\n\t\t\t},\r\n\t\t},\r\n\t\tweight: {\r\n\t\t\tcontrol: 'select',\r\n\t\t\toptions: Object.values(TextWeight),\r\n\t\t\tdescription: 'Толщина шрифта',\r\n\t\t\ttable: {\r\n\t\t\t\tdefaultValue: { summary: TextWeight.Regular },\r\n\t\t\t},\r\n\t\t},\r\n\t\tcolor: {\r\n\t\t\tcontrol: {\r\n\t\t\t\ttype: 'select',\r\n\t\t\t\tlabels: Object.fromEntries(\r\n\t\t\t\t\tObject.entries(Colors)\r\n\t\t\t\t\t\t.filter(([name]) =>\r\n\t\t\t\t\t\t\tname.toLowerCase().startsWith('text'),\r\n\t\t\t\t\t\t)\r\n\t\t\t\t\t\t.map(([name, value]) => [value, name]),\r\n\t\t\t\t),\r\n\t\t\t},\r\n\t\t\toptions: Object.entries(Colors)\r\n\t\t\t\t.filter(([name]) => name.toLowerCase().startsWith('text')) // фильтруем те же элементы для options\r\n\t\t\t\t.map(([_, value]) => value), // оставляем только значения цветов\r\n\t\t\tdescription: 'Цвет текста',\r\n\t\t\ttable: {\r\n\t\t\t\tdefaultValue: { summary: 'TextHeadings' },\r\n\t\t\t},\r\n\t\t},\r\n\t\talign: {\r\n\t\t\tcontrol: 'select',\r\n\t\t\toptions: Object.values(Align),\r\n\t\t\tdescription: 'Выравнивание текста',\r\n\t\t\ttable: {\r\n\t\t\t\tdefaultValue: { summary: Align.Start },\r\n\t\t\t},\r\n\t\t},\r\n\t\tlineClampCount: {\r\n\t\t\tcontrol: { type: 'number', min: 1, max: 10 },\r\n\t\t\tdescription: 'Количество строк для ограничения line-clamp',\r\n\t\t\ttable: {\r\n\t\t\t\tdefaultValue: { summary: '2' },\r\n\t\t\t},\r\n\t\t},\r\n\t\tisLineClamp: {\r\n\t\t\tcontrol: 'boolean',\r\n\t\t\tdescription: 'Ограничить количество строк текста',\r\n\t\t\ttable: {\r\n\t\t\t\tdefaultValue: { summary: 'false' },\r\n\t\t\t},\r\n\t\t},\r\n\t\tisEllipsis: {\r\n\t\t\tcontrol: 'boolean',\r\n\t\t\tdescription: 'Добавить многоточие при переполнении',\r\n\t\t\ttable: {\r\n\t\t\t\tdefaultValue: { summary: 'false' },\r\n\t\t\t},\r\n\t\t},\r\n\t\tisUnderline: {\r\n\t\t\tcontrol: 'boolean',\r\n\t\t\tdescription: 'Добавить подчеркивание',\r\n\t\t\ttable: {\r\n\t\t\t\tdefaultValue: { summary: 'false' },\r\n\t\t\t},\r\n\t\t},\r\n\t},\r\n\tparameters: {\r\n\t\tdocs: {\r\n\t\t\tdescription: {\r\n\t\t\t\tcomponent: `\r\n### Компонент \\`TextComponent\\` (\\`ss-lib-text\\`)\r\n\r\nУниверсальный компонент для отображения текста с настраиваемыми стилями. Позволяет задавать размер, толщину, цвет, выравнивание и другие свойства текста.\r\n\r\n---\r\n\r\n#### 🔹 Особенности\r\n\r\n- Поддержка различных размеров текста\r\n- Настраиваемая толщина шрифта\r\n- Широкая палитра цветов\r\n- Гибкие варианты выравнивания\r\n- Многоточие при обрезке строк\r\n- Подчеркивание текста\r\n\r\n---\r\n\r\n#### 🧩 Использование\r\n\r\n\\`\\`\\`html\r\n<ss-lib-text\r\n  [type]=\"TextType.BodyMd\"\r\n  [weight]=\"TextWeight.Regular\"\r\n  [color]=\"Colors.TextHeadings\"\r\n  [align]=\"Align.Start\"\r\n  [isLineClamp]=\"false\"\r\n  [isEllipsis]=\"false\"\r\n  [isUnderline]=\"false\"\r\n>\r\n  Ваш текст здесь\r\n</ss-lib-text>\r\n\\`\\`\\`\r\n\r\n---\r\n\r\n#### 📏 Доступные размеры текста\r\n\r\n- \\`HeadingXs\\` — Заголовок Xs  \r\n- \\`BodyXl\\`, \\`BodyLg\\`, \\`BodyMd\\`, \\`BodySm\\`, \\`BodyXs\\`\r\n\r\n#### 🔠 Толщина шрифта\r\n\r\n- \\`Regular\\`  \r\n- \\`Medium\\`  \r\n- \\`SemiBold\\`  \r\n- \\`Bold\\`\r\n\r\n#### 🎨 Цвета текста\r\n\r\n${textColors}\r\n\r\n#### 📐 Выравнивание\r\n\r\n- \\`Start\\` — По левому краю  \r\n- \\`Center\\` — По центру  \r\n- \\`End\\` — По правому краю\r\n        `,\r\n\t\t\t},\r\n\t\t},\r\n\t},\r\n\targs: {\r\n\t\ttype: TextType.BodyMd,\r\n\t\tweight: TextWeight.Regular,\r\n\t\tcolor: Colors.TextHeadings,\r\n\t\talign: Align.Start,\r\n\t\tlineClampCount: 2,\r\n\t\tisLineClamp: false,\r\n\t\tisEllipsis: false,\r\n\t\tisUnderline: false,\r\n\t},\r\n}"
-            },
-            {
-                "name": "preview",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "projects/front-components/.storybook/preview.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Preview",
-                "defaultValue": "{\r\n\tparameters: {\r\n\t\tcontrols: {\r\n\t\t\tmatchers: {\r\n\t\t\t\tcolor: /(background|color)$/i,\r\n\t\t\t\tdate: /Date$/i,\r\n\t\t\t},\r\n\t\t},\r\n\t\tdarkMode: {\r\n\t\t\tdark: darkTheme,\r\n\t\t\tlight: lightTheme,\r\n\t\t\tdarkClass: 'dark',\r\n\t\t\tlightClass: 'light',\r\n\t\t\tstylePreview: true,\r\n\t\t},\r\n\t\tdocs: {\r\n\t\t\ttheme: lightTheme,\r\n\t\t},\r\n\t},\r\n\tdecorators: [\r\n\t\t(storyFn) => {\r\n\t\t\tconst isDark = useDarkMode();\r\n\t\t\t// Меняем фон для Canvas\r\n\t\t\tdocument.body.style.backgroundColor = isDark ? '#191919' : '#fafaf9';\r\n\t\t\tdocument.body.classList.toggle('dark', isDark);\r\n\t\t\tdocument.body.classList.toggle('light', !isDark);\r\n\r\n\t\t\tconst previewContainer = document.querySelector('.sbdocs-preview') as HTMLElement | null;\r\n\t\t\tif (previewContainer) {\r\n\t\t\t\tpreviewContainer.style.backgroundColor = isDark ? '#191919' : '#fafaf9';\r\n\t\t\t}\r\n\r\n\t\t\treturn storyFn();\r\n\t\t},\r\n\t],\r\n\ttags: ['autodocs'],\r\n}"
-            },
-            {
-                "name": "textColors",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "projects/front-components/src/stories/components/text/text.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "",
-                "defaultValue": "Object.entries(Colors)\r\n\t.filter(([name]) => name.toLowerCase().startsWith('text'))\r\n\t.map(([name, _]) => `- \\`${name}\\``)\r\n\t.join('\\n')"
-            },
-            {
-                "name": "textColorsList",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "projects/front-components/src/stories/components/text/text.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "",
-                "defaultValue": "Object.entries(Colors)\r\n\t.filter(([name]) => name.toLowerCase().startsWith('text'))\r\n\t.map(([name, _]) => name)"
-            },
-            {
-                "name": "WithEllipsis",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "projects/front-components/src/stories/components/text/text.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\r\n\targs: {\r\n\t\tisEllipsis: true,\r\n\t},\r\n\trender: (args) => ({\r\n\t\tprops: args,\r\n\t\ttemplate: `\r\n\t\t\t<div style=\"width: 300px;\">\r\n\t\t\t\t<ss-lib-text [isEllipsis]=\"isEllipsis\">\r\n\t\t\t\t\tЭто длинный текст, который будет обрезан с многоточием в конце, если не поместится в контейнер.\r\n\t\t\t\t</ss-lib-text>\r\n\t\t\t</div>\r\n\t\t`,\r\n\t}),\r\n}"
-            },
-            {
-                "name": "WithLineClamp",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "projects/front-components/src/stories/components/text/text.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\r\n\targs: {\r\n\t\tisLineClamp: true,\r\n\t\tlineClampCount: 2,\r\n\t},\r\n\trender: (args) => ({\r\n\t\tprops: args,\r\n\t\ttemplate: `\r\n\t\t\t<div style=\"width: 300px;\">\r\n\t\t\t\t<ss-lib-text\r\n\t\t\t\t\t[isLineClamp]=\"isLineClamp\"\r\n\t\t\t\t\t[lineClampCount]=\"lineClampCount\"\r\n\t\t\t\t>\r\n\t\t\t\t\tЭто длинный текст, который будет обрезан после указанного количества строк. \r\n\t\t\t\t\tВы можете настроить количество строк с помощью параметра lineClampCount.\r\n\t\t\t\t\tЭто длинный текст, который будет обрезан после указанного количества строк. \r\n\t\t\t\t\tВы можете настроить количество строк с помощью параметра lineClampCount.\r\n\t\t\t\t</ss-lib-text>\r\n\t\t\t</div>\r\n\t\t`,\r\n\t}),\r\n}"
-            },
-            {
-                "name": "WithUnderline",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "projects/front-components/src/stories/components/text/text.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\r\n\targs: {\r\n\t\tisUnderline: true,\r\n\t},\r\n\trender: (args) => ({\r\n\t\tprops: args,\r\n\t\ttemplate: `\r\n\t\t\t<ss-lib-text [isUnderline]=\"isUnderline\">\r\n\t\t\t\tЭтот текст подчеркнут\r\n\t\t\t</ss-lib-text>\r\n\t\t`,\r\n\t}),\r\n}"
-            }
-        ],
-        "functions": [],
-        "typealiases": [
-            {
-                "name": "Story",
-                "ctype": "miscellaneous",
-                "subtype": "typealias",
-                "rawtype": "StoryObj<IconComponent>",
-                "file": "projects/front-components/src/stories/components/icon/icon.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "description": "",
-                "kind": 183
-            },
-            {
-                "name": "Story",
-                "ctype": "miscellaneous",
-                "subtype": "typealias",
-                "rawtype": "StoryObj<TextComponent>",
-                "file": "projects/front-components/src/stories/components/text/text.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "description": "",
-                "kind": 183
-            }
-        ],
-        "enumerations": [],
-        "groupedVariables": {
-            "projects/front-components/.storybook/preview.ts": [
-                {
-                    "name": "darkTheme",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/front-components/.storybook/preview.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "defaultValue": "create({\r\n\tbase: 'dark',\r\n\tappBg: '#191919',\r\n})"
-                },
-                {
-                    "name": "lightTheme",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/front-components/.storybook/preview.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "defaultValue": "create({\r\n\tbase: 'light',\r\n\tappBg: '#fafaf9',\r\n})"
-                },
-                {
-                    "name": "preview",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/front-components/.storybook/preview.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Preview",
-                    "defaultValue": "{\r\n\tparameters: {\r\n\t\tcontrols: {\r\n\t\t\tmatchers: {\r\n\t\t\t\tcolor: /(background|color)$/i,\r\n\t\t\t\tdate: /Date$/i,\r\n\t\t\t},\r\n\t\t},\r\n\t\tdarkMode: {\r\n\t\t\tdark: darkTheme,\r\n\t\t\tlight: lightTheme,\r\n\t\t\tdarkClass: 'dark',\r\n\t\t\tlightClass: 'light',\r\n\t\t\tstylePreview: true,\r\n\t\t},\r\n\t\tdocs: {\r\n\t\t\ttheme: lightTheme,\r\n\t\t},\r\n\t},\r\n\tdecorators: [\r\n\t\t(storyFn) => {\r\n\t\t\tconst isDark = useDarkMode();\r\n\t\t\t// Меняем фон для Canvas\r\n\t\t\tdocument.body.style.backgroundColor = isDark ? '#191919' : '#fafaf9';\r\n\t\t\tdocument.body.classList.toggle('dark', isDark);\r\n\t\t\tdocument.body.classList.toggle('light', !isDark);\r\n\r\n\t\t\tconst previewContainer = document.querySelector('.sbdocs-preview') as HTMLElement | null;\r\n\t\t\tif (previewContainer) {\r\n\t\t\t\tpreviewContainer.style.backgroundColor = isDark ? '#191919' : '#fafaf9';\r\n\t\t\t}\r\n\r\n\t\t\treturn storyFn();\r\n\t\t},\r\n\t],\r\n\ttags: ['autodocs'],\r\n}"
-                }
-            ],
-            "projects/front-components/src/stories/components/icon/icon.stories.ts": [
-                {
-                    "name": "Default",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/front-components/src/stories/components/icon/icon.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\r\n\targs: {\r\n\t\ticon: IconType.Alert,\r\n\t\theight: '24',\r\n\t\twidth: '24',\r\n\t\tcolor: Colors.IconPrimary,\r\n\t},\r\n}"
-                },
-                {
-                    "name": "DifferentColors",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/front-components/src/stories/components/icon/icon.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\r\n\targs: {\r\n\t\ticon: IconType.Alert,\r\n\t\theight: '24',\r\n\t\twidth: '24',\r\n\t\tcolor: Colors.IconError,\r\n\t},\r\n}"
-                },
-                {
-                    "name": "DifferentSizes",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/front-components/src/stories/components/icon/icon.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\r\n\targs: {\r\n\t\ticon: IconType.Alert,\r\n\t\theight: '48',\r\n\t\twidth: '48',\r\n\t\tcolor: Colors.IconPrimary,\r\n\t},\r\n}"
-                },
-                {
-                    "name": "meta",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/front-components/src/stories/components/icon/icon.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Meta<IconComponent>",
-                    "defaultValue": "{\r\n\ttitle: 'Components/Icon',\r\n\tcomponent: IconComponent,\r\n\ttags: ['autodocs'],\r\n\targTypes: {\r\n\t\ticon: {\r\n\t\t\tcontrol: 'select',\r\n\t\t\toptions: Object.values(IconType),\r\n\t\t\tdescription: 'Тип иконки. Определяет, какая иконка будет отображена.',\r\n\t\t\ttable: {\r\n\t\t\t\tdefaultValue: { summary: IconType.Alert.toString() },\r\n\t\t\t\tcategory: 'Основные параметры',\r\n\t\t\t},\r\n\t\t},\r\n\t\theight: {\r\n\t\t\tcontrol: 'text',\r\n\t\t\tdescription: 'Высота иконки в пикселях. По умолчанию: 24px.',\r\n\t\t\ttable: {\r\n\t\t\t\tdefaultValue: { summary: '24' },\r\n\t\t\t\tcategory: 'Размеры',\r\n\t\t\t},\r\n\t\t},\r\n\t\twidth: {\r\n\t\t\tcontrol: 'text',\r\n\t\t\tdescription: 'Ширина иконки в пикселях. По умолчанию: 24px.',\r\n\t\t\ttable: {\r\n\t\t\t\tdefaultValue: { summary: '24' },\r\n\t\t\t\tcategory: 'Размеры',\r\n\t\t\t},\r\n\t\t},\r\n\t\tcolor: {\r\n\t\t\tcontrol: 'select',\r\n\t\t\tlabels: Object.fromEntries(\r\n\t\t\t\tObject.entries(Colors)\r\n\t\t\t\t\t.filter(([name]) =>\r\n\t\t\t\t\t\tname.toLowerCase().startsWith('icon'),\r\n\t\t\t\t\t)\r\n\t\t\t\t\t.map(([name, value]) => [value, name]),\r\n\t\t\t),\r\n\t\t\toptions: Object.entries(Colors)\r\n\t\t\t\t.filter(([name]) => name.toLowerCase().startsWith('icon')) // фильтруем те же элементы для options\r\n\t\t\t\t.map(([_, value]) => value), // оставляем только значения цветов\r\n\t\t\tdescription:\r\n\t\t\t\t'Цвет иконки. Определяет визуальное оформление иконки.',\r\n\t\t\ttable: {\r\n\t\t\t\tdefaultValue: { summary: 'IconPrimary' },\r\n\t\t\t\tcategory: 'Стилизация',\r\n\t\t\t},\r\n\t\t},\r\n\t},\r\n\targs: {\r\n\t\ticon: IconType.Alert,\r\n\t\theight: '24',\r\n\t\twidth: '24',\r\n\t\tcolor: Colors.IconPrimary,\r\n\t},\r\n}",
-                    "rawdescription": "Компонент `IconComponent` (`ss-lib-icon`) - это универсальный компонент для отображения SVG иконок.\r\nОн предоставляет возможность настройки размера, цвета и выбора иконки из предустановленного набора.\r\n\r\n## Особенности\r\n- Поддержка более 30 различных иконок\r\n- Настраиваемый размер (высота и ширина)\r\n- Возможность изменения цвета\r\n- SVG иконки с поддержкой currentColor\r\n- Адаптивное масштабирование\r\n\r\n## Использование\r\n```html\r\n<ss-lib-icon\r\n  [icon]=\"IconType.Search\"\r\n  [height]=\"'32'\"\r\n  [width]=\"'32'\"\r\n  [color]=\"Colors.IconSecondary\"\r\n></ss-lib-icon>\r\n```\r\n\r\n## Доступные иконки\r\n\r\n### Навигация\r\n- `ArrowLeft` - Стрелка влево\r\n- `ChevronDown` - Стрелка вниз\r\n- `ChevronLeft` - Шеврон влево\r\n- `ChevronRight` - Шеврон вправо\r\n- `ChevronUp` - Стрелка вверх\r\n\r\n### Действия\r\n- `Edit` - Редактирование\r\n- `Save` - Сохранение\r\n- `Trash` - Удаление\r\n- `Upload` - Загрузка\r\n- `Plus` - Добавление\r\n- `Minus` - Удаление\r\n\r\n### Интерфейс\r\n- `Close` - Закрыть\r\n- `HamburgerMenu` - Меню-гамбургер\r\n- `KebabMenuDots` - Меню-точки\r\n- `FilterLines` - Фильтры\r\n- `Columns` - Колонки\r\n\r\n### Пользовательский интерфейс\r\n- `Eye` - Глаз (видимость)\r\n- `EyeOff` - Глаз перечеркнутый (скрытие)\r\n- `Bell` - Уведомления\r\n- `Help` - Справка\r\n- `Settings01` - Настройки (вариант 1)\r\n- `Settings02` - Настройки (вариант 2)\r\n\r\n### Состояния\r\n- `Alert` - Предупреждение\r\n- `Check` - Галочка\r\n- `CheckCircle` - Галочка в круге\r\n\r\n### Пользователи\r\n- `User01` - Пользователь\r\n- `Users` - Пользователи\r\n- `LogOut` - Выход\r\n\r\n### Дополнительные\r\n- `Moon` - Луна (темная тема)\r\n- `Sun` - Солнце (светлая тема)\r\n- `Logo` - Логотип\r\n- `Burger` - Бургер\r\n- `ResizeHandle` - Ручка изменения размера",
-                    "description": "<p>Компонент <code>IconComponent</code> (<code>ss-lib-icon</code>) - это универсальный компонент для отображения SVG иконок.\nОн предоставляет возможность настройки размера, цвета и выбора иконки из предустановленного набора.</p>\n<h2>Особенности</h2>\n<ul>\n<li>Поддержка более 30 различных иконок</li>\n<li>Настраиваемый размер (высота и ширина)</li>\n<li>Возможность изменения цвета</li>\n<li>SVG иконки с поддержкой currentColor</li>\n<li>Адаптивное масштабирование</li>\n</ul>\n<h2>Использование</h2>\n<b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-html\">&lt;ss-lib-icon\n  [icon]=&quot;IconType.Search&quot;\n  [height]=&quot;&#39;32&#39;&quot;\n  [width]=&quot;&#39;32&#39;&quot;\n  [color]=&quot;Colors.IconSecondary&quot;\n&gt;&lt;/ss-lib-icon&gt;</code></pre></div><h2>Доступные иконки</h2>\n<h3>Навигация</h3>\n<ul>\n<li><code>ArrowLeft</code> - Стрелка влево</li>\n<li><code>ChevronDown</code> - Стрелка вниз</li>\n<li><code>ChevronLeft</code> - Шеврон влево</li>\n<li><code>ChevronRight</code> - Шеврон вправо</li>\n<li><code>ChevronUp</code> - Стрелка вверх</li>\n</ul>\n<h3>Действия</h3>\n<ul>\n<li><code>Edit</code> - Редактирование</li>\n<li><code>Save</code> - Сохранение</li>\n<li><code>Trash</code> - Удаление</li>\n<li><code>Upload</code> - Загрузка</li>\n<li><code>Plus</code> - Добавление</li>\n<li><code>Minus</code> - Удаление</li>\n</ul>\n<h3>Интерфейс</h3>\n<ul>\n<li><code>Close</code> - Закрыть</li>\n<li><code>HamburgerMenu</code> - Меню-гамбургер</li>\n<li><code>KebabMenuDots</code> - Меню-точки</li>\n<li><code>FilterLines</code> - Фильтры</li>\n<li><code>Columns</code> - Колонки</li>\n</ul>\n<h3>Пользовательский интерфейс</h3>\n<ul>\n<li><code>Eye</code> - Глаз (видимость)</li>\n<li><code>EyeOff</code> - Глаз перечеркнутый (скрытие)</li>\n<li><code>Bell</code> - Уведомления</li>\n<li><code>Help</code> - Справка</li>\n<li><code>Settings01</code> - Настройки (вариант 1)</li>\n<li><code>Settings02</code> - Настройки (вариант 2)</li>\n</ul>\n<h3>Состояния</h3>\n<ul>\n<li><code>Alert</code> - Предупреждение</li>\n<li><code>Check</code> - Галочка</li>\n<li><code>CheckCircle</code> - Галочка в круге</li>\n</ul>\n<h3>Пользователи</h3>\n<ul>\n<li><code>User01</code> - Пользователь</li>\n<li><code>Users</code> - Пользователи</li>\n<li><code>LogOut</code> - Выход</li>\n</ul>\n<h3>Дополнительные</h3>\n<ul>\n<li><code>Moon</code> - Луна (темная тема)</li>\n<li><code>Sun</code> - Солнце (светлая тема)</li>\n<li><code>Logo</code> - Логотип</li>\n<li><code>Burger</code> - Бургер</li>\n<li><code>ResizeHandle</code> - Ручка изменения размера</li>\n</ul>\n"
-                }
-            ],
-            "projects/front-components/src/stories/components/text/text.stories.ts": [
-                {
-                    "name": "Default",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/front-components/src/stories/components/text/text.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\r\n\targs: {\r\n\t\ttype: TextType.BodyMd,\r\n\t\tweight: TextWeight.Regular,\r\n\t\tcolor: Colors.TextHeadings,\r\n\t\talign: Align.Start,\r\n\t},\r\n\trender: (args) => ({\r\n\t\tprops: args,\r\n\t\ttemplate: `\r\n\t\t\t<ss-lib-text\r\n\t\t\t\t[type]=\"type\"\r\n\t\t\t\t[weight]=\"weight\"\r\n\t\t\t\t[color]=\"color\"\r\n\t\t\t\t[align]=\"align\"\r\n\t\t\t\t[lineClampCount]=\"lineClampCount\"\r\n\t\t\t\t[isLineClamp]=\"isLineClamp\"\r\n\t\t\t\t[isEllipsis]=\"isEllipsis\"\r\n\t\t\t\t[isUnderline]=\"isUnderline\"\r\n\t\t\t>\r\n\t\t\t\tЭто пример текста с настраиваемыми стилями. Вы можете изменить размер, толщину, цвет и выравнивание текста.\r\n\t\t\t</ss-lib-text>\r\n\t\t`,\r\n\t}),\r\n}"
-                },
-                {
-                    "name": "DifferentAlignments",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/front-components/src/stories/components/text/text.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\r\n\trender: () => ({\r\n\t\ttemplate: `\r\n\t\t\t<div style=\"display: flex; flex-direction: column; gap: 16px;\">\r\n\t\t\t\t<ss-lib-text [align]=\"Align.Start\">Текст выровнен по левому краю</ss-lib-text>\r\n\t\t\t\t<ss-lib-text [align]=\"Align.Center\">Текст выровнен по центру</ss-lib-text>\r\n\t\t\t\t<ss-lib-text [align]=\"Align.End\">Текст выровнен по правому краю</ss-lib-text>\r\n\t\t\t</div>\r\n\t\t`,\r\n\t\tprops: {\r\n\t\t\tAlign,\r\n\t\t},\r\n\t}),\r\n}"
-                },
-                {
-                    "name": "DifferentColors",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/front-components/src/stories/components/text/text.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\r\n\trender: () => ({\r\n\t\ttemplate: `\r\n\t\t\t<div style=\"display: flex; flex-direction: column; gap: 16px;\">\r\n\t\t\t\t\r\n\t\t\t    @for (colorToken of textColorsList; track $index) {\r\n\t\t\t    \t<ss-lib-text [color]=\"Colors[colorToken]\">\r\n\t\t\t\t\t\tЦвет текста с токеном цвета: {{colorToken}}\r\n\t\t\t\t\t</ss-lib-text>\r\n\t\t\t    }\r\n\t\t\t</div>\r\n\t\t`,\r\n\t\tprops: {\r\n\t\t\tColors,\r\n\t\t\ttextColorsList,\r\n\t\t},\r\n\t}),\r\n}"
-                },
-                {
-                    "name": "DifferentTypes",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/front-components/src/stories/components/text/text.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\r\n\tname: 'Разные размеры текста',\r\n\trender: () => ({\r\n\t\ttemplate: `\r\n\t\t\t<div style=\"display: flex; flex-direction: column; gap: 16px;\">\r\n\t\t\t\t<ss-lib-text [type]=\"TextType.HeadingXs\">Xs Заголовок</ss-lib-text>\r\n\t\t\t\t<ss-lib-text [type]=\"TextType.BodyXl\">Xl текст</ss-lib-text>\r\n\t\t\t\t<ss-lib-text [type]=\"TextType.BodyLg\">Lg текст</ss-lib-text>\r\n\t\t\t\t<ss-lib-text [type]=\"TextType.BodyMd\">Md текст</ss-lib-text>\r\n\t\t\t\t<ss-lib-text [type]=\"TextType.BodySm\">Sm текст</ss-lib-text>\r\n\t\t\t\t<ss-lib-text [type]=\"TextType.BodySm\">Xs текст</ss-lib-text>\r\n\t\t\t</div>\r\n\t\t`,\r\n\t\tprops: {\r\n\t\t\tTextType,\r\n\t\t},\r\n\t}),\r\n}"
-                },
-                {
-                    "name": "DifferentWeights",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/front-components/src/stories/components/text/text.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\r\n\trender: () => ({\r\n\t\ttemplate: `\r\n\t\t\t<div style=\"display: flex; flex-direction: column; gap: 16px;\">\r\n\t\t\t\t<ss-lib-text [weight]=\"TextWeight.Regular\">Regular текст</ss-lib-text>\r\n\t\t\t\t<ss-lib-text [weight]=\"TextWeight.Medium\">Medium текст</ss-lib-text>\r\n\t\t\t\t<ss-lib-text [weight]=\"TextWeight.Semibold\">SemiBold текст</ss-lib-text>\r\n\t\t\t\t<ss-lib-text [weight]=\"TextWeight.Bold\">Bold текст</ss-lib-text>\r\n\t\t\t</div>\r\n\t\t`,\r\n\t\tprops: {\r\n\t\t\tTextWeight,\r\n\t\t},\r\n\t}),\r\n}"
-                },
-                {
-                    "name": "meta",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/front-components/src/stories/components/text/text.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Meta<TextComponent>",
-                    "defaultValue": "{\r\n\ttitle: 'Components/Text',\r\n\tcomponent: TextComponent,\r\n\ttags: ['autodocs'],\r\n\targTypes: {\r\n\t\ttype: {\r\n\t\t\tcontrol: 'select',\r\n\t\t\toptions: Object.values(TextType),\r\n\t\t\tdescription: 'Размерность шрифта',\r\n\t\t\ttable: {\r\n\t\t\t\tdefaultValue: { summary: TextType.BodyMd },\r\n\t\t\t},\r\n\t\t},\r\n\t\tweight: {\r\n\t\t\tcontrol: 'select',\r\n\t\t\toptions: Object.values(TextWeight),\r\n\t\t\tdescription: 'Толщина шрифта',\r\n\t\t\ttable: {\r\n\t\t\t\tdefaultValue: { summary: TextWeight.Regular },\r\n\t\t\t},\r\n\t\t},\r\n\t\tcolor: {\r\n\t\t\tcontrol: {\r\n\t\t\t\ttype: 'select',\r\n\t\t\t\tlabels: Object.fromEntries(\r\n\t\t\t\t\tObject.entries(Colors)\r\n\t\t\t\t\t\t.filter(([name]) =>\r\n\t\t\t\t\t\t\tname.toLowerCase().startsWith('text'),\r\n\t\t\t\t\t\t)\r\n\t\t\t\t\t\t.map(([name, value]) => [value, name]),\r\n\t\t\t\t),\r\n\t\t\t},\r\n\t\t\toptions: Object.entries(Colors)\r\n\t\t\t\t.filter(([name]) => name.toLowerCase().startsWith('text')) // фильтруем те же элементы для options\r\n\t\t\t\t.map(([_, value]) => value), // оставляем только значения цветов\r\n\t\t\tdescription: 'Цвет текста',\r\n\t\t\ttable: {\r\n\t\t\t\tdefaultValue: { summary: 'TextHeadings' },\r\n\t\t\t},\r\n\t\t},\r\n\t\talign: {\r\n\t\t\tcontrol: 'select',\r\n\t\t\toptions: Object.values(Align),\r\n\t\t\tdescription: 'Выравнивание текста',\r\n\t\t\ttable: {\r\n\t\t\t\tdefaultValue: { summary: Align.Start },\r\n\t\t\t},\r\n\t\t},\r\n\t\tlineClampCount: {\r\n\t\t\tcontrol: { type: 'number', min: 1, max: 10 },\r\n\t\t\tdescription: 'Количество строк для ограничения line-clamp',\r\n\t\t\ttable: {\r\n\t\t\t\tdefaultValue: { summary: '2' },\r\n\t\t\t},\r\n\t\t},\r\n\t\tisLineClamp: {\r\n\t\t\tcontrol: 'boolean',\r\n\t\t\tdescription: 'Ограничить количество строк текста',\r\n\t\t\ttable: {\r\n\t\t\t\tdefaultValue: { summary: 'false' },\r\n\t\t\t},\r\n\t\t},\r\n\t\tisEllipsis: {\r\n\t\t\tcontrol: 'boolean',\r\n\t\t\tdescription: 'Добавить многоточие при переполнении',\r\n\t\t\ttable: {\r\n\t\t\t\tdefaultValue: { summary: 'false' },\r\n\t\t\t},\r\n\t\t},\r\n\t\tisUnderline: {\r\n\t\t\tcontrol: 'boolean',\r\n\t\t\tdescription: 'Добавить подчеркивание',\r\n\t\t\ttable: {\r\n\t\t\t\tdefaultValue: { summary: 'false' },\r\n\t\t\t},\r\n\t\t},\r\n\t},\r\n\tparameters: {\r\n\t\tdocs: {\r\n\t\t\tdescription: {\r\n\t\t\t\tcomponent: `\r\n### Компонент \\`TextComponent\\` (\\`ss-lib-text\\`)\r\n\r\nУниверсальный компонент для отображения текста с настраиваемыми стилями. Позволяет задавать размер, толщину, цвет, выравнивание и другие свойства текста.\r\n\r\n---\r\n\r\n#### 🔹 Особенности\r\n\r\n- Поддержка различных размеров текста\r\n- Настраиваемая толщина шрифта\r\n- Широкая палитра цветов\r\n- Гибкие варианты выравнивания\r\n- Многоточие при обрезке строк\r\n- Подчеркивание текста\r\n\r\n---\r\n\r\n#### 🧩 Использование\r\n\r\n\\`\\`\\`html\r\n<ss-lib-text\r\n  [type]=\"TextType.BodyMd\"\r\n  [weight]=\"TextWeight.Regular\"\r\n  [color]=\"Colors.TextHeadings\"\r\n  [align]=\"Align.Start\"\r\n  [isLineClamp]=\"false\"\r\n  [isEllipsis]=\"false\"\r\n  [isUnderline]=\"false\"\r\n>\r\n  Ваш текст здесь\r\n</ss-lib-text>\r\n\\`\\`\\`\r\n\r\n---\r\n\r\n#### 📏 Доступные размеры текста\r\n\r\n- \\`HeadingXs\\` — Заголовок Xs  \r\n- \\`BodyXl\\`, \\`BodyLg\\`, \\`BodyMd\\`, \\`BodySm\\`, \\`BodyXs\\`\r\n\r\n#### 🔠 Толщина шрифта\r\n\r\n- \\`Regular\\`  \r\n- \\`Medium\\`  \r\n- \\`SemiBold\\`  \r\n- \\`Bold\\`\r\n\r\n#### 🎨 Цвета текста\r\n\r\n${textColors}\r\n\r\n#### 📐 Выравнивание\r\n\r\n- \\`Start\\` — По левому краю  \r\n- \\`Center\\` — По центру  \r\n- \\`End\\` — По правому краю\r\n        `,\r\n\t\t\t},\r\n\t\t},\r\n\t},\r\n\targs: {\r\n\t\ttype: TextType.BodyMd,\r\n\t\tweight: TextWeight.Regular,\r\n\t\tcolor: Colors.TextHeadings,\r\n\t\talign: Align.Start,\r\n\t\tlineClampCount: 2,\r\n\t\tisLineClamp: false,\r\n\t\tisEllipsis: false,\r\n\t\tisUnderline: false,\r\n\t},\r\n}"
-                },
-                {
-                    "name": "textColors",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/front-components/src/stories/components/text/text.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "defaultValue": "Object.entries(Colors)\r\n\t.filter(([name]) => name.toLowerCase().startsWith('text'))\r\n\t.map(([name, _]) => `- \\`${name}\\``)\r\n\t.join('\\n')"
-                },
-                {
-                    "name": "textColorsList",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/front-components/src/stories/components/text/text.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "defaultValue": "Object.entries(Colors)\r\n\t.filter(([name]) => name.toLowerCase().startsWith('text'))\r\n\t.map(([name, _]) => name)"
-                },
-                {
-                    "name": "WithEllipsis",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/front-components/src/stories/components/text/text.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\r\n\targs: {\r\n\t\tisEllipsis: true,\r\n\t},\r\n\trender: (args) => ({\r\n\t\tprops: args,\r\n\t\ttemplate: `\r\n\t\t\t<div style=\"width: 300px;\">\r\n\t\t\t\t<ss-lib-text [isEllipsis]=\"isEllipsis\">\r\n\t\t\t\t\tЭто длинный текст, который будет обрезан с многоточием в конце, если не поместится в контейнер.\r\n\t\t\t\t</ss-lib-text>\r\n\t\t\t</div>\r\n\t\t`,\r\n\t}),\r\n}"
-                },
-                {
-                    "name": "WithLineClamp",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/front-components/src/stories/components/text/text.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\r\n\targs: {\r\n\t\tisLineClamp: true,\r\n\t\tlineClampCount: 2,\r\n\t},\r\n\trender: (args) => ({\r\n\t\tprops: args,\r\n\t\ttemplate: `\r\n\t\t\t<div style=\"width: 300px;\">\r\n\t\t\t\t<ss-lib-text\r\n\t\t\t\t\t[isLineClamp]=\"isLineClamp\"\r\n\t\t\t\t\t[lineClampCount]=\"lineClampCount\"\r\n\t\t\t\t>\r\n\t\t\t\t\tЭто длинный текст, который будет обрезан после указанного количества строк. \r\n\t\t\t\t\tВы можете настроить количество строк с помощью параметра lineClampCount.\r\n\t\t\t\t\tЭто длинный текст, который будет обрезан после указанного количества строк. \r\n\t\t\t\t\tВы можете настроить количество строк с помощью параметра lineClampCount.\r\n\t\t\t\t</ss-lib-text>\r\n\t\t\t</div>\r\n\t\t`,\r\n\t}),\r\n}"
-                },
-                {
-                    "name": "WithUnderline",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "projects/front-components/src/stories/components/text/text.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\r\n\targs: {\r\n\t\tisUnderline: true,\r\n\t},\r\n\trender: (args) => ({\r\n\t\tprops: args,\r\n\t\ttemplate: `\r\n\t\t\t<ss-lib-text [isUnderline]=\"isUnderline\">\r\n\t\t\t\tЭтот текст подчеркнут\r\n\t\t\t</ss-lib-text>\r\n\t\t`,\r\n\t}),\r\n}"
-                }
-            ]
-        },
-        "groupedFunctions": {},
-        "groupedEnumerations": {},
-        "groupedTypeAliases": {
-            "projects/front-components/src/stories/components/icon/icon.stories.ts": [
-                {
-                    "name": "Story",
-                    "ctype": "miscellaneous",
-                    "subtype": "typealias",
-                    "rawtype": "StoryObj<IconComponent>",
-                    "file": "projects/front-components/src/stories/components/icon/icon.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "description": "",
-                    "kind": 183
-                }
-            ],
-            "projects/front-components/src/stories/components/text/text.stories.ts": [
-                {
-                    "name": "Story",
-                    "ctype": "miscellaneous",
-                    "subtype": "typealias",
-                    "rawtype": "StoryObj<TextComponent>",
-                    "file": "projects/front-components/src/stories/components/text/text.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "description": "",
-                    "kind": 183
-                }
-            ]
-        }
-    },
-    "routes": [],
-    "coverage": {
-        "count": 5,
-        "status": "low",
-        "files": [
-            {
-                "filePath": "projects/front-components/.storybook/preview.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "darkTheme",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "projects/front-components/.storybook/preview.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "lightTheme",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "projects/front-components/.storybook/preview.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "preview",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "projects/front-components/src/stories/components/icon/icon.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "Default",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "projects/front-components/src/stories/components/icon/icon.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "DifferentColors",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "projects/front-components/src/stories/components/icon/icon.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "DifferentSizes",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "projects/front-components/src/stories/components/icon/icon.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "meta",
-                "coveragePercent": 100,
-                "coverageCount": "1/1",
-                "status": "very-good"
-            },
-            {
-                "filePath": "projects/front-components/src/stories/components/icon/icon.stories.ts",
-                "type": "type alias",
-                "linktype": "miscellaneous",
-                "linksubtype": "typealias",
-                "name": "Story",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "projects/front-components/src/stories/components/text/text.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "Default",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "projects/front-components/src/stories/components/text/text.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "DifferentAlignments",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "projects/front-components/src/stories/components/text/text.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "DifferentColors",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "projects/front-components/src/stories/components/text/text.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "DifferentTypes",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "projects/front-components/src/stories/components/text/text.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "DifferentWeights",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "projects/front-components/src/stories/components/text/text.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "meta",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "projects/front-components/src/stories/components/text/text.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "textColors",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "projects/front-components/src/stories/components/text/text.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "textColorsList",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "projects/front-components/src/stories/components/text/text.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "WithEllipsis",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "projects/front-components/src/stories/components/text/text.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "WithLineClamp",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "projects/front-components/src/stories/components/text/text.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "WithUnderline",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "projects/front-components/src/stories/components/text/text.stories.ts",
-                "type": "type alias",
-                "linktype": "miscellaneous",
-                "linksubtype": "typealias",
-                "name": "Story",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            }
-        ]
-    }
+	"pipes": [],
+	"interfaces": [],
+	"injectables": [],
+	"guards": [],
+	"interceptors": [],
+	"classes": [],
+	"directives": [],
+	"components": [],
+	"modules": [],
+	"miscellaneous": {
+		"variables": [
+			{
+				"name": "darkTheme",
+				"ctype": "miscellaneous",
+				"subtype": "variable",
+				"file": "projects/front-components/.storybook/preview.ts",
+				"deprecated": false,
+				"deprecationMessage": "",
+				"type": "",
+				"defaultValue": "create({\r\n\tbase: 'dark',\r\n\tappBg: '#191919',\r\n})"
+			},
+			{
+				"name": "Default",
+				"ctype": "miscellaneous",
+				"subtype": "variable",
+				"file": "projects/front-components/src/stories/components/icon/icon.stories.ts",
+				"deprecated": false,
+				"deprecationMessage": "",
+				"type": "Story",
+				"defaultValue": "{\r\n\targs: {\r\n\t\ticon: IconType.Alert,\r\n\t\theight: '24',\r\n\t\twidth: '24',\r\n\t\tcolor: Colors.IconPrimary,\r\n\t},\r\n}"
+			},
+			{
+				"name": "Default",
+				"ctype": "miscellaneous",
+				"subtype": "variable",
+				"file": "projects/front-components/src/stories/components/text/text.stories.ts",
+				"deprecated": false,
+				"deprecationMessage": "",
+				"type": "Story",
+				"defaultValue": "{\r\n\targs: {\r\n\t\ttype: TextType.BodyMd,\r\n\t\tweight: TextWeight.Regular,\r\n\t\tcolor: Colors.TextHeadings,\r\n\t\talign: Align.Start,\r\n\t},\r\n\trender: (args) => ({\r\n\t\tprops: args,\r\n\t\ttemplate: `\r\n\t\t\t<ss-lib-text\r\n\t\t\t\t[type]=\"type\"\r\n\t\t\t\t[weight]=\"weight\"\r\n\t\t\t\t[color]=\"color\"\r\n\t\t\t\t[align]=\"align\"\r\n\t\t\t\t[lineClampCount]=\"lineClampCount\"\r\n\t\t\t\t[isLineClamp]=\"isLineClamp\"\r\n\t\t\t\t[isEllipsis]=\"isEllipsis\"\r\n\t\t\t\t[isUnderline]=\"isUnderline\"\r\n\t\t\t>\r\n\t\t\t\tЭто пример текста с настраиваемыми стилями. Вы можете изменить размер, толщину, цвет и выравнивание текста.\r\n\t\t\t</ss-lib-text>\r\n\t\t`,\r\n\t}),\r\n}"
+			},
+			{
+				"name": "DifferentAlignments",
+				"ctype": "miscellaneous",
+				"subtype": "variable",
+				"file": "projects/front-components/src/stories/components/text/text.stories.ts",
+				"deprecated": false,
+				"deprecationMessage": "",
+				"type": "Story",
+				"defaultValue": "{\r\n\trender: () => ({\r\n\t\ttemplate: `\r\n\t\t\t<div style=\"display: flex; flex-direction: column; gap: 16px;\">\r\n\t\t\t\t<ss-lib-text [align]=\"Align.Start\">Текст выровнен по левому краю</ss-lib-text>\r\n\t\t\t\t<ss-lib-text [align]=\"Align.Center\">Текст выровнен по центру</ss-lib-text>\r\n\t\t\t\t<ss-lib-text [align]=\"Align.End\">Текст выровнен по правому краю</ss-lib-text>\r\n\t\t\t</div>\r\n\t\t`,\r\n\t\tprops: {\r\n\t\t\tAlign,\r\n\t\t},\r\n\t}),\r\n}"
+			},
+			{
+				"name": "DifferentColors",
+				"ctype": "miscellaneous",
+				"subtype": "variable",
+				"file": "projects/front-components/src/stories/components/icon/icon.stories.ts",
+				"deprecated": false,
+				"deprecationMessage": "",
+				"type": "Story",
+				"defaultValue": "{\r\n\targs: {\r\n\t\ticon: IconType.Alert,\r\n\t\theight: '24',\r\n\t\twidth: '24',\r\n\t\tcolor: Colors.IconError,\r\n\t},\r\n}"
+			},
+			{
+				"name": "DifferentColors",
+				"ctype": "miscellaneous",
+				"subtype": "variable",
+				"file": "projects/front-components/src/stories/components/text/text.stories.ts",
+				"deprecated": false,
+				"deprecationMessage": "",
+				"type": "Story",
+				"defaultValue": "{\r\n\trender: () => ({\r\n\t\ttemplate: `\r\n\t\t\t<div style=\"display: flex; flex-direction: column; gap: 16px;\">\r\n\t\t\t\t\r\n\t\t\t    @for (colorToken of textColorsList; track $index) {\r\n\t\t\t    \t<ss-lib-text [color]=\"Colors[colorToken]\">\r\n\t\t\t\t\t\tЦвет текста с токеном цвета: {{colorToken}}\r\n\t\t\t\t\t</ss-lib-text>\r\n\t\t\t    }\r\n\t\t\t</div>\r\n\t\t`,\r\n\t\tprops: {\r\n\t\t\tColors,\r\n\t\t\ttextColorsList,\r\n\t\t},\r\n\t}),\r\n}"
+			},
+			{
+				"name": "DifferentSizes",
+				"ctype": "miscellaneous",
+				"subtype": "variable",
+				"file": "projects/front-components/src/stories/components/icon/icon.stories.ts",
+				"deprecated": false,
+				"deprecationMessage": "",
+				"type": "Story",
+				"defaultValue": "{\r\n\targs: {\r\n\t\ticon: IconType.Alert,\r\n\t\theight: '48',\r\n\t\twidth: '48',\r\n\t\tcolor: Colors.IconPrimary,\r\n\t},\r\n}"
+			},
+			{
+				"name": "DifferentTypes",
+				"ctype": "miscellaneous",
+				"subtype": "variable",
+				"file": "projects/front-components/src/stories/components/text/text.stories.ts",
+				"deprecated": false,
+				"deprecationMessage": "",
+				"type": "Story",
+				"defaultValue": "{\r\n\tname: 'Разные размеры текста',\r\n\trender: () => ({\r\n\t\ttemplate: `\r\n\t\t\t<div style=\"display: flex; flex-direction: column; gap: 16px;\">\r\n\t\t\t\t<ss-lib-text [type]=\"TextType.HeadingXs\">Xs Заголовок</ss-lib-text>\r\n\t\t\t\t<ss-lib-text [type]=\"TextType.BodyXl\">Xl текст</ss-lib-text>\r\n\t\t\t\t<ss-lib-text [type]=\"TextType.BodyLg\">Lg текст</ss-lib-text>\r\n\t\t\t\t<ss-lib-text [type]=\"TextType.BodyMd\">Md текст</ss-lib-text>\r\n\t\t\t\t<ss-lib-text [type]=\"TextType.BodySm\">Sm текст</ss-lib-text>\r\n\t\t\t\t<ss-lib-text [type]=\"TextType.BodySm\">Xs текст</ss-lib-text>\r\n\t\t\t</div>\r\n\t\t`,\r\n\t\tprops: {\r\n\t\t\tTextType,\r\n\t\t},\r\n\t}),\r\n}"
+			},
+			{
+				"name": "DifferentWeights",
+				"ctype": "miscellaneous",
+				"subtype": "variable",
+				"file": "projects/front-components/src/stories/components/text/text.stories.ts",
+				"deprecated": false,
+				"deprecationMessage": "",
+				"type": "Story",
+				"defaultValue": "{\r\n\trender: () => ({\r\n\t\ttemplate: `\r\n\t\t\t<div style=\"display: flex; flex-direction: column; gap: 16px;\">\r\n\t\t\t\t<ss-lib-text [weight]=\"TextWeight.Regular\">Regular текст</ss-lib-text>\r\n\t\t\t\t<ss-lib-text [weight]=\"TextWeight.Medium\">Medium текст</ss-lib-text>\r\n\t\t\t\t<ss-lib-text [weight]=\"TextWeight.Semibold\">SemiBold текст</ss-lib-text>\r\n\t\t\t\t<ss-lib-text [weight]=\"TextWeight.Bold\">Bold текст</ss-lib-text>\r\n\t\t\t</div>\r\n\t\t`,\r\n\t\tprops: {\r\n\t\t\tTextWeight,\r\n\t\t},\r\n\t}),\r\n}"
+			},
+			{
+				"name": "lightTheme",
+				"ctype": "miscellaneous",
+				"subtype": "variable",
+				"file": "projects/front-components/.storybook/preview.ts",
+				"deprecated": false,
+				"deprecationMessage": "",
+				"type": "",
+				"defaultValue": "create({\r\n\tbase: 'light',\r\n\tappBg: '#fafaf9',\r\n})"
+			},
+			{
+				"name": "meta",
+				"ctype": "miscellaneous",
+				"subtype": "variable",
+				"file": "projects/front-components/src/stories/components/icon/icon.stories.ts",
+				"deprecated": false,
+				"deprecationMessage": "",
+				"type": "Meta<IconComponent>",
+				"defaultValue": "{\r\n\ttitle: 'Components/Icon',\r\n\tcomponent: IconComponent,\r\n\ttags: ['autodocs'],\r\n\targTypes: {\r\n\t\ticon: {\r\n\t\t\tcontrol: 'select',\r\n\t\t\toptions: Object.values(IconType),\r\n\t\t\tdescription: 'Тип иконки. Определяет, какая иконка будет отображена.',\r\n\t\t\ttable: {\r\n\t\t\t\tdefaultValue: { summary: IconType.Alert.toString() },\r\n\t\t\t\tcategory: 'Основные параметры',\r\n\t\t\t},\r\n\t\t},\r\n\t\theight: {\r\n\t\t\tcontrol: 'text',\r\n\t\t\tdescription: 'Высота иконки в пикселях. По умолчанию: 24px.',\r\n\t\t\ttable: {\r\n\t\t\t\tdefaultValue: { summary: '24' },\r\n\t\t\t\tcategory: 'Размеры',\r\n\t\t\t},\r\n\t\t},\r\n\t\twidth: {\r\n\t\t\tcontrol: 'text',\r\n\t\t\tdescription: 'Ширина иконки в пикселях. По умолчанию: 24px.',\r\n\t\t\ttable: {\r\n\t\t\t\tdefaultValue: { summary: '24' },\r\n\t\t\t\tcategory: 'Размеры',\r\n\t\t\t},\r\n\t\t},\r\n\t\tcolor: {\r\n\t\t\tcontrol: 'select',\r\n\t\t\tlabels: Object.fromEntries(\r\n\t\t\t\tObject.entries(Colors)\r\n\t\t\t\t\t.filter(([name]) =>\r\n\t\t\t\t\t\tname.toLowerCase().startsWith('icon'),\r\n\t\t\t\t\t)\r\n\t\t\t\t\t.map(([name, value]) => [value, name]),\r\n\t\t\t),\r\n\t\t\toptions: Object.entries(Colors)\r\n\t\t\t\t.filter(([name]) => name.toLowerCase().startsWith('icon')) // фильтруем те же элементы для options\r\n\t\t\t\t.map(([_, value]) => value), // оставляем только значения цветов\r\n\t\t\tdescription:\r\n\t\t\t\t'Цвет иконки. Определяет визуальное оформление иконки.',\r\n\t\t\ttable: {\r\n\t\t\t\tdefaultValue: { summary: 'IconPrimary' },\r\n\t\t\t\tcategory: 'Стилизация',\r\n\t\t\t},\r\n\t\t},\r\n\t},\r\n\targs: {\r\n\t\ticon: IconType.Alert,\r\n\t\theight: '24',\r\n\t\twidth: '24',\r\n\t\tcolor: Colors.IconPrimary,\r\n\t},\r\n}",
+				"rawdescription": "Компонент `IconComponent` (`ss-lib-icon`) - это универсальный компонент для отображения SVG иконок.\r\nОн предоставляет возможность настройки размера, цвета и выбора иконки из предустановленного набора.\r\n\r\n## Особенности\r\n- Поддержка более 30 различных иконок\r\n- Настраиваемый размер (высота и ширина)\r\n- Возможность изменения цвета\r\n- SVG иконки с поддержкой currentColor\r\n- Адаптивное масштабирование\r\n\r\n## Использование\r\n```html\r\n<ss-lib-icon\r\n  [icon]=\"IconType.Search\"\r\n  [height]=\"'32'\"\r\n  [width]=\"'32'\"\r\n  [color]=\"Colors.IconSecondary\"\r\n></ss-lib-icon>\r\n```\r\n\r\n## Доступные иконки\r\n\r\n### Навигация\r\n- `ArrowLeft` - Стрелка влево\r\n- `ChevronDown` - Стрелка вниз\r\n- `ChevronLeft` - Шеврон влево\r\n- `ChevronRight` - Шеврон вправо\r\n- `ChevronUp` - Стрелка вверх\r\n\r\n### Действия\r\n- `Edit` - Редактирование\r\n- `Save` - Сохранение\r\n- `Trash` - Удаление\r\n- `Upload` - Загрузка\r\n- `Plus` - Добавление\r\n- `Minus` - Удаление\r\n\r\n### Интерфейс\r\n- `Close` - Закрыть\r\n- `HamburgerMenu` - Меню-гамбургер\r\n- `KebabMenuDots` - Меню-точки\r\n- `FilterLines` - Фильтры\r\n- `Columns` - Колонки\r\n\r\n### Пользовательский интерфейс\r\n- `Eye` - Глаз (видимость)\r\n- `EyeOff` - Глаз перечеркнутый (скрытие)\r\n- `Bell` - Уведомления\r\n- `Help` - Справка\r\n- `Settings01` - Настройки (вариант 1)\r\n- `Settings02` - Настройки (вариант 2)\r\n\r\n### Состояния\r\n- `Alert` - Предупреждение\r\n- `Check` - Галочка\r\n- `CheckCircle` - Галочка в круге\r\n\r\n### Пользователи\r\n- `User01` - Пользователь\r\n- `Users` - Пользователи\r\n- `LogOut` - Выход\r\n\r\n### Дополнительные\r\n- `Moon` - Луна (темная тема)\r\n- `Sun` - Солнце (светлая тема)\r\n- `Logo` - Логотип\r\n- `Burger` - Бургер\r\n- `ResizeHandle` - Ручка изменения размера",
+				"description": "<p>Компонент <code>IconComponent</code> (<code>ss-lib-icon</code>) - это универсальный компонент для отображения SVG иконок.\nОн предоставляет возможность настройки размера, цвета и выбора иконки из предустановленного набора.</p>\n<h2>Особенности</h2>\n<ul>\n<li>Поддержка более 30 различных иконок</li>\n<li>Настраиваемый размер (высота и ширина)</li>\n<li>Возможность изменения цвета</li>\n<li>SVG иконки с поддержкой currentColor</li>\n<li>Адаптивное масштабирование</li>\n</ul>\n<h2>Использование</h2>\n<b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-html\">&lt;ss-lib-icon\n  [icon]=&quot;IconType.Search&quot;\n  [height]=&quot;&#39;32&#39;&quot;\n  [width]=&quot;&#39;32&#39;&quot;\n  [color]=&quot;Colors.IconSecondary&quot;\n&gt;&lt;/ss-lib-icon&gt;</code></pre></div><h2>Доступные иконки</h2>\n<h3>Навигация</h3>\n<ul>\n<li><code>ArrowLeft</code> - Стрелка влево</li>\n<li><code>ChevronDown</code> - Стрелка вниз</li>\n<li><code>ChevronLeft</code> - Шеврон влево</li>\n<li><code>ChevronRight</code> - Шеврон вправо</li>\n<li><code>ChevronUp</code> - Стрелка вверх</li>\n</ul>\n<h3>Действия</h3>\n<ul>\n<li><code>Edit</code> - Редактирование</li>\n<li><code>Save</code> - Сохранение</li>\n<li><code>Trash</code> - Удаление</li>\n<li><code>Upload</code> - Загрузка</li>\n<li><code>Plus</code> - Добавление</li>\n<li><code>Minus</code> - Удаление</li>\n</ul>\n<h3>Интерфейс</h3>\n<ul>\n<li><code>Close</code> - Закрыть</li>\n<li><code>HamburgerMenu</code> - Меню-гамбургер</li>\n<li><code>KebabMenuDots</code> - Меню-точки</li>\n<li><code>FilterLines</code> - Фильтры</li>\n<li><code>Columns</code> - Колонки</li>\n</ul>\n<h3>Пользовательский интерфейс</h3>\n<ul>\n<li><code>Eye</code> - Глаз (видимость)</li>\n<li><code>EyeOff</code> - Глаз перечеркнутый (скрытие)</li>\n<li><code>Bell</code> - Уведомления</li>\n<li><code>Help</code> - Справка</li>\n<li><code>Settings01</code> - Настройки (вариант 1)</li>\n<li><code>Settings02</code> - Настройки (вариант 2)</li>\n</ul>\n<h3>Состояния</h3>\n<ul>\n<li><code>Alert</code> - Предупреждение</li>\n<li><code>Check</code> - Галочка</li>\n<li><code>CheckCircle</code> - Галочка в круге</li>\n</ul>\n<h3>Пользователи</h3>\n<ul>\n<li><code>User01</code> - Пользователь</li>\n<li><code>Users</code> - Пользователи</li>\n<li><code>LogOut</code> - Выход</li>\n</ul>\n<h3>Дополнительные</h3>\n<ul>\n<li><code>Moon</code> - Луна (темная тема)</li>\n<li><code>Sun</code> - Солнце (светлая тема)</li>\n<li><code>Logo</code> - Логотип</li>\n<li><code>Burger</code> - Бургер</li>\n<li><code>ResizeHandle</code> - Ручка изменения размера</li>\n</ul>\n"
+			},
+			{
+				"name": "meta",
+				"ctype": "miscellaneous",
+				"subtype": "variable",
+				"file": "projects/front-components/src/stories/components/text/text.stories.ts",
+				"deprecated": false,
+				"deprecationMessage": "",
+				"type": "Meta<TextComponent>",
+				"defaultValue": "{\r\n\ttitle: 'Components/Text',\r\n\tcomponent: TextComponent,\r\n\ttags: ['autodocs'],\r\n\targTypes: {\r\n\t\ttype: {\r\n\t\t\tcontrol: 'select',\r\n\t\t\toptions: Object.values(TextType),\r\n\t\t\tdescription: 'Размерность шрифта',\r\n\t\t\ttable: {\r\n\t\t\t\tdefaultValue: { summary: TextType.BodyMd },\r\n\t\t\t},\r\n\t\t},\r\n\t\tweight: {\r\n\t\t\tcontrol: 'select',\r\n\t\t\toptions: Object.values(TextWeight),\r\n\t\t\tdescription: 'Толщина шрифта',\r\n\t\t\ttable: {\r\n\t\t\t\tdefaultValue: { summary: TextWeight.Regular },\r\n\t\t\t},\r\n\t\t},\r\n\t\tcolor: {\r\n\t\t\tcontrol: {\r\n\t\t\t\ttype: 'select',\r\n\t\t\t\tlabels: Object.fromEntries(\r\n\t\t\t\t\tObject.entries(Colors)\r\n\t\t\t\t\t\t.filter(([name]) =>\r\n\t\t\t\t\t\t\tname.toLowerCase().startsWith('text'),\r\n\t\t\t\t\t\t)\r\n\t\t\t\t\t\t.map(([name, value]) => [value, name]),\r\n\t\t\t\t),\r\n\t\t\t},\r\n\t\t\toptions: Object.entries(Colors)\r\n\t\t\t\t.filter(([name]) => name.toLowerCase().startsWith('text')) // фильтруем те же элементы для options\r\n\t\t\t\t.map(([_, value]) => value), // оставляем только значения цветов\r\n\t\t\tdescription: 'Цвет текста',\r\n\t\t\ttable: {\r\n\t\t\t\tdefaultValue: { summary: 'TextHeadings' },\r\n\t\t\t},\r\n\t\t},\r\n\t\talign: {\r\n\t\t\tcontrol: 'select',\r\n\t\t\toptions: Object.values(Align),\r\n\t\t\tdescription: 'Выравнивание текста',\r\n\t\t\ttable: {\r\n\t\t\t\tdefaultValue: { summary: Align.Start },\r\n\t\t\t},\r\n\t\t},\r\n\t\tlineClampCount: {\r\n\t\t\tcontrol: { type: 'number', min: 1, max: 10 },\r\n\t\t\tdescription: 'Количество строк для ограничения line-clamp',\r\n\t\t\ttable: {\r\n\t\t\t\tdefaultValue: { summary: '2' },\r\n\t\t\t},\r\n\t\t},\r\n\t\tisLineClamp: {\r\n\t\t\tcontrol: 'boolean',\r\n\t\t\tdescription: 'Ограничить количество строк текста',\r\n\t\t\ttable: {\r\n\t\t\t\tdefaultValue: { summary: 'false' },\r\n\t\t\t},\r\n\t\t},\r\n\t\tisEllipsis: {\r\n\t\t\tcontrol: 'boolean',\r\n\t\t\tdescription: 'Добавить многоточие при переполнении',\r\n\t\t\ttable: {\r\n\t\t\t\tdefaultValue: { summary: 'false' },\r\n\t\t\t},\r\n\t\t},\r\n\t\tisUnderline: {\r\n\t\t\tcontrol: 'boolean',\r\n\t\t\tdescription: 'Добавить подчеркивание',\r\n\t\t\ttable: {\r\n\t\t\t\tdefaultValue: { summary: 'false' },\r\n\t\t\t},\r\n\t\t},\r\n\t},\r\n\tparameters: {\r\n\t\tdocs: {\r\n\t\t\tdescription: {\r\n\t\t\t\tcomponent: `\r\n### Компонент \\`TextComponent\\` (\\`ss-lib-text\\`)\r\n\r\nУниверсальный компонент для отображения текста с настраиваемыми стилями. Позволяет задавать размер, толщину, цвет, выравнивание и другие свойства текста.\r\n\r\n---\r\n\r\n#### 🔹 Особенности\r\n\r\n- Поддержка различных размеров текста\r\n- Настраиваемая толщина шрифта\r\n- Широкая палитра цветов\r\n- Гибкие варианты выравнивания\r\n- Многоточие при обрезке строк\r\n- Подчеркивание текста\r\n\r\n---\r\n\r\n#### 🧩 Использование\r\n\r\n\\`\\`\\`html\r\n<ss-lib-text\r\n  [type]=\"TextType.BodyMd\"\r\n  [weight]=\"TextWeight.Regular\"\r\n  [color]=\"Colors.TextHeadings\"\r\n  [align]=\"Align.Start\"\r\n  [isLineClamp]=\"false\"\r\n  [isEllipsis]=\"false\"\r\n  [isUnderline]=\"false\"\r\n>\r\n  Ваш текст здесь\r\n</ss-lib-text>\r\n\\`\\`\\`\r\n\r\n---\r\n\r\n#### 📏 Доступные размеры текста\r\n\r\n- \\`HeadingXs\\` — Заголовок Xs  \r\n- \\`BodyXl\\`, \\`BodyLg\\`, \\`BodyMd\\`, \\`BodySm\\`, \\`BodyXs\\`\r\n\r\n#### 🔠 Толщина шрифта\r\n\r\n- \\`Regular\\`  \r\n- \\`Medium\\`  \r\n- \\`SemiBold\\`  \r\n- \\`Bold\\`\r\n\r\n#### 🎨 Цвета текста\r\n\r\n${textColors}\r\n\r\n#### 📐 Выравнивание\r\n\r\n- \\`Start\\` — По левому краю  \r\n- \\`Center\\` — По центру  \r\n- \\`End\\` — По правому краю\r\n        `,\r\n\t\t\t},\r\n\t\t},\r\n\t},\r\n\targs: {\r\n\t\ttype: TextType.BodyMd,\r\n\t\tweight: TextWeight.Regular,\r\n\t\tcolor: Colors.TextHeadings,\r\n\t\talign: Align.Start,\r\n\t\tlineClampCount: 2,\r\n\t\tisLineClamp: false,\r\n\t\tisEllipsis: false,\r\n\t\tisUnderline: false,\r\n\t},\r\n}"
+			},
+			{
+				"name": "preview",
+				"ctype": "miscellaneous",
+				"subtype": "variable",
+				"file": "projects/front-components/.storybook/preview.ts",
+				"deprecated": false,
+				"deprecationMessage": "",
+				"type": "Preview",
+				"defaultValue": "{\r\n\tparameters: {\r\n\t\tcontrols: {\r\n\t\t\tmatchers: {\r\n\t\t\t\tcolor: /(background|color)$/i,\r\n\t\t\t\tdate: /Date$/i,\r\n\t\t\t},\r\n\t\t},\r\n\t\tdarkMode: {\r\n\t\t\tdark: darkTheme,\r\n\t\t\tlight: lightTheme,\r\n\t\t\tdarkClass: 'dark',\r\n\t\t\tlightClass: 'light',\r\n\t\t\tstylePreview: true,\r\n\t\t},\r\n\t\tdocs: {\r\n\t\t\ttheme: lightTheme,\r\n\t\t},\r\n\t},\r\n\tdecorators: [\r\n\t\t(storyFn) => {\r\n\t\t\tconst isDark = useDarkMode();\r\n\t\t\t// Меняем фон для Canvas\r\n\t\t\tdocument.body.style.backgroundColor = isDark ? '#191919' : '#fafaf9';\r\n\t\t\tdocument.body.classList.toggle('dark', isDark);\r\n\t\t\tdocument.body.classList.toggle('light', !isDark);\r\n\r\n\t\t\tconst previewContainer = document.querySelector('.sbdocs-preview') as HTMLElement | null;\r\n\t\t\tif (previewContainer) {\r\n\t\t\t\tpreviewContainer.style.backgroundColor = isDark ? '#191919' : '#fafaf9';\r\n\t\t\t}\r\n\r\n\t\t\treturn storyFn();\r\n\t\t},\r\n\t],\r\n\ttags: ['autodocs'],\r\n}"
+			},
+			{
+				"name": "textColors",
+				"ctype": "miscellaneous",
+				"subtype": "variable",
+				"file": "projects/front-components/src/stories/components/text/text.stories.ts",
+				"deprecated": false,
+				"deprecationMessage": "",
+				"type": "",
+				"defaultValue": "Object.entries(Colors)\r\n\t.filter(([name]) => name.toLowerCase().startsWith('text'))\r\n\t.map(([name, _]) => `- \\`${name}\\``)\r\n\t.join('\\n')"
+			},
+			{
+				"name": "textColorsList",
+				"ctype": "miscellaneous",
+				"subtype": "variable",
+				"file": "projects/front-components/src/stories/components/text/text.stories.ts",
+				"deprecated": false,
+				"deprecationMessage": "",
+				"type": "",
+				"defaultValue": "Object.entries(Colors)\r\n\t.filter(([name]) => name.toLowerCase().startsWith('text'))\r\n\t.map(([name, _]) => name)"
+			},
+			{
+				"name": "WithEllipsis",
+				"ctype": "miscellaneous",
+				"subtype": "variable",
+				"file": "projects/front-components/src/stories/components/text/text.stories.ts",
+				"deprecated": false,
+				"deprecationMessage": "",
+				"type": "Story",
+				"defaultValue": "{\r\n\targs: {\r\n\t\tisEllipsis: true,\r\n\t},\r\n\trender: (args) => ({\r\n\t\tprops: args,\r\n\t\ttemplate: `\r\n\t\t\t<div style=\"width: 300px;\">\r\n\t\t\t\t<ss-lib-text [isEllipsis]=\"isEllipsis\">\r\n\t\t\t\t\tЭто длинный текст, который будет обрезан с многоточием в конце, если не поместится в контейнер.\r\n\t\t\t\t</ss-lib-text>\r\n\t\t\t</div>\r\n\t\t`,\r\n\t}),\r\n}"
+			},
+			{
+				"name": "WithLineClamp",
+				"ctype": "miscellaneous",
+				"subtype": "variable",
+				"file": "projects/front-components/src/stories/components/text/text.stories.ts",
+				"deprecated": false,
+				"deprecationMessage": "",
+				"type": "Story",
+				"defaultValue": "{\r\n\targs: {\r\n\t\tisLineClamp: true,\r\n\t\tlineClampCount: 2,\r\n\t},\r\n\trender: (args) => ({\r\n\t\tprops: args,\r\n\t\ttemplate: `\r\n\t\t\t<div style=\"width: 300px;\">\r\n\t\t\t\t<ss-lib-text\r\n\t\t\t\t\t[isLineClamp]=\"isLineClamp\"\r\n\t\t\t\t\t[lineClampCount]=\"lineClampCount\"\r\n\t\t\t\t>\r\n\t\t\t\t\tЭто длинный текст, который будет обрезан после указанного количества строк. \r\n\t\t\t\t\tВы можете настроить количество строк с помощью параметра lineClampCount.\r\n\t\t\t\t\tЭто длинный текст, который будет обрезан после указанного количества строк. \r\n\t\t\t\t\tВы можете настроить количество строк с помощью параметра lineClampCount.\r\n\t\t\t\t</ss-lib-text>\r\n\t\t\t</div>\r\n\t\t`,\r\n\t}),\r\n}"
+			},
+			{
+				"name": "WithUnderline",
+				"ctype": "miscellaneous",
+				"subtype": "variable",
+				"file": "projects/front-components/src/stories/components/text/text.stories.ts",
+				"deprecated": false,
+				"deprecationMessage": "",
+				"type": "Story",
+				"defaultValue": "{\r\n\targs: {\r\n\t\tisUnderline: true,\r\n\t},\r\n\trender: (args) => ({\r\n\t\tprops: args,\r\n\t\ttemplate: `\r\n\t\t\t<ss-lib-text [isUnderline]=\"isUnderline\">\r\n\t\t\t\tЭтот текст подчеркнут\r\n\t\t\t</ss-lib-text>\r\n\t\t`,\r\n\t}),\r\n}"
+			}
+		],
+		"functions": [],
+		"typealiases": [
+			{
+				"name": "Story",
+				"ctype": "miscellaneous",
+				"subtype": "typealias",
+				"rawtype": "StoryObj<IconComponent>",
+				"file": "projects/front-components/src/stories/components/icon/icon.stories.ts",
+				"deprecated": false,
+				"deprecationMessage": "",
+				"description": "",
+				"kind": 183
+			},
+			{
+				"name": "Story",
+				"ctype": "miscellaneous",
+				"subtype": "typealias",
+				"rawtype": "StoryObj<TextComponent>",
+				"file": "projects/front-components/src/stories/components/text/text.stories.ts",
+				"deprecated": false,
+				"deprecationMessage": "",
+				"description": "",
+				"kind": 183
+			}
+		],
+		"enumerations": [],
+		"groupedVariables": {
+			"projects/front-components/.storybook/preview.ts": [
+				{
+					"name": "darkTheme",
+					"ctype": "miscellaneous",
+					"subtype": "variable",
+					"file": "projects/front-components/.storybook/preview.ts",
+					"deprecated": false,
+					"deprecationMessage": "",
+					"type": "",
+					"defaultValue": "create({\r\n\tbase: 'dark',\r\n\tappBg: '#191919',\r\n})"
+				},
+				{
+					"name": "lightTheme",
+					"ctype": "miscellaneous",
+					"subtype": "variable",
+					"file": "projects/front-components/.storybook/preview.ts",
+					"deprecated": false,
+					"deprecationMessage": "",
+					"type": "",
+					"defaultValue": "create({\r\n\tbase: 'light',\r\n\tappBg: '#fafaf9',\r\n})"
+				},
+				{
+					"name": "preview",
+					"ctype": "miscellaneous",
+					"subtype": "variable",
+					"file": "projects/front-components/.storybook/preview.ts",
+					"deprecated": false,
+					"deprecationMessage": "",
+					"type": "Preview",
+					"defaultValue": "{\r\n\tparameters: {\r\n\t\tcontrols: {\r\n\t\t\tmatchers: {\r\n\t\t\t\tcolor: /(background|color)$/i,\r\n\t\t\t\tdate: /Date$/i,\r\n\t\t\t},\r\n\t\t},\r\n\t\tdarkMode: {\r\n\t\t\tdark: darkTheme,\r\n\t\t\tlight: lightTheme,\r\n\t\t\tdarkClass: 'dark',\r\n\t\t\tlightClass: 'light',\r\n\t\t\tstylePreview: true,\r\n\t\t},\r\n\t\tdocs: {\r\n\t\t\ttheme: lightTheme,\r\n\t\t},\r\n\t},\r\n\tdecorators: [\r\n\t\t(storyFn) => {\r\n\t\t\tconst isDark = useDarkMode();\r\n\t\t\t// Меняем фон для Canvas\r\n\t\t\tdocument.body.style.backgroundColor = isDark ? '#191919' : '#fafaf9';\r\n\t\t\tdocument.body.classList.toggle('dark', isDark);\r\n\t\t\tdocument.body.classList.toggle('light', !isDark);\r\n\r\n\t\t\tconst previewContainer = document.querySelector('.sbdocs-preview') as HTMLElement | null;\r\n\t\t\tif (previewContainer) {\r\n\t\t\t\tpreviewContainer.style.backgroundColor = isDark ? '#191919' : '#fafaf9';\r\n\t\t\t}\r\n\r\n\t\t\treturn storyFn();\r\n\t\t},\r\n\t],\r\n\ttags: ['autodocs'],\r\n}"
+				}
+			],
+			"projects/front-components/src/stories/components/icon/icon.stories.ts": [
+				{
+					"name": "Default",
+					"ctype": "miscellaneous",
+					"subtype": "variable",
+					"file": "projects/front-components/src/stories/components/icon/icon.stories.ts",
+					"deprecated": false,
+					"deprecationMessage": "",
+					"type": "Story",
+					"defaultValue": "{\r\n\targs: {\r\n\t\ticon: IconType.Alert,\r\n\t\theight: '24',\r\n\t\twidth: '24',\r\n\t\tcolor: Colors.IconPrimary,\r\n\t},\r\n}"
+				},
+				{
+					"name": "DifferentColors",
+					"ctype": "miscellaneous",
+					"subtype": "variable",
+					"file": "projects/front-components/src/stories/components/icon/icon.stories.ts",
+					"deprecated": false,
+					"deprecationMessage": "",
+					"type": "Story",
+					"defaultValue": "{\r\n\targs: {\r\n\t\ticon: IconType.Alert,\r\n\t\theight: '24',\r\n\t\twidth: '24',\r\n\t\tcolor: Colors.IconError,\r\n\t},\r\n}"
+				},
+				{
+					"name": "DifferentSizes",
+					"ctype": "miscellaneous",
+					"subtype": "variable",
+					"file": "projects/front-components/src/stories/components/icon/icon.stories.ts",
+					"deprecated": false,
+					"deprecationMessage": "",
+					"type": "Story",
+					"defaultValue": "{\r\n\targs: {\r\n\t\ticon: IconType.Alert,\r\n\t\theight: '48',\r\n\t\twidth: '48',\r\n\t\tcolor: Colors.IconPrimary,\r\n\t},\r\n}"
+				},
+				{
+					"name": "meta",
+					"ctype": "miscellaneous",
+					"subtype": "variable",
+					"file": "projects/front-components/src/stories/components/icon/icon.stories.ts",
+					"deprecated": false,
+					"deprecationMessage": "",
+					"type": "Meta<IconComponent>",
+					"defaultValue": "{\r\n\ttitle: 'Components/Icon',\r\n\tcomponent: IconComponent,\r\n\ttags: ['autodocs'],\r\n\targTypes: {\r\n\t\ticon: {\r\n\t\t\tcontrol: 'select',\r\n\t\t\toptions: Object.values(IconType),\r\n\t\t\tdescription: 'Тип иконки. Определяет, какая иконка будет отображена.',\r\n\t\t\ttable: {\r\n\t\t\t\tdefaultValue: { summary: IconType.Alert.toString() },\r\n\t\t\t\tcategory: 'Основные параметры',\r\n\t\t\t},\r\n\t\t},\r\n\t\theight: {\r\n\t\t\tcontrol: 'text',\r\n\t\t\tdescription: 'Высота иконки в пикселях. По умолчанию: 24px.',\r\n\t\t\ttable: {\r\n\t\t\t\tdefaultValue: { summary: '24' },\r\n\t\t\t\tcategory: 'Размеры',\r\n\t\t\t},\r\n\t\t},\r\n\t\twidth: {\r\n\t\t\tcontrol: 'text',\r\n\t\t\tdescription: 'Ширина иконки в пикселях. По умолчанию: 24px.',\r\n\t\t\ttable: {\r\n\t\t\t\tdefaultValue: { summary: '24' },\r\n\t\t\t\tcategory: 'Размеры',\r\n\t\t\t},\r\n\t\t},\r\n\t\tcolor: {\r\n\t\t\tcontrol: 'select',\r\n\t\t\tlabels: Object.fromEntries(\r\n\t\t\t\tObject.entries(Colors)\r\n\t\t\t\t\t.filter(([name]) =>\r\n\t\t\t\t\t\tname.toLowerCase().startsWith('icon'),\r\n\t\t\t\t\t)\r\n\t\t\t\t\t.map(([name, value]) => [value, name]),\r\n\t\t\t),\r\n\t\t\toptions: Object.entries(Colors)\r\n\t\t\t\t.filter(([name]) => name.toLowerCase().startsWith('icon')) // фильтруем те же элементы для options\r\n\t\t\t\t.map(([_, value]) => value), // оставляем только значения цветов\r\n\t\t\tdescription:\r\n\t\t\t\t'Цвет иконки. Определяет визуальное оформление иконки.',\r\n\t\t\ttable: {\r\n\t\t\t\tdefaultValue: { summary: 'IconPrimary' },\r\n\t\t\t\tcategory: 'Стилизация',\r\n\t\t\t},\r\n\t\t},\r\n\t},\r\n\targs: {\r\n\t\ticon: IconType.Alert,\r\n\t\theight: '24',\r\n\t\twidth: '24',\r\n\t\tcolor: Colors.IconPrimary,\r\n\t},\r\n}",
+					"rawdescription": "Компонент `IconComponent` (`ss-lib-icon`) - это универсальный компонент для отображения SVG иконок.\r\nОн предоставляет возможность настройки размера, цвета и выбора иконки из предустановленного набора.\r\n\r\n## Особенности\r\n- Поддержка более 30 различных иконок\r\n- Настраиваемый размер (высота и ширина)\r\n- Возможность изменения цвета\r\n- SVG иконки с поддержкой currentColor\r\n- Адаптивное масштабирование\r\n\r\n## Использование\r\n```html\r\n<ss-lib-icon\r\n  [icon]=\"IconType.Search\"\r\n  [height]=\"'32'\"\r\n  [width]=\"'32'\"\r\n  [color]=\"Colors.IconSecondary\"\r\n></ss-lib-icon>\r\n```\r\n\r\n## Доступные иконки\r\n\r\n### Навигация\r\n- `ArrowLeft` - Стрелка влево\r\n- `ChevronDown` - Стрелка вниз\r\n- `ChevronLeft` - Шеврон влево\r\n- `ChevronRight` - Шеврон вправо\r\n- `ChevronUp` - Стрелка вверх\r\n\r\n### Действия\r\n- `Edit` - Редактирование\r\n- `Save` - Сохранение\r\n- `Trash` - Удаление\r\n- `Upload` - Загрузка\r\n- `Plus` - Добавление\r\n- `Minus` - Удаление\r\n\r\n### Интерфейс\r\n- `Close` - Закрыть\r\n- `HamburgerMenu` - Меню-гамбургер\r\n- `KebabMenuDots` - Меню-точки\r\n- `FilterLines` - Фильтры\r\n- `Columns` - Колонки\r\n\r\n### Пользовательский интерфейс\r\n- `Eye` - Глаз (видимость)\r\n- `EyeOff` - Глаз перечеркнутый (скрытие)\r\n- `Bell` - Уведомления\r\n- `Help` - Справка\r\n- `Settings01` - Настройки (вариант 1)\r\n- `Settings02` - Настройки (вариант 2)\r\n\r\n### Состояния\r\n- `Alert` - Предупреждение\r\n- `Check` - Галочка\r\n- `CheckCircle` - Галочка в круге\r\n\r\n### Пользователи\r\n- `User01` - Пользователь\r\n- `Users` - Пользователи\r\n- `LogOut` - Выход\r\n\r\n### Дополнительные\r\n- `Moon` - Луна (темная тема)\r\n- `Sun` - Солнце (светлая тема)\r\n- `Logo` - Логотип\r\n- `Burger` - Бургер\r\n- `ResizeHandle` - Ручка изменения размера",
+					"description": "<p>Компонент <code>IconComponent</code> (<code>ss-lib-icon</code>) - это универсальный компонент для отображения SVG иконок.\nОн предоставляет возможность настройки размера, цвета и выбора иконки из предустановленного набора.</p>\n<h2>Особенности</h2>\n<ul>\n<li>Поддержка более 30 различных иконок</li>\n<li>Настраиваемый размер (высота и ширина)</li>\n<li>Возможность изменения цвета</li>\n<li>SVG иконки с поддержкой currentColor</li>\n<li>Адаптивное масштабирование</li>\n</ul>\n<h2>Использование</h2>\n<b>Example :</b><div><pre class=\"line-numbers\"><code class=\"language-html\">&lt;ss-lib-icon\n  [icon]=&quot;IconType.Search&quot;\n  [height]=&quot;&#39;32&#39;&quot;\n  [width]=&quot;&#39;32&#39;&quot;\n  [color]=&quot;Colors.IconSecondary&quot;\n&gt;&lt;/ss-lib-icon&gt;</code></pre></div><h2>Доступные иконки</h2>\n<h3>Навигация</h3>\n<ul>\n<li><code>ArrowLeft</code> - Стрелка влево</li>\n<li><code>ChevronDown</code> - Стрелка вниз</li>\n<li><code>ChevronLeft</code> - Шеврон влево</li>\n<li><code>ChevronRight</code> - Шеврон вправо</li>\n<li><code>ChevronUp</code> - Стрелка вверх</li>\n</ul>\n<h3>Действия</h3>\n<ul>\n<li><code>Edit</code> - Редактирование</li>\n<li><code>Save</code> - Сохранение</li>\n<li><code>Trash</code> - Удаление</li>\n<li><code>Upload</code> - Загрузка</li>\n<li><code>Plus</code> - Добавление</li>\n<li><code>Minus</code> - Удаление</li>\n</ul>\n<h3>Интерфейс</h3>\n<ul>\n<li><code>Close</code> - Закрыть</li>\n<li><code>HamburgerMenu</code> - Меню-гамбургер</li>\n<li><code>KebabMenuDots</code> - Меню-точки</li>\n<li><code>FilterLines</code> - Фильтры</li>\n<li><code>Columns</code> - Колонки</li>\n</ul>\n<h3>Пользовательский интерфейс</h3>\n<ul>\n<li><code>Eye</code> - Глаз (видимость)</li>\n<li><code>EyeOff</code> - Глаз перечеркнутый (скрытие)</li>\n<li><code>Bell</code> - Уведомления</li>\n<li><code>Help</code> - Справка</li>\n<li><code>Settings01</code> - Настройки (вариант 1)</li>\n<li><code>Settings02</code> - Настройки (вариант 2)</li>\n</ul>\n<h3>Состояния</h3>\n<ul>\n<li><code>Alert</code> - Предупреждение</li>\n<li><code>Check</code> - Галочка</li>\n<li><code>CheckCircle</code> - Галочка в круге</li>\n</ul>\n<h3>Пользователи</h3>\n<ul>\n<li><code>User01</code> - Пользователь</li>\n<li><code>Users</code> - Пользователи</li>\n<li><code>LogOut</code> - Выход</li>\n</ul>\n<h3>Дополнительные</h3>\n<ul>\n<li><code>Moon</code> - Луна (темная тема)</li>\n<li><code>Sun</code> - Солнце (светлая тема)</li>\n<li><code>Logo</code> - Логотип</li>\n<li><code>Burger</code> - Бургер</li>\n<li><code>ResizeHandle</code> - Ручка изменения размера</li>\n</ul>\n"
+				}
+			],
+			"projects/front-components/src/stories/components/text/text.stories.ts": [
+				{
+					"name": "Default",
+					"ctype": "miscellaneous",
+					"subtype": "variable",
+					"file": "projects/front-components/src/stories/components/text/text.stories.ts",
+					"deprecated": false,
+					"deprecationMessage": "",
+					"type": "Story",
+					"defaultValue": "{\r\n\targs: {\r\n\t\ttype: TextType.BodyMd,\r\n\t\tweight: TextWeight.Regular,\r\n\t\tcolor: Colors.TextHeadings,\r\n\t\talign: Align.Start,\r\n\t},\r\n\trender: (args) => ({\r\n\t\tprops: args,\r\n\t\ttemplate: `\r\n\t\t\t<ss-lib-text\r\n\t\t\t\t[type]=\"type\"\r\n\t\t\t\t[weight]=\"weight\"\r\n\t\t\t\t[color]=\"color\"\r\n\t\t\t\t[align]=\"align\"\r\n\t\t\t\t[lineClampCount]=\"lineClampCount\"\r\n\t\t\t\t[isLineClamp]=\"isLineClamp\"\r\n\t\t\t\t[isEllipsis]=\"isEllipsis\"\r\n\t\t\t\t[isUnderline]=\"isUnderline\"\r\n\t\t\t>\r\n\t\t\t\tЭто пример текста с настраиваемыми стилями. Вы можете изменить размер, толщину, цвет и выравнивание текста.\r\n\t\t\t</ss-lib-text>\r\n\t\t`,\r\n\t}),\r\n}"
+				},
+				{
+					"name": "DifferentAlignments",
+					"ctype": "miscellaneous",
+					"subtype": "variable",
+					"file": "projects/front-components/src/stories/components/text/text.stories.ts",
+					"deprecated": false,
+					"deprecationMessage": "",
+					"type": "Story",
+					"defaultValue": "{\r\n\trender: () => ({\r\n\t\ttemplate: `\r\n\t\t\t<div style=\"display: flex; flex-direction: column; gap: 16px;\">\r\n\t\t\t\t<ss-lib-text [align]=\"Align.Start\">Текст выровнен по левому краю</ss-lib-text>\r\n\t\t\t\t<ss-lib-text [align]=\"Align.Center\">Текст выровнен по центру</ss-lib-text>\r\n\t\t\t\t<ss-lib-text [align]=\"Align.End\">Текст выровнен по правому краю</ss-lib-text>\r\n\t\t\t</div>\r\n\t\t`,\r\n\t\tprops: {\r\n\t\t\tAlign,\r\n\t\t},\r\n\t}),\r\n}"
+				},
+				{
+					"name": "DifferentColors",
+					"ctype": "miscellaneous",
+					"subtype": "variable",
+					"file": "projects/front-components/src/stories/components/text/text.stories.ts",
+					"deprecated": false,
+					"deprecationMessage": "",
+					"type": "Story",
+					"defaultValue": "{\r\n\trender: () => ({\r\n\t\ttemplate: `\r\n\t\t\t<div style=\"display: flex; flex-direction: column; gap: 16px;\">\r\n\t\t\t\t\r\n\t\t\t    @for (colorToken of textColorsList; track $index) {\r\n\t\t\t    \t<ss-lib-text [color]=\"Colors[colorToken]\">\r\n\t\t\t\t\t\tЦвет текста с токеном цвета: {{colorToken}}\r\n\t\t\t\t\t</ss-lib-text>\r\n\t\t\t    }\r\n\t\t\t</div>\r\n\t\t`,\r\n\t\tprops: {\r\n\t\t\tColors,\r\n\t\t\ttextColorsList,\r\n\t\t},\r\n\t}),\r\n}"
+				},
+				{
+					"name": "DifferentTypes",
+					"ctype": "miscellaneous",
+					"subtype": "variable",
+					"file": "projects/front-components/src/stories/components/text/text.stories.ts",
+					"deprecated": false,
+					"deprecationMessage": "",
+					"type": "Story",
+					"defaultValue": "{\r\n\tname: 'Разные размеры текста',\r\n\trender: () => ({\r\n\t\ttemplate: `\r\n\t\t\t<div style=\"display: flex; flex-direction: column; gap: 16px;\">\r\n\t\t\t\t<ss-lib-text [type]=\"TextType.HeadingXs\">Xs Заголовок</ss-lib-text>\r\n\t\t\t\t<ss-lib-text [type]=\"TextType.BodyXl\">Xl текст</ss-lib-text>\r\n\t\t\t\t<ss-lib-text [type]=\"TextType.BodyLg\">Lg текст</ss-lib-text>\r\n\t\t\t\t<ss-lib-text [type]=\"TextType.BodyMd\">Md текст</ss-lib-text>\r\n\t\t\t\t<ss-lib-text [type]=\"TextType.BodySm\">Sm текст</ss-lib-text>\r\n\t\t\t\t<ss-lib-text [type]=\"TextType.BodySm\">Xs текст</ss-lib-text>\r\n\t\t\t</div>\r\n\t\t`,\r\n\t\tprops: {\r\n\t\t\tTextType,\r\n\t\t},\r\n\t}),\r\n}"
+				},
+				{
+					"name": "DifferentWeights",
+					"ctype": "miscellaneous",
+					"subtype": "variable",
+					"file": "projects/front-components/src/stories/components/text/text.stories.ts",
+					"deprecated": false,
+					"deprecationMessage": "",
+					"type": "Story",
+					"defaultValue": "{\r\n\trender: () => ({\r\n\t\ttemplate: `\r\n\t\t\t<div style=\"display: flex; flex-direction: column; gap: 16px;\">\r\n\t\t\t\t<ss-lib-text [weight]=\"TextWeight.Regular\">Regular текст</ss-lib-text>\r\n\t\t\t\t<ss-lib-text [weight]=\"TextWeight.Medium\">Medium текст</ss-lib-text>\r\n\t\t\t\t<ss-lib-text [weight]=\"TextWeight.Semibold\">SemiBold текст</ss-lib-text>\r\n\t\t\t\t<ss-lib-text [weight]=\"TextWeight.Bold\">Bold текст</ss-lib-text>\r\n\t\t\t</div>\r\n\t\t`,\r\n\t\tprops: {\r\n\t\t\tTextWeight,\r\n\t\t},\r\n\t}),\r\n}"
+				},
+				{
+					"name": "meta",
+					"ctype": "miscellaneous",
+					"subtype": "variable",
+					"file": "projects/front-components/src/stories/components/text/text.stories.ts",
+					"deprecated": false,
+					"deprecationMessage": "",
+					"type": "Meta<TextComponent>",
+					"defaultValue": "{\r\n\ttitle: 'Components/Text',\r\n\tcomponent: TextComponent,\r\n\ttags: ['autodocs'],\r\n\targTypes: {\r\n\t\ttype: {\r\n\t\t\tcontrol: 'select',\r\n\t\t\toptions: Object.values(TextType),\r\n\t\t\tdescription: 'Размерность шрифта',\r\n\t\t\ttable: {\r\n\t\t\t\tdefaultValue: { summary: TextType.BodyMd },\r\n\t\t\t},\r\n\t\t},\r\n\t\tweight: {\r\n\t\t\tcontrol: 'select',\r\n\t\t\toptions: Object.values(TextWeight),\r\n\t\t\tdescription: 'Толщина шрифта',\r\n\t\t\ttable: {\r\n\t\t\t\tdefaultValue: { summary: TextWeight.Regular },\r\n\t\t\t},\r\n\t\t},\r\n\t\tcolor: {\r\n\t\t\tcontrol: {\r\n\t\t\t\ttype: 'select',\r\n\t\t\t\tlabels: Object.fromEntries(\r\n\t\t\t\t\tObject.entries(Colors)\r\n\t\t\t\t\t\t.filter(([name]) =>\r\n\t\t\t\t\t\t\tname.toLowerCase().startsWith('text'),\r\n\t\t\t\t\t\t)\r\n\t\t\t\t\t\t.map(([name, value]) => [value, name]),\r\n\t\t\t\t),\r\n\t\t\t},\r\n\t\t\toptions: Object.entries(Colors)\r\n\t\t\t\t.filter(([name]) => name.toLowerCase().startsWith('text')) // фильтруем те же элементы для options\r\n\t\t\t\t.map(([_, value]) => value), // оставляем только значения цветов\r\n\t\t\tdescription: 'Цвет текста',\r\n\t\t\ttable: {\r\n\t\t\t\tdefaultValue: { summary: 'TextHeadings' },\r\n\t\t\t},\r\n\t\t},\r\n\t\talign: {\r\n\t\t\tcontrol: 'select',\r\n\t\t\toptions: Object.values(Align),\r\n\t\t\tdescription: 'Выравнивание текста',\r\n\t\t\ttable: {\r\n\t\t\t\tdefaultValue: { summary: Align.Start },\r\n\t\t\t},\r\n\t\t},\r\n\t\tlineClampCount: {\r\n\t\t\tcontrol: { type: 'number', min: 1, max: 10 },\r\n\t\t\tdescription: 'Количество строк для ограничения line-clamp',\r\n\t\t\ttable: {\r\n\t\t\t\tdefaultValue: { summary: '2' },\r\n\t\t\t},\r\n\t\t},\r\n\t\tisLineClamp: {\r\n\t\t\tcontrol: 'boolean',\r\n\t\t\tdescription: 'Ограничить количество строк текста',\r\n\t\t\ttable: {\r\n\t\t\t\tdefaultValue: { summary: 'false' },\r\n\t\t\t},\r\n\t\t},\r\n\t\tisEllipsis: {\r\n\t\t\tcontrol: 'boolean',\r\n\t\t\tdescription: 'Добавить многоточие при переполнении',\r\n\t\t\ttable: {\r\n\t\t\t\tdefaultValue: { summary: 'false' },\r\n\t\t\t},\r\n\t\t},\r\n\t\tisUnderline: {\r\n\t\t\tcontrol: 'boolean',\r\n\t\t\tdescription: 'Добавить подчеркивание',\r\n\t\t\ttable: {\r\n\t\t\t\tdefaultValue: { summary: 'false' },\r\n\t\t\t},\r\n\t\t},\r\n\t},\r\n\tparameters: {\r\n\t\tdocs: {\r\n\t\t\tdescription: {\r\n\t\t\t\tcomponent: `\r\n### Компонент \\`TextComponent\\` (\\`ss-lib-text\\`)\r\n\r\nУниверсальный компонент для отображения текста с настраиваемыми стилями. Позволяет задавать размер, толщину, цвет, выравнивание и другие свойства текста.\r\n\r\n---\r\n\r\n#### 🔹 Особенности\r\n\r\n- Поддержка различных размеров текста\r\n- Настраиваемая толщина шрифта\r\n- Широкая палитра цветов\r\n- Гибкие варианты выравнивания\r\n- Многоточие при обрезке строк\r\n- Подчеркивание текста\r\n\r\n---\r\n\r\n#### 🧩 Использование\r\n\r\n\\`\\`\\`html\r\n<ss-lib-text\r\n  [type]=\"TextType.BodyMd\"\r\n  [weight]=\"TextWeight.Regular\"\r\n  [color]=\"Colors.TextHeadings\"\r\n  [align]=\"Align.Start\"\r\n  [isLineClamp]=\"false\"\r\n  [isEllipsis]=\"false\"\r\n  [isUnderline]=\"false\"\r\n>\r\n  Ваш текст здесь\r\n</ss-lib-text>\r\n\\`\\`\\`\r\n\r\n---\r\n\r\n#### 📏 Доступные размеры текста\r\n\r\n- \\`HeadingXs\\` — Заголовок Xs  \r\n- \\`BodyXl\\`, \\`BodyLg\\`, \\`BodyMd\\`, \\`BodySm\\`, \\`BodyXs\\`\r\n\r\n#### 🔠 Толщина шрифта\r\n\r\n- \\`Regular\\`  \r\n- \\`Medium\\`  \r\n- \\`SemiBold\\`  \r\n- \\`Bold\\`\r\n\r\n#### 🎨 Цвета текста\r\n\r\n${textColors}\r\n\r\n#### 📐 Выравнивание\r\n\r\n- \\`Start\\` — По левому краю  \r\n- \\`Center\\` — По центру  \r\n- \\`End\\` — По правому краю\r\n        `,\r\n\t\t\t},\r\n\t\t},\r\n\t},\r\n\targs: {\r\n\t\ttype: TextType.BodyMd,\r\n\t\tweight: TextWeight.Regular,\r\n\t\tcolor: Colors.TextHeadings,\r\n\t\talign: Align.Start,\r\n\t\tlineClampCount: 2,\r\n\t\tisLineClamp: false,\r\n\t\tisEllipsis: false,\r\n\t\tisUnderline: false,\r\n\t},\r\n}"
+				},
+				{
+					"name": "textColors",
+					"ctype": "miscellaneous",
+					"subtype": "variable",
+					"file": "projects/front-components/src/stories/components/text/text.stories.ts",
+					"deprecated": false,
+					"deprecationMessage": "",
+					"type": "",
+					"defaultValue": "Object.entries(Colors)\r\n\t.filter(([name]) => name.toLowerCase().startsWith('text'))\r\n\t.map(([name, _]) => `- \\`${name}\\``)\r\n\t.join('\\n')"
+				},
+				{
+					"name": "textColorsList",
+					"ctype": "miscellaneous",
+					"subtype": "variable",
+					"file": "projects/front-components/src/stories/components/text/text.stories.ts",
+					"deprecated": false,
+					"deprecationMessage": "",
+					"type": "",
+					"defaultValue": "Object.entries(Colors)\r\n\t.filter(([name]) => name.toLowerCase().startsWith('text'))\r\n\t.map(([name, _]) => name)"
+				},
+				{
+					"name": "WithEllipsis",
+					"ctype": "miscellaneous",
+					"subtype": "variable",
+					"file": "projects/front-components/src/stories/components/text/text.stories.ts",
+					"deprecated": false,
+					"deprecationMessage": "",
+					"type": "Story",
+					"defaultValue": "{\r\n\targs: {\r\n\t\tisEllipsis: true,\r\n\t},\r\n\trender: (args) => ({\r\n\t\tprops: args,\r\n\t\ttemplate: `\r\n\t\t\t<div style=\"width: 300px;\">\r\n\t\t\t\t<ss-lib-text [isEllipsis]=\"isEllipsis\">\r\n\t\t\t\t\tЭто длинный текст, который будет обрезан с многоточием в конце, если не поместится в контейнер.\r\n\t\t\t\t</ss-lib-text>\r\n\t\t\t</div>\r\n\t\t`,\r\n\t}),\r\n}"
+				},
+				{
+					"name": "WithLineClamp",
+					"ctype": "miscellaneous",
+					"subtype": "variable",
+					"file": "projects/front-components/src/stories/components/text/text.stories.ts",
+					"deprecated": false,
+					"deprecationMessage": "",
+					"type": "Story",
+					"defaultValue": "{\r\n\targs: {\r\n\t\tisLineClamp: true,\r\n\t\tlineClampCount: 2,\r\n\t},\r\n\trender: (args) => ({\r\n\t\tprops: args,\r\n\t\ttemplate: `\r\n\t\t\t<div style=\"width: 300px;\">\r\n\t\t\t\t<ss-lib-text\r\n\t\t\t\t\t[isLineClamp]=\"isLineClamp\"\r\n\t\t\t\t\t[lineClampCount]=\"lineClampCount\"\r\n\t\t\t\t>\r\n\t\t\t\t\tЭто длинный текст, который будет обрезан после указанного количества строк. \r\n\t\t\t\t\tВы можете настроить количество строк с помощью параметра lineClampCount.\r\n\t\t\t\t\tЭто длинный текст, который будет обрезан после указанного количества строк. \r\n\t\t\t\t\tВы можете настроить количество строк с помощью параметра lineClampCount.\r\n\t\t\t\t</ss-lib-text>\r\n\t\t\t</div>\r\n\t\t`,\r\n\t}),\r\n}"
+				},
+				{
+					"name": "WithUnderline",
+					"ctype": "miscellaneous",
+					"subtype": "variable",
+					"file": "projects/front-components/src/stories/components/text/text.stories.ts",
+					"deprecated": false,
+					"deprecationMessage": "",
+					"type": "Story",
+					"defaultValue": "{\r\n\targs: {\r\n\t\tisUnderline: true,\r\n\t},\r\n\trender: (args) => ({\r\n\t\tprops: args,\r\n\t\ttemplate: `\r\n\t\t\t<ss-lib-text [isUnderline]=\"isUnderline\">\r\n\t\t\t\tЭтот текст подчеркнут\r\n\t\t\t</ss-lib-text>\r\n\t\t`,\r\n\t}),\r\n}"
+				}
+			]
+		},
+		"groupedFunctions": {},
+		"groupedEnumerations": {},
+		"groupedTypeAliases": {
+			"projects/front-components/src/stories/components/icon/icon.stories.ts": [
+				{
+					"name": "Story",
+					"ctype": "miscellaneous",
+					"subtype": "typealias",
+					"rawtype": "StoryObj<IconComponent>",
+					"file": "projects/front-components/src/stories/components/icon/icon.stories.ts",
+					"deprecated": false,
+					"deprecationMessage": "",
+					"description": "",
+					"kind": 183
+				}
+			],
+			"projects/front-components/src/stories/components/text/text.stories.ts": [
+				{
+					"name": "Story",
+					"ctype": "miscellaneous",
+					"subtype": "typealias",
+					"rawtype": "StoryObj<TextComponent>",
+					"file": "projects/front-components/src/stories/components/text/text.stories.ts",
+					"deprecated": false,
+					"deprecationMessage": "",
+					"description": "",
+					"kind": 183
+				}
+			]
+		}
+	},
+	"routes": [],
+	"coverage": {
+		"count": 5,
+		"status": "low",
+		"files": [
+			{
+				"filePath": "projects/front-components/.storybook/preview.ts",
+				"type": "variable",
+				"linktype": "miscellaneous",
+				"linksubtype": "variable",
+				"name": "darkTheme",
+				"coveragePercent": 0,
+				"coverageCount": "0/1",
+				"status": "low"
+			},
+			{
+				"filePath": "projects/front-components/.storybook/preview.ts",
+				"type": "variable",
+				"linktype": "miscellaneous",
+				"linksubtype": "variable",
+				"name": "lightTheme",
+				"coveragePercent": 0,
+				"coverageCount": "0/1",
+				"status": "low"
+			},
+			{
+				"filePath": "projects/front-components/.storybook/preview.ts",
+				"type": "variable",
+				"linktype": "miscellaneous",
+				"linksubtype": "variable",
+				"name": "preview",
+				"coveragePercent": 0,
+				"coverageCount": "0/1",
+				"status": "low"
+			},
+			{
+				"filePath": "projects/front-components/src/stories/components/icon/icon.stories.ts",
+				"type": "variable",
+				"linktype": "miscellaneous",
+				"linksubtype": "variable",
+				"name": "Default",
+				"coveragePercent": 0,
+				"coverageCount": "0/1",
+				"status": "low"
+			},
+			{
+				"filePath": "projects/front-components/src/stories/components/icon/icon.stories.ts",
+				"type": "variable",
+				"linktype": "miscellaneous",
+				"linksubtype": "variable",
+				"name": "DifferentColors",
+				"coveragePercent": 0,
+				"coverageCount": "0/1",
+				"status": "low"
+			},
+			{
+				"filePath": "projects/front-components/src/stories/components/icon/icon.stories.ts",
+				"type": "variable",
+				"linktype": "miscellaneous",
+				"linksubtype": "variable",
+				"name": "DifferentSizes",
+				"coveragePercent": 0,
+				"coverageCount": "0/1",
+				"status": "low"
+			},
+			{
+				"filePath": "projects/front-components/src/stories/components/icon/icon.stories.ts",
+				"type": "variable",
+				"linktype": "miscellaneous",
+				"linksubtype": "variable",
+				"name": "meta",
+				"coveragePercent": 100,
+				"coverageCount": "1/1",
+				"status": "very-good"
+			},
+			{
+				"filePath": "projects/front-components/src/stories/components/icon/icon.stories.ts",
+				"type": "type alias",
+				"linktype": "miscellaneous",
+				"linksubtype": "typealias",
+				"name": "Story",
+				"coveragePercent": 0,
+				"coverageCount": "0/1",
+				"status": "low"
+			},
+			{
+				"filePath": "projects/front-components/src/stories/components/text/text.stories.ts",
+				"type": "variable",
+				"linktype": "miscellaneous",
+				"linksubtype": "variable",
+				"name": "Default",
+				"coveragePercent": 0,
+				"coverageCount": "0/1",
+				"status": "low"
+			},
+			{
+				"filePath": "projects/front-components/src/stories/components/text/text.stories.ts",
+				"type": "variable",
+				"linktype": "miscellaneous",
+				"linksubtype": "variable",
+				"name": "DifferentAlignments",
+				"coveragePercent": 0,
+				"coverageCount": "0/1",
+				"status": "low"
+			},
+			{
+				"filePath": "projects/front-components/src/stories/components/text/text.stories.ts",
+				"type": "variable",
+				"linktype": "miscellaneous",
+				"linksubtype": "variable",
+				"name": "DifferentColors",
+				"coveragePercent": 0,
+				"coverageCount": "0/1",
+				"status": "low"
+			},
+			{
+				"filePath": "projects/front-components/src/stories/components/text/text.stories.ts",
+				"type": "variable",
+				"linktype": "miscellaneous",
+				"linksubtype": "variable",
+				"name": "DifferentTypes",
+				"coveragePercent": 0,
+				"coverageCount": "0/1",
+				"status": "low"
+			},
+			{
+				"filePath": "projects/front-components/src/stories/components/text/text.stories.ts",
+				"type": "variable",
+				"linktype": "miscellaneous",
+				"linksubtype": "variable",
+				"name": "DifferentWeights",
+				"coveragePercent": 0,
+				"coverageCount": "0/1",
+				"status": "low"
+			},
+			{
+				"filePath": "projects/front-components/src/stories/components/text/text.stories.ts",
+				"type": "variable",
+				"linktype": "miscellaneous",
+				"linksubtype": "variable",
+				"name": "meta",
+				"coveragePercent": 0,
+				"coverageCount": "0/1",
+				"status": "low"
+			},
+			{
+				"filePath": "projects/front-components/src/stories/components/text/text.stories.ts",
+				"type": "variable",
+				"linktype": "miscellaneous",
+				"linksubtype": "variable",
+				"name": "textColors",
+				"coveragePercent": 0,
+				"coverageCount": "0/1",
+				"status": "low"
+			},
+			{
+				"filePath": "projects/front-components/src/stories/components/text/text.stories.ts",
+				"type": "variable",
+				"linktype": "miscellaneous",
+				"linksubtype": "variable",
+				"name": "textColorsList",
+				"coveragePercent": 0,
+				"coverageCount": "0/1",
+				"status": "low"
+			},
+			{
+				"filePath": "projects/front-components/src/stories/components/text/text.stories.ts",
+				"type": "variable",
+				"linktype": "miscellaneous",
+				"linksubtype": "variable",
+				"name": "WithEllipsis",
+				"coveragePercent": 0,
+				"coverageCount": "0/1",
+				"status": "low"
+			},
+			{
+				"filePath": "projects/front-components/src/stories/components/text/text.stories.ts",
+				"type": "variable",
+				"linktype": "miscellaneous",
+				"linksubtype": "variable",
+				"name": "WithLineClamp",
+				"coveragePercent": 0,
+				"coverageCount": "0/1",
+				"status": "low"
+			},
+			{
+				"filePath": "projects/front-components/src/stories/components/text/text.stories.ts",
+				"type": "variable",
+				"linktype": "miscellaneous",
+				"linksubtype": "variable",
+				"name": "WithUnderline",
+				"coveragePercent": 0,
+				"coverageCount": "0/1",
+				"status": "low"
+			},
+			{
+				"filePath": "projects/front-components/src/stories/components/text/text.stories.ts",
+				"type": "type alias",
+				"linktype": "miscellaneous",
+				"linksubtype": "typealias",
+				"name": "Story",
+				"coveragePercent": 0,
+				"coverageCount": "0/1",
+				"status": "low"
+			}
+		]
+	}
 }

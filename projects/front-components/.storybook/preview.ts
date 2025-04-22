@@ -39,13 +39,19 @@ const preview: Preview = {
 		(storyFn) => {
 			const isDark = useDarkMode();
 			// Меняем фон для Canvas
-			document.body.style.backgroundColor = isDark ? '#191919' : '#fafaf9';
+			document.body.style.backgroundColor = isDark
+				? '#191919'
+				: '#fafaf9';
 			document.body.classList.toggle('dark', isDark);
 			document.body.classList.toggle('light', !isDark);
 
-			const previewContainer = document.querySelector('.sbdocs-preview') as HTMLElement | null;
+			const previewContainer = document.querySelector(
+				'.sbdocs-preview',
+			) as HTMLElement | null;
 			if (previewContainer) {
-				previewContainer.style.backgroundColor = isDark ? '#191919' : '#fafaf9';
+				previewContainer.style.backgroundColor = isDark
+					? '#191919'
+					: '#fafaf9';
 			}
 
 			return storyFn();

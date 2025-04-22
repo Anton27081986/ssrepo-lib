@@ -9,7 +9,7 @@ const config: StorybookConfig = {
 		'@storybook/addon-designs',
 		'@storybook/addon-docs',
 		'@storybook/addon-storysource',
-		'@storybook/theming'
+		'@storybook/theming',
 	],
 	framework: {
 		name: '@storybook/angular',
