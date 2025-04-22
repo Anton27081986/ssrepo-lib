@@ -21,7 +21,6 @@ import { DropdownListComponent } from '../dropdown-list/dropdown-list.component'
 import { IconType, InputType } from '../../shared/models';
 import { PopoverTriggerForDirective } from '../../core/directives';
 import { InputComponent } from '../input/input.component';
-import { MIN_YEAR } from '../calendar/constans';
 
 /**
  * Компонент выбора времени с поддержкой форм и предустановленных интервалов
