@@ -8,7 +8,7 @@ import type { ControlValueAccessor } from '@angular/forms';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
 /**
- * Компонент переключателя с поддержкой форм
+ * Компонент переключателя
  *
  * @example
  * ```html
