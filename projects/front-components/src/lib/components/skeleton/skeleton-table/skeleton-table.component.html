@@ -5,8 +5,8 @@
 	>
 		<td
 			*ngFor="let itemTd of itemTr.items"
-			[class.ss-lib-table-td-sticky]="itemTd.sticky"
 			class="ss-lib-table-td ss-lib-table-td-align--{{ itemTd.align }}"
+			[class.ss-lib-table-td-sticky]="itemTd.sticky"
 		>
 			<ss-lib-skeleton-block
 				[config]="itemTd.skeletonConfig"
