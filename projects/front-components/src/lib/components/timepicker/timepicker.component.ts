@@ -1,8 +1,11 @@
 import {
+	afterNextRender,
 	ChangeDetectionStrategy,
 	Component,
+	ElementRef,
 	forwardRef,
 	viewChild,
+	viewChildren,
 } from '@angular/core';
 import {
 	ControlValueAccessor,
@@ -18,6 +21,7 @@ import { DropdownListComponent } from '../dropdown-list/dropdown-list.component'
 import { IconType, InputType } from '../../shared/models';
 import { PopoverTriggerForDirective } from '../../core/directives';
 import { InputComponent } from '../input/input.component';
+import { MIN_YEAR } from '../calendar/constans';
 
 /**
  * Компонент выбора времени с поддержкой форм и предустановленных интервалов
@@ -68,6 +72,10 @@ export class TimepickerComponent implements ControlValueAccessor {
 		read: InputComponent,
 	});
 
+	private readonly timeRows = viewChildren('timeRow', {
+		read: ElementRef,
+	});
+
 	public timepickerCtrl = new FormControl<string | null>(null);
 
 	protected readonly timeIntervals = TIME_INTERVALS;
@@ -85,6 +93,10 @@ export class TimepickerComponent implements ControlValueAccessor {
 				}),
 			),
 		);
+
+		afterNextRender(() => {
+			this.scrollToTime(this.timepickerCtrl.value);
+		});
 	}
 
 	public writeValue(value: string | null): void {
@@ -111,5 +123,34 @@ export class TimepickerComponent implements ControlValueAccessor {
 		this.timepickerCtrl.setValue(time);
 
 		this.timeInput()?.setFocus();
+	}
+
+	public scrollToTime(time: string | null): void {
+		if (!time) {
+			return;
+		}
+
+		const targetTime = this.roundTimeToNearestHalfHour(time);
+		const targetIndex = this.timeIntervals.indexOf(targetTime);
+
+		if (targetIndex >= 0 && this.timeRows()[targetIndex]) {
+			this.timeRows()[targetIndex].nativeElement.scrollIntoView({
+				behavior: 'instant',
+				block: 'start',
+			});
+		}
+	}
+
+	private roundTimeToNearestHalfHour(time: string): string {
+		const [hours, minutes] = time.split(':').map(Number);
+
+		if (minutes === 0) {
+			return time;
+		}
+
+		const roundedMinutes = minutes <= 30 ? 30 : 0;
+		const roundedHours = minutes <= 30 ? hours : hours + 1;
+
+		return `${roundedHours.toString().padStart(2, '0')}:${roundedMinutes.toString().padStart(2, '0')}`;
 	}
 }
