@@ -14,7 +14,6 @@ export enum Colors {
 	BorderSuccess = 'var(--border-success)',
 	BorderTertiary = 'var(--border-tertiary)',
 	BorderWarning = 'var(--border-warning)',
-
 	EffectsShadows10 = 'var(--effects-shadows-10)',
 	EffectsShadows14 = 'var(--effects-shadows-14)',
 	EffectsShadows18 = 'var(--effects-shadows-18)',
@@ -23,7 +22,6 @@ export enum Colors {
 	EffectsShadows5 = 'var(--effects-shadows-5)',
 	EffectsShadows6 = 'var(--effects-shadows-6)',
 	EffectsShadows8 = 'var(--effects-shadows-8)',
-
 	IconAction = 'var(--icon-action)',
 	IconAction2 = 'var(--icon-action-2)',
 	IconActionHover = 'var(--icon-action-hover)',
@@ -32,11 +30,11 @@ export enum Colors {
 	IconInformation = 'var(--icon-information)',
 	IconOnAction = 'var(--icon-on-action)',
 	IconOnDisabled = 'var(--icon-on-disabled)',
+	IconOnInformation = 'var(--icon-on-information)',
 	IconPrimary = 'var(--icon-primary)',
 	IconSecondary = 'var(--icon-secondary)',
 	IconSuccess = 'var(--icon-success)',
 	IconWarning = 'var(--icon-warning)',
-
 	SurfaceAction = 'var(--surface-action)',
 	SurfaceAction4 = 'var(--surface-action-4)',
 	SurfaceActionHover = 'var(--surface-action-hover)',
@@ -57,7 +55,6 @@ export enum Colors {
 	SurfacePage = 'var(--surface-page)',
 	SurfacePrimary = 'var(--surface-primary)',
 	SurfaceSecondary = 'var(--surface-secondary)',
-
 	TextAction = 'var(--text-action)',
 	TextActionHover = 'var(--text-action-hover)',
 	TextBody = 'var(--text-body)',
