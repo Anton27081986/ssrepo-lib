@@ -14,7 +14,7 @@ import type {
 	ISkeletonDerivativeTdTable,
 	ISkeletonDerivativeTrTable,
 	IStoreTableBaseColumn,
-} from '../../../shared/models/interfaces/store-table-base-column';
+} from '../../../shared/models';
 import { SkeletonBlockComponent } from '../skeleton-block/skeleton-block.component';
 
 /**
