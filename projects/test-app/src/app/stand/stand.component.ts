@@ -25,6 +25,7 @@ import type { TestModalData } from '../test-modal/test-modal.component';
 import { TestModalComponent } from '../test-modal/test-modal.component';
 import { ToastRef } from '../../../../front-components/src/lib/components';
 import { exampleDataTable } from './constants/example-data-table';
+import { TestRightSidePageComponent } from '../test-left-side-page/test-right-side-page.component';
 
 @Component({
 	selector: 'app-stand',
@@ -273,5 +274,13 @@ export class StandComponent {
 		}
 
 		this.otpCtrl.setErrors({ invalidOtp: true });
+	}
+
+	public openRightSidebar(): void {
+		this.sharedPopupService.openRightSidePage<TestModalData>(
+			TestRightSidePageComponent,
+			{ id: 0, text: 'Какой то текст' },
+			'860px',
+		);
 	}
 }
