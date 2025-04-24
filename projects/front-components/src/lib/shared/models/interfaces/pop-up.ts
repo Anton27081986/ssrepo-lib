@@ -27,7 +27,6 @@ export interface IPopoverConfig {
 
 export interface PopupParamsPopover<T> extends PopupParamsBase<T> {
 	type: PopupTypeEnum.Popover;
-	// popoverCfg: IPopoverConfig;
 }
 
 export interface PopupParamsModal<T> extends PopupParamsBase<T> {
