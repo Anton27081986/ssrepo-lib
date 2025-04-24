@@ -58,7 +58,10 @@ export class BadgeInfoComponent {
 	public title: InputSignal<string> = input.required<string>();
 	public description: InputSignal<string> = input.required<string>();
 	public viewClose: InputSignal<boolean> = input<boolean>(true);
-	public badge: InputSignal<IBadgeProps> = input.required<IBadgeProps>();
+	public badge: InputSignal<IBadgeProps | null> = input<IBadgeProps | null>(
+		null,
+	);
+
 	public closeEvent = output<void>();
 
 	protected readonly ButtonType = ButtonType;

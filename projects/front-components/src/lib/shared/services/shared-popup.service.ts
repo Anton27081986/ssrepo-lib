@@ -110,6 +110,29 @@ export class SharedPopupService {
 		return this.toastService.show(toast);
 	}
 
+	public openRightSidePage<T>(
+		content: PopupContent,
+		data: T,
+		size: string,
+		isDarkOverlay: boolean = true,
+		isBackDropClick: boolean = false,
+	): ModalRef<T> {
+		const popover = this.popup.open<T>({
+			content,
+			data,
+			origin: null,
+			type: PopupTypeEnum.Panel,
+			width: size,
+			isDarkOverlay,
+		});
+
+		if (isBackDropClick) {
+			this.addBackdropCatch(popover);
+		}
+
+		return popover;
+	}
+
 	private addBackdropCatch(popover: ModalRef): void {
 		popover.overlayRef.backdropClick().subscribe(() => {
 			popover.close();

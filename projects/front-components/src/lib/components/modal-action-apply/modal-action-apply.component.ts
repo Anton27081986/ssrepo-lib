@@ -5,8 +5,7 @@ import {
 	output,
 } from '@angular/core';
 import { NgIf } from '@angular/common';
-import { ExtraSize, ModalRef, Size } from '../../shared/models';
-import { ButtonType } from '../../shared/models';
+import { ButtonType, ExtraSize, ModalRef } from '../../shared/models';
 import { ButtonComponent } from '../buttons';
 
 /**
@@ -48,7 +47,6 @@ export class ModalActionApplyComponent {
 	public readonly cancelText = input<string | null>(null);
 	public readonly applyEvent = output<void>();
 	protected buttonType = ButtonType;
-	protected readonly Size = Size;
 	protected readonly ExtraSize = ExtraSize;
 
 	constructor(private readonly modalRef: ModalRef) {}

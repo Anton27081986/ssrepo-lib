@@ -1,10 +1,18 @@
-import { GlobalPositionStrategy, Overlay } from '@angular/cdk/overlay';
-import { OverlayConfig } from '@angular/cdk/overlay';
+import {
+	ConnectedPosition,
+	Overlay,
+	OverlayConfig,
+} from '@angular/cdk/overlay';
 import { Injectable, Injector } from '@angular/core';
 import { ComponentPortal } from '@angular/cdk/portal';
-import { GenericPopupComponent } from '../../components/generic-popup/generic-popup.component';
+import {
+	GenericPopupComponent,
+	PopoverAnimationEnum,
+} from '../../components/generic-popup/generic-popup.component';
 import { PopupParams } from '../models/types/pop-up';
 import { ModalRef } from '../models';
+import { PopupTypeEnum } from '../models/enums/popup-type-enum';
+import { optionalDefined, unwrapExpect } from './popup.utils';
 
 @Injectable({ providedIn: 'root' })
 export class ModalService {
@@ -26,13 +34,17 @@ export class ModalService {
 		const injector = this._createInjector(popoverRef, this.injector);
 		const parentElem = overlayRef.overlayElement.parentElement;
 
-		if (parentElem) {
+		if (parentElem && params.type === PopupTypeEnum.Modal) {
 			parentElem.className = 'ss-lib-popup-global-scrolled';
 		}
 
 		overlayRef.attach(
 			new ComponentPortal(GenericPopupComponent, null, injector),
 		);
+
+		if (params.type === PopupTypeEnum.Panel) {
+			popoverRef.setAnimateState(PopoverAnimationEnum.panel);
+		}
 
 		return popoverRef;
 	}
@@ -50,17 +62,50 @@ export class ModalService {
 	private _getOverlayConfig<T>(params: PopupParams<T>): OverlayConfig {
 		const backdropClass: string[] = ['ss-lib-overlay-backdrop'];
 
+		let position: ConnectedPosition[];
+
 		if (params.isDarkOverlay) {
 			backdropClass.push('ss-lib-overlay-backdrop--dark');
 		}
 
-		const panelClass: string[] = ['ss-lib-popover-root'];
+		const originOption = optionalDefined(
+			document.getElementById('app-root'),
+		);
 
-		const positionStrategy: GlobalPositionStrategy = this.overlay
-			.position()
-			.global()
-			.centerHorizontally()
-			.centerVertically();
+		const panelClass: string[] = ['ss-lib-popover-root'];
+		let positionStrategy;
+
+		if (params.type === PopupTypeEnum.Modal) {
+			positionStrategy = this.overlay
+				.position()
+				.global()
+				.centerHorizontally()
+				.centerVertically();
+		}
+
+		if (params.type === PopupTypeEnum.Panel) {
+			params.height = '100%';
+			params.width = params.width ? params.width : '100%';
+			panelClass.push('hc-popover-sidebar');
+
+			position = [
+				{
+					originX: 'end',
+					originY: 'top',
+					overlayX: 'end',
+					overlayY: 'top',
+				},
+			];
+
+			positionStrategy = this.overlay
+				.position()
+				.flexibleConnectedTo(
+					unwrapExpect(originOption, 'Not found app-root'),
+				)
+				.withPositions(position)
+				.withFlexibleDimensions(false)
+				.withPush(false);
+		}
 
 		return new OverlayConfig({
 			hasBackdrop: !params.withoutBackdrop,

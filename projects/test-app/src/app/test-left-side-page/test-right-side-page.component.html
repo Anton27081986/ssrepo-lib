@@ -1,0 +1,17 @@
+<ss-lib-right-side-page-popup
+	[titleHeader]="'Какой то title'"
+	[descriptionHeader]="'Какой то description'"
+	[actionsRef]="actions"
+	[contentRef]="contentRef"
+	(closeEmit)="close()"
+>
+</ss-lib-right-side-page-popup>
+
+<ng-template #actions>
+	<ss-lib-modal-action-apply
+		[cancelText]="'Отмена'"
+		[applyText]="'Сохранить'"
+		(close)="close()"
+	></ss-lib-modal-action-apply>
+</ng-template>
+<ng-template #contentRef></ng-template>
