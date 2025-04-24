@@ -84,7 +84,9 @@ export class GenericPopupComponent implements OnInit {
 			this.popoverRef.startAnimate ?? PopoverAnimationEnum.default;
 
 		if (this.state !== PopoverAnimationEnum.default) {
-			this.state = PopoverAnimationEnum.default;
+			setTimeout(() => {
+				this.state = PopoverAnimationEnum.default;
+			}, 0);
 		}
 	}
 
