@@ -1,0 +1,32 @@
+.ss-pagination-dots {
+	display: flex;
+	align-items: center;
+	width: fit-content;
+	gap: 16px;
+	border-radius: var(--border-radius-round);
+	background: var(--surface-action-4);
+	padding: 12px 24px;
+
+	&__item {
+		border-radius: var(--border-radius-round);
+		cursor: pointer;
+	}
+
+	&__item:not(.active) {
+		width: 10px;
+		height: 10px;
+		background: #d9d9d9;
+	}
+
+	&__item:first-child:not(.active),
+	&__item:last-child:not(.active) {
+		width: 8px;
+		height: 8px;
+	}
+
+	&__item.active {
+		width: 10px;
+		height: 10px;
+		background: var(--surface-action) !important;
+	}
+}

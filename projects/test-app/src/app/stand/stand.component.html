@@ -633,3 +633,20 @@
 	[text]="'левый sidePage'"
 	(click)="openRightSidebar()"
 />
+
+<ss-lib-carousel
+	[duration]="3000"
+	[(index)]="carouselIndex"
+>
+	@for (banner of bannersItems; track banner) {
+		<img
+			*ssItem
+			class="carousel-item"
+			alt="Banner image"
+			height="220"
+			width="990"
+			priority
+			[ngSrc]="banner.imageUrl"
+		/>
+	}
+</ss-lib-carousel>

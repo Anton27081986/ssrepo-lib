@@ -1,8 +1,8 @@
 <div class="sidebar  sidebar--{{ sidebarType() }}">
 	<div
 		*ngIf="sidebarType() !== SidebarType.Close"
-		@animationTrigger
 		class="sidebar__top-menu"
+		@animationTrigger
 	>
 		<ng-container *ngFor="let menu of menu()">
 			<ss-lib-nav-button

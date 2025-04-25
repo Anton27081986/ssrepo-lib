@@ -2,6 +2,7 @@ import { Component, inject, signal } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { catchError, Observable, of, Subscription } from 'rxjs';
 import { HttpClient, HttpEventType } from '@angular/common/http';
+import { NgOptimizedImage } from '@angular/common';
 import {
 	ButtonType,
 	Colors,
@@ -19,7 +20,7 @@ import {
 } from '../../../../front-components/src/lib/shared/models';
 import { standImports } from './stand.imports';
 import { ColumnsStateService } from '../../../../front-components/src/lib/components';
-import { DEFAULT_COLS, DROPDOWN_ITEMS } from './constants';
+import { BANNERS_ITEMS, DEFAULT_COLS, DROPDOWN_ITEMS } from './constants';
 import { SharedPopupService } from '../../../../front-components/src/lib/shared/services';
 import type { TestModalData } from '../test-modal/test-modal.component';
 import { TestModalComponent } from '../test-modal/test-modal.component';
@@ -30,7 +31,7 @@ import { TestRightSidePageComponent } from '../test-left-side-page/test-right-si
 @Component({
 	selector: 'app-stand',
 	standalone: true,
-	imports: [...standImports],
+	imports: [...standImports, NgOptimizedImage],
 	providers: [ColumnsStateService],
 	templateUrl: './stand.component.html',
 	styleUrl: './stand.component.scss',
@@ -73,6 +74,8 @@ export class StandComponent {
 	public fileLoadProgress = signal<number>(0);
 	public fileLoadSubscription?: Subscription;
 
+	public carouselIndex = signal(0);
+
 	protected readonly TextType = TextType;
 	protected readonly TextWeight = TextWeight;
 	protected readonly IconType = IconType;
@@ -88,6 +91,7 @@ export class StandComponent {
 	protected readonly dropdownItems = DROPDOWN_ITEMS;
 	protected readonly TooltipPosition = TooltipPosition;
 	protected readonly exampleItems = exampleDataTable;
+	protected readonly bannersItems = BANNERS_ITEMS;
 
 	private readonly sharedPopupService = inject(SharedPopupService);
 

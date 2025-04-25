@@ -1,0 +1,42 @@
+<div class="ss-carousel">
+	<div class="ss-carousel-wrapper">
+		@if (index() !== 0) {
+			<div class="ss-carousel-navigation ss-carousel-navigation--left">
+				<ss-lib-overlay-button
+					[restrictedIcon]="IconType.ChevronLeft"
+					(click)="prev()"
+				></ss-lib-overlay-button>
+			</div>
+		}
+
+		<div
+			class="ss-carousel-items"
+			[style.transform]="transform()"
+		>
+			@for (item of items(); track item) {
+				<fieldset
+					class="ss-carousel-item"
+					[disabled]="isDisabled($index)"
+				>
+					<ng-container [ngTemplateOutlet]="item" />
+				</fieldset>
+			}
+		</div>
+
+		@if (index() !== items().length - 1) {
+			<div class="ss-carousel-navigation ss-carousel-navigation--right">
+				<ss-lib-overlay-button
+					[restrictedIcon]="IconType.ChevronRight"
+					(click)="next()"
+				></ss-lib-overlay-button>
+			</div>
+		}
+
+		<div class="ss-carousel-pagination">
+			<ss-lib-pagination-dots
+				[length]="items().length"
+				[(index)]="index"
+			></ss-lib-pagination-dots>
+		</div>
+	</div>
+</div>
