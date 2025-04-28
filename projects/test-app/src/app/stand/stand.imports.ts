@@ -36,9 +36,12 @@ import {
 	CheckboxComponent,
 	OtpInputComponent,
 	TableComponent,
+	CarouselComponent,
+	PaginationDotsComponent,
 } from '../../../../front-components/src/lib/components';
 import {
 	FieldCtrlDirective,
+	ItemDirective,
 	PopoverTriggerForDirective,
 } from '../../../../front-components/src/lib/core/directives';
 import { RepeatTimesPipe } from '../../../../front-components/src/lib/core/pipes';
@@ -87,4 +90,7 @@ export const standImports = [
 	TableComponent,
 	ExampleTableTrComponent,
 	NgFor,
+	CarouselComponent,
+	ItemDirective,
+	PaginationDotsComponent,
 ];
