@@ -81,6 +81,10 @@ export class DropdownItemComponent<
 			return Colors.IconDisabled;
 		}
 
+		if (this.state() === StateTypes.Hover) {
+			return Colors.IconActionHover;
+		}
+
 		if (this.isDestructive()) {
 			return this.state() === StateTypes.Default
 				? Colors.IconAction
@@ -95,13 +99,17 @@ export class DropdownItemComponent<
 			return Colors.TextDisabled;
 		}
 
+		if (this.state() === StateTypes.Hover) {
+			return Colors.TextActionHover;
+		}
+
 		if (this.isDestructive()) {
 			return this.state() === StateTypes.Default
-				? Colors.TextBody2
+				? Colors.TextAction
 				: Colors.TextError;
 		}
 
-		return Colors.TextBody2;
+		return Colors.TextAction;
 	});
 
 	protected readonly TextType = TextType;
