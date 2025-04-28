@@ -1,0 +1,73 @@
+:host {
+	position: relative;
+	display: block;
+	width: 100%;
+	height: auto;
+	border-radius: inherit;
+	overflow: hidden;
+
+	fieldset {
+		border: none;
+		margin: 0;
+		padding: 0;
+	}
+}
+
+.ss-carousel-wrapper {
+	position: sticky;
+	left: 0;
+	right: 0;
+	min-inline-size: 100%;
+	overflow: hidden;
+}
+
+.ss-carousel-wrapper:hover {
+	.ss-carousel-navigation {
+		visibility: visible;
+	}
+
+	.ss-carousel-pagination {
+		opacity: 100%;
+	}
+}
+
+.ss-carousel-navigation {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	visibility: hidden;
+	z-index: 1;
+
+	&--left {
+		left: 24px;
+	}
+
+	&--right {
+		right: 24px;
+	}
+}
+
+.ss-carousel-items {
+	display: flex;
+	transition: transform 0.3s ease;
+}
+
+.ss-carousel-item {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	flex: 1;
+	min-inline-size: 100%;
+	max-inline-size: 100%;
+	box-sizing: border-box;
+	border: none;
+	margin: 0;
+}
+
+.ss-carousel-pagination {
+	position: absolute;
+	bottom: 24px;
+	left: 50%;
+	transform: translateX(-50%);
+	opacity: 80%;
+}

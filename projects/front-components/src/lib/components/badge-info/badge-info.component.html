@@ -1,6 +1,10 @@
 <div class="ss-lib-badge-info">
 	<div class="ss-lib-badge-info__left">
-		<ss-lib-badge [badgeProps]="badge()"></ss-lib-badge>
+		<ss-lib-badge
+			*ngIf="badge() as props"
+			[badgeProps]="props"
+		>
+		</ss-lib-badge>
 
 		<div class="ss-lib-badge-info__info">
 			<ss-lib-text
