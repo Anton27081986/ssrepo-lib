@@ -2,7 +2,7 @@ import { Component, inject, signal } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { catchError, Observable, of, Subscription } from 'rxjs';
 import { HttpClient, HttpEventType } from '@angular/common/http';
-import { Router, RouterOutlet } from '@angular/router';
+import { Router } from '@angular/router';
 import {
 	ButtonType,
 	Colors,
@@ -32,7 +32,7 @@ import { Tab } from '../../../../front-components/src/lib/shared/models/interfac
 @Component({
 	selector: 'app-stand',
 	standalone: true,
-	imports: [...standImports, RouterOutlet],
+	imports: [...standImports, NgOptimizedImage],
 	providers: [ColumnsStateService],
 	templateUrl: './stand.component.html',
 	styleUrl: './stand.component.scss',
@@ -74,6 +74,8 @@ export class StandComponent {
 
 	public fileLoadProgress = signal<number>(0);
 	public fileLoadSubscription?: Subscription;
+
+	public carouselIndex = signal(0);
 
 	public tabs: Tab[] = [
 		{
@@ -141,6 +143,7 @@ export class StandComponent {
 	protected readonly dropdownItems = DROPDOWN_ITEMS;
 	protected readonly TooltipPosition = TooltipPosition;
 	protected readonly exampleItems = exampleDataTable;
+	protected readonly bannersItems = BANNERS_ITEMS;
 
 	private readonly sharedPopupService = inject(SharedPopupService);
 

@@ -1,0 +1,9 @@
+<div class="ss-pagination-dots">
+	@for (item of length() | repeatTimes; track item) {
+		<div
+			class="ss-pagination-dots__item"
+			[class.active]="$index === index()"
+			(click)="onIndex($index)"
+		></div>
+	}
+</div>

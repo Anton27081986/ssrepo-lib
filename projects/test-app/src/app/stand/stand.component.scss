@@ -80,3 +80,10 @@
 ss-lib-button {
 	width: 100px;
 }
+
+.carousel-item {
+	width: 100%;
+	height: auto;
+	object-fit: cover;
+	display: block;
+}

@@ -44,3 +44,5 @@ export { OtpInputComponent } from './otp-input/otp-input.component';
 export { RightSidePagePopupComponent } from './right-side-page-popup/right-side-page-popup.component';
 export { TabComponent } from './tab/tab.component';
 export { TabsComponent } from './tabs/tabs.component';
+export { CarouselComponent } from './carousel/carousel.component';
+export { PaginationDotsComponent } from './pagination-dots/pagination-dots.component';
