@@ -80,9 +80,9 @@ export class TabsComponent implements OnInit, AfterViewInit, OnDestroy {
 		const containerWidth = wrapper.offsetWidth;
 		let totalWidth = 0;
 
-		this.tabs().forEach((tab) => {
+		this.tabs().forEach((tab, index) => {
 			const tabElement = document.querySelector(
-				`[data-tab-id="${tab.id}"]`,
+				`[data-tab-id="${index}"]`,
 			);
 
 			if (tabElement) {

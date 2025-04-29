@@ -11,7 +11,7 @@
 				@for (tab of tabs(); track tab) {
 					<ss-lib-tab
 						[active]="$index === activeTabIndex()"
-						[attr.data-tab-id]="tab.id"
+						[attr.data-tab-id]="$index"
 						[text]="tab.text"
 						[disabled]="tab.isDisabled"
 						[viewChevron]="false"

@@ -82,37 +82,31 @@ export class StandComponent {
 
 	public tabs: Tab[] = [
 		{
-			id: 0,
 			text: 'Таб1 и еще табиков много',
 			isVisible: true,
 			isDisabled: false,
 		},
 		{
-			id: 1,
 			text: 'Таб2',
 			isVisible: true,
 			isDisabled: false,
 		},
 		{
-			id: 2,
 			text: 'Таб3',
 			isVisible: true,
 			isDisabled: true,
 		},
 		{
-			id: 3,
 			text: 'Таб4',
 			isVisible: false,
 			isDisabled: false,
 		},
 		{
-			id: 4,
 			text: 'Таб5',
 			isVisible: true,
 			isDisabled: false,
 		},
 		{
-			id: 5,
 			text: 'Таб6',
 			isVisible: true,
 			isDisabled: false,
