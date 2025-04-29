@@ -1,0 +1,51 @@
+<div
+	#tabsElem
+	class="ss-lib-tabs"
+>
+	<div
+		#tabsElemBlock
+		class="ss-lib-tabs__block"
+	>
+		<div class="ss-lib-tabs__tabs">
+			@if (showFullList()) {
+				@for (tab of tabs(); track tab) {
+					<ss-lib-tab
+						[active]="$index === activeTabIndex()"
+						[attr.data-tab-id]="$index"
+						[text]="tab.text"
+						[disabled]="tab.isDisabled"
+						[viewChevron]="false"
+						[listTabsElem]="listTabs"
+						(click)="!tab.isDisabled && onTabChange($index)"
+					></ss-lib-tab>
+				}
+			}
+
+			@if (!showFullList()) {
+				<ss-lib-tab
+					[active]="true"
+					[disabled]="getActiveTab.isDisabled"
+					[text]="getActiveTab.text"
+					[viewChevron]="true"
+					[listTabsElem]="listTabs"
+				></ss-lib-tab>
+			}
+		</div>
+	</div>
+
+	<div class="ss-lib-tabs__actions">
+		<ng-container *ngTemplateOutlet="actionsRef()"></ng-container>
+	</div>
+</div>
+
+<ss-lib-divider></ss-lib-divider>
+
+<ss-lib-dropdown-list #listTabs>
+	@for (tab of tabs(); track tab) {
+		<ss-lib-dropdown-item
+			[label]="tab.text"
+			[isDisabled]="tab.isDisabled"
+			(click)="onTabChange($index)"
+		/>
+	}
+</ss-lib-dropdown-list>

@@ -36,6 +36,8 @@ import {
 	CheckboxComponent,
 	OtpInputComponent,
 	TableComponent,
+	TabComponent,
+	TabsComponent,
 	CarouselComponent,
 	PaginationDotsComponent,
 } from '../../../../front-components/src/lib/components';
@@ -93,4 +95,6 @@ export const standImports = [
 	CarouselComponent,
 	ItemDirective,
 	PaginationDotsComponent,
+	TabComponent,
+	TabsComponent,
 ];

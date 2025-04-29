@@ -51,6 +51,7 @@ export class TextComponent {
 	public readonly isLineClamp = input<boolean>(false);
 	public readonly isEllipsis = input<boolean>(false);
 	public readonly isUnderline = input<boolean>(false);
+	public readonly isNoWrap = input<boolean>(false);
 
 	public readonly getLineClampCount = computed(() =>
 		this.isLineClamp() ? this.lineClampCount() : 'none',

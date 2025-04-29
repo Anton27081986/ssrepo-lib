@@ -2,6 +2,7 @@ import { Component, inject, signal } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { catchError, Observable, of, Subscription } from 'rxjs';
 import { HttpClient, HttpEventType } from '@angular/common/http';
+import { Router, RouterOutlet } from '@angular/router';
 import { NgOptimizedImage } from '@angular/common';
 import {
 	ButtonType,
@@ -27,12 +28,13 @@ import { TestModalComponent } from '../test-modal/test-modal.component';
 import { ToastRef } from '../../../../front-components/src/lib/components';
 import { exampleDataTable } from './constants/example-data-table';
 import { TestRightSidePageComponent } from '../test-left-side-page/test-right-side-page.component';
+import { Tab } from '../../../../front-components/src/lib/shared/models/interfaces/tab';
 
 @Component({
 	selector: 'app-stand',
 	standalone: true,
 	imports: [...standImports, NgOptimizedImage],
-	providers: [ColumnsStateService],
+	providers: [ColumnsStateService, RouterOutlet],
 	templateUrl: './stand.component.html',
 	styleUrl: './stand.component.scss',
 })
@@ -49,6 +51,8 @@ export class StandComponent {
 		Validators.required,
 		Validators.minLength(10),
 	]);
+
+	public indexTab = 0;
 
 	public selectCtrl = new FormControl(null);
 	public numberPickerCtrl = new FormControl(2);
@@ -76,6 +80,39 @@ export class StandComponent {
 
 	public carouselIndex = signal(0);
 
+	public tabs: Tab[] = [
+		{
+			text: 'Таб1 и еще табиков много',
+			isVisible: true,
+			isDisabled: false,
+		},
+		{
+			text: 'Таб2',
+			isVisible: true,
+			isDisabled: false,
+		},
+		{
+			text: 'Таб3',
+			isVisible: true,
+			isDisabled: true,
+		},
+		{
+			text: 'Таб4',
+			isVisible: false,
+			isDisabled: false,
+		},
+		{
+			text: 'Таб5',
+			isVisible: true,
+			isDisabled: false,
+		},
+		{
+			text: 'Таб6',
+			isVisible: true,
+			isDisabled: false,
+		},
+	];
+
 	protected readonly TextType = TextType;
 	protected readonly TextWeight = TextWeight;
 	protected readonly IconType = IconType;
@@ -98,6 +135,7 @@ export class StandComponent {
 	constructor(
 		private readonly columnState: ColumnsStateService,
 		private readonly http: HttpClient,
+		private readonly router: Router,
 	) {
 		this.columnState.colsTr$.next(DEFAULT_COLS);
 
@@ -286,5 +324,13 @@ export class StandComponent {
 			{ id: 0, text: 'Какой то текст' },
 			'860px',
 		);
+	}
+
+	public changeTab(index: number): void {
+		this.indexTab = index;
+	}
+
+	public changeIndex(): void {
+		this.indexTab = 4;
 	}
 }

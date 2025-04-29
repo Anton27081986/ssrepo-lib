@@ -1,0 +1,31 @@
+.ss-lib-tabs {
+	display: flex;
+	align-items: center;
+	height: 64px;
+	padding: 0 24px;
+
+	&__block {
+		display: flex;
+		align-items: center;
+		justify-content: left;
+		width: 100%;
+	}
+
+	&__tabs {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: nowrap;
+		gap: 12px;
+
+		&--hidden {
+			display: none;
+		}
+	}
+
+	&__actions {
+		display: flex;
+		gap: 12px;
+		align-items: center;
+		justify-content: right;
+	}
+}
