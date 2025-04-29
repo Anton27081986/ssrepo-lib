@@ -650,3 +650,25 @@
 		/>
 	}
 </ss-lib-carousel>
+
+<div class="tabs">
+	<ss-lib-tabs
+		[tabs]="tabs"
+		[actionsRef]="actions"
+		[activeTabIndex]="indexTab"
+		(changeIndexEmit)="changeTab($event)"
+	></ss-lib-tabs>
+	<ng-template #actions>
+		<ss-lib-button
+			[size]="ExtraSize.md"
+			[text]="'1 кнопка'"
+			(click)="changeIndex()"
+		></ss-lib-button>
+		<ss-lib-button
+			[size]="ExtraSize.md"
+			[text]="'2 кнопка'"
+		></ss-lib-button>
+	</ng-template>
+</div>
+
+<span>{{ indexTab }}</span>

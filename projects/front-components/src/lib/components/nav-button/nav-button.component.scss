@@ -24,13 +24,14 @@ button.nuv-icon-button {
 		padding: 10px;
 	}
 
-	&:hover {
+	&:hover,
+	&--active {
 		background-color: var(--surface-action-hover-2);
 	}
+}
 
-	&--active {
-		background-color: var(--surface-action-pressed-2);
-	}
+button.nuv-icon-button:active {
+	background-color: var(--surface-action-pressed-2);
 }
 
 .actions {

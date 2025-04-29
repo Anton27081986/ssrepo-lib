@@ -1,4 +1,4 @@
-import { OnDestroy, signal } from '@angular/core';
+import { OnDestroy, output, signal } from '@angular/core';
 import {
 	Directive,
 	ElementRef,
@@ -33,6 +33,7 @@ export class PopoverTriggerForDirective implements OnDestroy {
 	public popoverTriggerDisabled = input<boolean>(false);
 
 	public isPopoverOpen = signal<boolean>(false);
+	public readonly isPopoverOpenEmit = output<boolean>();
 	private overlayRef: OverlayRef | null = null;
 	private closingActionsSub = Subscription.EMPTY;
 
@@ -69,6 +70,7 @@ export class PopoverTriggerForDirective implements OnDestroy {
 		this.closingActionsSub.unsubscribe();
 		this.overlayRef.detach();
 		this.isPopoverOpen.set(false);
+		this.isPopoverOpenEmit.emit(false);
 	}
 
 	private openPopover(): void {
@@ -77,6 +79,7 @@ export class PopoverTriggerForDirective implements OnDestroy {
 		}
 
 		this.isPopoverOpen.set(true);
+		this.isPopoverOpenEmit.emit(true);
 
 		if (!this.overlayRef) {
 			this.overlayRef = this.overlay.create({

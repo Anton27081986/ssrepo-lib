@@ -1,0 +1,32 @@
+<div
+	tabindex="0"
+	class="ss-lib-tab"
+	[class.ss-lib-tab--disabled]="disabled()"
+	[popoverTriggerFor]="listTabsElem()!"
+	[popoverTriggerDisabled]="!viewChevron()"
+	(isPopoverOpenEmit)="checkStatePopover($event)"
+>
+	<ss-lib-text
+		[color]="getColor()"
+		[type]="TextType.BodyMd"
+		[weight]="TextWeight.Medium"
+		[isNoWrap]="true"
+	>
+		{{ text() }}
+	</ss-lib-text>
+
+	<ss-lib-icon
+		*ngIf="viewChevron()"
+		[icon]="IconType.ChevronDown"
+		[color]="getColor()"
+		[width]="'20'"
+		[height]="'22'"
+		[@rotate]="stateRotate()"
+	>
+	</ss-lib-icon>
+
+	<div
+		*ngIf="active()"
+		class="ss-lib-tab__active-indicator"
+	></div>
+</div>
