@@ -5,6 +5,8 @@ import {
 	ElementRef,
 	input,
 	InputSignal,
+	model,
+	ModelSignal,
 	OnDestroy,
 	OnInit,
 	output,
@@ -13,7 +15,7 @@ import {
 	ViewChild,
 	WritableSignal,
 } from '@angular/core';
-import { NgFor, NgTemplateOutlet } from '@angular/common';
+import { NgTemplateOutlet } from '@angular/common';
 import { Tab } from '../../shared/models/interfaces/tab';
 import { TabComponent } from '../tab/tab.component';
 import { DividerComponent } from '../divider/divider.component';
@@ -33,16 +35,16 @@ import { DropdownListComponent } from '../dropdown-list/dropdown-list.component'
 		NgTemplateOutlet,
 		DropdownItemComponent,
 		DropdownListComponent,
-		NgFor,
 	],
 })
 export class TabsComponent implements OnInit, AfterViewInit, OnDestroy {
 	public tabs: InputSignal<Tab[]> = input.required<Tab[]>();
+
 	public readonly actionsRef: InputSignal<TemplateRef<{}>> = input.required();
 
-	public readonly activeTab: WritableSignal<Tab | null> = signal(null);
+	public readonly activeTabIndex: ModelSignal<number> = model(0);
 
-	public readonly tabChangeEmit = output<Tab>();
+	public readonly changeIndexEmit = output<number>();
 
 	public readonly showFullList: WritableSignal<boolean> = signal(true);
 
@@ -57,17 +59,15 @@ export class TabsComponent implements OnInit, AfterViewInit, OnDestroy {
 	private resizeObserver!: ResizeObserver;
 	protected readonly IconType = IconType;
 
+	protected get getActiveTab(): Tab {
+		return this.tabs()[this.activeTabIndex()];
+	}
+
 	public ngOnInit(): void {
 		this.resizeObserver = new ResizeObserver(() => this.checkOverflow());
 
 		if (this.tabsElemBlock) {
 			this.resizeObserver.observe(this.tabsElemBlock.nativeElement);
-		}
-
-		const activeTab = this.tabs().find((tabs) => tabs.active);
-
-		if (activeTab !== undefined) {
-			this.activeTab.set(activeTab);
 		}
 	}
 
@@ -111,15 +111,8 @@ export class TabsComponent implements OnInit, AfterViewInit, OnDestroy {
 		}
 	}
 
-	protected onTabChange(tab: Tab): void {
-		const oldActiveTab = this.tabs().find((item) => item.active);
-
-		if (oldActiveTab !== undefined) {
-			oldActiveTab.active = false;
-		}
-
-		tab.active = true;
-		this.activeTab.set(tab);
-		this.tabChangeEmit.emit(tab);
+	protected onTabChange(index: number): void {
+		this.activeTabIndex.set(index);
+		this.changeIndexEmit.emit(index);
 	}
 }

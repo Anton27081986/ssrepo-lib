@@ -3,7 +3,6 @@ import {
 	HostListener,
 	input,
 	InputSignal,
-	output,
 	signal,
 	WritableSignal,
 } from '@angular/core';
@@ -15,7 +14,6 @@ import {
 	transition,
 	trigger,
 } from '@angular/animations';
-import { Tab } from '../../shared/models/interfaces/tab';
 import { TextComponent } from '../text/text.component';
 import {
 	Colors,
@@ -43,7 +41,9 @@ import { PopoverTriggerForDirective } from '../../core/directives';
 	],
 })
 export class TabComponent {
-	public tab: InputSignal<Tab> = input.required<Tab>();
+	public text: InputSignal<string> = input.required<string>();
+	public active: InputSignal<boolean> = input.required<boolean>();
+	public disabled: InputSignal<boolean> = input.required<boolean>();
 
 	public viewChevron: InputSignal<boolean> = input.required<boolean>();
 
@@ -58,7 +58,6 @@ export class TabComponent {
 	protected readonly Colors = Colors;
 	protected readonly IconType = IconType;
 	protected readonly TextWeight = TextWeight;
-	public readonly tabChangeEmit = output<Tab>();
 
 	@HostListener('mouseover', ['$event'])
 	protected mouseOver(): void {
@@ -70,22 +69,16 @@ export class TabComponent {
 		this.isHover.set(false);
 	}
 
-	protected tabChange(tab: Tab): void {
-		if (!tab.isDisabled) {
-			this.tabChangeEmit.emit(tab);
-		}
-	}
-
 	protected getColor(): Colors {
-		if (this.tab().isDisabled) {
+		if (this.disabled()) {
 			return Colors.TextDisabled;
 		}
 
-		if (this.isHover() && !this.tab().active) {
+		if (this.isHover() && !this.active()) {
 			return Colors.TextActionHover;
 		}
 
-		if (this.tab().active) {
+		if (this.active()) {
 			return Colors.TextInformation;
 		}
 

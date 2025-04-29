@@ -1,8 +1,6 @@
 export interface Tab {
 	id: number;
-	label: string;
-	name: string;
+	text: string;
 	isVisible: boolean;
-	active: boolean;
 	isDisabled: boolean;
 }

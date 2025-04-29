@@ -1,10 +1,9 @@
 <div
 	tabindex="0"
 	class="ss-lib-tab"
-	[class.ss-lib-tab--disabled]="tab().isDisabled"
+	[class.ss-lib-tab--disabled]="disabled()"
 	[popoverTriggerFor]="listTabsElem()!"
 	[popoverTriggerDisabled]="!viewChevron()"
-	(click)="tabChange(tab())"
 	(isPopoverOpenEmit)="checkStatePopover($event)"
 >
 	<ss-lib-text
@@ -13,7 +12,7 @@
 		[weight]="TextWeight.Medium"
 		[isNoWrap]="true"
 	>
-		{{ tab().name }}
+		{{ text() }}
 	</ss-lib-text>
 
 	<ss-lib-icon
@@ -27,7 +26,7 @@
 	</ss-lib-icon>
 
 	<div
-		*ngIf="tab().active"
+		*ngIf="active()"
 		class="ss-lib-tab__active-indicator"
 	></div>
 </div>

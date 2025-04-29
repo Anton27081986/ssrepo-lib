@@ -3,6 +3,7 @@ import { FormControl, Validators } from '@angular/forms';
 import { catchError, Observable, of, Subscription } from 'rxjs';
 import { HttpClient, HttpEventType } from '@angular/common/http';
 import { Router, RouterOutlet } from '@angular/router';
+import { NgOptimizedImage } from '@angular/common';
 import {
 	ButtonType,
 	Colors,
@@ -28,12 +29,11 @@ import { ToastRef } from '../../../../front-components/src/lib/components';
 import { exampleDataTable } from './constants/example-data-table';
 import { TestRightSidePageComponent } from '../test-left-side-page/test-right-side-page.component';
 import { Tab } from '../../../../front-components/src/lib/shared/models/interfaces/tab';
-import { NgOptimizedImage } from '@angular/common';
 
 @Component({
 	selector: 'app-stand',
 	standalone: true,
-	imports: [...standImports, RouterOutlet, NgOptimizedImage],
+	imports: [...standImports, NgOptimizedImage],
 	providers: [ColumnsStateService, RouterOutlet],
 	templateUrl: './stand.component.html',
 	styleUrl: './stand.component.scss',
@@ -51,6 +51,8 @@ export class StandComponent {
 		Validators.required,
 		Validators.minLength(10),
 	]);
+
+	public indexTab = 0;
 
 	public selectCtrl = new FormControl(null);
 	public numberPickerCtrl = new FormControl(2);
@@ -81,50 +83,38 @@ export class StandComponent {
 	public tabs: Tab[] = [
 		{
 			id: 0,
-			name: 'Таб1 и еще табиков много',
-			label: 'tab1',
+			text: 'Таб1 и еще табиков много',
 			isVisible: true,
-			active: true,
 			isDisabled: false,
 		},
 		{
 			id: 1,
-			name: 'Таб2',
-			label: 'tab2',
+			text: 'Таб2',
 			isVisible: true,
-			active: false,
 			isDisabled: false,
 		},
 		{
 			id: 2,
-			name: 'Таб3',
-			label: 'tab3',
+			text: 'Таб3',
 			isVisible: true,
-			active: false,
 			isDisabled: true,
 		},
 		{
 			id: 3,
-			name: 'Таб4',
-			label: 'tab4',
+			text: 'Таб4',
 			isVisible: false,
-			active: false,
 			isDisabled: false,
 		},
 		{
 			id: 4,
-			name: 'Таб5',
-			label: 'tab5',
+			text: 'Таб5',
 			isVisible: true,
-			active: false,
 			isDisabled: false,
 		},
 		{
 			id: 5,
-			name: 'Таб6',
-			label: 'tab6',
+			text: 'Таб6',
 			isVisible: true,
-			active: false,
 			isDisabled: false,
 		},
 	];
@@ -340,5 +330,13 @@ export class StandComponent {
 			{ id: 0, text: 'Какой то текст' },
 			'860px',
 		);
+	}
+
+	public changeTab(index: number): void {
+		this.indexTab = index;
+	}
+
+	public changeIndex(): void {
+		this.indexTab = 4;
 	}
 }

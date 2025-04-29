@@ -8,20 +8,24 @@
 	>
 		<div class="ss-lib-tabs__tabs">
 			@if (showFullList()) {
-				@for (tab of tabs(); track tab.name) {
+				@for (tab of tabs(); track tab) {
 					<ss-lib-tab
+						[active]="$index === activeTabIndex()"
 						[attr.data-tab-id]="tab.id"
-						[tab]="tab"
+						[text]="tab.text"
+						[disabled]="tab.isDisabled"
 						[viewChevron]="false"
 						[listTabsElem]="listTabs"
-						(tabChangeEmit)="onTabChange($event)"
+						(click)="!tab.isDisabled && onTabChange($index)"
 					></ss-lib-tab>
 				}
 			}
 
 			@if (!showFullList()) {
 				<ss-lib-tab
-					[tab]="activeTab()!"
+					[active]="true"
+					[disabled]="getActiveTab.isDisabled"
+					[text]="getActiveTab.text"
 					[viewChevron]="true"
 					[listTabsElem]="listTabs"
 				></ss-lib-tab>
@@ -37,10 +41,11 @@
 <ss-lib-divider></ss-lib-divider>
 
 <ss-lib-dropdown-list #listTabs>
-	<ss-lib-dropdown-item
-		*ngFor="let tab of tabs()"
-		[label]="tab.name"
-		[isDisabled]="tab.isDisabled"
-		(click)="onTabChange(tab)"
-	/>
+	@for (tab of tabs(); track tab) {
+		<ss-lib-dropdown-item
+			[label]="tab.text"
+			[isDisabled]="tab.isDisabled"
+			(click)="onTabChange($index)"
+		/>
+	}
 </ss-lib-dropdown-list>
