@@ -1,6 +1,6 @@
 .ss-lib-tab {
 	display: flex;
-	padding: 0 4px 12px 4px;
+	padding: 0 4px;
 	flex-wrap: nowrap;
 	cursor: pointer;
 	position: relative;
@@ -20,7 +20,7 @@
 		background-color: var(--icon-information);
 		border-radius: 9999px;
 		position: absolute;
-		bottom: -3px;
+		bottom: -1px;
 		z-index: 2;
 	}
 
