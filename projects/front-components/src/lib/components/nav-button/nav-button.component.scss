@@ -30,6 +30,10 @@ button.nuv-icon-button {
 	}
 }
 
+button.nuv-icon-button:active {
+	background-color: var(--surface-action-pressed-2);
+}
+
 .actions {
 	display: flex;
 	flex-wrap: nowrap;
