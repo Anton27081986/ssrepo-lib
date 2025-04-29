@@ -3,6 +3,7 @@
 	class="ss-lib-tab"
 	[class.ss-lib-tab--disabled]="tab().isDisabled"
 	[popoverTriggerFor]="listTabsElem()!"
+	[popoverTriggerDisabled]="!viewChevron()"
 	(click)="tabChange(tab())"
 	(isPopoverOpenEmit)="checkStatePopover($event)"
 >
