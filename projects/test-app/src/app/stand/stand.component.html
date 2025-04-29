@@ -633,3 +633,21 @@
 	[text]="'левый sidePage'"
 	(click)="openRightSidebar()"
 />
+
+<div class="tabs">
+	<ss-lib-tabs
+		[tabs]="tabs"
+		[actionsRef]="actions"
+	></ss-lib-tabs>
+	<ng-template #actions>
+		<ss-lib-button
+			[size]="ExtraSize.md"
+			[text]="'1 кнопка'"
+		></ss-lib-button>
+		<ss-lib-button
+			[size]="ExtraSize.md"
+			[text]="'2 кнопка'"
+		></ss-lib-button>
+	</ng-template>
+	<router-outlet></router-outlet>
+</div>

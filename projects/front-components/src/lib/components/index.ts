@@ -42,3 +42,5 @@ export { TimepickerComponent } from './timepicker/timepicker.component';
 export { CheckboxComponent } from './checkbox/checkbox.component';
 export { OtpInputComponent } from './otp-input/otp-input.component';
 export { RightSidePagePopupComponent } from './right-side-page-popup/right-side-page-popup.component';
+export { TabComponent } from './tab/tab.component';
+export { TabsComponent } from './tabs/tabs.component';

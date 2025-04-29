@@ -2,6 +2,7 @@ import { Component, inject, signal } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { catchError, Observable, of, Subscription } from 'rxjs';
 import { HttpClient, HttpEventType } from '@angular/common/http';
+import { Router, RouterOutlet } from '@angular/router';
 import {
 	ButtonType,
 	Colors,
@@ -26,11 +27,12 @@ import { TestModalComponent } from '../test-modal/test-modal.component';
 import { ToastRef } from '../../../../front-components/src/lib/components';
 import { exampleDataTable } from './constants/example-data-table';
 import { TestRightSidePageComponent } from '../test-left-side-page/test-right-side-page.component';
+import { Tab } from '../../../../front-components/src/lib/shared/models/interfaces/tab';
 
 @Component({
 	selector: 'app-stand',
 	standalone: true,
-	imports: [...standImports],
+	imports: [...standImports, RouterOutlet],
 	providers: [ColumnsStateService],
 	templateUrl: './stand.component.html',
 	styleUrl: './stand.component.scss',
@@ -73,6 +75,57 @@ export class StandComponent {
 	public fileLoadProgress = signal<number>(0);
 	public fileLoadSubscription?: Subscription;
 
+	public tabs: Tab[] = [
+		{
+			id: 0,
+			name: 'Таб1 и еще табиков много',
+			label: 'tab1',
+			isVisible: true,
+			active: true,
+			isDisabled: false,
+		},
+		{
+			id: 1,
+			name: 'Таб2',
+			label: 'tab2',
+			isVisible: true,
+			active: false,
+			isDisabled: false,
+		},
+		{
+			id: 2,
+			name: 'Таб3',
+			label: 'tab3',
+			isVisible: true,
+			active: false,
+			isDisabled: true,
+		},
+		{
+			id: 3,
+			name: 'Таб4',
+			label: 'tab4',
+			isVisible: false,
+			active: false,
+			isDisabled: false,
+		},
+		{
+			id: 4,
+			name: 'Таб5',
+			label: 'tab5',
+			isVisible: true,
+			active: false,
+			isDisabled: false,
+		},
+		{
+			id: 5,
+			name: 'Таб6',
+			label: 'tab6',
+			isVisible: true,
+			active: false,
+			isDisabled: false,
+		},
+	];
+
 	protected readonly TextType = TextType;
 	protected readonly TextWeight = TextWeight;
 	protected readonly IconType = IconType;
@@ -94,6 +147,7 @@ export class StandComponent {
 	constructor(
 		private readonly columnState: ColumnsStateService,
 		private readonly http: HttpClient,
+		private readonly router: Router,
 	) {
 		this.columnState.colsTr$.next(DEFAULT_COLS);
 

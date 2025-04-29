@@ -1,0 +1,32 @@
+<div
+	tabindex="0"
+	class="ss-lib-tab"
+	[class.ss-lib-tab--disabled]="tab().isDisabled"
+	[popoverTriggerFor]="listTabsElem()!"
+	(click)="tabChange(tab())"
+	(isPopoverOpenEmit)="checkStatePopover($event)"
+>
+	<ss-lib-text
+		[color]="getColor()"
+		[type]="TextType.BodyMd"
+		[weight]="TextWeight.Medium"
+		[isNoWrap]="true"
+	>
+		{{ tab().name }}
+	</ss-lib-text>
+
+	<ss-lib-icon
+		*ngIf="viewChevron()"
+		[icon]="IconType.ChevronDown"
+		[color]="getColor()"
+		[width]="'20'"
+		[height]="'22'"
+		[@rotate]="stateRotate()"
+	>
+	</ss-lib-icon>
+
+	<div
+		*ngIf="tab().active"
+		class="ss-lib-tab__active-indicator"
+	></div>
+</div>

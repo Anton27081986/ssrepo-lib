@@ -36,6 +36,8 @@ import {
 	CheckboxComponent,
 	OtpInputComponent,
 	TableComponent,
+	TabComponent,
+	TabsComponent,
 } from '../../../../front-components/src/lib/components';
 import {
 	FieldCtrlDirective,
@@ -87,4 +89,6 @@ export const standImports = [
 	TableComponent,
 	ExampleTableTrComponent,
 	NgFor,
+	TabComponent,
+	TabsComponent,
 ];

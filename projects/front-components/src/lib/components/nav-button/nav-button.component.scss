@@ -24,12 +24,9 @@ button.nuv-icon-button {
 		padding: 10px;
 	}
 
-	&:hover {
-		background-color: var(--surface-action-hover-2);
-	}
-
+	&:hover,
 	&--active {
-		background-color: var(--surface-action-pressed-2);
+		background-color: var(--surface-action-hover-2);
 	}
 }
 

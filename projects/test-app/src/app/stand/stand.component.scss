@@ -67,3 +67,16 @@
 .otp {
 	width: 360px;
 }
+
+.tabs {
+	ss-lib-divider {
+		position: absolute;
+		bottom: -7px;
+		width: 100%;
+		z-index: 1;
+	}
+}
+
+ss-lib-button {
+	width: 100px;
+}

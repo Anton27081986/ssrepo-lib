@@ -1,0 +1,46 @@
+<div
+	#tabsElem
+	class="ss-lib-tabs"
+>
+	<div
+		#tabsElemBlock
+		class="ss-lib-tabs__block"
+	>
+		<div class="ss-lib-tabs__tabs">
+			@if (showFullList()) {
+				@for (tab of tabs(); track tab.name) {
+					<ss-lib-tab
+						[attr.data-tab-id]="tab.id"
+						[tab]="tab"
+						[viewChevron]="false"
+						[listTabsElem]="listTabs"
+						(tabChangeEmit)="onTabChange($event)"
+					></ss-lib-tab>
+				}
+			}
+
+			@if (!showFullList()) {
+				<ss-lib-tab
+					[tab]="activeTab()!"
+					[viewChevron]="true"
+					[listTabsElem]="listTabs"
+				></ss-lib-tab>
+			}
+		</div>
+	</div>
+
+	<div class="ss-lib-tabs__actions">
+		<ng-container *ngTemplateOutlet="actionsRef()"></ng-container>
+	</div>
+</div>
+
+<ss-lib-divider></ss-lib-divider>
+
+<ss-lib-dropdown-list #listTabs>
+	<ss-lib-dropdown-item
+		*ngFor="let tab of tabs()"
+		[label]="tab.name"
+		[isDisabled]="tab.isDisabled"
+		(click)="onTabChange(tab)"
+	/>
+</ss-lib-dropdown-list>
