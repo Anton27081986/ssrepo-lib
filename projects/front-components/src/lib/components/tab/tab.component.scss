@@ -1,14 +1,22 @@
+:host {
+	position: relative;
+}
+
 .ss-lib-tab {
 	display: flex;
-	padding: 0 4px;
-	flex-wrap: nowrap;
+	padding: 14px 4px 0 4px;
 	cursor: pointer;
 	position: relative;
+	align-items: flex-start;
 	justify-content: center;
-	align-items: center;
 	border-radius: 2px;
-	height: 100%;
-	gap: 6px;
+
+	&__tab {
+		display: flex;
+		align-items: center;
+		flex-wrap: nowrap;
+		gap: 6px;
+	}
 
 	&--disabled {
 		cursor: default;
