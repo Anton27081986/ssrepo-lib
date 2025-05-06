@@ -672,3 +672,12 @@
 </div>
 
 <span>{{ indexTab }}</span>
+
+<ss-lib-pagination
+	[limit]="20"
+	[total]="102"
+	[(offset)]="offset"
+>
+</ss-lib-pagination>
+
+{{ offset() }}

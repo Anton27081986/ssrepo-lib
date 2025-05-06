@@ -1,0 +1,22 @@
+<div class="ss-lib-pagination">
+	<div class="ss-lib-pagination__button">
+		<ss-lib-button
+			*ngIf="viewButton"
+			[type]="ButtonType.Secondary"
+			[text]="TextComputedForLimit()"
+			(click)="addOffset()"
+		></ss-lib-button>
+	</div>
+	<div class="ss-lib-pagination__block-progress">
+		<ss-lib-text
+			[color]="Colors.TextBody2"
+			[type]="TextType.BodyMd"
+		>
+			{{ offset() }} из {{ total() }}
+		</ss-lib-text>
+		<ss-lib-progress
+			[current]="offset()"
+			[total]="total()"
+		></ss-lib-progress>
+	</div>
+</div>

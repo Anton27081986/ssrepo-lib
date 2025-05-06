@@ -1,0 +1,55 @@
+import {
+	ChangeDetectionStrategy,
+	Component,
+	computed,
+	input,
+	InputSignal,
+	model,
+	Signal,
+} from '@angular/core';
+import { NgIf } from '@angular/common';
+import { ButtonComponent } from '../buttons';
+import { ProgressComponent } from '../progress/progress.component';
+import { TextComponent } from '../text/text.component';
+import { ButtonType, Colors, TextType } from '../../shared/models';
+
+@Component({
+	selector: 'ss-lib-pagination',
+	standalone: true,
+	imports: [ButtonComponent, ProgressComponent, NgIf, TextComponent],
+	templateUrl: './pagination.component.html',
+	styleUrl: './pagination.component.scss',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class PaginationComponent {
+	public readonly total: InputSignal<number> = input.required<number>();
+	public readonly offset = model.required<number>();
+	public readonly limit: InputSignal<number> = input.required<number>();
+	public readonly TextComputedForLimit: Signal<string> = computed(() => {
+		const newOffset = this.offset() + this.limit();
+
+		if (newOffset > this.total()) {
+			return `Показать еще ${this.total() - this.offset()}`;
+		}
+
+		return `Показать еще ${this.limit()}`;
+	});
+
+	protected readonly TextType = TextType;
+	protected readonly Colors = Colors;
+
+	protected readonly ButtonType = ButtonType;
+	protected get viewButton(): boolean {
+		return this.offset() !== this.total();
+	}
+
+	public addOffset(): void {
+		const newOffset = this.offset() + this.limit();
+
+		if (newOffset > this.total()) {
+			this.offset.set(this.total());
+		} else {
+			this.offset.set(newOffset);
+		}
+	}
+}
