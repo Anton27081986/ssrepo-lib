@@ -10,7 +10,6 @@ import {
 	SidebarType,
 } from '../../shared/models';
 import { CanvasState } from '../canvas/canvas.state';
-import { ProgressComponent } from '../progress/progress.component';
 
 /**
  * Компонент шапки приложения с настраиваемыми меню и управлением сайдбаром
@@ -45,7 +44,7 @@ import { ProgressComponent } from '../progress/progress.component';
 	standalone: true,
 	templateUrl: './header.component.html',
 	styleUrls: ['./header.component.scss'],
-	imports: [NgTemplateOutlet, ButtonComponent, ProgressComponent],
+	imports: [NgTemplateOutlet, ButtonComponent],
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderComponent {

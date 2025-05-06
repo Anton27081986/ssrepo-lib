@@ -1,8 +1,8 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, signal, WritableSignal } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { catchError, Observable, of, Subscription } from 'rxjs';
 import { HttpClient, HttpEventType } from '@angular/common/http';
-import { Router, RouterOutlet } from '@angular/router';
+import { RouterOutlet } from '@angular/router';
 import { NgOptimizedImage } from '@angular/common';
 import {
 	ButtonType,
@@ -39,6 +39,8 @@ import { Tab } from '../../../../front-components/src/lib/shared/models/interfac
 	styleUrl: './stand.component.scss',
 })
 export class StandComponent {
+	public offset: WritableSignal<number> = signal(0);
+
 	public imgCtrl = new FormControl(null);
 
 	public toggleCtrl = new FormControl(false);
@@ -135,7 +137,6 @@ export class StandComponent {
 	constructor(
 		private readonly columnState: ColumnsStateService,
 		private readonly http: HttpClient,
-		private readonly router: Router,
 	) {
 		this.columnState.colsTr$.next(DEFAULT_COLS);
 
