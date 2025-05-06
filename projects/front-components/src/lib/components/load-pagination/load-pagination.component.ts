@@ -14,14 +14,14 @@ import { TextComponent } from '../text/text.component';
 import { ButtonType, Colors, TextType } from '../../shared/models';
 
 @Component({
-	selector: 'ss-lib-pagination',
+	selector: 'ss-lib-load-pagination',
 	standalone: true,
 	imports: [ButtonComponent, ProgressComponent, NgIf, TextComponent],
-	templateUrl: './pagination.component.html',
-	styleUrl: './pagination.component.scss',
+	templateUrl: './load-pagination.component.html',
+	styleUrl: './load-pagination.component.scss',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class PaginationComponent {
+export class LoadPaginationComponent {
 	public readonly total: InputSignal<number> = input.required<number>();
 	public readonly offset = model.required<number>();
 	public readonly limit: InputSignal<number> = input.required<number>();
