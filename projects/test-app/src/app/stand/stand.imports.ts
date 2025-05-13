@@ -22,7 +22,6 @@ import {
 	EmptyStateComponent,
 	PreviewButtonComponent,
 	LinkComponent,
-	SkeletonTableComponent,
 	SkeletonBlockComponent,
 	OverlayButtonComponent,
 	SpinnerComponent,
@@ -40,14 +39,22 @@ import {
 	TabsComponent,
 	CarouselComponent,
 	PaginationDotsComponent,
-} from '../../../../front-components/src/lib/components';
+	Table2Component,
+	ThComponent,
+	TableCellDirective,
+	TableHeadDirective,
+	TableResizedDirective,
+	TableThGroupComponent, TrComponent
+} from "../../../../front-components/src/lib/components";
 import {
+	DraggableItemDirective,
 	FieldCtrlDirective,
 	ItemDirective,
 	PopoverTriggerForDirective,
 } from '../../../../front-components/src/lib/core/directives';
 import { RepeatTimesPipe } from '../../../../front-components/src/lib/core/pipes';
 import { ExampleTableTrComponent } from '../example-table-tr/example-table-tr.component';
+import { TableDirective } from '../../../../front-components/src/lib/components';
 import { LoadPaginationComponent } from '../../../../front-components/src/lib/components/load-pagination/load-pagination.component';
 
 export const standImports = [
@@ -77,7 +84,6 @@ export const standImports = [
 	EmptyStateComponent,
 	PreviewButtonComponent,
 	LinkComponent,
-	SkeletonTableComponent,
 	SkeletonBlockComponent,
 	OverlayButtonComponent,
 	SpinnerComponent,
@@ -98,5 +104,14 @@ export const standImports = [
 	PaginationDotsComponent,
 	TabComponent,
 	TabsComponent,
+	Table2Component,
+	ThComponent,
+	TrComponent,
+	DraggableItemDirective,
+	TableDirective,
+	TableCellDirective,
+	TableHeadDirective,
+	TableResizedDirective,
+	TableThGroupComponent,
 	LoadPaginationComponent,
 ];

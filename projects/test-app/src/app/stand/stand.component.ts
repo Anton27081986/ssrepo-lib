@@ -30,6 +30,7 @@ import { exampleDataTable } from './constants/example-data-table';
 import { TestRightSidePageComponent } from '../test-left-side-page/test-right-side-page.component';
 import { Tab } from '../../../../front-components/src/lib/shared/models/interfaces/tab';
 
+
 @Component({
 	selector: 'app-stand',
 	standalone: true,
@@ -114,6 +115,18 @@ export class StandComponent {
 			isDisabled: false,
 		},
 	];
+
+	protected readonly columns = signal<string[]>([
+		'dragAction',
+		'order',
+		'image',
+		'banner',
+		'status',
+		'actionToggle',
+		'user',
+		'period',
+		'action',
+	]);
 
 	protected readonly TextType = TextType;
 	protected readonly TextWeight = TextWeight;
@@ -333,5 +346,21 @@ export class StandComponent {
 
 	public changeIndex(): void {
 		this.indexTab = 4;
+	}
+
+	public onDropItem(dropData: { from: string; to: string }): void {
+		const fromIndex = this.columns().indexOf(dropData.from);
+		const toIndex = this.columns().indexOf(dropData.to);
+
+		this.columns.update((cols) => {
+			const newCols = cols.slice(); // Копия массива
+
+			[newCols[fromIndex], newCols[toIndex]] = [
+				newCols[toIndex],
+				newCols[fromIndex],
+			];
+
+			return newCols;
+		});
 	}
 }

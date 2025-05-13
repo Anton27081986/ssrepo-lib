@@ -1,0 +1,46 @@
+th:first-child {
+  border-radius: 8px 0 0 0;
+}
+
+th:last-child {
+  border-radius: 0 8px 0 0;
+}
+
+
+:host {
+  background-color: var(--surface-information-2);
+  border-bottom: 1px solid var(--border-primary);
+  height: 41px;
+  position: relative;
+  //overflow: auto;
+  //min-width: 500px;
+
+  &:first-child {
+    border-radius: 8px 0 0 0;
+  }
+
+  &:last-child {
+    border-radius: 0 8px 0 0;
+  }
+}
+
+
+.t-bar {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: -1px;
+  inline-size: 3px;
+  justify-self: flex-end;
+  border-inline-start: 2px solid transparent;
+  background: red;
+  background-clip: content-box;
+  cursor: ew-resize;
+  opacity: 0;
+
+  &:hover,
+  &:active {
+    opacity: 1;
+  }
+}
+

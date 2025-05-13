@@ -1,0 +1,18 @@
+<!--<ng-container *ngIf="cells$ | async as items; else dummy">-->
+
+@for (key of table.columns(); track key) {
+	<ng-container
+		[ngTemplateOutlet]="cell123()[key] && cell123()[key].template"
+		[ngTemplateOutletContext]="{ $implicit: key }"
+	></ng-container>
+}
+
+<pre>{{ test() }}</pre>
+<!--<ng-template #plain>-->
+<!--	<td-->
+<!--		tuiTd-->
+<!--	>-->
+<!--		{{ item[key] }}-->
+<!--	</td>-->
+<!--</ng-template>-->
+<!--</ng-container>-->

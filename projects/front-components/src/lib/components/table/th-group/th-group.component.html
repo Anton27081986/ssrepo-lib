@@ -1,0 +1,19 @@
+@for (key of table.columns(); track key) {
+	<ng-container
+		[ngTemplateOutlet]="
+			(heads123()[key] && heads123()[key].template) || plain
+		"
+		[ngTemplateOutletContext]="{ $implicit: key }"
+	/>
+}
+<ng-template
+	#plain
+	let-key
+>
+	<!--	@if (!th && !heads.length) {-->
+	@if (!heads.length) {
+		<th ssTh>
+			{{ key.toString() }}
+		</th>
+	}
+</ng-template>
