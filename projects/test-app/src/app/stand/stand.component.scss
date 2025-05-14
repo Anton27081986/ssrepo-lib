@@ -95,42 +95,6 @@ ss-lib-button {
 	box-sizing: border-box;
 }
 
-.column-item {
-	display: flex;
-	align-items: center;
-	gap: 8px;
-}
-
-
-.column-item {
-	display: flex;
-	align-items: center;
-	padding: 8px;
-	border: 1px solid #e0e0e0;
-	margin-bottom: 4px;
-	background-color: #fff;
-	cursor: move;
-	transition: transform 0.2s ease, opacity 0.2s ease, box-shadow 0.2s ease;
-}
-
-.column-item:hover {
-	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-/* Стили для элемента во время перетаскивания */
-.column-item.dragging {
-	opacity: 0.5;
-	transform: scale(1.05);
-	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-/* Стили для области, куда можно сбросить элемент */
-.column-item.drag-over {
-	border: 2px dashed #007bff;
-	background-color: #f0f8ff;
-}
-
-
 .container {
 	min-width: 100%;
 	width: auto;
@@ -143,4 +107,19 @@ ss-lib-button {
 	min-width: 100%;
 	table-layout: auto;
 	border-collapse: collapse;
+}
+
+.column-item {
+	position: relative;
+	transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.column-item__content {
+	display: flex;
+	align-items: center;
+	padding: 8px;
+}
+
+.column-item.dragging {
+	opacity: 0;
 }

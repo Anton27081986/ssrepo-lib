@@ -7,8 +7,8 @@ import {
 	inject,
 	Signal,
 } from '@angular/core';
-import { TableDirective, TableHeadDirective } from '../directives';
 import { NgTemplateOutlet } from '@angular/common';
+import { TableDirective, TableHeadDirective } from '../directives';
 import { ThComponent } from '../th/th.component';
 
 @Component({
@@ -27,7 +27,7 @@ export class TableThGroupComponent<T extends Partial<Record<keyof T, any>>> {
 		computed(() => {
 			return this.heads().reduce(
 				(record, item) => {
-					record[item.ssHead as keyof T] = item;
+					record[item.ssHead() as keyof T] = item;
 
 					return record;
 				},

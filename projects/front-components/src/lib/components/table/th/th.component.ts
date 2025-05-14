@@ -1,5 +1,10 @@
-import { ChangeDetectionStrategy, Component, input, signal } from "@angular/core";
-import { TableResizedDirective } from '../directives/resized.directive';
+import {
+	ChangeDetectionStrategy,
+	Component,
+	input,
+	signal,
+} from '@angular/core';
+import { TableResizedDirective } from '../directives';
 
 @Component({
 	selector: 'th[ssTh]',
@@ -20,7 +25,7 @@ import { TableResizedDirective } from '../directives/resized.directive';
 	host: {
 		'[style.min-width.px]': 'width()',
 		'[style.width.px]': 'width()',
-		// '[style.max-width.px]': 'width()',
+		'[style.max-width.px]': 'width()',
 	},
 })
 export class ThComponent {

@@ -29,7 +29,7 @@ import { ToastRef } from '../../../../front-components/src/lib/components';
 import { exampleDataTable } from './constants/example-data-table';
 import { TestRightSidePageComponent } from '../test-left-side-page/test-right-side-page.component';
 import { Tab } from '../../../../front-components/src/lib/shared/models/interfaces/tab';
-
+import { animate, animateChild, group, query, style, transition, trigger } from "@angular/animations";
 
 @Component({
 	selector: 'app-stand',
@@ -38,8 +38,54 @@ import { Tab } from '../../../../front-components/src/lib/shared/models/interfac
 	providers: [ColumnsStateService, RouterOutlet],
 	templateUrl: './stand.component.html',
 	styleUrl: './stand.component.scss',
+	animations: [
+		trigger('listAnimation', [
+			transition('* => *', [
+				query(':enter, :leave', style({ position: 'relative' }), {
+					optional: true,
+				}),
+				query(
+					':enter',
+					style({ opacity: 0, transform: 'translateY(20px)' }),
+					{ optional: true },
+				),
+				query(':leave', style({ opacity: 1 }), { optional: true }),
+				group([
+					query(
+						':leave',
+						[
+							animate(
+								'0.3s ease',
+								style({
+									opacity: 0,
+									transform: 'translateY(20px)',
+								}),
+							),
+						],
+						{ optional: true },
+					),
+					query(
+						':enter',
+						[
+							animate(
+								'0.3s ease',
+								style({
+									opacity: 1,
+									transform: 'translateY(0)',
+								}),
+							),
+						],
+						{ optional: true },
+					),
+					query('@*', animateChild(), { optional: true }),
+				]),
+			]),
+		]),
+	],
 })
 export class StandComponent {
+	private readonly sharedPopupService = inject(SharedPopupService);
+
 	public offset: WritableSignal<number> = signal(0);
 
 	public imgCtrl = new FormControl(null);
@@ -144,8 +190,6 @@ export class StandComponent {
 	protected readonly TooltipPosition = TooltipPosition;
 	protected readonly exampleItems = exampleDataTable;
 	protected readonly bannersItems = BANNERS_ITEMS;
-
-	private readonly sharedPopupService = inject(SharedPopupService);
 
 	constructor(
 		private readonly columnState: ColumnsStateService,

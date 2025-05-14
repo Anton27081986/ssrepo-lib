@@ -39,13 +39,13 @@ import {
 	TabsComponent,
 	CarouselComponent,
 	PaginationDotsComponent,
-	Table2Component,
 	ThComponent,
 	TableCellDirective,
 	TableHeadDirective,
 	TableResizedDirective,
-	TableThGroupComponent, TrComponent
-} from "../../../../front-components/src/lib/components";
+	TableThGroupComponent,
+	TrComponent,
+} from '../../../../front-components/src/lib/components';
 import {
 	DraggableItemDirective,
 	FieldCtrlDirective,
@@ -104,7 +104,6 @@ export const standImports = [
 	PaginationDotsComponent,
 	TabComponent,
 	TabsComponent,
-	Table2Component,
 	ThComponent,
 	TrComponent,
 	DraggableItemDirective,

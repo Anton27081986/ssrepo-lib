@@ -682,28 +682,32 @@
 <br />
 <ss-lib-dropdown-list #dropdown2>
 	@for (column of columns(); track column) {
-		<div
+		<ss-lib-dropdown-item
 			class="column-item"
 			draggable="true"
 			ssDraggableItem
 			[item]="column"
+			[@listAnimation]="$index"
 			(itemDrop)="onDropItem($event)"
 		>
-			<ss-lib-checkbox></ss-lib-checkbox>
-			<ss-lib-text
-				[type]="TextType.BodySm"
-				[weight]="TextWeight.Regular"
-				[color]="Colors.TextBody3"
-			>
-				{{ column }}
-			</ss-lib-text>
+			<div class="column-item__content">
+				<ss-lib-checkbox></ss-lib-checkbox>
 
-			<ss-lib-icon
-				[height]="'16'"
-				[width]="'16'"
-				[icon]="IconType.Drag"
-			/>
-		</div>
+				<ss-lib-text
+					[type]="TextType.BodySm"
+					[weight]="TextWeight.Regular"
+					[color]="Colors.TextBody3"
+				>
+					{{ column }}
+				</ss-lib-text>
+
+				<ss-lib-icon
+					[height]="'16'"
+					[width]="'16'"
+					[icon]="IconType.Drag"
+				/>
+			</div>
+		</ss-lib-dropdown-item>
 	}
 </ss-lib-dropdown-list>
 

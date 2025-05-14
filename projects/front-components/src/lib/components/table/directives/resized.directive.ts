@@ -6,7 +6,6 @@ import {
 	map,
 	switchMap,
 	takeUntil,
-	tap,
 } from 'rxjs';
 import { EMPTY_CLIENT_RECT } from '../../../shared/constants';
 import { ssPreventDefault } from '../../../core/utils';
@@ -35,7 +34,6 @@ export class TableResizedDirective {
 
 			return fromEvent<MouseEvent>(this.documentRef, 'mousemove').pipe(
 				distinctUntilChanged(),
-				tap(({ clientX }) => console.log(clientX)),
 				map(({ clientX }) => width + clientX - right),
 				takeUntil(fromEvent(this.documentRef, 'mouseup')),
 			);
