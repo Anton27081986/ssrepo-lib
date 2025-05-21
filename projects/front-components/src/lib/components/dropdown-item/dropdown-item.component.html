@@ -8,22 +8,28 @@
 	(mouseup)="state.set(StateTypes.Default)"
 	(focus)="checkFocus($event)"
 >
-	@if (icon()) {
-		<ss-lib-icon
-			[icon]="icon()!"
-			[height]="'16'"
-			[width]="'16'"
-			[color]="iconColor()"
-		/>
-	}
+	<ng-template #content>
+		@if (itemText()) {
+			@if (icon()) {
+				<ss-lib-icon
+					height="16"
+					width="16"
+					[icon]="icon()!"
+					[color]="iconColor()"
+				></ss-lib-icon>
+			}
 
-	<ss-lib-text
-		[type]="TextType.BodySm"
-		[weight]="TextWeight.Medium"
-		[color]="textColor()"
-	>
-		{{ itemText() }}
-	</ss-lib-text>
+			<ss-lib-text
+				[type]="TextType.BodySm"
+				[weight]="TextWeight.Medium"
+				[color]="textColor()"
+			>
+				{{ itemText() }}
+			</ss-lib-text>
+		} @else {
+			<ng-content></ng-content>
+		}
+	</ng-template>
 
-	<ng-content />
+	<ng-container [ngTemplateOutlet]="content"></ng-container>
 </div>

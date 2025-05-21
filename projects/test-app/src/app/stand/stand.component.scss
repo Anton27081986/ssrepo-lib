@@ -1,125 +1,158 @@
 .spinners {
-	width: 200px;
+  width: 200px;
 }
 
 .dark-close-button {
-	width: 50px;
-	height: 50px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	background: #212121;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #212121;
 }
 
 .avatar-tmp {
-	display: flex;
-	justify-content: space-between;
-	gap: 12px;
-	padding: 12px 16px;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 16px;
 
-	&__label {
-		display: flex;
-		flex-direction: column;
-	}
+  &__label {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 .divider-block {
-	padding: 4px 0;
+  padding: 4px 0;
 }
 
 .badge {
-	display: flex;
-	gap: 10px;
-	flex-direction: column;
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
 }
 
 .empty-state-actions {
-	display: flex;
-	flex-wrap: nowrap;
-	gap: 10px;
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 10px;
 }
 
 .modal {
-	width: 500px;
+  width: 500px;
 }
 
 .tooltip-example {
-	display: flex;
-	justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .scrollbar-test {
-	height: 150px;
-	width: 150px;
-	display: flex;
-	flex-wrap: nowrap;
+  height: 150px;
+  width: 150px;
+  display: flex;
+  flex-wrap: nowrap;
 
-	&__item {
-		white-space: nowrap;
-	}
+  &__item {
+    white-space: nowrap;
+  }
 }
 
 .checkbox {
-	display: flex;
-	gap: 5px;
+  display: flex;
+  gap: 5px;
 }
 
 .otp {
-	width: 360px;
+  width: 360px;
 }
 
 .tabs {
-	ss-lib-divider {
-		position: absolute;
-		bottom: -7px;
-		width: 100%;
-		z-index: 1;
-	}
+  ss-lib-divider {
+    position: absolute;
+    bottom: -7px;
+    width: 100%;
+    z-index: 1;
+  }
 }
 
 ss-lib-button {
-	width: 100px;
+  width: 100px;
 }
 
 .carousel-item {
-	width: 100%;
-	height: auto;
-	object-fit: cover;
-	display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
 }
 
 .new-table {
-	width: 100%;
-	overflow-x: auto;
-	max-width: none; /* Убираем ограничения */
-	box-sizing: border-box;
+  width: 100%;
+  overflow-x: auto;
+  max-width: none; /* Убираем ограничения */
+  box-sizing: border-box;
 }
 
 .container {
-	min-width: 100%;
-	width: auto;
-	display: inline-block;
-	overflow-x: auto; /* Для горизонтальной прокрутки, если таблица шире */
+  min-width: 100%;
+  width: auto;
+  display: inline-block;
+  overflow-x: auto; /* Для горизонтальной прокрутки, если таблица шире */
 }
 
 .ss-table {
-	width: 100%;
-	min-width: 100%;
-	table-layout: auto;
-	border-collapse: collapse;
+  width: 100%;
+  min-width: 100%;
+  table-layout: auto;
+  border-collapse: collapse;
 }
 
-.column-item {
-	position: relative;
-	transition: transform 0.3s ease, opacity 0.3s ease;
+.example-list {
+  position: relative;
+}
+
+.example-box {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  background: inherit; /* Можно оставить, но не влияет на preview */
 }
 
 .column-item__content {
-	display: flex;
-	align-items: center;
-	padding: 8px;
+  display: flex;
+  align-items: center;
 }
 
-.column-item.dragging {
-	opacity: 0;
+/* Стили для превью во время перетаскивания */
+.cdk-drag-preview {
+  box-sizing: border-box;
+  border-radius: var(--border-radius-sm);
+  position: fixed !important;
+  pointer-events: none;
+  background: var(--surface-action-pressed-2);
+}
+
+/* Placeholder невидим */
+.cdk-drag-placeholder {
+  opacity: 0;
+}
+
+/* Анимация для других элементов */
+.cdk-drag-animating {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.example-list.cdk-drop-list-dragging .example-box:not(.cdk-drag-placeholder) {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.cdk-drop-list-dragging .example-box:hover,
+.cdk-drop-list-dragging .example-box.cdk-drag-hover {
+  background: none !important;
+  box-shadow: none !important;
+  border: none !important;
 }

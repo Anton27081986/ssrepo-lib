@@ -1,5 +1,5 @@
 import { ReactiveFormsModule } from '@angular/forms';
-import { NgFor } from '@angular/common';
+import { NgFor, NgOptimizedImage } from '@angular/common';
 import {
 	IconComponent,
 	TextComponent,
@@ -45,6 +45,7 @@ import {
 	TableResizedDirective,
 	TableThGroupComponent,
 	TrComponent,
+	DraggableDropdownListComponent,
 } from '../../../../front-components/src/lib/components';
 import {
 	DraggableItemDirective,
@@ -59,6 +60,7 @@ import { LoadPaginationComponent } from '../../../../front-components/src/lib/co
 
 export const standImports = [
 	ReactiveFormsModule,
+	NgOptimizedImage,
 	RepeatTimesPipe,
 	FieldCtrlDirective,
 	PopoverTriggerForDirective,
@@ -113,4 +115,5 @@ export const standImports = [
 	TableResizedDirective,
 	TableThGroupComponent,
 	LoadPaginationComponent,
+	DraggableDropdownListComponent,
 ];

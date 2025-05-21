@@ -241,6 +241,10 @@ export class DraggableItemDirective<T> {
 		if (dragImage) {
 			dragImage.remove();
 		}
+
+		setTimeout(() => {
+			document.querySelectorAll('.dropdown-item').forEach((item) => item.classList.remove('no-interaction'));
+		}, 0);
 	}
 
 	@HostListener('dragover', ['$event'])

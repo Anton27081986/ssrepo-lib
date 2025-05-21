@@ -54,3 +54,4 @@ export {
 	TableResizedDirective,
 	TableDirective,
 } from './table/directives';
+export { DraggableDropdownListComponent } from './draggable-list/draggable-dropdown-list.component';

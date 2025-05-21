@@ -21,3 +21,40 @@
 	display: inline-flex;
 	flex-direction: column;
 }
+
+
+.draggable-list {
+	position: relative;
+}
+
+.draggable-item {}
+
+/* Стили для превью во время перетаскивания */
+.cdk-drag-preview {
+	box-sizing: border-box;
+	border-radius: var(--border-radius-sm);
+	position: fixed !important;
+	pointer-events: none;
+	background: var(--surface-action-pressed-2);
+}
+
+/* Placeholder невидим */
+.cdk-drag-placeholder {
+	opacity: 0;
+}
+
+/* Анимация для других элементов */
+.cdk-drag-animating {
+	transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.draggable-list.cdk-drop-list-dragging .draggable-item:not(.cdk-drag-placeholder) {
+	transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.cdk-drop-list-dragging .draggable-item:hover,
+.cdk-drop-list-dragging .draggable-item.cdk-drag-hover {
+	background: none !important;
+	box-shadow: none !important;
+	border: none !important;
+}
