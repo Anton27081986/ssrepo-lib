@@ -40,7 +40,7 @@ import {
 	TabsComponent,
 	CarouselComponent,
 	PaginationDotsComponent,
-	HelpHintComponent,
+	HintComponent,
 } from '../../../../front-components/src/lib/components';
 import {
 	FieldCtrlDirective,
@@ -100,5 +100,5 @@ export const standImports = [
 	TabComponent,
 	TabsComponent,
 	LoadPaginationComponent,
-	HelpHintComponent,
+	HintComponent,
 ];

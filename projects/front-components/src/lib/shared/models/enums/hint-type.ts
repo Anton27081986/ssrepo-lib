@@ -1,4 +1,4 @@
-export enum HelpHintType {
+export enum HintType {
 	Default = 'default',
 	Success = 'success',
 	Error = 'error',

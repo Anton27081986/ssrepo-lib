@@ -5,18 +5,18 @@ import {
 	signal,
 	WritableSignal,
 } from '@angular/core';
-import { Colors, HelpHintType, IconType } from '../../shared/models';
+import { Colors, HintType, IconType } from '../../shared/models';
 import { IconComponent } from '../icon/icon.component';
 
 @Component({
-	selector: 'ss-lib-help-hint',
+	selector: 'ss-lib-hint',
 	standalone: true,
 	imports: [IconComponent],
-	templateUrl: './help-hint.component.html',
-	styleUrl: './help-hint.component.scss',
+	templateUrl: './hint.component.html',
+	styleUrl: './hint.component.scss',
 })
-export class HelpHintComponent {
-	public type = input<HelpHintType>(HelpHintType.Default);
+export class HintComponent {
+	public type = input<HintType>(HintType.Default);
 	public icon = input.required<IconType>();
 	public disabled = input<boolean>(false);
 	protected readonly isHover: WritableSignal<boolean> = signal(false);
@@ -37,11 +37,11 @@ export class HelpHintComponent {
 
 		if (this.isHover()) {
 			switch (this.type()) {
-				case HelpHintType.Warning:
+				case HintType.Warning:
 					return Colors.IconWarningHover;
-				case HelpHintType.Error:
+				case HintType.Error:
 					return Colors.IconErrorHover;
-				case HelpHintType.Success:
+				case HintType.Success:
 					return Colors.IconSuccessHover;
 				default:
 					return Colors.IconActionHover2;
@@ -49,11 +49,11 @@ export class HelpHintComponent {
 		}
 
 		switch (this.type()) {
-			case HelpHintType.Warning:
+			case HintType.Warning:
 				return Colors.IconWarning;
-			case HelpHintType.Error:
+			case HintType.Error:
 				return Colors.IconError;
-			case HelpHintType.Success:
+			case HintType.Success:
 				return Colors.IconSuccess;
 			default:
 				return Colors.IconAction2;

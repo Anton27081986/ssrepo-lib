@@ -22,4 +22,4 @@ export { Extremum } from './extremum';
 export { ToastTypeEnum } from './toast-type-enum';
 export { Dimension } from './dimension';
 export { JustifyContent } from './justify-content';
-export { HelpHintType } from './help-hint-type';
+export { HintType } from './hint-type';

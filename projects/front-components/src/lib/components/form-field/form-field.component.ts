@@ -18,13 +18,13 @@ import { FieldCtrlDirective } from '../../core/directives';
 import {
 	Colors,
 	ControlState,
-	HelpHintType,
+	HintType,
 	IconType,
 	TextType,
 	TextWeight,
 } from '../../shared/models';
 import { TooltipDirective } from '../tooltip/tooltip.directive';
-import { HelpHintComponent } from '../help-hint/help-hint.component';
+import { HintComponent } from '../help-hint/hint.component';
 
 /**
  * Компонент поля формы с поддержкой валидации, состояний и отображения ошибок
@@ -72,7 +72,7 @@ import { HelpHintComponent } from '../help-hint/help-hint.component';
 		IconComponent,
 		NgIf,
 		TooltipDirective,
-		HelpHintComponent,
+		HintComponent,
 	],
 	templateUrl: './form-field.component.html',
 	styleUrl: './form-field.component.scss',
@@ -106,7 +106,7 @@ export class FormFieldComponent implements AfterContentInit {
 
 	private readonly injector = inject(Injector);
 
-	protected readonly HelpHintType = HelpHintType;
+	protected readonly HelpHintType = HintType;
 	protected readonly ControlState = ControlState;
 
 	public get getColorIcon(): Colors {
