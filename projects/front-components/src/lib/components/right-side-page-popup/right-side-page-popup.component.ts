@@ -6,7 +6,7 @@ import {
 	TemplateRef,
 } from '@angular/core';
 import { NgIf, NgTemplateOutlet } from '@angular/common';
-import { CloseIconPosition, IBadgeProps } from '../../shared/models';
+import { IBadgeProps, IconPosition } from '../../shared/models';
 import { BadgeInfoComponent } from '../badge-info/badge-info.component';
 import { DividerComponent } from '../divider/divider.component';
 
@@ -54,9 +54,9 @@ export class RightSidePagePopupComponent {
 	public readonly actionsRef = input.required<TemplateRef<unknown>>();
 	public readonly contentRef = input<TemplateRef<{}> | null>(null);
 	public readonly badgeProps = input<IBadgeProps | null>(null);
-	public readonly closePosition = input<CloseIconPosition>(
-		CloseIconPosition.Start,
-	);
+	public readonly closePosition = input<
+		IconPosition.Start | IconPosition.End
+	>(IconPosition.Start);
 
 	public readonly closeEmit = output<void>();
 

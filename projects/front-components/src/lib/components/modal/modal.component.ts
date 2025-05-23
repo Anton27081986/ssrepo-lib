@@ -7,7 +7,7 @@ import {
 	TemplateRef,
 } from '@angular/core';
 import { NgIf, NgTemplateOutlet } from '@angular/common';
-import { CloseIconPosition, IBadgeProps, ModalRef } from '../../shared/models';
+import { IBadgeProps, IconPosition, ModalRef } from '../../shared/models';
 import { BadgeInfoComponent } from '../badge-info/badge-info.component';
 import { DividerComponent } from '../divider/divider.component';
 
@@ -56,14 +56,13 @@ export class ModalComponent {
 	public readonly contentRef = input<TemplateRef<{}> | null>(null);
 	public readonly stickyRef = input<TemplateRef<{}> | null>(null);
 	public readonly badgeProps = input.required<IBadgeProps>();
-	public readonly closePosition = input<CloseIconPosition>(
-		CloseIconPosition.End,
-	);
+	public readonly closePosition = input<
+		IconPosition.Start | IconPosition.End
+	>(IconPosition.End);
 
 	public readonly closeEmit = output<void>();
 	private readonly popoverRef = inject(ModalRef);
 
-	protected readonly CloseIconPosition = CloseIconPosition;
 	public onCloseEvent(): void {
 		this.closeEmit.emit();
 	}

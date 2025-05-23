@@ -6,7 +6,7 @@ import {
 	output,
 } from '@angular/core';
 import { NgIf } from '@angular/common';
-import { Align, CloseIconPosition, IBadgeProps } from '../../shared/models';
+import { Align, IBadgeProps, IconPosition } from '../../shared/models';
 import {
 	ButtonType,
 	Colors,
@@ -58,8 +58,8 @@ export class BadgeInfoComponent {
 	public title: InputSignal<string> = input.required<string>();
 	public description: InputSignal<string> = input.required<string>();
 	public viewClose: InputSignal<boolean> = input<boolean>(true);
-	public closePosition: InputSignal<CloseIconPosition> =
-		input<CloseIconPosition>(CloseIconPosition.End);
+	public closePosition: InputSignal<IconPosition.Start | IconPosition.End> =
+		input<IconPosition.Start | IconPosition.End>(IconPosition.End);
 
 	public badge: InputSignal<IBadgeProps | null> = input<IBadgeProps | null>(
 		null,
@@ -74,5 +74,5 @@ export class BadgeInfoComponent {
 	protected readonly TextWeight = TextWeight;
 	protected readonly Colors = Colors;
 	protected readonly Align = Align;
-	protected readonly CloseIconPosition = CloseIconPosition;
+	protected readonly IconPosition = IconPosition;
 }

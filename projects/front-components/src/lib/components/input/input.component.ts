@@ -79,7 +79,7 @@ export class InputComponent implements ControlValueAccessor {
 	public readonly type = input<InputType>(InputType.Text);
 	public readonly placeholder = input<string>('');
 	public readonly readOnly = input<boolean>(false);
-	public readonly closeButton = input<boolean>(false);
+	public readonly clearButton = input<boolean>(false);
 	public readonly align = input<Align>(Align.Start);
 	public readonly min = input<unknown | undefined>(undefined);
 	public readonly max = input<unknown | undefined>(undefined);
@@ -129,9 +129,9 @@ export class InputComponent implements ControlValueAccessor {
 		);
 	}
 
-	protected get viewCloseButton(): boolean {
+	protected get viewClearButton(): boolean {
 		return (
-			this.closeButton() &&
+			this.clearButton() &&
 			!this.disabled() &&
 			this.inputCtrl.value &&
 			this.inputCtrl.value.trim().length > 0
