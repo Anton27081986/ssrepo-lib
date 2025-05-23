@@ -57,6 +57,7 @@ type RegularButtonType =
 			[icon]="icon()"
 			[iconPosition]="iconPosition()"
 			[disabled]="disabled()"
+			[justifyContent]="justifyContent()"
 		>
 			<ng-content></ng-content>
 		</ss-lib-base-button>

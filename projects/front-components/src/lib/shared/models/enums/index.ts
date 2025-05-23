@@ -21,3 +21,6 @@ export { TooltipPosition } from './tooltip';
 export { Extremum } from './extremum';
 export { ToastTypeEnum } from './toast-type-enum';
 export { Dimension } from './dimension';
+export { JustifyContent } from './justify-content';
+export { CloseIconPosition } from './close-icon-position';
+export { HelpHintType } from './help-hint-type';

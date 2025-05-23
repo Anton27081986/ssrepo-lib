@@ -12,6 +12,13 @@
 	background: var(--surface-primary);
 	padding: 8px 10px;
 	margin: 1px 6px;
+
+	&__info {
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+		gap: 8px;
+	}
 }
 
 .dropdown-item:hover:not(.disabled) {
@@ -31,4 +38,9 @@
 .dropdown-item.disabled {
 	background: var(--surface-primary);
 	cursor: default;
+}
+
+.dropdown-item.selected {
+	justify-content: space-between;
+	background: var(--surface-action-hover-3);
 }

@@ -2,26 +2,37 @@
 	tabindex="0"
 	class="dropdown-item"
 	[class.disabled]="isDisabled()"
+	[class.selected]="selected()"
 	(mouseenter)="state.set(StateTypes.Hover)"
 	(mouseleave)="state.set(StateTypes.Default)"
 	(mousedown)="state.set(StateTypes.Pressed)"
 	(mouseup)="state.set(StateTypes.Default)"
 	(focus)="checkFocus($event)"
 >
-	@if (icon()) {
+	<div class="dropdown-item__info">
+		@if (icon()) {
+			<ss-lib-icon
+				[icon]="icon()!"
+				[height]="'16'"
+				[width]="'16'"
+				[color]="iconColor()"
+			/>
+		}
+		<ss-lib-text
+			[type]="TextType.BodySm"
+			[weight]="TextWeight.Medium"
+			[color]="textColor()"
+		>
+			{{ itemText() }}
+		</ss-lib-text>
+	</div>
+
+	@if (selected()) {
 		<ss-lib-icon
-			[icon]="icon()!"
+			[icon]="IconType.Check"
 			[height]="'16'"
 			[width]="'16'"
-			[color]="iconColor()"
+			[color]="Colors.IconInformation"
 		/>
 	}
-
-	<ss-lib-text
-		[type]="TextType.BodySm"
-		[weight]="TextWeight.Medium"
-		[color]="textColor()"
-	>
-		{{ itemText() }}
-	</ss-lib-text>
 </div>

@@ -1,16 +1,17 @@
 .ss-lib-badge-info {
 	display: flex;
 	justify-content: space-between;
+	gap: 14px;
 
-	&__left {
+	&__info-block {
 		display: flex;
 		gap: 16px;
 	}
 
 	&__close {
-		position: absolute;
+		position: relative;
 		right: 12px;
-		top: 12px;
+		bottom: 8px;
 	}
 
 	&__info {

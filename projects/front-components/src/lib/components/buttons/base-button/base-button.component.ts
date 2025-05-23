@@ -14,10 +14,11 @@ import {
 	BUTTON_TEXT_COLORS_RECORD,
 } from '../constants';
 import { hasIcon } from '../util';
-import type {
+import {
 	IStateElement,
 	IconType,
 	ButtonTypeValues,
+	JustifyContent,
 } from '../../../shared/models';
 import {
 	Colors,
@@ -100,6 +101,9 @@ export class BaseButtonComponent<T extends ButtonTypeValues> {
 	public readonly iconPosition = input<IconPosition>(IconPosition.Start);
 	public readonly isActive = input<boolean>(false);
 	public readonly disabled = input<boolean>(false);
+	public readonly justifyContent = input<JustifyContent>(
+		JustifyContent.Center,
+	);
 
 	public readonly state = signal<IStateElement>(EMPTY_STATE);
 	public readonly buttonTextColors = computed(

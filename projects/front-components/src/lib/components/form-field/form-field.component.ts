@@ -8,7 +8,7 @@ import {
 	runInInjectionContext,
 	signal,
 } from '@angular/core';
-import { NgClass } from '@angular/common';
+import { NgClass, NgIf } from '@angular/common';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { filter, map, tap } from 'rxjs';
 import { Validators } from '@angular/forms';
@@ -18,10 +18,13 @@ import { FieldCtrlDirective } from '../../core/directives';
 import {
 	Colors,
 	ControlState,
+	HelpHintType,
 	IconType,
 	TextType,
 	TextWeight,
 } from '../../shared/models';
+import { TooltipDirective } from '../tooltip/tooltip.directive';
+import { HelpHintComponent } from '../help-hint/help-hint.component';
 
 /**
  * Компонент поля формы с поддержкой валидации, состояний и отображения ошибок
@@ -63,7 +66,14 @@ import {
 @Component({
 	selector: 'ss-lib-form-field',
 	standalone: true,
-	imports: [TextComponent, NgClass, IconComponent],
+	imports: [
+		TextComponent,
+		NgClass,
+		IconComponent,
+		NgIf,
+		TooltipDirective,
+		HelpHintComponent,
+	],
 	templateUrl: './form-field.component.html',
 	styleUrl: './form-field.component.scss',
 })
@@ -76,10 +86,13 @@ export class FormFieldComponent implements AfterContentInit {
 	public readonly showValidation = input<boolean>(true);
 	public readonly showValidationFieldIcon = input<boolean>(false);
 	public readonly errorText = input<string>('');
+	public readonly icon = input<IconType | null>(null);
+	public readonly tooltipInfoText = input<string | null>(null);
 
 	public readonly existValidators = signal<boolean>(false);
 	public readonly isRequired = signal<boolean>(false);
 	public readonly fieldCtrlState = signal<ControlState>(ControlState.Touched);
+	public readonly colorIcon = signal<Colors>(Colors.IconDisabled);
 
 	public readonly currentFieldCtrlState = signal<ControlState>(
 		ControlState.Touched,
@@ -92,6 +105,15 @@ export class FormFieldComponent implements AfterContentInit {
 	public readonly IconType = IconType;
 
 	private readonly injector = inject(Injector);
+
+	protected readonly HelpHintType = HelpHintType;
+	protected readonly ControlState = ControlState;
+
+	public get getColorIcon(): Colors {
+		const control = this.fieldCtrl?.ngControl.control;
+
+		return this.calcColorIcon(control!.value, this.currentFieldCtrlState());
+	}
 
 	public ngAfterContentInit(): void {
 		if (this.showValidation()) {
@@ -158,5 +180,21 @@ export class FormFieldComponent implements AfterContentInit {
 				),
 			);
 		});
+	}
+
+	private calcColorIcon(value: string | null, status: ControlState): Colors {
+		if (status !== ControlState.Disabled) {
+			if (status === ControlState.Invalid) {
+				return Colors.IconError;
+			}
+
+			if (value && value.trim().length > 0) {
+				return Colors.IconAction2;
+			}
+
+			return Colors.IconDisabled;
+		}
+
+		return Colors.IconOnDisabled;
 	}
 }

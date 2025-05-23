@@ -13,4 +13,10 @@
 		[placeholder]="placeholder()"
 		[readOnly]="readOnly()"
 	/>
+	@if (viewCloseButton) {
+		<ss-lib-close-button
+			[size]="ExtraSize.xs"
+			(click)="clearControl()"
+		></ss-lib-close-button>
+	}
 </div>

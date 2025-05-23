@@ -20,6 +20,10 @@ button.custom-button:not(.only-icon) {
 	flex-grow: 1;
 }
 
+button.custom-button:not(.justify-center) {
+	justify-content: space-between;
+}
+
 button.custom-button:disabled {
 	cursor: default;
 }

@@ -1,14 +1,13 @@
 import {
 	ChangeDetectionStrategy,
 	Component,
+	inject,
 	input,
 	output,
 	TemplateRef,
-	inject,
 } from '@angular/core';
 import { NgIf, NgTemplateOutlet } from '@angular/common';
-import type { IBadgeProps } from '../../shared/models';
-import { ModalRef } from '../../shared/models';
+import { CloseIconPosition, IBadgeProps, ModalRef } from '../../shared/models';
 import { BadgeInfoComponent } from '../badge-info/badge-info.component';
 import { DividerComponent } from '../divider/divider.component';
 
@@ -55,10 +54,16 @@ export class ModalComponent {
 	public readonly descriptionHeader = input<string>('');
 	public readonly actionsRef = input.required<TemplateRef<unknown>>();
 	public readonly contentRef = input<TemplateRef<{}> | null>(null);
+	public readonly stickyRef = input<TemplateRef<{}> | null>(null);
 	public readonly badgeProps = input.required<IBadgeProps>();
+	public readonly closePosition = input<CloseIconPosition>(
+		CloseIconPosition.End,
+	);
+
 	public readonly closeEmit = output<void>();
 	private readonly popoverRef = inject(ModalRef);
 
+	protected readonly CloseIconPosition = CloseIconPosition;
 	public onCloseEvent(): void {
 		this.closeEmit.emit();
 	}

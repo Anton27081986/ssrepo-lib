@@ -9,8 +9,14 @@ import {
 } from '@angular/core';
 import { IconComponent } from '../icon/icon.component';
 import { TextComponent } from '../text/text.component';
-import type { IconType, IDictionaryItemDto } from '../../shared/models';
-import { Colors, StateTypes, TextType, TextWeight } from '../../shared/models';
+import {
+	Colors,
+	StateTypes,
+	TextType,
+	TextWeight,
+	IconType,
+	IDictionaryItemDto,
+} from '../../shared/models';
 
 /**
  * Компонент элемента выпадающего списка с поддержкой иконок и состояний
@@ -63,6 +69,7 @@ export class DropdownItemComponent<
 	public readonly icon = input<IconType | null>(null);
 	public readonly isDestructive = input<boolean>(false);
 	public readonly isDisabled = input<boolean>(false);
+	public readonly selected = input<boolean>(false);
 	public readonly valueEvent = output<T | string | null>();
 	public readonly state = signal<StateTypes>(StateTypes.Default);
 
@@ -115,6 +122,8 @@ export class DropdownItemComponent<
 	protected readonly TextType = TextType;
 	protected readonly TextWeight = TextWeight;
 	protected readonly StateTypes = StateTypes;
+	protected readonly Colors = Colors;
+	protected readonly IconType = IconType;
 
 	@HostListener('click')
 	public togglePopover(): void {
