@@ -31,7 +31,7 @@ import { DividerComponent } from '../divider/divider.component';
  *
  * (closeEmit): void - Событие закрытия модального окна
  *
- * [closePosition]: TemplateRef - Шаблон действий - обязательный
+ * [closePosition]: IconPosition.Start | IconPosition.End - позиция иконки закрытия модального окна.
  *
  * <ss-lib-modal
  *   [titleHeader]="'Заголовок'"

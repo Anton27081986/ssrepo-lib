@@ -45,6 +45,8 @@ import { HintComponent } from '../help-hint/hint.component';
  *
  * [errorText]: string - Текст ошибки - необязательный, по умолчанию: ''
  *
+ * [tooltipInfoText]: string | null - Текст тултипа
+ *
  * Директивы:
  * ss-lib-field-ctrl - Директива для связи с FormControl
  *
@@ -92,7 +94,6 @@ export class FormFieldComponent implements AfterContentInit {
 	public readonly existValidators = signal<boolean>(false);
 	public readonly isRequired = signal<boolean>(false);
 	public readonly fieldCtrlState = signal<ControlState>(ControlState.Touched);
-	public readonly colorIcon = signal<Colors>(Colors.IconDisabled);
 
 	public readonly currentFieldCtrlState = signal<ControlState>(
 		ControlState.Touched,

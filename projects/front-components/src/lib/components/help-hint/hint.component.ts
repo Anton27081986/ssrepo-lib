@@ -8,6 +8,28 @@ import {
 import { Colors, HintType, IconType } from '../../shared/models';
 import { IconComponent } from '../icon/icon.component';
 
+/**
+ * Компонент подсказки с иконкой и различными типами оформления
+ *
+ * @example
+ * ```html
+ * Параметры:
+ *
+ * [type]: HintType - Тип подсказки, определяющий её визуальное оформление - необязательный,
+ * по умолчанию: HintType.Default
+ *
+ * [icon]: IconType - Тип иконки, отображаемой в подсказке - обязательный
+ *
+ * [disabled]: boolean - Флаг, определяющий отключено ли состояние подсказки - необязательный,
+ * по умолчанию: false
+ *
+ * <ss-lib-hint
+ *   [type]="HintType.Warning"
+ *   [icon]="IconType.Alert"
+ *   [disabled]="false"
+ * ></ss-lib-hint>
+ * ```
+ */
 @Component({
 	selector: 'ss-lib-hint',
 	standalone: true,
