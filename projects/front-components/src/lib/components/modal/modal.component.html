@@ -4,16 +4,26 @@
 			[title]="titleHeader()"
 			[description]="descriptionHeader()"
 			[badge]="badgeProps()"
+			[closePosition]="closePosition()"
 			(closeEvent)="onCloseEvent()"
 		></ss-lib-badge-info>
 	</div>
 	<ss-lib-divider
 		*ngIf="contentRef()"
 		class="ss-lib-modal__divider-top"
+		[style.padding-bottom]="stickyRef() ? '0' : '20px'"
 	></ss-lib-divider>
+	<div
+		*ngIf="stickyRef()"
+		class="ss-lib-modal__sticky"
+	>
+		<ng-container *ngTemplateOutlet="stickyRef()"></ng-container>
+		<ss-lib-divider class="ss-lib-modal__divider-sticky"></ss-lib-divider>
+	</div>
 	<div
 		*ngIf="contentRef()"
 		class="ss-lib-modal__body"
+		[style.padding-top]="stickyRef() ? '12px' : '0'"
 	>
 		<ng-container *ngTemplateOutlet="contentRef()"></ng-container>
 	</div>

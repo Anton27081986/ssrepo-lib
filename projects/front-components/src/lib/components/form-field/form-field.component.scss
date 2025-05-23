@@ -88,6 +88,14 @@
 .field-container__content-wrapper {
 	display: flex;
 	align-items: center;
+	padding: 10px 14px;
+	gap: 4px;
+}
+
+.field-container__container-left {
+	display: flex;
+	width: 100%;
+	gap: 8px;
 }
 
 .field-container__content {
@@ -97,7 +105,6 @@
 
 .field-container__error-icon {
 	display: none;
-	margin: 0 14px 0 -10px;
 }
 
 .field-container__error-message {

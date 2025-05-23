@@ -9,7 +9,7 @@ $verticalArrowOffset: 5.5px;
 	border-radius: var(--border-radius-md);
 	padding: 8px 12px;
 	opacity: 0;
-	background: var(--surface-information, #1c1c1c);
+	background: var(--surface-tertiary, #1c1c1c);
 	box-shadow:
 		0 2px 2px -1px #0a0d120a,
 		0 4px 6px -2px #0a0d1208,
@@ -20,7 +20,7 @@ $verticalArrowOffset: 5.5px;
 		width: 0;
 		height: 0;
 		position: absolute;
-		border: 6px solid var(--surface-information, #1c1c1c);
+		border: 6px solid var(--surface-tertiary, #1c1c1c);
 	}
 
 	&--visible {

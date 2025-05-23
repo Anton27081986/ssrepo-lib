@@ -8,8 +8,10 @@ import {
 	ButtonType,
 	Colors,
 	ExtraSize,
+	HintType,
 	IconPosition,
 	IconType,
+	JustifyContent,
 	LinkAppearance,
 	Orientation,
 	Shape,
@@ -134,6 +136,8 @@ export class StandComponent {
 
 	private readonly sharedPopupService = inject(SharedPopupService);
 
+	protected readonly JustifyContent = JustifyContent;
+	protected readonly HelpHintType = HintType;
 	constructor(
 		private readonly columnState: ColumnsStateService,
 		private readonly http: HttpClient,
@@ -143,6 +147,8 @@ export class StandComponent {
 		this.checkBox2.disable();
 
 		this.checkBox3.disable();
+
+		// this.inputCtrl.disable();
 	}
 
 	public openTestModal(): void {

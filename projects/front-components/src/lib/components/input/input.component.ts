@@ -15,14 +15,15 @@ import {
 	ReactiveFormsModule,
 } from '@angular/forms';
 import { toSignal } from '@angular/core/rxjs-interop';
-import { debounceTime, tap } from 'rxjs';
+import { tap } from 'rxjs';
 import { MaskitoDirective } from '@maskito/angular';
 import {
 	maskitoDateOptionsGenerator,
 	maskitoNumberOptionsGenerator,
 	maskitoTimeOptionsGenerator,
 } from '@maskito/kit';
-import { Align, InputType } from '../../shared/models';
+import { Align, ExtraSize, InputType } from '../../shared/models';
+import { CloseButtonComponent } from '../buttons';
 
 /**
  * Компонент поля ввода с поддержкой различных типов и масок
@@ -36,6 +37,9 @@ import { Align, InputType } from '../../shared/models';
  * [placeholder]: string - Текст подсказки - необязательный, по умолчанию: ''
  *
  * [readOnly]: boolean - Флаг режима только для чтения -
+ * необязательный, по умолчанию: false
+ *
+ * [clearButton]: boolean - Флаг на показ иконки крестика в input -
  * необязательный, по умолчанию: false
  *
  * [align]: Align - Выравнивание текста - необязательный, по умолчанию: Align.Start
@@ -58,7 +62,7 @@ import { Align, InputType } from '../../shared/models';
 @Component({
 	selector: 'ss-lib-input',
 	standalone: true,
-	imports: [ReactiveFormsModule, MaskitoDirective],
+	imports: [ReactiveFormsModule, MaskitoDirective, CloseButtonComponent],
 	templateUrl: './input.component.html',
 	styleUrl: './input.component.scss',
 	changeDetection: ChangeDetectionStrategy.OnPush,
@@ -78,6 +82,7 @@ export class InputComponent implements ControlValueAccessor {
 	public readonly type = input<InputType>(InputType.Text);
 	public readonly placeholder = input<string>('');
 	public readonly readOnly = input<boolean>(false);
+	public readonly clearButton = input<boolean>(false);
 	public readonly align = input<Align>(Align.Start);
 	public readonly min = input<unknown | undefined>(undefined);
 	public readonly max = input<unknown | undefined>(undefined);
@@ -114,14 +119,25 @@ export class InputComponent implements ControlValueAccessor {
 	});
 
 	private onChange!: (value: string | null) => void;
+	protected readonly ExtraSize = ExtraSize;
 	private onTouched!: () => void;
 
 	constructor() {
 		toSignal(
 			this.inputCtrl.valueChanges.pipe(
-				debounceTime(300),
-				tap((value) => this.onChange(value)),
+				tap((value) => {
+					this.onChange(value);
+				}),
 			),
+		);
+	}
+
+	protected get viewClearButton(): boolean {
+		return (
+			this.clearButton() &&
+			!this.disabled() &&
+			this.inputCtrl.value &&
+			this.inputCtrl.value.trim().length > 0
 		);
 	}
 
@@ -139,7 +155,6 @@ export class InputComponent implements ControlValueAccessor {
 
 	public setDisabledState(isDisabled: boolean): void {
 		this.disabled.set(isDisabled);
-
 		isDisabled
 			? this.inputCtrl.disable()
 			: this.inputCtrl.enable({ emitEvent: false });
@@ -159,5 +174,9 @@ export class InputComponent implements ControlValueAccessor {
 
 	public setFocus(): void {
 		this.inputField()?.nativeElement.focus();
+	}
+
+	protected clearControl(): void {
+		this.inputCtrl.setValue(null);
 	}
 }

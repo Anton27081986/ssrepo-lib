@@ -54,7 +54,7 @@ import { TextComponent } from '../text/text.component';
 				@if (text()) {
 					<ss-lib-text
 						[type]="TextType.BodyXs"
-						[color]="Colors.TextOnInformation"
+						[color]="Colors.TextBodyOnColor"
 						[weight]="TextWeight.Semibold"
 					>
 						{{ text() }}
