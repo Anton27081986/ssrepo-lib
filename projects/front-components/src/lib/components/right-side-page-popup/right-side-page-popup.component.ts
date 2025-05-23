@@ -28,6 +28,8 @@ import { DividerComponent } from '../divider/divider.component';
  *
  * [badgeProps]: IBadgeProps - Свойства бейджа - обязательный
  *
+ * [closePosition]: IconPosition.Start | IconPosition.End - Позиционирование иконки закрытия - необязательный
+ *
  * (closeEmit): void - Событие закрытия модального окна
  *
  * <ss-lib-right-side-page-popup

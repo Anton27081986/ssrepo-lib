@@ -35,6 +35,8 @@ import { CloseButtonComponent } from '../buttons';
  *
  * [badge]: IBadgeProps - Свойства бейджа - обязательный
  *
+ * [closePosition]: IconPosition.Start | IconPosition.End - позиционирование иконки закрытия
+ *
  * (closeEvent): void - Событие закрытия бейджа
  *
  * <ss-lib-badge-info

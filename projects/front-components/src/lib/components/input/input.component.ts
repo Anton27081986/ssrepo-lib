@@ -39,6 +39,9 @@ import { CloseButtonComponent } from '../buttons';
  * [readOnly]: boolean - Флаг режима только для чтения -
  * необязательный, по умолчанию: false
  *
+ * [clearButton]: boolean - Флаг на показ иконки крестика в input -
+ * необязательный, по умолчанию: false
+ *
  * [align]: Align - Выравнивание текста - необязательный, по умолчанию: Align.Start
  *
  * [min]: unknown | undefined - Минимальное значение -

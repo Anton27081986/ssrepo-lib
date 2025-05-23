@@ -47,6 +47,8 @@ import { HintComponent } from '../help-hint/hint.component';
  *
  * [tooltipInfoText]: string | null - Текст тултипа
  *
+ * [icon]: IconType | null - Основная иконка
+ *
  * Директивы:
  * ss-lib-field-ctrl - Директива для связи с FormControl
  *

@@ -63,6 +63,9 @@ import { EMPTY_STATE } from '../../../shared/constants';
  * [disabled]: boolean - Флаг отключения кнопки - необязательный,
  * по умолчанию: false
  *
+ * [justifyContent]: JustifyContent - Выравнивание по содержимому - необязательный,
+ * по умолчанию: JustifyContent.Center
+ *
  * <ss-lib-base-button
  *   [type]="ButtonType.Primary"
  *   [size]="ExtraSize.md"

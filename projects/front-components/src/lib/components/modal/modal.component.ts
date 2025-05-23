@@ -24,6 +24,8 @@ import { DividerComponent } from '../divider/divider.component';
  *
  * [actionsRef]: TemplateRef - Шаблон действий - обязательный
  *
+ * [stickyRef]: TemplateRef - Шаблон c позиционированием sticky - необязательный
+ *
  * [contentRef]: TemplateRef | null - Шаблон содержимого -
  * необязательный, по умолчанию: null
  *
