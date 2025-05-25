@@ -14,10 +14,11 @@ import {
 	BUTTON_TEXT_COLORS_RECORD,
 } from '../constants';
 import { hasIcon } from '../util';
-import type {
+import {
 	IStateElement,
 	IconType,
 	ButtonTypeValues,
+	JustifyContent,
 } from '../../../shared/models';
 import {
 	Colors,
@@ -62,6 +63,9 @@ import { EMPTY_STATE } from '../../../shared/constants';
  * [disabled]: boolean - Флаг отключения кнопки - необязательный,
  * по умолчанию: false
  *
+ * [justifyContent]: JustifyContent - Выравнивание по содержимому - необязательный,
+ * по умолчанию: JustifyContent.Center
+ *
  * <ss-lib-base-button
  *   [type]="ButtonType.Primary"
  *   [size]="ExtraSize.md"
@@ -100,6 +104,9 @@ export class BaseButtonComponent<T extends ButtonTypeValues> {
 	public readonly iconPosition = input<IconPosition>(IconPosition.Start);
 	public readonly isActive = input<boolean>(false);
 	public readonly disabled = input<boolean>(false);
+	public readonly justifyContent = input<JustifyContent>(
+		JustifyContent.Center,
+	);
 
 	public readonly state = signal<IStateElement>(EMPTY_STATE);
 	public readonly buttonTextColors = computed(

@@ -1,6 +1,11 @@
 <button
 	class="custom-button"
-	[ngClass]="['type-' + type(), 'size-' + size(), iconPosition()]"
+	[ngClass]="[
+		'type-' + type(),
+		'size-' + size(),
+		iconPosition(),
+		justifyContent(),
+	]"
 	[disabled]="disabled()"
 	(mouseenter)="elementState.updateState(state, StateTypes.Hover, true)"
 	(mouseleave)="elementState.updateState(state, StateTypes.Hover, false)"

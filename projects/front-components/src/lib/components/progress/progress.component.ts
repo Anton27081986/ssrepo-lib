@@ -1,17 +1,14 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { computed, inject } from '@angular/core';
-import { toSignal } from '@angular/core/rxjs-interop';
-import { CanvasState } from '../canvas/canvas.state';
+import {
+	ChangeDetectionStrategy,
+	Component,
+	computed,
+	input,
+	InputSignal,
+	Signal,
+} from '@angular/core';
 
 /**
  * Компонент индикатора прогресса с различными состояниями
- *
- * @example
- * ```html
- * Параметры:
- *
- * [inProgressType]: string - Тип индикатора прогресса -
- * необязательный, по умолчанию: 'default'
  *
  * <ss-lib-progress></ss-lib-progress>
  * ```
@@ -25,20 +22,9 @@ import { CanvasState } from '../canvas/canvas.state';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProgressComponent {
-	public readonly canvasState = inject(CanvasState);
-
-	public readonly inProgressType = toSignal(
-		this.canvasState.inProgressType$,
-		{
-			initialValue: 'default',
-		},
-	);
-
-	public readonly state = computed(() => {
-		if (this.inProgressType()) {
-			return 'average';
-		}
-
-		return 'max';
+	public readonly total: InputSignal<number> = input.required<number>();
+	public readonly current: InputSignal<number> = input.required<number>();
+	public progress: Signal<number> = computed(() => {
+		return (this.current() * 100) / this.total();
 	});
 }

@@ -6,7 +6,7 @@ import {
 	output,
 } from '@angular/core';
 import { NgIf } from '@angular/common';
-import { Align, IBadgeProps } from '../../shared/models';
+import { Align, IBadgeProps, IconPosition } from '../../shared/models';
 import {
 	ButtonType,
 	Colors,
@@ -35,6 +35,8 @@ import { CloseButtonComponent } from '../buttons';
  *
  * [badge]: IBadgeProps - Свойства бейджа - обязательный
  *
+ * [closePosition]: IconPosition.Start | IconPosition.End - позиционирование иконки закрытия
+ *
  * (closeEvent): void - Событие закрытия бейджа
  *
  * <ss-lib-badge-info
@@ -58,6 +60,9 @@ export class BadgeInfoComponent {
 	public title: InputSignal<string> = input.required<string>();
 	public description: InputSignal<string> = input.required<string>();
 	public viewClose: InputSignal<boolean> = input<boolean>(true);
+	public closePosition: InputSignal<IconPosition.Start | IconPosition.End> =
+		input<IconPosition.Start | IconPosition.End>(IconPosition.End);
+
 	public badge: InputSignal<IBadgeProps | null> = input<IBadgeProps | null>(
 		null,
 	);
@@ -71,4 +76,5 @@ export class BadgeInfoComponent {
 	protected readonly TextWeight = TextWeight;
 	protected readonly Colors = Colors;
 	protected readonly Align = Align;
+	protected readonly IconPosition = IconPosition;
 }
