@@ -58,6 +58,7 @@
 			</div>
 			@if (currentFieldCtrlState() !== ControlState.Invalid) {
 				<ss-lib-hint
+					*ngIf="tooltipInfoText()"
 					ss-lib-tooltip
 					[tooltipText]="tooltipInfoText()"
 					[icon]="IconType.Help"
