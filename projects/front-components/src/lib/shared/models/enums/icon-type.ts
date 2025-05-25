@@ -42,4 +42,5 @@ export enum IconType {
 	CornerUpRight = 'corner-up-right',
 	PackagePlus = 'package-plus',
 	Info = 'info',
+	Search = 'search',
 }
