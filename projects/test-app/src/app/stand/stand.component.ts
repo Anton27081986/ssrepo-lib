@@ -29,11 +29,12 @@ import { ToastRef } from '../../../../front-components/src/lib/components';
 import { exampleDataTable } from './constants/example-data-table';
 import { TestRightSidePageComponent } from '../test-left-side-page/test-right-side-page.component';
 import { Tab } from '../../../../front-components/src/lib/shared/models/interfaces/tab';
+import { TableExampleComponent } from "../table-example/table-example.component";
 
 @Component({
 	selector: 'app-stand',
 	standalone: true,
-	imports: [...standImports],
+	imports: [...standImports, TableExampleComponent],
 	providers: [ColumnsStateService, RouterOutlet],
 	templateUrl: './stand.component.html',
 	styleUrl: './stand.component.scss',
@@ -116,18 +117,6 @@ export class StandComponent {
 			isDisabled: false,
 		},
 	];
-
-	protected readonly columns = signal<string[]>([
-		'dragAction',
-		'order',
-		'image',
-		'banner',
-		'status',
-		'actionToggle',
-		'user',
-		'period',
-		'action',
-	]);
 
 	protected readonly TextType = TextType;
 	protected readonly TextWeight = TextWeight;
@@ -345,17 +334,5 @@ export class StandComponent {
 
 	public changeIndex(): void {
 		this.indexTab = 4;
-	}
-
-	public onDropItem(event: CdkDragDrop<string>): void {
-		const currentColumns = [...this.columns()];
-
-		moveItemInArray(
-			currentColumns,
-			event.previousIndex,
-			event.currentIndex,
-		);
-
-		this.columns.set(currentColumns);
 	}
 }

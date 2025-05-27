@@ -17,6 +17,7 @@ import type { IDictionaryItemDto, PopoverContent } from '../../shared/models';
 import { DropdownItemComponent } from '../dropdown-item/dropdown-item.component';
 import { DividerComponent } from '../divider/divider.component';
 import { ScrollbarComponent } from '../scrollbar/scrollbar.component';
+import { TableColumnConfig } from "../table/models/table-column-config";
 
 /**
  * Компонент выпадающего списка с поддержкой кастомных шаблонов, прокрутки и динамического контента
@@ -93,7 +94,7 @@ export class DropdownListComponent<
 
 	public readonly closed = output<void>();
 	public readonly value = output<T | string | null>();
-	public readonly dropItem = output<CdkDragDrop<string>>();
+	public readonly dropItem = output<CdkDragDrop<TableColumnConfig>>();
 
 	constructor(@Inject(Injector) private readonly injector: Injector) {
 		afterNextRender(() => {
@@ -114,7 +115,7 @@ export class DropdownListComponent<
 		this.closed.emit();
 	}
 
-	public onDropItem(event: CdkDragDrop<string>): void {
+	public onDropItem(event: CdkDragDrop<TableColumnConfig>): void {
 		this.dropItem.emit(event);
 	}
 }

@@ -39,24 +39,14 @@ import {
 	TabsComponent,
 	CarouselComponent,
 	PaginationDotsComponent,
-	ThComponent,
-	TableCellDirective,
-	TableHeadDirective,
-	TableResizedDirective,
-	TableThGroupComponent,
-	TrComponent,
-	DraggableDropdownListComponent,
 } from '../../../../front-components/src/lib/components';
 import {
-	DraggableItemDirective,
 	FieldCtrlDirective,
 	ItemDirective,
 	PopoverTriggerForDirective,
 } from '../../../../front-components/src/lib/core/directives';
 import { RepeatTimesPipe } from '../../../../front-components/src/lib/core/pipes';
 import { ExampleTableTrComponent } from '../example-table-tr/example-table-tr.component';
-import { TableDirective } from '../../../../front-components/src/lib/components';
-import { LoadPaginationComponent } from '../../../../front-components/src/lib/components/load-pagination/load-pagination.component';
 
 export const standImports = [
 	ReactiveFormsModule,
@@ -106,14 +96,4 @@ export const standImports = [
 	PaginationDotsComponent,
 	TabComponent,
 	TabsComponent,
-	ThComponent,
-	TrComponent,
-	DraggableItemDirective,
-	TableDirective,
-	TableCellDirective,
-	TableHeadDirective,
-	TableResizedDirective,
-	TableThGroupComponent,
-	LoadPaginationComponent,
-	DraggableDropdownListComponent,
 ];

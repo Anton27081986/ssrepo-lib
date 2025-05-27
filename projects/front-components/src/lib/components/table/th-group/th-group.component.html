@@ -1,3 +1,5 @@
+<ng-content />
+<!--<pre>1213{{ heads123() | json }}</pre>-->
 @for (key of table.columns(); track key) {
 	<ng-container
 		[ngTemplateOutlet]="
@@ -10,10 +12,11 @@
 	#plain
 	let-key
 >
-	<!--	@if (!th && !heads.length) {-->
-	@if (!heads.length) {
-		<th ssTh>
-			{{ key.toString() }}
-		</th>
+	@if (!th() && !heads().length) {
+		@if (!heads.length) {
+			<th ssTh>
+				{{ key.toString() }}
+			</th>
+		}
 	}
 </ng-template>

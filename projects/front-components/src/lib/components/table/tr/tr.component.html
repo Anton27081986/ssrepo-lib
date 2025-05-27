@@ -2,12 +2,17 @@
 
 @for (key of table.columns(); track key) {
 	<ng-container
-		[ngTemplateOutlet]="cell123()[key] && cell123()[key].template"
+		[ngTemplateOutlet]="
+			(cell123()[key] && cell123()[key].template) || plain
+		"
 		[ngTemplateOutletContext]="{ $implicit: key }"
-	></ng-container>
+	>
+		<ng-template #plain>
+			<td>123</td>
+		</ng-template>
+	</ng-container>
 }
 
-<pre>{{ test() }}</pre>
 <!--<ng-template #plain>-->
 <!--	<td-->
 <!--		tuiTd-->

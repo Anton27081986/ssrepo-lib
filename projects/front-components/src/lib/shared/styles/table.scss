@@ -24,13 +24,22 @@
 	&-table {
 		width: 100%;
 		position: relative;
-		border-collapse: inherit;
+		border-collapse: separate;
 		border-spacing: 0;
 		table-layout: fixed;
 		overflow: hidden;
 
 		border: var(--ss-lib-table-border);
 		border-radius: var(--ss-lib-table-border-radius);
+
+		th {
+			display: table-cell;
+			border: 1px solid var(--border-primary);
+		}
+
+		th:not(:first-child) {
+			border-inline-start: none !important;
+		}
 
 		th:first-child {
 			border-radius: var(--ss-lib-table-border-radius) 0 0 0;
