@@ -4,6 +4,6 @@ import { Directive, input } from '@angular/core';
 	standalone: true,
 	selector: 'table[ssTable]',
 })
-export class TableDirective<T extends Partial<Record<keyof T, any>>> {
+export class TableDirective<T extends Partial<Record<keyof T, never>>> {
 	public columns = input<ReadonlyArray<keyof T>>([]);
 }

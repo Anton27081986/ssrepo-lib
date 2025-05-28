@@ -20,7 +20,6 @@ import {
 	ThComponent,
 	TrComponent,
 } from '../../../../front-components/src/lib/components';
-import { TableColumnConfig } from '../../../../front-components/src/lib/components/table/models/table-column-config';
 import { DraggableItemDirective } from '../../../../front-components/src/lib/core/directives';
 import {
 	Align,
@@ -37,6 +36,8 @@ import {
 } from '../../../../front-components/src/lib/components';
 
 import { PopoverTriggerForDirective } from '../../../../front-components/src/lib/core/directives';
+import { CheckboxType } from '../../../../front-components/src/lib/shared/models/types/check-box-type';
+import { TableColumnConfig } from '../../../../front-components/src/lib/components/table/models/table-column-config';
 
 interface TableRow {
 	id: number;
@@ -180,7 +181,7 @@ export class TableExampleComponent implements OnInit {
 	public readonly data = computed(() => this.tableData);
 
 	// Forms
-	public readonly masterCheckboxControl = new FormControl<boolean>(false, {
+	public readonly masterCheckboxCtrl = new FormControl<boolean>(false, {
 		nonNullable: true,
 	});
 
@@ -191,28 +192,7 @@ export class TableExampleComponent implements OnInit {
 		),
 	);
 
-	// Computed checkbox states
-	private readonly checkedRowsCount = computed(
-		() =>
-			this.rowCheckboxes.controls.filter((control) => control.value)
-				.length,
-	);
-
-	private readonly totalRowsCount = computed(
-		() => this.rowCheckboxes.controls.length,
-	);
-
-	public readonly isAllSelected = computed(
-		() =>
-			this.checkedRowsCount() === this.totalRowsCount() &&
-			this.totalRowsCount() > 0,
-	);
-
-	public readonly isIndeterminate = computed(
-		() =>
-			this.checkedRowsCount() > 0 &&
-			this.checkedRowsCount() < this.totalRowsCount(),
-	);
+	public masterCheckboxType = signal<CheckboxType>('default');
 
 	constructor() {
 		toSignal(
@@ -229,7 +209,7 @@ export class TableExampleComponent implements OnInit {
 		);
 
 		toSignal(
-			this.masterCheckboxControl.valueChanges.pipe(
+			this.masterCheckboxCtrl.valueChanges.pipe(
 				tap((value: boolean | null) =>
 					this.onMasterCheckboxChange(value),
 				),
@@ -239,79 +219,19 @@ export class TableExampleComponent implements OnInit {
 		toSignal(
 			this.rowCheckboxes.valueChanges.pipe(
 				tap(() => {
-					this.onRowCheckboxChange();
+					this.updateMasterCheckboxState();
 				}),
 			),
 		);
 	}
 
-	ngOnInit() {
+	public ngOnInit(): void {
 		this.initializeCheckboxes();
 	}
 
-	// Инициализация checkbox'ов для каждой строки
-	private initializeCheckboxes() {
-		this.tableData.forEach(() => {
-			this.rowCheckboxes.push(
-				new FormControl<boolean>(false, { nonNullable: true }),
-			);
-		});
-	}
-
-	// Получение FormControl для checkbox'а конкретной строки
-	getRowCheckboxControl(index: number): FormControl {
+	public getRowCheckboxControl(index: number): FormControl {
 		return this.rowCheckboxes.at(index) as FormControl;
 	}
-
-	private onMasterCheckboxChange(value: boolean | null): void {
-		this.rowCheckboxes.controls.forEach((control: FormControl) => {
-			control.setValue(value, { emitEvent: false });
-		});
-	}
-
-	// Обработка изменения checkbox'а в строке
-	onRowCheckboxChange() {
-		this.updateMasterCheckboxState();
-	}
-
-	// Обновление состояния главного checkbox'а на основе состояния строк
-	private updateMasterCheckboxState() {
-		const checkedCount = this.rowCheckboxes.controls.filter(
-			(control: FormControl) => control.value,
-		).length;
-
-		const totalCount = this.rowCheckboxes.controls.length;
-
-		if (checkedCount === 0) {
-			console.log(0);
-			// Никто не выбран
-			this.masterCheckboxControl.setValue(false, { emitEvent: false });
-		} else if (checkedCount === totalCount) {
-			// Все выбраны
-
-			console.log(1);
-			this.masterCheckboxControl.setValue(true, { emitEvent: false });
-		} else {
-			// Частично выбраны - можно установить indeterminate состояние
-			console.log(2);
-			this.masterCheckboxControl.setValue(false, { emitEvent: false });
-			// Если ваша библиотека поддерживает indeterminate состояние:
-			// this.setIndeterminateState(true);
-		}
-	}
-
-	// Получение выбранных элементов
-	// getSelectedItems() {
-	// 	const selectedItems: any[] = [];
-	// 	this.rowCheckboxes.controls.forEach(
-	// 		(control: FormControl, index: number) => {
-	// 			if (control.value) {
-	// 				selectedItems.push(this.tableData[index]);
-	// 			}
-	// 		},
-	// 	);
-	// 	return selectedItems;
-	// }
 
 	public onDropItem(event: CdkDragDrop<TableColumnConfig>): void {
 		const dropdownCols = this.dropdownColumns();
@@ -333,30 +253,74 @@ export class TableExampleComponent implements OnInit {
 		this.columnConfigs.set(updatedConfigs);
 	}
 
+	private initializeCheckboxes(): void {
+		this.tableData.forEach(() => {
+			this.rowCheckboxes.push(
+				new FormControl<boolean>(false, { nonNullable: true }),
+			);
+		});
+	}
+
+	private onMasterCheckboxChange(value: boolean | null): void {
+		if (this.masterCheckboxType() === 'indeterminate') {
+			this.masterCheckboxType.set('default');
+		}
+
+		this.rowCheckboxes.controls.forEach((control: FormControl): void => {
+			control.setValue(value, { emitEvent: false });
+		});
+	}
+
+	private updateMasterCheckboxState(): void {
+		const checkedCount = this.rowCheckboxes.controls.filter(
+			(control) => control.value,
+		).length;
+
+		const totalCount = this.rowCheckboxes.controls.length;
+
+		const isAllChecked = checkedCount === totalCount && totalCount > 0;
+		const isNoneChecked = checkedCount === 0;
+		const isIndeterminate = !isAllChecked && !isNoneChecked;
+
+		this.masterCheckboxCtrl.setValue(isAllChecked || isIndeterminate, {
+			emitEvent: false,
+		});
+
+		isIndeterminate
+			? this.masterCheckboxType.set('indeterminate')
+			: this.masterCheckboxType.set('default');
+	}
+
 	private collectWithSubColumns(
 		parent: TableColumnConfig,
 		allConfigs: TableColumnConfig[],
 	): TableColumnConfig[] {
-		const group = [parent];
-
-		if (parent.subColumns?.length) {
-			const subCols = parent.subColumns
-				.map((subId) => allConfigs.find((col) => col.id === subId))
-				.filter((col): col is TableColumnConfig => !!col);
-
-			group.push(...subCols);
-		}
-
-		return group;
+		return [
+			parent,
+			...(parent.subColumns
+				?.map((subId: string) =>
+					allConfigs.find(
+						(col: TableColumnConfig) => col.id === subId,
+					),
+				)
+				.filter(
+					(col: unknown): col is TableColumnConfig =>
+						col !== undefined,
+				) || []),
+		];
 	}
 
 	private removeColumns(
 		source: TableColumnConfig[],
 		toRemove: TableColumnConfig[],
 	): TableColumnConfig[] {
-		const removeIds = new Set(toRemove.map((col) => col.id));
+		const removeIds = new Set(
+			toRemove.map((col: TableColumnConfig) => col.id),
+		);
 
-		return source.filter((col) => !removeIds.has(col.id));
+		return source.filter(
+			(col: TableColumnConfig) => !removeIds.has(col.id),
+		);
 	}
 
 	private findTargetIndex(
@@ -364,25 +328,27 @@ export class TableExampleComponent implements OnInit {
 		dropdownCols: TableColumnConfig[],
 		allConfigs: TableColumnConfig[],
 	): number {
+		// Case 1: Drop at the start of dropdown
 		if (event.currentIndex === 0) {
-			return allConfigs.findIndex((col) => col.showInDropdown);
+			return allConfigs.findIndex((col) => col.showInDropdown) ?? 0;
 		}
 
+		// Case 2: Drop at or beyond the end of dropdown
 		if (event.currentIndex >= dropdownCols.length - 1) {
-			const visibleIndices = allConfigs
-				.map((col, index) => (col.showInDropdown ? index : -1))
-				.filter((index) => index !== -1);
+			const lastVisibleIndex = allConfigs
+				.map((col, idx) => (col.showInDropdown ? idx : -1))
+				.filter((idx) => idx !== -1)
+				.pop();
 
-			return visibleIndices[visibleIndices.length - 1] + 1;
+			return lastVisibleIndex !== undefined
+				? lastVisibleIndex + 1
+				: allConfigs.length;
 		}
 
+		// Case 3: Drop in the middle
 		const targetColumn = dropdownCols[event.currentIndex];
 
-		return allConfigs.findIndex((col) => col.id === targetColumn.id);
-	}
-
-	public onItemDrop(itemPosition: unknown): void {
-		console.log(itemPosition);
+		return allConfigs.findIndex((col) => col.id === targetColumn.id) ?? -1;
 	}
 
 	private updateColumnVisibility(values: Array<boolean | null>): void {
@@ -393,8 +359,7 @@ export class TableExampleComponent implements OnInit {
 
 			dropdownColumns.forEach((dropdownItem) => {
 				const configIdx = updatedConfigs.findIndex(
-					(column: TableColumnConfig) =>
-						column.id === dropdownItem.id,
+					(col: TableColumnConfig) => col.id === dropdownItem.id,
 				);
 
 				if (configIdx === -1) {
@@ -405,24 +370,25 @@ export class TableExampleComponent implements OnInit {
 
 				updatedConfigs[configIdx].visible = isVisible;
 
-				const subColumns = updatedConfigs[configIdx].subColumns;
-
-				if (subColumns?.length) {
-					subColumns.forEach((subColId) => {
+				updatedConfigs[configIdx].subColumns?.forEach(
+					(subId: string): void => {
 						const subConfigIdx = updatedConfigs.findIndex(
-							(subColumn: TableColumnConfig) =>
-								subColumn.id === subColId,
+							(col) => col.id === subId,
 						);
 
-						if (subConfigIdx >= 0) {
+						if (subConfigIdx !== -1) {
 							updatedConfigs[subConfigIdx].visible = isVisible;
 						}
-					});
-				}
+					},
+				);
 			});
 
 			return updatedConfigs;
 		});
+	}
+
+	public onItemDrop(itemPosition: unknown): void {
+		console.info(itemPosition);
 	}
 
 	public createDragGhostExample(
@@ -434,19 +400,20 @@ export class TableExampleComponent implements OnInit {
 		const clonedRow = originalRow.cloneNode(true) as HTMLElement;
 
 		table.style.cssText = `
-      border-collapse: collapse;
-      position: absolute;
-      top: -9999px;
-      left: -9999px;
-      width: ${rect.width}px;
-    `;
+			  border-collapse: collapse;
+			  position: absolute;
+			  top: -9999px;
+			  left: -9999px;
+			  width: ${rect.width}px;
+			`;
+
 		clonedRow.style.cssText = `
-      background: var(--surface-primary);
-      box-shadow: 0px 2px 2px -1px var(--effects-shadows-4),
-                  0px 4px 6px -2px var(--effects-shadows-3),
-                  0px 12px 16px -4px var(--effects-shadows-8);
-      pointer-events: none;
-    `;
+			  background: var(--surface-primary);
+			  box-shadow: 0px 2px 2px -1px var(--effects-shadows-4),
+						  0px 4px 6px -2px var(--effects-shadows-3),
+						  0px 12px 16px -4px var(--effects-shadows-8);
+			  pointer-events: none;
+    	`;
 
 		tbody.appendChild(clonedRow);
 		table.appendChild(tbody);

@@ -1,23 +1,24 @@
 import {
 	ChangeDetectionStrategy,
 	Component,
-	computed, contentChild,
+	computed,
+	contentChild,
 	contentChildren,
 	forwardRef,
 	inject,
-	Signal
-} from "@angular/core";
-import { JsonPipe, NgTemplateOutlet } from '@angular/common';
+	Signal,
+} from '@angular/core';
+import { NgTemplateOutlet } from '@angular/common';
 import { TableDirective, TableHeadDirective } from '../directives';
 import { ThComponent } from '../th/th.component';
 
 @Component({
 	selector: 'tr[ssThGroup]',
-	imports: [NgTemplateOutlet, ThComponent, JsonPipe],
+	imports: [NgTemplateOutlet, ThComponent],
 	templateUrl: './th-group.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TableThGroupComponent<T extends Partial<Record<keyof T, any>>> {
+export class TableThGroupComponent<T extends Partial<Record<keyof T, never>>> {
 	protected readonly table = inject<TableDirective<T>>(
 		forwardRef(() => TableDirective),
 	);
@@ -25,8 +26,7 @@ export class TableThGroupComponent<T extends Partial<Record<keyof T, any>>> {
 	public readonly th = contentChild(ThComponent);
 	public readonly heads = contentChildren(TableHeadDirective<T>);
 
-
-	public readonly heads123: Signal<Record<keyof T, TableHeadDirective<T>>> =
+	public readonly headByKey: Signal<Record<keyof T, TableHeadDirective<T>>> =
 		computed(() => {
 			return this.heads().reduce(
 				(record, item) => ({ ...record, [item.ssHead()]: item }),

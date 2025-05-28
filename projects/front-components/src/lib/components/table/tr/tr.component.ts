@@ -5,14 +5,9 @@ import {
 	contentChildren,
 	forwardRef,
 	inject,
-	Signal,
 } from '@angular/core';
-import {
-	TableCellDirective,
-	TableDirective,
-	TableHeadDirective,
-} from '../directives';
 import { NgTemplateOutlet } from '@angular/common';
+import { TableCellDirective, TableDirective } from '../directives';
 
 @Component({
 	selector: 'tr[ssTr]',
@@ -21,21 +16,17 @@ import { NgTemplateOutlet } from '@angular/common';
 	styleUrl: './tr.component.scss',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TrComponent<T extends Partial<Record<keyof T, any>>> {
+export class TrComponent<T extends Partial<Record<keyof T, never>>> {
 	public readonly cells = contentChildren(TableCellDirective);
 
 	protected readonly table = inject<TableDirective<T>>(
 		forwardRef(() => TableDirective),
 	);
 
-	public readonly cell123 = computed(() => {
+	public readonly cellByKey = computed(() => {
 		return this.cells().reduce(
 			(record, item) => ({ ...record, [item.ssCell()]: item }),
 			{} as Record<string | keyof T, TableCellDirective>,
 		);
-	});
-
-	public test = computed(() => {
-		console.log(this.cell123());
 	});
 }

@@ -49,7 +49,10 @@
 					[style.min-width.px]="200"
 					[style.width.px]="200"
 				>
-					<ss-lib-checkbox [formControl]="masterCheckboxControl" />
+					<ss-lib-checkbox
+						[formControl]="masterCheckboxCtrl"
+						[type]="masterCheckboxType()"
+					/>
 
 					<ss-lib-text
 						[color]="Colors.TextBody2"

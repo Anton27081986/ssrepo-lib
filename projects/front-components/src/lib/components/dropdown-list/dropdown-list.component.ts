@@ -17,7 +17,7 @@ import type { IDictionaryItemDto, PopoverContent } from '../../shared/models';
 import { DropdownItemComponent } from '../dropdown-item/dropdown-item.component';
 import { DividerComponent } from '../divider/divider.component';
 import { ScrollbarComponent } from '../scrollbar/scrollbar.component';
-import { TableColumnConfig } from "../table/models/table-column-config";
+import { TableColumnConfig } from '../table/models/table-column-config';
 
 /**
  * Компонент выпадающего списка с поддержкой кастомных шаблонов, прокрутки и динамического контента

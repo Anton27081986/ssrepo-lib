@@ -1,9 +1,8 @@
 <ng-content />
-<!--<pre>1213{{ heads123() | json }}</pre>-->
 @for (key of table.columns(); track key) {
 	<ng-container
 		[ngTemplateOutlet]="
-			(heads123()[key] && heads123()[key].template) || plain
+			(headByKey()[key] && headByKey()[key].template) || plain
 		"
 		[ngTemplateOutletContext]="{ $implicit: key }"
 	/>

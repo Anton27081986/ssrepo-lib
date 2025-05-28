@@ -3,7 +3,6 @@ import { FormControl, Validators } from '@angular/forms';
 import { catchError, Observable, of, Subscription } from 'rxjs';
 import { HttpClient, HttpEventType } from '@angular/common/http';
 import { RouterOutlet } from '@angular/router';
-import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import {
 	ButtonType,
 	Colors,
@@ -29,7 +28,7 @@ import { ToastRef } from '../../../../front-components/src/lib/components';
 import { exampleDataTable } from './constants/example-data-table';
 import { TestRightSidePageComponent } from '../test-left-side-page/test-right-side-page.component';
 import { Tab } from '../../../../front-components/src/lib/shared/models/interfaces/tab';
-import { TableExampleComponent } from "../table-example/table-example.component";
+import { TableExampleComponent } from '../table-example/table-example.component';
 
 @Component({
 	selector: 'app-stand',
