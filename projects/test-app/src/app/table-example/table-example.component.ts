@@ -1,27 +1,13 @@
 import {
 	ChangeDetectionStrategy,
 	Component,
-	computed,
+	inject,
 	OnInit,
-	signal,
 } from '@angular/core';
 import { CdkDragDrop } from '@angular/cdk/drag-drop';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { tap } from 'rxjs';
-import { FormArray, FormControl, ReactiveFormsModule } from '@angular/forms';
-import {
-	CheckboxComponent,
-	DropdownItemComponent,
-	DropdownListComponent,
-	TableCellDirective,
-	TableDirective,
-	TableHeadDirective,
-	TableThGroupComponent,
-	TdComponent,
-	ThComponent,
-	TrComponent,
-} from '../../../../front-components/src/lib/components';
-import { DraggableItemDirective } from '../../../../front-components/src/lib/core/directives';
+import { FormControl } from '@angular/forms';
 import {
 	Align,
 	Colors,
@@ -30,16 +16,10 @@ import {
 	TextWeight,
 } from '../../../../front-components/src/lib/shared/models';
 
-import {
-	IconComponent,
-	TextComponent,
-	UtilityButtonComponent,
-} from '../../../../front-components/src/lib/components';
-
-import { PopoverTriggerForDirective } from '../../../../front-components/src/lib/core/directives';
-import { CheckboxType } from '../../../../front-components/src/lib/shared/models/types/check-box-type';
-import { TableColumnConfig } from '../../../../front-components/src/lib/components/table/models/table-column-config';
-import { NgClass } from '@angular/common';
+import { columnConfigsMock, tableDataMock } from './mock';
+import { TableColumnConfig } from '../../../../front-components/src/lib/components/table/models';
+import { SsTableState } from '../../../../front-components/src/lib/components/table/services/insdex';
+import { tableExampleImports } from './table-example.imports';
 
 interface TableRow {
 	id: number;
@@ -57,171 +37,46 @@ interface TableRow {
 @Component({
 	selector: 'app-table-example',
 	standalone: true,
-	imports: [
-		CheckboxComponent,
-		DraggableItemDirective,
-		DropdownItemComponent,
-		DropdownListComponent,
-		UtilityButtonComponent,
-		PopoverTriggerForDirective,
-		ReactiveFormsModule,
-		TextComponent,
-		IconComponent,
-		ThComponent,
-		TrComponent,
-		TdComponent,
-		DraggableItemDirective,
-		TableDirective,
-		TableCellDirective,
-		TableHeadDirective,
-		TableThGroupComponent,
-		NgClass,
-	],
+	imports: [tableExampleImports],
 	templateUrl: './table-example.component.html',
 	styleUrl: './table-example.component.scss',
 	changeDetection: ChangeDetectionStrategy.OnPush,
+	providers: [SsTableState],
 })
 export class TableExampleComponent implements OnInit {
-	// Constants
+	private readonly tableStateService = inject(SsTableState<TableRow>);
+
+	public readonly data = this.tableStateService.data;
+	public readonly dropdownColumns = this.tableStateService.dropdownColumns;
+	public readonly visibleColumns = this.tableStateService.visibleColumns;
+	public readonly showLeftBorder = this.tableStateService.showLeftBorder;
+	public readonly masterCheckboxCtrl =
+		this.tableStateService.getMasterCheckboxCtrl();
+
+	public readonly rowCheckboxes = this.tableStateService.getRowCheckboxes();
+	public readonly columnsForm = this.tableStateService.getColumnsForm();
+	public readonly masterCheckboxType =
+		this.tableStateService.getMasterCheckboxType();
+
 	protected readonly TextType = TextType;
 	protected readonly TextWeight = TextWeight;
 	protected readonly Colors = Colors;
 	protected readonly IconType = IconType;
 	protected readonly Align = Align;
 
-	// Table data
-	public readonly tableData: TableRow[] = [
-		{
-			id: 1,
-			dragAction: 'dragAction',
-			order: 'order',
-			image: 'image',
-			banner: 'banner',
-			status: 'status',
-			actionToggle: 'actionToggle',
-			user: 'user',
-			period: 'period',
-			action: 'action',
-		},
-		{
-			id: 2,
-			dragAction: 'dragAction',
-			order: 'order',
-			image: 'image',
-			banner: 'banner',
-			status: 'status',
-			actionToggle: 'actionToggle',
-			user: 'user',
-			period: 'period',
-			action: 'action',
-		},
-		{
-			id: 3,
-			dragAction: 'dragAction',
-			order: 'order',
-			image: 'image',
-			banner: 'banner',
-			status: 'status',
-			actionToggle: 'actionToggle',
-			user: 'user',
-			period: 'period',
-			action: 'action',
-		},
-	];
-
-	// Signals
-	public readonly columnConfigs = signal<TableColumnConfig[]>([
-		{
-			id: 'dragAction',
-			name: 'Drag Action',
-			showInDropdown: true,
-			visible: true,
-		},
-		{
-			id: 'banner',
-			name: 'Banner',
-			showInDropdown: true,
-			visible: true,
-			subColumns: ['order', 'image'],
-		},
-		{ id: 'order', name: 'Order', showInDropdown: false, visible: true },
-		{ id: 'image', name: 'Image', showInDropdown: false, visible: true },
-		{ id: 'status', name: 'Status', showInDropdown: true, visible: true },
-		{ id: 'action', name: 'Action', showInDropdown: true, visible: true },
-		{
-			id: 'actionToggle',
-			name: 'Action Toggle',
-			showInDropdown: true,
-			visible: true,
-			subColumns: ['user', 'period'],
-		},
-		{ id: 'user', name: 'User', showInDropdown: false, visible: true },
-		{ id: 'period', name: 'Period', showInDropdown: false, visible: true },
-	]);
-
-	protected readonly columns = signal<string[]>([
-		'dragAction',
-		'order',
-		'image',
-		'banner',
-		'status',
-		'action',
-		'actionToggle',
-		'user',
-		'period',
-	]);
-
-	// Computed signals
-	public readonly dropdownColumns = computed(() =>
-		this.columnConfigs().filter((col) => col.showInDropdown),
-	);
-
-	public readonly visibleColumns = computed(() =>
-		this.columnConfigs()
-			.filter((col) => col.visible)
-			.map((col) => col.id),
-	);
-
-	public readonly data = computed(() => this.tableData);
-
-	// Forms
-	public readonly masterCheckboxCtrl = new FormControl<boolean>(false, {
-		nonNullable: true,
-	});
-
-	public readonly rowCheckboxes = new FormArray<FormControl<boolean>>([]);
-	public readonly columnsForm = new FormArray<FormControl<boolean>>(
-		this.columnConfigs().map(
-			() => new FormControl<boolean>(true, { nonNullable: true }),
-		),
-	);
-
-	public masterCheckboxType = signal<CheckboxType>('default');
-
-	public showLeftBorder = computed(() => {
-		const findFirstColumn = this.columnConfigs().find((col) => col.visible);
-
-		return !!findFirstColumn && !!findFirstColumn.subColumns?.length;
-	});
-
 	constructor() {
 		toSignal(
 			this.columnsForm.valueChanges.pipe(
 				tap((values: Array<boolean | null>) =>
-					this.updateColumnVisibility(values),
+					this.tableStateService.updateColumnVisibility(values),
 				),
 			),
-			{
-				initialValue: this.columnConfigs().map(
-					(config) => config.visible,
-				),
-			},
 		);
 
 		toSignal(
 			this.masterCheckboxCtrl.valueChanges.pipe(
 				tap((value: boolean | null) =>
-					this.onMasterCheckboxChange(value),
+					this.tableStateService.onMasterCheckboxChange(value),
 				),
 			),
 		);
@@ -229,206 +84,26 @@ export class TableExampleComponent implements OnInit {
 		toSignal(
 			this.rowCheckboxes.valueChanges.pipe(
 				tap(() => {
-					this.updateMasterCheckboxState();
+					this.tableStateService.updateMasterCheckboxState();
 				}),
 			),
 		);
 	}
 
 	public ngOnInit(): void {
-		this.initializeCheckboxes();
+		this.initializeData();
+	}
+
+	private initializeData(): void {
+		this.tableStateService.initialize(tableDataMock, columnConfigsMock);
+	}
+
+	public onDropdownItemDrop(event: CdkDragDrop<TableColumnConfig>): void {
+		this.tableStateService.onDropdownItemDrop(event);
 	}
 
 	public getRowCheckboxControl(index: number): FormControl {
-		return this.rowCheckboxes.at(index) as FormControl;
-	}
-
-	public onDropItem(event: CdkDragDrop<TableColumnConfig>): void {
-		const dropdownCols = this.dropdownColumns();
-		const allConfigs = [...this.columnConfigs()];
-		const draggedColumn = dropdownCols[event.previousIndex];
-
-		const draggedGroup = this.collectWithSubColumns(
-			draggedColumn,
-			allConfigs,
-		);
-		const updatedConfigs = this.removeColumns(allConfigs, draggedGroup);
-		const targetIndex = this.findTargetIndex(
-			event,
-			dropdownCols,
-			allConfigs,
-		);
-
-		updatedConfigs.splice(targetIndex, 0, ...draggedGroup);
-		this.columnConfigs.set(updatedConfigs);
-	}
-
-	private initializeCheckboxes(): void {
-		this.tableData.forEach(() => {
-			this.rowCheckboxes.push(
-				new FormControl<boolean>(false, { nonNullable: true }),
-			);
-		});
-	}
-
-	private onMasterCheckboxChange(value: boolean | null): void {
-		if (this.masterCheckboxType() === 'indeterminate') {
-			this.masterCheckboxType.set('default');
-		}
-
-		this.rowCheckboxes.controls.forEach((control: FormControl): void => {
-			control.setValue(value, { emitEvent: false });
-		});
-	}
-
-	private updateMasterCheckboxState(): void {
-		const checkedCount = this.rowCheckboxes.controls.filter(
-			(control) => control.value,
-		).length;
-
-		const totalCount = this.rowCheckboxes.controls.length;
-
-		const isAllChecked = checkedCount === totalCount && totalCount > 0;
-		const isNoneChecked = checkedCount === 0;
-		const isIndeterminate = !isAllChecked && !isNoneChecked;
-
-		this.masterCheckboxCtrl.setValue(isAllChecked || isIndeterminate, {
-			emitEvent: false,
-		});
-
-		isIndeterminate
-			? this.masterCheckboxType.set('indeterminate')
-			: this.masterCheckboxType.set('default');
-	}
-
-	private collectWithSubColumns(
-		parent: TableColumnConfig,
-		allConfigs: TableColumnConfig[],
-	): TableColumnConfig[] {
-		return [
-			parent,
-			...(parent.subColumns
-				?.map((subId: string) =>
-					allConfigs.find(
-						(col: TableColumnConfig) => col.id === subId,
-					),
-				)
-				.filter(
-					(col: unknown): col is TableColumnConfig =>
-						col !== undefined,
-				) || []),
-		];
-	}
-
-	private removeColumns(
-		source: TableColumnConfig[],
-		toRemove: TableColumnConfig[],
-	): TableColumnConfig[] {
-		const removeIds = new Set(
-			toRemove.map((col: TableColumnConfig) => col.id),
-		);
-
-		return source.filter(
-			(col: TableColumnConfig) => !removeIds.has(col.id),
-		);
-	}
-
-	private findTargetIndex(
-		event: CdkDragDrop<TableColumnConfig>,
-		dropdownCols: TableColumnConfig[],
-		allConfigs: TableColumnConfig[],
-	): number {
-		const { previousIndex, currentIndex } = event;
-		const draggedColumn = dropdownCols[previousIndex];
-		const isDraggingGroup = !!draggedColumn.subColumns?.length;
-
-		// Helper function to get sub-column count
-		const getSubColumnCount = (column: TableColumnConfig): number =>
-			column.subColumns?.length ?? 0;
-
-		// Case 1: Drop at the start of dropdown
-		if (currentIndex === 0) {
-			return allConfigs.findIndex((col) => col.showInDropdown) ?? 0;
-		}
-
-		// Case 2: Drop at or beyond the end of dropdown
-		if (currentIndex >= dropdownCols.length - 1) {
-			const lastVisibleIndex =
-				allConfigs
-					.map((col, idx) => (col.showInDropdown ? idx : -1))
-					.filter((idx) => idx !== -1)
-					.pop() ?? allConfigs.length;
-
-			if (lastVisibleIndex === allConfigs.length) {
-				return lastVisibleIndex;
-			}
-
-			const lastVisibleColumn = allConfigs[lastVisibleIndex];
-			let targetIndex = lastVisibleIndex + 1;
-
-			// Adjust for group vs. non-group columns
-			targetIndex +=
-				getSubColumnCount(lastVisibleColumn) *
-				(isDraggingGroup ? 0 : 1);
-			targetIndex -=
-				getSubColumnCount(draggedColumn) * (isDraggingGroup ? 1 : 0);
-
-			return targetIndex;
-		}
-
-		// Case 3: Drop in the middle
-		const targetColumn = dropdownCols[currentIndex];
-		let targetIndex =
-			allConfigs.findIndex((col) => col.id === targetColumn.id) ?? -1;
-
-		if (currentIndex > previousIndex) {
-			targetIndex +=
-				getSubColumnCount(targetColumn) * (isDraggingGroup ? 0 : 1);
-			targetIndex -=
-				getSubColumnCount(draggedColumn) * (isDraggingGroup ? 1 : 0);
-		}
-
-		return targetIndex;
-	}
-
-	private updateColumnVisibility(values: Array<boolean | null>): void {
-		const dropdownColumns = this.dropdownColumns();
-
-		this.columnConfigs.update((configs) => {
-			const updatedConfigs = [...configs];
-
-			dropdownColumns.forEach((dropdownItem) => {
-				const configIdx = updatedConfigs.findIndex(
-					(col: TableColumnConfig) => col.id === dropdownItem.id,
-				);
-
-				if (configIdx === -1) {
-					return;
-				}
-
-				const isVisible = !!values[configIdx];
-
-				updatedConfigs[configIdx].visible = isVisible;
-
-				updatedConfigs[configIdx].subColumns?.forEach(
-					(subId: string): void => {
-						const subConfigIdx = updatedConfigs.findIndex(
-							(col) => col.id === subId,
-						);
-
-						if (subConfigIdx !== -1) {
-							updatedConfigs[subConfigIdx].visible = isVisible;
-						}
-					},
-				);
-			});
-
-			return updatedConfigs;
-		});
-	}
-
-	public onItemDrop(itemPosition: unknown): void {
-		console.info(itemPosition);
+		return this.tableStateService.getRowCheckboxControl(index);
 	}
 
 	public createDragGhostExample(
@@ -445,6 +120,8 @@ export class TableExampleComponent implements OnInit {
 			  top: -9999px;
 			  left: -9999px;
 			  width: ${rect.width}px;
+			  border-right: none;
+			  border-left: none;
 			`;
 
 		clonedRow.style.cssText = `
@@ -453,7 +130,15 @@ export class TableExampleComponent implements OnInit {
 						  0px 4px 6px -2px var(--effects-shadows-3),
 						  0px 12px 16px -4px var(--effects-shadows-8);
 			  pointer-events: none;
+			  border-right: none;
+			  border-left: none;
     	`;
+
+		const cells = clonedRow.querySelectorAll('td, th');
+
+		cells.forEach((cell) => {
+			(cell as HTMLElement).style.border = 'none';
+		});
 
 		tbody.appendChild(clonedRow);
 		table.appendChild(tbody);

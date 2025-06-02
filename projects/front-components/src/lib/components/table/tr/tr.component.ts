@@ -6,12 +6,12 @@ import {
 	forwardRef,
 	inject,
 } from '@angular/core';
-import { JsonPipe, NgTemplateOutlet } from "@angular/common";
+import { NgTemplateOutlet } from '@angular/common';
 import { TableCellDirective, TableDirective } from '../directives';
 
 @Component({
 	selector: 'tr[ssTr]',
-	imports: [NgTemplateOutlet, JsonPipe],
+	imports: [NgTemplateOutlet],
 	templateUrl: './tr.component.html',
 	styleUrl: './tr.component.scss',
 	changeDetection: ChangeDetectionStrategy.OnPush,

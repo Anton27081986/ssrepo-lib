@@ -11,7 +11,6 @@ import { TableResizedDirective } from '../directives';
 	standalone: true,
 	imports: [TableResizedDirective],
 	template: `
-		
 		<ng-content />
 
 		@if (resizable()) {

@@ -6,7 +6,8 @@
 	transition: outline-color 0.3s ease;
 	background: transparent;
 	height: auto;
-	padding: 10px 14px;
+	flex-wrap: nowrap;
+	gap: 8px;
 }
 
 .input-field {

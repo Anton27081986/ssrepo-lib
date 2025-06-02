@@ -45,6 +45,7 @@ export { TabComponent } from './tab/tab.component';
 export { TabsComponent } from './tabs/tabs.component';
 export { CarouselComponent } from './carousel/carousel.component';
 export { PaginationDotsComponent } from './pagination-dots/pagination-dots.component';
+export { HintComponent } from './help-hint/hint.component';
 export { ThComponent } from './table/th/th.component';
 export { TrComponent } from './table/tr/tr.component';
 export { TdComponent } from './table/td/td.component';

@@ -39,4 +39,8 @@ export enum IconType {
 	ResizeHandle = 'resize-handle',
 	CheckCircle = 'check-circle',
 	Check = 'check',
+	CornerUpRight = 'corner-up-right',
+	PackagePlus = 'package-plus',
+	Info = 'info',
+	Search = 'search',
 }

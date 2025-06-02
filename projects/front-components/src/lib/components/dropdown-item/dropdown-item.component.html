@@ -2,6 +2,7 @@
 	tabindex="0"
 	class="dropdown-item"
 	[class.disabled]="isDisabled()"
+	[class.selected]="selected()"
 	(mouseenter)="state.set(StateTypes.Hover)"
 	(mouseleave)="state.set(StateTypes.Default)"
 	(mousedown)="state.set(StateTypes.Pressed)"
@@ -9,25 +10,36 @@
 	(focus)="checkFocus($event)"
 >
 	<ng-template #content>
-		@if (itemText()) {
-			@if (icon()) {
-				<ss-lib-icon
-					height="16"
-					width="16"
-					[icon]="icon()!"
-					[color]="iconColor()"
-				></ss-lib-icon>
-			}
+		<div class="dropdown-item__info">
+			@if (itemText()) {
+				@if (icon()) {
+					<ss-lib-icon
+						height="16"
+						width="16"
+						[icon]="icon()!"
+						[color]="iconColor()"
+					></ss-lib-icon>
+				}
 
-			<ss-lib-text
-				[type]="TextType.BodySm"
-				[weight]="TextWeight.Medium"
-				[color]="textColor()"
-			>
-				{{ itemText() }}
-			</ss-lib-text>
-		} @else {
-			<ng-content></ng-content>
+				<ss-lib-text
+					[type]="TextType.BodySm"
+					[weight]="TextWeight.Medium"
+					[color]="textColor()"
+				>
+					{{ itemText() }}
+				</ss-lib-text>
+			} @else {
+				<ng-content></ng-content>
+			}
+		</div>
+
+		@if (selected()) {
+			<ss-lib-icon
+				[icon]="IconType.Check"
+				[height]="'16'"
+				[width]="'16'"
+				[color]="Colors.IconInformation"
+			/>
 		}
 	</ng-template>
 

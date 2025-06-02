@@ -11,13 +11,23 @@
 
 	&__header {
 		padding: 24px 24px 0 24px;
+		position: relative;
 	}
 
 	&__body {
 		display: flex;
 		flex-direction: column;
 		flex-grow: 1;
-		padding: 0 24px 32px 24px;
+		padding: 12px 24px 32px 24px;
+	}
+
+	&__sticky {
+		position: sticky;
+		background: var(--surface-primary);
+		z-index: 1;
+		padding: 20px 24px 12px 24px;
+		top: 0;
+		margin-left: 1px;
 	}
 
 	&__footer {
@@ -35,5 +45,10 @@
 
 	&__divider-top {
 		padding: 20px 0;
+	}
+
+	&__divider-sticky {
+		position: relative;
+		top: 12px;
 	}
 }

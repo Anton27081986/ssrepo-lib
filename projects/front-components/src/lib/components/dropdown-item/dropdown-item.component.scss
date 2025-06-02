@@ -37,3 +37,15 @@
 	justify-content: flex-start;
 	cursor: pointer;
 }
+
+.dropdown-item__info {
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	gap: 8px;
+}
+
+.dropdown-item.selected {
+	justify-content: space-between;
+	background: var(--surface-action-hover-3);
+}

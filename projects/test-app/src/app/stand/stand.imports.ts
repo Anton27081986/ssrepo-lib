@@ -39,6 +39,7 @@ import {
 	TabsComponent,
 	CarouselComponent,
 	PaginationDotsComponent,
+	HintComponent,
 } from '../../../../front-components/src/lib/components';
 import {
 	FieldCtrlDirective,
@@ -47,6 +48,8 @@ import {
 } from '../../../../front-components/src/lib/core/directives';
 import { RepeatTimesPipe } from '../../../../front-components/src/lib/core/pipes';
 import { ExampleTableTrComponent } from '../example-table-tr/example-table-tr.component';
+import { LoadPaginationComponent } from '../../../../front-components/src/lib/components/load-pagination/load-pagination.component';
+import { TableExampleComponent } from '../table-example/table-example.component';
 
 export const standImports = [
 	ReactiveFormsModule,
@@ -96,4 +99,7 @@ export const standImports = [
 	PaginationDotsComponent,
 	TabComponent,
 	TabsComponent,
+	LoadPaginationComponent,
+	HintComponent,
+	TableExampleComponent,
 ];

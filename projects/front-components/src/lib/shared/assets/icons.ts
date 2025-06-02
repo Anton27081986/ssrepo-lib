@@ -292,4 +292,32 @@ export const ICONS = new Map<IconType, string>([
 			'<path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>' +
 			'</svg>',
 	],
+
+	[
+		IconType.CornerUpRight,
+		'<svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">' +
+			'<path d="M4 20V18.6C4 15.2397 4 13.5595 4.65396 12.2761C5.2292 11.1471 6.14708 10.2292 7.27606 9.65396C8.55953 9 10.2397 9 13.6 9H20M20 9L15 14M20 9L15 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>' +
+			'</svg>',
+	],
+
+	[
+		IconType.PackagePlus,
+		'<svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">' +
+			'<path d="M20.5 7.27774L12 12M12 12L3.49997 7.27774M12 12L12 21.5M14 20.8889L12.777 21.5683C12.4934 21.7259 12.3516 21.8046 12.2015 21.8355C12.0685 21.8629 11.9315 21.8629 11.7986 21.8355C11.6484 21.8046 11.5066 21.7259 11.223 21.5683L3.82297 17.4572C3.52346 17.2908 3.37368 17.2076 3.26463 17.0893C3.16816 16.9846 3.09515 16.8605 3.05048 16.7253C3 16.5725 3 16.4012 3 16.0585V7.94144C3 7.5988 3 7.42748 3.05048 7.27468C3.09515 7.1395 3.16816 7.01542 3.26463 6.91073C3.37368 6.79239 3.52345 6.70919 3.82297 6.54279L11.223 2.43168C11.5066 2.27412 11.6484 2.19534 11.7986 2.16445C11.9315 2.13712 12.0685 2.13712 12.2015 2.16445C12.3516 2.19534 12.4934 2.27412 12.777 2.43168L20.177 6.54279C20.4766 6.70919 20.6263 6.79239 20.7354 6.91073C20.8318 7.01542 20.9049 7.1395 20.9495 7.27468C21 7.42747 21 7.5988 21 7.94144L21 12.5M7.5 4.49999L16.5 9.49999M19 21V15M16 18H22" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>' +
+			'</svg>',
+	],
+
+	[
+		IconType.Info,
+		'<svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">' +
+			'<path d="M12 8H12.01M10.5 16H13.5H12V12H11M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>' +
+			'</svg>',
+	],
+
+	[
+		IconType.Search,
+		'<svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">' +
+			'<path d="M21 21L16.65 16.65M19 11C19 15.4183 15.4183 19 11 19C6.58172 19 3 15.4183 3 11C3 6.58172 6.58172 3 11 3C15.4183 3 19 6.58172 19 11Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>' +
+			'</svg>',
+	],
 ]);

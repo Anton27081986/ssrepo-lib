@@ -44,17 +44,34 @@
 		(focusout)="updateFormFieldStateOnFocusout()"
 	>
 		<div class="field-container__content-wrapper">
-			<div class="field-container__content">
-				<ng-content></ng-content>
+			<div class="field-container__container-left">
+				<ss-lib-icon
+					*ngIf="icon() as icon"
+					[color]="getColorIcon"
+					[icon]="icon"
+					[width]="'20'"
+					[height]="'20'"
+				></ss-lib-icon>
+				<div class="field-container__content">
+					<ng-content></ng-content>
+				</div>
 			</div>
+			@if (currentFieldCtrlState() !== ControlState.Invalid) {
+				<ss-lib-hint
+					*ngIf="tooltipInfoText()"
+					ss-lib-tooltip
+					[tooltipText]="tooltipInfoText()"
+					[icon]="IconType.Help"
+				/>
+			}
 
 			@if (showValidationFieldIcon()) {
 				<div class="field-container__error-icon">
-					<ss-lib-icon
+					<ss-lib-hint
+						ss-lib-tooltip
+						[tooltipText]="errorText()"
 						[icon]="IconType.Alert"
-						[height]="'16'"
-						[width]="'16'"
-						[color]="Colors.IconError"
+						[type]="HelpHintType.Error"
 					/>
 				</div>
 			}

@@ -7,8 +7,10 @@ import {
 	ButtonType,
 	Colors,
 	ExtraSize,
+	HintType,
 	IconPosition,
 	IconType,
+	JustifyContent,
 	LinkAppearance,
 	Orientation,
 	Shape,
@@ -28,19 +30,16 @@ import { ToastRef } from '../../../../front-components/src/lib/components';
 import { exampleDataTable } from './constants/example-data-table';
 import { TestRightSidePageComponent } from '../test-left-side-page/test-right-side-page.component';
 import { Tab } from '../../../../front-components/src/lib/shared/models/interfaces/tab';
-import { TableExampleComponent } from '../table-example/table-example.component';
 
 @Component({
 	selector: 'app-stand',
 	standalone: true,
-	imports: [...standImports, TableExampleComponent],
+	imports: [...standImports],
 	providers: [ColumnsStateService, RouterOutlet],
 	templateUrl: './stand.component.html',
 	styleUrl: './stand.component.scss',
 })
 export class StandComponent {
-	private readonly sharedPopupService = inject(SharedPopupService);
-
 	public offset: WritableSignal<number> = signal(0);
 
 	public imgCtrl = new FormControl(null);
@@ -134,6 +133,10 @@ export class StandComponent {
 	protected readonly exampleItems = exampleDataTable;
 	protected readonly bannersItems = BANNERS_ITEMS;
 
+	private readonly sharedPopupService = inject(SharedPopupService);
+
+	protected readonly JustifyContent = JustifyContent;
+	protected readonly HelpHintType = HintType;
 	constructor(
 		private readonly columnState: ColumnsStateService,
 		private readonly http: HttpClient,

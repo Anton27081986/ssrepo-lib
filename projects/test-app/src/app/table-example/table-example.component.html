@@ -3,15 +3,13 @@
 <ss-lib-dropdown-list
 	#dropdownColumn
 	[isDraggable]="true"
-	(dropItem)="onDropItem($event)"
+	(dropItem)="onDropdownItemDrop($event)"
 >
 	@for (column of dropdownColumns(); track column) {
 		<ss-lib-dropdown-item>
 			<div class="column-item__content">
 				<ss-lib-checkbox
-					[formControl]="
-						columnsForm.controls[columnConfigs().indexOf(column)]
-					"
+					[formControl]="columnsForm.controls[$index]"
 				></ss-lib-checkbox>
 
 				<ss-lib-text
@@ -224,7 +222,7 @@
 			</tr>
 		</thead>
 		<tbody class="ss-lib-table-table__tbody">
-			@for (row of tableData; track row.id) {
+			@for (row of data(); track row.id) {
 				<tr
 					ssTr
 					draggable="true"
@@ -232,7 +230,6 @@
 					class="ss-lib-table-tr"
 					[item]="row"
 					[dragGhostHandle]="createDragGhostExample"
-					(itemDrop)="onItemDrop($event)"
 				>
 					<td
 						*ssCell="'dragAction'"
