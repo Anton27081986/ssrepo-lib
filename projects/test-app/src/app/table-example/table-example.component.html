@@ -32,7 +32,7 @@
 	}
 </ss-lib-dropdown-list>
 
-<div class="new-table">
+<div class="container">
 	<table
 		ssTable
 		class="ss-lib-table-table"
@@ -46,22 +46,25 @@
 					rowspan="2"
 					class="ss-lib-table-th"
 					[resizable]="true"
-					[style.min-width.px]="200"
-					[style.width.px]="200"
 				>
-					<ss-lib-checkbox
-						[formControl]="masterCheckboxCtrl"
-						[type]="masterCheckboxType()"
-					/>
-
-					<ss-lib-text
-						[color]="Colors.TextBody2"
-						[weight]="TextWeight.Semibold"
-						[type]="TextType.BodyXs"
-						[align]="Align.Center"
+					<div
+						class="ss-lib-table-th-item ss-lib-table-th-item-align--center drag-action__content"
 					>
-						dragAction1
-					</ss-lib-text>
+						<ss-lib-checkbox
+							[formControl]="masterCheckboxCtrl"
+							[type]="masterCheckboxType()"
+						/>
+
+						<ss-lib-text
+							[color]="Colors.TextBody2"
+							[weight]="TextWeight.Semibold"
+							[type]="TextType.BodyXs"
+							[align]="Align.Center"
+							[isEllipsis]="true"
+						>
+							dragAction1
+						</ss-lib-text>
+					</div>
 				</th>
 
 				<th
@@ -70,17 +73,20 @@
 					colspan="2"
 					class="ss-lib-table-th"
 					[resizable]="true"
-					[style.min-width.px]="200"
-					[style.width.px]="200"
 				>
-					<ss-lib-text
-						[color]="Colors.TextBody2"
-						[weight]="TextWeight.Semibold"
-						[type]="TextType.BodyXs"
-						[align]="Align.Center"
+					<div
+						class="ss-lib-table-th-item ss-lib-table-th-item-align--center"
 					>
-						banner1
-					</ss-lib-text>
+						<ss-lib-text
+							[color]="Colors.TextBody2"
+							[weight]="TextWeight.Semibold"
+							[type]="TextType.BodyXs"
+							[align]="Align.Center"
+							[isEllipsis]="true"
+						>
+							banner1
+						</ss-lib-text>
+					</div>
 				</th>
 				<ng-container *ssHead="'order'" />
 				<ng-container *ssHead="'image'" />
@@ -90,17 +96,20 @@
 					rowspan="2"
 					class="ss-lib-table-th"
 					[resizable]="true"
-					[style.min-width.px]="200"
-					[style.width.px]="200"
 				>
-					<ss-lib-text
-						[color]="Colors.TextBody2"
-						[weight]="TextWeight.Semibold"
-						[type]="TextType.BodyXs"
-						[align]="Align.Center"
+					<div
+						class="ss-lib-table-th-item ss-lib-table-th-item-align--center"
 					>
-						status1
-					</ss-lib-text>
+						<ss-lib-text
+							[color]="Colors.TextBody2"
+							[weight]="TextWeight.Semibold"
+							[type]="TextType.BodyXs"
+							[align]="Align.Center"
+							[isEllipsis]="true"
+						>
+							status1
+						</ss-lib-text>
+					</div>
 				</th>
 
 				<th
@@ -109,17 +118,20 @@
 					rowspan="2"
 					class="ss-lib-table-th"
 					[resizable]="true"
-					[style.min-width.px]="200"
-					[style.width.px]="200"
 				>
-					<ss-lib-text
-						[color]="Colors.TextBody2"
-						[weight]="TextWeight.Semibold"
-						[type]="TextType.BodyXs"
-						[align]="Align.Center"
+					<div
+						class="ss-lib-table-th-item ss-lib-table-th-item-align--center"
 					>
-						action1
-					</ss-lib-text>
+						<ss-lib-text
+							[color]="Colors.TextBody2"
+							[weight]="TextWeight.Semibold"
+							[type]="TextType.BodyXs"
+							[align]="Align.Center"
+							[isEllipsis]="true"
+						>
+							action1
+						</ss-lib-text>
+					</div>
 				</th>
 				<th
 					*ssHead="'actionToggle'"
@@ -127,35 +139,37 @@
 					colspan="2"
 					class="ss-lib-table-th"
 					[resizable]="true"
-					[style.min-width.px]="200"
-					[style.width.px]="200"
 				>
-					<ss-lib-text
-						[color]="Colors.TextBody2"
-						[weight]="TextWeight.Semibold"
-						[type]="TextType.BodyXs"
-						[align]="Align.Center"
+					<div
+						class="ss-lib-table-th-item ss-lib-table-th-item-align--center"
 					>
-						actionToggle1
-					</ss-lib-text>
-					<ng-container *ssHead="'user'" />
-					<ng-container *ssHead="'period'" />
+						<ss-lib-text
+							[color]="Colors.TextBody2"
+							[weight]="TextWeight.Semibold"
+							[type]="TextType.BodyXs"
+							[align]="Align.Center"
+							[isEllipsis]="true"
+						>
+							actionToggle1
+						</ss-lib-text>
+					</div>
 				</th>
+				<ng-container *ssHead="'user'" />
+				<ng-container *ssHead="'period'" />
 			</tr>
 			<tr ssThGroup>
 				<th
 					*ssHead="'order'"
 					ssTh
 					class="ss-lib-table-th"
-					[resizable]="true"
-					[style.min-width.px]="200"
-					[style.width.px]="200"
+					[ngClass]="{ 'has-left-border': showLeftBorder() }"
 				>
 					<ss-lib-text
 						[color]="Colors.TextBody2"
 						[weight]="TextWeight.Semibold"
 						[type]="TextType.BodyXs"
 						[align]="Align.Center"
+						[isEllipsis]="true"
 					>
 						order1
 					</ss-lib-text>
@@ -164,15 +178,13 @@
 					*ssHead="'image'"
 					ssTh
 					class="ss-lib-table-th"
-					[resizable]="true"
-					[style.min-width.px]="200"
-					[style.width.px]="200"
 				>
 					<ss-lib-text
 						[color]="Colors.TextBody2"
 						[weight]="TextWeight.Semibold"
 						[type]="TextType.BodyXs"
 						[align]="Align.Center"
+						[isEllipsis]="true"
 					>
 						image1
 					</ss-lib-text>
@@ -181,12 +193,14 @@
 					*ssHead="'user'"
 					ssTh
 					class="ss-lib-table-th"
+					[ngClass]="{ 'has-left-border': showLeftBorder() }"
 				>
 					<ss-lib-text
 						[color]="Colors.TextBody2"
 						[weight]="TextWeight.Semibold"
 						[type]="TextType.BodyXs"
 						[align]="Align.Center"
+						[isEllipsis]="true"
 					>
 						user1
 					</ss-lib-text>
@@ -202,6 +216,7 @@
 						[weight]="TextWeight.Semibold"
 						[type]="TextType.BodyXs"
 						[align]="Align.Center"
+						[isEllipsis]="true"
 					>
 						period1
 					</ss-lib-text>
@@ -214,13 +229,19 @@
 					ssTr
 					draggable="true"
 					ssDraggableItem
-					class="ss-lib-table-td"
+					class="ss-lib-table-tr"
 					[item]="row"
 					[dragGhostHandle]="createDragGhostExample"
 					(itemDrop)="onItemDrop($event)"
 				>
-					<td *ssCell="'dragAction'">
-						<div class="drag-action__content">
+					<td
+						*ssCell="'dragAction'"
+						ssTd
+						class="ss-lib-table-td"
+					>
+						<div
+							class="ss-lib-table-td-item ss-lib-table-td-item-align--center drag-action__content"
+						>
 							<ss-lib-checkbox
 								[formControl]="getRowCheckboxControl($index)"
 							>
@@ -235,61 +256,108 @@
 							</ss-lib-text>
 						</div>
 					</td>
-					<ng-container *ssCell="'banner'"></ng-container>
-					<td *ssCell="'order'">
-						<ss-lib-text
-							[type]="TextType.BodySm"
-							[weight]="TextWeight.Regular"
-							[align]="Align.Center"
+					<td
+						*ssCell="'order'"
+						ssTd
+						class="ss-lib-table-td"
+					>
+						<div
+							class="ss-lib-table-td-item ss-lib-table-td-item-align--center drag-action__content"
 						>
-							{{ row.order }}
-						</ss-lib-text>
+							<ss-lib-text
+								[type]="TextType.BodySm"
+								[weight]="TextWeight.Regular"
+								[align]="Align.Center"
+							>
+								{{ row.order }}
+							</ss-lib-text>
+						</div>
 					</td>
-					<td *ssCell="'image'">
-						<ss-lib-text
-							[type]="TextType.BodySm"
-							[weight]="TextWeight.Regular"
-							[align]="Align.Center"
+					<td
+						*ssCell="'image'"
+						ssTd
+						class="ss-lib-table-td"
+					>
+						<div
+							class="ss-lib-table-td-item ss-lib-table-td-item-align--center drag-action__content"
 						>
-							{{ row.image }}
-						</ss-lib-text>
+							<ss-lib-text
+								[type]="TextType.BodySm"
+								[weight]="TextWeight.Regular"
+								[align]="Align.Center"
+							>
+								{{ row.image }}
+							</ss-lib-text>
+						</div>
 					</td>
-					<td *ssCell="'status'">
-						<ss-lib-text
-							[type]="TextType.BodySm"
-							[weight]="TextWeight.Regular"
-							[align]="Align.Center"
+					<td
+						*ssCell="'status'"
+						ssTd
+						class="ss-lib-table-td"
+					>
+						<div
+							class="ss-lib-table-td-item ss-lib-table-td-item-align--center drag-action__content"
 						>
-							{{ row.status }}
-						</ss-lib-text>
+							<ss-lib-text
+								[type]="TextType.BodySm"
+								[weight]="TextWeight.Regular"
+								[align]="Align.Center"
+							>
+								{{ row.status }}
+							</ss-lib-text>
+						</div>
 					</td>
-					<td *ssCell="'action'">
-						<ss-lib-text
-							[type]="TextType.BodySm"
-							[weight]="TextWeight.Regular"
-							[align]="Align.Center"
+					<td
+						*ssCell="'action'"
+						ssTd
+						class="ss-lib-table-td"
+					>
+						<div
+							class="ss-lib-table-td-item ss-lib-table-td-item-align--center drag-action__content"
 						>
-							{{ row.action }}
-						</ss-lib-text>
+							<ss-lib-text
+								[type]="TextType.BodySm"
+								[weight]="TextWeight.Regular"
+								[align]="Align.Center"
+							>
+								{{ row.action }}
+							</ss-lib-text>
+						</div>
 					</td>
 					<ng-container *ssCell="'actionToggle'"></ng-container>
-					<td *ssCell="'user'">
-						<ss-lib-text
-							[type]="TextType.BodySm"
-							[weight]="TextWeight.Regular"
-							[align]="Align.Center"
+					<td
+						*ssCell="'user'"
+						ssTd
+						class="ss-lib-table-td"
+					>
+						<div
+							class="ss-lib-table-td-item ss-lib-table-td-item-align--center drag-action__content"
 						>
-							{{ row.user }}
-						</ss-lib-text>
+							<ss-lib-text
+								[type]="TextType.BodySm"
+								[weight]="TextWeight.Regular"
+								[align]="Align.Center"
+							>
+								{{ row.user }}
+							</ss-lib-text>
+						</div>
 					</td>
-					<td *ssCell="'period'">
-						<ss-lib-text
-							[type]="TextType.BodySm"
-							[weight]="TextWeight.Regular"
-							[align]="Align.Center"
+					<td
+						*ssCell="'period'"
+						ssTd
+						class="ss-lib-table-td"
+					>
+						<div
+							class="ss-lib-table-td-item ss-lib-table-td-item-align--center drag-action__content"
 						>
-							{{ row.period }}
-						</ss-lib-text>
+							<ss-lib-text
+								[type]="TextType.BodySm"
+								[weight]="TextWeight.Regular"
+								[align]="Align.Center"
+							>
+								{{ row.period }}
+							</ss-lib-text>
+						</div>
 					</td>
 				</tr>
 			}

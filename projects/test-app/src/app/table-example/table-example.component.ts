@@ -17,6 +17,7 @@ import {
 	TableDirective,
 	TableHeadDirective,
 	TableThGroupComponent,
+	TdComponent,
 	ThComponent,
 	TrComponent,
 } from '../../../../front-components/src/lib/components';
@@ -38,6 +39,7 @@ import {
 import { PopoverTriggerForDirective } from '../../../../front-components/src/lib/core/directives';
 import { CheckboxType } from '../../../../front-components/src/lib/shared/models/types/check-box-type';
 import { TableColumnConfig } from '../../../../front-components/src/lib/components/table/models/table-column-config';
+import { NgClass } from '@angular/common';
 
 interface TableRow {
 	id: number;
@@ -67,11 +69,13 @@ interface TableRow {
 		IconComponent,
 		ThComponent,
 		TrComponent,
+		TdComponent,
 		DraggableItemDirective,
 		TableDirective,
 		TableCellDirective,
 		TableHeadDirective,
 		TableThGroupComponent,
+		NgClass,
 	],
 	templateUrl: './table-example.component.html',
 	styleUrl: './table-example.component.scss',
@@ -143,6 +147,7 @@ export class TableExampleComponent implements OnInit {
 		{ id: 'order', name: 'Order', showInDropdown: false, visible: true },
 		{ id: 'image', name: 'Image', showInDropdown: false, visible: true },
 		{ id: 'status', name: 'Status', showInDropdown: true, visible: true },
+		{ id: 'action', name: 'Action', showInDropdown: true, visible: true },
 		{
 			id: 'actionToggle',
 			name: 'Action Toggle',
@@ -152,7 +157,6 @@ export class TableExampleComponent implements OnInit {
 		},
 		{ id: 'user', name: 'User', showInDropdown: false, visible: true },
 		{ id: 'period', name: 'Period', showInDropdown: false, visible: true },
-		{ id: 'action', name: 'Action', showInDropdown: true, visible: true },
 	]);
 
 	protected readonly columns = signal<string[]>([
@@ -161,10 +165,10 @@ export class TableExampleComponent implements OnInit {
 		'image',
 		'banner',
 		'status',
+		'action',
 		'actionToggle',
 		'user',
 		'period',
-		'action',
 	]);
 
 	// Computed signals
@@ -193,6 +197,12 @@ export class TableExampleComponent implements OnInit {
 	);
 
 	public masterCheckboxType = signal<CheckboxType>('default');
+
+	public showLeftBorder = computed(() => {
+		const findFirstColumn = this.columnConfigs().find((col) => col.visible);
+
+		return !!findFirstColumn && !!findFirstColumn.subColumns?.length;
+	});
 
 	constructor() {
 		toSignal(
@@ -328,27 +338,57 @@ export class TableExampleComponent implements OnInit {
 		dropdownCols: TableColumnConfig[],
 		allConfigs: TableColumnConfig[],
 	): number {
+		const { previousIndex, currentIndex } = event;
+		const draggedColumn = dropdownCols[previousIndex];
+		const isDraggingGroup = !!draggedColumn.subColumns?.length;
+
+		// Helper function to get sub-column count
+		const getSubColumnCount = (column: TableColumnConfig): number =>
+			column.subColumns?.length ?? 0;
+
 		// Case 1: Drop at the start of dropdown
-		if (event.currentIndex === 0) {
+		if (currentIndex === 0) {
 			return allConfigs.findIndex((col) => col.showInDropdown) ?? 0;
 		}
 
 		// Case 2: Drop at or beyond the end of dropdown
-		if (event.currentIndex >= dropdownCols.length - 1) {
-			const lastVisibleIndex = allConfigs
-				.map((col, idx) => (col.showInDropdown ? idx : -1))
-				.filter((idx) => idx !== -1)
-				.pop();
+		if (currentIndex >= dropdownCols.length - 1) {
+			const lastVisibleIndex =
+				allConfigs
+					.map((col, idx) => (col.showInDropdown ? idx : -1))
+					.filter((idx) => idx !== -1)
+					.pop() ?? allConfigs.length;
 
-			return lastVisibleIndex !== undefined
-				? lastVisibleIndex + 1
-				: allConfigs.length;
+			if (lastVisibleIndex === allConfigs.length) {
+				return lastVisibleIndex;
+			}
+
+			const lastVisibleColumn = allConfigs[lastVisibleIndex];
+			let targetIndex = lastVisibleIndex + 1;
+
+			// Adjust for group vs. non-group columns
+			targetIndex +=
+				getSubColumnCount(lastVisibleColumn) *
+				(isDraggingGroup ? 0 : 1);
+			targetIndex -=
+				getSubColumnCount(draggedColumn) * (isDraggingGroup ? 1 : 0);
+
+			return targetIndex;
 		}
 
 		// Case 3: Drop in the middle
-		const targetColumn = dropdownCols[event.currentIndex];
+		const targetColumn = dropdownCols[currentIndex];
+		let targetIndex =
+			allConfigs.findIndex((col) => col.id === targetColumn.id) ?? -1;
 
-		return allConfigs.findIndex((col) => col.id === targetColumn.id) ?? -1;
+		if (currentIndex > previousIndex) {
+			targetIndex +=
+				getSubColumnCount(targetColumn) * (isDraggingGroup ? 0 : 1);
+			targetIndex -=
+				getSubColumnCount(draggedColumn) * (isDraggingGroup ? 1 : 0);
+		}
+
+		return targetIndex;
 	}
 
 	private updateColumnVisibility(values: Array<boolean | null>): void {

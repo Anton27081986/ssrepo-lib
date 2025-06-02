@@ -29,3 +29,7 @@
   align-items: center;
   gap: 15px;
 }
+
+.has-left-border {
+  border-left: 1px solid var(--border-primary) !important;
+}

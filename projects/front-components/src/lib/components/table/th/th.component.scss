@@ -1,52 +1,60 @@
-th:first-child {
-	border-radius: 8px 0 0 0;
-}
-
-th:last-child {
-	border-radius: 0 8px 0 0;
-}
-
 :host {
 	background-color: var(--surface-information-2);
-	//border-bottom: 1px solid var(--border-primary);
 	height: 41px;
 	position: relative;
-	//overflow: auto;
-	//min-width: 500px;
 	border: 1px solid var(--border-primary);
+	border-radius: 0;
 
-	&:not(:first-child) {
-		border-inline-start: none;
-	}
-
-	&:first-child {
-		border-radius: 8px 0 0 0;
-	}
-
-	&:last-child {
-		border-radius: 0 8px 0 0;
-	}
+	border-left: 1px solid var(--border-primary);
+	border-right: 1px solid var(--border-primary);
 }
+
+/* Если у th colspan > 1 — убираем у него левую границу, чтобы не было дублирования */
+:host([colspan]:not(:first-child)) {
+	border-left: none;
+}
+
+
+:host(th:not([colspan]):not([rowspan]):first-of-type) {
+	border-left: none;
+}
+
+
+/* В первой строке шапки (thead), у первого th убираем левую границу */
+:host-context(thead tr:first-child) :host(:first-child) {
+	//border-left: none;
+}
+
+/* В первой строке шапки (thead), у последнего th убираем правую границу */
+//:host-context(thead tr:first-child) :host(:last-child) {
+//	border-right: none;
+//}
+
 
 :host-context(tr:not(:first-child)) {
-	border-block-start: none;
+	border-top: none !important;
 }
 
+:host-context(thead[tuiThead]) {
+	position: sticky;
+}
+
+/* Стиль для resize-бара */
 .t-bar {
 	position: absolute;
 	top: 0;
 	bottom: 0;
 	right: -1px;
-	inline-size: 3px;
+	inline-size: 4px;
 	justify-self: flex-end;
 	border-inline-start: 2px solid transparent;
-	background: red;
+	background: var(--border-focus);
 	background-clip: content-box;
 	cursor: ew-resize;
 	opacity: 0;
+}
 
-	&:hover,
-	&:active {
-		opacity: 1;
-	}
+.t-bar:hover,
+.t-bar:active {
+	opacity: 1;
 }

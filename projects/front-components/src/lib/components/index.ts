@@ -47,6 +47,7 @@ export { CarouselComponent } from './carousel/carousel.component';
 export { PaginationDotsComponent } from './pagination-dots/pagination-dots.component';
 export { ThComponent } from './table/th/th.component';
 export { TrComponent } from './table/tr/tr.component';
+export { TdComponent } from './table/td/td.component';
 export { TableThGroupComponent } from './table/th-group/th-group.component';
 export {
 	TableCellDirective,

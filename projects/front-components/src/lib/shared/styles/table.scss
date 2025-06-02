@@ -28,13 +28,17 @@
 		border-spacing: 0;
 		table-layout: fixed;
 		overflow: hidden;
+		transition: width 0.1s ease;
 
 		border: var(--ss-lib-table-border);
 		border-radius: var(--ss-lib-table-border-radius);
 
 		th {
 			display: table-cell;
-			border: 1px solid var(--border-primary);
+			position: relative;
+			overflow: hidden;
+			white-space: nowrap;
+			text-overflow: ellipsis;
 		}
 
 		th:not(:first-child) {
@@ -121,7 +125,7 @@
 	}
 
 	&-td {
-		border-bottom: var(--ss-lib-table-td-border-bottom);
+		border-bottom: 1px solid var(--border-primary);
 		height: 82px;
 	}
 
