@@ -3,7 +3,6 @@ import { FormControl, Validators } from '@angular/forms';
 import { catchError, Observable, of, Subscription } from 'rxjs';
 import { HttpClient, HttpEventType } from '@angular/common/http';
 import { RouterOutlet } from '@angular/router';
-import { NgOptimizedImage } from '@angular/common';
 import {
 	ButtonType,
 	Colors,
@@ -35,7 +34,7 @@ import { Tab } from '../../../../front-components/src/lib/shared/models/interfac
 @Component({
 	selector: 'app-stand',
 	standalone: true,
-	imports: [...standImports, NgOptimizedImage],
+	imports: [...standImports],
 	providers: [ColumnsStateService, RouterOutlet],
 	templateUrl: './stand.component.html',
 	styleUrl: './stand.component.scss',
@@ -147,8 +146,6 @@ export class StandComponent {
 		this.checkBox2.disable();
 
 		this.checkBox3.disable();
-
-		// this.inputCtrl.disable();
 	}
 
 	public openTestModal(): void {

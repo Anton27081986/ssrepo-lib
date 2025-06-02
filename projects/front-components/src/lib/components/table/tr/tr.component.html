@@ -1,0 +1,10 @@
+@for (key of table.columns(); track key) {
+	<ng-container
+		[ngTemplateOutlet]="
+			(cellByKey()[key] && cellByKey()[key].template) || plain
+		"
+		[ngTemplateOutletContext]="{ $implicit: key }"
+	>
+		<ng-template #plain> </ng-template>
+	</ng-container>
+}

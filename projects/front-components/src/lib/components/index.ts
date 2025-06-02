@@ -20,7 +20,6 @@ export { CanvasContentComponent } from './canvas-content/canvas-content.componen
 export { TableComponent } from './table/table.component';
 export { ColumnsStateService } from './table/columns.state.service';
 export { EmptyStateComponent } from './empty-state/empty-state.component';
-export { SkeletonTableComponent } from './skeleton/skeleton-table/skeleton-table.component';
 export { SkeletonBlockComponent } from './skeleton/skeleton-block/skeleton-block.component';
 export { BadgeComponent } from './badge/badge.component';
 export { ModalComponent } from './modal/modal.component';
@@ -47,3 +46,13 @@ export { TabsComponent } from './tabs/tabs.component';
 export { CarouselComponent } from './carousel/carousel.component';
 export { PaginationDotsComponent } from './pagination-dots/pagination-dots.component';
 export { HintComponent } from './help-hint/hint.component';
+export { ThComponent } from './table/th/th.component';
+export { TrComponent } from './table/tr/tr.component';
+export { TdComponent } from './table/td/td.component';
+export { TableThGroupComponent } from './table/th-group/th-group.component';
+export {
+	TableCellDirective,
+	TableHeadDirective,
+	TableResizedDirective,
+	TableDirective,
+} from './table/directives';

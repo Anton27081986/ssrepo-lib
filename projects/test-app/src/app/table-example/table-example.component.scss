@@ -1,0 +1,35 @@
+.new-table {
+  width: 100%;
+  overflow-x: auto;
+  max-width: none; /* Убираем ограничения */
+  box-sizing: border-box;
+}
+
+.container {
+  min-width: 100%;
+  width: auto;
+  display: inline-block;
+  overflow-x: auto; /* Для горизонтальной прокрутки, если таблица шире */
+}
+
+.ss-table {
+  width: 100%;
+  min-width: 100%;
+  table-layout: auto;
+  border-collapse: collapse;
+}
+
+.column-item__content {
+  display: flex;
+  align-items: center;
+}
+
+.drag-action__content {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.has-left-border {
+  border-left: 1px solid var(--border-primary) !important;
+}

@@ -467,10 +467,6 @@
 
 <br />
 
-<div class="skeleton-table">
-	<ss-lib-skeleton-table></ss-lib-skeleton-table>
-</div>
-
 <ss-lib-button
 	[type]="ButtonType.Primary"
 	[text]="'Модалка - компонент'"
@@ -732,3 +728,19 @@
 		/>
 	</ss-lib-form-field>
 </div>
+
+<br />
+
+<app-table-example></app-table-example>
+<br />
+<br />
+<br />
+
+<ss-lib-table>
+	<tr
+		*ngFor="let item of exampleItems"
+		class="ss-lib-table-tr"
+		app-example-table-tr
+		[item]="item"
+	></tr>
+</ss-lib-table>
