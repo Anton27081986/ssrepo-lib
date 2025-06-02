@@ -1,0 +1,19 @@
+:host {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+
+.ss-lib-filters {
+	&__selected {
+		display: flex;
+		gap: 16px;
+
+		&-item {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			gap: 4px;
+		}
+	}
+}

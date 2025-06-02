@@ -1,0 +1,57 @@
+<ss-lib-button
+	[popoverTriggerFor]="dropdown1"
+	[text]="'Фильтры'"
+	[icon]="IconType.FilterLines"
+	[type]="ButtonType.Secondary"
+	[iconPosition]="IconPosition.Start"
+></ss-lib-button>
+
+<ss-lib-dropdown-list #dropdown1>
+	<ss-lib-dropdown-item
+		*ngFor="let filter of filters()"
+		[label]="filter.text"
+		[isDisabled]="filter.active"
+		(click)="selectedFilter(filter)"
+	/>
+</ss-lib-dropdown-list>
+
+<ss-lib-divider></ss-lib-divider>
+
+<div class="ss-lib-filters__selected">
+	<div
+		*ngFor="let filter of activeFilters()"
+		class="ss-lib-filters__selected-item"
+	>
+		<ss-lib-button
+			[type]="ButtonType.Secondary"
+			[text]="filter.text"
+			[iconPosition]="IconPosition.Start"
+			[icon]="IconType.FilterLines"
+			[size]="ExtraSize.sm"
+			[popoverTriggerFor]="filterTemp"
+		></ss-lib-button>
+
+		<ss-lib-dropdown-list
+			#filterTemp
+			[width]="'348px'"
+		>
+			<ng-container
+				*ngComponentOutlet="
+					filter.valueComponent;
+					inputs: getControl(filter)
+				"
+			></ng-container>
+		</ss-lib-dropdown-list>
+
+		<ss-lib-button
+			[icon]="IconType.Close"
+			[type]="ButtonType.Text"
+			(click)="selectedFilter(filter)"
+		></ss-lib-button>
+	</div>
+	<ss-lib-button
+		*ngIf="activeFilters().length"
+		[text]="'Очистить все'"
+		(click)="clearAllFilter()"
+	></ss-lib-button>
+</div>
