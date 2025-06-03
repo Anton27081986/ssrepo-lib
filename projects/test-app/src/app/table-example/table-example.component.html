@@ -33,21 +33,18 @@
 <div class="container">
 	<table
 		ssTable
-		class="ss-lib-table-table"
+		class="ss-table"
 		[columns]="visibleColumns()"
 	>
-		<thead class="ss-lib-table-table__thead">
+		<thead>
 			<tr ssThGroup>
 				<th
 					*ssHead="'dragAction'"
 					ssTh
 					rowspan="2"
-					class="ss-lib-table-th"
 					[resizable]="true"
 				>
-					<div
-						class="ss-lib-table-th-item ss-lib-table-th-item-align--center drag-action__content"
-					>
+					<div class="item-align--center drag-action__content">
 						<ss-lib-checkbox
 							[formControl]="masterCheckboxCtrl"
 							[type]="masterCheckboxType()"
@@ -69,12 +66,9 @@
 					*ssHead="'banner'"
 					ssTh
 					colspan="2"
-					class="ss-lib-table-th"
 					[resizable]="true"
 				>
-					<div
-						class="ss-lib-table-th-item ss-lib-table-th-item-align--center"
-					>
+					<div class="item-align--center">
 						<ss-lib-text
 							[color]="Colors.TextBody2"
 							[weight]="TextWeight.Semibold"
@@ -92,12 +86,9 @@
 					*ssHead="'status'"
 					ssTh
 					rowspan="2"
-					class="ss-lib-table-th"
 					[resizable]="true"
 				>
-					<div
-						class="ss-lib-table-th-item ss-lib-table-th-item-align--center"
-					>
+					<div class="item-align--center">
 						<ss-lib-text
 							[color]="Colors.TextBody2"
 							[weight]="TextWeight.Semibold"
@@ -114,12 +105,9 @@
 					*ssHead="'action'"
 					ssTh
 					rowspan="2"
-					class="ss-lib-table-th"
 					[resizable]="true"
 				>
-					<div
-						class="ss-lib-table-th-item ss-lib-table-th-item-align--center"
-					>
+					<div class="item-align--center">
 						<ss-lib-text
 							[color]="Colors.TextBody2"
 							[weight]="TextWeight.Semibold"
@@ -135,12 +123,9 @@
 					*ssHead="'actionToggle'"
 					ssTh
 					colspan="2"
-					class="ss-lib-table-th"
 					[resizable]="true"
 				>
-					<div
-						class="ss-lib-table-th-item ss-lib-table-th-item-align--center"
-					>
+					<div class="item-align--center">
 						<ss-lib-text
 							[color]="Colors.TextBody2"
 							[weight]="TextWeight.Semibold"
@@ -159,7 +144,6 @@
 				<th
 					*ssHead="'order'"
 					ssTh
-					class="ss-lib-table-th"
 					[ngClass]="{ 'has-left-border': showLeftBorder() }"
 				>
 					<ss-lib-text
@@ -175,7 +159,6 @@
 				<th
 					*ssHead="'image'"
 					ssTh
-					class="ss-lib-table-th"
 				>
 					<ss-lib-text
 						[color]="Colors.TextBody2"
@@ -190,7 +173,6 @@
 				<th
 					*ssHead="'user'"
 					ssTh
-					class="ss-lib-table-th"
 					[ngClass]="{ 'has-left-border': showLeftBorder() }"
 				>
 					<ss-lib-text
@@ -207,7 +189,6 @@
 				<th
 					*ssHead="'period'"
 					ssTh
-					class="ss-lib-table-th"
 				>
 					<ss-lib-text
 						[color]="Colors.TextBody2"
@@ -221,24 +202,20 @@
 				</th>
 			</tr>
 		</thead>
-		<tbody class="ss-lib-table-table__tbody">
+		<tbody>
 			@for (row of data(); track row.id) {
 				<tr
 					ssTr
 					draggable="true"
 					ssDraggableItem
-					class="ss-lib-table-tr"
 					[item]="row"
 					[dragGhostHandle]="createDragGhostExample"
 				>
 					<td
 						*ssCell="'dragAction'"
 						ssTd
-						class="ss-lib-table-td"
 					>
-						<div
-							class="ss-lib-table-td-item ss-lib-table-td-item-align--center drag-action__content"
-						>
+						<div class="item-align--center drag-action__content">
 							<ss-lib-checkbox
 								[formControl]="getRowCheckboxControl($index)"
 							>
@@ -256,11 +233,8 @@
 					<td
 						*ssCell="'order'"
 						ssTd
-						class="ss-lib-table-td"
 					>
-						<div
-							class="ss-lib-table-td-item ss-lib-table-td-item-align--center drag-action__content"
-						>
+						<div class="item-align--center drag-action__content">
 							<ss-lib-text
 								[type]="TextType.BodySm"
 								[weight]="TextWeight.Regular"
@@ -273,11 +247,8 @@
 					<td
 						*ssCell="'image'"
 						ssTd
-						class="ss-lib-table-td"
 					>
-						<div
-							class="ss-lib-table-td-item ss-lib-table-td-item-align--center drag-action__content"
-						>
+						<div class="item-align--center drag-action__content">
 							<ss-lib-text
 								[type]="TextType.BodySm"
 								[weight]="TextWeight.Regular"
@@ -290,11 +261,8 @@
 					<td
 						*ssCell="'status'"
 						ssTd
-						class="ss-lib-table-td"
 					>
-						<div
-							class="ss-lib-table-td-item ss-lib-table-td-item-align--center drag-action__content"
-						>
+						<div class="item-align--center drag-action__content">
 							<ss-lib-text
 								[type]="TextType.BodySm"
 								[weight]="TextWeight.Regular"
@@ -307,11 +275,8 @@
 					<td
 						*ssCell="'action'"
 						ssTd
-						class="ss-lib-table-td"
 					>
-						<div
-							class="ss-lib-table-td-item ss-lib-table-td-item-align--center drag-action__content"
-						>
+						<div class="item-align--center drag-action__content">
 							<ss-lib-text
 								[type]="TextType.BodySm"
 								[weight]="TextWeight.Regular"
@@ -325,11 +290,8 @@
 					<td
 						*ssCell="'user'"
 						ssTd
-						class="ss-lib-table-td"
 					>
-						<div
-							class="ss-lib-table-td-item ss-lib-table-td-item-align--center drag-action__content"
-						>
+						<div class="item-align--center drag-action__content">
 							<ss-lib-text
 								[type]="TextType.BodySm"
 								[weight]="TextWeight.Regular"
@@ -342,11 +304,8 @@
 					<td
 						*ssCell="'period'"
 						ssTd
-						class="ss-lib-table-td"
 					>
-						<div
-							class="ss-lib-table-td-item ss-lib-table-td-item-align--center drag-action__content"
-						>
+						<div class="item-align--center drag-action__content">
 							<ss-lib-text
 								[type]="TextType.BodySm"
 								[weight]="TextWeight.Regular"

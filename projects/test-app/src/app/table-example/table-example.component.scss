@@ -1,35 +1,44 @@
 .new-table {
-  width: 100%;
-  overflow-x: auto;
-  max-width: none; /* Убираем ограничения */
-  box-sizing: border-box;
+	width: 100%;
+	overflow-x: auto;
+	max-width: none; /* Убираем ограничения */
+	box-sizing: border-box;
 }
 
 .container {
-  min-width: 100%;
-  width: auto;
-  display: inline-block;
-  overflow-x: auto; /* Для горизонтальной прокрутки, если таблица шире */
+	min-width: 100%;
+	width: auto;
+	display: inline-block;
+	overflow-x: auto; /* Для горизонтальной прокрутки, если таблица шире */
 }
 
 .ss-table {
-  width: 100%;
-  min-width: 100%;
-  table-layout: auto;
-  border-collapse: collapse;
+	width: 100%;
+	position: relative;
+	border-collapse: collapse;
+	border-spacing: 0;
+	table-layout: fixed;
+	overflow: hidden;
+	transition: width 0.1s ease;
+
+	border-radius: var(--border-radius-md) var(--border-radius-md) 0 0;
 }
 
 .column-item__content {
-  display: flex;
-  align-items: center;
+	display: flex;
+	align-items: center;
 }
 
 .drag-action__content {
-  display: flex;
-  align-items: center;
-  gap: 15px;
+	display: flex;
+	align-items: center;
+	gap: 15px;
+}
+
+.item-align--center {
+	justify-content: center;
 }
 
 .has-left-border {
-  border-left: 1px solid var(--border-primary) !important;
+	border-left: 1px solid var(--border-primary) !important;
 }

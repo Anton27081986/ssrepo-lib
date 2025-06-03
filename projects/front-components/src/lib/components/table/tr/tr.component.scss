@@ -1,3 +1,74 @@
 :host {
 	box-sizing: border-box;
+	background-color: var(--surface-primary);
+	transition: all 0.2s ease;
+
+	&:hover {
+		background-color: var(--surface-action-hover-3) !important;
+	}
+
+	&.dragging:not(.drag-over) {
+		background-color: var(--surface-action-pressed-3);
+	}
+
+	&.drag-over:not(.dragging):not(:last-child) {
+		background-color: var(--surface-information-selected-2);
+		box-shadow: 0 4px 0 0 var(--border-focus) inset;
+		z-index: 2;
+	}
+
+	&.drag-over:not(.dragging):last-child:not(:first-child) {
+		background-color: var(--surface-information-2);
+		box-shadow: 0px -4px 0px 0px var(--border-focus) inset;
+		z-index: 2;
+	}
+
+	&.drag-over.dragging {
+		background-color: var(--surface-action-pressed-3) !important;
+		z-index: 2;
+	}
+
+	&.drag-over.dragging:not(:last-child) {
+		box-shadow: 0 3px 0 0 var(--border-secondary) inset;
+		z-index: 2;
+	}
+
+	&.drag-over.dragging:last-child:not(:first-child) {
+		box-shadow: 0 -3px 0 0 var(--border-secondary) inset;
+		z-index: 2;
+	}
+
+	//// При ховере строки — делаем границы прозрачными
+	//&:hover td,
+	//&:hover th,
+	//&.dragging td,
+	//&.dragging th,
+	//&.drag-over td,
+	//&.drag-over th {
+	//	border-color: transparent !important;
+	//}
+	//
+	//// Но сохраняем левую границу у первой ячейки
+	//&:hover td:first-child,
+	//&:hover th:first-child,
+	//&.dragging td:first-child,
+	//&.dragging th:first-child,
+	//&.drag-over td:first-child,
+	//&.drag-over th:first-child {
+	//	border-left-color: var(--border-primary) !important;
+	//}
+	//
+	//// И правую границу у последней ячейки
+	//&:hover td:last-child,
+	//&:hover th:last-child,
+	//&.dragging td:last-child,
+	//&.dragging th:last-child {
+	//	border-right-color: var(--border-primary) !important;
+	//}
+	//
+	//// У последней строки — нижняя граница
+	//&:last-child td,
+	//&:last-child th {
+	//	border-bottom-color: var(--border-primary) !important;
+	//}
 }
