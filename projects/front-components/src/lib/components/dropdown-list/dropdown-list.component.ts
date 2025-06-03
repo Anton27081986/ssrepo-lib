@@ -12,10 +12,12 @@ import {
 import { outputToObservable, toSignal } from '@angular/core/rxjs-interop';
 import { tap } from 'rxjs';
 import { NgTemplateOutlet } from '@angular/common';
+import { CdkDrag, CdkDragDrop, CdkDropList } from '@angular/cdk/drag-drop';
 import type { IDictionaryItemDto, PopoverContent } from '../../shared/models';
 import { DropdownItemComponent } from '../dropdown-item/dropdown-item.component';
 import { DividerComponent } from '../divider/divider.component';
 import { ScrollbarComponent } from '../scrollbar/scrollbar.component';
+import { TableColumnConfig } from '../table/models';
 
 /**
  * Компонент выпадающего списка с поддержкой кастомных шаблонов, прокрутки и динамического контента
@@ -32,6 +34,9 @@ import { ScrollbarComponent } from '../scrollbar/scrollbar.component';
  *
  * [height]: string - Высота выпадающего списка - необязательный,
  * по умолчанию: 'auto'
+ *
+ * [isDraggable]: boolean - Возможность перетскивания,
+ * по умолчанию: 'false'
  *
  * (value): T | string | null - Событие выбора элемента - обязательный
  *
@@ -62,7 +67,14 @@ import { ScrollbarComponent } from '../scrollbar/scrollbar.component';
 	templateUrl: './dropdown-list.component.html',
 	styleUrl: './dropdown-list.component.scss',
 	changeDetection: ChangeDetectionStrategy.OnPush,
-	imports: [NgTemplateOutlet, DividerComponent, ScrollbarComponent],
+	imports: [
+		NgTemplateOutlet,
+		DividerComponent,
+		ScrollbarComponent,
+		CdkDrag,
+		CdkDropList,
+		DropdownItemComponent,
+	],
 })
 export class DropdownListComponent<
 	T extends IDictionaryItemDto = IDictionaryItemDto,
@@ -78,8 +90,11 @@ export class DropdownListComponent<
 
 	public readonly width = input<string>('max-content');
 	public readonly height = input<string>('auto');
+	public readonly isDraggable = input<boolean>(false);
+
 	public readonly closed = output<void>();
 	public readonly value = output<T | string | null>();
+	public readonly dropItem = output<CdkDragDrop<TableColumnConfig>>();
 
 	constructor(@Inject(Injector) private readonly injector: Injector) {
 		afterNextRender(() => {
@@ -98,5 +113,9 @@ export class DropdownListComponent<
 	public selectOption(item: T | string | null): void {
 		this.value.emit(item);
 		this.closed.emit();
+	}
+
+	public onDropItem(event: CdkDragDrop<TableColumnConfig>): void {
+		this.dropItem.emit(event);
 	}
 }

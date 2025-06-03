@@ -1,5 +1,5 @@
 import { ReactiveFormsModule } from '@angular/forms';
-import { NgFor } from '@angular/common';
+import { NgFor, NgOptimizedImage } from '@angular/common';
 import {
 	IconComponent,
 	TextComponent,
@@ -22,7 +22,6 @@ import {
 	EmptyStateComponent,
 	PreviewButtonComponent,
 	LinkComponent,
-	SkeletonTableComponent,
 	SkeletonBlockComponent,
 	OverlayButtonComponent,
 	SpinnerComponent,
@@ -51,9 +50,11 @@ import {
 import { RepeatTimesPipe } from '../../../../front-components/src/lib/core/pipes';
 import { ExampleTableTrComponent } from '../example-table-tr/example-table-tr.component';
 import { LoadPaginationComponent } from '../../../../front-components/src/lib/components/load-pagination/load-pagination.component';
+import { TableExampleComponent } from '../table-example/table-example.component';
 
 export const standImports = [
 	ReactiveFormsModule,
+	NgOptimizedImage,
 	RepeatTimesPipe,
 	FieldCtrlDirective,
 	PopoverTriggerForDirective,
@@ -79,7 +80,6 @@ export const standImports = [
 	EmptyStateComponent,
 	PreviewButtonComponent,
 	LinkComponent,
-	SkeletonTableComponent,
 	SkeletonBlockComponent,
 	OverlayButtonComponent,
 	SpinnerComponent,
@@ -102,5 +102,6 @@ export const standImports = [
 	TabsComponent,
 	LoadPaginationComponent,
 	HintComponent,
+	TableExampleComponent,
 	FiltersComponent,
 ];

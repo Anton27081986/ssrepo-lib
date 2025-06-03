@@ -212,8 +212,6 @@ export class StandComponent {
 		this.checkBox2.disable();
 
 		this.checkBox3.disable();
-
-		// this.inputCtrl.disable();
 	}
 
 	public openTestModal(): void {

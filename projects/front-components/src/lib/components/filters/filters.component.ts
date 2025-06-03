@@ -1,7 +1,7 @@
 import { Component, inject, Signal } from '@angular/core';
 import { NgComponentOutlet, NgForOf, NgIf } from '@angular/common';
 import { toSignal } from '@angular/core/rxjs-interop';
-import { AbstractControl, FormControl } from '@angular/forms';
+import { FormControl } from '@angular/forms';
 import { ButtonComponent } from '../buttons';
 import { DividerComponent } from '../divider/divider.component';
 import { DropdownItemComponent } from '../dropdown-item/dropdown-item.component';
@@ -56,9 +56,9 @@ export class FiltersComponent {
 		this.service.selectedFilter(filter);
 	}
 
-	protected getControl(filter: IFilter): AbstractControl {
-		return this.service.formGroupFilter.get(filter.name);
-	}
+	// protected getControl(filter: IFilter): AbstractControl {
+	// 	return this.service.formGroupFilter.get(filter.name);
+	// }
 
 	protected clearAllFilter(): void {
 		this.service.clearAllFilter();

@@ -1,0 +1,10 @@
+:host {
+	position: relative;
+	border: 1px solid var(--border-primary);
+	border-block-start: none;
+	border-inline-start: none;
+
+	&:first-child {
+		border-left: 1px solid var(--border-primary);
+	}
+}

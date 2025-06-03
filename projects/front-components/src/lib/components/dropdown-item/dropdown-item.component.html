@@ -9,30 +9,39 @@
 	(mouseup)="state.set(StateTypes.Default)"
 	(focus)="checkFocus($event)"
 >
-	<div class="dropdown-item__info">
-		@if (icon()) {
+	<ng-template #content>
+		<div class="dropdown-item__info">
+			@if (itemText()) {
+				@if (icon()) {
+					<ss-lib-icon
+						height="16"
+						width="16"
+						[icon]="icon()!"
+						[color]="iconColor()"
+					></ss-lib-icon>
+				}
+
+				<ss-lib-text
+					[type]="TextType.BodySm"
+					[weight]="TextWeight.Medium"
+					[color]="textColor()"
+				>
+					{{ itemText() }}
+				</ss-lib-text>
+			} @else {
+				<ng-content></ng-content>
+			}
+		</div>
+
+		@if (selected()) {
 			<ss-lib-icon
-				[icon]="icon()!"
+				[icon]="IconType.Check"
 				[height]="'16'"
 				[width]="'16'"
-				[color]="iconColor()"
+				[color]="Colors.IconInformation"
 			/>
 		}
-		<ss-lib-text
-			[type]="TextType.BodySm"
-			[weight]="TextWeight.Medium"
-			[color]="textColor()"
-		>
-			{{ itemText() }}
-		</ss-lib-text>
-	</div>
+	</ng-template>
 
-	@if (selected()) {
-		<ss-lib-icon
-			[icon]="IconType.Check"
-			[height]="'16'"
-			[width]="'16'"
-			[color]="Colors.IconInformation"
-		/>
-	}
+	<ng-container [ngTemplateOutlet]="content"></ng-container>
 </div>
