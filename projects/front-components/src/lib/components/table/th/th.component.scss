@@ -14,22 +14,9 @@
 	border-left: none;
 }
 
-
 :host(th:not([colspan]):not([rowspan]):first-of-type) {
 	border-left: none;
 }
-
-
-/* В первой строке шапки (thead), у первого th убираем левую границу */
-:host-context(thead tr:first-child) :host(:first-child) {
-	//border-left: none;
-}
-
-/* В первой строке шапки (thead), у последнего th убираем правую границу */
-//:host-context(thead tr:first-child) :host(:last-child) {
-//	border-right: none;
-//}
-
 
 :host-context(tr:not(:first-child)) {
 	border-top: none !important;

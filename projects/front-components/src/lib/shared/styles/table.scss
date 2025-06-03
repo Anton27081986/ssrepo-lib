@@ -24,7 +24,7 @@
 	&-table {
 		width: 100%;
 		position: relative;
-		border-collapse: separate;
+		border-collapse: collapse;
 		border-spacing: 0;
 		table-layout: fixed;
 		overflow: hidden;
@@ -79,10 +79,6 @@
 		}
 
 		&__tbody {
-			.ss-lib-table-tr:last-child .ss-lib-table-td {
-				border-bottom: none !important;
-			}
-
 			tr {
 				background-color: var(--surface-primary);
 			}
@@ -98,27 +94,31 @@
 			tr.drag-over:not(.dragging):not(:last-child) {
 				background-color: var(--surface-information-selected-2);
 				box-shadow: 0 4px 0 0 var(--border-focus) inset;
+				z-index: 2;
 			}
 
 			tr.drag-over:not(.dragging):last-child:not(:first-child) {
 				background-color: var(--surface-information-2);
 				box-shadow: 0px -4px 0px 0px var(--border-focus) inset;
+				z-index: 2;
 			}
 
 			tr.drag-over.dragging {
 				background-color: var(--surface-action-pressed-3) !important;
+				z-index: 2;
 			}
 
 			tr.drag-over.dragging:not(:last-child) {
 				box-shadow: 0 3px 0 0 var(--border-secondary) inset;
+				z-index: 2;
 			}
 
 			tr.drag-over.dragging:last-child:not(:first-child) {
 				box-shadow: 0 -3px 0 0 var(--border-secondary) inset;
+				z-index: 2;
 			}
 		}
 	}
-
 	&-th {
 		border-bottom: var(--ss-lib-table-th-border-bottom);
 		height: 41px;
@@ -162,4 +162,52 @@
 		position: sticky;
 		right: 0;
 	}
+}
+
+.ss-lib-table-td,
+.ss-lib-table-th {
+	border: 1px solid var(--border-primary);
+	border-width: 0 1px 1px 1px; // только по бокам и снизу
+	transition:
+		border-color 0.15s ease,
+		background-color 0.15s ease;
+}
+//
+//.ss-lib-table-tr:hover td,
+//.ss-lib-table-tr:hover th {
+//	border-color: transparent;
+//}
+
+// При ховере строки — делаем границы прозрачными
+.ss-lib-table-tr:hover td,
+.ss-lib-table-tr:hover th,
+.ss-lib-table-tr.dragging td,
+.ss-lib-table-tr.dragging th,
+.ss-lib-table-tr.drag-over td,
+.ss-lib-table-tr.drag-over th {
+	border-color: transparent;
+}
+
+// Но сохраняем левую границу у первой ячейки
+.ss-lib-table-tr:hover td:first-child,
+.ss-lib-table-tr:hover th:first-child,
+.ss-lib-table-tr.dragging td:first-child,
+.ss-lib-table-tr.dragging th:first-child,
+.ss-lib-table-tr.drag-over td:first-child,
+.ss-lib-table-tr.drag-over th:first-child {
+	border-left-color: var(--border-primary);
+}
+
+// И правую границу у последней ячейки
+.ss-lib-table-tr:hover td:last-child,
+.ss-lib-table-tr:hover th:last-child,
+.ss-lib-table-tr.dragging td:last-child,
+.ss-lib-table-tr.dragging th:last-child {
+	border-right-color: var(--border-primary);
+}
+
+// У последней строки — нижняя граница
+.ss-lib-table-tr:last-child td,
+.ss-lib-table-tr:last-child th {
+	border-bottom-color: var(--border-primary);
 }
