@@ -112,32 +112,31 @@ export class TableExampleComponent implements OnInit {
 	): HTMLElement {
 		const table = document.createElement('table');
 		const tbody = document.createElement('tbody');
-		const clonedRow = originalRow.cloneNode(true) as HTMLElement;
+		const clonedRow = originalRow.cloneNode(true) as HTMLTableRowElement;
+		const originalCells = originalRow.querySelectorAll('td');
+		const clonedCells = clonedRow.querySelectorAll('td');
 
 		table.style.cssText = `
-			  border-collapse: collapse;
-			  position: absolute;
-			  top: -9999px;
-			  left: -9999px;
-			  width: ${rect.width}px;
-			  border-right: none;
-			  border-left: none;
-			`;
-
+			border-collapse: collapse;
+			position: absolute;
+			top: -9999px;
+			left: -9999px;
+			width: ${rect.width}px;
+		`;
 		clonedRow.style.cssText = `
-			  background: var(--surface-primary);
-			  box-shadow: 0px 2px 2px -1px var(--effects-shadows-4),
-						  0px 4px 6px -2px var(--effects-shadows-3),
-						  0px 12px 16px -4px var(--effects-shadows-8);
-			  pointer-events: none;
-			  border-right: none;
-			  border-left: none;
-    	`;
+			background: var(--surface-primary);
+			box-shadow: 0px 2px 2px -1px var(--effects-shadows-4),
+						0px 4px 6px -2px var(--effects-shadows-3),
+						0px 12px 16px -4px var(--effects-shadows-8);
+			pointer-events: none;
+		`;
 
-		const cells = clonedRow.querySelectorAll('td, th');
+		originalCells.forEach((cell: HTMLTableCellElement, index: number) => {
+			const width = cell.getBoundingClientRect().width;
 
-		cells.forEach((cell) => {
-			(cell as HTMLElement).style.border = 'none';
+			if (clonedCells[index]) {
+				(clonedCells[index] as HTMLElement).style.width = `${width}px`;
+			}
 		});
 
 		tbody.appendChild(clonedRow);
