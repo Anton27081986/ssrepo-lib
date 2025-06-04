@@ -1,37 +1,20 @@
-//:host {
-//	position: relative;
-//	border: 1px solid var(--border-primary);
-//	border-block-start: none;
-//	border-inline-start: none;
-//	box-sizing: border-box;
-//
-//	&:first-child {
-//		border-left: 1px solid var(--border-primary);
-//	}
-//}
-//
-//
-//:host-context(tr:hover) {
-//	border-bottom: none !important;
-//
-//	&:not(:last-child){
-//		border-right: none;
-//	}
-//}
-//
-//:host-context(tr:last-child:hover) {
-//	border-bottom: 1px solid var(--border-primary) !important;
-//}
-
 :host {
 	height: 82px;
 	border-top: none;
 	border-right: 1px solid var(--border-primary);
+
+	//==== без бордера
+	//&:not(:last-child) {
+	//	border-right: none;
+	//}
+	//====
+
 	border-bottom: 1px solid var(--border-primary);
-	border-left: 1px solid var(--border-primary);
-	transition:
-		border-color 0.15s ease,
-		background-color 0.15s ease;
+	border-left: none;
+
+	&:first-child {
+		border-left: 1px solid var(--border-primary);
+	}
 }
 
 :host-context(tr:hover) :host,

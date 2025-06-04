@@ -3,10 +3,20 @@
 	height: 41px;
 	position: relative;
 	border: 1px solid var(--border-primary);
-	border-radius: 0;
 
-	border-left: 1px solid var(--border-primary);
+	border-left: none;
 	border-right: 1px solid var(--border-primary);
+
+	&:first-child {
+		border-left: 1px solid var(--border-primary);
+	}
+
+	//==== без бордера
+	//&:not(:last-child) {
+	//	border-right: none;
+	//}
+
+	//====
 }
 
 /* Если у th colspan > 1 — убираем у него левую границу, чтобы не было дублирования */
@@ -21,6 +31,18 @@
 :host-context(tr:not(:first-child)) {
 	border-top: none !important;
 }
+
+//==== без бордера
+//:host-context(tr:not(:first-child)) :host {
+//	border-top: none;
+//}
+//
+//:host-context(tr:first-child:not(:only-child)) :host {
+//	&[colspan] {
+//		border-bottom: none;
+//	}
+//}
+//====
 
 :host-context(thead[tuiThead]) {
 	position: sticky;
