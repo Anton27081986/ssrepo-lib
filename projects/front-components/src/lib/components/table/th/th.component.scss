@@ -10,13 +10,6 @@
 	&:first-child {
 		border-left: 1px solid var(--border-primary);
 	}
-
-	//==== без бордера
-	//&:not(:last-child) {
-	//	border-right: none;
-	//}
-
-	//====
 }
 
 /* Если у th colspan > 1 — убираем у него левую границу, чтобы не было дублирования */
@@ -32,17 +25,31 @@
 	border-top: none !important;
 }
 
-//==== без бордера
-//:host-context(tr:not(:first-child)) :host {
-//	border-top: none;
-//}
-//
-//:host-context(tr:first-child:not(:only-child)) :host {
-//	&[colspan] {
-//		border-bottom: none;
-//	}
-//}
-//====
+:host-context(table[ssTable]:not(.show-cell-borders)) {
+	:host:not(:last-child) {
+		border-right: none;
+	}
+
+	thead tr:not(:first-child) :host {
+		border-top: none;
+	}
+
+	thead tr:first-child:not(:only-child) :host {
+		&[colspan] {
+			border-bottom: none;
+		}
+	}
+}
+
+:host-context(table[ssTable].has-border-radius) {
+	thead tr:first-child :host:first-child {
+		border-top-left-radius: var(--border-radius-md);
+	}
+
+	thead tr:first-child :host:last-child {
+		border-top-right-radius: var(--border-radius-md);
+	}
+}
 
 :host-context(thead[tuiThead]) {
 	position: sticky;

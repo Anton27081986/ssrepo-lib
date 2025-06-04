@@ -14,27 +14,22 @@
 	&.drag-over:not(.dragging):not(:last-child) {
 		background-color: var(--surface-information-selected-2);
 		box-shadow: 0 4px 0 0 var(--border-focus) inset;
-		z-index: 2;
 	}
 
 	&.drag-over:not(.dragging):last-child:not(:first-child) {
 		background-color: var(--surface-information-2);
 		box-shadow: 0px -4px 0px 0px var(--border-focus) inset;
-		z-index: 2;
 	}
 
 	&.drag-over.dragging {
 		background-color: var(--surface-action-pressed-3) !important;
-		z-index: 2;
 	}
 
 	&.drag-over.dragging:not(:last-child) {
 		box-shadow: 0 3px 0 0 var(--border-secondary) inset;
-		z-index: 2;
 	}
 
 	&.drag-over.dragging:last-child:not(:first-child) {
 		box-shadow: 0 -3px 0 0 var(--border-secondary) inset;
-		z-index: 2;
 	}
 }

@@ -20,45 +20,8 @@
 	border-spacing: 0;
 	table-layout: fixed;
 	transition: width 0.1s ease;
+	overflow: hidden;
 }
-
-// *** border radius для таблицы ***
-.ss-table thead tr:first-child th:first-child {
-	border-top-left-radius: var(--border-radius-md);
-}
-
-.ss-table thead tr:first-child th:last-child {
-	border-top-right-radius: var(--border-radius-md);
-}
-
-.ss-table tbody tr:last-child td:first-child {
-	border-bottom-left-radius: var(--border-radius-md);
-}
-
-.ss-table tbody tr:last-child td:last-child {
-	border-bottom-right-radius: var(--border-radius-md);
-}
-// -----------------------------------
-
-// *** border ячеек таблицы ***
-.ss-table th:not(:last-child) {
-	border-right: none;
-}
-
-.ss-table thead tr:not(:first-child) th {
-	border-top: none;
-}
-
-.ss-table thead tr:first-child:not(:only-child) th {
-	&[colspan] {
-		border-bottom: none;
-	}
-}
-
-.ss-table tbody td:not(:last-child) {
-	border-right: none;
-}
-// -----------------------------------
 
 .column-item__content {
 	display: flex;

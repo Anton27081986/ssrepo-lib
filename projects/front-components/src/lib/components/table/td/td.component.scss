@@ -3,17 +3,27 @@
 	border-top: none;
 	border-right: 1px solid var(--border-primary);
 
-	//==== без бордера
-	//&:not(:last-child) {
-	//	border-right: none;
-	//}
-	//====
-
 	border-bottom: 1px solid var(--border-primary);
 	border-left: none;
 
 	&:first-child {
 		border-left: 1px solid var(--border-primary);
+	}
+}
+
+:host-context(table[ssTable]:not(.show-cell-borders)) {
+	:host:not(:last-child) {
+		border-right: none;
+	}
+}
+
+:host-context(table[ssTable].has-border-radius) {
+	tbody tr:last-child :host:first-child {
+		border-bottom-left-radius: var(--border-radius-md);
+	}
+
+	tbody tr:last-child :host:last-child {
+		border-bottom-right-radius: var(--border-radius-md);
 	}
 }
 
