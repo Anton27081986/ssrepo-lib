@@ -49,7 +49,6 @@ export class TableExampleComponent implements OnInit {
 	public readonly data = this.tableStateService.data;
 	public readonly dropdownColumns = this.tableStateService.dropdownColumns;
 	public readonly visibleColumns = this.tableStateService.visibleColumns;
-	public readonly showLeftBorder = this.tableStateService.showLeftBorder;
 	public readonly masterCheckboxCtrl =
 		this.tableStateService.getMasterCheckboxCtrl();
 

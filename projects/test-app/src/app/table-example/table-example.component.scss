@@ -16,7 +16,6 @@
 	width: 100%;
 	position: relative;
 	border-collapse: separate;
-	border-radius: var(--border-radius-md) !important;
 	border-spacing: 0;
 	table-layout: fixed;
 	transition: width 0.1s ease;
@@ -36,8 +35,4 @@
 
 .item-align--center {
 	justify-content: center;
-}
-
-.has-left-border {
-	border-left: 1px solid var(--border-primary) !important;
 }

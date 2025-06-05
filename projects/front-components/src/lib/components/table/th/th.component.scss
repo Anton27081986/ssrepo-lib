@@ -5,20 +5,18 @@
 	border: 1px solid var(--border-primary);
 
 	border-left: none;
-	border-right: 1px solid var(--border-primary);
 
-	&:first-child {
+	&:not(:last-child) {
+		border-right: 1px solid var(--border-primary);
+	}
+
+	&.left-border {
 		border-left: 1px solid var(--border-primary);
 	}
-}
 
-/* Если у th colspan > 1 — убираем у него левую границу, чтобы не было дублирования */
-:host([colspan]:not(:first-child)) {
-	border-left: none;
-}
-
-:host(th:not([colspan]):not([rowspan]):first-of-type) {
-	border-left: none;
+	&.right-border {
+		border-right: 1px solid var(--border-primary);
+	}
 }
 
 :host-context(tr:not(:first-child)) {
@@ -26,7 +24,7 @@
 }
 
 :host-context(table[ssTable]:not(.show-cell-borders)) {
-	:host:not(:last-child) {
+	:host {
 		border-right: none;
 	}
 
@@ -49,6 +47,14 @@
 	thead tr:first-child :host:last-child {
 		border-top-right-radius: var(--border-radius-md);
 	}
+}
+
+:host.left-border {
+	border-left: 1px solid var(--border-primary) !important;
+}
+
+:host.right-border {
+	border-right: 1px solid var(--border-primary) !important;
 }
 
 :host-context(thead[tuiThead]) {

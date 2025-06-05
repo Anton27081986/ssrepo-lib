@@ -34,6 +34,8 @@
 	<table
 		ssTable
 		class="ss-table"
+		[hasBorderRadius]="true"
+		[showCellBorders]="true"
 		[columns]="visibleColumns()"
 	>
 		<thead>
@@ -144,7 +146,6 @@
 				<th
 					*ssHead="'order'"
 					ssTh
-					[ngClass]="{ 'has-left-border': showLeftBorder() }"
 				>
 					<ss-lib-text
 						[color]="Colors.TextBody2"
@@ -173,7 +174,6 @@
 				<th
 					*ssHead="'user'"
 					ssTh
-					[ngClass]="{ 'has-left-border': showLeftBorder() }"
 				>
 					<ss-lib-text
 						[color]="Colors.TextBody2"
