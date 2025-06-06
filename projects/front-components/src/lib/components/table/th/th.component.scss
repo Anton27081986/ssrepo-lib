@@ -3,36 +3,58 @@
 	height: 41px;
 	position: relative;
 	border: 1px solid var(--border-primary);
-	border-radius: 0;
 
-	border-left: 1px solid var(--border-primary);
-	border-right: 1px solid var(--border-primary);
-}
-
-/* Если у th colspan > 1 — убираем у него левую границу, чтобы не было дублирования */
-:host([colspan]:not(:first-child)) {
 	border-left: none;
+
+	&:not(:last-child) {
+		border-right: 1px solid var(--border-primary);
+	}
+
+	&.left-border {
+		border-left: 1px solid var(--border-primary);
+	}
+
+	&.right-border {
+		border-right: 1px solid var(--border-primary);
+	}
 }
-
-
-:host(th:not([colspan]):not([rowspan]):first-of-type) {
-	border-left: none;
-}
-
-
-/* В первой строке шапки (thead), у первого th убираем левую границу */
-:host-context(thead tr:first-child) :host(:first-child) {
-	//border-left: none;
-}
-
-/* В первой строке шапки (thead), у последнего th убираем правую границу */
-//:host-context(thead tr:first-child) :host(:last-child) {
-//	border-right: none;
-//}
-
 
 :host-context(tr:not(:first-child)) {
 	border-top: none !important;
+}
+
+:host-context(table[ssTable]:not(.show-cell-borders)) {
+	:host {
+		border-right: none;
+	}
+
+	thead tr:not(:first-child) :host {
+		border-top: none;
+	}
+
+	thead tr:first-child:not(:only-child) :host {
+		&[colspan] {
+			border-bottom: none;
+		}
+	}
+}
+
+:host-context(table[ssTable].has-border-radius) {
+	thead tr:first-child :host:first-child {
+		border-top-left-radius: var(--border-radius-md);
+	}
+
+	thead tr:first-child :host:last-child {
+		border-top-right-radius: var(--border-radius-md);
+	}
+}
+
+:host.left-border {
+	border-left: 1px solid var(--border-primary) !important;
+}
+
+:host.right-border {
+	border-right: 1px solid var(--border-primary) !important;
 }
 
 :host-context(thead[tuiThead]) {
