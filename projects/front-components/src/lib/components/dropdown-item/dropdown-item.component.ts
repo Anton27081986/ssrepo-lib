@@ -2,11 +2,16 @@ import {
 	ChangeDetectionStrategy,
 	Component,
 	computed,
+	ElementRef,
 	HostListener,
+	inject,
 	input,
 	output,
 	signal,
+	TemplateRef,
+	viewChild,
 } from '@angular/core';
+import { NgTemplateOutlet } from '@angular/common';
 import { IconComponent } from '../icon/icon.component';
 import { TextComponent } from '../text/text.component';
 import {
@@ -29,7 +34,8 @@ import {
  * по умолчанию: ''
  *
  * [value]: T | string | null - Значение элемента - необязательный,
- * по умолчанию: null
+ * по умолчанию: null.
+ * Также можно пробросить ng-content, тогда value не будет выводиться
  *
  * [icon]: IconType - Иконка элемента - необязательный,
  * по умолчанию: null
@@ -59,7 +65,7 @@ import {
 @Component({
 	selector: 'ss-lib-dropdown-item',
 	standalone: true,
-	imports: [IconComponent, TextComponent],
+	imports: [IconComponent, TextComponent, NgTemplateOutlet],
 	templateUrl: './dropdown-item.component.html',
 	styleUrl: './dropdown-item.component.scss',
 	changeDetection: ChangeDetectionStrategy.OnPush,
@@ -67,6 +73,10 @@ import {
 export class DropdownItemComponent<
 	T extends IDictionaryItemDto = IDictionaryItemDto,
 > {
+	public readonly elementRef = inject(ElementRef);
+
+	public itemContent = viewChild<TemplateRef<unknown>>('content');
+
 	public readonly label = input<string>('');
 	public readonly value = input<T | string | null>(null);
 	public readonly icon = input<IconType | null>(null);

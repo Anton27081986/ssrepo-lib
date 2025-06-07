@@ -24,13 +24,26 @@
 	&-table {
 		width: 100%;
 		position: relative;
-		border-collapse: inherit;
+		border-collapse: separate;
 		border-spacing: 0;
 		table-layout: fixed;
 		overflow: hidden;
+		transition: width 0.1s ease;
 
 		border: var(--ss-lib-table-border);
 		border-radius: var(--ss-lib-table-border-radius);
+
+		th {
+			display: table-cell;
+			position: relative;
+			overflow: hidden;
+			white-space: nowrap;
+			text-overflow: ellipsis;
+		}
+
+		th:not(:first-child) {
+			border-inline-start: none !important;
+		}
 
 		th:first-child {
 			border-radius: var(--ss-lib-table-border-radius) 0 0 0;
@@ -112,7 +125,7 @@
 	}
 
 	&-td {
-		border-bottom: var(--ss-lib-table-td-border-bottom);
+		border-bottom: 1px solid var(--border-primary);
 		height: 82px;
 	}
 

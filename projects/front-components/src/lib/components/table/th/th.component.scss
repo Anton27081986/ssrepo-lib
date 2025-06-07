@@ -1,0 +1,82 @@
+:host {
+	background-color: var(--surface-information-2);
+	height: 41px;
+	position: relative;
+	border: 1px solid var(--border-primary);
+
+	border-left: none;
+
+	&:not(:last-child) {
+		border-right: 1px solid var(--border-primary);
+	}
+
+	&.left-border {
+		border-left: 1px solid var(--border-primary);
+	}
+
+	&.right-border {
+		border-right: 1px solid var(--border-primary);
+	}
+}
+
+:host-context(tr:not(:first-child)) {
+	border-top: none !important;
+}
+
+:host-context(table[ssTable]:not(.show-cell-borders)) {
+	:host {
+		border-right: none;
+	}
+
+	thead tr:not(:first-child) :host {
+		border-top: none;
+	}
+
+	thead tr:first-child:not(:only-child) :host {
+		&[colspan] {
+			border-bottom: none;
+		}
+	}
+}
+
+:host-context(table[ssTable].has-border-radius) {
+	thead tr:first-child :host:first-child {
+		border-top-left-radius: var(--border-radius-md);
+	}
+
+	thead tr:first-child :host:last-child {
+		border-top-right-radius: var(--border-radius-md);
+	}
+}
+
+:host.left-border {
+	border-left: 1px solid var(--border-primary) !important;
+}
+
+:host.right-border {
+	border-right: 1px solid var(--border-primary) !important;
+}
+
+:host-context(thead[tuiThead]) {
+	position: sticky;
+}
+
+/* Стиль для resize-бара */
+.t-bar {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	right: -1px;
+	inline-size: 4px;
+	justify-self: flex-end;
+	border-inline-start: 2px solid transparent;
+	background: var(--border-focus);
+	background-clip: content-box;
+	cursor: ew-resize;
+	opacity: 0;
+}
+
+.t-bar:hover,
+.t-bar:active {
+	opacity: 1;
+}
