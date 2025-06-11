@@ -12,8 +12,8 @@ import {
 	viewChild,
 } from '@angular/core';
 import { NgTemplateOutlet } from '@angular/common';
-import { IconComponent } from '../icon/icon.component';
-import { TextComponent } from '../text/text.component';
+import { IconComponent } from '../../icon/icon.component';
+import { TextComponent } from '../../text/text.component';
 import {
 	Colors,
 	StateTypes,
@@ -21,7 +21,7 @@ import {
 	TextWeight,
 	IconType,
 	IDictionaryItemDto,
-} from '../../shared/models';
+} from '../../../shared/models';
 
 /**
  * Компонент элемента выпадающего списка с поддержкой иконок и состояний

@@ -1,4 +1,9 @@
-import { Inject, Injector, TemplateRef } from '@angular/core';
+import {
+	Inject,
+	Injector,
+	TemplateRef,
+	ViewEncapsulation,
+} from '@angular/core';
 import {
 	afterNextRender,
 	ChangeDetectionStrategy,
@@ -12,12 +17,14 @@ import {
 import { outputToObservable, toSignal } from '@angular/core/rxjs-interop';
 import { tap } from 'rxjs';
 import { NgTemplateOutlet } from '@angular/common';
-import { CdkDrag, CdkDragDrop, CdkDropList } from '@angular/cdk/drag-drop';
-import type { IDictionaryItemDto, PopoverContent } from '../../shared/models';
+import type {
+	IDictionaryItemDto,
+	PopoverContent,
+} from '../../../shared/models';
 import { DropdownItemComponent } from '../dropdown-item/dropdown-item.component';
-import { DividerComponent } from '../divider/divider.component';
-import { ScrollbarComponent } from '../scrollbar/scrollbar.component';
-import { TableColumnConfig } from '../table/models/table-column-config';
+import { DividerComponent } from '../../divider/divider.component';
+import { ScrollbarComponent } from '../../scrollbar/scrollbar.component';
+import { DropdownGroupDirective } from '../directives/dropdown-group.directive';
 
 /**
  * Компонент выпадающего списка с поддержкой кастомных шаблонов, прокрутки и динамического контента
@@ -67,19 +74,17 @@ import { TableColumnConfig } from '../table/models/table-column-config';
 	templateUrl: './dropdown-list.component.html',
 	styleUrl: './dropdown-list.component.scss',
 	changeDetection: ChangeDetectionStrategy.OnPush,
-	imports: [
-		NgTemplateOutlet,
-		DividerComponent,
-		ScrollbarComponent,
-		CdkDrag,
-		CdkDropList,
-		DropdownItemComponent,
-	],
+	encapsulation: ViewEncapsulation.None,
+	imports: [NgTemplateOutlet, DividerComponent, ScrollbarComponent],
 })
 export class DropdownListComponent<
 	T extends IDictionaryItemDto = IDictionaryItemDto,
 > implements PopoverContent
 {
+	public readonly optionsContentGroup = contentChildren(
+		DropdownGroupDirective,
+	);
+
 	public readonly optionsContent = contentChildren(DropdownItemComponent<T>);
 	public readonly templateRef =
 		viewChild.required<TemplateRef<{}>>('dropdownTemplate');
@@ -90,11 +95,9 @@ export class DropdownListComponent<
 
 	public readonly width = input<string>('max-content');
 	public readonly height = input<string>('auto');
-	public readonly isDraggable = input<boolean>(false);
 
 	public readonly closed = output<void>();
-	public readonly value = output<T | string | null>();
-	public readonly dropItem = output<CdkDragDrop<TableColumnConfig>>();
+	public readonly value = output<T | string | null | IDictionaryItemDto>();
 
 	constructor(@Inject(Injector) private readonly injector: Injector) {
 		afterNextRender(() => {
@@ -102,20 +105,31 @@ export class DropdownListComponent<
 				this.optionsContent().forEach((option) =>
 					toSignal(
 						outputToObservable(option.valueEvent).pipe(
-							tap((data) => this.selectOption(data)),
+							tap((data) => {
+								this.selectOption(data);
+							}),
 						),
 					),
 				);
+
+				// this.optionsContentGroup().forEach((group) => {
+				// 	// Подписываемся на valueEvent для текущих items
+				// 	group.items()?.forEach((item) =>
+				// 		toSignal(
+				// 			outputToObservable(item.valueEvent).pipe(
+				// 				tap((data) => {
+				// 					this.selectOption(data);
+				// 				}),
+				// 			),
+				// 		),
+				// 	);
+				// });
 			});
 		});
 	}
 
-	public selectOption(item: T | string | null): void {
+	public selectOption(item: T | string | IDictionaryItemDto | null): void {
 		this.value.emit(item);
 		this.closed.emit();
-	}
-
-	public onDropItem(event: CdkDragDrop<TableColumnConfig>): void {
-		this.dropItem.emit(event);
 	}
 }

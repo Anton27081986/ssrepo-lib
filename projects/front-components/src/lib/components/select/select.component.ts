@@ -17,7 +17,7 @@ import { tap } from 'rxjs';
 import { outputToObservable, toSignal } from '@angular/core/rxjs-interop';
 import { FormFieldComponent } from '../form-field/form-field.component';
 import { InputComponent } from '../input/input.component';
-import { DropdownListComponent } from '../dropdown-list/dropdown-list.component';
+import { DropdownListComponent } from '../dropdown';
 import type { IDictionaryItemDto } from '../../shared/models';
 
 /**
@@ -69,7 +69,10 @@ export class SelectComponent<T extends IDictionaryItemDto = IDictionaryItemDto>
 		DropdownListComponent<T>,
 	);
 
-	private onChange: ((value: T | string | null) => void) | undefined;
+	private onChange:
+		| ((value: T | string | null | IDictionaryItemDto) => void)
+		| undefined;
+
 	private onTouched: (() => void) | undefined;
 
 	constructor(
@@ -102,7 +105,9 @@ export class SelectComponent<T extends IDictionaryItemDto = IDictionaryItemDto>
 		this.selectCtrl.setValue(displayValue, { emitEvent: false });
 	}
 
-	public registerOnChange(fn: (value: T | string | null) => void): void {
+	public registerOnChange(
+		fn: (value: T | string | null | IDictionaryItemDto) => void,
+	): void {
 		this.onChange = fn;
 	}
 
@@ -114,7 +119,7 @@ export class SelectComponent<T extends IDictionaryItemDto = IDictionaryItemDto>
 		isDisabled ? this.selectCtrl.disable() : this.selectCtrl.enable();
 	}
 
-	public onSelectOption(item: T | string | null): void {
+	public onSelectOption(item: T | string | null | IDictionaryItemDto): void {
 		if (item !== null) {
 			const displayValue = typeof item === 'string' ? item : item.name;
 
@@ -123,7 +128,7 @@ export class SelectComponent<T extends IDictionaryItemDto = IDictionaryItemDto>
 		}
 	}
 
-	private updateValue(item: T | string | null): void {
+	private updateValue(item: T | string | null | IDictionaryItemDto): void {
 		this.onChange?.(item);
 		this.onTouched?.();
 	}

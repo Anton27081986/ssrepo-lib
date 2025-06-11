@@ -1,0 +1,77 @@
+.dropdown__options {
+	display: flex;
+	flex-direction: column;
+	background: var(--surface-primary);
+	box-sizing: border-box;
+	border: 1px solid var(--border-primary);
+	border-radius: var(--border-radius-md);
+	padding: 4px 0;
+	overflow-y: auto;
+	z-index: 299;
+	box-shadow: var(--shadow-xl);
+	position: relative;
+
+	ss-lib-divider {
+		padding: 4px 0;
+	}
+
+	ss-lib-dropdown-group {
+		position: relative;
+		display: flex;
+		font: var(--tui-font-text-xs);
+		font-weight: bold;
+		color: var(--tui-text-primary);
+		flex-direction: column;
+		line-height: 1rem;
+
+		&::before {
+			content: attr(data-label);
+			white-space: normal;
+			word-break: break-word;
+		}
+	}
+}
+
+.dropdown__options-content {
+	width: 100%;
+	display: inline-flex;
+	flex-direction: column;
+}
+
+//.draggable-list {
+//	position: relative;
+//}
+//
+//.draggable-item {
+//}
+//
+///* Стили для превью во время перетаскивания */
+//.cdk-drag-preview {
+//	box-sizing: border-box;
+//	border-radius: var(--border-radius-sm);
+//	position: fixed !important;
+//	pointer-events: none;
+//	background: var(--surface-action-pressed-2);
+//}
+//
+///* Placeholder невидим */
+//.cdk-drag-placeholder {
+//	opacity: 0;
+//}
+//
+///* Анимация для других элементов */
+//.cdk-drag-animating {
+//	transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+//}
+//
+//.draggable-list.cdk-drop-list-dragging
+//	.draggable-item:not(.cdk-drag-placeholder) {
+//	transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+//}
+//
+//.cdk-drop-list-dragging .draggable-item:hover,
+//.cdk-drop-list-dragging .draggable-item.cdk-drag-hover {
+//	background: none !important;
+//	box-shadow: none !important;
+//	border: none !important;
+//}

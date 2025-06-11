@@ -1,33 +1,9 @@
-.dropdown__options {
-	display: flex;
-	flex-direction: column;
-	background: var(--surface-primary);
-	box-sizing: border-box;
-	border: 1px solid var(--border-primary);
-	border-radius: var(--border-radius-md);
-	padding: 4px 0;
-	overflow-y: auto;
-	z-index: 299;
-	box-shadow: var(--shadow-xl);
-	position: relative;
-
-	ss-lib-divider {
-		padding: 4px 0;
-	}
-}
-
-.dropdown__options-content {
-	width: 100%;
-	display: inline-flex;
-	flex-direction: column;
-}
-
-
 .draggable-list {
 	position: relative;
 }
 
-.draggable-item {}
+.draggable-item {
+}
 
 /* Стили для превью во время перетаскивания */
 .cdk-drag-preview {
@@ -48,7 +24,8 @@
 	transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
 }
 
-.draggable-list.cdk-drop-list-dragging .draggable-item:not(.cdk-drag-placeholder) {
+.draggable-list.cdk-drop-list-dragging
+	.draggable-item:not(.cdk-drag-placeholder) {
 	transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
 }
 

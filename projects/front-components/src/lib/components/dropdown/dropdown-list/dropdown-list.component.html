@@ -1,0 +1,18 @@
+<ng-template #dropdownTemplate>
+	<div
+		class="dropdown__options"
+		[style.width]="width()"
+		[style.height]="height()"
+	>
+		<ss-lib-scrollbar>
+			@if (headerTemplateRef()) {
+				<ng-container
+					[ngTemplateOutlet]="headerTemplateRef()"
+				></ng-container>
+				<ss-lib-divider />
+			}
+
+			<ng-content></ng-content>
+		</ss-lib-scrollbar>
+	</div>
+</ng-template>

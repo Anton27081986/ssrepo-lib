@@ -2,6 +2,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { NgClass } from '@angular/common';
 import {
 	CheckboxComponent,
+	DropdownDraggableGroupListComponent,
+	DropdownGroupDirective,
 	DropdownItemComponent,
 	DropdownListComponent,
 	IconComponent,
@@ -25,6 +27,8 @@ export const tableExampleImports = [
 	DraggableItemDirective,
 	DropdownItemComponent,
 	DropdownListComponent,
+	DropdownGroupDirective,
+	DropdownDraggableGroupListComponent,
 	UtilityButtonComponent,
 	PopoverTriggerForDirective,
 	ReactiveFormsModule,

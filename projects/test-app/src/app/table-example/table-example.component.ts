@@ -1,6 +1,7 @@
 import {
 	ChangeDetectionStrategy,
 	Component,
+	computed,
 	inject,
 	OnInit,
 } from '@angular/core';
@@ -51,6 +52,14 @@ export class TableExampleComponent implements OnInit {
 	public readonly visibleColumns = this.tableStateService.visibleColumns;
 	public readonly masterCheckboxCtrl =
 		this.tableStateService.getMasterCheckboxCtrl();
+
+	public readonly dropdownColumnsVisible = computed(() =>
+		this.dropdownColumns().filter((item) => item.visible === true),
+	);
+
+	public readonly dropdownColumnsUnVisible = computed(() =>
+		this.dropdownColumns().filter((item) => item.visible === false),
+	);
 
 	public readonly rowCheckboxes = this.tableStateService.getRowCheckboxes();
 	public readonly columnsForm = this.tableStateService.getColumnsForm();
@@ -103,6 +112,10 @@ export class TableExampleComponent implements OnInit {
 
 	public getRowCheckboxControl(index: number): FormControl {
 		return this.tableStateService.getRowCheckboxControl(index);
+	}
+
+	public getControlIndexForColumn(column: TableColumnConfig): number {
+		return this.tableStateService.getControlIndexForColumn(column);
 	}
 
 	public createDragGhostExample(

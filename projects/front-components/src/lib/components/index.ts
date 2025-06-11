@@ -10,8 +10,10 @@ export { ScrollableBlockComponent } from './scrollable-block/scrollable-block.co
 export { FormFieldComponent } from './form-field/form-field.component';
 export { InputComponent } from './input/input.component';
 export { TextareaComponent } from './textarea/textarea.component';
-export { DropdownItemComponent } from './dropdown-item/dropdown-item.component';
-export { DropdownListComponent } from './dropdown-list/dropdown-list.component';
+export { DropdownItemComponent } from './dropdown/dropdown-item/dropdown-item.component';
+export { DropdownListComponent } from './dropdown/dropdown-list/dropdown-list.component';
+export { DropdownDraggableGroupListComponent } from './dropdown/dropdown-draggable-group-list/dropdown-draggable-group-list.component';
+export { DropdownGroupDirective } from './dropdown/directives/dropdown-group.directive';
 export { SelectComponent } from './select/select.component';
 export { AvatarComponent } from './avatar/avatar.component';
 export { NumberPickerComponent } from './number-picker/number-picker.component';

@@ -59,6 +59,7 @@ export class SsTableState<T> {
 				new FormControl<boolean>(true, { nonNullable: true }),
 			);
 		});
+
 		this.rowCheckboxes.clear();
 		data.forEach(() => {
 			this.rowCheckboxes.push(
@@ -69,6 +70,13 @@ export class SsTableState<T> {
 
 	public getRowCheckboxControl(index: number): FormControl {
 		return this.rowCheckboxes.at(index) as FormControl;
+	}
+
+	public getControlIndexForColumn(column: TableColumnConfig): number {
+		return this.columnConfigs().findIndex(
+			(columnConfig: TableColumnConfig) =>
+				columnConfig.name === column.name,
+		);
 	}
 
 	public onDropdownItemDrop(event: CdkDragDrop<TableColumnConfig>): void {
@@ -97,7 +105,7 @@ export class SsTableState<T> {
 		this.columnConfigs.update((configs) => {
 			const updatedConfigs = [...configs];
 
-			dropdownColumns.forEach((dropdownItem, index) => {
+			dropdownColumns.forEach((dropdownItem) => {
 				const configIdx = updatedConfigs.findIndex(
 					(col: TableColumnConfig) => col.id === dropdownItem.id,
 				);
@@ -106,7 +114,7 @@ export class SsTableState<T> {
 					return;
 				}
 
-				const isVisible = !!values[index];
+				const isVisible = !!values[configIdx];
 
 				updatedConfigs[configIdx].visible = isVisible;
 
@@ -125,6 +133,8 @@ export class SsTableState<T> {
 
 			return updatedConfigs;
 		});
+
+		// this.columnConfigs.set(this.columnConfigs());
 	}
 
 	public onMasterCheckboxChange(value: boolean | null): void {

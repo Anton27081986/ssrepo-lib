@@ -1,33 +1,69 @@
 <ss-lib-utility-button [popoverTriggerFor]="dropdownColumn" />
 
-<ss-lib-dropdown-list
-	#dropdownColumn
-	[isDraggable]="true"
-	(dropItem)="onDropdownItemDrop($event)"
->
-	@for (column of dropdownColumns(); track column) {
-		<ss-lib-dropdown-item>
-			<div class="column-item__content">
-				<ss-lib-checkbox
-					[formControl]="columnsForm.controls[$index]"
-				></ss-lib-checkbox>
+<ss-lib-dropdown-list #dropdownColumn>
+	<ss-lib-dropdown-group [label]="'Показываемые'">
+		<ss-lib-dropdown-draggable-group-list
+			(dropItem)="onDropdownItemDrop($event)"
+		>
+			@for (column of dropdownColumnsVisible(); track column) {
+				<ss-lib-dropdown-item>
+					<div class="column-item__content">
+						@let index = getControlIndexForColumn(column);
 
-				<ss-lib-text
-					[type]="TextType.BodySm"
-					[weight]="TextWeight.Regular"
-					[color]="Colors.TextBody3"
-				>
-					{{ column.name }}
-				</ss-lib-text>
+						<ss-lib-checkbox
+							[formControl]="columnsForm.controls[index]"
+						></ss-lib-checkbox>
 
-				<ss-lib-icon
-					[height]="'16'"
-					[width]="'16'"
-					[icon]="IconType.Drag"
-				/>
-			</div>
-		</ss-lib-dropdown-item>
-	}
+						<ss-lib-text
+							[type]="TextType.BodySm"
+							[weight]="TextWeight.Regular"
+							[color]="Colors.TextBody3"
+						>
+							{{ column.name }}
+						</ss-lib-text>
+
+						<ss-lib-icon
+							[height]="'16'"
+							[width]="'16'"
+							[icon]="IconType.Drag"
+						/>
+					</div>
+				</ss-lib-dropdown-item>
+			}
+		</ss-lib-dropdown-draggable-group-list>
+	</ss-lib-dropdown-group>
+
+	<ss-lib-dropdown-group [label]="'Скрытые'">
+		<ss-lib-dropdown-draggable-group-list
+			(dropItem)="onDropdownItemDrop($event)"
+		>
+			@for (column of dropdownColumnsUnVisible(); track column) {
+				<ss-lib-dropdown-item>
+					<div class="column-item__content">
+						@let index = getControlIndexForColumn(column);
+
+						<ss-lib-checkbox
+							[formControl]="columnsForm.controls[index]"
+						></ss-lib-checkbox>
+
+						<ss-lib-text
+							[type]="TextType.BodySm"
+							[weight]="TextWeight.Regular"
+							[color]="Colors.TextBody3"
+						>
+							{{ column.name }}
+						</ss-lib-text>
+
+						<ss-lib-icon
+							[height]="'16'"
+							[width]="'16'"
+							[icon]="IconType.Drag"
+						/>
+					</div>
+				</ss-lib-dropdown-item>
+			}
+		</ss-lib-dropdown-draggable-group-list>
+	</ss-lib-dropdown-group>
 </ss-lib-dropdown-list>
 
 <div class="container">

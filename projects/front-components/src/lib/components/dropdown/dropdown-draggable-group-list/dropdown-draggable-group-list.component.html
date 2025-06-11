@@ -1,0 +1,23 @@
+<div
+	class="draggable-list"
+	cdkDropList
+	(cdkDropListDropped)="onDropItem($event)"
+>
+	@for (item of items(); track item) {
+		<ss-lib-dropdown-item
+			cdkDrag
+			class="draggable-item"
+			[label]="item.label()"
+			[value]="item.value()"
+			[icon]="item.icon()"
+			[isDestructive]="item.isDestructive()"
+			[isDisabled]="item.isDisabled()"
+		>
+			@if (item.itemContent()) {
+				<ng-container
+					[ngTemplateOutlet]="item.itemContent()!"
+				></ng-container>
+			}
+		</ss-lib-dropdown-item>
+	}
+</div>
