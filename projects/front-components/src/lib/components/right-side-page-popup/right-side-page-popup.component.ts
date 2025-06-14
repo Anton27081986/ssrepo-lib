@@ -58,7 +58,7 @@ export class RightSidePagePopupComponent {
 	public readonly badgeProps = input<IBadgeProps | null>(null);
 	public readonly closePosition = input<
 		IconPosition.Start | IconPosition.End
-	>(IconPosition.Start);
+	>(IconPosition.End);
 
 	public readonly closeEmit = output<void>();
 

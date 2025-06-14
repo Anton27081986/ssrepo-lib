@@ -115,3 +115,10 @@
 	top: calc(100% + 6px);
 	left: 0;
 }
+
+.field-container.show-border {
+	outline: none !important;
+	border-bottom: 1px solid var(--border-primary);
+	border-radius: 0;
+	background: var(--surface-primary);
+}
