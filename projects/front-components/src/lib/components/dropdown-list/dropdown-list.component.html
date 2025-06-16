@@ -4,18 +4,18 @@
 		[style.width]="width()"
 		[style.height]="height()"
 	>
-		<ss-lib-scrollbar>
-			@if (headerTemplateRef()) {
-				<ng-container
-					[ngTemplateOutlet]="headerTemplateRef()"
-				></ng-container>
+		@if (headerTemplateRef()) {
+			<ng-container
+				[ngTemplateOutlet]="headerTemplateRef()"
+			></ng-container>
 
-				<ss-lib-divider />
-			}
+			<ss-lib-divider />
+		}
 
-			@if (!!optionsContent()) {
-				<div class="dropdown__options-content">
-					@if (isDraggable()) {
+		@if (!!optionsContent()) {
+			<div class="dropdown__options-content">
+				@if (isDraggable()) {
+					<ss-lib-scrollbar>
 						<div
 							class="draggable-list"
 							cdkDropList
@@ -41,11 +41,12 @@
 								</ss-lib-dropdown-item>
 							}
 						</div>
-					} @else {
-						<ng-content></ng-content>
-					}
-				</div>
-			}
-		</ss-lib-scrollbar>
+					</ss-lib-scrollbar>
+				}
+			</div>
+		}
+		@if (optionsContent()) {
+			<ng-content></ng-content>
+		}
 	</div>
 </ng-template>
