@@ -1,7 +1,7 @@
 import { computed, Injectable, signal, WritableSignal } from '@angular/core';
 import { CdkDragDrop } from '@angular/cdk/drag-drop';
-import { FormArray, FormControl } from '@angular/forms';
-import { TableColumnConfig } from '../models';
+import { FormArray, FormControl, FormGroup } from '@angular/forms';
+import { ColumnControls, ColumnVisibility, TableColumnConfig } from '../models';
 import { CheckboxType } from '../../../shared/models/types/check-box-type';
 
 @Injectable()
@@ -10,7 +10,8 @@ export class SsTableState<T> {
 	private readonly tableData = signal<T[]>([]);
 	private readonly columnConfigs = signal<TableColumnConfig[]>([]);
 	private readonly rowCheckboxes = new FormArray<FormControl<boolean>>([]);
-	private readonly columnsForm = new FormArray<FormControl<boolean>>([]);
+	private readonly columnsForm = new FormGroup<ColumnControls>({});
+
 	private readonly masterCheckboxType = signal<CheckboxType>('default');
 	private readonly masterCheckboxCtrl = new FormControl<boolean>(false, {
 		nonNullable: true,
@@ -42,7 +43,7 @@ export class SsTableState<T> {
 		return this.rowCheckboxes;
 	}
 
-	public getColumnsForm(): FormArray<FormControl<boolean>> {
+	public getColumnsForm(): FormGroup<ColumnControls> {
 		return this.columnsForm;
 	}
 
@@ -53,9 +54,10 @@ export class SsTableState<T> {
 	public initialize(data: T[], configs: TableColumnConfig[]): void {
 		this.tableData.set(data);
 		this.columnConfigs.set(configs);
-		this.columnsForm.clear();
-		configs.forEach(() => {
-			this.columnsForm.push(
+
+		configs.forEach((config) => {
+			this.columnsForm.addControl(
+				config.id,
 				new FormControl<boolean>(true, { nonNullable: true }),
 			);
 		});
@@ -72,17 +74,20 @@ export class SsTableState<T> {
 		return this.rowCheckboxes.at(index) as FormControl;
 	}
 
-	public getControlIndexForColumn(column: TableColumnConfig): number {
-		return this.columnConfigs().findIndex(
-			(columnConfig: TableColumnConfig) =>
-				columnConfig.name === column.name,
-		);
+	public getControlForColumn(column: TableColumnConfig): FormControl {
+		return this.columnsForm.get(column.id) as FormControl;
 	}
 
-	public onDropdownItemDrop(event: CdkDragDrop<TableColumnConfig>): void {
+	public onDropdownItemDrop(event: CdkDragDrop<TableColumnConfig[]>): void {
 		const dropdownCols = this.dropdownColumns();
 		const allConfigs = [...this.columnConfigs()];
-		const draggedColumn = dropdownCols[event.previousIndex];
+		const draggedColumn = event.previousContainer.data[event.previousIndex];
+
+		if (event.previousContainer !== event.container) {
+			this.columnsForm
+				.get(draggedColumn.id)
+				?.setValue(!draggedColumn.visible);
+		}
 
 		const draggedGroup = this.collectWithSubColumns(
 			draggedColumn,
@@ -91,6 +96,7 @@ export class SsTableState<T> {
 		const updatedConfigs = this.removeColumns(allConfigs, draggedGroup);
 		const targetIndex = this.findTargetIndex(
 			event,
+			draggedColumn,
 			dropdownCols,
 			allConfigs,
 		);
@@ -99,7 +105,7 @@ export class SsTableState<T> {
 		this.columnConfigs.set(updatedConfigs);
 	}
 
-	public updateColumnVisibility(values: Array<boolean | null>): void {
+	public updateColumnVisibility(values: ColumnVisibility): void {
 		const dropdownColumns = this.dropdownColumns();
 
 		this.columnConfigs.update((configs) => {
@@ -114,7 +120,7 @@ export class SsTableState<T> {
 					return;
 				}
 
-				const isVisible = !!values[configIdx];
+				const isVisible = values[dropdownItem.id];
 
 				updatedConfigs[configIdx].visible = isVisible;
 
@@ -198,12 +204,12 @@ export class SsTableState<T> {
 	}
 
 	private findTargetIndex(
-		event: CdkDragDrop<TableColumnConfig>,
+		event: CdkDragDrop<TableColumnConfig[]>,
+		draggedColumn: TableColumnConfig,
 		dropdownCols: TableColumnConfig[],
 		allConfigs: TableColumnConfig[],
 	): number {
 		const { previousIndex, currentIndex } = event;
-		const draggedColumn = dropdownCols[previousIndex];
 		const isDraggingGroup = !!draggedColumn.subColumns?.length;
 
 		const getSubColumnCount = (column: TableColumnConfig): number =>
@@ -213,7 +219,7 @@ export class SsTableState<T> {
 			return allConfigs.findIndex((col) => col.showInDropdown) ?? 0;
 		}
 
-		if (currentIndex >= dropdownCols.length - 1) {
+		if (currentIndex >= event.container.data.length - 1) {
 			const lastVisibleIndex =
 				allConfigs
 					.map((col, idx) => (col.showInDropdown ? idx : -1))
@@ -236,11 +242,14 @@ export class SsTableState<T> {
 			return targetIndex;
 		}
 
-		const targetColumn = dropdownCols[currentIndex];
+		const targetColumn = event.container.data[currentIndex];
 		let targetIndex =
 			allConfigs.findIndex((col) => col.id === targetColumn.id) ?? -1;
 
-		if (currentIndex > previousIndex) {
+		if (
+			event.container === event.previousContainer &&
+			currentIndex > previousIndex
+		) {
 			targetIndex +=
 				getSubColumnCount(targetColumn) * (isDraggingGroup ? 0 : 1);
 			targetIndex -=

@@ -5,7 +5,7 @@ import {
 	inject,
 	OnInit,
 } from '@angular/core';
-import { CdkDragDrop } from '@angular/cdk/drag-drop';
+import { CdkDrag, CdkDragDrop, CdkDropList } from '@angular/cdk/drag-drop';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { tap } from 'rxjs';
 import { FormControl } from '@angular/forms';
@@ -18,7 +18,10 @@ import {
 } from '../../../../front-components/src/lib/shared/models';
 
 import { columnConfigsMock, tableDataMock } from './mock';
-import { TableColumnConfig } from '../../../../front-components/src/lib/components/table/models';
+import {
+	ColumnVisibility,
+	TableColumnConfig,
+} from '../../../../front-components/src/lib/components/table/models';
 import { SsTableState } from '../../../../front-components/src/lib/components/table/services/insdex';
 import { tableExampleImports } from './table-example.imports';
 
@@ -38,7 +41,7 @@ interface TableRow {
 @Component({
 	selector: 'app-table-example',
 	standalone: true,
-	imports: [tableExampleImports],
+	imports: [tableExampleImports, CdkDropList, CdkDrag],
 	templateUrl: './table-example.component.html',
 	styleUrl: './table-example.component.scss',
 	changeDetection: ChangeDetectionStrategy.OnPush,
@@ -75,8 +78,10 @@ export class TableExampleComponent implements OnInit {
 	constructor() {
 		toSignal(
 			this.columnsForm.valueChanges.pipe(
-				tap((values: Array<boolean | null>) =>
-					this.tableStateService.updateColumnVisibility(values),
+				tap((values: Partial<{ [p: string]: boolean }>) =>
+					this.tableStateService.updateColumnVisibility(
+						values as ColumnVisibility,
+					),
 				),
 			),
 		);
@@ -106,7 +111,7 @@ export class TableExampleComponent implements OnInit {
 		this.tableStateService.initialize(tableDataMock, columnConfigsMock);
 	}
 
-	public onDropdownItemDrop(event: CdkDragDrop<TableColumnConfig>): void {
+	public onDropdownItemDrop(event: CdkDragDrop<TableColumnConfig[]>): void {
 		this.tableStateService.onDropdownItemDrop(event);
 	}
 
@@ -114,8 +119,8 @@ export class TableExampleComponent implements OnInit {
 		return this.tableStateService.getRowCheckboxControl(index);
 	}
 
-	public getControlIndexForColumn(column: TableColumnConfig): number {
-		return this.tableStateService.getControlIndexForColumn(column);
+	public getControlForColumn(column: TableColumnConfig): FormControl {
+		return this.tableStateService.getControlForColumn(column);
 	}
 
 	public createDragGhostExample(

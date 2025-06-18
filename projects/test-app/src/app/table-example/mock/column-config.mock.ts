@@ -1,4 +1,4 @@
-import { TableColumnConfig } from '../../../../../front-components/src/lib/components/table/models/table-column-config';
+import { TableColumnConfig } from '../../../../../front-components/src/lib/components/table/models';
 
 export const columnConfigsMock: TableColumnConfig[] = [
 	{
