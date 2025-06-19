@@ -83,6 +83,8 @@ export class StandComponent {
 
 	public carouselIndex = signal(0);
 
+	public indeterminate = false;
+
 	public tabs: Tab[] = [
 		{
 			text: 'Таб1 и еще табиков много',

@@ -1,7 +1,7 @@
 <div
 	class="checkbox"
 	tabindex="0"
-	[class.checkbox--active]="checked()"
+	[class.checkbox--active]="checked() || indeterminate()"
 	[class.checkbox--hover]="isHover()"
 	[class.checkbox--disabled]="isDisabled()"
 	[class.checkbox--active-hover]="isHover() && checked()"
@@ -12,7 +12,7 @@
 	(click)="toggleCheckbox()"
 >
 	<ss-lib-icon
-		*ngIf="checked()"
+		*ngIf="checked() || indeterminate()"
 		[color]="isDisabled() ? Colors.IconOnDisabled : Colors.IconOnAction"
 		[height]="'12'"
 		[width]="'12'"

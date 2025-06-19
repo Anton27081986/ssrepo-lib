@@ -54,8 +54,6 @@ export class TableExampleComponent implements OnInit {
 
 	public readonly rowCheckboxes = this.tableStateService.getRowCheckboxes();
 	public readonly columnsForm = this.tableStateService.getColumnsForm();
-	public readonly masterCheckboxType =
-		this.tableStateService.getMasterCheckboxType();
 
 	protected readonly TextType = TextType;
 	protected readonly TextWeight = TextWeight;
