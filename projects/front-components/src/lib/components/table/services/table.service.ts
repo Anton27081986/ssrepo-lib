@@ -1,8 +1,7 @@
-import { computed, Injectable, signal, WritableSignal } from '@angular/core';
+import { computed, Injectable, signal } from '@angular/core';
 import { CdkDragDrop } from '@angular/cdk/drag-drop';
 import { FormArray, FormControl } from '@angular/forms';
 import { TableColumnConfig } from '../models';
-import { CheckboxType } from '../../../shared/models/types/check-box-type';
 
 @Injectable()
 export class SsTableState<T> {
@@ -11,7 +10,6 @@ export class SsTableState<T> {
 	private readonly columnConfigs = signal<TableColumnConfig[]>([]);
 	private readonly rowCheckboxes = new FormArray<FormControl<boolean>>([]);
 	private readonly columnsForm = new FormArray<FormControl<boolean>>([]);
-	private readonly masterCheckboxType = signal<CheckboxType>('default');
 	private readonly masterCheckboxCtrl = new FormControl<boolean>(false, {
 		nonNullable: true,
 	});
@@ -44,10 +42,6 @@ export class SsTableState<T> {
 
 	public getColumnsForm(): FormArray<FormControl<boolean>> {
 		return this.columnsForm;
-	}
-
-	public getMasterCheckboxType(): WritableSignal<CheckboxType> {
-		return this.masterCheckboxType;
 	}
 
 	public initialize(data: T[], configs: TableColumnConfig[]): void {
@@ -128,10 +122,6 @@ export class SsTableState<T> {
 	}
 
 	public onMasterCheckboxChange(value: boolean | null): void {
-		if (this.masterCheckboxType() === 'indeterminate') {
-			this.masterCheckboxType.set('default');
-		}
-
 		this.rowCheckboxes.controls.forEach((control: FormControl) => {
 			control.setValue(value, { emitEvent: false });
 		});
@@ -150,9 +140,6 @@ export class SsTableState<T> {
 		this.masterCheckboxCtrl.setValue(isAllChecked || isIndeterminate, {
 			emitEvent: false,
 		});
-		this.masterCheckboxType.set(
-			isIndeterminate ? 'indeterminate' : 'default',
-		);
 	}
 
 	private collectWithSubColumns(

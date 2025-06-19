@@ -596,28 +596,31 @@
 <!--		(click)="console.log(5)"-->
 <!--	/>-->
 <!--</ss-lib-dropdown-list>-->
-<!--<div class="checkbox">-->
-<!--	<ss-lib-checkbox [formControl]="checkBox1"></ss-lib-checkbox>-->
+<div
+	class="checkbox"
+	(click)="indeterminate = !indeterminate"
+>
+	<ss-lib-checkbox [formControl]="checkBox1"></ss-lib-checkbox>
 
-<!--	<ss-lib-checkbox [formControl]="checkBox2"></ss-lib-checkbox>-->
+	<ss-lib-checkbox [formControl]="checkBox2"></ss-lib-checkbox>
 
-<!--	<ss-lib-checkbox [formControl]="checkBox3"></ss-lib-checkbox>-->
+	<ss-lib-checkbox [formControl]="checkBox3"></ss-lib-checkbox>
 
-<!--	<ss-lib-checkbox-->
-<!--		[type]="'indeterminate'"-->
-<!--		[formControl]="checkBox1"-->
-<!--	></ss-lib-checkbox>-->
+	<ss-lib-checkbox
+		[formControl]="checkBox1"
+		[(indeterminate)]="indeterminate"
+	></ss-lib-checkbox>
 
-<!--	<ss-lib-checkbox-->
-<!--		[type]="'indeterminate'"-->
-<!--		[formControl]="checkBox2"-->
-<!--	></ss-lib-checkbox>-->
+	<ss-lib-checkbox
+		[indeterminate]="false"
+		[formControl]="checkBox2"
+	></ss-lib-checkbox>
 
-<!--	<ss-lib-checkbox-->
-<!--		[type]="'indeterminate'"-->
-<!--		[formControl]="checkBox3"-->
-<!--	></ss-lib-checkbox>-->
-<!--</div>-->
+	<ss-lib-checkbox
+		[indeterminate]="true"
+		[formControl]="checkBox3"
+	></ss-lib-checkbox>
+</div>
 
 <!--<div class="otp">-->
 <!--	<ss-lib-otp-input [formControl]="otpCtrl"></ss-lib-otp-input>-->
