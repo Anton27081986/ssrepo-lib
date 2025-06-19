@@ -41,7 +41,7 @@ export class IconComponent {
 	public icon = input.required<IconType>();
 	public height = input<string>('24');
 	public width = input<string>('24');
-	public color = input<Colors>(Colors.IconPrimary);
+	public color = input<Colors>(Colors.IconBody);
 
 	public svg: Signal<SafeHtml | null> = computed(() => {
 		const svgData = ICONS.get(this.icon());
