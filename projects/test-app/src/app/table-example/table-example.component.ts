@@ -71,16 +71,6 @@ export class TableExampleComponent implements OnInit {
 	protected readonly Align = Align;
 
 	constructor() {
-		// toSignal(
-		// 	this.columnsForm.valueChanges.pipe(
-		// 		tap((values: Partial<{ [p: string]: boolean }>) =>
-		// 			this.tableStateService.updateColumnsVisibility(
-		// 				values as ColumnVisibility,
-		// 			),
-		// 		),
-		// 	),
-		// );
-
 		toSignal(
 			this.masterCheckboxCtrl.valueChanges.pipe(
 				tap((value: boolean | null) =>
@@ -107,7 +97,11 @@ export class TableExampleComponent implements OnInit {
 	}
 
 	public onDropdownItemDrop(event: CdkDragDrop<TableColumnConfig[]>): void {
-		this.tableStateService.onDropdownItemDrop(event);
+		this.tableStateService.onDropdownItemDrop(
+			event,
+			this.dropdownColumnsVisible(),
+			this.dropdownColumnsUnVisible(),
+		);
 	}
 
 	public getMasterCheckboxIndeterminate(): boolean {

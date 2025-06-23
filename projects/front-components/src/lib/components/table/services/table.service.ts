@@ -1,5 +1,9 @@
 import { computed, Injectable, signal, WritableSignal } from '@angular/core';
-import { CdkDragDrop } from '@angular/cdk/drag-drop';
+import {
+	CdkDragDrop,
+	moveItemInArray,
+	transferArrayItem,
+} from '@angular/cdk/drag-drop';
 import { FormArray, FormControl, FormGroup } from '@angular/forms';
 import { ColumnControls, TableColumnConfig } from '../models';
 
@@ -109,36 +113,67 @@ export class SsTableState<T> {
 	/**
 	 * Handles drag-and-drop events for columns in the dropdown.
 	 * @param event The drag-and-drop event.
+	 * @param visibleData
+	 * @param hiddenData
 	 */
-	public onDropdownItemDrop(event: CdkDragDrop<TableColumnConfig[]>): void {
+
+	public onDropdownItemDrop(
+		event: CdkDragDrop<TableColumnConfig[]>,
+		visibleData: TableColumnConfig[],
+		hiddenData: TableColumnConfig[],
+	): void {
 		this.state.update((currentState) => {
 			const allConfigs = [...currentState.columnConfigs];
-			const draggedColumn =
-				event.previousContainer.data[event.previousIndex];
-			const draggedGroup = this.collectWithSubColumns(
-				draggedColumn,
-				allConfigs,
-			);
-			const updatedConfigs = this.removeColumns(allConfigs, draggedGroup);
 
-			if (event.previousContainer !== event.container) {
-				const isVisible = !draggedColumn.visible;
+			const isVisibleContainer = event.container.data === visibleData;
 
-				draggedGroup.forEach((column) => {
-					column.visible = isVisible;
-					this.columnsForm.get(column.id)?.setValue(isVisible);
+			if (event.previousContainer === event.container) {
+				// Dragging inside a single list
+				const data = isVisibleContainer ? visibleData : hiddenData;
+
+				moveItemInArray(data, event.previousIndex, event.currentIndex);
+			} else {
+				// Dragging between lists
+				transferArrayItem(
+					event.previousContainer.data,
+					event.container.data,
+					event.previousIndex,
+					event.currentIndex,
+				);
+
+				// Updating visibility for the draggable column and its subColumns
+				const draggedColumn = event.container.data[event.currentIndex];
+				const isVisible = isVisibleContainer;
+				const draggedGroup = this.collectWithSubColumns(
+					draggedColumn,
+					allConfigs,
+				);
+
+				draggedGroup.forEach((col) => {
+					const config = allConfigs.find((c) => c.id === col.id);
+
+					if (config) {
+						config.visible = isVisible;
+						const control = this.columnsForm.get(col.id);
+
+						if (control) {
+							control.setValue(isVisible);
+						}
+					}
 				});
 			}
 
-			const targetIndex = this.findTargetIndex(
-				event,
-				draggedColumn,
+			const updatedDropdownColumns = [...visibleData, ...hiddenData];
+
+			const newConfigs = this.reorderColumnsWithSubColumns(
+				updatedDropdownColumns,
 				allConfigs,
 			);
 
-			updatedConfigs.splice(targetIndex, 0, ...draggedGroup);
-
-			return { ...currentState, columnConfigs: updatedConfigs };
+			return {
+				...currentState,
+				columnConfigs: newConfigs,
+			};
 		});
 	}
 
@@ -266,59 +301,25 @@ export class SsTableState<T> {
 		return source.filter((col) => !removeIds.has(col.id));
 	}
 
-	private findTargetIndex(
-		event: CdkDragDrop<TableColumnConfig[]>,
-		draggedColumn: TableColumnConfig,
+	private reorderColumnsWithSubColumns(
+		newConfigs: TableColumnConfig[],
 		allConfigs: TableColumnConfig[],
-	): number {
-		const { previousIndex, currentIndex } = event;
-		const isDraggingGroup = !!draggedColumn.subColumns?.length;
+	): TableColumnConfig[] {
+		const result: TableColumnConfig[] = [];
 
-		const getSubColumnCount = (column: TableColumnConfig): number =>
-			column.subColumns?.length ?? 0;
+		result.push(...newConfigs.filter((item) => !item.showInDropdown));
 
-		if (currentIndex === 0) {
-			return allConfigs.findIndex((col) => col.showInDropdown) ?? 0;
-		}
+		newConfigs
+			.filter((item) => item.showInDropdown && item.visible)
+			.forEach((item) => {
+				result.push(...this.collectWithSubColumns(item, allConfigs));
+			});
+		newConfigs
+			.filter((item) => item.showInDropdown && !item.visible)
+			.forEach((item) => {
+				result.push(...this.collectWithSubColumns(item, allConfigs));
+			});
 
-		if (currentIndex > event.container.data.length - 1) {
-			const lastVisibleIndex =
-				allConfigs
-					.map((col, idx) => (col.showInDropdown ? idx : -1))
-					.filter((idx) => idx !== -1)
-					.pop() ?? allConfigs.length;
-
-			if (lastVisibleIndex === allConfigs.length) {
-				return lastVisibleIndex;
-			}
-
-			const lastVisibleColumn = allConfigs[lastVisibleIndex];
-
-			return (
-				lastVisibleIndex +
-				1 +
-				getSubColumnCount(lastVisibleColumn) * (isDraggingGroup ? 0 : 1)
-			);
-		}
-
-		const targetColumn = event.container.data[currentIndex];
-		let targetIndex = allConfigs.findIndex(
-			(col) => col.id === targetColumn.id,
-		);
-
-		if (
-			event.previousContainer === event.container &&
-			currentIndex > previousIndex
-		) {
-			if (isDraggingGroup && !targetColumn.subColumns?.length) {
-				targetIndex -= getSubColumnCount(draggedColumn);
-			}
-
-			if (!isDraggingGroup) {
-				targetIndex += getSubColumnCount(targetColumn);
-			}
-		}
-
-		return targetIndex;
+		return result;
 	}
 }
