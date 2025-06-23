@@ -1,7 +1,7 @@
 import { computed, Injectable, signal, WritableSignal } from '@angular/core';
 import { CdkDragDrop } from '@angular/cdk/drag-drop';
 import { FormArray, FormControl, FormGroup } from '@angular/forms';
-import { ColumnControls, ColumnVisibility, TableColumnConfig } from '../models';
+import { ColumnControls, TableColumnConfig } from '../models';
 import { CheckboxType } from '../../../shared/models/types/check-box-type';
 
 @Injectable()
@@ -79,25 +79,28 @@ export class SsTableState<T> {
 	}
 
 	public onDropdownItemDrop(event: CdkDragDrop<TableColumnConfig[]>): void {
-		const dropdownCols = this.dropdownColumns();
 		const allConfigs = [...this.columnConfigs()];
 		const draggedColumn = event.previousContainer.data[event.previousIndex];
-
-		if (event.previousContainer !== event.container) {
-			this.columnsForm
-				.get(draggedColumn.id)
-				?.setValue(!draggedColumn.visible);
-		}
 
 		const draggedGroup = this.collectWithSubColumns(
 			draggedColumn,
 			allConfigs,
 		);
+
 		const updatedConfigs = this.removeColumns(allConfigs, draggedGroup);
+
+		if (event.previousContainer !== event.container) {
+			const isVisible = !draggedColumn.visible;
+
+			draggedGroup.forEach((column) => {
+				column.visible = isVisible;
+				this.columnsForm.get(column.id)?.setValue(isVisible);
+			});
+		}
+
 		const targetIndex = this.findTargetIndex(
 			event,
 			draggedColumn,
-			dropdownCols,
 			allConfigs,
 		);
 
@@ -105,42 +108,55 @@ export class SsTableState<T> {
 		this.columnConfigs.set(updatedConfigs);
 	}
 
-	public updateColumnVisibility(values: ColumnVisibility): void {
-		const dropdownColumns = this.dropdownColumns();
+	public updateColumnVisibility(
+		column: TableColumnConfig,
+		isVisible: boolean,
+	): void {
+		this.columnConfigs.update(
+			(configs: TableColumnConfig[]): TableColumnConfig[] => {
+				let updatedConfigs = [...configs];
 
-		this.columnConfigs.update((configs) => {
-			const updatedConfigs = [...configs];
-
-			dropdownColumns.forEach((dropdownItem) => {
-				const configIdx = updatedConfigs.findIndex(
-					(col: TableColumnConfig) => col.id === dropdownItem.id,
+				const updatedColumn = updatedConfigs.find(
+					(col: TableColumnConfig) => col.id === column.id,
 				);
 
-				if (configIdx === -1) {
-					return;
+				if (!updatedColumn) {
+					return updatedConfigs;
 				}
 
-				const isVisible = values[dropdownItem.id];
+				updatedColumn.visible = isVisible;
 
-				updatedConfigs[configIdx].visible = isVisible;
+				updatedColumn.subColumns?.forEach((subId: string) => {
+					const subColumn = updatedConfigs.find(
+						(col) => col.id === subId,
+					);
 
-				updatedConfigs[configIdx].subColumns?.forEach(
-					(subId: string) => {
-						const subConfigIdx = updatedConfigs.findIndex(
-							(col) => col.id === subId,
-						);
+					if (subColumn) {
+						subColumn.visible = isVisible;
+					}
+				});
 
-						if (subConfigIdx !== -1) {
-							updatedConfigs[subConfigIdx].visible = isVisible;
-						}
-					},
-				);
-			});
+				if (!isVisible) {
+					const visibilityGroup = this.collectWithSubColumns(
+						updatedColumn,
+						updatedConfigs,
+					);
 
-			return updatedConfigs;
-		});
+					updatedConfigs = this.removeColumns(
+						updatedConfigs,
+						visibilityGroup,
+					);
 
-		// this.columnConfigs.set(this.columnConfigs());
+					updatedConfigs.splice(
+						updatedConfigs.length,
+						0,
+						...visibilityGroup,
+					);
+				}
+
+				return updatedConfigs;
+			},
+		);
 	}
 
 	public onMasterCheckboxChange(value: boolean | null): void {
@@ -206,7 +222,6 @@ export class SsTableState<T> {
 	private findTargetIndex(
 		event: CdkDragDrop<TableColumnConfig[]>,
 		draggedColumn: TableColumnConfig,
-		dropdownCols: TableColumnConfig[],
 		allConfigs: TableColumnConfig[],
 	): number {
 		const { previousIndex, currentIndex } = event;
@@ -236,13 +251,13 @@ export class SsTableState<T> {
 			targetIndex +=
 				getSubColumnCount(lastVisibleColumn) *
 				(isDraggingGroup ? 0 : 1);
-			targetIndex -=
-				getSubColumnCount(draggedColumn) * (isDraggingGroup ? 1 : 0);
 
 			return targetIndex;
 		}
 
 		const targetColumn = event.container.data[currentIndex];
+		const isTargetGroup = !!targetColumn.subColumns?.length;
+
 		let targetIndex =
 			allConfigs.findIndex((col) => col.id === targetColumn.id) ?? -1;
 
@@ -250,10 +265,13 @@ export class SsTableState<T> {
 			event.container === event.previousContainer &&
 			currentIndex > previousIndex
 		) {
-			targetIndex +=
-				getSubColumnCount(targetColumn) * (isDraggingGroup ? 0 : 1);
-			targetIndex -=
-				getSubColumnCount(draggedColumn) * (isDraggingGroup ? 1 : 0);
+			if (isDraggingGroup && !isTargetGroup) {
+				targetIndex -= getSubColumnCount(draggedColumn);
+			}
+
+			if (!isDraggingGroup) {
+				targetIndex += getSubColumnCount(targetColumn);
+			}
 		}
 
 		return targetIndex;

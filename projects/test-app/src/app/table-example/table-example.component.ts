@@ -18,10 +18,7 @@ import {
 } from '../../../../front-components/src/lib/shared/models';
 
 import { columnConfigsMock, tableDataMock } from './mock';
-import {
-	ColumnVisibility,
-	TableColumnConfig,
-} from '../../../../front-components/src/lib/components/table/models';
+import { TableColumnConfig } from '../../../../front-components/src/lib/components/table/models';
 import { SsTableState } from '../../../../front-components/src/lib/components/table/services/insdex';
 import { tableExampleImports } from './table-example.imports';
 
@@ -76,15 +73,15 @@ export class TableExampleComponent implements OnInit {
 	protected readonly Align = Align;
 
 	constructor() {
-		toSignal(
-			this.columnsForm.valueChanges.pipe(
-				tap((values: Partial<{ [p: string]: boolean }>) =>
-					this.tableStateService.updateColumnVisibility(
-						values as ColumnVisibility,
-					),
-				),
-			),
-		);
+		// toSignal(
+		// 	this.columnsForm.valueChanges.pipe(
+		// 		tap((values: Partial<{ [p: string]: boolean }>) =>
+		// 			this.tableStateService.updateColumnsVisibility(
+		// 				values as ColumnVisibility,
+		// 			),
+		// 		),
+		// 	),
+		// );
 
 		toSignal(
 			this.masterCheckboxCtrl.valueChanges.pipe(
@@ -121,6 +118,12 @@ export class TableExampleComponent implements OnInit {
 
 	public getControlForColumn(column: TableColumnConfig): FormControl {
 		return this.tableStateService.getControlForColumn(column);
+	}
+
+	public updateColumnVisibility(column: TableColumnConfig): void {
+		const isVisible = !column.visible;
+
+		this.tableStateService.updateColumnVisibility(column, isVisible);
 	}
 
 	public createDragGhostExample(
