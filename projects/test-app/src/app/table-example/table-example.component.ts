@@ -110,6 +110,10 @@ export class TableExampleComponent implements OnInit {
 		this.tableStateService.onDropdownItemDrop(event);
 	}
 
+	public getMasterCheckboxIndeterminate(): boolean {
+		return this.tableStateService.isMasterCheckboxIndeterminate();
+	}
+
 	public getRowCheckboxControl(index: number): FormControl {
 		return this.tableStateService.getRowCheckboxControl(index);
 	}

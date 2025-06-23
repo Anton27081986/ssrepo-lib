@@ -2,7 +2,6 @@ import { computed, Injectable, signal, WritableSignal } from '@angular/core';
 import { CdkDragDrop } from '@angular/cdk/drag-drop';
 import { FormArray, FormControl, FormGroup } from '@angular/forms';
 import { ColumnControls, TableColumnConfig } from '../models';
-import { CheckboxType } from '../../../shared/models/types/check-box-type';
 
 // Interface for table state
 interface TableState<T> {
@@ -13,8 +12,8 @@ interface TableState<T> {
 // Interface for checkbox controls
 interface CheckboxControls {
 	masterCheckbox: FormControl<boolean>;
+	masterCheckboxIndeterminate: WritableSignal<boolean>;
 	rowCheckboxes: FormArray<FormControl<boolean>>;
-	masterCheckboxType: WritableSignal<CheckboxType>;
 }
 
 /**
@@ -32,8 +31,8 @@ export class SsTableState<T> {
 	private readonly columnsForm = new FormGroup<ColumnControls>({});
 	private readonly checkboxControls: CheckboxControls = {
 		masterCheckbox: new FormControl<boolean>(false, { nonNullable: true }),
+		masterCheckboxIndeterminate: signal<boolean>(false),
 		rowCheckboxes: new FormArray<FormControl<boolean>>([]),
-		masterCheckboxType: signal<CheckboxType>('default'),
 	};
 
 	// Computed properties
@@ -70,8 +69,8 @@ export class SsTableState<T> {
 		return this.columnsForm;
 	}
 
-	public getMasterCheckboxType(): WritableSignal<CheckboxType> {
-		return this.checkboxControls.masterCheckboxType;
+	public isMasterCheckboxIndeterminate(): boolean {
+		return this.checkboxControls.masterCheckboxIndeterminate();
 	}
 
 	/**
@@ -195,8 +194,8 @@ export class SsTableState<T> {
 	 * @param value The new checkbox value.
 	 */
 	public onMasterCheckboxChange(value: boolean | null): void {
-		if (this.checkboxControls.masterCheckboxType() === 'indeterminate') {
-			this.checkboxControls.masterCheckboxType.set('default');
+		if (this.checkboxControls.masterCheckboxIndeterminate()) {
+			this.checkboxControls.masterCheckboxIndeterminate.set(false);
 		}
 
 		this.checkboxControls.rowCheckboxes.controls.forEach(
@@ -220,15 +219,11 @@ export class SsTableState<T> {
 		const isNoneChecked = checkedCount === 0;
 		const isIndeterminate = !isAllChecked && !isNoneChecked;
 
-		this.checkboxControls.masterCheckbox.setValue(
-			isAllChecked || isIndeterminate,
-			{
-				emitEvent: false,
-			},
-		);
-		this.checkboxControls.masterCheckboxType.set(
-			isIndeterminate ? 'indeterminate' : 'default',
-		);
+		this.checkboxControls.masterCheckbox.setValue(isAllChecked, {
+			emitEvent: false,
+		});
+
+		this.checkboxControls.masterCheckboxIndeterminate.set(isIndeterminate);
 	}
 
 	private initializeColumnsForm(configs: TableColumnConfig[]): void {
