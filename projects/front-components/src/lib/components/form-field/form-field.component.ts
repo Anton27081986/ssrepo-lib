@@ -88,6 +88,7 @@ export class FormFieldComponent implements AfterContentInit {
 	public readonly label = input<string>('');
 	public readonly hint = input<string>('');
 	public readonly showValidation = input<boolean>(true);
+	public readonly showBorder = input<boolean>(true);
 	public readonly showValidationFieldIcon = input<boolean>(false);
 	public readonly errorText = input<string>('');
 	public readonly icon = input<IconType | null>(null);

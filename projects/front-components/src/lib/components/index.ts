@@ -58,3 +58,4 @@ export {
 	TableResizedDirective,
 	TableDirective,
 } from './table/directives';
+export { LoadPaginationComponent } from './load-pagination/load-pagination.component';

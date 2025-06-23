@@ -2,15 +2,14 @@ import {
 	Component,
 	computed,
 	forwardRef,
-	input,
-	InputSignal,
+	model,
+	ModelSignal,
 	Signal,
 	signal,
 	WritableSignal,
 } from '@angular/core';
 import { type ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { NgIf } from '@angular/common';
-import { CheckboxType } from '../../shared/models/types/check-box-type';
 import { IconComponent } from '../icon/icon.component';
 import { Colors, IconType } from '../../shared/models';
 
@@ -58,15 +57,14 @@ export class CheckboxComponent implements ControlValueAccessor {
 	protected readonly isFocus: WritableSignal<boolean> =
 		signal<boolean>(false);
 
-	public readonly type: InputSignal<CheckboxType> =
-		input<CheckboxType>('default');
+	public readonly indeterminate: ModelSignal<boolean> = model(false);
 
 	protected readonly iconComputed: Signal<IconType> = computed(() => {
-		if (this.type() === 'default') {
-			return IconType.Check;
+		if (this.indeterminate()) {
+			return IconType.Minus;
 		}
 
-		return IconType.Minus;
+		return IconType.Check;
 	});
 
 	public onChange!: (value: boolean | null) => void;
@@ -96,6 +94,7 @@ export class CheckboxComponent implements ControlValueAccessor {
 	protected toggleCheckbox(): void {
 		if (!this.isDisabled()) {
 			this.checked.set(!this.checked());
+			this.indeterminate.set(false);
 			this.onChange(this.checked());
 			this.onTouched();
 		}

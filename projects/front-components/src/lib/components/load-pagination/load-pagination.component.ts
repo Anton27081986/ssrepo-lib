@@ -2,10 +2,13 @@ import {
 	ChangeDetectionStrategy,
 	Component,
 	computed,
+	effect,
 	input,
 	InputSignal,
-	model,
+	output,
+	signal,
 	Signal,
+	WritableSignal,
 } from '@angular/core';
 import { NgIf } from '@angular/common';
 import { ButtonComponent } from '../buttons';
@@ -23,8 +26,10 @@ import { ButtonType, Colors, TextType } from '../../shared/models';
 })
 export class LoadPaginationComponent {
 	public readonly total: InputSignal<number> = input.required<number>();
-	public readonly offset = model.required<number>();
+	public readonly offsetInput: InputSignal<number> = input.required<number>();
+	public readonly changeOffset = output<number>();
 	public readonly limit: InputSignal<number> = input.required<number>();
+	public readonly offset: WritableSignal<number> = signal<number>(0);
 	public readonly TextComputedForLimit: Signal<string> = computed(() => {
 		const newOffset = this.offset() + this.limit();
 
@@ -39,6 +44,14 @@ export class LoadPaginationComponent {
 	protected readonly Colors = Colors;
 
 	protected readonly ButtonType = ButtonType;
+
+	constructor() {
+		effect(() => {
+			this.offset.set(this.offsetInput());
+			this.changeOffset.emit(this.offsetInput());
+		});
+	}
+
 	protected get viewButton(): boolean {
 		return this.offset() !== this.total();
 	}
@@ -47,8 +60,10 @@ export class LoadPaginationComponent {
 		const newOffset = this.offset() + this.limit();
 
 		if (newOffset > this.total()) {
+			this.changeOffset.emit(this.total());
 			this.offset.set(this.total());
 		} else {
+			this.changeOffset.emit(newOffset);
 			this.offset.set(newOffset);
 		}
 	}

@@ -40,6 +40,7 @@
 		class="field-container"
 		[class.validation]="showValidation()"
 		[class.state-disabled]="fieldCtrl!.ngControl.disabled"
+		[class.show-border]="!showBorder()"
 		[ngClass]="['state-' + currentFieldCtrlState()]"
 		(focusout)="updateFormFieldStateOnFocusout()"
 	>
