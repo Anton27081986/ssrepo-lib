@@ -102,16 +102,16 @@ export class DropdownItemComponent<
 		}
 
 		if (this.state() === StateTypes.Hover) {
-			return Colors.IconActionHover2;
+			return Colors.IconActionHover;
 		}
 
 		if (this.isDestructive()) {
 			return this.state() === StateTypes.Default
-				? Colors.IconAction2
+				? Colors.IconAction
 				: Colors.IconError;
 		}
 
-		return Colors.IconAction2;
+		return Colors.IconAction;
 	});
 
 	public readonly textColor = computed(() => {
@@ -120,16 +120,16 @@ export class DropdownItemComponent<
 		}
 
 		if (this.state() === StateTypes.Hover) {
-			return Colors.TextActionHover2;
+			return Colors.TextActionHover;
 		}
 
 		if (this.isDestructive()) {
 			return this.state() === StateTypes.Default
-				? Colors.TextAction2
+				? Colors.TextAction
 				: Colors.TextError;
 		}
 
-		return Colors.TextAction2;
+		return Colors.TextAction;
 	});
 
 	protected readonly TextType = TextType;
