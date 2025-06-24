@@ -36,10 +36,14 @@ export class SsTableState<T> {
 		this.state().columnConfigs.filter((col) => col.showInDropdown),
 	);
 
-	public readonly visibleColumns = computed<readonly string[]>(() =>
+	public readonly visibleColumnsIds = computed<readonly string[]>(() =>
 		this.state()
 			.columnConfigs.filter((col) => col.visible)
 			.map((col) => col.id),
+	);
+
+	public readonly visibleColumns = computed<readonly TableColumnConfig[]>(
+		() => this.state().columnConfigs.filter((col) => col.visible),
 	);
 
 	public readonly data = computed(() => this.state().data);
@@ -360,6 +364,7 @@ export class SsTableState<T> {
 		isVisible: boolean,
 	): void {
 		column.visible = isVisible;
+
 		column.subColumns?.forEach((subId) => {
 			const subColumn = allConfigs.find((col) => col.id === subId);
 

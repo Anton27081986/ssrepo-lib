@@ -3,5 +3,6 @@ export interface TableColumnConfig {
 	name: string;
 	showInDropdown: boolean;
 	visible: boolean;
+	subGroups?: string[];
 	subColumns?: string[];
 }
