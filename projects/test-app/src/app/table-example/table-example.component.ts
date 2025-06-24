@@ -1,10 +1,11 @@
 import {
 	ChangeDetectionStrategy,
 	Component,
+	computed,
 	inject,
 	OnInit,
 } from '@angular/core';
-import { CdkDragDrop } from '@angular/cdk/drag-drop';
+import { CdkDrag, CdkDragDrop, CdkDropList } from '@angular/cdk/drag-drop';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { tap } from 'rxjs';
 import { FormControl } from '@angular/forms';
@@ -37,7 +38,7 @@ interface TableRow {
 @Component({
 	selector: 'app-table-example',
 	standalone: true,
-	imports: [tableExampleImports],
+	imports: [tableExampleImports, CdkDropList, CdkDrag],
 	templateUrl: './table-example.component.html',
 	styleUrl: './table-example.component.scss',
 	changeDetection: ChangeDetectionStrategy.OnPush,
@@ -52,6 +53,14 @@ export class TableExampleComponent implements OnInit {
 	public readonly masterCheckboxCtrl =
 		this.tableStateService.getMasterCheckboxCtrl();
 
+	public readonly dropdownColumnsVisible = computed(() =>
+		this.dropdownColumns().filter((item) => item.visible === true),
+	);
+
+	public readonly dropdownColumnsUnVisible = computed(() =>
+		this.dropdownColumns().filter((item) => item.visible === false),
+	);
+
 	public readonly rowCheckboxes = this.tableStateService.getRowCheckboxes();
 	public readonly columnsForm = this.tableStateService.getColumnsForm();
 
@@ -62,14 +71,6 @@ export class TableExampleComponent implements OnInit {
 	protected readonly Align = Align;
 
 	constructor() {
-		toSignal(
-			this.columnsForm.valueChanges.pipe(
-				tap((values: Array<boolean | null>) =>
-					this.tableStateService.updateColumnVisibility(values),
-				),
-			),
-		);
-
 		toSignal(
 			this.masterCheckboxCtrl.valueChanges.pipe(
 				tap((value: boolean | null) =>
@@ -95,12 +96,30 @@ export class TableExampleComponent implements OnInit {
 		this.tableStateService.initialize(tableDataMock, columnConfigsMock);
 	}
 
-	public onDropdownItemDrop(event: CdkDragDrop<TableColumnConfig>): void {
-		this.tableStateService.onDropdownItemDrop(event);
+	public onDropdownItemDrop(event: CdkDragDrop<TableColumnConfig[]>): void {
+		this.tableStateService.onDropdownItemDrop(
+			event,
+			this.dropdownColumnsVisible(),
+			this.dropdownColumnsUnVisible(),
+		);
+	}
+
+	public getMasterCheckboxIndeterminate(): boolean {
+		return this.tableStateService.isMasterCheckboxIndeterminate();
 	}
 
 	public getRowCheckboxControl(index: number): FormControl {
 		return this.tableStateService.getRowCheckboxControl(index);
+	}
+
+	public getControlForColumn(column: TableColumnConfig): FormControl {
+		return this.tableStateService.getControlForColumn(column);
+	}
+
+	public updateColumnVisibility(column: TableColumnConfig): void {
+		const isVisible = !column.visible;
+
+		this.tableStateService.updateColumnVisibility(column, isVisible);
 	}
 
 	public createDragGhostExample(

@@ -19,8 +19,7 @@ import { NgTemplateOutlet } from '@angular/common';
 import { Tab } from '../../shared/models/interfaces/tab';
 import { TabComponent } from '../tab/tab.component';
 import { IconType } from '../../shared/models';
-import { DropdownItemComponent } from '../dropdown-item/dropdown-item.component';
-import { DropdownListComponent } from '../dropdown-list/dropdown-list.component';
+import { DropdownItemComponent, DropdownListComponent } from '../dropdown';
 
 @Component({
 	selector: 'ss-lib-tabs',

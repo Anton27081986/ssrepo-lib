@@ -1,32 +1,90 @@
 <ss-lib-utility-button [popoverTriggerFor]="dropdownColumn" />
 
-<ss-lib-dropdown-list
-	#dropdownColumn
-	[isDraggable]="true"
-	(dropItem)="onDropdownItemDrop($event)"
->
-	@for (column of dropdownColumns(); track column) {
-		<ss-lib-dropdown-item>
-			<div class="column-item__content">
-				<ss-lib-checkbox
-					[formControl]="columnsForm.controls[$index]"
-				></ss-lib-checkbox>
+<ss-lib-dropdown-list #dropdownColumn>
+	@if (dropdownColumnsVisible().length > 0) {
+		<ss-lib-dropdown-group [label]="'Отображаемые'">
+			<div
+				id="visibleList"
+				class="draggable-list"
+				cdkDropList
+				[cdkDropListData]="dropdownColumnsVisible()"
+				[cdkDropListConnectedTo]="['hiddenList']"
+				(cdkDropListDropped)="onDropdownItemDrop($event)"
+			>
+				@for (column of dropdownColumnsVisible(); track column) {
+					<ss-lib-dropdown-item
+						cdkDrag
+						class="draggable-item"
+					>
+						<div class="column-item__content">
+							@let ctrl = getControlForColumn(column);
 
-				<ss-lib-text
-					[type]="TextType.BodySm"
-					[weight]="TextWeight.Regular"
-					[color]="Colors.TextBody3"
-				>
-					{{ column.name }}
-				</ss-lib-text>
+							<ss-lib-checkbox
+								[formControl]="ctrl"
+								(click)="updateColumnVisibility(column)"
+							></ss-lib-checkbox>
 
-				<ss-lib-icon
-					[height]="'16'"
-					[width]="'16'"
-					[icon]="IconType.Drag"
-				/>
+							<ss-lib-text
+								[type]="TextType.BodySm"
+								[weight]="TextWeight.Regular"
+								[color]="Colors.TextBody3"
+							>
+								{{ column.name }}
+							</ss-lib-text>
+
+							<ss-lib-icon
+								[height]="'16'"
+								[width]="'16'"
+								[icon]="IconType.Drag"
+							/>
+						</div>
+					</ss-lib-dropdown-item>
+				}
 			</div>
-		</ss-lib-dropdown-item>
+		</ss-lib-dropdown-group>
+	}
+
+	@if (dropdownColumnsUnVisible().length > 0) {
+		<ss-lib-dropdown-group [label]="'Скрытые'">
+			<div
+				id="hiddenList"
+				cdkDropList
+				class="draggable-list"
+				[cdkDropListData]="dropdownColumnsUnVisible()"
+				[cdkDropListConnectedTo]="['visibleList']"
+				(cdkDropListDropped)="onDropdownItemDrop($event)"
+			>
+				@for (column of dropdownColumnsUnVisible(); track column) {
+					<ss-lib-dropdown-item
+						cdkDrag
+						class="draggable-item"
+					>
+						<div class="column-item__content">
+							@let ctrl = getControlForColumn(column);
+
+							<ss-lib-checkbox
+								[formControl]="ctrl"
+								(click)="updateColumnVisibility(column)"
+							></ss-lib-checkbox>
+
+							<ss-lib-text
+								[type]="TextType.BodySm"
+								[weight]="TextWeight.Regular"
+								[color]="Colors.TextBody3"
+							>
+								{{ column.name }}
+							</ss-lib-text>
+
+							<ss-lib-icon
+								[height]="'16'"
+								[width]="'16'"
+								[icon]="IconType.Drag"
+							/>
+						</div>
+					</ss-lib-dropdown-item>
+				}
+			</div>
+		</ss-lib-dropdown-group>
 	}
 </ss-lib-dropdown-list>
 
@@ -49,7 +107,7 @@
 					<div class="item-align--center drag-action__content">
 						<ss-lib-checkbox
 							[formControl]="masterCheckboxCtrl"
-							[indeterminate]="false"
+							[indeterminate]="getMasterCheckboxIndeterminate()"
 						/>
 
 						<ss-lib-text

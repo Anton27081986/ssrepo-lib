@@ -14,6 +14,7 @@ import { ThComponent } from '../th/th.component';
 
 @Component({
 	selector: 'tr[ssThGroup]',
+	standalone: true,
 	imports: [NgTemplateOutlet, ThComponent],
 	templateUrl: './th-group.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
