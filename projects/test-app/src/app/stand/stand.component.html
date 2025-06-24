@@ -681,58 +681,58 @@
 <!--&gt;-->
 <!--</ss-lib-load-pagination>-->
 
-<!--{{ offset() }}-->
+{{ offset() }}
 
-<!--<ss-lib-button-->
-<!--	[iconPosition]="IconPosition.End"-->
-<!--	[justifyContent]="JustifyContent.SpaceBetween"-->
-<!--	[icon]="IconType.ChevronDown"-->
-<!--	[text]="'Какой то текст'"-->
-<!--&gt;</ss-lib-button>-->
+<ss-lib-button
+	[iconPosition]="IconPosition.End"
+	[justifyContent]="JustifyContent.SpaceBetween"
+	[icon]="IconType.ChevronDown"
+	[text]="'Какой то текст'"
+></ss-lib-button>
 
-<!--<div class="hint">-->
-<!--	<ss-lib-hint-->
-<!--		[icon]="IconType.Info"-->
-<!--		[type]="HelpHintType.Default"-->
-<!--	></ss-lib-hint>-->
-<!--	<ss-lib-hint-->
-<!--		[icon]="IconType.Info"-->
-<!--		[type]="HelpHintType.Success"-->
-<!--	></ss-lib-hint>-->
-<!--	<ss-lib-hint-->
-<!--		[icon]="IconType.Info"-->
-<!--		[type]="HelpHintType.Warning"-->
-<!--	></ss-lib-hint>-->
-<!--	<ss-lib-hint-->
-<!--		[icon]="IconType.Info"-->
-<!--		[type]="HelpHintType.Error"-->
-<!--	></ss-lib-hint>-->
-<!--	<ss-lib-hint-->
-<!--		[icon]="IconType.Info"-->
-<!--		[type]="HelpHintType.Warning"-->
-<!--		[disabled]="true"-->
-<!--	></ss-lib-hint>-->
-<!--</div>-->
+<div class="hint">
+	<ss-lib-hint
+		[icon]="IconType.Info"
+		[type]="HelpHintType.Default"
+	></ss-lib-hint>
+	<ss-lib-hint
+		[icon]="IconType.Info"
+		[type]="HelpHintType.Success"
+	></ss-lib-hint>
+	<ss-lib-hint
+		[icon]="IconType.Info"
+		[type]="HelpHintType.Warning"
+	></ss-lib-hint>
+	<ss-lib-hint
+		[icon]="IconType.Info"
+		[type]="HelpHintType.Error"
+	></ss-lib-hint>
+	<ss-lib-hint
+		[icon]="IconType.Info"
+		[type]="HelpHintType.Warning"
+		[disabled]="true"
+	></ss-lib-hint>
+</div>
 
-<!--<div class="input">-->
-<!--	<ss-lib-form-field-->
-<!--		[label]="'Название'"-->
-<!--		[hint]="'Подсказка'"-->
-<!--		[errorText]="'Неверно заполнено'"-->
-<!--		[tooltipInfoText]="'Какой то тултип'"-->
-<!--		[showValidationFieldIcon]="true"-->
-<!--		[icon]="IconType.Bell"-->
-<!--	>-->
-<!--		<ss-lib-input-->
-<!--			fieldCtrl-->
-<!--			[formControl]="inputCtrl"-->
-<!--			[placeholder]="'oleg@mail.ru'"-->
-<!--			[clearButton]="true"-->
-<!--		/>-->
-<!--	</ss-lib-form-field>-->
-<!--</div>-->
+<div class="input">
+	<ss-lib-form-field
+		[label]="'Название'"
+		[hint]="'Подсказка'"
+		[errorText]="'Неверно заполнено'"
+		[tooltipInfoText]="'Какой то тултип'"
+		[showValidationFieldIcon]="true"
+		[icon]="IconType.Bell"
+	>
+		<ss-lib-input
+			fieldCtrl
+			[formControl]="inputCtrl"
+			[placeholder]="'oleg@mail.ru'"
+			[clearButton]="true"
+		/>
+	</ss-lib-form-field>
+</div>
 
-<!--<br />-->
+<br />
 
 <app-table-example></app-table-example>
 <br />

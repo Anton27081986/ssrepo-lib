@@ -58,7 +58,7 @@ export class BadgeComponent {
 				};
 
 			default:
-				return { iconColor: Colors.IconPrimary };
+				return { iconColor: Colors.IconBody };
 		}
 	});
 
