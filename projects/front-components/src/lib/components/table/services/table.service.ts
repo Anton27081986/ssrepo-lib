@@ -38,12 +38,12 @@ export class SsTableState<T> {
 
 	public readonly visibleColumnsIds = computed<readonly string[]>(() =>
 		this.state()
-			.columnConfigs.filter((col) => col.visible)
+			.columnConfigs.filter((col) => col.visible && col.showInHeader)
 			.map((col) => col.id),
 	);
 
 	public readonly visibleColumns = computed<readonly TableColumnConfig[]>(
-		() => this.state().columnConfigs.filter((col) => col.visible),
+		() => this.state().columnConfigs.filter((col) => col.showInHeader),
 	);
 
 	public readonly data = computed(() => this.state().data);
@@ -73,13 +73,25 @@ export class SsTableState<T> {
 	}
 
 	/**
+	 * Replaces the entire columnConfigs in the state and updates related form controls.
+	 * @param newConfigs The new column configurations.
+	 */
+	public replaceColumnConfigs(newConfigs: TableColumnConfig[]): void {
+		this.state.update((currentState) => ({
+			...currentState,
+			columnConfigs: [...newConfigs],
+		}));
+		this.reinitializeColumnsForm(newConfigs);
+	}
+
+	/**
 	 * Initializes the table with data and column configurations.
 	 * @param data The table data.
 	 * @param configs The column configurations.
 	 */
 	public initialize(data: T[], configs: TableColumnConfig[]): void {
-		this.state.set({ data, columnConfigs: configs });
-		this.initializeColumnsForm(configs);
+		this.state.set({ data, columnConfigs: [...configs] });
+		this.reinitializeColumnsForm(configs);
 		this.initializeRowCheckboxes(data);
 	}
 
@@ -137,6 +149,7 @@ export class SsTableState<T> {
 				...visibleColumns,
 				...hiddenColumns,
 			];
+
 			const newConfigs = this.reorderColumnsWithSubColumns(
 				updatedDropdownColumns,
 				allConfigs,
@@ -147,7 +160,7 @@ export class SsTableState<T> {
 	}
 
 	/**
-	 * Updates the visibility of a column and its sub-columns.
+	 * Updates the visibility of a column and its sub-columns/subGroups.
 	 * @param column The column to update.
 	 * @param isVisible The visibility state.
 	 */
@@ -167,6 +180,7 @@ export class SsTableState<T> {
 
 			this.setColumnVisibility(targetColumn, updatedConfigs, isVisible);
 
+			// Move hidden columns to the end
 			if (!isVisible) {
 				const visibilityGroup = this.collectWithSubColumns(
 					targetColumn,
@@ -177,10 +191,11 @@ export class SsTableState<T> {
 					updatedConfigs,
 					visibilityGroup,
 				);
+
 				updatedConfigs.push(...visibilityGroup);
 			}
 
-			return { ...currentState, columnConfigs: updatedConfigs };
+			return { ...currentState, columnConfigs: [...updatedConfigs] };
 		});
 	}
 
@@ -217,15 +232,16 @@ export class SsTableState<T> {
 		this.checkboxControls.masterCheckbox.setValue(isAllChecked, {
 			emitEvent: false,
 		});
-
 		this.checkboxControls.masterCheckboxIndeterminate.set(isIndeterminate);
 	}
 
-	private initializeColumnsForm(configs: TableColumnConfig[]): void {
+	private reinitializeColumnsForm(configs: TableColumnConfig[]): void {
 		configs.forEach((config) => {
 			this.columnsForm.addControl(
 				config.id,
-				new FormControl<boolean>(true, { nonNullable: true }),
+				new FormControl<boolean>(config.visible ?? true, {
+					nonNullable: true,
+				}),
 			);
 		});
 	}
@@ -239,11 +255,6 @@ export class SsTableState<T> {
 		});
 	}
 
-	/**
-	 * Handles drag-and-drop within the same list.
-	 * @param data The list data.
-	 * @param event The drag-and-drop event.
-	 */
 	private handleDragWithinList(
 		data: TableColumnConfig[],
 		event: CdkDragDrop<TableColumnConfig[]>,
@@ -251,12 +262,6 @@ export class SsTableState<T> {
 		moveItemInArray(data, event.previousIndex, event.currentIndex);
 	}
 
-	/**
-	 * Handles drag-and-drop between lists.
-	 * @param event The drag-and-drop event.
-	 * @param isVisibleContainer Whether the target container is for visible columns.
-	 * @param allConfigs All column configurations.
-	 */
 	private handleDragBetweenLists(
 		event: CdkDragDrop<TableColumnConfig[]>,
 		isVisibleContainer: boolean,
@@ -287,30 +292,45 @@ export class SsTableState<T> {
 		});
 	}
 
-	/**
-	 * Collects a column and its sub-columns.
-	 * @param parent The parent column.
-	 * @param allConfigs All column configurations.
-	 * @returns An array of the parent column and its sub-columns.
-	 */
 	private collectWithSubColumns(
 		parent: TableColumnConfig,
 		allConfigs: TableColumnConfig[],
 	): TableColumnConfig[] {
-		return [
-			parent,
-			...(parent.subColumns
-				?.map((subId) => allConfigs.find((col) => col.id === subId))
-				.filter((col): col is TableColumnConfig => !!col) ?? []),
-		];
+		const result: TableColumnConfig[] = [parent];
+
+		if (parent.subColumns) {
+			const subColumns = parent.subColumns
+				.map((subId) => allConfigs.find((col) => col.id === subId))
+				.filter((col): col is TableColumnConfig => !!col);
+
+			result.push(...subColumns);
+		}
+
+		if (parent.subGroups) {
+			const subGroupColumns = parent.subGroups
+				.map((subGroupId) => {
+					const subGroupColumn = allConfigs.find(
+						(col) => col.id === subGroupId,
+					);
+
+					if (subGroupColumn) {
+						return this.collectWithSubColumns(
+							subGroupColumn,
+							allConfigs,
+						);
+					}
+
+					return [];
+				})
+				.flat()
+				.filter((col): col is TableColumnConfig => !!col);
+
+			result.push(...subGroupColumns);
+		}
+
+		return result;
 	}
 
-	/**
-	 * Removes specified columns from a source array.
-	 * @param source The source array of columns.
-	 * @param toRemove The columns to remove.
-	 * @returns The filtered array.
-	 */
 	private removeColumns(
 		source: TableColumnConfig[],
 		toRemove: TableColumnConfig[],
@@ -320,29 +340,23 @@ export class SsTableState<T> {
 		return source.filter((col) => !removeIds.has(col.id));
 	}
 
-	/**
-	 * Reorders columns, preserving sub-columns and visibility.
-	 * @param newConfigs The new column configurations.
-	 * @param allConfigs All column configurations.
-	 * @returns The reordered column configurations.
-	 */
 	private reorderColumnsWithSubColumns(
 		newConfigs: TableColumnConfig[],
 		allConfigs: TableColumnConfig[],
 	): TableColumnConfig[] {
 		const result: TableColumnConfig[] = [];
 
-		// Add non-dropdown columns first
-		result.push(...newConfigs.filter((item) => !item.showInDropdown));
+		// Add sticky columns first
+		result.push(...allConfigs.filter((item) => item.stickyColumn));
 
-		// Add visible dropdown columns with their sub-columns
+		// Add visible dropdown columns with their sub-columns/subGroups
 		newConfigs
 			.filter((item) => item.showInDropdown && item.visible)
 			.forEach((item) =>
 				result.push(...this.collectWithSubColumns(item, allConfigs)),
 			);
 
-		// Add hidden dropdown columns with their sub-columns
+		// Add hidden dropdown columns with their sub-columns/subGroups
 		newConfigs
 			.filter((item) => item.showInDropdown && !item.visible)
 			.forEach((item) =>
@@ -352,12 +366,6 @@ export class SsTableState<T> {
 		return result;
 	}
 
-	/**
-	 * Sets visibility for a column and its sub-columns.
-	 * @param column The column to update.
-	 * @param allConfigs All column configurations.
-	 * @param isVisible The visibility state.
-	 */
 	private setColumnVisibility(
 		column: TableColumnConfig,
 		allConfigs: TableColumnConfig[],
@@ -365,12 +373,24 @@ export class SsTableState<T> {
 	): void {
 		column.visible = isVisible;
 
-		column.subColumns?.forEach((subId) => {
-			const subColumn = allConfigs.find((col) => col.id === subId);
+		if (column.subGroups) {
+			column.subGroups.forEach((subId) => {
+				const subGroup = allConfigs.find((col) => col.id === subId);
 
-			if (subColumn) {
-				subColumn.visible = isVisible;
-			}
-		});
+				if (subGroup) {
+					this.setColumnVisibility(subGroup, allConfigs, isVisible);
+				}
+			});
+		}
+
+		if (column.subColumns) {
+			column.subColumns.forEach((subId) => {
+				const subColumn = allConfigs.find((col) => col.id === subId);
+
+				if (subColumn) {
+					subColumn.visible = isVisible;
+				}
+			});
+		}
 	}
 }

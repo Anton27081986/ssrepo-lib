@@ -152,6 +152,12 @@ export class TableOperPlanExampleComponent implements OnInit {
 		return subColumnId;
 	}
 
+	public isWeekColumnVisible(): boolean {
+		return this.visibleColumns().some(
+			(column) => column.id === 'planDays' && column.visible,
+		);
+	}
+
 	public getCellValue(
 		row: IOperationPlanItem,
 		columnId: string,
