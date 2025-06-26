@@ -38,7 +38,9 @@ import { HeaderFilterService } from '../../shared/services';
 	template: ``,
 	imports: [],
 })
-export abstract class HeaderFilterCheckboxItemAbstractComponent<T extends IId>
+export abstract class HeaderFilterCheckboxSearchItemAbstractComponent<
+		T extends IId,
+	>
 	extends HeaderFilterCheckboxSearchAbstractComponent<T>
 	implements OnInit, OnDestroy
 {
