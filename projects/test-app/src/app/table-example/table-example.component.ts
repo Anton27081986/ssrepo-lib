@@ -19,8 +19,8 @@ import {
 
 import { columnConfigsMock, tableDataMock } from './mock';
 import { TableColumnConfig } from '../../../../front-components/src/lib/components/table/models';
-import { SsTableState } from '../../../../front-components/src/lib/components/table/services/insdex';
 import { tableExampleImports } from './table-example.imports';
+import { SsTableState } from '../../../../front-components/src/lib/components/table/services';
 
 interface TableRow {
 	id: number;
