@@ -204,13 +204,20 @@ export class SsTableState<T> {
 	 * @param value The new checkbox value.
 	 */
 	public onMasterCheckboxChange(value: boolean | null): void {
+		const checkboxValue =
+			this.checkboxControls.masterCheckboxIndeterminate() ? false : value;
+
 		if (this.checkboxControls.masterCheckboxIndeterminate()) {
 			this.checkboxControls.masterCheckboxIndeterminate.set(false);
 		}
 
+		this.checkboxControls.masterCheckbox.setValue(checkboxValue!, {
+			emitEvent: false,
+		});
+
 		this.checkboxControls.rowCheckboxes.controls.forEach(
 			(control: FormControl) => {
-				control.setValue(value, { emitEvent: false });
+				control.setValue(checkboxValue, { emitEvent: false });
 			},
 		);
 	}
