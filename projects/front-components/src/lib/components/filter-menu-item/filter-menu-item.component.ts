@@ -24,7 +24,7 @@ import {
 	IconPosition,
 	IconType,
 	IFilterCriteria,
-	IFilterItem
+	IFilterItem,
 } from '../../shared/models';
 
 @Component({

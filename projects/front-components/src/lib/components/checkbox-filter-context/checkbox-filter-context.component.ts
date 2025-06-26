@@ -14,7 +14,14 @@ import { FieldCtrlDirective } from '../../core/directives';
 import { SpinnerComponent } from '../spinner/spinner.component';
 import { DropdownFilterItemComponent } from '../dropdown-filter-item/dropdown-filter-item.component';
 import { TextComponent } from '../text/text.component';
-import { Align, Colors, IconType, IDictionaryItemDto, TextType, TextWeight } from '../../shared/models';
+import {
+	Align,
+	Colors,
+	IconType,
+	IDictionaryItemDto,
+	TextType,
+	TextWeight,
+} from '../../shared/models';
 
 @Component({
 	selector: 'ss-lib-checkbox-filter-context',

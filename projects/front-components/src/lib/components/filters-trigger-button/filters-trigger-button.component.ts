@@ -9,6 +9,7 @@ import {
 	IFilterItem,
 } from '../../shared/models';
 import { HeaderFilterService } from '../../shared/services';
+import { NgFor } from '@angular/common';
 
 @Component({
 	selector: 'app-filters-trigger-button',
@@ -18,6 +19,7 @@ import { HeaderFilterService } from '../../shared/services';
 		DropdownListComponent,
 		DropdownItemComponent,
 		PopoverTriggerForDirective,
+		NgFor
 	],
 	templateUrl: './filters-trigger-button.component.html',
 	styleUrl: './filters-trigger-button.component.scss',
