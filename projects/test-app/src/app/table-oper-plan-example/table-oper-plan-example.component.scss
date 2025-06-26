@@ -1,0 +1,31 @@
+.new-table {
+	width: 100%;
+	overflow-x: auto;
+	max-width: none; /* Убираем ограничения */
+	box-sizing: border-box;
+}
+
+.ss-table {
+	//width: 100%;
+	position: relative;
+	border-collapse: separate;
+	border-spacing: 0;
+	table-layout: fixed;
+	transition: width 0.1s ease;
+	overflow-x: auto;
+}
+
+.column-item__content {
+	display: flex;
+	align-items: center;
+}
+
+.drag-action__content {
+	display: flex;
+	align-items: center;
+	gap: 15px;
+}
+
+.item-align--center {
+	justify-content: center;
+}

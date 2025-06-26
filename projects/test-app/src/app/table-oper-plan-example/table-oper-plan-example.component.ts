@@ -17,40 +17,35 @@ import {
 	TextWeight,
 } from '../../../../front-components/src/lib/shared/models';
 
-import { columnConfigsMock, tableDataMock } from './mock';
 import { TableColumnConfig } from '../../../../front-components/src/lib/components/table/models';
 import { SsTableState } from '../../../../front-components/src/lib/components/table/services/insdex';
-import { tableExampleImports } from './table-example.imports';
-
-interface TableRow {
-	id: number;
-	dragAction: string;
-	order: string;
-	image: string;
-	banner: string;
-	status: string;
-	actionToggle: string;
-	user: string;
-	period: string;
-	action: string;
-}
+import { tableOperPlanExampleImports } from './table-oper-plan-example.imports';
+import { operPlanMock } from './mock';
+import { generateColumnOperPlanConfig } from './utils/generate-column-oper-plan-config';
+import { IOperationPlanItem } from './model/oper-plan.interface';
+import { createDragGhostExample } from './utils/create-drag-ghost-example';
+import { BASE_COLUMN_MAP } from './constants/base-column-map';
 
 @Component({
-	selector: 'app-table-example',
+	selector: 'app-table-oper-plan-example',
 	standalone: true,
-	imports: [tableExampleImports, CdkDropList, CdkDrag],
-	templateUrl: './table-example.component.html',
-	styleUrl: './table-example.component.scss',
+	imports: [tableOperPlanExampleImports, CdkDropList, CdkDrag],
+	templateUrl: './table-oper-plan-example.component.html',
+	styleUrl: './table-oper-plan-example.component.scss',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	providers: [SsTableState],
 })
-export class TableExampleComponent implements OnInit {
-	private readonly tableStateService = inject(SsTableState<TableRow>);
+export class TableOperPlanExampleComponent implements OnInit {
+	private readonly tableStateService = inject(
+		SsTableState<IOperationPlanItem>,
+	);
 
 	public readonly data = this.tableStateService.data;
 	public readonly dropdownColumns = this.tableStateService.dropdownColumns;
 	public readonly visibleColumnsIds =
 		this.tableStateService.visibleColumnsIds;
+
+	public readonly visibleColumns = this.tableStateService.visibleColumns;
 
 	public readonly masterCheckboxCtrl =
 		this.tableStateService.getMasterCheckboxCtrl();
@@ -71,6 +66,7 @@ export class TableExampleComponent implements OnInit {
 	protected readonly Colors = Colors;
 	protected readonly IconType = IconType;
 	protected readonly Align = Align;
+	protected readonly createDragGhostExample = createDragGhostExample;
 
 	constructor() {
 		toSignal(
@@ -95,7 +91,9 @@ export class TableExampleComponent implements OnInit {
 	}
 
 	private initializeData(): void {
-		this.tableStateService.initialize(tableDataMock, columnConfigsMock);
+		const columnOperPlanConfig = generateColumnOperPlanConfig(operPlanMock);
+
+		this.tableStateService.initialize(operPlanMock, columnOperPlanConfig);
 	}
 
 	public onDropdownItemDrop(event: CdkDragDrop<TableColumnConfig[]>): void {
@@ -124,42 +122,70 @@ export class TableExampleComponent implements OnInit {
 		this.tableStateService.updateColumnVisibility(column, isVisible);
 	}
 
-	public createDragGhostExample(
-		originalRow: HTMLElement,
-		rect: DOMRect,
-	): HTMLElement {
-		const table = document.createElement('table');
-		const tbody = document.createElement('tbody');
-		const clonedRow = originalRow.cloneNode(true) as HTMLTableRowElement;
-		const originalCells = originalRow.querySelectorAll('td');
-		const clonedCells = clonedRow.querySelectorAll('td');
+	// Проверяем, является ли колонка подколонкой
+	public isSubColumn(columnId: string): boolean {
+		return this.visibleColumns().some(
+			(column) =>
+				column.subColumns && column.subColumns.includes(columnId),
+		);
+	}
 
-		table.style.cssText = `
-			border-collapse: collapse;
-			position: absolute;
-			top: -9999px;
-			left: -9999px;
-			width: ${rect.width}px;
-		`;
-		clonedRow.style.cssText = `
-			background: var(--surface-primary);
-			box-shadow: 0px 2px 2px -1px var(--effects-shadows-4),
-						0px 4px 6px -2px var(--effects-shadows-3),
-						0px 12px 16px -4px var(--effects-shadows-8);
-			pointer-events: none;
-		`;
+	public formatColumnName(name: string): string {
+		if (name.match(/^\d{2}-\d{2}$/)) {
+			const [month, day] = name.split('-');
 
-		originalCells.forEach((cell: HTMLTableCellElement, index: number) => {
-			const width = cell.getBoundingClientRect().width;
+			return `${day}.${month}`;
+		}
 
-			if (clonedCells[index]) {
-				(clonedCells[index] as HTMLElement).style.width = `${width}px`;
+		return name;
+	}
+
+	public getSubColumnName(subColumnId: string): string {
+		if (subColumnId.startsWith('planQuantity')) {
+			return 'План';
+		}
+
+		if (subColumnId.startsWith('factQuantity')) {
+			return 'Факт';
+		}
+
+		return subColumnId;
+	}
+
+	public isWeekColumnVisible(): boolean {
+		return this.visibleColumns().some(
+			(column) => column.id === 'planDays' && column.visible,
+		);
+	}
+
+	public getCellValue(
+		row: IOperationPlanItem,
+		columnId: string,
+	): string | number {
+		const baseFieldHandler =
+			BASE_COLUMN_MAP[columnId as keyof typeof BASE_COLUMN_MAP];
+
+		if (baseFieldHandler) {
+			return baseFieldHandler(row);
+		}
+
+		if (
+			columnId.startsWith('planQuantity-') ||
+			columnId.startsWith('factQuantity-')
+		) {
+			const [, date] = columnId.split('-'); // e.g., 'planQuantity-06-23' -> ['', '06-23']
+			const formattedDate = `2025-${date}`; // Assuming year 2025 as per data
+			const planDay = row.planDays.find((day) =>
+				day.date.startsWith(formattedDate),
+			);
+
+			if (planDay) {
+				return columnId.startsWith('planQuantity-')
+					? planDay.planQuantity
+					: planDay.factQuantity;
 			}
-		});
+		}
 
-		tbody.appendChild(clonedRow);
-		table.appendChild(tbody);
-
-		return table;
+		return '';
 	}
 }
