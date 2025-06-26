@@ -58,6 +58,7 @@ export {
 	TableResizedDirective,
 	TableDirective,
 } from './table/directives';
+export { SsTableState } from './table/services';
 export { LoadPaginationComponent } from './load-pagination/load-pagination.component';
 export { HeaderFilterCheckboxSearchAbstractComponent } from './header-filter-checkbox-abstract/header-filter-checkbox-abstract.component';
 export { HeaderFilterCheckboxSearchItemAbstractComponent } from './header-filter-checkbox-item-abstract/header-filter-checkbox-search-item-abstract.component';
