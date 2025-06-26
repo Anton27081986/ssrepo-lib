@@ -1,6 +1,9 @@
 <ss-lib-utility-button [popoverTriggerFor]="dropdownColumn" />
 
-<ss-lib-dropdown-list #dropdownColumn>
+<ss-lib-dropdown-list
+	#dropdownColumn
+	[width]="'282px'"
+>
 	@if (dropdownColumnsVisible().length > 0) {
 		<ss-lib-dropdown-group [label]="'Отображаемые'">
 			<div
@@ -19,18 +22,20 @@
 						<div class="column-item__content">
 							@let ctrl = getControlForColumn(column);
 
-							<ss-lib-checkbox
-								[formControl]="ctrl"
-								(click)="updateColumnVisibility(column)"
-							></ss-lib-checkbox>
+							<div class="column-item__content_label">
+								<ss-lib-checkbox
+									[formControl]="ctrl"
+									(click)="updateColumnVisibility(column)"
+								></ss-lib-checkbox>
 
-							<ss-lib-text
-								[type]="TextType.BodySm"
-								[weight]="TextWeight.Regular"
-								[color]="Colors.TextBody3"
-							>
-								{{ column.name }}
-							</ss-lib-text>
+								<ss-lib-text
+									[type]="TextType.BodySm"
+									[weight]="TextWeight.Regular"
+									[color]="Colors.TextBody3"
+								>
+									{{ column.name }}
+								</ss-lib-text>
+							</div>
 
 							<ss-lib-icon
 								[height]="'16'"
@@ -62,18 +67,20 @@
 						<div class="column-item__content">
 							@let ctrl = getControlForColumn(column);
 
-							<ss-lib-checkbox
-								[formControl]="ctrl"
-								(click)="updateColumnVisibility(column)"
-							></ss-lib-checkbox>
+							<div class="column-item__content_label">
+								<ss-lib-checkbox
+									[formControl]="ctrl"
+									(click)="updateColumnVisibility(column)"
+								></ss-lib-checkbox>
 
-							<ss-lib-text
-								[type]="TextType.BodySm"
-								[weight]="TextWeight.Regular"
-								[color]="Colors.TextBody3"
-							>
-								{{ column.name }}
-							</ss-lib-text>
+								<ss-lib-text
+									[type]="TextType.BodySm"
+									[weight]="TextWeight.Regular"
+									[color]="Colors.TextBody3"
+								>
+									{{ column.name }}
+								</ss-lib-text>
+							</div>
 
 							<ss-lib-icon
 								[height]="'16'"
