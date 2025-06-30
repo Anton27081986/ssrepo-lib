@@ -30,7 +30,7 @@ import { ToastRef } from '../../../../front-components/src/lib/components';
 import { exampleDataTable } from './constants/example-data-table';
 import { TestRightSidePageComponent } from '../test-left-side-page/test-right-side-page.component';
 import { Tab } from '../../../../front-components/src/lib/shared/models/interfaces/tab';
-import { TableOperPlanExampleComponent } from "../table-oper-plan-example/table-oper-plan-example.component";
+import { TableOperPlanExampleComponent } from '../table-oper-plan-example/table-oper-plan-example.component';
 
 @Component({
 	selector: 'app-stand',

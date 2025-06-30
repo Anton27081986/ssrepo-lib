@@ -205,7 +205,9 @@
 									<!-- Чекбокс только для колонки 'tov' -->
 									@if (column.id === 'tov') {
 										<ss-lib-checkbox
-											[formControl]="getRowCheckboxControl(idxRow)"
+											[formControl]="
+												getRowCheckboxControl(idxRow)
+											"
 										></ss-lib-checkbox>
 									}
 									<ss-lib-text
