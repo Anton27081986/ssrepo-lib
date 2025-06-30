@@ -1,21 +1,19 @@
 <ng-content />
 @for (key of table.columns(); track key) {
 	<ng-container
-		[ngTemplateOutlet]="
-			(headByKey()[key] && headByKey()[key].template) || plain
-		"
+		*ngIf="headByKey()[key]"
+		[ngTemplateOutlet]="headByKey()[key].template"
 		[ngTemplateOutletContext]="{ $implicit: key }"
 	/>
 }
-<ng-template
-	#plain
-	let-key
->
-	@if (!th() && !heads().length) {
-		@if (!heads.length) {
-			<th ssTh>
-				{{ key.toString() }}
-			</th>
-		}
-	}
-</ng-template>
+<!-- Пока что не понятно зачем это-->
+<!--<ng-template-->
+<!--	#plain-->
+<!--	let-key-->
+<!--&gt;-->
+<!--	@if (!th() && !heads().length) {-->
+<!--		@if (!heads.length) {-->
+<!--			<th ssTh>{{ key.toString() }}</th>-->
+<!--		}-->
+<!--	}-->
+<!--</ng-template>-->

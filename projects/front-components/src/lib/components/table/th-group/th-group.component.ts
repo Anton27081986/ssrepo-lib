@@ -8,14 +8,14 @@ import {
 	inject,
 	Signal,
 } from '@angular/core';
-import { NgTemplateOutlet } from '@angular/common';
+import { NgIf, NgTemplateOutlet } from '@angular/common';
 import { TableDirective, TableHeadDirective } from '../directives';
 import { ThComponent } from '../th/th.component';
 
 @Component({
 	selector: 'tr[ssThGroup]',
 	standalone: true,
-	imports: [NgTemplateOutlet, ThComponent],
+	imports: [NgTemplateOutlet, NgIf],
 	templateUrl: './th-group.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
