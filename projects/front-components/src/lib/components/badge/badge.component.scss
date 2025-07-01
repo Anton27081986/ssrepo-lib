@@ -15,19 +15,19 @@
 	}
 
 	&.default {
-		outline: 1px solid var(--border-primary);
+		outline: var(--border-width-sm) solid var(--border-primary);
 	}
 
 	&.success {
-		outline: 1px solid var(--border-success);
+		outline: var(--border-width-sm) solid var(--border-success);
 	}
 
 	&.warning {
-		outline: 1px solid var(--border-warning);
+		outline: var(--border-width-sm) solid var(--border-warning);
 	}
 
 	&.error {
-		outline: 1px solid var(--border-error);
+		outline: var(--border-width-sm) solid var(--border-error);
 	}
 
 	&.square {

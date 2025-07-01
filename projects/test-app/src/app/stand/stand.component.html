@@ -622,57 +622,57 @@
 <!--	></ss-lib-checkbox>-->
 <!--</div>-->
 
-<!--<div class="otp">-->
-<!--	<ss-lib-otp-input [formControl]="otpCtrl"></ss-lib-otp-input>-->
-<!--	<br />-->
+<div class="otp">
+	<ss-lib-otp-input [formControl]="otpCtrl"></ss-lib-otp-input>
+	<br />
 
-<!--	<button (click)="submitOtp()">Submit otp</button>-->
-<!--</div>-->
+	<button (click)="submitOtp()">Submit otp</button>
+</div>
 
-<!--<ss-lib-button-->
-<!--	[type]="ButtonType.Primary"-->
-<!--	[text]="'левый sidePage'"-->
-<!--	(click)="openRightSidebar()"-->
-<!--/>-->
+<ss-lib-button
+	[type]="ButtonType.Primary"
+	[text]="'левый sidePage'"
+	(click)="openRightSidebar()"
+/>
 
-<!--<ss-lib-carousel-->
-<!--	[duration]="3000"-->
-<!--	[(index)]="carouselIndex"-->
-<!--&gt;-->
-<!--	@for (banner of bannersItems; track banner) {-->
-<!--		<img-->
-<!--			*ssItem-->
-<!--			class="carousel-item"-->
-<!--			alt="Banner image"-->
-<!--			height="220"-->
-<!--			width="990"-->
-<!--			priority-->
-<!--			[ngSrc]="banner.imageUrl"-->
-<!--		/>-->
-<!--	}-->
-<!--</ss-lib-carousel>-->
+<ss-lib-carousel
+	[duration]="3000"
+	[(index)]="carouselIndex"
+>
+	@for (banner of bannersItems; track banner) {
+		<img
+			*ssItem
+			class="carousel-item"
+			alt="Banner image"
+			height="220"
+			width="990"
+			priority
+			[ngSrc]="banner.imageUrl"
+		/>
+	}
+</ss-lib-carousel>
 
-<!--<div class="tabs">-->
-<!--	<ss-lib-tabs-->
-<!--		[tabs]="tabs"-->
-<!--		[actionsRef]="actions"-->
-<!--		[activeTabIndex]="indexTab"-->
-<!--		(changeIndexEmit)="changeTab($event)"-->
-<!--	></ss-lib-tabs>-->
-<!--	<ng-template #actions>-->
-<!--		<ss-lib-button-->
-<!--			[size]="ExtraSize.md"-->
-<!--			[text]="'1 кнопка'"-->
-<!--			(click)="changeIndex()"-->
-<!--		></ss-lib-button>-->
-<!--		<ss-lib-button-->
-<!--			[size]="ExtraSize.md"-->
-<!--			[text]="'2 кнопка'"-->
-<!--		></ss-lib-button>-->
-<!--	</ng-template>-->
-<!--</div>-->
+<div class="tabs">
+	<ss-lib-tabs
+		[tabs]="tabs"
+		[actionsRef]="actions"
+		[activeTabIndex]="indexTab"
+		(changeIndexEmit)="changeTab($event)"
+	></ss-lib-tabs>
+	<ng-template #actions>
+		<ss-lib-button
+			[size]="ExtraSize.md"
+			[text]="'1 кнопка'"
+			(click)="changeIndex()"
+		></ss-lib-button>
+		<ss-lib-button
+			[size]="ExtraSize.md"
+			[text]="'2 кнопка'"
+		></ss-lib-button>
+	</ng-template>
+</div>
 
-<!--<span>{{ indexTab }}</span>-->
+<span>{{ indexTab }}</span>
 
 <!--<ss-lib-button-->
 <!--	[iconPosition]="IconPosition.End"-->
@@ -681,49 +681,49 @@
 <!--	[text]="'Какой то текст'"-->
 <!--&gt;</ss-lib-button>-->
 
-<!--<div class="hint">-->
-<!--	<ss-lib-hint-->
-<!--		[icon]="IconType.Info"-->
-<!--		[type]="HelpHintType.Default"-->
-<!--	></ss-lib-hint>-->
-<!--	<ss-lib-hint-->
-<!--		[icon]="IconType.Info"-->
-<!--		[type]="HelpHintType.Success"-->
-<!--	></ss-lib-hint>-->
-<!--	<ss-lib-hint-->
-<!--		[icon]="IconType.Info"-->
-<!--		[type]="HelpHintType.Warning"-->
-<!--	></ss-lib-hint>-->
-<!--	<ss-lib-hint-->
-<!--		[icon]="IconType.Info"-->
-<!--		[type]="HelpHintType.Error"-->
-<!--	></ss-lib-hint>-->
-<!--	<ss-lib-hint-->
-<!--		[icon]="IconType.Info"-->
-<!--		[type]="HelpHintType.Warning"-->
-<!--		[disabled]="true"-->
-<!--	></ss-lib-hint>-->
-<!--</div>-->
+<div class="hint">
+	<ss-lib-hint
+		[icon]="IconType.Info"
+		[type]="HelpHintType.Default"
+	></ss-lib-hint>
+	<ss-lib-hint
+		[icon]="IconType.Info"
+		[type]="HelpHintType.Success"
+	></ss-lib-hint>
+	<ss-lib-hint
+		[icon]="IconType.Info"
+		[type]="HelpHintType.Warning"
+	></ss-lib-hint>
+	<ss-lib-hint
+		[icon]="IconType.Info"
+		[type]="HelpHintType.Error"
+	></ss-lib-hint>
+	<ss-lib-hint
+		[icon]="IconType.Info"
+		[type]="HelpHintType.Warning"
+		[disabled]="true"
+	></ss-lib-hint>
+</div>
 
-<!--<div class="input">-->
-<!--	<ss-lib-form-field-->
-<!--		[label]="'Название'"-->
-<!--		[hint]="'Подсказка'"-->
-<!--		[errorText]="'Неверно заполнено'"-->
-<!--		[tooltipInfoText]="'Какой то тултип'"-->
-<!--		[showValidationFieldIcon]="true"-->
-<!--		[icon]="IconType.Bell"-->
-<!--	>-->
-<!--		<ss-lib-input-->
-<!--			fieldCtrl-->
-<!--			[formControl]="inputCtrl"-->
-<!--			[placeholder]="'oleg@mail.ru'"-->
-<!--			[clearButton]="true"-->
-<!--		/>-->
-<!--	</ss-lib-form-field>-->
-<!--</div>-->
+<div class="input">
+	<ss-lib-form-field
+		[label]="'Название'"
+		[hint]="'Подсказка'"
+		[errorText]="'Неверно заполнено'"
+		[tooltipInfoText]="'Какой то тултип'"
+		[showValidationFieldIcon]="true"
+		[icon]="IconType.Bell"
+	>
+		<ss-lib-input
+			fieldCtrl
+			[formControl]="inputCtrl"
+			[placeholder]="'oleg@mail.ru'"
+			[clearButton]="true"
+		/>
+	</ss-lib-form-field>
+</div>
 
-<!--<br />-->
+<br />
 
 <!--<app-table-example></app-table-example>-->
 <!--<br />-->
