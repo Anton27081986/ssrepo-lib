@@ -66,12 +66,12 @@
 		}
 
 		&__thead {
-			background-color: var(--surface-information-2);
+			background-color: var(--surface-information);
 			position: relative;
 		}
 
 		&__thead--sticky {
-			--ss-lib-table-th-background-color: var(--surface-information-2);
+			--ss-lib-table-th-background-color: var(--surface-information);
 			--ss-lib-table-head-position: sticky;
 
 			top: 0;

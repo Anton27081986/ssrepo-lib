@@ -1,6 +1,6 @@
 import { Component, inject, signal, WritableSignal } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
-import { catchError, Observable, of, Subscription } from 'rxjs';
+import { catchError, Observable, of, Subscription, window } from 'rxjs';
 import { HttpClient, HttpEventType } from '@angular/common/http';
 import { RouterOutlet } from '@angular/router';
 import {
@@ -139,6 +139,7 @@ export class StandComponent {
 
 	protected readonly JustifyContent = JustifyContent;
 	protected readonly HelpHintType = HintType;
+	protected readonly window = window;
 	constructor(
 		private readonly columnState: ColumnsStateService,
 		private readonly http: HttpClient,
