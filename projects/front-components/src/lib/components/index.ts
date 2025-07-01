@@ -10,8 +10,10 @@ export { ScrollableBlockComponent } from './scrollable-block/scrollable-block.co
 export { FormFieldComponent } from './form-field/form-field.component';
 export { InputComponent } from './input/input.component';
 export { TextareaComponent } from './textarea/textarea.component';
-export { DropdownItemComponent } from './dropdown-item/dropdown-item.component';
-export { DropdownListComponent } from './dropdown-list/dropdown-list.component';
+export { DropdownItemComponent } from './dropdown/dropdown-item/dropdown-item.component';
+export { DropdownListComponent } from './dropdown/dropdown-list/dropdown-list.component';
+export { DropdownDraggableGroupListComponent } from './dropdown/dropdown-draggable-group-list/dropdown-draggable-group-list.component';
+export { DropdownGroupDirective } from './dropdown/directives/dropdown-group.directive';
 export { SelectComponent } from './select/select.component';
 export { AvatarComponent } from './avatar/avatar.component';
 export { NumberPickerComponent } from './number-picker/number-picker.component';
@@ -56,4 +58,14 @@ export {
 	TableResizedDirective,
 	TableDirective,
 } from './table/directives';
+export { SsTableState } from './table/services';
 export { LoadPaginationComponent } from './load-pagination/load-pagination.component';
+export { HeaderFilterCheckboxSearchAbstractComponent } from './header-filter-checkbox-abstract/header-filter-checkbox-abstract.component';
+export { HeaderFilterCheckboxSearchItemAbstractComponent } from './header-filter-checkbox-item-abstract/header-filter-checkbox-search-item-abstract.component';
+export { FiltersTriggerButtonComponent } from './filters-trigger-button/filters-trigger-button.component';
+export { FiltersTableCanvasComponent } from './filters-table-pagination-canvas/filters-table-canvas.component';
+export { FilterMenuItemComponent } from './filter-menu-item/filter-menu-item.component';
+export { FilterMenuComponent } from './filter-menu/filter-menu.component';
+export { DropdownFilterItemComponent } from './dropdown-filter-item/dropdown-filter-item.component';
+export { DropdownFilterGroupItemsComponent } from './dropdown-filter-group-items/dropdown-filter-group-items.component';
+export { CheckboxFilterContextComponent } from './checkbox-filter-context/checkbox-filter-context.component';

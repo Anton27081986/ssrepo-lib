@@ -10,6 +10,10 @@
 	padding: 8px 10px;
 	margin: 1px 6px;
 
+	&:has(.selected) {
+		background: var(--surface-action-hover-3) !important;
+	}
+
 	&:hover:not(.disabled) {
 		background: var(--surface-action-hover-2);
 	}
@@ -36,6 +40,7 @@
 	align-items: center;
 	justify-content: flex-start;
 	cursor: pointer;
+	width: 100%;
 }
 
 .dropdown-item__info {
@@ -43,9 +48,9 @@
 	align-items: center;
 	justify-content: flex-start;
 	gap: 8px;
+	width: 100%;
 }
 
 .dropdown-item.selected {
 	justify-content: space-between;
-	background: var(--surface-action-hover-3);
 }

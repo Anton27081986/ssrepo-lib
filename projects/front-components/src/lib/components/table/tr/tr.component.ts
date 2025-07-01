@@ -11,6 +11,7 @@ import { TableCellDirective, TableDirective } from '../directives';
 
 @Component({
 	selector: 'tr[ssTr]',
+	standalone: true,
 	imports: [NgTemplateOutlet],
 	templateUrl: './tr.component.html',
 	styleUrl: './tr.component.scss',

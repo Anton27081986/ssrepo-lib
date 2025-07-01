@@ -1,144 +1,301 @@
-import { computed, Injectable, signal } from '@angular/core';
-import { CdkDragDrop } from '@angular/cdk/drag-drop';
-import { FormArray, FormControl } from '@angular/forms';
-import { TableColumnConfig } from '../models';
+import { computed, Injectable, signal, WritableSignal } from '@angular/core';
+import {
+	CdkDragDrop,
+	moveItemInArray,
+	transferArrayItem,
+} from '@angular/cdk/drag-drop';
+import { FormArray, FormControl, FormGroup } from '@angular/forms';
+import { ColumnControls, TableColumnConfig } from '../models';
+
+interface TableState<T> {
+	data: T[];
+	columnConfigs: TableColumnConfig[];
+}
+
+interface CheckboxControls {
+	masterCheckbox: FormControl<boolean>;
+	masterCheckboxIndeterminate: WritableSignal<boolean>;
+	rowCheckboxes: FormArray<FormControl<boolean>>;
+}
 
 @Injectable()
 export class SsTableState<T> {
-	// State
-	private readonly tableData = signal<T[]>([]);
-	private readonly columnConfigs = signal<TableColumnConfig[]>([]);
-	private readonly rowCheckboxes = new FormArray<FormControl<boolean>>([]);
-	private readonly columnsForm = new FormArray<FormControl<boolean>>([]);
-	private readonly masterCheckboxCtrl = new FormControl<boolean>(false, {
-		nonNullable: true,
+	private readonly state = signal<TableState<T>>({
+		data: [],
+		columnConfigs: [],
 	});
 
-	// Computed signals
+	private readonly columnsForm = new FormGroup<ColumnControls>({});
+	private readonly checkboxControls: CheckboxControls = {
+		masterCheckbox: new FormControl<boolean>(false, { nonNullable: true }),
+		masterCheckboxIndeterminate: signal<boolean>(false),
+		rowCheckboxes: new FormArray<FormControl<boolean>>([]),
+	};
+
 	public readonly dropdownColumns = computed(() =>
-		this.columnConfigs().filter((col) => col.showInDropdown),
+		this.state().columnConfigs.filter((col) => col.showInDropdown),
 	);
 
-	public readonly visibleColumns = computed<readonly string[]>(() =>
-		this.columnConfigs()
-			.filter((col) => col.visible)
+	public readonly visibleColumnsIds = computed<readonly string[]>(() =>
+		this.state()
+			.columnConfigs.filter((col) => col.visible && col.showInHeader)
 			.map((col) => col.id),
 	);
 
-	public readonly data = computed(() => this.tableData());
-	public readonly showLeftBorder = computed(() => {
-		const findFirstColumn = this.columnConfigs().find((col) => col.visible);
+	public readonly visibleColumns = computed<readonly TableColumnConfig[]>(
+		() => this.state().columnConfigs.filter((col) => col.showInHeader),
+	);
 
-		return !!findFirstColumn && !!findFirstColumn.subColumns?.length;
+	public readonly data = computed(() => this.state().data);
+
+	public readonly showLeftBorder = computed(() => {
+		const firstVisibleColumn = this.state().columnConfigs.find(
+			(col) => col.visible,
+		);
+
+		return !!firstVisibleColumn?.subColumns?.length;
 	});
 
 	public getMasterCheckboxCtrl(): FormControl<boolean> {
-		return this.masterCheckboxCtrl;
+		return this.checkboxControls.masterCheckbox;
 	}
 
 	public getRowCheckboxes(): FormArray<FormControl<boolean>> {
-		return this.rowCheckboxes;
+		return this.checkboxControls.rowCheckboxes;
 	}
 
-	public getColumnsForm(): FormArray<FormControl<boolean>> {
+	public getColumnsForm(): FormGroup<ColumnControls> {
 		return this.columnsForm;
 	}
 
+	public isMasterCheckboxIndeterminate(): boolean {
+		return this.checkboxControls.masterCheckboxIndeterminate();
+	}
+
+	/**
+	 * Replaces the entire columnConfigs in the state and updates related form controls.
+	 * @param newConfigs The new column configurations.
+	 */
+	public replaceColumnConfigs(newConfigs: TableColumnConfig[]): void {
+		this.state.update((currentState) => ({
+			...currentState,
+			columnConfigs: [...newConfigs],
+		}));
+		this.reinitializeColumnsForm(newConfigs);
+	}
+
+	/**
+	 * Initializes the table with data and column configurations.
+	 * @param data The table data.
+	 * @param configs The column configurations.
+	 */
 	public initialize(data: T[], configs: TableColumnConfig[]): void {
-		this.tableData.set(data);
-		this.columnConfigs.set(configs);
-		this.columnsForm.clear();
-		configs.forEach(() => {
-			this.columnsForm.push(
-				new FormControl<boolean>(true, { nonNullable: true }),
+		this.state.set({ data, columnConfigs: [...configs] });
+		this.reinitializeColumnsForm(configs);
+		this.initializeRowCheckboxes(data);
+	}
+
+	/**
+	 * Gets the checkbox control for a specific row.
+	 * @param index The row index.
+	 * @returns The FormControl for the row checkbox.
+	 */
+	public getRowCheckboxControl(index: number): FormControl<boolean> {
+		return this.checkboxControls.rowCheckboxes.at(
+			index,
+		) as FormControl<boolean>;
+	}
+
+	/**
+	 * Gets the form control for a specific column.
+	 * @param column The column configuration.
+	 * @returns The FormControl for the column.
+	 */
+	public getControlForColumn(
+		column: TableColumnConfig,
+	): FormControl<boolean> {
+		return this.columnsForm.get(column.id) as FormControl<boolean>;
+	}
+
+	/**
+	 * Handles drag-and-drop events for columns in the dropdown.
+	 * @param event The drag-and-drop event.
+	 * @param visibleColumns The list of visible columns.
+	 * @param hiddenColumns The list of hidden columns.
+	 */
+	public onDropdownItemDrop(
+		event: CdkDragDrop<TableColumnConfig[]>,
+		visibleColumns: TableColumnConfig[],
+		hiddenColumns: TableColumnConfig[],
+	): void {
+		this.state.update((currentState) => {
+			const allConfigs = [...currentState.columnConfigs];
+			const isVisibleContainer = event.container.data === visibleColumns;
+
+			if (event.previousContainer === event.container) {
+				this.handleDragWithinList(
+					isVisibleContainer ? visibleColumns : hiddenColumns,
+					event,
+				);
+			} else {
+				this.handleDragBetweenLists(
+					event,
+					isVisibleContainer,
+					allConfigs,
+				);
+			}
+
+			const updatedDropdownColumns = [
+				...visibleColumns,
+				...hiddenColumns,
+			];
+
+			const newConfigs = this.reorderColumnsWithSubColumns(
+				updatedDropdownColumns,
+				allConfigs,
 			);
+
+			return { ...currentState, columnConfigs: newConfigs };
 		});
-		this.rowCheckboxes.clear();
-		data.forEach(() => {
-			this.rowCheckboxes.push(
-				new FormControl<boolean>(false, { nonNullable: true }),
+	}
+
+	/**
+	 * Updates the visibility of a column and its sub-columns/subGroups.
+	 * @param column The column to update.
+	 * @param isVisible The visibility state.
+	 */
+	public updateColumnVisibility(
+		column: TableColumnConfig,
+		isVisible: boolean,
+	): void {
+		this.state.update((currentState) => {
+			let updatedConfigs = [...currentState.columnConfigs];
+			const targetColumn = updatedConfigs.find(
+				(col) => col.id === column.id,
 			);
-		});
-	}
 
-	public getRowCheckboxControl(index: number): FormControl {
-		return this.rowCheckboxes.at(index) as FormControl;
-	}
+			if (!targetColumn) {
+				return currentState;
+			}
 
-	public onDropdownItemDrop(event: CdkDragDrop<TableColumnConfig>): void {
-		const dropdownCols = this.dropdownColumns();
-		const allConfigs = [...this.columnConfigs()];
-		const draggedColumn = dropdownCols[event.previousIndex];
+			this.setColumnVisibility(targetColumn, updatedConfigs, isVisible);
 
-		const draggedGroup = this.collectWithSubColumns(
-			draggedColumn,
-			allConfigs,
-		);
-		const updatedConfigs = this.removeColumns(allConfigs, draggedGroup);
-		const targetIndex = this.findTargetIndex(
-			event,
-			dropdownCols,
-			allConfigs,
-		);
-
-		updatedConfigs.splice(targetIndex, 0, ...draggedGroup);
-		this.columnConfigs.set(updatedConfigs);
-	}
-
-	public updateColumnVisibility(values: Array<boolean | null>): void {
-		const dropdownColumns = this.dropdownColumns();
-
-		this.columnConfigs.update((configs) => {
-			const updatedConfigs = [...configs];
-
-			dropdownColumns.forEach((dropdownItem, index) => {
-				const configIdx = updatedConfigs.findIndex(
-					(col: TableColumnConfig) => col.id === dropdownItem.id,
+			// Move hidden columns to the end
+			if (!isVisible) {
+				const visibilityGroup = this.collectWithSubColumns(
+					targetColumn,
+					updatedConfigs,
 				);
 
-				if (configIdx === -1) {
-					return;
-				}
-
-				const isVisible = !!values[index];
-
-				updatedConfigs[configIdx].visible = isVisible;
-
-				updatedConfigs[configIdx].subColumns?.forEach(
-					(subId: string) => {
-						const subConfigIdx = updatedConfigs.findIndex(
-							(col) => col.id === subId,
-						);
-
-						if (subConfigIdx !== -1) {
-							updatedConfigs[subConfigIdx].visible = isVisible;
-						}
-					},
+				updatedConfigs = this.removeColumns(
+					updatedConfigs,
+					visibilityGroup,
 				);
-			});
 
-			return updatedConfigs;
+				updatedConfigs.push(...visibilityGroup);
+			}
+
+			return { ...currentState, columnConfigs: [...updatedConfigs] };
 		});
 	}
 
+	/**
+	 * Handles changes to the master checkbox.
+	 * @param value The new checkbox value.
+	 */
 	public onMasterCheckboxChange(value: boolean | null): void {
-		this.rowCheckboxes.controls.forEach((control: FormControl) => {
-			control.setValue(value, { emitEvent: false });
+		const checkboxValue =
+			this.checkboxControls.masterCheckboxIndeterminate() ? false : value;
+
+		if (this.checkboxControls.masterCheckboxIndeterminate()) {
+			this.checkboxControls.masterCheckboxIndeterminate.set(false);
+		}
+
+		this.checkboxControls.masterCheckbox.setValue(checkboxValue!, {
+			emitEvent: false,
 		});
+
+		this.checkboxControls.rowCheckboxes.controls.forEach(
+			(control: FormControl) => {
+				control.setValue(checkboxValue, { emitEvent: false });
+			},
+		);
 	}
 
+	/**
+	 * Updates the master checkbox state based on row checkboxes.
+	 */
 	public updateMasterCheckboxState(): void {
-		const checkedCount = this.rowCheckboxes.controls.filter(
-			(control) => control.value,
-		).length;
-		const totalCount = this.rowCheckboxes.controls.length;
+		const checkedCount =
+			this.checkboxControls.rowCheckboxes.controls.filter(
+				(control) => control.value,
+			).length;
+		const totalCount = this.checkboxControls.rowCheckboxes.controls.length;
 
 		const isAllChecked = checkedCount === totalCount && totalCount > 0;
 		const isNoneChecked = checkedCount === 0;
 		const isIndeterminate = !isAllChecked && !isNoneChecked;
 
-		this.masterCheckboxCtrl.setValue(isAllChecked || isIndeterminate, {
+		this.checkboxControls.masterCheckbox.setValue(isAllChecked, {
 			emitEvent: false,
+		});
+		this.checkboxControls.masterCheckboxIndeterminate.set(isIndeterminate);
+	}
+
+	private reinitializeColumnsForm(configs: TableColumnConfig[]): void {
+		configs.forEach((config) => {
+			this.columnsForm.addControl(
+				config.id,
+				new FormControl<boolean>(config.visible ?? true, {
+					nonNullable: true,
+				}),
+			);
+		});
+	}
+
+	private initializeRowCheckboxes(data: T[]): void {
+		this.checkboxControls.rowCheckboxes.clear();
+		data.forEach(() => {
+			this.checkboxControls.rowCheckboxes.push(
+				new FormControl<boolean>(false, { nonNullable: true }),
+			);
+		});
+	}
+
+	private handleDragWithinList(
+		data: TableColumnConfig[],
+		event: CdkDragDrop<TableColumnConfig[]>,
+	): void {
+		moveItemInArray(data, event.previousIndex, event.currentIndex);
+	}
+
+	private handleDragBetweenLists(
+		event: CdkDragDrop<TableColumnConfig[]>,
+		isVisibleContainer: boolean,
+		allConfigs: TableColumnConfig[],
+	): void {
+		transferArrayItem(
+			event.previousContainer.data,
+			event.container.data,
+			event.previousIndex,
+			event.currentIndex,
+		);
+
+		const draggedColumn = event.container.data[event.currentIndex];
+		const draggedGroup = this.collectWithSubColumns(
+			draggedColumn,
+			allConfigs,
+		);
+
+		draggedGroup.forEach((col) => {
+			const config = allConfigs.find((c) => c.id === col.id);
+
+			if (config) {
+				config.visible = isVisibleContainer;
+				const control = this.columnsForm.get(col.id);
+
+				control?.setValue(isVisibleContainer);
+			}
 		});
 	}
 
@@ -146,84 +303,101 @@ export class SsTableState<T> {
 		parent: TableColumnConfig,
 		allConfigs: TableColumnConfig[],
 	): TableColumnConfig[] {
-		return [
-			parent,
-			...(parent.subColumns
-				?.map((subId: string) =>
-					allConfigs.find(
-						(col: TableColumnConfig) => col.id === subId,
-					),
-				)
-				.filter(
-					(col: unknown): col is TableColumnConfig =>
-						col !== undefined,
-				) || []),
-		];
+		const result: TableColumnConfig[] = [parent];
+
+		if (parent.subColumns) {
+			const subColumns = parent.subColumns
+				.map((subId) => allConfigs.find((col) => col.id === subId))
+				.filter((col): col is TableColumnConfig => !!col);
+
+			result.push(...subColumns);
+		}
+
+		if (parent.subGroups) {
+			const subGroupColumns = parent.subGroups
+				.map((subGroupId) => {
+					const subGroupColumn = allConfigs.find(
+						(col) => col.id === subGroupId,
+					);
+
+					if (subGroupColumn) {
+						return this.collectWithSubColumns(
+							subGroupColumn,
+							allConfigs,
+						);
+					}
+
+					return [];
+				})
+				.flat()
+				.filter((col): col is TableColumnConfig => !!col);
+
+			result.push(...subGroupColumns);
+		}
+
+		return result;
 	}
 
 	private removeColumns(
 		source: TableColumnConfig[],
 		toRemove: TableColumnConfig[],
 	): TableColumnConfig[] {
-		const removeIds = new Set(
-			toRemove.map((col: TableColumnConfig) => col.id),
-		);
+		const removeIds = new Set(toRemove.map((col) => col.id));
 
-		return source.filter(
-			(col: TableColumnConfig) => !removeIds.has(col.id),
-		);
+		return source.filter((col) => !removeIds.has(col.id));
 	}
 
-	private findTargetIndex(
-		event: CdkDragDrop<TableColumnConfig>,
-		dropdownCols: TableColumnConfig[],
+	private reorderColumnsWithSubColumns(
+		newConfigs: TableColumnConfig[],
 		allConfigs: TableColumnConfig[],
-	): number {
-		const { previousIndex, currentIndex } = event;
-		const draggedColumn = dropdownCols[previousIndex];
-		const isDraggingGroup = !!draggedColumn.subColumns?.length;
+	): TableColumnConfig[] {
+		const result: TableColumnConfig[] = [];
 
-		const getSubColumnCount = (column: TableColumnConfig): number =>
-			column.subColumns?.length ?? 0;
+		// Add sticky columns first
+		result.push(...allConfigs.filter((item) => item.stickyColumn));
 
-		if (currentIndex === 0) {
-			return allConfigs.findIndex((col) => col.showInDropdown) ?? 0;
+		// Add visible dropdown columns with their sub-columns/subGroups
+		newConfigs
+			.filter((item) => item.showInDropdown && item.visible)
+			.forEach((item) =>
+				result.push(...this.collectWithSubColumns(item, allConfigs)),
+			);
+
+		// Add hidden dropdown columns with their sub-columns/subGroups
+		newConfigs
+			.filter((item) => item.showInDropdown && !item.visible)
+			.forEach((item) =>
+				result.push(...this.collectWithSubColumns(item, allConfigs)),
+			);
+
+		return result;
+	}
+
+	private setColumnVisibility(
+		column: TableColumnConfig,
+		allConfigs: TableColumnConfig[],
+		isVisible: boolean,
+	): void {
+		column.visible = isVisible;
+
+		if (column.subGroups) {
+			column.subGroups.forEach((subId) => {
+				const subGroup = allConfigs.find((col) => col.id === subId);
+
+				if (subGroup) {
+					this.setColumnVisibility(subGroup, allConfigs, isVisible);
+				}
+			});
 		}
 
-		if (currentIndex >= dropdownCols.length - 1) {
-			const lastVisibleIndex =
-				allConfigs
-					.map((col, idx) => (col.showInDropdown ? idx : -1))
-					.filter((idx) => idx !== -1)
-					.pop() ?? allConfigs.length;
+		if (column.subColumns) {
+			column.subColumns.forEach((subId) => {
+				const subColumn = allConfigs.find((col) => col.id === subId);
 
-			if (lastVisibleIndex === allConfigs.length) {
-				return lastVisibleIndex;
-			}
-
-			const lastVisibleColumn = allConfigs[lastVisibleIndex];
-			let targetIndex = lastVisibleIndex + 1;
-
-			targetIndex +=
-				getSubColumnCount(lastVisibleColumn) *
-				(isDraggingGroup ? 0 : 1);
-			targetIndex -=
-				getSubColumnCount(draggedColumn) * (isDraggingGroup ? 1 : 0);
-
-			return targetIndex;
+				if (subColumn) {
+					subColumn.visible = isVisible;
+				}
+			});
 		}
-
-		const targetColumn = dropdownCols[currentIndex];
-		let targetIndex =
-			allConfigs.findIndex((col) => col.id === targetColumn.id) ?? -1;
-
-		if (currentIndex > previousIndex) {
-			targetIndex +=
-				getSubColumnCount(targetColumn) * (isDraggingGroup ? 0 : 1);
-			targetIndex -=
-				getSubColumnCount(draggedColumn) * (isDraggingGroup ? 1 : 0);
-		}
-
-		return targetIndex;
 	}
 }

@@ -16,8 +16,7 @@ import {
 import { toSignal } from '@angular/core/rxjs-interop';
 import { tap } from 'rxjs';
 import { TIME_INTERVALS } from './constants/time';
-import { DropdownItemComponent } from '../dropdown-item/dropdown-item.component';
-import { DropdownListComponent } from '../dropdown-list/dropdown-list.component';
+import { DropdownItemComponent, DropdownListComponent } from '../dropdown';
 import { IconType, InputType } from '../../shared/models';
 import { PopoverTriggerForDirective } from '../../core/directives';
 import { InputComponent } from '../input/input.component';
