@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { NgFor } from '@angular/common';
 import { ButtonComponent } from '../buttons';
 import { DropdownItemComponent, DropdownListComponent } from '../dropdown';
 import { PopoverTriggerForDirective } from '../../core/directives';
@@ -9,7 +10,6 @@ import {
 	IFilterItem,
 } from '../../shared/models';
 import { HeaderFilterService } from '../../shared/services';
-import { NgFor } from '@angular/common';
 
 @Component({
 	selector: 'app-filters-trigger-button',
@@ -19,7 +19,7 @@ import { NgFor } from '@angular/common';
 		DropdownListComponent,
 		DropdownItemComponent,
 		PopoverTriggerForDirective,
-		NgFor
+		NgFor,
 	],
 	templateUrl: './filters-trigger-button.component.html',
 	styleUrl: './filters-trigger-button.component.scss',

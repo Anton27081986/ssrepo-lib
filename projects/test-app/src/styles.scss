@@ -3,6 +3,6 @@ body {
 	margin: 0;
 }
 
-::ng-deep thead tr:first-child th:first-child[colspan]{
+::ng-deep thead tr:first-child th:first-child[colspan] {
 	background: red !important;
 }

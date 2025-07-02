@@ -7,10 +7,19 @@
 		justifyContent(),
 	]"
 	[disabled]="disabled()"
-	(mouseenter)="elementState.updateState(state, StateTypes.Hover, true)"
-	(mouseleave)="elementState.updateState(state, StateTypes.Hover, false)"
-	(mousedown)="elementState.updateState(state, StateTypes.Pressed, true)"
-	(mouseup)="elementState.updateState(state, StateTypes.Pressed, false)"
+	(mouseenter)="
+		!disabled() && elementState.updateState(state, StateTypes.Hover, true)
+	"
+	(mouseleave)="
+		!disabled() && elementState.updateState(state, StateTypes.Hover, false)
+	"
+	(mousedown)="
+		!disabled() && elementState.updateState(state, StateTypes.Pressed, true)
+	"
+	(mouseup)="
+		!disabled() &&
+			elementState.updateState(state, StateTypes.Pressed, false)
+	"
 	(focus)="elementState.checkFocus($event, state)"
 >
 	@if (icon() | mapper: hasIcon : iconPosition() === IconPosition.OnlyIcon) {

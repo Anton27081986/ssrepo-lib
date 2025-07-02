@@ -153,7 +153,7 @@ export class HeaderFilterService {
 			}
 		});
 
-		this.setGlobalQueryParams(queryParams).then();
+		void this.setGlobalQueryParams(queryParams);
 	}
 
 	public async setGlobalQueryParams(
@@ -194,7 +194,7 @@ export class HeaderFilterService {
 			findFil.value = null;
 
 			this.filterChanges$.next(this.filters);
-			this.setQueryParamsFromFilter();
+			void this.setQueryParamsFromFilter();
 		}
 	}
 
