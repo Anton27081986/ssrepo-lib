@@ -744,3 +744,22 @@ Checkbox
 <!--		[item]="item"-->
 <!--	></tr>-->
 <!--</ss-lib-table>-->
+
+<!-- Close Buttons Demo -->
+<span>Close buttons</span>
+<div
+	class="close-buttons"
+	style="display: flex; gap: 8px; align-items: center"
+>
+	<ss-lib-close-button [size]="ExtraSize.xs"></ss-lib-close-button>
+	<ss-lib-close-button [size]="ExtraSize.md"></ss-lib-close-button>
+	<ss-lib-close-button [size]="ExtraSize.lg"></ss-lib-close-button>
+
+	<div class="dark-close-button">
+		<ss-lib-close-button
+			[type]="ButtonType.CloseDark"
+			[size]="ExtraSize.xs"
+		></ss-lib-close-button>
+	</div>
+</div>
+<br />

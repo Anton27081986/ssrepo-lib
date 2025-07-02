@@ -6,15 +6,14 @@ button.custom-button.type-close-dark {
 		border-radius: var(--border-radius-xs);
 	}
 
-	&.size-sm,
-	&.size-md {
+	&.size-sm {
 		padding: 6px;
 		border-radius: var(--border-radius-sm);
 	}
 
 	&.size-md {
-		padding: 6px;
-		border-radius: var(--border-radius-sm);
+		padding: 8px;
+		border-radius: var(--border-radius-md);
 	}
 
 	&.size-lg {
