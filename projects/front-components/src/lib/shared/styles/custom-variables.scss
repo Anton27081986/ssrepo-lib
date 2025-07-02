@@ -3,7 +3,7 @@
 /* Mapped */
 :root {
 	/* Light */
-	/* color */
+	/* Mapped */
 	--border-disabled: var(--neutral-600);
 	--border-error: var(--error-300);
 	--border-focus: var(--primary-700);
@@ -70,8 +70,7 @@
 	--surface-information: var(--primary-300);
 	--surface-information-hover: var(--primary-400);
 	--surface-information-selected: var(--primary-200);
-	--surface-page: var(--neutral-100);
-	--surface-page-secondary: var(--neutral-200);
+	--surface-page: var(--neutral-200);
 	--surface-primary: var(--neutral-white);
 	--surface-secondary: var(--neutral-200);
 	--surface-tertiary: var(--neutral-1400);
@@ -108,7 +107,6 @@
 	/* Mapped - Dark */
 	.dark {
 		/* Mapped */
-		/* Dark */
 		--border-disabled: var(--neutral-900);
 		--border-error: var(--error-300);
 		--border-focus: var(--primary-700);
@@ -175,8 +173,7 @@
 		--surface-information: var(--primary-1200);
 		--surface-information-hover: var(--primary-1100);
 		--surface-information-selected: var(--primary-1300);
-		--surface-page: var(--neutral-1400);
-		--surface-page-secondary: var(--neutral-1500);
+		--surface-page: var(--neutral-1500);
 		--surface-primary: var(--neutral-1400);
 		--surface-secondary: var(--neutral-1500);
 		--surface-tertiary: var(--neutral-200);
@@ -214,43 +211,43 @@
 	--device-size-frame: 1280px;
 
 	/* FONT-SIZE */
-	--font-size-body-xs: 0.75rem;
-	--font-size-body-sm: 0.875rem;
-	--font-size-body-md: 1rem;
-	--font-size-body-lg: 1.125rem;
-	--font-size-body-xl: 1.25rem;
+	--font-size-body-xs: 12px;
+	--font-size-body-sm: 14px;
+	--font-size-body-md: 16px;
+	--font-size-body-lg: 18px;
+	--font-size-body-xl: 20px;
 
-	--font-size-heading-xs: 1.5rem;
-	--font-size-heading-sm: 1.875rem;
-	--font-size-heading-md: 2.25rem;
-	--font-size-heading-lg: 3rem;
-	--font-size-heading-xl: 3.75rem;
-	--font-size-heading-2xl: 4.5rem;
+	--font-size-heading-xs: 24px;
+	--font-size-heading-sm: 30px;
+	--font-size-heading-md: 36px;
+	--font-size-heading-lg: 48px;
+	--font-size-heading-xl: 60px;
+	--font-size-heading-2xl: 72px;
 
 	/* LINE-HEIGHT */
-	--line-height-body-sm: 1.25rem;
-	--line-height-body-md: 1.5rem;
-	--line-height-body-lg: 1.75rem;
-	--line-height-body-xl: 1.875rem;
-	--line-height-heading-xs: 2rem;
-	--line-height-heading-sm: 2.375rem;
-	--line-height-heading-md: 2.75rem;
-	--line-height-heading-lg: 3.75rem;
-	--line-height-heading-xl: 4.5rem;
-	--line-height-heading-2xl: 5.625rem;
+	--line-height-body-sm: 20px;
+	--line-height-body-md: 24px;
+	--line-height-body-lg: 28px;
+	--line-height-body-xl: 30px;
+	--line-height-heading-xs: 32px;
+	--line-height-heading-sm: 38px;
+	--line-height-heading-md: 44px;
+	--line-height-heading-lg: 60px;
+	--line-height-heading-xl: 72px;
+	--line-height-heading-2xl: 90px;
 
 	/* SPACING */
-	--paragraph-spacing-body-xs: 0.75rem;
-	--paragraph-spacing-body-sm: 0.875rem;
-	--paragraph-spacing-body-md: 1rem;
-	--paragraph-spacing-body-lg: 1.125rem;
-	--paragraph-spacing-body-xl: 1.25rem;
-	--paragraph-spacing-heading-xs: 1.5rem;
-	--paragraph-spacing-heading-sm: 1.875rem;
-	--paragraph-spacing-heading-md: 2.25rem;
-	--paragraph-spacing-heading-lg: 3rem;
-	--paragraph-spacing-heading-xl: 3.75rem;
-	--paragraph-spacing-heading-2xl: 4.5rem;
+	--paragraph-spacing-body-xs: 12px;
+	--paragraph-spacing-body-sm: 14px;
+	--paragraph-spacing-body-md: 16px;
+	--paragraph-spacing-body-lg: 18px;
+	--paragraph-spacing-body-xl: 20px;
+	--paragraph-spacing-heading-xs: 24px;
+	--paragraph-spacing-heading-sm: 30px;
+	--paragraph-spacing-heading-md: 36px;
+	--paragraph-spacing-heading-lg: 48px;
+	--paragraph-spacing-heading-xl: 60px;
+	--paragraph-spacing-heading-2xl: 72px;
 
 	/* FONT-FAMILY */
 	--type-font-family-body: onest;
