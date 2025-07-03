@@ -19,6 +19,7 @@ import {
 	TextWeight,
 	ToastTypeEnum,
 	TooltipPosition,
+	IBadgeProps,
 } from '../../../../front-components/src/lib/shared/models';
 import { standImports } from './stand.imports';
 import { ColumnsStateService } from '../../../../front-components/src/lib/components';
@@ -339,6 +340,48 @@ export class StandComponent {
 	}
 
 	public changeIndex(): void {
-		this.indexTab = 4;
+		this.carouselIndex.update((value) => value + 1);
+	}
+
+	// Badge Info Component examples
+	public badgeInfoExample1(): IBadgeProps {
+		return {
+			icon: IconType.Info,
+			size: ExtraSize.md,
+			shape: Shape.Round,
+			status: Status.Default,
+		};
+	}
+
+	public badgeInfoExample2(): IBadgeProps {
+		return {
+			icon: IconType.Alert,
+			size: ExtraSize.md,
+			shape: Shape.Round,
+			status: Status.Warning,
+		};
+	}
+
+	public badgeInfoExample3(): IBadgeProps {
+		return {
+			icon: IconType.CheckCircle,
+			size: ExtraSize.md,
+			shape: Shape.Round,
+			status: Status.Success,
+		};
+	}
+
+	public badgeInfoExample4(): IBadgeProps {
+		return {
+			icon: IconType.Alert,
+			size: ExtraSize.md,
+			shape: Shape.Round,
+			status: Status.Error,
+		};
+	}
+
+	public onBadgeInfoClose(exampleId: string): void {
+		console.log(`Badge info ${exampleId} closed`);
+		// Здесь можно добавить логику скрытия компонента
 	}
 }

@@ -763,3 +763,53 @@ Checkbox
 	</div>
 </div>
 <br />
+
+<!-- Badge Info Component Examples -->
+<div
+	class="badge-info-examples"
+	style="margin: 20px 0"
+>
+	<h3>Badge Info Component Examples</h3>
+
+	<!-- Default badge-info with close on end -->
+	<ss-lib-badge-info
+		[badge]="badgeInfoExample1()"
+		[title]="'Information Title'"
+		[description]="'This is a description for the badge info component'"
+		[viewClose]="true"
+		[closePosition]="IconPosition.End"
+		(closeEvent)="onBadgeInfoClose('example1')"
+	></ss-lib-badge-info>
+	<br />
+
+	<!-- Badge-info with close on start -->
+	<ss-lib-badge-info
+		[badge]="badgeInfoExample2()"
+		[title]="'Warning Alert'"
+		[description]="'This is a warning message with close button on start'"
+		[viewClose]="true"
+		[closePosition]="IconPosition.Start"
+		(closeEvent)="onBadgeInfoClose('example2')"
+	></ss-lib-badge-info>
+	<br />
+
+	<!-- Badge-info without close button -->
+	<ss-lib-badge-info
+		[badge]="badgeInfoExample3()"
+		[title]="'Success Message'"
+		[description]="'This badge info shows success status with green color'"
+		[viewClose]="false"
+	></ss-lib-badge-info>
+	<br />
+
+	<!-- Badge-info with error status -->
+	<ss-lib-badge-info
+		[badge]="badgeInfoExample4()"
+		[title]="'Error Notification'"
+		[description]="'Something went wrong, please try again'"
+		[viewClose]="true"
+		[closePosition]="IconPosition.End"
+		(closeEvent)="onBadgeInfoClose('example4')"
+	></ss-lib-badge-info>
+	<br />
+</div>
