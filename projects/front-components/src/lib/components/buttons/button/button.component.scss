@@ -159,6 +159,13 @@ button.custom-button:disabled.type-primary {
 	box-shadow: var(--shadow-xs);
 }
 
+// Prevent disabled buttons from changing on active/pressed state
+button.custom-button:disabled:active.type-primary {
+	background-color: var(--surface-disabled) !important;
+	outline: 1px solid var(--border-disabled) !important;
+	box-shadow: var(--shadow-xs) !important;
+}
+
 // *************** SECONDARY ***************
 button.custom-button.type-secondary {
 	outline: 1px solid var(--border-secondary);
@@ -190,6 +197,13 @@ button.custom-button:disabled.type-secondary {
 	box-shadow: var(--shadow-xs);
 }
 
+// Prevent disabled buttons from changing on active/pressed state
+button.custom-button:disabled:active.type-secondary {
+	background-color: var(--surface-disabled) !important;
+	outline: 1px solid var(--border-disabled) !important;
+	box-shadow: var(--shadow-xs) !important;
+}
+
 // *************** GHOST ***************
 button.custom-button.type-ghost {
 	background: transparent;
@@ -206,6 +220,11 @@ button.custom-button:active.type-ghost {
 button.custom-button:focus-visible.type-ghost {
 	outline: none;
 	box-shadow: var(--focus-rings-focus-ring);
+}
+
+// Prevent disabled ghost buttons from changing on active/pressed state
+button.custom-button:disabled:active.type-ghost {
+	background: transparent !important;
 }
 
 // *************** TEXT ***************

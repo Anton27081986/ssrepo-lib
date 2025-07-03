@@ -802,6 +802,86 @@ Checkbox
 </ss-lib-dropdown-list>
 <br />
 
+<!-- Disabled Button Examples -->
+<span>Normal buttons (for comparison)</span>
+<div
+	class="normal-buttons"
+	style="
+		display: flex;
+		gap: 8px;
+		align-items: center;
+		flex-wrap: wrap;
+		margin-bottom: 16px;
+	"
+>
+	<!-- Normal Primary -->
+	<ss-lib-button
+		[type]="ButtonType.Primary"
+		[text]="'Primary Normal'"
+		[size]="ExtraSize.md"
+	></ss-lib-button>
+
+	<!-- Normal Secondary -->
+	<ss-lib-button
+		[type]="ButtonType.Secondary"
+		[text]="'Secondary Normal'"
+		[size]="ExtraSize.md"
+	></ss-lib-button>
+
+	<!-- Normal Ghost -->
+	<ss-lib-button
+		[type]="ButtonType.Ghost"
+		[text]="'Ghost Normal'"
+		[size]="ExtraSize.md"
+	></ss-lib-button>
+
+	<!-- Normal Text -->
+	<ss-lib-button
+		[type]="ButtonType.Text"
+		[text]="'Text Normal'"
+		[size]="ExtraSize.md"
+	></ss-lib-button>
+</div>
+
+<span>Disabled buttons (test active/pressed state)</span>
+<div
+	class="disabled-buttons"
+	style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap"
+>
+	<!-- Disabled Primary -->
+	<ss-lib-button
+		[type]="ButtonType.Primary"
+		[text]="'Primary Disabled'"
+		[size]="ExtraSize.md"
+		[disabled]="true"
+	></ss-lib-button>
+
+	<!-- Disabled Secondary -->
+	<ss-lib-button
+		[type]="ButtonType.Secondary"
+		[text]="'Secondary Disabled'"
+		[size]="ExtraSize.md"
+		[disabled]="true"
+	></ss-lib-button>
+
+	<!-- Disabled Ghost -->
+	<ss-lib-button
+		[type]="ButtonType.Ghost"
+		[text]="'Ghost Disabled'"
+		[size]="ExtraSize.md"
+		[disabled]="true"
+	></ss-lib-button>
+
+	<!-- Disabled Text -->
+	<ss-lib-button
+		[type]="ButtonType.Text"
+		[text]="'Text Disabled'"
+		[size]="ExtraSize.md"
+		[disabled]="true"
+	></ss-lib-button>
+</div>
+<br />
+
 <!-- Badge Info Component Examples -->
 <div
 	class="badge-info-examples"
