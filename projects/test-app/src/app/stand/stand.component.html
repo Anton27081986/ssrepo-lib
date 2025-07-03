@@ -764,6 +764,44 @@ Checkbox
 </div>
 <br />
 
+<!-- Utility Button Examples -->
+<span>Utility buttons</span>
+<div
+	class="utility-buttons"
+	style="display: flex; gap: 8px; align-items: center"
+>
+	<!-- Simple utility button -->
+	<ss-lib-utility-button></ss-lib-utility-button>
+
+	<!-- Utility button with dropdown -->
+	<ss-lib-utility-button
+		[popoverTriggerFor]="utilityDropdown"
+	></ss-lib-utility-button>
+
+	<!-- Utility button with custom icon -->
+	<ss-lib-utility-button [icon]="IconType.Settings01"></ss-lib-utility-button>
+</div>
+
+<ss-lib-dropdown-list #utilityDropdown>
+	<ss-lib-dropdown-item
+		[label]="'Опция 1'"
+		[icon]="IconType.Edit"
+		(click)="console.log('Option 1')"
+	/>
+	<ss-lib-dropdown-item
+		[label]="'Опция 2'"
+		[icon]="IconType.Plus"
+		(click)="console.log('Option 2')"
+	/>
+	<ss-lib-divider class="divider-block"></ss-lib-divider>
+	<ss-lib-dropdown-item
+		[label]="'Удалить'"
+		[icon]="IconType.Trash"
+		(click)="console.log('Delete')"
+	/>
+</ss-lib-dropdown-list>
+<br />
+
 <!-- Badge Info Component Examples -->
 <div
 	class="badge-info-examples"
