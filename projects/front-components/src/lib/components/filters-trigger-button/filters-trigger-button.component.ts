@@ -19,7 +19,7 @@ import { NgFor } from '@angular/common';
 		DropdownListComponent,
 		DropdownItemComponent,
 		PopoverTriggerForDirective,
-		NgFor
+		NgFor,
 	],
 	templateUrl: './filters-trigger-button.component.html',
 	styleUrl: './filters-trigger-button.component.scss',
