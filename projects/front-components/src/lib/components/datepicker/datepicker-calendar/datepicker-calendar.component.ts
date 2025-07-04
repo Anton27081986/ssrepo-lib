@@ -45,4 +45,9 @@ export class DatepickerCalendarComponent implements PopoverContent {
 		this.value.emit(day);
 		this.closed.emit();
 	}
+
+	public onTodaySelected(day: CalendarDay | null): void {
+		this.value.emit(day);
+		// Не закрываем календарь при нажатии кнопки "Сегодня"
+	}
 }

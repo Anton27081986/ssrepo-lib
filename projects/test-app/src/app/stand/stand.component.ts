@@ -380,8 +380,7 @@ export class StandComponent {
 		};
 	}
 
-	public onBadgeInfoClose(exampleId: string): void {
-		console.log(`Badge info ${exampleId} closed`);
-		// Здесь можно добавить логику скрытия компонента
+	public onBadgeInfoClose(_exampleId: string): void {
+		// Badge info closed
 	}
 }

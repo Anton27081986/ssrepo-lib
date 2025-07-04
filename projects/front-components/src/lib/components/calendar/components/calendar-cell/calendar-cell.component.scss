@@ -22,6 +22,13 @@
 		color: var(--text-on-disabled);
 	}
 
+	&.calendar-cell_disabled {
+		background: var(--surface-disabled-selected);
+		color: var(--text-on-action);
+		pointer-events: none !important;
+		cursor: default;
+	}
+
 	&.calendar-cell_active {
 		background: var(--surface-action);
 		color: var(--text-on-action);
@@ -45,7 +52,8 @@
 		}
 
 		&.calendar-cell_disabled {
-			color: var(--text-on-disabled);
+			background: var(--surface-disabled-selected);
+			color: var(--text-on-action);
 			pointer-events: none !important;
 			cursor: default;
 		}
@@ -72,7 +80,8 @@
 		}
 
 		&.calendar-cell_disabled {
-			color: var(--text-on-disabled);
+			background: var(--surface-disabled-selected);
+			color: var(--text-on-action);
 			pointer-events: none !important;
 			cursor: default;
 		}

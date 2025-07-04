@@ -931,3 +931,32 @@ Checkbox
 	></ss-lib-badge-info>
 	<br />
 </div>
+
+<div style="display: flex; gap: 12px">
+	<ss-lib-button
+		[type]="ButtonType.Secondary"
+		[text]="'API Success'"
+		(click)="viewToastSuccess()"
+	/>
+	<ss-lib-button
+		[type]="ButtonType.Secondary"
+		[text]="'API Error'"
+		(click)="exampleMetod({ email: 'sydney@fife' })"
+	/>
+</div>
+
+<!-- Datepicker Example -->
+<div style="margin-top: 20px">
+	<h4>Datepicker Test (with min/max dates)</h4>
+	<ss-lib-form-field
+		[label]="'Test Datepicker'"
+		[hint]="'Click to test calendar behavior'"
+	>
+		<ss-lib-datepicker
+			fieldCtrl
+			[formControl]="datepickerCtrl"
+			[min]="minDate"
+			[max]="maxDate"
+		></ss-lib-datepicker>
+	</ss-lib-form-field>
+</div>
