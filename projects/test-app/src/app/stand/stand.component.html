@@ -1,3 +1,53 @@
+<!-- Toast Examples Section -->
+<div
+	class="toast-examples"
+	style="margin: 20px 0"
+>
+	<h3>Toast Examples</h3>
+
+	<!-- Theme Toggle Button -->
+	<div style="margin-bottom: 16px">
+		<ss-lib-button
+			[type]="ButtonType.Ghost"
+			[text]="'Toggle Dark/Light Theme'"
+			[icon]="IconType.Sun"
+			[iconPosition]="IconPosition.Start"
+			(click)="toggleTheme()"
+		/>
+	</div>
+
+	<div style="display: flex; gap: 12px; margin-bottom: 16px">
+		<ss-lib-button
+			[type]="ButtonType.Primary"
+			[text]="'Default Toast'"
+			(click)="showToastDefault()"
+		/>
+		<ss-lib-button
+			[type]="ButtonType.Primary"
+			[text]="'Error Toast'"
+			(click)="showToastError()"
+		/>
+		<ss-lib-button
+			[type]="ButtonType.Primary"
+			[text]="'Success Toast'"
+			(click)="showToastSuccess()"
+		/>
+	</div>
+
+	<div style="display: flex; gap: 12px">
+		<ss-lib-button
+			[type]="ButtonType.Secondary"
+			[text]="'API Success'"
+			(click)="viewToastSuccess()"
+		/>
+		<ss-lib-button
+			[type]="ButtonType.Secondary"
+			[text]="'API Error'"
+			(click)="exampleMetod({ email: 'sydney@fife' })"
+		/>
+	</div>
+</div>
+
 <!--<ss-lib-image-upload-->
 <!--	[progress]="fileLoadProgress()"-->
 <!--	(fileChanged)="uploadFile($event)"-->

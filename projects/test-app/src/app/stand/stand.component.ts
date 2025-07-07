@@ -380,7 +380,18 @@ export class StandComponent {
 		};
 	}
 
-	public onBadgeInfoClose(_exampleId: string): void {
-		// Badge info closed
+	public onBadgeInfoClose(exampleId: string): void {
+		// eslint-disable-next-line no-console
+		console.log(`Badge info ${exampleId} closed`);
+	}
+
+	public toggleTheme(): void {
+		const body = document.body;
+
+		if (body.classList.contains('dark')) {
+			body.classList.remove('dark');
+		} else {
+			body.classList.add('dark');
+		}
 	}
 }

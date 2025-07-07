@@ -7,7 +7,8 @@
 .ss-lib-toast {
 	width: 632px;
 	border-radius: 12px;
-	background-color: var(--surface-information);
+	background-color: var(--surface-tertiary);
+	border: 1px solid var(--border-secondary);
 	padding: 10px 16px 10px 16px;
 	@include flex-wrap;
 	justify-content: space-between;

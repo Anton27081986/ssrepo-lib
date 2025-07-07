@@ -7,7 +7,7 @@
 			<ss-lib-icon
 				[width]="'20'"
 				[height]="'20'"
-				[color]="Colors.IconBody"
+				[color]="Colors.IconBodyOnColor"
 				[icon]="IconType.ImagePlus"
 			></ss-lib-icon>
 		}
@@ -32,7 +32,7 @@
 
 		<ss-lib-text
 			[style.width]="mainButton() || secondaryButton() ? '230px' : '100%'"
-			[color]="Colors.TextInformation"
+			[color]="Colors.TextBodyOnColor"
 			[type]="TextType.BodySm"
 			[weight]="TextWeight.Semibold"
 			[isEllipsis]="true"
@@ -64,7 +64,7 @@
 			[size]="ExtraSize.lg"
 			[icon]="IconType.Close"
 			[iconPosition]="IconPosition.OnlyIcon"
-			[type]="ButtonType.CloseDark"
+			[type]="ButtonType.CloseLight"
 			(click)="close()"
 		></ss-lib-close-button>
 	</div>
