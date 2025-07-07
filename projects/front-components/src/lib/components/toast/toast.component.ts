@@ -71,9 +71,9 @@ export class ToastComponent implements OnInit, OnDestroy {
 		this.initialize = true;
 
 		if (this.mainButton() || this.secondaryButton()) {
-			this.timerId = window.setTimeout(() => this.close(), 10000);
+			this.timerId = window.setTimeout(() => this.close(), 10000000);
 		} else {
-			this.timerId = window.setTimeout(() => this.close(), 5000);
+			this.timerId = window.setTimeout(() => this.close(), 50000000);
 		}
 	}
 

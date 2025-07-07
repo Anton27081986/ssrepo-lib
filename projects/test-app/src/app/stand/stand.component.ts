@@ -236,6 +236,26 @@ export class StandComponent {
 		});
 	}
 
+	public showToastWithButton(): ToastRef {
+		return this.sharedPopupService.openToast({
+			text: 'Toast с кнопкой Пнока',
+			type: ToastTypeEnum.Default,
+			mainButton: {
+				text: 'Пнока',
+				click: () => {
+					console.log('Кнопка Пнока была нажата!');
+					// Можно добавить любую логику
+				},
+			},
+			secondaryButton: {
+				text: 'Вторичная кнопка',
+				click: () => {
+					console.log('Вторичная кнопка была нажата!');
+				},
+			},
+		});
+	}
+
 	public viewToastSuccess(): unknown {
 		return (
 			this.http

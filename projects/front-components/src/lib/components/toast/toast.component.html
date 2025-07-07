@@ -47,24 +47,24 @@
 		>
 			<ss-lib-button
 				*ngIf="secondaryButton() as secondary"
-				[size]="ExtraSize.xs"
+				[size]="ExtraSize.sm"
 				[type]="ButtonType.Ghost"
 				[text]="secondary.text"
 				(click)="secondary.click($event)"
 			></ss-lib-button>
 			<ss-lib-button
 				*ngIf="mainButton() as main"
-				[size]="ExtraSize.xs"
+				[size]="ExtraSize.sm"
 				[type]="ButtonType.Secondary"
 				[text]="main.text"
 				(click)="main.click($event)"
 			></ss-lib-button>
 		</div>
 		<ss-lib-close-button
-			[size]="ExtraSize.lg"
+			[size]="ExtraSize.md"
 			[icon]="IconType.Close"
 			[iconPosition]="IconPosition.OnlyIcon"
-			[type]="ButtonType.CloseLight"
+			[type]="ButtonType.CloseDark"
 			(click)="close()"
 		></ss-lib-close-button>
 	</div>

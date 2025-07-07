@@ -9,7 +9,7 @@
 	border-radius: 12px;
 	background-color: var(--surface-tertiary);
 	border: 1px solid var(--border-secondary);
-	padding: 10px 16px 10px 16px;
+	padding: 16px;
 	@include flex-wrap;
 	justify-content: space-between;
 	box-shadow: var(--effects-shadows-5);
@@ -41,6 +41,33 @@
 		&-actions {
 			@include flex-wrap;
 			gap: 12px;
+		}
+
+		// Стили для кнопок в Toast контексте - используем тот же hover как у CloseDark
+		ss-lib-button {
+			button.custom-button.type-ghost,
+			button.custom-button.type-secondary {
+				position: relative;
+				z-index: 1;
+				height: 32px; // Гарантируем высоту кнопки в Toast
+			}
+
+			button.custom-button:hover.type-ghost::before,
+			button.custom-button:hover.type-secondary::before {
+				content: '';
+				position: absolute;
+				inset: 0;
+				background-color: var(--surface-primary);
+				opacity: 0.2;
+				border-radius: inherit;
+				z-index: -1;
+			}
+		}
+
+		// Позиционирование close button - 8px от верха и 8px справа
+		ss-lib-close-button {
+			margin-top: -8px; // компенсация для точного позиционирования 8px от верха
+			margin-right: -8px; // компенсация для точного позиционирования 8px справа
 		}
 	}
 }
