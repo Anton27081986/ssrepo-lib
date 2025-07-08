@@ -1,5 +1,6 @@
 <div
 	class="input-container"
+	[ngClass]="['size-' + size()]"
 	(focusout)="updateInputStateOnFocusout($event)"
 >
 	<input
