@@ -24,6 +24,7 @@ import {
 } from '@maskito/kit';
 import { Align, ExtraSize, InputType } from '../../shared/models';
 import { CloseButtonComponent } from '../buttons';
+import { NgClass } from '@angular/common';
 
 /**
  * Компонент поля ввода с поддержкой различных типов и масок
@@ -62,7 +63,12 @@ import { CloseButtonComponent } from '../buttons';
 @Component({
 	selector: 'ss-lib-input',
 	standalone: true,
-	imports: [ReactiveFormsModule, MaskitoDirective, CloseButtonComponent],
+	imports: [
+		ReactiveFormsModule,
+		MaskitoDirective,
+		CloseButtonComponent,
+		NgClass,
+	],
 	templateUrl: './input.component.html',
 	styleUrl: './input.component.scss',
 	changeDetection: ChangeDetectionStrategy.OnPush,
@@ -80,6 +86,7 @@ export class InputComponent implements ControlValueAccessor {
 	});
 
 	public readonly type = input<InputType>(InputType.Text);
+	public readonly size = input<ExtraSize>(ExtraSize.md);
 	public readonly placeholder = input<string>('');
 	public readonly readOnly = input<boolean>(false);
 	public readonly clearButton = input<boolean>(false);

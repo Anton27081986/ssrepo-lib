@@ -8,6 +8,17 @@
 	height: auto;
 	flex-wrap: nowrap;
 	gap: 8px;
+
+	&.size-md {
+		height: 40px;
+
+		.input-field {
+			font-size: var(--font-size-body-sm);
+		}
+	}
+	&.size-lg {
+		height: 44px;
+	}
 }
 
 .input-field {
