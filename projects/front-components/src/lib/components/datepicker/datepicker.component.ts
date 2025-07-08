@@ -18,7 +18,7 @@ import {
 	FIRST_NATIVE_DAY,
 	LAST_NATIVE_DAY,
 } from '../calendar/constans';
-import { InputType } from '../../shared/models';
+import { InputType, ExtraSize } from '../../shared/models';
 import { InputComponent } from '../input/input.component';
 
 /**
@@ -64,6 +64,7 @@ export class DatepickerComponent implements ControlValueAccessor {
 	public min = input<Date>(FIRST_NATIVE_DAY);
 	public max = input<Date>(LAST_NATIVE_DAY);
 
+	public readonly size = input<ExtraSize>(ExtraSize.md);
 	public selectedDate = signal<CalendarDay | null>(null);
 	public datepickerCtrl = new FormControl<string | null>(null);
 	public readonly InputType = InputType;
