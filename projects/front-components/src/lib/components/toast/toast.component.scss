@@ -9,47 +9,48 @@
 	border-radius: 12px;
 	background-color: var(--surface-tertiary);
 	border: 1px solid var(--border-secondary);
-	padding: 16px;
+	padding: 15px;
 	@include flex-wrap;
 	justify-content: space-between;
 	box-shadow: var(--effects-shadows-5);
 	position: absolute;
 	left: 50%;
-	transform: translate(-50%, -50%);
-	top: 0;
+	transform: translateX(-50%);
+	top: 52px;
 	transition: 0.3s;
 
 	&__view {
-		top: 52px;
+		opacity: 1;
 	}
 
 	ss-lib-text {
 		width: 100%;
-		white-space: nowrap;
+		white-space: normal;
 	}
 
 	&__left {
 		@include flex-wrap;
 		gap: 8px;
-		max-width: 552px;
+		max-width: calc(100% - 60px);
+		align-items: flex-start;
 	}
 
 	&__right {
 		@include flex-wrap;
 		gap: 20px;
+		position: relative;
+		padding-right: 44px;
 
 		&-actions {
 			@include flex-wrap;
 			gap: 12px;
 		}
 
-		// Стили для кнопок в Toast контексте - используем тот же hover как у CloseDark
 		ss-lib-button {
 			button.custom-button.type-ghost,
 			button.custom-button.type-secondary {
 				position: relative;
 				z-index: 1;
-				height: 32px; // Гарантируем высоту кнопки в Toast
 			}
 
 			button.custom-button:hover.type-ghost::before,
@@ -63,11 +64,18 @@
 				z-index: -1;
 			}
 		}
+	}
 
-		// Позиционирование close button - 8px от верха и 8px справа
-		ss-lib-close-button {
-			margin-top: -8px; // компенсация для точного позиционирования 8px от верха
-			margin-right: -8px; // компенсация для точного позиционирования 8px справа
+	ss-lib-close-button {
+		position: absolute;
+		top: 8px;
+		right: 8px;
+		z-index: 10;
+	}
+
+	&--with-actions {
+		.ss-lib-toast__left {
+			max-width: calc(100% - 220px);
 		}
 	}
 }

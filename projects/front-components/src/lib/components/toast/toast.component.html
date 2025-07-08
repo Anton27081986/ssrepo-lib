@@ -1,6 +1,7 @@
 <div
 	class="ss-lib-toast"
 	[class.ss-lib-toast__view]="initialize"
+	[class.ss-lib-toast--with-actions]="mainButton() || secondaryButton()"
 >
 	<div class="ss-lib-toast__left">
 		@if (type() === ToastTypeEnum.Default) {
@@ -31,41 +32,42 @@
 		}
 
 		<ss-lib-text
-			[style.width]="mainButton() || secondaryButton() ? '230px' : '100%'"
 			[color]="Colors.TextBodyOnColor"
 			[type]="TextType.BodySm"
 			[weight]="TextWeight.Semibold"
-			[isEllipsis]="true"
+			[isEllipsis]="false"
 		>
 			{{ text() }}
 		</ss-lib-text>
 	</div>
-	<div class="ss-lib-toast__right">
-		<div
-			*ngIf="mainButton() || secondaryButton()"
-			class="ss-lib-toast__right-actions"
-		>
-			<ss-lib-button
-				*ngIf="secondaryButton() as secondary"
-				[size]="ExtraSize.sm"
-				[type]="ButtonType.Ghost"
-				[text]="secondary.text"
-				(click)="secondary.click($event)"
-			></ss-lib-button>
-			<ss-lib-button
-				*ngIf="mainButton() as main"
-				[size]="ExtraSize.sm"
-				[type]="ButtonType.Secondary"
-				[text]="main.text"
-				(click)="main.click($event)"
-			></ss-lib-button>
+
+	@if (mainButton() || secondaryButton()) {
+		<div class="ss-lib-toast__right">
+			<div class="ss-lib-toast__right-actions">
+				<ss-lib-button
+					*ngIf="secondaryButton() as secondary"
+					[size]="ExtraSize.sm"
+					[type]="ButtonType.Ghost"
+					[class.on-color]="true"
+					[text]="secondary.text"
+					(click)="secondary.click($event)"
+				></ss-lib-button>
+				<ss-lib-button
+					*ngIf="mainButton() as main"
+					[size]="ExtraSize.sm"
+					[type]="ButtonType.Secondary"
+					[text]="main.text"
+					(click)="main.click($event)"
+				></ss-lib-button>
+			</div>
 		</div>
-		<ss-lib-close-button
-			[size]="ExtraSize.md"
-			[icon]="IconType.Close"
-			[iconPosition]="IconPosition.OnlyIcon"
-			[type]="ButtonType.CloseDark"
-			(click)="close()"
-		></ss-lib-close-button>
-	</div>
+	}
+
+	<ss-lib-close-button
+		[size]="ExtraSize.md"
+		[icon]="IconType.Close"
+		[iconPosition]="IconPosition.OnlyIcon"
+		[type]="ButtonType.CloseDark"
+		(click)="close()"
+	></ss-lib-close-button>
 </div>
