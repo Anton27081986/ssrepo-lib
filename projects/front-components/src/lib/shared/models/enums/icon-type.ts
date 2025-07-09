@@ -29,6 +29,7 @@ export enum IconType {
 	KebabMenuDots = 'kebab-menu-dots',
 	LogOut = 'log-out',
 	Minus = 'minus',
+	Message = 'message',
 	Moon = 'moon',
 	Plus = 'plus',
 	Save = 'save',
