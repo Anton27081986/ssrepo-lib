@@ -62,11 +62,10 @@ export class CheckboxComponent implements ControlValueAccessor {
 	protected readonly isDisabled: WritableSignal<boolean> =
 		signal<boolean>(false);
 
-	protected readonly isHover: WritableSignal<boolean> =
-		signal<boolean>(false);
-
-	protected readonly isFocus: WritableSignal<boolean> =
-		signal<boolean>(false);
+	/** Вычисляемый флаг «отключено» (атрибут + CVA) */
+	public readonly disabledComputed: Signal<boolean> = computed(
+		() => this.disabled() || this.isDisabled(),
+	);
 
 	public readonly indeterminate: ModelSignal<boolean> = model(false);
 
@@ -88,7 +87,7 @@ export class CheckboxComponent implements ControlValueAccessor {
 
 	/** Доступно из шаблона */
 	public isComponentDisabled(): boolean {
-		return this.isDisabled() || this.disabled();
+		return this.disabledComputed();
 	}
 
 	public writeValue(value: boolean | null): void {
@@ -110,18 +109,14 @@ export class CheckboxComponent implements ControlValueAccessor {
 	}
 
 	protected onLabelClick(event: MouseEvent): void {
-		if (this.isComponentDisabled()) {
-			event.preventDefault();
-			event.stopPropagation();
-
-			return;
-		}
+		event.preventDefault();
+		event.stopPropagation();
 
 		this.toggleCheckbox();
 	}
 
 	protected toggleCheckbox(): void {
-		if (this.isComponentDisabled()) {
+		if (this.disabledComputed()) {
 			return;
 		}
 
@@ -131,27 +126,11 @@ export class CheckboxComponent implements ControlValueAccessor {
 
 		this.indeterminate.set(false);
 
-		if (this.onChange) {
-			this.onChange(newValue);
-		}
+		this.onChange?.(newValue);
 
 		this.onTouched();
 	}
 
-	protected onMouseEnter(): void {
-		this.isHover.set(true);
-	}
-
-	protected onMouseLeave(): void {
-		this.isHover.set(false);
-	}
-
-	protected onFocus(): void {
-		this.isFocus.set(true);
-	}
-
-	protected onBlur(): void {
-		this.isFocus.set(false);
-		this.onTouched();
-	}
+	/* Методы onFocus/onBlur оставлены на случай ARIA-управления, но
+	   если не нужны — можно удалить и опереться на CSS :focus-visible. */
 }

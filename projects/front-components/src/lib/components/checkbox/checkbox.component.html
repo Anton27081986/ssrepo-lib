@@ -2,14 +2,10 @@
 	class="checkbox"
 	tabindex="0"
 	[class.checkbox--active]="checked() || indeterminate()"
-	[class.checkbox--hover]="isHover()"
-	[class.checkbox--active-hover]="isHover() && checked()"
 	[class.checkbox--disabled]="isComponentDisabled()"
 	(click)="onLabelClick($event)"
 	(keydown.space)="toggleCheckbox(); $event.preventDefault()"
 	(keydown.enter)="toggleCheckbox(); $event.preventDefault()"
-	(focus)="onFocus()"
-	(blur)="onBlur()"
 >
 	<input
 		type="checkbox"
@@ -28,8 +24,6 @@
 	<div
 		class="checkbox__box"
 		(click)="onLabelClick($event)"
-		(mouseenter)="onMouseEnter()"
-		(mouseleave)="onMouseLeave()"
 	>
 		<ss-lib-icon
 			*ngIf="checked() || indeterminate()"

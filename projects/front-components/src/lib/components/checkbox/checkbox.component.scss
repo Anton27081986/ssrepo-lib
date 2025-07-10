@@ -1,5 +1,6 @@
 .checkbox {
-	display: flex;
+	display: inline-flex;
+	vertical-align: top;
 	align-items: flex-start;
 	gap: var(--space-2, 8px);
 	cursor: pointer;
@@ -33,22 +34,7 @@
 		flex-direction: column;
 	}
 
-	&--active &__box {
-		background-color: var(--surface-action);
-		border: 1px solid var(--surface-action);
-	}
-
-	&--hover &__box {
-		border-color: var(--border-secondary-hover);
-		cursor: pointer;
-	}
-
-	&--active-hover &__box {
-		background-color: var(--surface-action-hover);
-		border: 1px solid var(--surface-action-hover);
-		cursor: pointer;
-	}
-
+	// Disabled state
 	&--disabled {
 		cursor: default;
 
@@ -56,6 +42,28 @@
 			background-color: var(--surface-disabled);
 			border: 1px solid var(--border-disabled);
 			cursor: default;
+		}
+	}
+
+	// Hover state (only when not disabled)
+	&:not(.checkbox--disabled):hover {
+		cursor: pointer;
+
+		.checkbox__box {
+			border-color: var(--border-secondary-hover);
+		}
+	}
+
+	// Active state
+	&--active {
+		& .checkbox__box {
+			background-color: var(--surface-action);
+			border: 1px solid var(--surface-action);
+		}
+
+		&:not(.checkbox--disabled):hover .checkbox__box {
+			background-color: var(--surface-action-hover);
+			border: 1px solid var(--surface-action-hover);
 		}
 	}
 }
