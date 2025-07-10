@@ -54,7 +54,6 @@ export class CheckboxComponent implements ControlValueAccessor {
 	public readonly label = input<string>('');
 	public readonly description = input<string>('');
 
-	/** Флаг отключения чекбокса извне (через атрибут [disabled]) */
 	public readonly disabled = input<boolean>(false);
 
 	protected readonly checked: WritableSignal<boolean> =
