@@ -651,34 +651,43 @@
 <!--		(click)="console.log(5)"-->
 <!--	/>-->
 <!--</ss-lib-dropdown-list>-->
-<!--<div-->
-<!--	class="checkbox"-->
-<!--	(click)="indeterminate = !indeterminate"-->
-<!--&gt;-->
-<!--	<ss-lib-checkbox [formControl]="checkBox1"></ss-lib-checkbox>-->
+<!-- Checkbox Examples -->
+<div
+	class="checkbox-examples"
+	style="display: flex; flex-direction: column; gap: 16px; margin: 20px 0"
+>
+	<h3>Checkbox Examples</h3>
 
-<!--	<ss-lib-checkbox [formControl]="checkBox2"></ss-lib-checkbox>-->
+	<!-- Basic checkbox without text -->
+	<ss-lib-checkbox [formControl]="checkBoxBasic"></ss-lib-checkbox>
 
-<!--	<ss-lib-checkbox [formControl]="checkBox3"></ss-lib-checkbox>-->
+	<!-- Checkbox with label only -->
+	<ss-lib-checkbox
+		[formControl]="checkBoxWithLabel"
+		[label]="'Заголовок'"
+	></ss-lib-checkbox>
 
-<!--	<ss-lib-checkbox-->
-<!--		[formControl]="checkBox1"-->
-<!--		[(indeterminate)]="indeterminate"-->
-<!--	></ss-lib-checkbox>-->
+	<!-- Checkbox with label and description -->
+	<ss-lib-checkbox
+		[formControl]="checkBoxWithLabelAndDescription"
+		[label]="'Заголовок'"
+		[description]="'Текст'"
+	></ss-lib-checkbox>
 
-<!--	<ss-lib-checkbox-->
-<!--		[indeterminate]="false"-->
-<!--		[formControl]="checkBox2"-->
-<!--	></ss-lib-checkbox>-->
+	<!-- Indeterminate state example -->
+	<ss-lib-checkbox
+		[indeterminate]="true"
+		[label]="'Заголовок'"
+		[description]="'Текст'"
+	></ss-lib-checkbox>
 
-<!--	<ss-lib-checkbox-->
-<!--		[indeterminate]="true"-->
-<!--		[formControl]="checkBox3"-->
-<!--	></ss-lib-checkbox>-->
-<!--</div>-->
-Checkbox
-<ss-lib-checkbox [indeterminate]="true"></ss-lib-checkbox>
-Checkbox
+	<!-- Disabled state examples -->
+	<ss-lib-checkbox
+		[formControl]="checkBox2"
+		[label]="'Заголовок'"
+		[description]="'Текст'"
+	></ss-lib-checkbox>
+</div>
 
 <div class="otp">
 	<ss-lib-otp-input [formControl]="otpCtrl"></ss-lib-otp-input>

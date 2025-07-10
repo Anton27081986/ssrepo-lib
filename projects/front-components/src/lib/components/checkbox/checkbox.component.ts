@@ -2,6 +2,7 @@ import {
 	Component,
 	computed,
 	forwardRef,
+	input,
 	model,
 	ModelSignal,
 	Signal,
@@ -11,7 +12,8 @@ import {
 import { type ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { NgIf } from '@angular/common';
 import { IconComponent } from '../icon/icon.component';
-import { Colors, IconType } from '../../shared/models';
+import { TextComponent } from '../text/text.component';
+import { Colors, IconType, TextType, TextWeight } from '../../shared/models';
 
 /**
  * Компонент чекбокса с поддержкой различных типов и состояний
@@ -20,12 +22,16 @@ import { Colors, IconType } from '../../shared/models';
  * ```html
  * Параметры:
  *
- * [type]: CheckboxType - Тип чекбокса - необязательный,
- * по умолчанию: 'default'
+ * [label]: string - Основная подпись - необязательный,
+ * по умолчанию: ''
+ *
+ * [description]: string - Второстепенный текст - необязательный,
+ * по умолчанию: ''
  *
  * <ss-lib-checkbox
- *   [type]="'default'"
  *   [(ngModel)]="isChecked"
+ *   [label]="'Согласен с условиями'"
+ *   [description]="'Подробнее в пользовательском соглашении'"
  * ></ss-lib-checkbox>
  * ```
  */
@@ -34,7 +40,7 @@ import { Colors, IconType } from '../../shared/models';
 	selector: 'ss-lib-checkbox',
 	standalone: true,
 	templateUrl: './checkbox.component.html',
-	imports: [IconComponent, NgIf],
+	imports: [IconComponent, NgIf, TextComponent],
 	styleUrl: './checkbox.component.scss',
 	providers: [
 		{
@@ -45,6 +51,12 @@ import { Colors, IconType } from '../../shared/models';
 	],
 })
 export class CheckboxComponent implements ControlValueAccessor {
+	public readonly label = input<string>('');
+	public readonly description = input<string>('');
+
+	/** Флаг отключения чекбокса извне (через атрибут [disabled]) */
+	public readonly disabled = input<boolean>(false);
+
 	protected readonly checked: WritableSignal<boolean> =
 		signal<boolean>(false);
 
@@ -72,6 +84,13 @@ export class CheckboxComponent implements ControlValueAccessor {
 
 	protected readonly IconType = IconType;
 	protected readonly Colors = Colors;
+	protected readonly TextType = TextType;
+	protected readonly TextWeight = TextWeight;
+
+	/** Доступно из шаблона */
+	public isComponentDisabled(): boolean {
+		return this.isDisabled() || this.disabled();
+	}
 
 	public writeValue(value: boolean | null): void {
 		if (value !== null) {
@@ -91,13 +110,33 @@ export class CheckboxComponent implements ControlValueAccessor {
 		this.isDisabled.set(isDisabled);
 	}
 
-	protected toggleCheckbox(): void {
-		if (!this.isDisabled()) {
-			this.checked.set(!this.checked());
-			this.indeterminate.set(false);
-			this.onChange(this.checked());
-			this.onTouched();
+	protected onLabelClick(event: MouseEvent): void {
+		if (this.isComponentDisabled()) {
+			event.preventDefault();
+			event.stopPropagation();
+
+			return;
 		}
+
+		this.toggleCheckbox();
+	}
+
+	protected toggleCheckbox(): void {
+		if (this.isComponentDisabled()) {
+			return;
+		}
+
+		const newValue = !this.checked();
+
+		this.checked.set(newValue);
+
+		this.indeterminate.set(false);
+
+		if (this.onChange) {
+			this.onChange(newValue);
+		}
+
+		this.onTouched();
 	}
 
 	protected onMouseEnter(): void {
@@ -109,7 +148,7 @@ export class CheckboxComponent implements ControlValueAccessor {
 	}
 
 	protected onFocus(): void {
-		this.isFocus.set(false);
+		this.isFocus.set(true);
 	}
 
 	protected onBlur(): void {

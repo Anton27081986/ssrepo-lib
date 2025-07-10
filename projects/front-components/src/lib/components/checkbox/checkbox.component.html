@@ -1,21 +1,66 @@
-<div
+<label
 	class="checkbox"
-	tabindex="0"
 	[class.checkbox--active]="checked() || indeterminate()"
 	[class.checkbox--hover]="isHover()"
-	[class.checkbox--disabled]="isDisabled()"
 	[class.checkbox--active-hover]="isHover() && checked()"
-	(mouseenter)="onMouseEnter()"
-	(mouseleave)="onMouseLeave()"
-	(focus)="onFocus()"
-	(blur)="onBlur()"
-	(click)="toggleCheckbox()"
+	[class.checkbox--disabled]="isComponentDisabled()"
+	(click)="onLabelClick($event)"
 >
-	<ss-lib-icon
-		*ngIf="checked() || indeterminate()"
-		[color]="isDisabled() ? Colors.IconOnDisabled : Colors.IconOnAction"
-		[height]="'12'"
-		[width]="'12'"
-		[icon]="iconComputed()"
-	></ss-lib-icon>
-</div>
+	<input
+		type="checkbox"
+		tabindex="0"
+		style="
+			position: absolute;
+			opacity: 0;
+			pointer-events: none;
+			width: 0;
+			height: 0;
+		"
+		[checked]="checked() || indeterminate()"
+		[disabled]="isComponentDisabled()"
+		(click)="$event.stopPropagation()"
+		(focus)="onFocus()"
+		(blur)="onBlur()"
+		(keydown.space)="toggleCheckbox(); $event.preventDefault()"
+		(keydown.enter)="toggleCheckbox(); $event.preventDefault()"
+	/>
+
+	<div
+		class="checkbox__box"
+		(mouseenter)="onMouseEnter()"
+		(mouseleave)="onMouseLeave()"
+	>
+		<ss-lib-icon
+			*ngIf="checked() || indeterminate()"
+			[color]="isDisabled() ? Colors.IconOnDisabled : Colors.IconOnAction"
+			[height]="'12'"
+			[width]="'12'"
+			[icon]="iconComputed()"
+		></ss-lib-icon>
+	</div>
+
+	<span
+		*ngIf="label() || description()"
+		class="checkbox__texts"
+	>
+		<ss-lib-text
+			*ngIf="label()"
+			class="checkbox__label"
+			[type]="TextType.BodySm"
+			[weight]="TextWeight.Medium"
+			[color]="Colors.TextBody2"
+		>
+			{{ label() }}
+		</ss-lib-text>
+
+		<ss-lib-text
+			*ngIf="description()"
+			class="checkbox__description"
+			[type]="TextType.BodySm"
+			[weight]="TextWeight.Regular"
+			[color]="Colors.TextBody3"
+		>
+			{{ description() }}
+		</ss-lib-text>
+	</span>
+</label>

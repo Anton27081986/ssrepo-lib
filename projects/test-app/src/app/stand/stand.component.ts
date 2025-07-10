@@ -78,6 +78,13 @@ export class StandComponent {
 	public checkBox2 = new FormControl(null);
 	public checkBox3 = new FormControl(true);
 
+	// New checkbox examples for label and description functionality
+	public checkBoxBasic = new FormControl(false);
+	public checkBoxWithLabel = new FormControl(false);
+	public checkBoxWithLabelAndDescription = new FormControl(false);
+	public checkBoxAgreement = new FormControl(false);
+	public checkBoxLongText = new FormControl(false);
+
 	public otpCtrl = new FormControl('');
 
 	public fileLoadProgress = signal<number>(0);

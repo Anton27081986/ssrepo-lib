@@ -1,37 +1,61 @@
 .checkbox {
-	border: 1px solid var(--border-secondary);
-	width: 16px;
-	height: 16px;
-	box-sizing: border-box;
-	border-radius: 4px;
 	display: flex;
-	justify-content: center;
-	align-items: center;
+	align-items: flex-start;
+	gap: var(--space-2, 8px);
+	cursor: pointer;
 
 	&:focus-visible {
 		outline: none;
-		box-shadow: var(--focus-rings-focus-ring);
+
+		.checkbox__box {
+			box-shadow: var(--focus-rings-focus-ring);
+		}
 	}
 
-	&--active {
+	&__box {
+		border: 1px solid var(--border-secondary);
+		width: 16px;
+		height: 16px;
+		box-sizing: border-box;
+		border-radius: 4px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		ss-lib-icon,
+		svg {
+			display: block;
+		}
+	}
+
+	&__texts {
+		display: flex;
+		flex-direction: column;
+	}
+
+	&--active &__box {
 		background-color: var(--surface-action);
 		border: 1px solid var(--surface-action);
 	}
 
-	&--hover {
+	&--hover &__box {
 		border-color: var(--border-secondary-hover);
 		cursor: pointer;
 	}
 
-	&--active-hover {
+	&--active-hover &__box {
 		background-color: var(--surface-action-hover);
 		border: 1px solid var(--surface-action-hover);
 		cursor: pointer;
 	}
 
 	&--disabled {
-		background-color: var(--surface-disabled);
-		border: 1px solid var(--border-disabled);
 		cursor: default;
+
+		.checkbox__box {
+			background-color: var(--surface-disabled);
+			border: 1px solid var(--border-disabled);
+			cursor: default;
+		}
 	}
 }
