@@ -10,4 +10,6 @@ export enum ButtonType {
 	LinkBlue = 'link-blue',
 	LinkBlack = 'link-black',
 	Overlay = 'overlay',
+	GhostOnDark = 'ghost-on-dark',
+	SecondaryOnDark = 'secondary-on-dark',
 }

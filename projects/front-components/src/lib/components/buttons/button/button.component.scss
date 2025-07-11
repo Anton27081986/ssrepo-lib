@@ -32,7 +32,9 @@ button.custom-button.type-text:not(.only-icon) {
 
 button.custom-button.type-primary:not(.only-icon),
 button.custom-button.type-secondary:not(.only-icon),
-button.custom-button.type-ghost:not(.only-icon) {
+button.custom-button.type-ghost:not(.only-icon),
+button.custom-button.type-ghost-on-dark:not(.only-icon),
+button.custom-button.type-secondary-on-dark:not(.only-icon) {
 	&.size-xxs,
 	&.size-xs {
 		padding: 6px 10px;
@@ -77,7 +79,9 @@ button.custom-button.type-ghost:not(.only-icon) {
 button.custom-button.type-primary.only-icon,
 button.custom-button.type-secondary.only-icon,
 button.custom-button.type-ghost.only-icon,
-button.custom-button.type-text.only-icon {
+button.custom-button.type-text.only-icon,
+button.custom-button.type-ghost-on-dark.only-icon,
+button.custom-button.type-secondary-on-dark.only-icon {
 	&.size-xxs,
 	&.size-xs {
 		padding: 6px;
@@ -243,4 +247,62 @@ button.custom-button:focus-visible.type-text {
 	outline: none;
 	background-color: var(--surface-primary);
 	box-shadow: var(--focus-rings-focus-ring) !important;
+}
+
+// *************** GHOST ON DARK ***************
+button.custom-button.type-ghost-on-dark {
+	background: transparent;
+}
+
+button.custom-button:hover.type-ghost-on-dark {
+	background: var(--surface-action-hover-2);
+}
+
+button.custom-button:active.type-ghost-on-dark {
+	background: var(--surface-action-pressed-2) !important;
+}
+
+button.custom-button:focus-visible.type-ghost-on-dark {
+	outline: none;
+	box-shadow: var(--focus-rings-focus-ring);
+}
+
+// Prevent disabled ghost-on-dark buttons from changing on active/pressed state
+button.custom-button:disabled:active.type-ghost-on-dark {
+	background: transparent !important;
+}
+
+// *************** SECONDARY ON DARK ***************
+button.custom-button.type-secondary-on-dark {
+	background: var(--surface-primary);
+	border: 1px solid var(--border-secondary);
+	box-shadow: var(--shadow-xs);
+}
+
+button.custom-button:hover.type-secondary-on-dark {
+	background: var(--surface-action-hover-2);
+}
+
+button.custom-button:active.type-secondary-on-dark {
+	background: var(--surface-action-pressed-2) !important;
+	box-shadow: none;
+}
+
+button.custom-button:focus-visible.type-secondary-on-dark {
+	outline: none;
+	background: var(--surface-primary);
+	box-shadow: var(--focus-rings-focus-ring-shadow-xs-skeumorphic);
+}
+
+button.custom-button:disabled.type-secondary-on-dark {
+	background-color: var(--surface-disabled);
+	outline: 1px solid var(--border-disabled);
+	box-shadow: var(--shadow-xs);
+}
+
+// Prevent disabled buttons from changing on active/pressed state
+button.custom-button:disabled:active.type-secondary-on-dark {
+	background-color: var(--surface-disabled) !important;
+	outline: 1px solid var(--border-disabled) !important;
+	box-shadow: var(--shadow-xs) !important;
 }

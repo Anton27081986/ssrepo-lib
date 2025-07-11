@@ -47,15 +47,14 @@
 				<ss-lib-button
 					*ngIf="secondaryButton() as secondary"
 					[size]="ExtraSize.sm"
-					[type]="ButtonType.Ghost"
-					[class.on-color]="true"
+					[type]="ButtonType.GhostOnDark"
 					[text]="secondary.text"
 					(click)="secondary.click($event)"
 				></ss-lib-button>
 				<ss-lib-button
 					*ngIf="mainButton() as main"
 					[size]="ExtraSize.sm"
-					[type]="ButtonType.Secondary"
+					[type]="ButtonType.SecondaryOnDark"
 					[text]="main.text"
 					(click)="main.click($event)"
 				></ss-lib-button>

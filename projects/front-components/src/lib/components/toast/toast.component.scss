@@ -45,25 +45,6 @@
 			@include flex-wrap;
 			gap: 12px;
 		}
-
-		ss-lib-button {
-			button.custom-button.type-ghost,
-			button.custom-button.type-secondary {
-				position: relative;
-				z-index: 1;
-			}
-
-			button.custom-button:hover.type-ghost::before,
-			button.custom-button:hover.type-secondary::before {
-				content: '';
-				position: absolute;
-				inset: 0;
-				background-color: var(--surface-primary);
-				opacity: 0.2;
-				border-radius: inherit;
-				z-index: -1;
-			}
-		}
 	}
 
 	ss-lib-close-button {

@@ -59,4 +59,20 @@ export const BUTTON_TEXT_COLORS_RECORD: Record<
 		disabled: Colors.TextDisabled,
 		disabledIconOnly: Colors.TextDisabled,
 	},
+	[ButtonType.GhostOnDark]: {
+		default: Colors.TextBodyOnColor,
+		hover: Colors.TextActionHover2,
+		pressed: Colors.TextActionHover2,
+		focused: Colors.TextAction2,
+		disabled: Colors.TextDisabled,
+		disabledIconOnly: Colors.TextDisabled,
+	},
+	[ButtonType.SecondaryOnDark]: {
+		default: Colors.TextAction2,
+		hover: Colors.TextActionHover2,
+		pressed: Colors.TextActionHover2,
+		focused: Colors.TextAction2,
+		disabled: Colors.TextOnDisabled,
+		disabledIconOnly: Colors.TextOnDisabled,
+	},
 };

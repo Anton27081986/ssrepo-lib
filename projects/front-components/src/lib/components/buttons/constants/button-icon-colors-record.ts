@@ -78,10 +78,21 @@ export const BUTTON_ICON_COLORS_RECORD: Record<
 		disabled: Colors.IconDisabled,
 		disabledIconOnly: Colors.IconDisabled,
 	},
-	[ButtonType.Overlay]: {
-		default: Colors.IconOnAction,
-		hover: Colors.IconOnAction,
-		pressed: Colors.IconOnAction,
-		focused: Colors.IconOnAction,
+	[ButtonType.Overlay]: {},
+	[ButtonType.GhostOnDark]: {
+		default: Colors.IconBodyOnColor,
+		hover: Colors.IconBodyOnColor,
+		pressed: Colors.IconBodyOnColor,
+		focused: Colors.IconBodyOnColor,
+		disabled: Colors.IconDisabled,
+		disabledIconOnly: Colors.IconDisabled,
+	},
+	[ButtonType.SecondaryOnDark]: {
+		default: Colors.IconBodyOnColor,
+		hover: Colors.IconBodyOnColor,
+		pressed: Colors.IconBodyOnColor,
+		focused: Colors.IconBodyOnColor,
+		disabled: Colors.IconOnDisabled,
+		disabledIconOnly: Colors.IconOnDisabled,
 	},
 };

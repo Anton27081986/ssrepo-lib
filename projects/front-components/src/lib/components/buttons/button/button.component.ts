@@ -12,7 +12,9 @@ type RegularButtonType =
 	| ButtonType.Primary
 	| ButtonType.Secondary
 	| ButtonType.Ghost
-	| ButtonType.Text;
+	| ButtonType.Text
+	| ButtonType.GhostOnDark
+	| ButtonType.SecondaryOnDark;
 
 /**
  * Базовая кнопка с поддержкой различных типов, размеров и иконок
