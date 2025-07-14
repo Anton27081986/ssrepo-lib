@@ -6,6 +6,8 @@ import {
 	WritableSignal,
 } from '@angular/core';
 import { NgIf } from '@angular/common';
+import { Subject, timer } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 import { TextComponent } from '../text/text.component';
 import {
 	ButtonToast,
@@ -55,7 +57,7 @@ export class ToastComponent implements OnInit, OnDestroy {
 	protected readonly IconPosition = IconPosition;
 	protected initialize = false;
 
-	private timerId = 0;
+	private readonly destroy$ = new Subject<void>();
 
 	constructor(
 		private readonly toast: Toast,
@@ -68,17 +70,23 @@ export class ToastComponent implements OnInit, OnDestroy {
 	}
 
 	public ngOnInit(): void {
-		this.initialize = true;
+		timer(10)
+			.pipe(takeUntil(this.destroy$))
+			.subscribe(() => {
+				this.initialize = true;
+			});
 
-		if (this.mainButton() || this.secondaryButton()) {
-			this.timerId = window.setTimeout(() => this.close(), 10000000);
-		} else {
-			this.timerId = window.setTimeout(() => this.close(), 50000000);
-		}
+		const autoCloseDelay =
+			this.mainButton() || this.secondaryButton() ? 10000 : 5000;
+
+		timer(autoCloseDelay)
+			.pipe(takeUntil(this.destroy$))
+			.subscribe(() => this.close());
 	}
 
 	public ngOnDestroy(): void {
-		clearTimeout(this.timerId);
+		this.destroy$.next();
+		this.destroy$.complete();
 	}
 
 	protected close(): void {

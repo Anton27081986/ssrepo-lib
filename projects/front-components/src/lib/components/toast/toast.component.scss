@@ -17,7 +17,8 @@
 	left: 50%;
 	transform: translateX(-50%);
 	top: 52px;
-	transition: 0.3s;
+	opacity: 0;
+	transition: opacity 0.3s ease-in-out;
 
 	&__view {
 		opacity: 1;
