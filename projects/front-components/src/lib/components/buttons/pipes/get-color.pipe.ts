@@ -30,16 +30,16 @@ export class GetColorPipe implements PipeTransform {
 				: buttonColors.disabled;
 		}
 
+		if (state.pressed && buttonColors.pressed) {
+			return buttonColors.pressed;
+		}
+
 		if (isActive && buttonColors.hover) {
 			return buttonColors.hover;
 		}
 
 		if (state.hover && buttonColors.hover) {
 			return buttonColors.hover;
-		}
-
-		if (state.pressed && buttonColors.pressed) {
-			return buttonColors.pressed;
 		}
 
 		if (state.focused && buttonColors.focused) {
