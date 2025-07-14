@@ -23,7 +23,12 @@ export class ElementStateService {
 		stateValue: boolean,
 	): void {
 		if (!stateValue) {
-			state.set(EMPTY_STATE);
+			state().pressed
+				? state.set({
+						...state(),
+						pressed: false,
+					})
+				: state.set(EMPTY_STATE);
 
 			return;
 		}
@@ -31,6 +36,7 @@ export class ElementStateService {
 		state.set({
 			...EMPTY_STATE,
 			default: false,
+			hover: state().hover,
 			[stateType.toLowerCase() as keyof IStateElement]: stateValue,
 		});
 	}
