@@ -341,4 +341,8 @@ export class StandComponent {
 	public changeIndex(): void {
 		this.indexTab = 4;
 	}
+
+	public test(): void {
+		console.log('test');
+	}
 }
