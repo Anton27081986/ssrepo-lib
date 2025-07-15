@@ -1,27 +1,26 @@
 button.custom-button.type-close-light,
 button.custom-button.type-close-dark {
-	&.size-xxs,
-	&.size-xs {
+	&.size-xxs {
 		padding: 4px;
 		border-radius: var(--border-radius-xs);
 	}
 
-	&.size-sm,
-	&.size-md {
+	&.size-xs {
+		padding: 6px;
+		border-radius: var(--border-radius-xs);
+	}
+
+	&.size-sm {
 		padding: 6px;
 		border-radius: var(--border-radius-sm);
 	}
 
 	&.size-md {
-		padding: 6px;
-		border-radius: var(--border-radius-sm);
-	}
-
-	&.size-lg {
 		padding: 8px;
 		border-radius: var(--border-radius-md);
 	}
 
+	&.size-lg,
 	&.size-xl,
 	&.size-xxl {
 		padding: 10px;
