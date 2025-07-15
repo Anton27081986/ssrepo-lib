@@ -10,6 +10,13 @@ import {
 import { ButtonComponent } from '../buttons';
 import { CheckboxComponent } from '../checkbox/checkbox.component';
 import { TextComponent } from '../text/text.component';
+import {
+	ButtonType,
+	ExtraSize,
+	IconType,
+	TextType,
+	TextWeight,
+} from '../../shared/models';
 
 @Component({
 	selector: 'ss-lib-indicator-checklist-popup',
