@@ -22,7 +22,6 @@ import {
 } from 'rxjs';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { Subscription } from 'rxjs';
-import { HeaderFilterCheckboxSearchAbstractComponent } from '../header-filter-checkbox-abstract/header-filter-checkbox-abstract.component';
 import {
 	Colors,
 	ExtraSize,
@@ -32,15 +31,14 @@ import {
 	TextType,
 	TextWeight,
 } from '../../shared/models';
+import { HeaderFilterCheckboxSearchAbstractComponent } from '../header-filter-checkbox-abstract/header-filter-checkbox-abstract.component';
 import { HeaderFilterService } from '../../shared/services';
 
 @Component({
 	template: ``,
 	imports: [],
 })
-export abstract class HeaderFilterCheckboxSearchItemAbstractComponent<
-		T extends IId,
-	>
+export abstract class HeaderFilterCheckboxItemAbstractComponent<T extends IId>
 	extends HeaderFilterCheckboxSearchAbstractComponent<T>
 	implements OnInit, OnDestroy
 {

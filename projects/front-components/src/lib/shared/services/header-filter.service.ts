@@ -152,16 +152,15 @@ export class HeaderFilterService {
 				queryParams[filterItem.field] = acc;
 			}
 		});
-
-		this.setGlobalQueryParams(queryParams).then();
+		this.setGlobalQueryParams(queryParams);
 	}
 
-	public async setGlobalQueryParams(
-		params: FilterQueryParams,
-	): Promise<boolean> {
-		return this._router.navigate([], {
-			queryParams: params,
-		});
+	public setGlobalQueryParams(params: FilterQueryParams): void {
+		this._router
+			.navigate([], {
+				queryParams: params,
+			})
+			.then();
 	}
 
 	public getGlobalQueryParams(): FilterQueryParams {
@@ -188,11 +187,10 @@ export class HeaderFilterService {
 		this.menuFilterItems = this.menuFilterItems.filter(
 			(item) => item.active,
 		);
-		const findFil = this.getFilter(filter.field); // если в старом было значение то обновляем если не было то нет
+		const findFil = this.getFilter(filter.field);
 
 		if (findFil.value !== null) {
 			findFil.value = null;
-
 			this.filterChanges$.next(this.filters);
 			this.setQueryParamsFromFilter();
 		}

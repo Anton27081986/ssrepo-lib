@@ -30,11 +30,12 @@ export class LoadPaginationComponent {
 	public readonly changeOffset = output<number>();
 	public readonly limit: InputSignal<number> = input.required<number>();
 	public readonly offset: WritableSignal<number> = signal<number>(0);
+	public readonly itemCount: InputSignal<number> = input.required<number>();
 	public readonly TextComputedForLimit: Signal<string> = computed(() => {
-		const newOffset = this.offset() + this.limit();
+		const newOffset = this.itemCount() + this.limit();
 
 		if (newOffset > this.total()) {
-			return `Показать еще ${this.total() - this.offset()}`;
+			return `Показать еще ${this.total() - this.itemCount()}`;
 		}
 
 		return `Показать еще ${this.limit()}`;
@@ -48,12 +49,11 @@ export class LoadPaginationComponent {
 	constructor() {
 		effect(() => {
 			this.offset.set(this.offsetInput());
-			this.changeOffset.emit(this.offsetInput());
 		});
 	}
 
 	protected get viewButton(): boolean {
-		return this.offset() !== this.total();
+		return this.itemCount() !== this.total();
 	}
 
 	public addOffset(): void {
@@ -62,6 +62,9 @@ export class LoadPaginationComponent {
 		if (newOffset > this.total()) {
 			this.changeOffset.emit(this.total());
 			this.offset.set(this.total());
+		} else if (newOffset < 0) {
+			this.changeOffset.emit(0);
+			this.offset.set(0);
 		} else {
 			this.changeOffset.emit(newOffset);
 			this.offset.set(newOffset);

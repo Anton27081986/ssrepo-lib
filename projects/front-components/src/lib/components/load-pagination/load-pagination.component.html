@@ -12,10 +12,10 @@
 			[color]="Colors.TextBody2"
 			[type]="TextType.BodyMd"
 		>
-			{{ offset() }} из {{ total() }}
+			{{ itemCount() }} из {{ total() }}
 		</ss-lib-text>
 		<ss-lib-progress
-			[current]="offset()"
+			[current]="itemCount()"
 			[total]="total()"
 		></ss-lib-progress>
 	</div>
