@@ -3,7 +3,8 @@
 /* Mapped */
 :root {
 	/* Light */
-	/* Mapped */
+	/* color */
+	--border-information: var(--primary-500);
 	--border-disabled: var(--neutral-600);
 	--border-error: var(--error-300);
 	--border-focus: var(--primary-700);
@@ -38,9 +39,9 @@
 	--icon-error: var(--error-600);
 	--icon-error-hover: var(--error-700);
 	--icon-headings: var(--neutral-1600);
-	--icon-headings-on-color: var(--neutral-300);
+	--icon-headings-on-color: var(--neutral-200);
 	--icon-hero: var(--neutral-1600);
-	--icon-hero-on-color: var(--neutral-300);
+	--icon-hero-on-color: var(--neutral-200);
 	--icon-information: var(--primary-default);
 	--icon-information-hover: var(--primary-900);
 	--icon-on-action: var(--neutral-white);
@@ -63,23 +64,25 @@
 	--surface-action-pressed-2: var(--neutral-500);
 	--surface-action-pressed-3: var(--neutral-400);
 	--surface-action-pressed-4: var(--neutral-1000);
-	--surface-backdrop: var(--grey-1600);
+	--surface-backdrop: var(--neutral-1600);
 	--surface-disabled: var(--neutral-300);
 	--surface-disabled-selected: var(--neutral-700);
 	--surface-error: var(--error-50);
 	--surface-information: var(--primary-300);
 	--surface-information-hover: var(--primary-400);
+	--surface-information-pressed: var(--primary-500);
 	--surface-information-selected: var(--primary-200);
-	--surface-page: var(--neutral-200);
+	--surface-page: var(--neutral-100);
+	--surface-page-secondary: var(--neutral-200);
 	--surface-primary: var(--neutral-white);
 	--surface-secondary: var(--neutral-200);
-	--surface-tertiary: var(--neutral-1400);
+	--surface-tetriary: var(--neutral-1400);
 	--text-action-2: var(--neutral-1000);
 	--text-action-2-on-color: var(--neutral-400);
 	--text-action-hover-2: var(--neutral-1100);
 	--text-action-hover-2-on-color: var(--neutral-300);
 	--text-body: var(--neutral-1500);
-	--text-body-2: var(--neutral-1000);
+	--text-body-2: var(--neutral-1100);
 	--text-body-2-on-color: var(--neutral-600);
 	--text-body-3: var(--neutral-900);
 	--text-body-3-on-color: var(--neutral-700);
@@ -90,9 +93,9 @@
 	--text-error: var(--error-600);
 	--text-error-hover: var(--error-700);
 	--text-headings: var(--neutral-1600);
-	--text-headings-on-color: var(--neutral-300);
+	--text-headings-on-color: var(--neutral-200);
 	--text-hero: var(--neutral-1600);
-	--text-hero-on-color: var(--neutral-300);
+	--text-hero-on-color: var(--neutral-200);
 	--text-information: var(--primary-default);
 	--text-information-hover: var(--primary-900);
 	--text-on-action: var(--neutral-white);
@@ -100,13 +103,13 @@
 	--text-placeholder: var(--neutral-700);
 	--text-placeholder-on-color: var(--neutral-800);
 	--text-success: var(--success-600);
-	--text-success-hover: var(--success-600);
+	--text-success-hover: var(--success-700);
 	--text-warning: var(--warning-500);
 	--text-warning-hover: var(--warning-600);
 
 	/* Mapped - Dark */
 	.dark {
-		/* Mapped */
+		--border-information: var(--primary-900);
 		--border-disabled: var(--neutral-900);
 		--border-error: var(--error-300);
 		--border-focus: var(--primary-700);
@@ -140,9 +143,9 @@
 		--icon-disabled: var(--neutral-800);
 		--icon-error: var(--error-400);
 		--icon-error-hover: var(--error-300);
-		--icon-headings: var(--neutral-300);
+		--icon-headings: var(--neutral-200);
 		--icon-headings-on-color: var(--neutral-1600);
-		--icon-hero: var(--neutral-300);
+		--icon-hero: var(--neutral-200);
 		--icon-hero-on-color: var(--neutral-1600);
 		--icon-information: var(--primary-600);
 		--icon-information-hover: var(--primary-500);
@@ -166,17 +169,19 @@
 		--surface-action-pressed-2: var(--neutral-1000);
 		--surface-action-pressed-3: var(--neutral-1100);
 		--surface-action-pressed-4: var(--neutral-1000);
-		--surface-backdrop: var(--grey-1600);
+		--surface-backdrop: var(--neutral-1600);
 		--surface-disabled: var(--neutral-1200);
 		--surface-disabled-selected: var(--neutral-700);
 		--surface-error: var(--error-900);
 		--surface-information: var(--primary-1200);
 		--surface-information-hover: var(--primary-1100);
+		--surface-information-pressed: var(--primary-1000);
 		--surface-information-selected: var(--primary-1300);
-		--surface-page: var(--neutral-1500);
+		--surface-page: var(--neutral-1400);
+		--surface-page-secondary: var(--neutral-1500);
 		--surface-primary: var(--neutral-1400);
 		--surface-secondary: var(--neutral-1500);
-		--surface-tertiary: var(--neutral-200);
+		--surface-tetriary: var(--neutral-200);
 		--text-action-2: var(--neutral-400);
 		--text-action-2-on-color: var(--neutral-1000);
 		--text-action-hover-2: var(--neutral-300);
@@ -192,9 +197,9 @@
 		--text-disabled: var(--neutral-800);
 		--text-error: var(--error-400);
 		--text-error-hover: var(--error-300);
-		--text-headings: var(--neutral-300);
+		--text-headings: var(--neutral-200);
 		--text-headings-on-color: var(--neutral-1600);
-		--text-hero: var(--neutral-300);
+		--text-hero: var(--neutral-200);
 		--text-hero-on-color: var(--neutral-1600);
 		--text-information: var(--primary-600);
 		--text-information-hover: var(--primary-500);
@@ -203,7 +208,7 @@
 		--text-placeholder: var(--neutral-800);
 		--text-placeholder-on-color: var(--neutral-700);
 		--text-success: var(--success-400);
-		--text-success-hover: var(--success-400);
+		--text-success-hover: var(--success-300);
 		--text-warning: var(--warning-500);
 		--text-warning-hover: var(--warning-400);
 	}

@@ -2,20 +2,48 @@
 	class="checkbox"
 	tabindex="0"
 	[class.checkbox--active]="checked() || indeterminate()"
-	[class.checkbox--hover]="isHover()"
 	[class.checkbox--disabled]="isDisabled()"
-	[class.checkbox--active-hover]="isHover() && checked()"
-	(mouseenter)="onMouseEnter()"
-	(mouseleave)="onMouseLeave()"
-	(focus)="onFocus()"
-	(blur)="onBlur()"
+	[class.checkbox--error]="isError()"
+	[class.checkbox--with-label]="hasLabel()"
 	(click)="toggleCheckbox()"
 >
-	<ss-lib-icon
-		*ngIf="checked() || indeterminate()"
-		[color]="isDisabled() ? Colors.IconOnDisabled : Colors.IconOnAction"
-		[height]="'12'"
-		[width]="'12'"
-		[icon]="iconComputed()"
-	></ss-lib-icon>
+	@if (checked() || indeterminate()) {
+		<ss-lib-icon
+			[color]="iconColorComputed()"
+			[height]="'12'"
+			[width]="'12'"
+			[strokeWidth]="
+				customScaleStroke | mapper: strokeWidthCheckbox : scaleSvg
+			"
+			[icon]="iconComputed()"
+		></ss-lib-icon>
+	}
 </div>
+
+@if (hasLabel()) {
+	<div class="checkbox__texts">
+		@if (label()) {
+			<ss-lib-text
+				class="checkbox__texts_label"
+				[class.checkbox__texts_disabled]="isDisabled()"
+				[type]="TextType.BodySm"
+				[weight]="TextWeight.Medium"
+				[color]="Colors.TextBody2"
+				(click)="toggleCheckbox()"
+			>
+				{{ label() }}
+			</ss-lib-text>
+		}
+
+		@if (description()) {
+			<ss-lib-text
+				class="checkbox__texts_description"
+				[type]="TextType.BodySm"
+				[weight]="TextWeight.Regular"
+				[color]="Colors.TextBody3"
+			>
+				{{ description() }}
+			</ss-lib-text>
+		}
+	</div>
+}

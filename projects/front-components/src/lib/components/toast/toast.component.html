@@ -7,7 +7,7 @@
 			<ss-lib-icon
 				[width]="'20'"
 				[height]="'20'"
-				[color]="Colors.IconSecondary"
+				[color]="Colors.IconBodyOnColor"
 				[icon]="IconType.ImagePlus"
 			></ss-lib-icon>
 		}
@@ -31,11 +31,10 @@
 		}
 
 		<ss-lib-text
-			[style.width]="mainButton() || secondaryButton() ? '230px' : '100%'"
-			[color]="Colors.TextOnInformation"
+			[color]="Colors.TextBodyOnColor"
 			[type]="TextType.BodySm"
 			[weight]="TextWeight.Semibold"
-			[isEllipsis]="true"
+			[isEllipsis]="false"
 		>
 			{{ text() }}
 		</ss-lib-text>
