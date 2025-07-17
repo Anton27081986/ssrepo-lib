@@ -2,8 +2,11 @@ import {
 	Component,
 	computed,
 	effect,
+	EventEmitter,
+	HostListener,
 	inject,
 	input,
+	Output,
 	signal,
 	untracked,
 } from '@angular/core';
@@ -96,6 +99,9 @@ import { EMPTY_STATE } from '../../../shared/constants';
 export class BaseButtonComponent<T extends ButtonTypeValues> {
 	public readonly elementState = inject(ElementStateService);
 
+	@Output()
+	private readonly clickEvent = new EventEmitter<Event>();
+
 	public readonly type = input.required<T>();
 	public readonly size = input<ExtraSize>(ExtraSize.md);
 	public readonly text = input<string | undefined>();
@@ -137,5 +143,16 @@ export class BaseButtonComponent<T extends ButtonTypeValues> {
 				);
 			});
 		});
+	}
+
+	@HostListener('click', ['$event'])
+	private onHostClick(event: Event | MouseEvent): void {
+		if (this.disabled()) {
+			event.stopPropagation();
+
+			return;
+		}
+
+		this.clickEvent.emit(event);
 	}
 }

@@ -58,8 +58,8 @@ export class CloseButtonComponent extends BaseButtonComponent<CloseButtonType> {
 		switch (this.size()) {
 			case ExtraSize.xxs:
 			case ExtraSize.xs:
-			case ExtraSize.sm:
 				return '16';
+			case ExtraSize.sm:
 			case ExtraSize.md:
 			case ExtraSize.lg:
 				return '20';

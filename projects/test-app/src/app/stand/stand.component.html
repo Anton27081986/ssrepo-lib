@@ -83,26 +83,29 @@
 <!--/>-->
 <!--<br />-->
 
-<!--<ss-lib-button-->
-<!--	[type]="ButtonType.Primary"-->
-<!--	[text]="'Primary lg disabled'"-->
-<!--	[icon]="IconType.Bell"-->
-<!--	[iconPosition]="IconPosition.End"-->
-<!--	[size]="ExtraSize.lg"-->
-<!--	[disabled]="true"-->
-<!--/>-->
-<!--<br />-->
+<ss-lib-button
+	[type]="ButtonType.Primary"
+	[text]="'Primary lg disabled'"
+	[icon]="IconType.Bell"
+	[iconPosition]="IconPosition.End"
+	[size]="ExtraSize.lg"
+	[disabled]="true"
+	(click)="test()"
+/>
+<br />
 
 <!--<br />-->
 
-<!--<ss-lib-button-->
-<!--	[type]="ButtonType.Secondary"-->
-<!--	[text]="'Secondary lg'"-->
-<!--	[icon]="IconType.Bell"-->
-<!--	[iconPosition]="IconPosition.End"-->
-<!--	[size]="ExtraSize.lg"-->
-<!--/>-->
-<!--<br />-->
+<ss-lib-button
+	[type]="ButtonType.Secondary"
+	[text]="'Secondary lg'"
+	[icon]="IconType.Bell"
+	[iconPosition]="IconPosition.End"
+	[size]="ExtraSize.lg"
+	[disabled]="true"
+	(click)="test()"
+/>
+<br />
 
 <!--<ss-lib-button-->
 <!--	[type]="ButtonType.Ghost"-->
@@ -164,16 +167,16 @@
 <!--<ss-lib-utility-button />-->
 <!--<br />-->
 
-<!--<ss-lib-close-button [size]="ExtraSize.xs" />-->
-<!--<br />-->
+<ss-lib-close-button [size]="ExtraSize.xs" />
+<br />
 
-<!--<div class="dark-close-button">-->
-<!--	<ss-lib-close-button-->
-<!--		[type]="ButtonType.CloseDark"-->
-<!--		[size]="ExtraSize.xs"-->
-<!--	/>-->
-<!--</div>-->
-<!--<br />-->
+<div class="dark-close-button">
+	<ss-lib-close-button
+		[type]="ButtonType.CloseDark"
+		[size]="ExtraSize.xs"
+	/>
+</div>
+<br />
 
 <!--<span>Preview button</span>-->
 <!--<ss-lib-preview-button />-->

@@ -2,6 +2,7 @@
 	<ss-lib-button
 		[type]="ButtonType.Secondary"
 		[text]="todayLabel"
+		[disabled]="itemIsDisabled(CalendarDay.currentLocal())"
 		(click)="setToday()"
 	/>
 
