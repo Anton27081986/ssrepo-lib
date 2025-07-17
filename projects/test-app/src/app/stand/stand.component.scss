@@ -62,6 +62,11 @@
 .checkbox {
 	display: flex;
 	gap: 5px;
+
+	&__actions {
+		display: flex;
+		gap: 5px;
+	}
 }
 
 .otp {
@@ -78,7 +83,7 @@
 }
 
 ss-lib-button {
-	width: 100px;
+	//width: 100px;
 }
 
 .carousel-item {

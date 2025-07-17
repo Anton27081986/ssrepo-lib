@@ -167,7 +167,7 @@
 <!--<ss-lib-utility-button />-->
 <!--<br />-->
 
-<ss-lib-close-button [size]="ExtraSize.xs" />
+<ss-lib-close-button [size]="ExtraSize.xxs" />
 <br />
 
 <div class="dark-close-button">
@@ -501,18 +501,19 @@
 <!--	/>-->
 <!--</div>-->
 
-<!--<ss-lib-form-field-->
-<!--	[label]="'Datepicker'"-->
-<!--	[hint]="'Подсказка'"-->
-<!--	[errorText]="'Неверно заполнено'"-->
-<!--	[showValidationFieldIcon]="true"-->
-<!--&gt;-->
-<!--	<ss-lib-datepicker-->
-<!--		fieldCtrl-->
-<!--		[formControl]="datepickerCtrl"-->
-<!--	></ss-lib-datepicker>-->
-<!--</ss-lib-form-field>-->
-<!--<br />-->
+<ss-lib-form-field
+	[label]="'Datepicker'"
+	[hint]="'Подсказка'"
+	[errorText]="'Неверно заполнено'"
+	[showValidationFieldIcon]="true"
+>
+	<ss-lib-datepicker
+		fieldCtrl
+		[formControl]="datepickerCtrl"
+		[min]="minDate"
+	></ss-lib-datepicker>
+</ss-lib-form-field>
+<br />
 
 <!--<div class="scrollbar-test">-->
 <!--	<ss-lib-scrollbar>-->
@@ -599,31 +600,73 @@
 <!--		(click)="console.log(5)"-->
 <!--	/>-->
 <!--</ss-lib-dropdown-list>-->
-<!--<div-->
-<!--	class="checkbox"-->
-<!--	(click)="indeterminate = !indeterminate"-->
-<!--&gt;-->
-<!--	<ss-lib-checkbox [formControl]="checkBox1"></ss-lib-checkbox>-->
+<div
+	class="checkbox"
+>
+	<ss-lib-checkbox
+		[label]="'Чекбокс для тестирования'"
+		[description]="'Текст'"
+		[formControl]="checkboxControl"
+	></ss-lib-checkbox>
+
+<!--	<ss-lib-checkbox-->
+<!--		[label]="'Заголовок'"-->
+<!--		[description]="'Текст'"-->
+<!--		[formControl]="checkBox1"-->
+<!--	></ss-lib-checkbox>-->
 
 <!--	<ss-lib-checkbox [formControl]="checkBox2"></ss-lib-checkbox>-->
 
 <!--	<ss-lib-checkbox [formControl]="checkBox3"></ss-lib-checkbox>-->
 
-<!--	<ss-lib-checkbox-->
-<!--		[formControl]="checkBox1"-->
-<!--		[(indeterminate)]="indeterminate"-->
-<!--	></ss-lib-checkbox>-->
+	<ss-lib-checkbox
+		[formControl]="checkBox1"
+		[(indeterminate)]="indeterminate"
+	></ss-lib-checkbox>
 
-<!--	<ss-lib-checkbox-->
-<!--		[indeterminate]="false"-->
-<!--		[formControl]="checkBox2"-->
-<!--	></ss-lib-checkbox>-->
+	<ss-lib-checkbox
+		[indeterminate]="false"
+		[formControl]="checkBox2"
+	></ss-lib-checkbox>
 
-<!--	<ss-lib-checkbox-->
-<!--		[indeterminate]="true"-->
-<!--		[formControl]="checkBox3"-->
-<!--	></ss-lib-checkbox>-->
-<!--</div>-->
+	<ss-lib-checkbox
+		[indeterminate]="true"
+		[formControl]="checkBox3"
+	></ss-lib-checkbox>
+</div>
+
+<br />
+<div class="checkbox__actions">
+	<ss-lib-button
+		[type]="ButtonType.Secondary"
+		(click)="toggleRequiredValidator()"
+	>
+		Переключить валидатор requiredTrue
+	</ss-lib-button>
+
+	<ss-lib-button
+		[type]="ButtonType.Secondary"
+		(click)="setCustomValidator()"
+	>
+		Установить кастомный валидатор
+	</ss-lib-button>
+
+	<ss-lib-button
+		[type]="ButtonType.Secondary"
+		(click)="clearValidators()"
+	>
+		Очистить валидаторы
+	</ss-lib-button>
+
+	<ss-lib-button
+		[type]="ButtonType.Secondary"
+		(click)="resetControl()"
+	>
+		Сбросить
+	</ss-lib-button>
+</div>
+
+<br />
 
 <!--<div class="otp">-->
 <!--	<ss-lib-otp-input [formControl]="otpCtrl"></ss-lib-otp-input>-->

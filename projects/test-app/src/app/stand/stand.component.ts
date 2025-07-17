@@ -1,5 +1,10 @@
 import { Component, inject, signal, WritableSignal } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import {
+	AbstractControl,
+	FormControl,
+	ValidationErrors,
+	Validators,
+} from '@angular/forms';
 import { catchError, Observable, of, Subscription, window } from 'rxjs';
 import { HttpClient, HttpEventType } from '@angular/common/http';
 import { RouterOutlet } from '@angular/router';
@@ -65,7 +70,7 @@ export class StandComponent {
 		new Date('2025-03-17T09:42:01.028Z'),
 	);
 
-	public minDate = new Date(2025, 2, 5);
+	public minDate = new Date(2025, 6, 20);
 	public maxDate = new Date(2025, 2, 20);
 
 	public timepickerCtrl = new FormControl(null);
@@ -73,7 +78,8 @@ export class StandComponent {
 		new Date(),
 	);
 
-	public checkBox1 = new FormControl(null);
+	public checkboxControl = new FormControl(false);
+	public checkBox1 = new FormControl({ value: true, disabled: true });
 	public checkBox2 = new FormControl(null);
 	public checkBox3 = new FormControl(true);
 
@@ -141,6 +147,7 @@ export class StandComponent {
 	protected readonly JustifyContent = JustifyContent;
 	protected readonly HelpHintType = HintType;
 	protected readonly window = window;
+
 	constructor(
 		private readonly columnState: ColumnsStateService,
 		private readonly http: HttpClient,
@@ -344,5 +351,39 @@ export class StandComponent {
 
 	public test(): void {
 		console.log('test');
+	}
+
+	// Toggle requiredTrue validator
+	toggleRequiredValidator() {
+		if (this.checkboxControl.hasValidator(Validators.requiredTrue)) {
+			this.checkboxControl.clearValidators();
+		} else {
+			this.checkboxControl.setValidators(Validators.requiredTrue);
+		}
+		this.checkboxControl.updateValueAndValidity();
+	}
+
+	// Set custom validator
+	setCustomValidator() {
+		const customValidator = (
+			control: AbstractControl,
+		): ValidationErrors | null => {
+			return control.value === true
+				? null
+				: { customError: 'Чекбокс должен быть отмечен' };
+		};
+		this.checkboxControl.setValidators(customValidator);
+		this.checkboxControl.updateValueAndValidity();
+	}
+
+	// Clear all validators
+	clearValidators() {
+		this.checkboxControl.clearValidators();
+		this.checkboxControl.updateValueAndValidity();
+	}
+
+	// Reset control value and state
+	resetControl() {
+		this.checkboxControl.reset(false);
 	}
 }

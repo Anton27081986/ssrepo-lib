@@ -1,36 +1,67 @@
+:host {
+	height: fit-content;
+	display: flex;
+	align-items: start;
+	gap: 8px;
+}
 .checkbox {
 	border: 1px solid var(--border-secondary);
 	width: 16px;
 	height: 16px;
+	box-sizing: border-box;
 	border-radius: 4px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	cursor: pointer;
 
 	&:focus-visible {
 		outline: none;
 		box-shadow: var(--focus-rings-focus-ring);
 	}
 
-	&--active {
-		background-color: var(--surface-action);
-		border: 1px solid var(--surface-action);
-	}
-
-	&--hover {
+	&:hover:not(&--error):not(&--disabled):not(&--active) {
 		border-color: var(--border-secondary-hover);
-		cursor: pointer;
 	}
 
-	&--active-hover {
-		background-color: var(--surface-action-hover);
-		border: 1px solid var(--surface-action-hover);
-		cursor: pointer;
+	&--active:not(&--error):not(&--disabled) {
+		background-color: var(--surface-action);
+		border-color: var(--surface-action);
+
+		&:hover {
+			background-color: var(--surface-action-hover);
+			border-color: var(--surface-action-hover);
+		}
 	}
 
 	&--disabled {
 		background-color: var(--surface-disabled);
 		border: 1px solid var(--border-disabled);
+		cursor: default;
+		pointer-events: none;
+	}
+
+	&--error {
+		background-color: var(--surface-error);
+		border: 1px solid var(--border-error);
+	}
+
+	&--with-label {
+		margin-top: 2px;
+	}
+}
+
+.checkbox__texts {
+	display: flex;
+	flex-direction: column;
+	align-items: start;
+
+	&_label {
+		cursor: pointer;
+	}
+
+	&_description,
+	&_disabled {
 		cursor: default;
 	}
 }

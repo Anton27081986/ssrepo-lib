@@ -6,6 +6,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import type { IconType } from '../../shared/models';
 import { Colors } from '../../shared/models';
 import { ICONS } from '../../shared/assets/icons';
+import { SCALE_SVG } from "../../shared/constants";
 
 /**
  * Компонент для отображения SVG иконок
@@ -41,7 +42,8 @@ export class IconComponent {
 	public icon = input.required<IconType>();
 	public height = input<string>('24');
 	public width = input<string>('24');
-	public color = input<Colors>(Colors.IconPrimary);
+	public strokeWidth = input<number>(SCALE_SVG);
+	public color = input<Colors>(Colors.IconBody);
 
 	public svg: Signal<SafeHtml | null> = computed(() => {
 		const svgData = ICONS.get(this.icon());
