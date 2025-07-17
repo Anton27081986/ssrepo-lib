@@ -46,9 +46,9 @@ export const BUTTON_ICON_COLORS_RECORD: Record<
 	},
 	[ButtonType.CloseLight]: {
 		default: Colors.IconDisabled,
-		hover: Colors.IconActionHover,
-		pressed: Colors.IconActionHover,
-		focused: Colors.IconActionHover,
+		hover: Colors.IconActionHover2,
+		pressed: Colors.IconActionHover2,
+		focused: Colors.IconActionHover2,
 	},
 	[ButtonType.CloseDark]: {
 		default: Colors.IconDisabled,

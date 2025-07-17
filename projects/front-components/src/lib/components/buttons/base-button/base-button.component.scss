@@ -26,4 +26,5 @@ button.custom-button:not(.justify-center) {
 
 button.custom-button:disabled {
 	cursor: default;
+	pointer-events: none;
 }
