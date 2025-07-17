@@ -67,6 +67,7 @@ export class CalendarComponent {
 	});
 
 	public dayClick = output<CalendarDay | null>();
+	public todaySelected = output<CalendarDay | null>();
 
 	public readonly isMonthView = signal<boolean>(true);
 	public readonly ButtonType = ButtonType;
@@ -107,7 +108,7 @@ export class CalendarComponent {
 	}
 
 	public onTodaySelected(day: CalendarDay): void {
-		this.dayClick.emit(day);
+		this.todaySelected.emit(day);
 	}
 
 	private updateViewedMonth(month: CalendarMonth): void {

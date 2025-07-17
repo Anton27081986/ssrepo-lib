@@ -25,6 +25,7 @@ export class CalendarSheetComponent {
 	public todaySelected = output<CalendarDay>();
 	public dayClick = output<CalendarDay>();
 
+	public readonly CalendarDay = CalendarDay;
 	public readonly weekDaysShort = WEEK_DAYS_SHORT;
 	public readonly ButtonType = ButtonType;
 	public readonly todayLabel = TODAY_LABEL;
