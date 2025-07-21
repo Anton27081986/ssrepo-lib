@@ -1,36 +1,17 @@
 <div
 	class="ss-lib-toast"
-	[class.ss-lib-toast__view]="initialize"
+	[class.ss-lib-toast__view]="isInitialized()"
 >
 	<div class="ss-lib-toast__left">
-		@if (type() === ToastTypeEnum.Default) {
-			<ss-lib-icon
-				[width]="'20'"
-				[height]="'20'"
-				[color]="Colors.IconBodyOnColor"
-				[icon]="IconType.ImagePlus"
-			></ss-lib-icon>
-		}
-
-		@if (type() === ToastTypeEnum.Error) {
-			<ss-lib-icon
-				[width]="'20'"
-				[height]="'20'"
-				[color]="Colors.IconError"
-				[icon]="IconType.Alert"
-			></ss-lib-icon>
-		}
-
-		@if (type() === ToastTypeEnum.Success) {
-			<ss-lib-icon
-				[width]="'20'"
-				[height]="'20'"
-				[color]="Colors.IconSuccess"
-				[icon]="IconType.CheckCircle"
-			></ss-lib-icon>
-		}
+		<ss-lib-icon
+			[width]="'20'"
+			[height]="'20'"
+			[icon]="iconConfig().icon"
+			[color]="iconConfig().color"
+		></ss-lib-icon>
 
 		<ss-lib-text
+			class="text-content"
 			[color]="Colors.TextBodyOnColor"
 			[type]="TextType.BodySm"
 			[weight]="TextWeight.Semibold"
@@ -39,28 +20,35 @@
 			{{ text() }}
 		</ss-lib-text>
 	</div>
-	<div class="ss-lib-toast__right">
-		<div
-			*ngIf="mainButton() || secondaryButton()"
-			class="ss-lib-toast__right-actions"
-		>
-			<ss-lib-button
-				*ngIf="secondaryButton() as secondary"
-				[size]="ExtraSize.xs"
-				[type]="ButtonType.Ghost"
-				[text]="secondary.text"
-				(click)="secondary.click($event)"
-			></ss-lib-button>
-			<ss-lib-button
-				*ngIf="mainButton() as main"
-				[size]="ExtraSize.xs"
-				[type]="ButtonType.Secondary"
-				[text]="main.text"
-				(click)="main.click($event)"
-			></ss-lib-button>
+
+	@if (hasActionButtons()) {
+		<div class="ss-lib-toast__right">
+			<div class="ss-lib-toast__right-actions">
+				@if (secondaryButton()) {
+					<ss-lib-button
+						class="secondary-btn"
+						[size]="ExtraSize.xs"
+						[type]="ButtonType.Ghost"
+						[text]="'Пнока'"
+						(click)="secondaryButton()!.click($event)"
+					></ss-lib-button>
+				}
+
+				@if (mainButton()) {
+					<ss-lib-button
+						[size]="ExtraSize.xs"
+						[type]="ButtonType.Secondary"
+						[text]="'Пнока'"
+						(click)="mainButton()!.click($event)"
+					></ss-lib-button>
+				}
+			</div>
 		</div>
+	}
+
+	<div class="close-btn">
 		<ss-lib-close-button
-			[size]="ExtraSize.lg"
+			[size]="ExtraSize.md"
 			[icon]="IconType.Close"
 			[iconPosition]="IconPosition.OnlyIcon"
 			[type]="ButtonType.CloseDark"
