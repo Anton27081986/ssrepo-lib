@@ -52,9 +52,9 @@ export const BUTTON_ICON_COLORS_RECORD: Record<
 	},
 	[ButtonType.CloseDark]: {
 		default: Colors.IconDisabled,
-		hover: Colors.IconOnAction,
-		pressed: Colors.IconOnAction,
-		focused: Colors.IconOnAction,
+		hover: Colors.IconActionHover2OnColor,
+		pressed: Colors.IconActionHover2OnColor,
+		focused: Colors.IconActionHover2OnColor,
 	},
 	[ButtonType.Preview]: {
 		default: Colors.IconOnAction,
