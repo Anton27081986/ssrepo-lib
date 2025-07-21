@@ -219,6 +219,16 @@ export class StandComponent {
 		return of([]);
 	}
 
+	public toggleTheme(): void {
+		const body = document.body;
+
+		if (body.classList.contains('dark')) {
+			body.classList.remove('dark');
+		} else {
+			body.classList.add('dark');
+		}
+	}
+
 	public showToastDefault(): ToastRef {
 		return this.sharedPopupService.openToast({
 			text: 'Какой то тостик',
@@ -239,6 +249,26 @@ export class StandComponent {
 				'Какой то тостик Какой то тостик Какой то тостик Какой то тостик ' +
 				'Какой то тостик Какой то тостик Какой то тостикКакой то тостик',
 			type: ToastTypeEnum.Success,
+		});
+	}
+
+	public showToastWithButton(): ToastRef {
+		return this.sharedPopupService.openToast({
+			text: 'Toast с кнопкой Пнока',
+			type: ToastTypeEnum.Default,
+			mainButton: {
+				text: 'Пнока',
+				click: () => {
+					console.log('Кнопка Пнока была нажата!');
+					// Можно добавить любую логику
+				},
+			},
+			secondaryButton: {
+				text: 'Вторичная кнопка',
+				click: () => {
+					console.log('Вторичная кнопка была нажата!');
+				},
+			},
 		});
 	}
 
@@ -354,7 +384,7 @@ export class StandComponent {
 	}
 
 	// Toggle requiredTrue validator
-	toggleRequiredValidator() {
+	public toggleRequiredValidator(): void {
 		if (this.checkboxControl.hasValidator(Validators.requiredTrue)) {
 			this.checkboxControl.clearValidators();
 		} else {
@@ -364,7 +394,7 @@ export class StandComponent {
 	}
 
 	// Set custom validator
-	setCustomValidator() {
+	public setCustomValidator(): void {
 		const customValidator = (
 			control: AbstractControl,
 		): ValidationErrors | null => {
@@ -372,18 +402,19 @@ export class StandComponent {
 				? null
 				: { customError: 'Чекбокс должен быть отмечен' };
 		};
+
 		this.checkboxControl.setValidators(customValidator);
 		this.checkboxControl.updateValueAndValidity();
 	}
 
 	// Clear all validators
-	clearValidators() {
+	public clearValidators(): void {
 		this.checkboxControl.clearValidators();
 		this.checkboxControl.updateValueAndValidity();
 	}
 
 	// Reset control value and state
-	resetControl() {
+	public resetControl(): void {
 		this.checkboxControl.reset(false);
 	}
 }
