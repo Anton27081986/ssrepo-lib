@@ -5,5 +5,5 @@ export interface IBadgeProps {
 	icon: IconType;
 	size?: BadgeSizeType;
 	shape?: Shape;
-	status?: Status.Error | Status.Default | Status.Warning;
+	status?: Status.Error | Status.Default | Status.Warning | Status.Success;
 }
