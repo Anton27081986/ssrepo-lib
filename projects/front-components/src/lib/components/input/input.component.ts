@@ -22,9 +22,9 @@ import {
 	maskitoNumberOptionsGenerator,
 	maskitoTimeOptionsGenerator,
 } from '@maskito/kit';
+import { NgClass } from '@angular/common';
 import { Align, ExtraSize, InputType } from '../../shared/models';
 import { CloseButtonComponent } from '../buttons';
-import { NgClass } from '@angular/common';
 
 /**
  * Компонент поля ввода с поддержкой различных типов и масок

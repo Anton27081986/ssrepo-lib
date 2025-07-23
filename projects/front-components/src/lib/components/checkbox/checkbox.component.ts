@@ -1,17 +1,28 @@
 import {
+	afterNextRender,
 	Component,
 	computed,
-	forwardRef,
+	inject,
+	Inject,
+	Injector,
+	input,
 	model,
 	ModelSignal,
+	runInInjectionContext,
+	Self,
 	Signal,
 	signal,
 	WritableSignal,
 } from '@angular/core';
-import { type ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { NgIf } from '@angular/common';
+import { type ControlValueAccessor, NgControl } from '@angular/forms';
+import { toSignal } from '@angular/core/rxjs-interop';
+import { distinctUntilChanged, tap } from 'rxjs';
 import { IconComponent } from '../icon/icon.component';
-import { Colors, IconType } from '../../shared/models';
+import { Colors, IconType, TextWeight, TextType } from '../../shared/models';
+import { SCALE_SVG } from '../../shared/constants';
+import { MapperPipe } from '../../core/pipes';
+import { CUSTOM_SCALE_STROKE } from './constants/custom-scale-stroke';
+import { TextComponent } from '../text/text.component';
 
 /**
  * Компонент чекбокса с поддержкой различных типов и состояний
@@ -20,12 +31,16 @@ import { Colors, IconType } from '../../shared/models';
  * ```html
  * Параметры:
  *
- * [type]: CheckboxType - Тип чекбокса - необязательный,
- * по умолчанию: 'default'
+ * [label]: string - Основная подпись - необязательный,
+ * по умолчанию: ''
+ *
+ * [description]: string - Второстепенный текст - необязательный,
+ * по умолчанию: ''
  *
  * <ss-lib-checkbox
- *   [type]="'default'"
  *   [(ngModel)]="isChecked"
+ *   [label]="'Согласен с условиями'"
+ *   [description]="'Подробнее в пользовательском соглашении'"
  * ></ss-lib-checkbox>
  * ```
  */
@@ -34,30 +49,29 @@ import { Colors, IconType } from '../../shared/models';
 	selector: 'ss-lib-checkbox',
 	standalone: true,
 	templateUrl: './checkbox.component.html',
-	imports: [IconComponent, NgIf],
+	imports: [IconComponent, MapperPipe, TextComponent],
 	styleUrl: './checkbox.component.scss',
-	providers: [
-		{
-			provide: NG_VALUE_ACCESSOR,
-			useExisting: forwardRef(() => CheckboxComponent),
-			multi: true,
-		},
-	],
 })
 export class CheckboxComponent implements ControlValueAccessor {
+	private readonly injector = inject(Injector);
+
+	public readonly label = input<string>('');
+	public readonly description = input<string>('');
+
 	protected readonly checked: WritableSignal<boolean> =
 		signal<boolean>(false);
 
 	protected readonly isDisabled: WritableSignal<boolean> =
 		signal<boolean>(false);
 
-	protected readonly isHover: WritableSignal<boolean> =
-		signal<boolean>(false);
-
-	protected readonly isFocus: WritableSignal<boolean> =
+	protected readonly isError: WritableSignal<boolean> =
 		signal<boolean>(false);
 
 	public readonly indeterminate: ModelSignal<boolean> = model(false);
+
+	protected readonly hasLabel = computed(
+		() => this.label() || this.description(),
+	);
 
 	protected readonly iconComputed: Signal<IconType> = computed(() => {
 		if (this.indeterminate()) {
@@ -67,16 +81,50 @@ export class CheckboxComponent implements ControlValueAccessor {
 		return IconType.Check;
 	});
 
+	protected readonly iconColorComputed: Signal<Colors> = computed(() => {
+		if (this.isDisabled()) {
+			return Colors.IconOnDisabled;
+		}
+
+		if (this.isError()) {
+			return Colors.IconError;
+		}
+
+		return Colors.IconOnAction;
+	});
+
 	public onChange!: (value: boolean | null) => void;
 	public onTouched = (): void => {};
 
+	protected readonly TextType = TextType;
+	protected readonly TextWeight = TextWeight;
 	protected readonly IconType = IconType;
 	protected readonly Colors = Colors;
+	protected readonly customScaleStroke = CUSTOM_SCALE_STROKE;
+	protected readonly scaleSvg = SCALE_SVG;
+
+	constructor(
+		@Self()
+		@Inject(NgControl)
+		public ngControl: NgControl,
+	) {
+		if (this.ngControl) {
+			this.ngControl.valueAccessor = this;
+		}
+
+		afterNextRender(() => {
+			this.checkParentCtrlStatus();
+		});
+	}
 
 	public writeValue(value: boolean | null): void {
 		if (value !== null) {
 			this.checked.set(value);
 		}
+	}
+
+	public strokeWidthCheckbox(customScale: number, scale: number): number {
+		return customScale * scale;
 	}
 
 	public registerOnChange(fn: (value: boolean | null) => void): void {
@@ -100,20 +148,20 @@ export class CheckboxComponent implements ControlValueAccessor {
 		}
 	}
 
-	protected onMouseEnter(): void {
-		this.isHover.set(true);
-	}
-
-	protected onMouseLeave(): void {
-		this.isHover.set(false);
-	}
-
-	protected onFocus(): void {
-		this.isFocus.set(false);
-	}
-
-	protected onBlur(): void {
-		this.isFocus.set(false);
-		this.onTouched();
+	private checkParentCtrlStatus(): void {
+		runInInjectionContext(this.injector, () => {
+			toSignal(
+				this.ngControl.control!.statusChanges.pipe(
+					distinctUntilChanged(),
+					tap((status) =>
+						this.isError.set(
+							status === 'INVALID' &&
+								(this.ngControl.touched! ||
+									this.ngControl.dirty!),
+						),
+					),
+				),
+			);
+		});
 	}
 }
