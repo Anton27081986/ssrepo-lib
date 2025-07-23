@@ -75,14 +75,14 @@ export class TabComponent {
 		}
 
 		if (this.isHover() && !this.active()) {
-			return Colors.TextActionHover;
+			return Colors.TextActionHover2;
 		}
 
 		if (this.active()) {
 			return Colors.TextInformation;
 		}
 
-		return Colors.TextAction;
+		return Colors.TextAction2;
 	}
 
 	protected checkStatePopover(event: boolean): void {

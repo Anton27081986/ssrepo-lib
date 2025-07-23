@@ -1,5 +1,10 @@
 import { Component, inject, signal, WritableSignal } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import {
+	AbstractControl,
+	FormControl,
+	ValidationErrors,
+	Validators,
+} from '@angular/forms';
 import { catchError, Observable, of, Subscription, window } from 'rxjs';
 import { HttpClient, HttpEventType } from '@angular/common/http';
 import { RouterOutlet } from '@angular/router';
@@ -65,7 +70,7 @@ export class StandComponent {
 		new Date('2025-03-17T09:42:01.028Z'),
 	);
 
-	public minDate = new Date(2025, 2, 5);
+	public minDate = new Date(2025, 6, 20);
 	public maxDate = new Date(2025, 2, 20);
 
 	public timepickerCtrl = new FormControl(null);
@@ -73,7 +78,8 @@ export class StandComponent {
 		new Date(),
 	);
 
-	public checkBox1 = new FormControl(null);
+	public checkboxControl = new FormControl(false);
+	public checkBox1 = new FormControl({ value: true, disabled: true });
 	public checkBox2 = new FormControl(null);
 	public checkBox3 = new FormControl(true);
 
@@ -141,6 +147,7 @@ export class StandComponent {
 	protected readonly JustifyContent = JustifyContent;
 	protected readonly HelpHintType = HintType;
 	protected readonly window = window;
+
 	constructor(
 		private readonly columnState: ColumnsStateService,
 		private readonly http: HttpClient,
@@ -212,6 +219,16 @@ export class StandComponent {
 		return of([]);
 	}
 
+	public toggleTheme(): void {
+		const body = document.body;
+
+		if (body.classList.contains('dark')) {
+			body.classList.remove('dark');
+		} else {
+			body.classList.add('dark');
+		}
+	}
+
 	public showToastDefault(): ToastRef {
 		return this.sharedPopupService.openToast({
 			text: 'Какой то тостик',
@@ -232,6 +249,26 @@ export class StandComponent {
 				'Какой то тостик Какой то тостик Какой то тостик Какой то тостик ' +
 				'Какой то тостик Какой то тостик Какой то тостикКакой то тостик',
 			type: ToastTypeEnum.Success,
+		});
+	}
+
+	public showToastWithButton(): ToastRef {
+		return this.sharedPopupService.openToast({
+			text: 'Toast с кнопкой Пнока',
+			type: ToastTypeEnum.Default,
+			mainButton: {
+				text: 'Пнока',
+				click: () => {
+					console.log('Кнопка Пнока была нажата!');
+					// Можно добавить любую логику
+				},
+			},
+			secondaryButton: {
+				text: 'Вторичная кнопка',
+				click: () => {
+					console.log('Вторичная кнопка была нажата!');
+				},
+			},
 		});
 	}
 
@@ -344,5 +381,40 @@ export class StandComponent {
 
 	public test(): void {
 		console.log('test');
+	}
+
+	// Toggle requiredTrue validator
+	public toggleRequiredValidator(): void {
+		if (this.checkboxControl.hasValidator(Validators.requiredTrue)) {
+			this.checkboxControl.clearValidators();
+		} else {
+			this.checkboxControl.setValidators(Validators.requiredTrue);
+		}
+		this.checkboxControl.updateValueAndValidity();
+	}
+
+	// Set custom validator
+	public setCustomValidator(): void {
+		const customValidator = (
+			control: AbstractControl,
+		): ValidationErrors | null => {
+			return control.value === true
+				? null
+				: { customError: 'Чекбокс должен быть отмечен' };
+		};
+
+		this.checkboxControl.setValidators(customValidator);
+		this.checkboxControl.updateValueAndValidity();
+	}
+
+	// Clear all validators
+	public clearValidators(): void {
+		this.checkboxControl.clearValidators();
+		this.checkboxControl.updateValueAndValidity();
+	}
+
+	// Reset control value and state
+	public resetControl(): void {
+		this.checkboxControl.reset(false);
 	}
 }
