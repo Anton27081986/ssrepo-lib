@@ -61,7 +61,7 @@ const meta: Meta<IconComponent> = {
 		icon: IconType.Alert,
 		height: '24',
 		width: '24',
-		color: Colors.IconPrimary,
+		color: Colors.IconError,
 	},
 	parameters: {
 		docs: {
@@ -110,7 +110,7 @@ export const Default: Story = {
 		icon: IconType.Alert,
 		height: '24',
 		width: '24',
-		color: Colors.IconPrimary,
+		color: Colors.IconError,
 	},
 };
 
@@ -140,7 +140,7 @@ export const DifferentSizes: Story = {
 		icon: IconType.Alert,
 		height: '48',
 		width: '48',
-		color: Colors.IconPrimary,
+		color: Colors.IconError,
 	},
 };
 
