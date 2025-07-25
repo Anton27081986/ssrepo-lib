@@ -39,6 +39,7 @@
 	color: var(--text-body);
 	background: var(--surface-primary);
 	outline: 1px solid var(--border-secondary);
+	outline-offset: -1px;
 	transition: outline-color 0.3s ease;
 	box-sizing: border-box;
 	box-shadow: var(--shadow-xs);
@@ -55,15 +56,18 @@
 	background: var(--surface-disabled);
 	color: var(--text-on-disabled);
 	outline: 1px solid var(--border-disabled);
+	outline-offset: -1px;
 	pointer-events: none;
 }
 
 .field-container:focus-within:not(.state-invalid) {
 	outline: 2px solid var(--border-focus, #3c92d5);
+	outline-offset: -2px;
 }
 
 .field-container.validation.state-invalid:not(:focus-within) {
 	outline: 1px solid var(--border-error);
+	outline-offset: -1px;
 
 	.field-container__error-icon {
 		display: flex;
@@ -72,6 +76,7 @@
 
 .field-container.validation.state-invalid:focus-within {
 	outline: 2px solid var(--border-focus-error);
+	outline-offset: -2px;
 
 	.field-container__error-icon {
 		display: flex;

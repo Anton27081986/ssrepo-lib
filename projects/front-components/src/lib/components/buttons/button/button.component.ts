@@ -1,4 +1,4 @@
-import type { InputSignal } from '@angular/core';
+import { computed, InputSignal } from '@angular/core';
 import {
 	ChangeDetectionStrategy,
 	Component,
@@ -6,13 +6,14 @@ import {
 	ViewEncapsulation,
 } from '@angular/core';
 import { BaseButtonComponent } from '../base-button/base-button.component';
-import { ButtonType } from '../../../shared/models';
+import { ButtonType, ExtraSize } from '../../../shared/models';
 
 type RegularButtonType =
 	| ButtonType.Primary
 	| ButtonType.Secondary
 	| ButtonType.Ghost
-	| ButtonType.Text;
+	| ButtonType.TextPrimary
+	| ButtonType.TextSecondary;
 
 /**
  * Базовая кнопка с поддержкой различных типов, размеров и иконок
@@ -55,6 +56,7 @@ type RegularButtonType =
 			[size]="size()"
 			[text]="text()"
 			[icon]="icon()"
+			[iconSize]="restrictedIconSize()"
 			[iconPosition]="iconPosition()"
 			[disabled]="disabled()"
 			[justifyContent]="justifyContent()"
@@ -69,6 +71,20 @@ type RegularButtonType =
 export class ButtonComponent extends BaseButtonComponent<RegularButtonType> {
 	public override readonly type: InputSignal<RegularButtonType> =
 		input<RegularButtonType>(ButtonType.Primary);
+
+	public restrictedIconSize = computed(() => {
+		switch (this.size()) {
+			case ExtraSize.xxs:
+			case ExtraSize.xs:
+				return '16';
+			case ExtraSize.sm:
+			case ExtraSize.md:
+			case ExtraSize.lg:
+			case ExtraSize.xl:
+			case ExtraSize.xxl:
+				return '20';
+		}
+	});
 
 	public readonly ButtonType = ButtonType;
 }

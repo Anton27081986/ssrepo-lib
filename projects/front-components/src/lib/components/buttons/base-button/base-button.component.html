@@ -36,72 +36,18 @@
 			/>
 		}
 
-		@switch (size()) {
-			@case (ButtonSize.xs) {
-				<ss-lib-text
-					[type]="TextType.BodySm"
-					[weight]="TextWeight.Regular"
-					[color]="
-						buttonTextColors()
-							| getColor
-								: state()
-								: disabled()
-								: false
-								: isActive()
-					"
-				>
-					{{ text() }}
-				</ss-lib-text>
-			}
-			@case (ButtonSize.sm) {
-				<ss-lib-text
-					[type]="TextType.BodySm"
-					[weight]="TextWeight.Regular"
-					[color]="
-						buttonTextColors()
-							| getColor
-								: state()
-								: disabled()
-								: false
-								: isActive()
-					"
-				>
-					{{ text() }}
-				</ss-lib-text>
-			}
-			@case (ButtonSize.md) {
-				<ss-lib-text
-					[type]="TextType.BodySm"
-					[weight]="TextWeight.Regular"
-					[color]="
-						buttonTextColors()
-							| getColor
-								: state()
-								: disabled()
-								: false
-								: isActive()
-					"
-				>
-					{{ text() }}
-				</ss-lib-text>
-			}
-			@case (ButtonSize.lg) {
-				<ss-lib-text
-					[type]="TextType.BodyMd"
-					[weight]="TextWeight.Regular"
-					[color]="
-						buttonTextColors()
-							| getColor
-								: state()
-								: disabled()
-								: false
-								: isActive()
-					"
-				>
-					{{ text() }}
-				</ss-lib-text>
-			}
-		}
+		<div class="custom-button__text">
+			<ss-lib-text
+				[type]="buttonTextConfig().type"
+				[weight]="buttonTextConfig().weight"
+				[color]="
+					buttonTextColors()
+						| getColor: state() : disabled() : false : isActive()
+				"
+			>
+				{{ text() }}
+			</ss-lib-text>
+		</div>
 
 		@if (icon() | mapper: hasIcon : iconPosition() === IconPosition.End) {
 			<ss-lib-icon

@@ -47,7 +47,7 @@
 	);
 }
 
-.heading-2xl {
+.heading-xxl {
 	@include text-styles(
 		var(--font-size-heading-2xl),
 		var(--line-height-heading-2xl)
