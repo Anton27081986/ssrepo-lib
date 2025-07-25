@@ -168,23 +168,6 @@ button.custom-button.type-text.only-icon {
 
 	&.size-sm {
 		padding: 6px;
-
-		border-radius: var(
-				--app-custom-button-border-radius-top-left,
-				var(--border-radius-sm)
-			)
-			var(
-				--app-custom-button-border-radius-top-right,
-				var(--border-radius-sm)
-			)
-			var(
-				--app-custom-button-border-radius-bottom-right,
-				var(--border-radius-sm)
-			)
-			var(
-				--app-custom-button-border-radius-bottom-left,
-				var(--border-radius-sm)
-			);
 	}
 
 	&.size-md {
@@ -192,12 +175,12 @@ button.custom-button.type-text.only-icon {
 	}
 
 	&.size-lg {
-		padding: 8px;
+		padding: 10px;
 	}
 
 	&.size-xl,
 	&.size-xxl {
-		padding: 10px;
+		padding: 12px;
 	}
 }
 

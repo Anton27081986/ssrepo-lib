@@ -32,20 +32,24 @@
 			/>
 		}
 
-		<ss-lib-text
-			[type]="styleConfig().type"
-			[weight]="styleConfig().weight"
-			[align]="Align.Start"
-			[isLineClamp]="true"
-			[color]="
-				buttonTextColors() | getColor: state() : disabled() : false
-			"
-			[isUnderline]="
+		<div
+			class="custom-button__text"
+			[class.underline]="
 				state() | mapper: textUnderline : linkAppearance() : disabled()
 			"
 		>
-			{{ text() }}
-		</ss-lib-text>
+			<ss-lib-text
+				[type]="styleConfig().type"
+				[weight]="styleConfig().weight"
+				[align]="Align.Start"
+				[isLineClamp]="true"
+				[color]="
+					buttonTextColors() | getColor: state() : disabled() : false
+				"
+			>
+				{{ text() }}
+			</ss-lib-text>
+		</div>
 
 		@if (icon() | mapper: hasIcon : iconPosition() === IconPosition.End) {
 			<ss-lib-icon

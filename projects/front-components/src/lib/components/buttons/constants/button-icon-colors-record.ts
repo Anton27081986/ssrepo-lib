@@ -45,7 +45,7 @@ export const BUTTON_ICON_COLORS_RECORD: Record<
 	[ButtonType.Utility]: {
 		default: Colors.IconDisabled,
 		hover: Colors.IconAction2,
-		pressed: Colors.IconAction2,
+		pressed: Colors.IconActionHover2,
 		focused: Colors.IconAction2,
 	},
 	[ButtonType.CloseLight]: {
@@ -80,7 +80,7 @@ export const BUTTON_ICON_COLORS_RECORD: Record<
 		focused: Colors.IconAction2,
 		disabled: Colors.IconDisabled,
 	},
-	[ButtonType.Overlay]: {
+	[ButtonType.Backdrop]: {
 		default: Colors.IconOnAction,
 		hover: Colors.IconOnAction,
 		pressed: Colors.IconOnAction,

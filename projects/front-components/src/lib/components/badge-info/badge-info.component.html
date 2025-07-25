@@ -37,7 +37,7 @@
 		*ngIf="viewClose()"
 		class="ss-lib-badge-info__close"
 		[style.order]="closePosition() === IconPosition.Start ? 1 : 2"
-		[restrictedIcon]="IconType.Close"
+		[icon]="IconType.Close"
 		[size]="ExtraSize.xl"
 		[type]="ButtonType.CloseLight"
 		(click)="closeEvent.emit()"

@@ -45,7 +45,7 @@ export const BUTTON_TEXT_COLORS_RECORD: Record<
 	[ButtonType.CloseLight]: {},
 	[ButtonType.CloseDark]: {},
 	[ButtonType.Preview]: {},
-	[ButtonType.Overlay]: {},
+	[ButtonType.Backdrop]: {},
 	[ButtonType.LinkBlue]: {
 		default: Colors.TextInformation,
 		hover: Colors.TextInformation,

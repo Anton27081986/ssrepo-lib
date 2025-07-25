@@ -10,5 +10,5 @@ export enum ButtonType {
 	Preview = 'preview',
 	LinkBlue = 'link-blue',
 	LinkBlack = 'link-black',
-	Overlay = 'overlay',
+	Backdrop = 'backdrop',
 }

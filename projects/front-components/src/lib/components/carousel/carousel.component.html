@@ -2,10 +2,10 @@
 	<div class="ss-carousel-wrapper">
 		@if (index() !== 0) {
 			<div class="ss-carousel-navigation ss-carousel-navigation--left">
-				<ss-lib-overlay-button
-					[restrictedIcon]="IconType.ChevronLeft"
+				<ss-lib-backdrop-button
+					[icon]="IconType.ChevronLeft"
 					(click)="prev()"
-				></ss-lib-overlay-button>
+				></ss-lib-backdrop-button>
 			</div>
 		}
 
@@ -25,10 +25,10 @@
 
 		@if (index() !== items().length - 1) {
 			<div class="ss-carousel-navigation ss-carousel-navigation--right">
-				<ss-lib-overlay-button
-					[restrictedIcon]="IconType.ChevronRight"
+				<ss-lib-backdrop-button
+					[icon]="IconType.ChevronRight"
 					(click)="next()"
-				></ss-lib-overlay-button>
+				></ss-lib-backdrop-button>
 			</div>
 		}
 
