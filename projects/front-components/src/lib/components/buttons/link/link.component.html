@@ -32,12 +32,7 @@
 			/>
 		}
 
-		<div
-			class="custom-button__text"
-			[class.underline]="
-				state() | mapper: textUnderline : linkAppearance() : disabled()
-			"
-		>
+		<div class="custom-button__text">
 			<ss-lib-text
 				[type]="styleConfig().type"
 				[weight]="styleConfig().weight"

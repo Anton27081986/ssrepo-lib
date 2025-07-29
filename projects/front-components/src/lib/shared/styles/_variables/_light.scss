@@ -1,4 +1,3 @@
-/* Light */
 :root {
 	--border-information: var(--primary-500);
 	--border-disabled: var(--neutral-600);
@@ -17,12 +16,14 @@
 	--effects-shadows-3: #0e0e0e08;
 	--effects-shadows-4: #0e0e0e0a;
 	--effects-shadows-5: #0e0e0e0d;
+	//--effects-shadows-5: red;
 	--effects-shadows-6: #0e0e0e0f;
 	--effects-shadows-8: #0e0e0e14;
 	--icon-action-2: var(--neutral-1000);
 	--icon-action-2-on-color: var(--neutral-400);
 	--icon-action-hover-2: var(--neutral-1100);
 	--icon-action-hover-2-on-color: var(--neutral-300);
+	--icon-action-pressed-2: var(--neutral-1200);
 	--icon-body: var(--neutral-1500);
 	--icon-body-2: var(--neutral-1100);
 	--icon-body-2-on-color: var(--neutral-600);
@@ -40,6 +41,7 @@
 	--icon-hero-on-color: var(--neutral-200);
 	--icon-information: var(--primary-default);
 	--icon-information-hover: var(--primary-900);
+	--icon-information-pressed: var(--primary-1000);
 	--icon-on-action: var(--neutral-white);
 	--icon-on-disabled: var(--neutral-800);
 	--icon-placeholder: var(--neutral-700);
@@ -72,11 +74,12 @@
 	--surface-page-secondary: var(--neutral-200);
 	--surface-primary: var(--neutral-white);
 	--surface-secondary: var(--neutral-200);
-	--surface-tetriary: var(--neutral-1400);
+	--surface-tertiary: var(--neutral-1400);
 	--text-action-2: var(--neutral-1000);
 	--text-action-2-on-color: var(--neutral-400);
 	--text-action-hover-2: var(--neutral-1100);
 	--text-action-hover-2-on-color: var(--neutral-300);
+	--text-action-pressed-2: var(--neutral-1200);
 	--text-body: var(--neutral-1500);
 	--text-body-2: var(--neutral-1100);
 	--text-body-2-on-color: var(--neutral-600);
@@ -94,6 +97,7 @@
 	--text-hero-on-color: var(--neutral-200);
 	--text-information: var(--primary-default);
 	--text-information-hover: var(--primary-900);
+	--text-information-pressed: var(--primary-1000);
 	--text-on-action: var(--neutral-white);
 	--text-on-disabled: var(--neutral-800);
 	--text-placeholder: var(--neutral-700);

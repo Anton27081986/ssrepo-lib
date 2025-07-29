@@ -122,23 +122,7 @@ export class LinkComponent {
 
 	public readonly IconPosition = IconPosition;
 	public readonly StateTypes = StateTypes;
-	public readonly ButtonSize = ExtraSize;
 	protected readonly TextType = TextType;
 	protected readonly TextWeight = TextWeight;
 	protected readonly Align = Align;
-
-	public textUnderline(
-		state: IStateElement,
-		appearance: LinkAppearance,
-		isDisabled: boolean,
-	): boolean {
-		if (isDisabled) {
-			return false;
-		}
-
-		return (
-			(state.hover && appearance === LinkAppearance.Standalone) ||
-			(state.default && appearance === LinkAppearance.Inline)
-		);
-	}
 }

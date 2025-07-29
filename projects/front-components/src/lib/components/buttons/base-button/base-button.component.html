@@ -11,6 +11,7 @@
 	(mouseleave)="elementState.updateState(state, StateTypes.Hover, false)"
 	(mousedown)="elementState.updateState(state, StateTypes.Pressed, true)"
 	(mouseup)="elementState.updateState(state, StateTypes.Pressed, false)"
+	(blur)="elementState.updateState(state, StateTypes.Focused, false)"
 	(focus)="elementState.checkFocus($event, state)"
 >
 	@if (icon() | mapper: hasIcon : iconPosition() === IconPosition.OnlyIcon) {

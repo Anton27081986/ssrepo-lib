@@ -31,7 +31,10 @@ button.custom-button.type-text-secondary:not(.only-icon) {
 
 button.custom-button.type-primary,
 button.custom-button.type-secondary,
-button.custom-button.type-ghost {
+button.custom-button.type-ghost,
+button.custom-button.type-text-primary,
+button.custom-button.type-text-secondary
+{
 	.custom-button__text {
 		padding: 0 2px;
 	}
@@ -279,11 +282,6 @@ button.custom-button:focus-visible.type-ghost {
 }
 
 // *************** TEXT ***************
-button.custom-button.type-text-primary,
-button.custom-button.type-text-secondary {
-	padding: 0 !important;
-}
-
 button.custom-button.type-text-primary,
 button.custom-button:hover.type-text-primary,
 button.custom-button:active.type-text-primary,

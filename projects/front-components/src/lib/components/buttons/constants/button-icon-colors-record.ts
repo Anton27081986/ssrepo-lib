@@ -30,14 +30,14 @@ export const BUTTON_ICON_COLORS_RECORD: Record<
 	[ButtonType.TextPrimary]: {
 		default: Colors.IconInformation,
 		hover: Colors.IconInformationHover,
-		pressed: Colors.IconInformationHover,
+		pressed: Colors.IconInformationPressed,
 		focused: Colors.IconInformation,
 		disabled: Colors.IconDisabled,
 	},
 	[ButtonType.TextSecondary]: {
 		default: Colors.IconAction2,
 		hover: Colors.IconActionHover2,
-		pressed: Colors.IconActionHover2,
+		pressed: Colors.IconActionPressed2,
 		focused: Colors.IconAction2,
 		disabled: Colors.IconDisabled,
 	},

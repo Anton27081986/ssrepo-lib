@@ -1,99 +1,100 @@
 :host {
-	display: flex;
-	align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 button.custom-button {
-	position: relative;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	border: none;
-	cursor: pointer;
-	box-sizing: border-box;
-	-webkit-transition: background-color 100ms linear;
-	-ms-transition: background-color 100ms linear;
-	transition: background-color 100ms linear;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+  box-sizing: border-box;
+  -webkit-transition: background-color 100ms linear;
+  -ms-transition: background-color 100ms linear;
+  transition: background-color 100ms linear;
 }
 
 button.custom-button:not(.only-icon) {
-	flex-grow: 1;
+  flex-grow: 1;
 }
 
 button.custom-button:disabled {
-	cursor: default;
+  cursor: default;
 }
 
 button.custom-button.link-standalone,
 button.custom-button.link-inline {
-	&.size-xxs,
-	&.size-xs {
-		gap: 2px;
-	}
+  &.size-xxs,
+  &.size-xs {
+    gap: 2px;
+  }
 
-	&.size-sm {
-		gap: 4px;
-	}
+  &.size-sm {
+    gap: 4px;
+  }
 
-	&.size-md {
-		gap: 6px;
-	}
+  &.size-md {
+    gap: 6px;
+  }
 
-	&.size-lg,
-	&.size-xl,
-	&.size-xxl {
-		gap: 8px;
-	}
+  &.size-lg,
+  &.size-xl,
+  &.size-xxl {
+    gap: 8px;
+  }
 }
 
 button.custom-button.type-link-blue,
 button.custom-button.type-link-black {
-	padding: 0;
-	border-radius: var(--border-radius-xs);
-	z-index: 1;
-	background: transparent;
+  padding: 0;
+  border-radius: var(--border-radius-xs);
+  z-index: 1;
+  background: transparent;
+}
+
+button.custom-button.link-standalone:hover:not(:disabled):not(:active) {
+  text-decoration: underline;
+  text-underline-offset: 25%;
+  text-decoration-thickness: 8%;
+
+  &.type-link-blue {
+    text-decoration-color: var(--text-information);
+  }
+
+  &.type-link-black {
+    text-decoration-color: var(--text-action-2);
+  }
+}
+
+button.custom-button.link-inline:not(:disabled):not(:active){
+  text-decoration: underline;
+  text-underline-offset: 25%;
+  text-decoration-thickness: 8%;
+
+  &.type-link-blue {
+    text-decoration-color: var(--text-information);
+  }
+
+  &.type-link-black {
+    text-decoration-color: var(--text-body-4);
+  }
+}
+
+button.custom-button.link-inline:hover, {
+  &.type-link-blue {
+    text-decoration-color: var(--text-information-pressed) !important;
+  }
+
+  &.type-link-black {
+    text-decoration-color: var(--text-action-pressed-2) !important;
+  }
 }
 
 button.custom-button:focus-visible.type-link-blue,
 button.custom-button:focus-visible.type-link-black {
-	outline: none;
-	border-radius: var(--border-radius-xs);
-	box-shadow: var(--focus-rings-focus-ring);
-}
-
-button.custom-button:focus-visible.type-link-blue::before,
-button.custom-button:focus-visible.type-link-black::before {
-	content: '';
-	position: absolute;
-	inset: 0;
-	background: #ffffff;
-	opacity: 0.1;
-	border-radius: inherit;
-	z-index: -1;
-}
-
-button.custom-button.type-link-blue .custom-button__text.underline,
-button.custom-button.type-link-black .custom-button__text.underline {
-	text-decoration: none;
-	position: relative;
-	display: inline-block;
-}
-
-button.custom-button.type-link-blue .custom-button__text.underline::after,
-button.custom-button.type-link-black .custom-button__text.underline::after {
-	content: '';
-	position: absolute;
-	left: 0;
-	bottom: 2px;
-	width: 100%;
-	height: 1px;
-	background-color: inherit;
-}
-
-button.custom-button.type-link-blue .custom-button__text.underline::after {
-	background-color: var(--text-information);
-}
-
-button.custom-button.type-link-black .custom-button__text.underline::after {
-	background-color: var(--text-action-2);
+  outline: none;
+  border-radius: var(--border-radius-xs);
+  box-shadow: var(--focus-rings-focus-ring);
 }
