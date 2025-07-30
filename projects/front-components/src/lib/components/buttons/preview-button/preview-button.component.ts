@@ -32,7 +32,7 @@ import { ButtonType, IconType } from '../../../shared/models';
 	template: `
 		<ss-lib-base-button
 			[type]="type()"
-			[icon]="restrictedIcon()"
+			[icon]="icon()"
 			[iconSize]="'16'"
 			[iconPosition]="IconPosition.OnlyIcon"
 		>
@@ -48,7 +48,7 @@ export class PreviewButtonComponent extends BaseButtonComponent<ButtonType.Previ
 		ButtonType.Preview,
 	);
 
-	public readonly restrictedIcon = input<IconType>(IconType.Close);
+	public override icon = input<IconType | null>(IconType.Close);
 
 	public readonly ButtonType = ButtonType;
 }

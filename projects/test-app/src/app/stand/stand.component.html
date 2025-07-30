@@ -82,7 +82,7 @@
 <ss-lib-text [type]="TextType.BodyXl">Обычный текст</ss-lib-text>
 
 <ss-lib-text
-	[type]="TextType.HeadingXs"
+	[type]="TextType.HeadingXxl"
 	[weight]="TextWeight.Regular"
 	>Обычный текст
 </ss-lib-text>
@@ -104,44 +104,153 @@
 
 <ss-lib-button
 	[type]="ButtonType.Primary"
-	[text]="'Primary xs'"
-	[icon]="IconType.Bell"
-	[iconPosition]="IconPosition.End"
+	[text]="'Пнока'"
+	[icon]="IconType.Plus"
+	[iconPosition]="IconPosition.OnlyIcon"
+	[size]="ExtraSize.xxs"
+/>
+<br />
+
+<ss-lib-button
+	[type]="ButtonType.Primary"
+	[text]="'Пнока'"
+	[icon]="IconType.Plus"
+	[iconPosition]="IconPosition.OnlyIcon"
 	[size]="ExtraSize.xs"
 />
 <br />
 
 <ss-lib-button
 	[type]="ButtonType.Primary"
-	[text]="'Primary sm'"
-	[icon]="IconType.Bell"
-	[iconPosition]="IconPosition.End"
+	[text]="'Пнока'"
+	[icon]="IconType.Plus"
+	[iconPosition]="IconPosition.OnlyIcon"
 	[size]="ExtraSize.sm"
 />
 <br />
 
 <ss-lib-button
 	[type]="ButtonType.Primary"
-	[text]="'Primary md'"
-	[icon]="IconType.Bell"
-	[iconPosition]="IconPosition.End"
+	[text]="'Пнока'"
+	[icon]="IconType.Plus"
+	[iconPosition]="IconPosition.OnlyIcon"
 	[size]="ExtraSize.md"
 />
 <br />
 
 <ss-lib-button
 	[type]="ButtonType.Primary"
-	[text]="'Primary lg'"
-	[icon]="IconType.Bell"
-	[iconPosition]="IconPosition.End"
+	[text]="'Пнока'"
+	[icon]="IconType.Plus"
+	[iconPosition]="IconPosition.OnlyIcon"
 	[size]="ExtraSize.lg"
 />
 <br />
 
 <ss-lib-button
 	[type]="ButtonType.Primary"
-	[text]="'Primary lg disabled'"
-	[icon]="IconType.Bell"
+	[text]="'Пнока'"
+	[icon]="IconType.Plus"
+	[iconPosition]="IconPosition.OnlyIcon"
+	[size]="ExtraSize.xl"
+/>
+<br />
+
+<div class="button-center">
+	<ss-lib-button
+		[type]="ButtonType.Primary"
+		[text]="'Пнока'"
+		[icon]="IconType.Plus"
+		[iconPosition]="IconPosition.OnlyIcon"
+		[size]="ExtraSize.lg"
+		[disabled]="true"
+		(click)="test()"
+	/>
+</div>
+
+<div class="button-center">
+	<ss-lib-button
+		[type]="ButtonType.Primary"
+		[text]="'Пнока'"
+		[icon]="IconType.Plus"
+		[iconPosition]="IconPosition.OnlyIcon"
+		[size]="ExtraSize.lg"
+		(click)="test()"
+	/>
+
+	<ss-lib-button
+		[type]="ButtonType.Primary"
+		[text]="'Пнока'"
+		[icon]="IconType.Plus"
+		[iconPosition]="IconPosition.OnlyIcon"
+		[size]="ExtraSize.lg"
+		[disabled]="true"
+		(click)="test()"
+	/>
+</div>
+
+<!--===============-->
+
+<span>Кнопки secondary</span>
+
+<ss-lib-button
+	[type]="ButtonType.Secondary"
+	[text]="'Пнока'"
+	[icon]="IconType.Plus"
+	[iconPosition]="IconPosition.OnlyIcon"
+	[size]="ExtraSize.xxs"
+/>
+<br />
+
+<ss-lib-button
+	[type]="ButtonType.Secondary"
+	[text]="'Пнока'"
+	[icon]="IconType.Plus"
+	[iconPosition]="IconPosition.OnlyIcon"
+	[size]="ExtraSize.xs"
+/>
+<br />
+
+<ss-lib-button
+	[type]="ButtonType.Secondary"
+	[text]="'Пнока'"
+	[icon]="IconType.Plus"
+	[iconPosition]="IconPosition.OnlyIcon"
+	[size]="ExtraSize.sm"
+/>
+<br />
+
+<ss-lib-button
+	[type]="ButtonType.Secondary"
+	[text]="'Пнока'"
+	[icon]="IconType.Plus"
+	[iconPosition]="IconPosition.OnlyIcon"
+	[size]="ExtraSize.md"
+/>
+<br />
+
+<ss-lib-button
+	[type]="ButtonType.Secondary"
+	[text]="'Пнока'"
+	[icon]="IconType.Plus"
+	[iconPosition]="IconPosition.OnlyIcon"
+	[size]="ExtraSize.lg"
+/>
+<br />
+
+<ss-lib-button
+	[type]="ButtonType.Secondary"
+	[text]="'Пнока'"
+	[icon]="IconType.Plus"
+	[iconPosition]="IconPosition.End"
+	[size]="ExtraSize.xl"
+/>
+<br />
+
+<ss-lib-button
+	[type]="ButtonType.Secondary"
+	[text]="'Пнока'"
+	[icon]="IconType.Plus"
 	[iconPosition]="IconPosition.End"
 	[size]="ExtraSize.lg"
 	[disabled]="true"
@@ -162,6 +271,317 @@
 />
 <br />
 
+<div class="button-center">
+	<ss-lib-button
+		[type]="ButtonType.Secondary"
+		[text]="'Пнока'"
+		[icon]="IconType.Plus"
+		[iconPosition]="IconPosition.End"
+		[size]="ExtraSize.lg"
+		(click)="test()"
+	/>
+
+	<ss-lib-button
+		[type]="ButtonType.Primary"
+		[text]="'Пнока'"
+		[icon]="IconType.Plus"
+		[iconPosition]="IconPosition.End"
+		[size]="ExtraSize.lg"
+		[disabled]="true"
+		(click)="test()"
+	/>
+</div>
+
+<!--===============-->
+<span>Кнопки ghost</span>
+
+<ss-lib-button
+	[type]="ButtonType.Ghost"
+	[text]="'Пнока'"
+	[icon]="IconType.Plus"
+	[iconPosition]="IconPosition.End"
+	[size]="ExtraSize.xxs"
+/>
+<br />
+
+<ss-lib-button
+	[type]="ButtonType.Ghost"
+	[text]="'Пнока'"
+	[icon]="IconType.Plus"
+	[iconPosition]="IconPosition.End"
+	[size]="ExtraSize.xs"
+/>
+<br />
+
+<ss-lib-button
+	[type]="ButtonType.Ghost"
+	[text]="'Пнока'"
+	[icon]="IconType.Plus"
+	[iconPosition]="IconPosition.End"
+	[size]="ExtraSize.sm"
+/>
+<br />
+
+<ss-lib-button
+	[type]="ButtonType.Ghost"
+	[text]="'Пнока'"
+	[icon]="IconType.Plus"
+	[iconPosition]="IconPosition.End"
+	[size]="ExtraSize.md"
+/>
+<br />
+
+<ss-lib-button
+	[type]="ButtonType.Ghost"
+	[text]="'Пнока'"
+	[icon]="IconType.Plus"
+	[iconPosition]="IconPosition.End"
+	[size]="ExtraSize.lg"
+/>
+<br />
+
+<ss-lib-button
+	[type]="ButtonType.Ghost"
+	[text]="'Пнока'"
+	[icon]="IconType.Plus"
+	[iconPosition]="IconPosition.End"
+	[size]="ExtraSize.xl"
+/>
+<br />
+
+<ss-lib-button
+	[type]="ButtonType.Ghost"
+	[text]="'Пнока'"
+	[icon]="IconType.Plus"
+	[iconPosition]="IconPosition.End"
+	[size]="ExtraSize.lg"
+	[disabled]="true"
+	(click)="test()"
+/>
+<br />
+
+<div class="button-center">
+	<ss-lib-button
+		[type]="ButtonType.Secondary"
+		[text]="'Пнока'"
+		[icon]="IconType.Plus"
+		[iconPosition]="IconPosition.End"
+		[size]="ExtraSize.lg"
+		[disabled]="true"
+		(click)="test()"
+	/>
+
+	<ss-lib-button
+		[type]="ButtonType.Ghost"
+		[text]="'Пнока'"
+		[icon]="IconType.Plus"
+		[iconPosition]="IconPosition.End"
+		[size]="ExtraSize.lg"
+		[disabled]="true"
+		(click)="test()"
+	/>
+</div>
+
+<!--&lt;!&ndash;===============&ndash;&gt;-->
+<span>Кнопки text</span>
+
+<ss-lib-button
+	[type]="ButtonType.TextPrimary"
+	[text]="'Пнока'"
+	[icon]="IconType.Plus"
+	[iconPosition]="IconPosition.End"
+	[size]="ExtraSize.sm"
+/>
+<br />
+
+<ss-lib-button
+	[type]="ButtonType.TextSecondary"
+	[text]="'Пнока'"
+	[icon]="IconType.Plus"
+	[iconPosition]="IconPosition.End"
+	[size]="ExtraSize.sm"
+/>
+<br />
+
+<!--===============-->
+
+<div class="dark-close-button">
+	<ss-lib-close-button
+		[type]="ButtonType.CloseDark"
+		[size]="ExtraSize.xxs"
+	/>
+
+	<ss-lib-close-button
+		[type]="ButtonType.CloseDark"
+		[size]="ExtraSize.xs"
+	/>
+
+	<ss-lib-close-button
+		[type]="ButtonType.CloseDark"
+		[size]="ExtraSize.sm"
+	/>
+
+	<ss-lib-close-button
+		[type]="ButtonType.CloseDark"
+		[size]="ExtraSize.md"
+	/>
+
+	<ss-lib-close-button
+		[type]="ButtonType.CloseDark"
+		[size]="ExtraSize.lg"
+	/>
+
+	<ss-lib-close-button
+		[type]="ButtonType.CloseDark"
+		[size]="ExtraSize.xl"
+	/>
+
+	<ss-lib-close-button
+		[type]="ButtonType.CloseDark"
+		[size]="ExtraSize.xxl"
+	/>
+
+	<ss-lib-close-button
+		[type]="ButtonType.CloseDark"
+		[size]="ExtraSize.xxl"
+		[disabled]="true"
+	/>
+</div>
+
+<div class="flex-center">
+	<ss-lib-close-button
+		[type]="ButtonType.CloseLight"
+		[size]="ExtraSize.xxs"
+	/>
+
+	<ss-lib-close-button
+		[type]="ButtonType.CloseLight"
+		[size]="ExtraSize.xs"
+	/>
+
+	<ss-lib-close-button
+		[type]="ButtonType.CloseLight"
+		[size]="ExtraSize.sm"
+	/>
+
+	<ss-lib-close-button
+		[type]="ButtonType.CloseLight"
+		[size]="ExtraSize.md"
+	/>
+
+	<ss-lib-close-button
+		[type]="ButtonType.CloseLight"
+		[size]="ExtraSize.lg"
+	/>
+
+	<ss-lib-close-button
+		[type]="ButtonType.CloseLight"
+		[size]="ExtraSize.xl"
+	/>
+
+	<ss-lib-close-button
+		[type]="ButtonType.CloseLight"
+		[size]="ExtraSize.xxl"
+	/>
+
+	<ss-lib-close-button
+		[type]="ButtonType.CloseLight"
+		[size]="ExtraSize.xxl"
+		[disabled]="true"
+	/>
+</div>
+<br />
+
+<ss-lib-utility-button />
+
+<ss-lib-preview-button />
+
+<ss-lib-backdrop-button />
+
+
+<ss-lib-link
+	[type]="ButtonType.LinkBlack"
+	[linkAppearance]="LinkAppearance.Inline"
+	[text]="'Ссылка'"
+	[icon]="IconType.Plus"
+	[iconPosition]="IconPosition.Start"
+	[size]="ExtraSize.xxs"
+/>
+
+<ss-lib-link
+	[type]="ButtonType.LinkBlue"
+	[linkAppearance]="LinkAppearance.Inline"
+	[text]="'Ссылка'"
+	[icon]="IconType.Plus"
+	[iconPosition]="IconPosition.Start"
+	[size]="ExtraSize.xs"
+/>
+
+<ss-lib-link
+	[type]="ButtonType.LinkBlue"
+	[linkAppearance]="LinkAppearance.Inline"
+	[text]="'Ссылка'"
+	[icon]="IconType.Plus"
+	[iconPosition]="IconPosition.Start"
+	[size]="ExtraSize.sm"
+/>
+
+<ss-lib-link
+	[type]="ButtonType.LinkBlue"
+	[linkAppearance]="LinkAppearance.Inline"
+	[text]="'Ссылка'"
+	[icon]="IconType.Plus"
+	[iconPosition]="IconPosition.Start"
+	[size]="ExtraSize.md"
+/>
+
+<ss-lib-link
+	[type]="ButtonType.LinkBlue"
+	[linkAppearance]="LinkAppearance.Inline"
+	[text]="'Ссылка'"
+	[icon]="IconType.Plus"
+	[iconPosition]="IconPosition.Start"
+	[size]="ExtraSize.lg"
+/>
+
+<ss-lib-link
+	[type]="ButtonType.LinkBlue"
+	[linkAppearance]="LinkAppearance.Inline"
+	[text]="'Ссылка'"
+	[icon]="IconType.Plus"
+	[iconPosition]="IconPosition.Start"
+	[size]="ExtraSize.xl"
+/>
+
+<ss-lib-link
+	[type]="ButtonType.LinkBlue"
+	[linkAppearance]="LinkAppearance.Inline"
+	[text]="'Ссылка'"
+	[icon]="IconType.Plus"
+	[iconPosition]="IconPosition.Start"
+	[size]="ExtraSize.xxl"
+/>
+
+<ss-lib-link
+	[type]="ButtonType.LinkBlue"
+	[linkAppearance]="LinkAppearance.Standalone"
+	[text]="'Ссылка'"
+	[icon]="IconType.Plus"
+	[iconPosition]="IconPosition.Start"
+	[size]="ExtraSize.xxl"
+	[disabled]="true"
+/>
+
+<ss-lib-link
+	[type]="ButtonType.LinkBlue"
+	[linkAppearance]="LinkAppearance.Standalone"
+	[text]="'Ссылка'"
+	[icon]="IconType.Plus"
+	[iconPosition]="IconPosition.Start"
+	[size]="ExtraSize.xxl"
+	[disabled]="true"
+/>
+
 <ss-lib-button
 	[type]="ButtonType.Ghost"
 	[text]="'Ghost lg'"
@@ -172,7 +592,7 @@
 <br />
 
 <ss-lib-button
-	[type]="ButtonType.Text"
+	[type]="ButtonType.TextPrimary"
 	[text]="'Text lg'"
 	[icon]="IconType.Bell"
 	[iconPosition]="IconPosition.End"
@@ -211,7 +631,7 @@
 <br />
 
 <ss-lib-button
-	[type]="ButtonType.Text"
+	[type]="ButtonType.TextPrimary"
 	[text]="'Кнопка'"
 	[icon]="IconType.Bell"
 	[iconPosition]="IconPosition.OnlyIcon"
@@ -238,7 +658,7 @@
 <br />
 
 <span>Overlay button</span>
-<ss-lib-overlay-button />
+<ss-lib-backdrop-button />
 <br />
 
 <ss-lib-link

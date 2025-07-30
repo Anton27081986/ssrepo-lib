@@ -18,7 +18,7 @@ import { type ControlValueAccessor, NgControl } from '@angular/forms';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { distinctUntilChanged, tap } from 'rxjs';
 import { IconComponent } from '../icon/icon.component';
-import { Colors, IconType, TextWeight, TextType } from '../../shared/models';
+import { Colors, IconType, TextWeight, TextType, calcStrokeWidth } from "../../shared/models";
 import { SCALE_SVG } from '../../shared/constants';
 import { MapperPipe } from '../../core/pipes';
 import { CUSTOM_SCALE_STROKE } from './constants/custom-scale-stroke';
@@ -123,10 +123,6 @@ export class CheckboxComponent implements ControlValueAccessor {
 		}
 	}
 
-	public strokeWidthCheckbox(customScale: number, scale: number): number {
-		return customScale * scale;
-	}
-
 	public registerOnChange(fn: (value: boolean | null) => void): void {
 		this.onChange = fn;
 	}
@@ -164,4 +160,6 @@ export class CheckboxComponent implements ControlValueAccessor {
 			);
 		});
 	}
+
+	protected readonly calcStrokeWidth = calcStrokeWidth;
 }

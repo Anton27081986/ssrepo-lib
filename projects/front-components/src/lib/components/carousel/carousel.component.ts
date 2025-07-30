@@ -19,7 +19,7 @@ import {
 	tap,
 } from 'rxjs';
 import { ItemDirective } from '../../core/directives';
-import { OverlayButtonComponent } from '../buttons';
+import { BackdropButtonComponent } from '../buttons';
 import { ButtonType, IconType } from '../../shared/models';
 import { clamp } from '../../core/utils';
 import { PaginationDotsComponent } from '../pagination-dots/pagination-dots.component';
@@ -29,7 +29,7 @@ import { PaginationDotsComponent } from '../pagination-dots/pagination-dots.comp
 	standalone: true,
 	imports: [
 		NgTemplateOutlet,
-		OverlayButtonComponent,
+		BackdropButtonComponent,
 		PaginationDotsComponent,
 	],
 	templateUrl: './carousel.component.html',

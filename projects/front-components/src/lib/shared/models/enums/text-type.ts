@@ -4,7 +4,7 @@ export enum TextType {
 	HeadingMd = 'heading-md',
 	HeadingLg = 'heading-lg',
 	HeadingXl = 'heading-xl',
-	Heading2Xl = 'heading-2xl',
+	HeadingXxl = 'heading-xxl',
 	BodyXs = 'body-xs',
 	BodySm = 'body-sm',
 	BodyMd = 'body-md',

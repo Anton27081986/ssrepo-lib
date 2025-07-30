@@ -13,6 +13,10 @@
 	--app-avatar-border: var(--border-secondary);
 }
 
+.avatar-button:active {
+	--app-avatar-border: var(--border-primary);
+}
+
 .avatar-button:focus-visible {
 	outline: none;
 	box-shadow: var(--focus-rings-focus-ring);

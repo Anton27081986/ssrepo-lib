@@ -417,4 +417,7 @@ export class StandComponent {
 	public resetControl(): void {
 		this.checkboxControl.reset(false);
 	}
+
 }
+
+

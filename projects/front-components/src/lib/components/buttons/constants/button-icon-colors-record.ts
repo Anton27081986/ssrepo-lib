@@ -12,7 +12,6 @@ export const BUTTON_ICON_COLORS_RECORD: Record<
 		pressed: Colors.IconOnAction,
 		focused: Colors.IconOnAction,
 		disabled: Colors.IconOnDisabled,
-		disabledIconOnly: Colors.IconDisabled,
 	},
 	[ButtonType.Secondary]: {
 		default: Colors.IconAction2,
@@ -20,28 +19,33 @@ export const BUTTON_ICON_COLORS_RECORD: Record<
 		pressed: Colors.IconActionHover2,
 		focused: Colors.IconAction2,
 		disabled: Colors.IconOnDisabled,
-		disabledIconOnly: Colors.IconOnDisabled,
 	},
 	[ButtonType.Ghost]: {
 		default: Colors.IconAction2,
 		hover: Colors.IconActionHover2,
-		pressed: Colors.IconAction2,
+		pressed: Colors.IconActionHover2,
 		focused: Colors.IconAction2,
 		disabled: Colors.IconDisabled,
-		disabledIconOnly: Colors.IconDisabled,
 	},
-	[ButtonType.Text]: {
+	[ButtonType.TextPrimary]: {
+		default: Colors.IconInformation,
+		hover: Colors.IconInformationHover,
+		pressed: Colors.IconInformationPressed,
+		focused: Colors.IconInformation,
+		disabled: Colors.IconDisabled,
+	},
+	[ButtonType.TextSecondary]: {
 		default: Colors.IconAction2,
 		hover: Colors.IconActionHover2,
-		pressed: Colors.IconAction2,
+		pressed: Colors.IconActionPressed2,
 		focused: Colors.IconAction2,
 		disabled: Colors.IconDisabled,
-		disabledIconOnly: Colors.IconDisabled,
 	},
+
 	[ButtonType.Utility]: {
 		default: Colors.IconDisabled,
 		hover: Colors.IconAction2,
-		pressed: Colors.IconAction2,
+		pressed: Colors.IconActionHover2,
 		focused: Colors.IconAction2,
 	},
 	[ButtonType.CloseLight]: {
@@ -68,7 +72,6 @@ export const BUTTON_ICON_COLORS_RECORD: Record<
 		pressed: Colors.IconInformation,
 		focused: Colors.IconInformation,
 		disabled: Colors.IconDisabled,
-		disabledIconOnly: Colors.IconDisabled,
 	},
 	[ButtonType.LinkBlack]: {
 		default: Colors.IconAction2,
@@ -76,9 +79,8 @@ export const BUTTON_ICON_COLORS_RECORD: Record<
 		pressed: Colors.IconAction2,
 		focused: Colors.IconAction2,
 		disabled: Colors.IconDisabled,
-		disabledIconOnly: Colors.IconDisabled,
 	},
-	[ButtonType.Overlay]: {
+	[ButtonType.Backdrop]: {
 		default: Colors.IconOnAction,
 		hover: Colors.IconOnAction,
 		pressed: Colors.IconOnAction,
