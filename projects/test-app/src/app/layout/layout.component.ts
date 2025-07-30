@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { toSignal } from '@angular/core/rxjs-interop';
+import { tap } from 'rxjs';
 import type { IMenu } from '../../../../front-components/src/lib/shared/models';
 import {
 	Colors,
 	IconType,
-	NavButton,
-	SidebarType,
 	TextType,
 	TextWeight,
 } from '../../../../front-components/src/lib/shared/models';
@@ -56,19 +56,15 @@ export class LayoutComponent {
 	protected readonly TextType = TextType;
 	protected readonly TextWeight = TextWeight;
 	protected readonly Colors = Colors;
-	protected readonly SidebarType = SidebarType;
-	protected readonly NuvButtonType = NavButton;
 
 	constructor() {
-		this.theme.valueChanges.subscribe((val) => {
-			const elem = document.body;
-
-			if (val) {
-				elem.classList.add('dark');
-			} else {
-				elem.classList.remove('dark');
-			}
-		});
+		toSignal(
+			this.theme.valueChanges.pipe(
+				tap((): void => {
+					document.body.classList.toggle('dark');
+				}),
+			),
+		);
 	}
 
 	protected selectedMenu(menu: IMenu): void {

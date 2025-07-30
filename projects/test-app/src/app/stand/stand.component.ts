@@ -5,7 +5,7 @@ import {
 	ValidationErrors,
 	Validators,
 } from '@angular/forms';
-import { catchError, Observable, of, Subscription, window } from 'rxjs';
+import { catchError, Observable, of, Subscription, tap, window } from 'rxjs';
 import { HttpClient, HttpEventType } from '@angular/common/http';
 import { RouterOutlet } from '@angular/router';
 import {
@@ -36,6 +36,7 @@ import { exampleDataTable } from './constants/example-data-table';
 import { TestRightSidePageComponent } from '../test-left-side-page/test-right-side-page.component';
 import { Tab } from '../../../../front-components/src/lib/shared/models/interfaces/tab';
 import { TableOperPlanExampleComponent } from '../table-oper-plan-example/table-oper-plan-example.component';
+import { toSignal } from '@angular/core/rxjs-interop';
 
 @Component({
 	selector: 'app-stand',
@@ -79,9 +80,13 @@ export class StandComponent {
 	);
 
 	public checkboxControl = new FormControl(false);
-	public checkBox1 = new FormControl({ value: true, disabled: true });
-	public checkBox2 = new FormControl(null);
-	public checkBox3 = new FormControl(true);
+	public isIndeterminate = false;
+	public masterCheckboxCtrl = new FormControl(true);
+	public checkBox2 = new FormControl(false);
+	public checkBox3 = new FormControl(false);
+	public checkBox4 = new FormControl({ value: true, disabled: true });
+	public checkBox5 = new FormControl({ value: true, disabled: true });
+	public checkBox6 = new FormControl({ value: false, disabled: true });
 
 	public otpCtrl = new FormControl('');
 
@@ -89,8 +94,6 @@ export class StandComponent {
 	public fileLoadSubscription?: Subscription;
 
 	public carouselIndex = signal(0);
-
-	public indeterminate = false;
 
 	public tabs: Tab[] = [
 		{
@@ -154,9 +157,35 @@ export class StandComponent {
 	) {
 		this.columnState.colsTr$.next(DEFAULT_COLS);
 
-		this.checkBox2.disable();
+		toSignal(
+			this.masterCheckboxCtrl.valueChanges.pipe(
+				tap((value: boolean | null) => {
+					this.checkBox2.setValue(value, { emitEvent: false });
+					this.checkBox3.setValue(value, { emitEvent: false });
+					this.updateIndeterminateState();
+				}),
+			),
+		);
 
-		this.checkBox3.disable();
+		toSignal(
+			this.checkBox2.valueChanges.pipe(
+				tap(() => {
+					this.updateMasterCheckbox();
+				}),
+			),
+		);
+
+		toSignal(
+			this.checkBox3.valueChanges.pipe(
+				tap(() => {
+					this.updateMasterCheckbox();
+				}),
+			),
+		);
+	}
+
+	public get iconsList(): Array<keyof typeof IconType> {
+		return Object.keys(IconType) as Array<keyof typeof IconType>;
 	}
 
 	public openTestModal(): void {
@@ -255,6 +284,26 @@ export class StandComponent {
 	public showToastWithButton(): ToastRef {
 		return this.sharedPopupService.openToast({
 			text: 'Toast с кнопкой Пнока',
+			type: ToastTypeEnum.Default,
+			mainButton: {
+				text: 'Пнока',
+				click: () => {
+					console.log('Кнопка Пнока была нажата!');
+					// Можно добавить любую логику
+				},
+			},
+			secondaryButton: {
+				text: 'Вторичная кнопка',
+				click: () => {
+					console.log('Вторичная кнопка была нажата!');
+				},
+			},
+		});
+	}
+
+	public showToastWithButtonLarge(): ToastRef {
+		return this.sharedPopupService.openToast({
+			text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
 			type: ToastTypeEnum.Default,
 			mainButton: {
 				text: 'Пнока',
@@ -418,6 +467,29 @@ export class StandComponent {
 		this.checkboxControl.reset(false);
 	}
 
+	private updateMasterCheckbox(): void {
+		const checkBox2Value = this.checkBox2.value;
+		const checkBox3Value = this.checkBox3.value;
+
+		// Update indeterminate state
+		this.updateIndeterminateState();
+
+		// Update master checkbox value
+		if (checkBox2Value && checkBox3Value) {
+			this.masterCheckboxCtrl.setValue(true, { emitEvent: false });
+		} else if (!checkBox2Value && !checkBox3Value) {
+			this.masterCheckboxCtrl.setValue(false, { emitEvent: false });
+		}
+	}
+
+	private updateIndeterminateState(): void {
+		const checkBox2Value = !!this.checkBox2.value;
+		const checkBox3Value = !!this.checkBox3.value;
+
+		// Indeterminate when some but not all checkboxes are checked
+		this.isIndeterminate =
+			checkBox2Value !== checkBox3Value ||
+			(checkBox2Value && !checkBox3Value) ||
+			(!checkBox2Value && checkBox3Value);
+	}
 }
-
-
