@@ -1,11 +1,11 @@
 import {
 	Component,
-	effect,
+	computed,
 	input,
 	signal,
 	WritableSignal,
 } from '@angular/core';
-import { Colors, HintType, IconType } from '../../shared/models';
+import { Colors, IconType, Status } from '../../shared/models';
 import { IconComponent } from '../icon/icon.component';
 
 /**
@@ -15,55 +15,48 @@ import { IconComponent } from '../icon/icon.component';
  * ```html
  * Параметры:
  *
- * [type]: HintType - Тип подсказки, определяющий её визуальное оформление - необязательный,
- * по умолчанию: HintType.Default
+ * [type]: Status - Тип подсказки, определяющий её визуальное оформление - необязательный,
+ * по умолчанию: Status.Default
  *
  * [icon]: IconType - Тип иконки, отображаемой в подсказке - обязательный
  *
  * [disabled]: boolean - Флаг, определяющий отключено ли состояние подсказки - необязательный,
  * по умолчанию: false
  *
- * <ss-lib-hint
- *   [type]="HintType.Warning"
+ * <ss-lib-status-icon
+ *   [type]="Status.Warning"
  *   [icon]="IconType.Alert"
  *   [disabled]="false"
- * ></ss-lib-hint>
+ * ></ss-lib-status-icon>
  * ```
  */
 @Component({
-	selector: 'ss-lib-hint',
+	selector: 'ss-lib-status-icon',
 	standalone: true,
 	imports: [IconComponent],
-	templateUrl: './hint.component.html',
-	styleUrl: './hint.component.scss',
+	templateUrl: './status-icon.component.html',
+	styleUrl: './status-icon.component.scss',
 })
-export class HintComponent {
-	public type = input<HintType>(HintType.Default);
+export class StatusIconComponent {
+	public type = input<Status>(Status.Default);
 	public icon = input.required<IconType>();
 	public disabled = input<boolean>(false);
 	protected readonly isHover: WritableSignal<boolean> = signal(false);
-	protected color: WritableSignal<Colors> = signal(Colors.IconAction2);
 
 	protected readonly Colors = Colors;
 
-	constructor() {
-		effect(() => {
-			this.color.set(this.checkColor());
-		});
-	}
-
-	protected checkColor(): Colors {
+	protected readonly iconColor = computed(() => {
 		if (this.disabled()) {
 			return Colors.IconDisabled;
 		}
 
 		if (this.isHover()) {
 			switch (this.type()) {
-				case HintType.Warning:
+				case Status.Warning:
 					return Colors.IconWarningHover;
-				case HintType.Error:
+				case Status.Error:
 					return Colors.IconErrorHover;
-				case HintType.Success:
+				case Status.Success:
 					return Colors.IconSuccessHover;
 				default:
 					return Colors.IconActionHover2;
@@ -71,14 +64,14 @@ export class HintComponent {
 		}
 
 		switch (this.type()) {
-			case HintType.Warning:
+			case Status.Warning:
 				return Colors.IconWarning;
-			case HintType.Error:
+			case Status.Error:
 				return Colors.IconError;
-			case HintType.Success:
+			case Status.Success:
 				return Colors.IconSuccess;
 			default:
 				return Colors.IconAction2;
 		}
-	}
+	});
 }

@@ -1,4 +1,7 @@
-<div class="avatar">
+<div
+	class="avatar"
+	[class]="'size-' + size()"
+>
 	@if (!src() || showFallbackImage) {
 		@if (username()) {
 			<ss-lib-text
@@ -12,6 +15,8 @@
 			<ss-lib-icon
 				[icon]="IconType.User01"
 				[color]="Colors.IconAction2"
+				[width]="iconSize()"
+				[height]="iconSize()"
 			></ss-lib-icon>
 		}
 	} @else {

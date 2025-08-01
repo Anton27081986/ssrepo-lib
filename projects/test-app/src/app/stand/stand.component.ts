@@ -8,23 +8,23 @@ import {
 import { catchError, Observable, of, Subscription, tap, window } from 'rxjs';
 import { HttpClient, HttpEventType } from '@angular/common/http';
 import { RouterOutlet } from '@angular/router';
+import { toSignal } from '@angular/core/rxjs-interop';
 import {
 	ButtonType,
 	Colors,
 	ExtraSize,
-	HintType,
 	IconPosition,
 	IconType,
 	JustifyContent,
 	LinkAppearance,
 	Orientation,
 	Shape,
-	Status,
+	Status, TagType,
 	TextType,
 	TextWeight,
 	ToastTypeEnum,
-	TooltipPosition,
-} from '../../../../front-components/src/lib/shared/models';
+	TooltipPosition
+} from "../../../../front-components/src/lib/shared/models";
 import { standImports } from './stand.imports';
 import { ColumnsStateService } from '../../../../front-components/src/lib/components';
 import { BANNERS_ITEMS, DEFAULT_COLS, DROPDOWN_ITEMS } from './constants';
@@ -36,7 +36,6 @@ import { exampleDataTable } from './constants/example-data-table';
 import { TestRightSidePageComponent } from '../test-left-side-page/test-right-side-page.component';
 import { Tab } from '../../../../front-components/src/lib/shared/models/interfaces/tab';
 import { TableOperPlanExampleComponent } from '../table-oper-plan-example/table-oper-plan-example.component';
-import { toSignal } from '@angular/core/rxjs-interop';
 
 @Component({
 	selector: 'app-stand',
@@ -97,32 +96,52 @@ export class StandComponent {
 
 	public tabs: Tab[] = [
 		{
-			text: 'Таб1 и еще табиков много',
+			text: 'Таб',
+			icon: IconType.Info,
+			tag: '1',
 			isVisible: true,
 			isDisabled: false,
 		},
 		{
-			text: 'Таб2',
+			text: 'Таб',
+			icon: IconType.Info,
+			tag: '2',
 			isVisible: true,
 			isDisabled: false,
 		},
 		{
-			text: 'Таб3',
+			text: 'Таб',
 			isVisible: true,
 			isDisabled: true,
 		},
 		{
-			text: 'Таб4',
+			text: 'Таб',
 			isVisible: false,
 			isDisabled: false,
 		},
 		{
-			text: 'Таб5',
+			text: 'Таб',
+			tag: '4',
 			isVisible: true,
 			isDisabled: false,
 		},
 		{
-			text: 'Таб6',
+			text: 'Таб',
+			isVisible: true,
+			isDisabled: false,
+		},
+		{
+			text: 'Таб',
+			isVisible: false,
+			isDisabled: false,
+		},
+		{
+			text: 'Таб',
+			isVisible: true,
+			isDisabled: false,
+		},
+		{
+			text: 'Таб',
 			isVisible: true,
 			isDisabled: false,
 		},
@@ -148,7 +167,7 @@ export class StandComponent {
 	private readonly sharedPopupService = inject(SharedPopupService);
 
 	protected readonly JustifyContent = JustifyContent;
-	protected readonly HelpHintType = HintType;
+	protected readonly statusType = Status;
 	protected readonly window = window;
 
 	constructor(
@@ -492,4 +511,6 @@ export class StandComponent {
 			(checkBox2Value && !checkBox3Value) ||
 			(!checkBox2Value && checkBox3Value);
 	}
+
+	protected readonly TagType = TagType;
 }

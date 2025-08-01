@@ -742,6 +742,17 @@
 
 		<div class="sub-section">
 			<h3 class="sub-section-title">Avatar component</h3>
+
+			<div class="component-row">
+				<ss-lib-avatar
+					[username]="'ВН'"
+					[src]="'https://i.pravatar.cc/300'"
+					[size]="ExtraSize.xs"
+				></ss-lib-avatar>
+
+				<ss-lib-avatar [size]="ExtraSize.xs" />
+			</div>
+
 			<div class="component-row">
 				<ss-lib-avatar
 					[username]="'ВН'"
@@ -754,6 +765,15 @@
 
 		<div class="sub-section">
 			<h3 class="sub-section-title">Avatar Button component</h3>
+			<div class="component-row">
+				<ss-lib-avatar-button
+					[username]="'ВН'"
+					[src]="'https://i.pravatar.cc/300'"
+					[size]="ExtraSize.xs"
+				/>
+
+				<ss-lib-avatar-button [size]="ExtraSize.xs" />
+			</div>
 
 			<div class="component-row">
 				<ss-lib-avatar-button
@@ -1203,9 +1223,110 @@
 		</div>
 	</div>
 
+	<!-- Status Icon Section -->
+	<div class="section">
+		<h2 class="section-title">Status Icons</h2>
+		<p class="section-description">
+			Status Icon components with different statuses.
+		</p>
+		<div class="component-row">
+			<ss-lib-status-icon
+				[icon]="IconType.Info"
+				[type]="statusType.Default"
+			></ss-lib-status-icon>
+
+			<ss-lib-status-icon
+				[icon]="IconType.Info"
+				[type]="statusType.Success"
+			></ss-lib-status-icon>
+
+			<ss-lib-status-icon
+				[icon]="IconType.Info"
+				[type]="statusType.Warning"
+			></ss-lib-status-icon>
+
+			<ss-lib-status-icon
+				[icon]="IconType.Info"
+				[type]="statusType.Error"
+			></ss-lib-status-icon>
+
+			<ss-lib-status-icon
+				class="disabled-demo"
+				[icon]="IconType.Info"
+				[type]="statusType.Warning"
+				[disabled]="true"
+			></ss-lib-status-icon>
+		</div>
+	</div>
 	<!--	</div>-->
 
 	<!-- TODO:	###########################################################-->
+
+	<!-- Tags Section -->
+	<div class="section">
+		<h2 class="section-title">Tags</h2>
+
+		<p class="section-description">Tags</p>
+
+		<div
+			class="component-row"
+			style="flex-direction: column"
+		>
+			<ss-lib-tag [text]="'Заказ/контракт'" />
+
+			<ss-lib-tag
+				[text]="'Заказ/контракт'"
+				[type]="TagType.Dot"
+			/>
+		</div>
+	</div>
+
+	<!-- Tabs Section -->
+	<div class="section">
+		<h2 class="section-title">Tabs</h2>
+
+		<p class="section-description">Tab navigation with custom actions.</p>
+
+		<div class="spaced">
+			<ss-lib-tabs
+				[tabs]="tabs"
+				[activeTabIndex]="indexTab"
+				(changeIndexEmit)="changeTab($event)"
+			></ss-lib-tabs>
+		</div>
+
+		<div>Выбрана вкладка: {{ indexTab + 1 }}</div>
+	</div>
+
+	<!-- Badges Section -->
+	<div class="section">
+		<h2 class="section-title">Dialog header</h2>
+		<p class="section-description">Dialog header for modals and popups.</p>
+
+		<div class="sub-section">
+			<div
+				class="component-row"
+				style="flex-direction: column"
+			>
+				<ss-lib-dialog-header
+					[title]="'Заголовок'"
+					[description]="'Описание'"
+					[viewClose]="true"
+					[badge]="{ icon: IconType.Info, status: Status.Success }"
+				/>
+
+				<ss-lib-divider />
+
+				<ss-lib-dialog-header
+					[title]="'Заголовок'"
+					[description]="'Описание'"
+					[closePosition]="IconPosition.Start"
+					[viewClose]="true"
+					[badge]="{ icon: IconType.Info, status: Status.Success }"
+				/>
+			</div>
+		</div>
+	</div>
 
 	<!-- Form Fields Section -->
 	<div class="section">
@@ -1232,6 +1353,7 @@
 						[placeholder]="'oleg@mail.ru'"
 					></ss-lib-input>
 				</ss-lib-form-field>
+
 				<ss-lib-form-field
 					class="spaced"
 					[label]="'Название'"
@@ -1243,6 +1365,7 @@
 						[formControl]="textareaCtrl"
 					></ss-lib-textarea>
 				</ss-lib-form-field>
+
 				<ss-lib-form-field
 					class="spaced"
 					[label]="'Datepicker'"
@@ -1256,6 +1379,7 @@
 						[min]="minDate"
 					></ss-lib-datepicker>
 				</ss-lib-form-field>
+
 				<ss-lib-form-field
 					class="spaced"
 					[label]="'Timepicker'"
@@ -1284,6 +1408,7 @@
 				[src]="'https://i.pravatar.cc/300'"
 				[popoverTriggerFor]="dropdown1"
 			></ss-lib-avatar-button>
+
 			<ss-lib-dropdown-list
 				#dropdown1
 				[headerTemplateRef]="avatarHeader"
@@ -1294,13 +1419,16 @@
 					[selected]="true"
 					(click)="console.log(1)"
 				></ss-lib-dropdown-item>
+
 				<ss-lib-dropdown-item
 					[label]="'Опция'"
 					[icon]="IconType.Bell"
 					[isDisabled]="true"
 					(click)="console.log(2)"
 				></ss-lib-dropdown-item>
+
 				<ss-lib-divider class="divider"></ss-lib-divider>
+
 				<ss-lib-dropdown-item
 					[label]="'Удалить'"
 					[icon]="IconType.Bell"
@@ -1552,64 +1680,6 @@
 					/>
 				}
 			</ss-lib-carousel>
-		</div>
-	</div>
-
-	<!-- Tabs Section -->
-	<div class="section">
-		<h2 class="section-title">Tabs</h2>
-		<p class="section-description">Tab navigation with custom actions.</p>
-		<div class="component-row">
-			<ss-lib-tabs
-				[tabs]="tabs"
-				[actionsRef]="actions"
-				[activeTabIndex]="indexTab"
-				(changeIndexEmit)="changeTab($event)"
-			></ss-lib-tabs>
-			<ng-template #actions>
-				<ss-lib-button
-					[size]="ExtraSize.md"
-					[text]="'1 кнопка'"
-					(click)="changeIndex()"
-				></ss-lib-button>
-				<ss-lib-button
-					[size]="ExtraSize.md"
-					[text]="'2 кнопка'"
-				></ss-lib-button>
-			</ng-template>
-			<span>{{ indexTab }}</span>
-		</div>
-	</div>
-
-	<!-- Hint Section -->
-	<div class="section">
-		<h2 class="section-title">Hints</h2>
-		<p class="section-description">
-			Hint components with different statuses.
-		</p>
-		<div class="component-row">
-			<ss-lib-hint
-				[icon]="IconType.Info"
-				[type]="HelpHintType.Default"
-			></ss-lib-hint>
-			<ss-lib-hint
-				[icon]="IconType.Info"
-				[type]="HelpHintType.Success"
-			></ss-lib-hint>
-			<ss-lib-hint
-				[icon]="IconType.Info"
-				[type]="HelpHintType.Warning"
-			></ss-lib-hint>
-			<ss-lib-hint
-				[icon]="IconType.Info"
-				[type]="HelpHintType.Error"
-			></ss-lib-hint>
-			<ss-lib-hint
-				class="disabled-demo"
-				[icon]="IconType.Info"
-				[type]="HelpHintType.Warning"
-				[disabled]="true"
-			></ss-lib-hint>
 		</div>
 	</div>
 
