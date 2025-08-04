@@ -8,6 +8,7 @@ import {
 	input,
 	model,
 	ModelSignal,
+	OnInit,
 	runInInjectionContext,
 	Self,
 	Signal,
@@ -18,7 +19,13 @@ import { type ControlValueAccessor, NgControl } from '@angular/forms';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { distinctUntilChanged, tap } from 'rxjs';
 import { IconComponent } from '../icon/icon.component';
-import { Colors, IconType, TextWeight, TextType, calcStrokeWidth } from "../../shared/models";
+import {
+	Colors,
+	IconType,
+	TextWeight,
+	TextType,
+	calcStrokeWidth,
+} from '../../shared/models';
 import { SCALE_SVG } from '../../shared/constants';
 import { MapperPipe } from '../../core/pipes';
 import { CUSTOM_SCALE_STROKE } from './constants/custom-scale-stroke';
@@ -52,7 +59,7 @@ import { TextComponent } from '../text/text.component';
 	imports: [IconComponent, MapperPipe, TextComponent],
 	styleUrl: './checkbox.component.scss',
 })
-export class CheckboxComponent implements ControlValueAccessor {
+export class CheckboxComponent implements OnInit, ControlValueAccessor {
 	private readonly injector = inject(Injector);
 
 	public readonly label = input<string>('');
@@ -102,6 +109,7 @@ export class CheckboxComponent implements ControlValueAccessor {
 	protected readonly Colors = Colors;
 	protected readonly customScaleStroke = CUSTOM_SCALE_STROKE;
 	protected readonly scaleSvg = SCALE_SVG;
+	protected readonly calcStrokeWidth = calcStrokeWidth;
 
 	constructor(
 		@Self()
@@ -111,10 +119,10 @@ export class CheckboxComponent implements ControlValueAccessor {
 		if (this.ngControl) {
 			this.ngControl.valueAccessor = this;
 		}
+	}
 
-		afterNextRender(() => {
-			this.checkParentCtrlStatus();
-		});
+	public ngOnInit(): void {
+		this.checkParentCtrlStatus();
 	}
 
 	public writeValue(value: boolean | null): void {
@@ -160,6 +168,4 @@ export class CheckboxComponent implements ControlValueAccessor {
 			);
 		});
 	}
-
-	protected readonly calcStrokeWidth = calcStrokeWidth;
 }
