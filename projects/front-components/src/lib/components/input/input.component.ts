@@ -86,7 +86,7 @@ export class InputComponent implements ControlValueAccessor {
 	});
 
 	public readonly type = input<InputType>(InputType.Text);
-	public readonly size = input<ExtraSize>(ExtraSize.md);
+	public readonly size = input<ExtraSize>(ExtraSize.lg);
 	public readonly placeholder = input<string>('');
 	public readonly readOnly = input<boolean>(false);
 	public readonly clearButton = input<boolean>(false);
@@ -110,7 +110,7 @@ export class InputComponent implements ControlValueAccessor {
 			case InputType.Date:
 				return maskitoDateOptionsGenerator({
 					mode: 'dd/mm/yyyy',
-					separator: '/',
+					separator: '.',
 					min: this.min() as Date,
 					max: this.max() as Date,
 				});

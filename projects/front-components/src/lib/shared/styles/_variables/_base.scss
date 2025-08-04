@@ -1,0 +1,109 @@
+:root,
+body.dark {
+	--device-size-frame: 1280px;
+
+	/* FONT-SIZE */
+	--font-size-body-xs: 12px;
+	--font-size-body-sm: 14px;
+	--font-size-body-md: 16px;
+	--font-size-body-lg: 18px;
+	--font-size-body-xl: 20px;
+
+	--font-size-heading-xs: 24px;
+	--font-size-heading-sm: 30px;
+	--font-size-heading-md: 36px;
+	--font-size-heading-lg: 48px;
+	--font-size-heading-xl: 60px;
+	--font-size-heading-2xl: 72px;
+
+	/* LINE-HEIGHT */
+	--line-height-body-sm: 20px;
+	--line-height-body-md: 24px;
+	--line-height-body-lg: 28px;
+	--line-height-body-xl: 30px;
+	--line-height-heading-xs: 32px;
+	--line-height-heading-sm: 38px;
+	--line-height-heading-md: 44px;
+	--line-height-heading-lg: 60px;
+	--line-height-heading-xl: 72px;
+	--line-height-heading-2xl: 90px;
+
+	/* SPACING */
+	--paragraph-spacing-body-xs: 12px;
+	--paragraph-spacing-body-sm: 14px;
+	--paragraph-spacing-body-md: 16px;
+	--paragraph-spacing-body-lg: 18px;
+	--paragraph-spacing-body-xl: 20px;
+	--paragraph-spacing-heading-xs: 24px;
+	--paragraph-spacing-heading-sm: 30px;
+	--paragraph-spacing-heading-md: 36px;
+	--paragraph-spacing-heading-lg: 48px;
+	--paragraph-spacing-heading-xl: 60px;
+	--paragraph-spacing-heading-2xl: 72px;
+
+	/* FONT-FAMILY */
+	--type-font-family-body: onest;
+	--type-font-family-heading: onest;
+
+	/* FONT-WEIGHT */
+	--type-font-weight-regular: regular;
+	--type-font-weight-medium: medium;
+	--type-font-weight-semibold: semibold;
+	--type-font-weight-bold: bold;
+
+	/* Color Styles  */
+	--gradient-skeumorphic-gradient-border: linear-gradient(
+		180deg,
+		rgba(255, 255, 255, 0.12) 0%,
+		rgba(255, 255, 255, 0) 100%
+	);
+
+	/* Effect Styles  */
+	--shadow-xs: 0px 2px 2px 0px var(--effects-shadows-5);
+
+	--shadow-xs-skeumorphic:
+		0px 1px 2px 0px var(--effects-shadows-5),
+		0px -2px 0px 0px var(--effects-shadows-5) inset,
+		0px 0px 0px 1px
+			var(--app-shadow-xs-skeumorphic-border, var(--effects-shadows-18))
+			inset;
+
+	// сквеморфическая тень без обводки элемента
+	--shadow-xs-skeumorphic2:
+		0px 1px 2px 0px var(--effects-shadows-5),
+		0px -2px 0px 0px var(--effects-shadows-5) inset;
+
+	--shadow-sm:
+		0px 1px 2px -1px var(--effects-shadows-10),
+		0px 1px 3px 0px var(--effects-shadows-10);
+	--shadow-md:
+		0px 2px 4px -2px var(--effects-shadows-6),
+		0px 4px 6px -1px var(--effects-shadows-10);
+	--shadow-lg:
+		0px 2px 2px -1px var(--effects-shadows-4),
+		0px 4px 6px -2px var(--effects-shadows-3),
+		0px 12px 16px -4px var(--effects-shadows-8);
+	--shadow-xl:
+		0px 3px 3px -1.5px var(--effects-shadows-4),
+		0px 8px 8px -4px var(--effects-shadows-3),
+		0px 20px 24px -4px var(--effects-shadows-8);
+	--shadow-2xl:
+		0px 4px 4px -2px var(--effects-shadows-4),
+		0px 24px 48px -12px var(--effects-shadows-18);
+	--shadow-3xl:
+		0px 5px 5px -2.5px var(--effects-shadows-4),
+		0px 32px 64px -12px var(--effects-shadows-14);
+	--focus-rings-focus-ring:
+		0px 0px 0px 2px var(--surface-primary),
+		0px 0px 0px 4px var(--border-focus);
+	--focus-rings-focus-ring-shadow-xs:
+		0px 0px 0px 4px var(--border-focus),
+		0px 0px 0px 2px var(--surface-primary),
+		0px 1px 2px 0px var(--effects-shadows-5);
+
+	--focus-rings-focus-ring-shadow-xs-skeumorphic:
+		0px 1px 2px 0px var(--effects-shadows-5),
+		0px -2px 0px 0px var(--effects-shadows-5) inset,
+		0px 0px 0px 2px var(--surface-page), 0px 0px 0px 4px var(--border-focus),
+		0px 0px 0px 1px var(--effects-shadows-18) inset;
+}

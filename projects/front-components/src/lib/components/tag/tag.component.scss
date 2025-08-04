@@ -1,0 +1,33 @@
+.tag {
+	width: fit-content;
+	display: flex;
+	align-items: center;
+	flex-shrink: 0;
+	padding: 2px 8px;
+	outline: 1px solid var(--border-primary);
+	outline-offset: -1px;
+
+	&.type-default {
+		border-radius: var(--border-radius-round);
+	}
+
+	&.type-dot {
+		gap: 4px;
+		border-radius: var(--border-radius-sm);
+	}
+
+	.dot-wrapper {
+		display: flex;
+		width: 8px;
+		height: 8px;
+		align-items: center;
+		justify-content: center;
+
+		.dot {
+			display: block;
+			width: 6px;
+			height: 6px;
+			border-radius: var(--border-radius-round);
+		}
+	}
+}

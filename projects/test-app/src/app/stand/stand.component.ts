@@ -5,26 +5,26 @@ import {
 	ValidationErrors,
 	Validators,
 } from '@angular/forms';
-import { catchError, Observable, of, Subscription, window } from 'rxjs';
+import { catchError, Observable, of, Subscription, tap, window } from 'rxjs';
 import { HttpClient, HttpEventType } from '@angular/common/http';
 import { RouterOutlet } from '@angular/router';
+import { toSignal } from '@angular/core/rxjs-interop';
 import {
 	ButtonType,
 	Colors,
 	ExtraSize,
-	HintType,
 	IconPosition,
 	IconType,
 	JustifyContent,
 	LinkAppearance,
 	Orientation,
 	Shape,
-	Status,
+	Status, TagType,
 	TextType,
 	TextWeight,
 	ToastTypeEnum,
-	TooltipPosition,
-} from '../../../../front-components/src/lib/shared/models';
+	TooltipPosition
+} from "../../../../front-components/src/lib/shared/models";
 import { standImports } from './stand.imports';
 import { ColumnsStateService } from '../../../../front-components/src/lib/components';
 import { BANNERS_ITEMS, DEFAULT_COLS, DROPDOWN_ITEMS } from './constants';
@@ -79,9 +79,13 @@ export class StandComponent {
 	);
 
 	public checkboxControl = new FormControl(false);
-	public checkBox1 = new FormControl({ value: true, disabled: true });
-	public checkBox2 = new FormControl(null);
-	public checkBox3 = new FormControl(true);
+	public isIndeterminate = false;
+	public masterCheckboxCtrl = new FormControl(true);
+	public checkBox2 = new FormControl(false);
+	public checkBox3 = new FormControl(false);
+	public checkBox4 = new FormControl({ value: true, disabled: true });
+	public checkBox5 = new FormControl({ value: true, disabled: true });
+	public checkBox6 = new FormControl({ value: false, disabled: true });
 
 	public otpCtrl = new FormControl('');
 
@@ -90,36 +94,54 @@ export class StandComponent {
 
 	public carouselIndex = signal(0);
 
-	public indeterminate = false;
-
 	public tabs: Tab[] = [
 		{
-			text: 'Таб1 и еще табиков много',
+			text: 'Таб',
+			icon: IconType.Info,
+			tag: '1',
 			isVisible: true,
 			isDisabled: false,
 		},
 		{
-			text: 'Таб2',
+			text: 'Таб',
+			icon: IconType.Info,
+			tag: '2',
 			isVisible: true,
 			isDisabled: false,
 		},
 		{
-			text: 'Таб3',
+			text: 'Таб',
 			isVisible: true,
 			isDisabled: true,
 		},
 		{
-			text: 'Таб4',
+			text: 'Таб',
 			isVisible: false,
 			isDisabled: false,
 		},
 		{
-			text: 'Таб5',
+			text: 'Таб',
+			tag: '4',
 			isVisible: true,
 			isDisabled: false,
 		},
 		{
-			text: 'Таб6',
+			text: 'Таб',
+			isVisible: true,
+			isDisabled: false,
+		},
+		{
+			text: 'Таб',
+			isVisible: false,
+			isDisabled: false,
+		},
+		{
+			text: 'Таб',
+			isVisible: true,
+			isDisabled: false,
+		},
+		{
+			text: 'Таб',
 			isVisible: true,
 			isDisabled: false,
 		},
@@ -145,7 +167,7 @@ export class StandComponent {
 	private readonly sharedPopupService = inject(SharedPopupService);
 
 	protected readonly JustifyContent = JustifyContent;
-	protected readonly HelpHintType = HintType;
+	protected readonly statusType = Status;
 	protected readonly window = window;
 
 	constructor(
@@ -154,9 +176,35 @@ export class StandComponent {
 	) {
 		this.columnState.colsTr$.next(DEFAULT_COLS);
 
-		this.checkBox2.disable();
+		toSignal(
+			this.masterCheckboxCtrl.valueChanges.pipe(
+				tap((value: boolean | null) => {
+					this.checkBox2.setValue(value, { emitEvent: false });
+					this.checkBox3.setValue(value, { emitEvent: false });
+					this.updateIndeterminateState();
+				}),
+			),
+		);
 
-		this.checkBox3.disable();
+		toSignal(
+			this.checkBox2.valueChanges.pipe(
+				tap(() => {
+					this.updateMasterCheckbox();
+				}),
+			),
+		);
+
+		toSignal(
+			this.checkBox3.valueChanges.pipe(
+				tap(() => {
+					this.updateMasterCheckbox();
+				}),
+			),
+		);
+	}
+
+	public get iconsList(): Array<keyof typeof IconType> {
+		return Object.keys(IconType) as Array<keyof typeof IconType>;
 	}
 
 	public openTestModal(): void {
@@ -255,6 +303,26 @@ export class StandComponent {
 	public showToastWithButton(): ToastRef {
 		return this.sharedPopupService.openToast({
 			text: 'Toast с кнопкой Пнока',
+			type: ToastTypeEnum.Default,
+			mainButton: {
+				text: 'Пнока',
+				click: () => {
+					console.log('Кнопка Пнока была нажата!');
+					// Можно добавить любую логику
+				},
+			},
+			secondaryButton: {
+				text: 'Вторичная кнопка',
+				click: () => {
+					console.log('Вторичная кнопка была нажата!');
+				},
+			},
+		});
+	}
+
+	public showToastWithButtonLarge(): ToastRef {
+		return this.sharedPopupService.openToast({
+			text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
 			type: ToastTypeEnum.Default,
 			mainButton: {
 				text: 'Пнока',
@@ -417,4 +485,32 @@ export class StandComponent {
 	public resetControl(): void {
 		this.checkboxControl.reset(false);
 	}
+
+	private updateMasterCheckbox(): void {
+		const checkBox2Value = this.checkBox2.value;
+		const checkBox3Value = this.checkBox3.value;
+
+		// Update indeterminate state
+		this.updateIndeterminateState();
+
+		// Update master checkbox value
+		if (checkBox2Value && checkBox3Value) {
+			this.masterCheckboxCtrl.setValue(true, { emitEvent: false });
+		} else if (!checkBox2Value && !checkBox3Value) {
+			this.masterCheckboxCtrl.setValue(false, { emitEvent: false });
+		}
+	}
+
+	private updateIndeterminateState(): void {
+		const checkBox2Value = !!this.checkBox2.value;
+		const checkBox3Value = !!this.checkBox3.value;
+
+		// Indeterminate when some but not all checkboxes are checked
+		this.isIndeterminate =
+			checkBox2Value !== checkBox3Value ||
+			(checkBox2Value && !checkBox3Value) ||
+			(!checkBox2Value && checkBox3Value);
+	}
+
+	protected readonly TagType = TagType;
 }

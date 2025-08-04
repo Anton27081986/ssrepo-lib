@@ -1,0 +1,21 @@
+<div
+	class="tag"
+	[class]="'type-' + type()"
+>
+	@if (type() === TagType.Dot) {
+		<div class="dot-wrapper">
+			<div
+				class="dot"
+				[style.backgroundColor]="dotColor()"
+			></div>
+		</div>
+	}
+
+	<ss-lib-text
+		[type]="TextType.BodyXs"
+		[weight]="TextWeight.Medium"
+		[color]="Colors.TextBody2"
+	>
+		{{ text() }}
+	</ss-lib-text>
+</div>
