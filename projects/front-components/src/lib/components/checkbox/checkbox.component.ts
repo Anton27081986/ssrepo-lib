@@ -59,7 +59,7 @@ import { TextComponent } from '../text/text.component';
 	imports: [IconComponent, MapperPipe, TextComponent],
 	styleUrl: './checkbox.component.scss',
 })
-export class CheckboxComponent implements OnInit {
+export class CheckboxComponent implements OnInit, ControlValueAccessor {
 	private readonly injector = inject(Injector);
 
 	public readonly label = input<string>('');
