@@ -4,8 +4,7 @@
 }
 
 .avatar {
-	width: 40px;
-	height: 40px;
+
 	position: relative;
 	display: flex;
 	align-items: center;
@@ -15,6 +14,16 @@
 	border-radius: var(--border-radius-round);
 	overflow: hidden;
 	box-sizing: border-box;
+
+	&.size-xs {
+		width: 24px;
+		height: 24px;
+	}
+
+	&.size-md {
+		width: 40px;
+		height: 40px;
+	}
 
 	&__image {
 		width: 100%;

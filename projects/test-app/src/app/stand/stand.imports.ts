@@ -39,8 +39,9 @@ import {
 	TabsComponent,
 	CarouselComponent,
 	PaginationDotsComponent,
-	HintComponent,
-	BadgeInfoComponent,
+	StatusIconComponent,
+	DialogHeaderComponent,
+	TagComponent,
 } from '../../../../front-components/src/lib/components';
 import {
 	FieldCtrlDirective,
@@ -101,7 +102,8 @@ export const standImports = [
 	TabComponent,
 	TabsComponent,
 	LoadPaginationComponent,
-	HintComponent,
+	StatusIconComponent,
 	TableExampleComponent,
-	BadgeInfoComponent,
+	DialogHeaderComponent,
+	TagComponent,
 ];

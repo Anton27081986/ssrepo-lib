@@ -8,7 +8,7 @@ import {
 } from '@angular/core';
 import { NgIf, NgTemplateOutlet } from '@angular/common';
 import { IBadgeProps, IconPosition, ModalRef } from '../../shared/models';
-import { BadgeInfoComponent } from '../badge-info/badge-info.component';
+import { DialogHeaderComponent } from '../dialog-header/dialog-header.component';
 import { DividerComponent } from '../divider/divider.component';
 
 /**
@@ -48,7 +48,7 @@ import { DividerComponent } from '../divider/divider.component';
 @Component({
 	selector: 'ss-lib-modal',
 	standalone: true,
-	imports: [NgIf, BadgeInfoComponent, DividerComponent, NgTemplateOutlet],
+	imports: [NgIf, DialogHeaderComponent, DividerComponent, NgTemplateOutlet],
 	templateUrl: './modal.component.html',
 	styleUrl: './modal.component.scss',
 	changeDetection: ChangeDetectionStrategy.OnPush,

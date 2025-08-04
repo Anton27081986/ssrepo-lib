@@ -1,7 +1,7 @@
 .ss-lib-tabs {
 	display: flex;
-	height: 64px;
-	padding: 0 24px;
+	height: 36px;
+	padding: 0;
 	border-bottom: 1px solid var(--border-primary);
 
 	&__block {
@@ -27,7 +27,6 @@
 	&__actions {
 		display: flex;
 		gap: 12px;
-		padding: 6px 0 0 0;
 		justify-content: right;
 		align-items: flex-start;
 	}

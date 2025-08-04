@@ -1,24 +1,13 @@
 <div class="container">
-	<!-- Icon Section -->
-	<div class="section">
-		<h2 class="section-title">Icons</h2>
-		<p class="section-description">
-			Example of an icon component with disabled state styling.
-		</p>
-		<div class="component-row">
-			<ss-lib-icon
-				[icon]="IconType.Bell"
-				[color]="Colors.IconOnDisabled"
-			></ss-lib-icon>
-		</div>
-	</div>
-
 	<!-- Typography Section -->
+	<!--	<div class="hide">-->
 	<div class="section">
 		<h2 class="section-title">Typography</h2>
+
 		<p class="section-description">
 			Various text styles and weights for consistent typography.
 		</p>
+
 		<div
 			class="component-row"
 			style="flex-direction: column"
@@ -26,47 +15,100 @@
 			<ss-lib-text
 				class="spaced"
 				[type]="TextType.BodyXs"
-				[weight]="TextWeight.Regular"
-				>Body XS Regular
+				>Body XS
 			</ss-lib-text>
+
 			<ss-lib-text
 				class="spaced"
 				[type]="TextType.BodySm"
-				>Body SM</ss-lib-text
-			>
+				>Body SM
+			</ss-lib-text>
+
 			<ss-lib-text
 				class="spaced"
 				[type]="TextType.BodyMd"
-				>Body MD</ss-lib-text
-			>
+				>Body MD
+			</ss-lib-text>
+
 			<ss-lib-text
 				class="spaced"
 				[type]="TextType.BodyLg"
-				>Body LG</ss-lib-text
-			>
+				>Body LG
+			</ss-lib-text>
+
 			<ss-lib-text
 				class="spaced"
 				[type]="TextType.BodyXl"
-				>Body XL</ss-lib-text
-			>
+				>Body XL
+			</ss-lib-text>
+		</div>
+
+		<div
+			class="component-row"
+			style="flex-direction: column"
+		>
+			<ss-lib-text
+				class="spaced"
+				[type]="TextType.HeadingXs"
+				>Heading XS
+			</ss-lib-text>
+
+			<ss-lib-text
+				class="spaced"
+				[type]="TextType.HeadingSm"
+				>Heading SM
+			</ss-lib-text>
+
+			<ss-lib-text
+				class="spaced"
+				[type]="TextType.HeadingMd"
+				>Heading MD
+			</ss-lib-text>
+
+			<ss-lib-text
+				class="spaced"
+				[type]="TextType.HeadingLg"
+				>Heading LG
+			</ss-lib-text>
+
+			<ss-lib-text
+				class="spaced"
+				[type]="TextType.HeadingXl"
+				>Heading XL
+			</ss-lib-text>
+
 			<ss-lib-text
 				class="spaced"
 				[type]="TextType.HeadingXxl"
-				[weight]="TextWeight.Regular"
-				>Heading XXL Regular
+				>Heading XXL
 			</ss-lib-text>
+		</div>
+
+		<div
+			class="component-row"
+			style="flex-direction: column"
+		>
+			<ss-lib-text
+				class="spaced"
+				[type]="TextType.HeadingXs"
+				[weight]="TextWeight.Regular"
+				>Heading XS Regular
+			</ss-lib-text>
+
 			<ss-lib-text
 				class="spaced"
 				[type]="TextType.HeadingXs"
 				[weight]="TextWeight.Medium"
 				>Heading XS Medium
 			</ss-lib-text>
+
 			<ss-lib-text
 				class="spaced"
 				[type]="TextType.HeadingXs"
 				[weight]="TextWeight.Semibold"
 				>Heading XS Semibold
 			</ss-lib-text>
+
 			<ss-lib-text
 				class="spaced"
 				[type]="TextType.HeadingXs"
@@ -402,22 +444,6 @@
 		</div>
 	</div>
 
-	<!-- Avatar Buttons Section -->
-	<div class="section">
-		<h2 class="section-title">Avatar Button</h2>
-		<p class="section-description">Specialized buttons for avatar.</p>
-		<div class="component-row">
-			<ss-lib-avatar-button
-				[username]="'ВН'"
-				[src]="'https://i.pravatar.cc/300'"
-			/>
-		</div>
-
-		<div class="component-row">
-			<ss-lib-avatar-button />
-		</div>
-	</div>
-
 	<!-- Links Section -->
 	<div class="section">
 		<h2 class="section-title">Links</h2>
@@ -707,6 +733,59 @@
 		</div>
 	</div>
 
+	<!-- Avatar Section -->
+	<div class="section">
+		<h2 class="section-title">Avatar</h2>
+		<p class="section-description">
+			Simple avatar component with image and username
+		</p>
+
+		<div class="sub-section">
+			<h3 class="sub-section-title">Avatar component</h3>
+
+			<div class="component-row">
+				<ss-lib-avatar
+					[username]="'ВН'"
+					[src]="'https://i.pravatar.cc/300'"
+					[size]="ExtraSize.xs"
+				></ss-lib-avatar>
+
+				<ss-lib-avatar [size]="ExtraSize.xs" />
+			</div>
+
+			<div class="component-row">
+				<ss-lib-avatar
+					[username]="'ВН'"
+					[src]="'https://i.pravatar.cc/300'"
+				></ss-lib-avatar>
+
+				<ss-lib-avatar />
+			</div>
+		</div>
+
+		<div class="sub-section">
+			<h3 class="sub-section-title">Avatar Button component</h3>
+			<div class="component-row">
+				<ss-lib-avatar-button
+					[username]="'ВН'"
+					[src]="'https://i.pravatar.cc/300'"
+					[size]="ExtraSize.xs"
+				/>
+
+				<ss-lib-avatar-button [size]="ExtraSize.xs" />
+			</div>
+
+			<div class="component-row">
+				<ss-lib-avatar-button
+					[username]="'ВН'"
+					[src]="'https://i.pravatar.cc/300'"
+				/>
+
+				<ss-lib-avatar-button />
+			</div>
+		</div>
+	</div>
+
 	<!-- Number Picker Section -->
 	<div class="section">
 		<h2 class="section-title">Number Picker</h2>
@@ -722,14 +801,330 @@
 		</div>
 	</div>
 
-
-	<!-- Toggle and Divider Section -->
+	<!-- Badges Section -->
 	<div class="section">
-		<h2 class="section-title">Toggles & Dividers</h2>
+		<h2 class="section-title">Badges</h2>
 		<p class="section-description">
-			Toggle switches and divider components for form controls and layout
-			separation.
+			Badge components with different sizes, shapes, and statuses.
 		</p>
+
+		<div class="sub-section">
+			<h3 class="sub-section-title">Medium Badges</h3>
+			<div class="component-row">
+				<ss-lib-badge
+					[badgeProps]="{
+						size: ExtraSize.md,
+						icon: IconType.ImagePlus,
+					}"
+				></ss-lib-badge>
+
+				<ss-lib-badge
+					[badgeProps]="{
+						size: ExtraSize.md,
+						icon: IconType.ImagePlus,
+						status: Status.Success,
+					}"
+				></ss-lib-badge>
+
+				<ss-lib-badge
+					[badgeProps]="{
+						size: ExtraSize.md,
+						icon: IconType.ImagePlus,
+						status: Status.Warning,
+					}"
+				></ss-lib-badge>
+
+				<ss-lib-badge
+					[badgeProps]="{
+						size: ExtraSize.md,
+						icon: IconType.ImagePlus,
+						status: Status.Error,
+					}"
+				></ss-lib-badge>
+			</div>
+			<div class="component-row">
+				<ss-lib-badge
+					[badgeProps]="{
+						size: ExtraSize.md,
+						icon: IconType.ImagePlus,
+						shape: Shape.Round,
+					}"
+				></ss-lib-badge>
+
+				<ss-lib-badge
+					[badgeProps]="{
+						size: ExtraSize.md,
+						icon: IconType.ImagePlus,
+						status: Status.Success,
+						shape: Shape.Round,
+					}"
+				></ss-lib-badge>
+
+				<ss-lib-badge
+					[badgeProps]="{
+						size: ExtraSize.md,
+						icon: IconType.ImagePlus,
+						status: Status.Warning,
+						shape: Shape.Round,
+					}"
+				></ss-lib-badge>
+
+				<ss-lib-badge
+					[badgeProps]="{
+						size: ExtraSize.md,
+						icon: IconType.ImagePlus,
+						status: Status.Error,
+						shape: Shape.Round,
+					}"
+				></ss-lib-badge>
+			</div>
+		</div>
+
+		<div class="sub-section">
+			<h3 class="sub-section-title">Large Badges</h3>
+			<div class="component-row">
+				<ss-lib-badge
+					[badgeProps]="{
+						size: ExtraSize.lg,
+						icon: IconType.ImagePlus,
+					}"
+				></ss-lib-badge>
+
+				<ss-lib-badge
+					[badgeProps]="{
+						size: ExtraSize.lg,
+						icon: IconType.ImagePlus,
+						status: Status.Success,
+					}"
+				></ss-lib-badge>
+
+				<ss-lib-badge
+					[badgeProps]="{
+						size: ExtraSize.lg,
+						icon: IconType.ImagePlus,
+						status: Status.Warning,
+					}"
+				></ss-lib-badge>
+
+				<ss-lib-badge
+					[badgeProps]="{
+						size: ExtraSize.lg,
+						icon: IconType.ImagePlus,
+						status: Status.Error,
+					}"
+				></ss-lib-badge>
+			</div>
+			<div class="component-row">
+				<ss-lib-badge
+					[badgeProps]="{
+						size: ExtraSize.lg,
+						icon: IconType.ImagePlus,
+						shape: Shape.Round,
+					}"
+				></ss-lib-badge>
+
+				<ss-lib-badge
+					[badgeProps]="{
+						size: ExtraSize.lg,
+						icon: IconType.ImagePlus,
+						status: Status.Success,
+						shape: Shape.Round,
+					}"
+				></ss-lib-badge>
+
+				<ss-lib-badge
+					[badgeProps]="{
+						size: ExtraSize.lg,
+						icon: IconType.ImagePlus,
+						status: Status.Warning,
+						shape: Shape.Round,
+					}"
+				></ss-lib-badge>
+
+				<ss-lib-badge
+					[badgeProps]="{
+						size: ExtraSize.lg,
+						icon: IconType.ImagePlus,
+						status: Status.Error,
+						shape: Shape.Round,
+					}"
+				></ss-lib-badge>
+			</div>
+		</div>
+		<div class="sub-section">
+			<h3 class="sub-section-title">Extra Large Badges</h3>
+			<div class="component-row">
+				<ss-lib-badge
+					[badgeProps]="{
+						size: ExtraSize.xl,
+						icon: IconType.ImagePlus,
+					}"
+				></ss-lib-badge>
+
+				<ss-lib-badge
+					[badgeProps]="{
+						size: ExtraSize.xl,
+						icon: IconType.ImagePlus,
+						status: Status.Success,
+					}"
+				></ss-lib-badge>
+
+				<ss-lib-badge
+					[badgeProps]="{
+						size: ExtraSize.xl,
+						icon: IconType.ImagePlus,
+						status: Status.Warning,
+					}"
+				></ss-lib-badge>
+
+				<ss-lib-badge
+					[badgeProps]="{
+						size: ExtraSize.xl,
+						icon: IconType.ImagePlus,
+						status: Status.Error,
+					}"
+				></ss-lib-badge>
+			</div>
+			<div class="component-row">
+				<ss-lib-badge
+					[badgeProps]="{
+						size: ExtraSize.xl,
+						icon: IconType.ImagePlus,
+						shape: Shape.Round,
+					}"
+				></ss-lib-badge>
+
+				<ss-lib-badge
+					[badgeProps]="{
+						size: ExtraSize.xl,
+						icon: IconType.ImagePlus,
+						status: Status.Success,
+						shape: Shape.Round,
+					}"
+				></ss-lib-badge>
+
+				<ss-lib-badge
+					[badgeProps]="{
+						size: ExtraSize.xl,
+						icon: IconType.ImagePlus,
+						status: Status.Warning,
+						shape: Shape.Round,
+					}"
+				></ss-lib-badge>
+
+				<ss-lib-badge
+					[badgeProps]="{
+						size: ExtraSize.xl,
+						icon: IconType.ImagePlus,
+						status: Status.Error,
+						shape: Shape.Round,
+					}"
+				></ss-lib-badge>
+			</div>
+		</div>
+	</div>
+
+	<!-- Icon Section -->
+	<div class="section">
+		<h2 class="section-title">Icons</h2>
+		<p class="section-description">Examples of an icon components.</p>
+		<div class="component-row">
+			@for (icon of iconsList; track icon) {
+				<div class="icon-wrapper">
+					<ss-lib-icon
+						[icon]="IconType[icon]"
+						[color]="Colors.IconBody"
+					></ss-lib-icon>
+
+					<ss-lib-text
+						[type]="TextType.BodyXs"
+						[weight]="TextWeight.Regular"
+						>{{ icon }}
+					</ss-lib-text>
+				</div>
+			}
+		</div>
+	</div>
+
+	<!-- Divider Section -->
+	<div class="section">
+		<h2 class="section-title">Dividers</h2>
+		<p class="section-description">
+			Divider component for layout separation.
+		</p>
+		<div class="component-row">
+			<ss-lib-divider class="full-width" />
+
+			<ss-lib-divider
+				[style.height.px]="50"
+				[orientation]="Orientation.Vertical"
+			></ss-lib-divider>
+		</div>
+	</div>
+
+	<!-- Toast Examples Section -->
+	<div class="section">
+		<h2 class="section-title">Toast Notifications</h2>
+		<p class="section-description">
+			Demonstrates various toast notification types and theme toggle
+			functionality.
+		</p>
+		<div class="sub-section">
+			<ss-lib-button
+				class="spaced"
+				[type]="ButtonType.Ghost"
+				[text]="'Toggle Dark/Light Theme'"
+				[icon]="IconType.Sun"
+				[iconPosition]="IconPosition.Start"
+				(click)="toggleTheme()"
+			></ss-lib-button>
+		</div>
+		<div class="component-row">
+			<ss-lib-button
+				[type]="ButtonType.Primary"
+				[text]="'Default Toast'"
+				(click)="showToastDefault()"
+			></ss-lib-button>
+			<ss-lib-button
+				[type]="ButtonType.Primary"
+				[text]="'Error Toast'"
+				(click)="showToastError()"
+			></ss-lib-button>
+			<ss-lib-button
+				[type]="ButtonType.Primary"
+				[text]="'Success Toast'"
+				(click)="showToastSuccess()"
+			></ss-lib-button>
+			<ss-lib-button
+				[type]="ButtonType.Primary"
+				[text]="'Toast с доп кнопкой'"
+				(click)="showToastWithButton()"
+			></ss-lib-button>
+
+			<ss-lib-button
+				[type]="ButtonType.Primary"
+				[text]="'Toast с доп кнопкой и большим текстом'"
+				(click)="showToastWithButtonLarge()"
+			></ss-lib-button>
+		</div>
+		<div class="component-row">
+			<ss-lib-button
+				[type]="ButtonType.Secondary"
+				[text]="'API Success'"
+				(click)="viewToastSuccess()"
+			></ss-lib-button>
+			<ss-lib-button
+				[type]="ButtonType.Secondary"
+				[text]="'API Error'"
+				(click)="exampleMetod({ email: 'sydney@fife' })"
+			></ss-lib-button>
+		</div>
+	</div>
+
+	<!-- Toggle Section -->
+	<div class="section">
+		<h2 class="section-title">Toggles</h2>
+		<p class="section-description">Toggle switches.</p>
 		<div class="component-row">
 			<ss-lib-toggle
 				class="spaced"
@@ -739,11 +1134,197 @@
 				class="spaced"
 				[formControl]="toggleCtrl"
 			></ss-lib-toggle-icon>
-			<ss-lib-divider
+		</div>
+	</div>
+
+	<!-- Checkbox Section -->
+	<div class="section">
+		<h2 class="section-title">Checkboxes</h2>
+
+		<p class="section-description">
+			Checkbox components with labels and indeterminate states.
+		</p>
+
+		<div
+			class="component-row"
+			style="flex-direction: column"
+		>
+			<ss-lib-checkbox
 				class="spaced"
-				[orientation]="Orientation.Vertical"
-			></ss-lib-divider>
-			<ss-lib-divider class="divider"></ss-lib-divider>
+				[label]="'Чекбокс для тестирования'"
+				[description]="'Текст'"
+				[formControl]="checkboxControl"
+			></ss-lib-checkbox>
+		</div>
+
+		<div class="component-row">
+			<ss-lib-button
+				[type]="ButtonType.Secondary"
+				[text]="'Переключить валидатор requiredTrue'"
+				(click)="toggleRequiredValidator()"
+			></ss-lib-button>
+
+			<ss-lib-button
+				[type]="ButtonType.Secondary"
+				[text]="'Установить кастомный валидатор'"
+				(click)="setCustomValidator()"
+			></ss-lib-button>
+
+			<ss-lib-button
+				[type]="ButtonType.Secondary"
+				[text]="'Очистить валидаторы'"
+				(click)="clearValidators()"
+			></ss-lib-button>
+
+			<ss-lib-button
+				[type]="ButtonType.Secondary"
+				[text]="'Сбросить'"
+				(click)="resetControl()"
+			></ss-lib-button>
+		</div>
+
+		<div
+			class="component-row"
+			style="flex-direction: column"
+		>
+			<ss-lib-checkbox
+				class="spaced"
+				[formControl]="masterCheckboxCtrl"
+				[indeterminate]="isIndeterminate"
+			></ss-lib-checkbox>
+
+			<ss-lib-checkbox
+				class="spaced"
+				[formControl]="checkBox2"
+			></ss-lib-checkbox>
+
+			<ss-lib-checkbox
+				class="spaced"
+				[formControl]="checkBox3"
+			></ss-lib-checkbox>
+		</div>
+
+		<div class="component-row">
+			<ss-lib-checkbox
+				class="spaced"
+				[formControl]="checkBox4"
+			></ss-lib-checkbox>
+
+			<ss-lib-checkbox
+				class="spaced"
+				[indeterminate]="true"
+				[formControl]="checkBox5"
+			></ss-lib-checkbox>
+
+			<ss-lib-checkbox
+				class="spaced"
+				[formControl]="checkBox6"
+			></ss-lib-checkbox>
+		</div>
+	</div>
+
+	<!-- Status Icon Section -->
+	<div class="section">
+		<h2 class="section-title">Status Icons</h2>
+		<p class="section-description">
+			Status Icon components with different statuses.
+		</p>
+		<div class="component-row">
+			<ss-lib-status-icon
+				[icon]="IconType.Info"
+				[type]="statusType.Default"
+			></ss-lib-status-icon>
+
+			<ss-lib-status-icon
+				[icon]="IconType.Info"
+				[type]="statusType.Success"
+			></ss-lib-status-icon>
+
+			<ss-lib-status-icon
+				[icon]="IconType.Info"
+				[type]="statusType.Warning"
+			></ss-lib-status-icon>
+
+			<ss-lib-status-icon
+				[icon]="IconType.Info"
+				[type]="statusType.Error"
+			></ss-lib-status-icon>
+
+			<ss-lib-status-icon
+				class="disabled-demo"
+				[icon]="IconType.Info"
+				[type]="statusType.Warning"
+				[disabled]="true"
+			></ss-lib-status-icon>
+		</div>
+	</div>
+	<!--	</div>-->
+
+	<!-- TODO:	###########################################################-->
+
+	<!-- Tags Section -->
+	<div class="section">
+		<h2 class="section-title">Tags</h2>
+
+		<p class="section-description">Tags</p>
+
+		<div
+			class="component-row"
+			style="flex-direction: column"
+		>
+			<ss-lib-tag [text]="'Заказ/контракт'" />
+
+			<ss-lib-tag
+				[text]="'Заказ/контракт'"
+				[type]="TagType.Dot"
+			/>
+		</div>
+	</div>
+
+	<!-- Tabs Section -->
+	<div class="section">
+		<h2 class="section-title">Tabs</h2>
+
+		<p class="section-description">Tab navigation with custom actions.</p>
+
+		<div class="spaced">
+			<ss-lib-tabs
+				[tabs]="tabs"
+				[activeTabIndex]="indexTab"
+				(changeIndexEmit)="changeTab($event)"
+			></ss-lib-tabs>
+		</div>
+
+		<div>Выбрана вкладка: {{ indexTab + 1 }}</div>
+	</div>
+
+	<!-- Badges Section -->
+	<div class="section">
+		<h2 class="section-title">Dialog header</h2>
+		<p class="section-description">Dialog header for modals and popups.</p>
+
+		<div class="sub-section">
+			<div
+				class="component-row"
+				style="flex-direction: column"
+			>
+				<ss-lib-dialog-header
+					[title]="'Заголовок'"
+					[description]="'Описание'"
+					[viewClose]="true"
+					[badge]="{ icon: IconType.Info, status: Status.Success }"
+				/>
+
+				<ss-lib-divider />
+
+				<ss-lib-dialog-header
+					[title]="'Заголовок'"
+					[description]="'Описание'"
+					[closePosition]="IconPosition.Start"
+					[viewClose]="true"
+					[badge]="{ icon: IconType.Info, status: Status.Success }"
+				/>
+			</div>
 		</div>
 	</div>
 
@@ -772,6 +1353,7 @@
 						[placeholder]="'oleg@mail.ru'"
 					></ss-lib-input>
 				</ss-lib-form-field>
+
 				<ss-lib-form-field
 					class="spaced"
 					[label]="'Название'"
@@ -783,6 +1365,7 @@
 						[formControl]="textareaCtrl"
 					></ss-lib-textarea>
 				</ss-lib-form-field>
+
 				<ss-lib-form-field
 					class="spaced"
 					[label]="'Datepicker'"
@@ -796,6 +1379,7 @@
 						[min]="minDate"
 					></ss-lib-datepicker>
 				</ss-lib-form-field>
+
 				<ss-lib-form-field
 					class="spaced"
 					[label]="'Timepicker'"
@@ -824,6 +1408,7 @@
 				[src]="'https://i.pravatar.cc/300'"
 				[popoverTriggerFor]="dropdown1"
 			></ss-lib-avatar-button>
+
 			<ss-lib-dropdown-list
 				#dropdown1
 				[headerTemplateRef]="avatarHeader"
@@ -834,13 +1419,16 @@
 					[selected]="true"
 					(click)="console.log(1)"
 				></ss-lib-dropdown-item>
+
 				<ss-lib-dropdown-item
 					[label]="'Опция'"
 					[icon]="IconType.Bell"
 					[isDisabled]="true"
 					(click)="console.log(2)"
 				></ss-lib-dropdown-item>
+
 				<ss-lib-divider class="divider"></ss-lib-divider>
+
 				<ss-lib-dropdown-item
 					[label]="'Удалить'"
 					[icon]="IconType.Bell"
@@ -902,101 +1490,6 @@
 					</ss-lib-dropdown-list>
 				</ss-lib-select>
 			</ss-lib-form-field>
-		</div>
-	</div>
-
-	<!-- Avatar Section -->
-	<div class="section">
-		<h2 class="section-title">Avatar</h2>
-		<p class="section-description">
-			Simple avatar component with image and username.
-		</p>
-		<div class="component-row">
-			<ss-lib-avatar
-				[username]="'ВН'"
-				[src]="'https://i.pravatar.cc/300'"
-			></ss-lib-avatar>
-		</div>
-	</div>
-
-
-	<!-- Badges Section -->
-	<div class="section">
-		<h2 class="section-title">Badges</h2>
-		<p class="section-description">
-			Badge components with different sizes, shapes, and statuses.
-		</p>
-		<div class="sub-section">
-			<h3 class="sub-section-title">Large Badges</h3>
-			<div class="component-row">
-				<ss-lib-badge
-					[badgeProps]="{
-						size: ExtraSize.lg,
-						icon: IconType.ImagePlus,
-					}"
-				></ss-lib-badge>
-				<ss-lib-badge
-					[badgeProps]="{
-						size: ExtraSize.lg,
-						icon: IconType.ImagePlus,
-						shape: Shape.Round,
-					}"
-				></ss-lib-badge>
-				<ss-lib-badge
-					[badgeProps]="{
-						size: ExtraSize.lg,
-						icon: IconType.ImagePlus,
-						shape: Shape.Round,
-						status: Status.Warning,
-					}"
-				></ss-lib-badge>
-				<ss-lib-badge
-					[badgeProps]="{
-						size: ExtraSize.lg,
-						icon: IconType.ImagePlus,
-						shape: Shape.Square,
-						status: Status.Warning,
-					}"
-				></ss-lib-badge>
-			</div>
-		</div>
-		<div class="sub-section">
-			<h3 class="sub-section-title">Medium Badges</h3>
-			<div class="component-row">
-				<ss-lib-badge
-					[badgeProps]="{
-						size: ExtraSize.md,
-						icon: IconType.ImagePlus,
-					}"
-				></ss-lib-badge>
-				<ss-lib-badge
-					[badgeProps]="{
-						size: ExtraSize.md,
-						icon: IconType.ImagePlus,
-						shape: Shape.Round,
-					}"
-				></ss-lib-badge>
-			</div>
-		</div>
-		<div class="sub-section">
-			<h3 class="sub-section-title">Extra Large Badges</h3>
-			<div class="component-row">
-				<ss-lib-badge
-					[badgeProps]="{
-						size: ExtraSize.xl,
-						icon: IconType.ImagePlus,
-						status: Status.Error,
-					}"
-				></ss-lib-badge>
-				<ss-lib-badge
-					[badgeProps]="{
-						size: ExtraSize.xl,
-						icon: IconType.ImagePlus,
-						shape: Shape.Round,
-						status: Status.Error,
-					}"
-				></ss-lib-badge>
-			</div>
 		</div>
 	</div>
 
@@ -1138,62 +1631,6 @@
 		</div>
 	</div>
 
-	<!-- Checkbox Section -->
-	<div class="section">
-		<h2 class="section-title">Checkboxes</h2>
-		<p class="section-description">
-			Checkbox components with labels and indeterminate states.
-		</p>
-		<div
-			class="component-row"
-			style="flex-direction: column"
-		>
-			<ss-lib-checkbox
-				class="spaced"
-				[label]="'Чекбокс для тестирования'"
-				[description]="'Текст'"
-				[formControl]="checkboxControl"
-			></ss-lib-checkbox>
-			<ss-lib-checkbox
-				class="spaced"
-				[formControl]="checkBox1"
-				[(indeterminate)]="indeterminate"
-			></ss-lib-checkbox>
-			<ss-lib-checkbox
-				class="spaced"
-				[indeterminate]="false"
-				[formControl]="checkBox2"
-			></ss-lib-checkbox>
-			<ss-lib-checkbox
-				class="spaced"
-				[indeterminate]="true"
-				[formControl]="checkBox3"
-			></ss-lib-checkbox>
-		</div>
-		<div class="component-row">
-			<ss-lib-button
-				[type]="ButtonType.Secondary"
-				[text]="'Переключить валидатор requiredTrue'"
-				(click)="toggleRequiredValidator()"
-			></ss-lib-button>
-			<ss-lib-button
-				[type]="ButtonType.Secondary"
-				[text]="'Установить кастомный валидатор'"
-				(click)="setCustomValidator()"
-			></ss-lib-button>
-			<ss-lib-button
-				[type]="ButtonType.Secondary"
-				[text]="'Очистить валидаторы'"
-				(click)="clearValidators()"
-			></ss-lib-button>
-			<ss-lib-button
-				[type]="ButtonType.Secondary"
-				[text]="'Сбросить'"
-				(click)="resetControl()"
-			></ss-lib-button>
-		</div>
-	</div>
-
 	<!-- OTP Input Section -->
 	<div class="section">
 		<h2 class="section-title">OTP Input</h2>
@@ -1246,64 +1683,6 @@
 		</div>
 	</div>
 
-	<!-- Tabs Section -->
-	<div class="section">
-		<h2 class="section-title">Tabs</h2>
-		<p class="section-description">Tab navigation with custom actions.</p>
-		<div class="component-row">
-			<ss-lib-tabs
-				[tabs]="tabs"
-				[actionsRef]="actions"
-				[activeTabIndex]="indexTab"
-				(changeIndexEmit)="changeTab($event)"
-			></ss-lib-tabs>
-			<ng-template #actions>
-				<ss-lib-button
-					[size]="ExtraSize.md"
-					[text]="'1 кнопка'"
-					(click)="changeIndex()"
-				></ss-lib-button>
-				<ss-lib-button
-					[size]="ExtraSize.md"
-					[text]="'2 кнопка'"
-				></ss-lib-button>
-			</ng-template>
-			<span>{{ indexTab }}</span>
-		</div>
-	</div>
-
-	<!-- Hint Section -->
-	<div class="section">
-		<h2 class="section-title">Hints</h2>
-		<p class="section-description">
-			Hint components with different statuses.
-		</p>
-		<div class="component-row">
-			<ss-lib-hint
-				[icon]="IconType.Info"
-				[type]="HelpHintType.Default"
-			></ss-lib-hint>
-			<ss-lib-hint
-				[icon]="IconType.Info"
-				[type]="HelpHintType.Success"
-			></ss-lib-hint>
-			<ss-lib-hint
-				[icon]="IconType.Info"
-				[type]="HelpHintType.Warning"
-			></ss-lib-hint>
-			<ss-lib-hint
-				[icon]="IconType.Info"
-				[type]="HelpHintType.Error"
-			></ss-lib-hint>
-			<ss-lib-hint
-				class="disabled-demo"
-				[icon]="IconType.Info"
-				[type]="HelpHintType.Warning"
-				[disabled]="true"
-			></ss-lib-hint>
-		</div>
-	</div>
-
 	<!-- Form Field with Tooltip Section -->
 	<div class="section">
 		<h2 class="section-title">Form Field with Tooltip</h2>
@@ -1343,59 +1722,6 @@
 			<app-table-oper-plan-example
 				class="spaced"
 			></app-table-oper-plan-example>
-		</div>
-	</div>
-
-	<!-- Toast Examples Section -->
-	<div class="section">
-		<h2 class="section-title">Toast Notifications</h2>
-		<p class="section-description">
-			Demonstrates various toast notification types and theme toggle
-			functionality.
-		</p>
-		<div class="sub-section">
-			<ss-lib-button
-				class="spaced"
-				[type]="ButtonType.Ghost"
-				[text]="'Toggle Dark/Light Theme'"
-				[icon]="IconType.Sun"
-				[iconPosition]="IconPosition.Start"
-				(click)="toggleTheme()"
-			></ss-lib-button>
-		</div>
-		<div class="component-row">
-			<ss-lib-button
-				[type]="ButtonType.Primary"
-				[text]="'Default Toast'"
-				(click)="showToastDefault()"
-			></ss-lib-button>
-			<ss-lib-button
-				[type]="ButtonType.Primary"
-				[text]="'Error Toast'"
-				(click)="showToastError()"
-			></ss-lib-button>
-			<ss-lib-button
-				[type]="ButtonType.Primary"
-				[text]="'Success Toast'"
-				(click)="showToastSuccess()"
-			></ss-lib-button>
-			<ss-lib-button
-				[type]="ButtonType.Primary"
-				[text]="'Toast с кнопкой Пнока'"
-				(click)="showToastWithButton()"
-			></ss-lib-button>
-		</div>
-		<div class="component-row">
-			<ss-lib-button
-				[type]="ButtonType.Secondary"
-				[text]="'API Success'"
-				(click)="viewToastSuccess()"
-			></ss-lib-button>
-			<ss-lib-button
-				[type]="ButtonType.Secondary"
-				[text]="'API Error'"
-				(click)="exampleMetod({ email: 'sydney@fife' })"
-			></ss-lib-button>
 		</div>
 	</div>
 

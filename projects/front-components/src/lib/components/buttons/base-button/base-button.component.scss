@@ -1,7 +1,8 @@
-//:host {
-//	display: flex;
-//	align-items: center;
-//}
+:host {
+	display: flex;
+	align-items: center;
+	min-width: fit-content
+}
 
 button.custom-button {
 	position: relative;
@@ -18,6 +19,7 @@ button.custom-button {
 
 button.custom-button:not(.only-icon) {
 	flex-grow: 1;
+	flex-shrink: 0 !important;
 }
 
 button.custom-button:not(.justify-center) {

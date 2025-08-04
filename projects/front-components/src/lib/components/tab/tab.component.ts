@@ -1,19 +1,13 @@
 import {
 	Component,
+	computed,
 	HostListener,
 	input,
 	InputSignal,
+	Signal,
 	signal,
 	WritableSignal,
 } from '@angular/core';
-import { NgIf } from '@angular/common';
-import {
-	animate,
-	state,
-	style,
-	transition,
-	trigger,
-} from '@angular/animations';
 import { TextComponent } from '../text/text.component';
 import {
 	Colors,
@@ -24,35 +18,65 @@ import {
 } from '../../shared/models';
 import { IconComponent } from '../icon/icon.component';
 import { PopoverTriggerForDirective } from '../../core/directives';
+import { TagComponent } from '../tag/tag.component';
+
+interface ITabColor {
+	text: Colors;
+	icon: Colors;
+}
 
 @Component({
 	selector: 'ss-lib-tab',
 	templateUrl: 'tab.component.html',
 	styleUrls: ['tab.component.scss'],
 	standalone: true,
-	imports: [TextComponent, NgIf, IconComponent, PopoverTriggerForDirective],
-	animations: [
-		trigger('rotate', [
-			state('default', style({ transform: 'rotate(0)' })),
-			state('rotated', style({ transform: 'rotate(180deg)' })),
-			transition('rotated => default', animate('300ms ease')),
-			transition('default => rotated', animate('300ms ease')),
-		]),
+	imports: [
+		TextComponent,
+		IconComponent,
+		PopoverTriggerForDirective,
+		TagComponent,
 	],
 })
 export class TabComponent {
 	public text: InputSignal<string> = input.required<string>();
-	public active: InputSignal<boolean> = input.required<boolean>();
-	public disabled: InputSignal<boolean> = input.required<boolean>();
-
-	public viewChevron: InputSignal<boolean> = input.required<boolean>();
+	public icon = input<IconType | undefined>();
+	public tag = input<string | undefined>();
+	public active: InputSignal<boolean> = input<boolean>(false);
+	public disabled: InputSignal<boolean> = input<boolean>(false);
+	public viewChevron: InputSignal<boolean> = input<boolean>(false);
 
 	public isHover: WritableSignal<boolean> = signal(false);
-	public stateRotate: WritableSignal<'default' | 'rotated'> =
-		signal('default');
-
+	public stateRotate: WritableSignal<boolean> = signal(false);
 	public readonly listTabsElem: InputSignal<PopoverContent | null> =
 		input.required();
+
+	public tabColor: Signal<ITabColor> = computed(() => {
+		if (this.disabled()) {
+			return {
+				text: Colors.TextDisabled,
+				icon: Colors.IconDisabled,
+			};
+		}
+
+		if (this.isHover() && !this.active()) {
+			return {
+				text: Colors.TextActionHover2,
+				icon: Colors.IconActionHover2,
+			};
+		}
+
+		if (this.active()) {
+			return {
+				text: Colors.TextInformation,
+				icon: Colors.IconInformation,
+			};
+		}
+
+		return {
+			text: Colors.TextAction2,
+			icon: Colors.IconAction2,
+		};
+	});
 
 	protected readonly TextType = TextType;
 	protected readonly Colors = Colors;
@@ -69,25 +93,7 @@ export class TabComponent {
 		this.isHover.set(false);
 	}
 
-	protected getColor(): Colors {
-		if (this.disabled()) {
-			return Colors.TextDisabled;
-		}
-
-		if (this.isHover() && !this.active()) {
-			return Colors.TextActionHover2;
-		}
-
-		if (this.active()) {
-			return Colors.TextInformation;
-		}
-
-		return Colors.TextAction2;
-	}
-
 	protected checkStatePopover(event: boolean): void {
-		event
-			? this.stateRotate.set('rotated')
-			: this.stateRotate.set('default');
+		this.stateRotate.set(event);
 	}
 }

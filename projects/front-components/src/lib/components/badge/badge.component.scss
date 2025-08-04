@@ -1,6 +1,7 @@
 .ss-lib-badge {
 	display: inline-block;
 	box-shadow: var(--shadow-xs-skeumorphic2);
+	outline-offset: -1px;
 
 	&.size-md {
 		padding: 10px;
@@ -20,6 +21,7 @@
 
 	&.success {
 		outline: 1px solid var(--border-success);
+
 	}
 
 	&.warning {

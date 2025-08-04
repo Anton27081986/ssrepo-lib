@@ -14,7 +14,7 @@
 		background: var(--surface-action-hover-3) !important;
 	}
 
-	&:hover:not(.disabled) {
+	&:hover:not(:has(.disabled)) {
 		background: var(--surface-action-hover-2);
 	}
 
@@ -28,9 +28,10 @@
 		box-shadow: var(--focus-rings-focus-ring);
 	}
 
-	&.disabled {
+	&:has(.disabled) {
 		background: var(--surface-primary);
 		cursor: default;
+		pointer-events: none;
 	}
 }
 

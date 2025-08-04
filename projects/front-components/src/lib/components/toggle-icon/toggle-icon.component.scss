@@ -10,7 +10,7 @@
 	cursor: pointer;
 
 	&:hover {
-		background: var(--surface-action-pressed-2, #d5d7da);
+		background: var(--surface-action-pressed-2);
 	}
 
 	&:focus-visible {
