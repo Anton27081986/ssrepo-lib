@@ -145,7 +145,7 @@ export class CalendarDay extends CalendarMonth {
 
 	public override toString(
 		dateFormat: DateFormat = DateFormat.DMY,
-		separator = '/',
+		separator = '.',
 	): string {
 		return this.getFormattedDay(dateFormat, separator);
 	}

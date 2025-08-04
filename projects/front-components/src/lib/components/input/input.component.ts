@@ -110,7 +110,7 @@ export class InputComponent implements ControlValueAccessor {
 			case InputType.Date:
 				return maskitoDateOptionsGenerator({
 					mode: 'dd/mm/yyyy',
-					separator: '/',
+					separator: '.',
 					min: this.min() as Date,
 					max: this.max() as Date,
 				});
