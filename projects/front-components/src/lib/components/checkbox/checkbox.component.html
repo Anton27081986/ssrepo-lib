@@ -1,6 +1,6 @@
 <div
 	class="checkbox"
-	tabindex="0"
+	[attr.tabindex]="isDisabled() ? null : 0"
 	[class.checkbox--active]="checked() || indeterminate()"
 	[class.checkbox--disabled]="isDisabled()"
 	[class.checkbox--error]="isError()"
@@ -13,7 +13,7 @@
 			[height]="'12'"
 			[width]="'12'"
 			[strokeWidth]="
-				customScaleStroke | mapper: strokeWidthCheckbox : scaleSvg
+				customScaleStroke | mapper: calcStrokeWidth : scaleSvg
 			"
 			[icon]="iconComputed()"
 		></ss-lib-icon>

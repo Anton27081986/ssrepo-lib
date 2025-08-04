@@ -37,6 +37,11 @@ import { TextComponent } from '../../text/text.component';
 import { ElementStateService } from '../../../shared/services';
 import { EMPTY_STATE } from '../../../shared/constants';
 
+interface IButtonTextConfig {
+	readonly type: TextType;
+	readonly weight: TextWeight;
+}
+
 /**
  * Базовый компонент кнопки с поддержкой различных типов, размеров и иконок
  *
@@ -123,11 +128,34 @@ export class BaseButtonComponent<T extends ButtonTypeValues> {
 		() => BUTTON_ICON_COLORS_RECORD[this.type()!],
 	);
 
+	public readonly buttonTextConfig = computed((): IButtonTextConfig => {
+		switch (this.size()) {
+			case ExtraSize.xxs:
+			case ExtraSize.xs:
+				return {
+					type: TextType.BodyXs,
+					weight: TextWeight.Medium,
+				};
+			case ExtraSize.sm:
+			case ExtraSize.md:
+			case ExtraSize.lg:
+				return {
+					type: TextType.BodySm,
+					weight: TextWeight.Medium,
+				};
+			case ExtraSize.xl:
+			case ExtraSize.xxl:
+				return {
+					type: TextType.BodyMd,
+					weight: TextWeight.Medium,
+				};
+		}
+	});
+
 	public readonly IconPosition = IconPosition;
 	public readonly TextType = TextType;
 	public readonly TextWeight = TextWeight;
 	public readonly Colors = Colors;
-	public readonly ButtonSize = ExtraSize;
 	public readonly StateTypes = StateTypes;
 	protected readonly hasIcon = hasIcon;
 

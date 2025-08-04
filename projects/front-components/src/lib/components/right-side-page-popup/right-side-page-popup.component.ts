@@ -7,7 +7,7 @@ import {
 } from '@angular/core';
 import { NgIf, NgTemplateOutlet } from '@angular/common';
 import { IBadgeProps, IconPosition } from '../../shared/models';
-import { BadgeInfoComponent } from '../badge-info/badge-info.component';
+import { DialogHeaderComponent } from '../dialog-header/dialog-header.component';
 import { DividerComponent } from '../divider/divider.component';
 
 /**
@@ -45,7 +45,7 @@ import { DividerComponent } from '../divider/divider.component';
 @Component({
 	selector: 'ss-lib-right-side-page-popup',
 	standalone: true,
-	imports: [NgIf, BadgeInfoComponent, DividerComponent, NgTemplateOutlet],
+	imports: [NgIf, DialogHeaderComponent, DividerComponent, NgTemplateOutlet],
 	templateUrl: './right-side-page-popup.component.html',
 	styleUrl: './right-side-page-popup.component.scss',
 	changeDetection: ChangeDetectionStrategy.OnPush,

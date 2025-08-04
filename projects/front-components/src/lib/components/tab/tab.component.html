@@ -1,33 +1,46 @@
 <div
 	tabindex="0"
 	class="ss-lib-tab"
+	[class.ss-lib-tab--active]="active()"
 	[class.ss-lib-tab--disabled]="disabled()"
 	[popoverTriggerFor]="listTabsElem()!"
 	[popoverTriggerDisabled]="!viewChevron()"
 	(isPopoverOpenEmit)="checkStatePopover($event)"
 >
 	<div class="ss-lib-tab__tab">
-		<ss-lib-text
-			[color]="getColor()"
-			[type]="TextType.BodyMd"
-			[weight]="TextWeight.Medium"
-			[isNoWrap]="true"
-		>
-			{{ text() }}
-		</ss-lib-text>
+		<div class="ss-lib-tab__label">
+			<ss-lib-text
+				[color]="tabColor().text"
+				[type]="TextType.BodyMd"
+				[weight]="TextWeight.Medium"
+				[isNoWrap]="true"
+			>
+				{{ text() }}
+			</ss-lib-text>
 
-		<ss-lib-icon
-			*ngIf="viewChevron()"
-			[icon]="IconType.ChevronDown"
-			[color]="getColor()"
-			[width]="'20'"
-			[height]="'22'"
-			[@rotate]="stateRotate()"
-		>
-		</ss-lib-icon>
+			@if (tag()) {
+				<ss-lib-tag [text]="tag()!" />
+			}
+		</div>
+
+		@if (icon()) {
+			<ss-lib-icon
+				height="20"
+				width="20"
+				[color]="tabColor().icon"
+				[icon]="icon()!"
+			/>
+		} @else {
+			@if (viewChevron()) {
+				<ss-lib-icon
+					[class.rotate]="stateRotate()"
+					[icon]="IconType.ChevronDown"
+					[color]="tabColor().icon"
+					[width]="'20'"
+					[height]="'22'"
+				>
+				</ss-lib-icon>
+			}
+		}
 	</div>
 </div>
-<div
-	*ngIf="active()"
-	class="ss-lib-tab__active-indicator"
-></div>

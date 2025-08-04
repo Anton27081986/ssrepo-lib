@@ -39,7 +39,7 @@ import { CloseButtonComponent } from '../buttons';
  *
  * (closeEvent): void - Событие закрытия бейджа
  *
- * <ss-lib-badge-info
+ * <ss-lib-dialog-header
  *   [title]="'Заголовок'"
  *   [description]="'Описание бейджа'"
  *   [viewClose]="true"
@@ -49,14 +49,14 @@ import { CloseButtonComponent } from '../buttons';
  * ```
  */
 @Component({
-	selector: 'ss-lib-badge-info',
+	selector: 'ss-lib-dialog-header',
 	standalone: true,
 	imports: [BadgeComponent, TextComponent, CloseButtonComponent, NgIf],
-	templateUrl: './badge-info.component.html',
-	styleUrl: './badge-info.component.scss',
+	templateUrl: './dialog-header.component.html',
+	styleUrl: './dialog-header.component.scss',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class BadgeInfoComponent {
+export class DialogHeaderComponent {
 	public title: InputSignal<string> = input.required<string>();
 	public description: InputSignal<string> = input.required<string>();
 	public viewClose: InputSignal<boolean> = input<boolean>(true);

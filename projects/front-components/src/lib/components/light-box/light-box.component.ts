@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { NgOptimizedImage } from '@angular/common';
 import { ILightBoxData, ModalRef } from '../../shared/models';
 import { IconType } from '../../shared/models';
-import { OverlayButtonComponent } from '../buttons';
+import { BackdropButtonComponent } from '../buttons';
 
 /**
  * Компонент просмотра изображений в полноэкранном режиме.
@@ -22,7 +22,7 @@ import { OverlayButtonComponent } from '../buttons';
 @Component({
 	selector: 'ss-lib-light-box',
 	standalone: true,
-	imports: [NgOptimizedImage, OverlayButtonComponent],
+	imports: [NgOptimizedImage, BackdropButtonComponent],
 	templateUrl: './light-box.component.html',
 	styleUrl: './light-box.component.scss',
 	changeDetection: ChangeDetectionStrategy.OnPush,

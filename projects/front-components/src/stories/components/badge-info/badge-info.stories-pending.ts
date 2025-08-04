@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/angular';
-import { BadgeInfoComponent } from '../../../lib/components/badge-info/badge-info.component';
+import { DialogHeaderComponent } from '../../../lib/components/dialog-header/dialog-header.component';
 import { ExtraSize, Shape, Status, IconType } from '../../../lib/shared/models';
 
-const meta: Meta<BadgeInfoComponent> = {
+const meta: Meta<DialogHeaderComponent> = {
 	title: 'Components/BadgeInfo',
-	component: BadgeInfoComponent,
+	component: DialogHeaderComponent,
 	tags: ['autodocs'],
 	argTypes: {
 		title: {
@@ -34,7 +34,7 @@ const meta: Meta<BadgeInfoComponent> = {
 
 export default meta;
 
-type Story = StoryObj<BadgeInfoComponent>;
+type Story = StoryObj<DialogHeaderComponent>;
 
 export const Default: Story = {
 	args: {

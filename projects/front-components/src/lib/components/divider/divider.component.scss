@@ -1,15 +1,15 @@
 .divider {
 	display: flex;
 
-	--_divider-border: 1px solid var(--border-primary);
-
-	&--vertical {
+	&.vertical {
+		height: 100%;
 		min-height: 1px;
-		border-right: var(--_divider-border);
+		border-right: 1px solid var(--border-primary);
 	}
 
-	&--horizontal {
+	&.horizontal {
+		width: 100%;
 		min-width: 1px;
-		border-top: var(--_divider-border);
+		border-top: 1px solid var(--border-primary);
 	}
 }

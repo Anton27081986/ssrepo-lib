@@ -6,6 +6,7 @@ import {
 	ViewEncapsulation,
 } from '@angular/core';
 import { Orientation } from '../../shared/models';
+import { NgClass } from '@angular/common';
 
 /**
  * Компонент-разделитель с поддержкой вертикальной и горизонтальной ориентации
@@ -24,15 +25,15 @@ import { Orientation } from '../../shared/models';
  */
 @Component({
 	selector: 'ss-lib-divider',
+	standalone: true,
+	imports: [NgClass],
 	template: `
 		<div
 			class="divider"
-			[class.divider--horizontal]="orientation() === 'horizontal'"
-			[class.divider--vertical]="orientation() === 'vertical'"
+			[ngClass]="orientation()"
 		></div>
 	`,
 	styleUrls: ['divider.component.scss'],
-	standalone: true,
 	encapsulation: ViewEncapsulation.None,
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })

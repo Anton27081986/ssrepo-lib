@@ -1,22 +1,18 @@
-button.custom-button.type-preview {
+button.custom-button.type-backdrop {
 	padding: 4px;
 	background: var(--surface-action-4);
 	border-radius: var(--border-radius-round);
 }
 
-button.custom-button:not(:active):hover.type-preview {
+button.custom-button:hover.type-backdrop {
 	background: var(--surface-action-hover-4);
-
-	ss-lib-icon {
-		opacity: 60%;
-	}
 }
 
-button.custom-button:active.type-preview {
+button.custom-button:active.type-backdrop {
 	background: var(--surface-action-pressed-4);
 }
 
-button.custom-button:focus-visible.type-preview {
+button.custom-button:focus-visible.type-backdrop {
 	outline: none;
 	background: var(--surface-action-4);
 	box-shadow: var(--focus-rings-focus-ring);

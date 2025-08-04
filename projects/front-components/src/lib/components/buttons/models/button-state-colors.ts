@@ -6,5 +6,4 @@ export interface IButtonStateColors {
 	pressed: Colors;
 	focused: Colors;
 	disabled: Colors;
-	disabledIconOnly: Colors;
 }

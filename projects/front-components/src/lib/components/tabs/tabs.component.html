@@ -1,18 +1,17 @@
-<div
-	#tabsElem
-	class="ss-lib-tabs"
->
+<div class="ss-lib-tabs">
 	<div
-		#tabsElemBlock
+		#tabsBlock
 		class="ss-lib-tabs__block"
 	>
 		<div class="ss-lib-tabs__tabs">
 			@if (showFullList()) {
 				@for (tab of tabs(); track tab) {
 					<ss-lib-tab
+						#tabItem
 						[active]="$index === activeTabIndex()"
-						[attr.data-tab-id]="$index"
 						[text]="tab.text"
+						[icon]="tab.icon"
+						[tag]="tab.tag"
 						[disabled]="tab.isDisabled"
 						[viewChevron]="false"
 						[listTabsElem]="listTabs"
@@ -24,8 +23,10 @@
 			@if (!showFullList()) {
 				<ss-lib-tab
 					[active]="true"
-					[disabled]="getActiveTab.isDisabled"
 					[text]="getActiveTab.text"
+					[icon]="getActiveTab.icon"
+					[tag]="getActiveTab.tag"
+					[disabled]="getActiveTab.isDisabled"
 					[viewChevron]="true"
 					[listTabsElem]="listTabs"
 				></ss-lib-tab>
@@ -33,9 +34,11 @@
 		</div>
 	</div>
 
-	<div class="ss-lib-tabs__actions">
-		<ng-container *ngTemplateOutlet="actionsRef()"></ng-container>
-	</div>
+	@if (actionsRef()) {
+		<div class="ss-lib-tabs__actions">
+			<ng-container *ngTemplateOutlet="actionsRef()"></ng-container>
+		</div>
+	}
 </div>
 
 <ss-lib-dropdown-list #listTabs>

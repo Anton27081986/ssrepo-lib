@@ -1,8 +1,19 @@
-import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import {
+	ChangeDetectionStrategy,
+	Component,
+	computed,
+	input,
+} from '@angular/core';
 import { NgOptimizedImage } from '@angular/common';
 import { IconComponent } from '../icon/icon.component';
 import { TextComponent } from '../text/text.component';
-import { Colors, IconType, TextType, TextWeight } from '../../shared/models';
+import {
+	Colors,
+	ExtraSize,
+	IconType,
+	TextType,
+	TextWeight,
+} from '../../shared/models';
 
 /**
  * Компонент для отображения аватара пользователя с поддержкой изображения
@@ -34,8 +45,13 @@ import { Colors, IconType, TextType, TextWeight } from '../../shared/models';
 export class AvatarComponent {
 	public readonly src = input<string>('');
 	public readonly username = input<string>('');
+	public readonly size = input<ExtraSize.xs | ExtraSize.md>(ExtraSize.md);
 
 	public showFallbackImage = false;
+
+	public iconSize = computed(() =>
+		this.size() === ExtraSize.xs ? '16' : '24',
+	);
 
 	public readonly IconType = IconType;
 	public readonly Colors = Colors;

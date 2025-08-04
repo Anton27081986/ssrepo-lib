@@ -20,14 +20,8 @@ export class GetColorPipe implements PipeTransform {
 			return Colors.TextError;
 		}
 
-		if (
-			isDisabled &&
-			buttonColors.disabledIconOnly &&
-			buttonColors.disabled
-		) {
-			return isIconButton
-				? buttonColors.disabledIconOnly
-				: buttonColors.disabled;
+		if (isDisabled && buttonColors.disabled) {
+			return isIconButton ? buttonColors.disabled : buttonColors.disabled;
 		}
 
 		if (isActive && buttonColors.hover) {

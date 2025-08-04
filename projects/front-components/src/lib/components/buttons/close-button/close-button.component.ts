@@ -39,7 +39,7 @@ type CloseButtonType = ButtonType.CloseLight | ButtonType.CloseDark;
 		<ss-lib-base-button
 			[size]="size()"
 			[type]="type()"
-			[icon]="restrictedIcon()"
+			[icon]="icon()"
 			[iconSize]="restrictedIconSize()"
 			[iconPosition]="IconPosition.OnlyIcon"
 		>
@@ -52,7 +52,7 @@ type CloseButtonType = ButtonType.CloseLight | ButtonType.CloseDark;
 })
 export class CloseButtonComponent extends BaseButtonComponent<CloseButtonType> {
 	public override type = input<CloseButtonType>(ButtonType.CloseLight);
-	public restrictedIcon = input<IconType>(IconType.Close);
+	public override icon = input<IconType | null>(IconType.Close);
 
 	public restrictedIconSize = computed(() => {
 		switch (this.size()) {
