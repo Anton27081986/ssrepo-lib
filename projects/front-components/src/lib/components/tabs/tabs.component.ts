@@ -10,12 +10,10 @@ import {
 	OnDestroy,
 	output,
 	signal,
-	type TemplateRef,
 	viewChild,
 	viewChildren,
 	WritableSignal,
 } from '@angular/core';
-import { NgTemplateOutlet } from '@angular/common';
 import { Tab } from '../../shared/models/interfaces/tab';
 import { TabComponent } from '../tab/tab.component';
 import { DropdownItemComponent, DropdownListComponent } from '../dropdown';
@@ -30,7 +28,6 @@ const gapBetweenTabs = 12;
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	imports: [
 		TabComponent,
-		NgTemplateOutlet,
 		DropdownItemComponent,
 		DropdownListComponent,
 	],
@@ -45,8 +42,7 @@ export class TabsComponent implements AfterViewInit, OnDestroy {
 	});
 
 	public tabs: InputSignal<Tab[]> = input.required<Tab[]>();
-	public readonly actionsRef: InputSignal<TemplateRef<{}> | null> =
-		input<TemplateRef<{}> | null>(null);
+	public height = input<number>(36);
 
 	public readonly activeTabIndex: ModelSignal<number> = model(0);
 	public readonly showFullList: WritableSignal<boolean> = signal(true);

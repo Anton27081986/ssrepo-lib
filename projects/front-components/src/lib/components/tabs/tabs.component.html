@@ -1,4 +1,7 @@
-<div class="ss-lib-tabs">
+<div
+	class="ss-lib-tabs"
+	[style.height.px]="height()"
+>
 	<div
 		#tabsBlock
 		class="ss-lib-tabs__block"
@@ -33,12 +36,6 @@
 			}
 		</div>
 	</div>
-
-	@if (actionsRef()) {
-		<div class="ss-lib-tabs__actions">
-			<ng-container *ngTemplateOutlet="actionsRef()"></ng-container>
-		</div>
-	}
 </div>
 
 <ss-lib-dropdown-list #listTabs>
