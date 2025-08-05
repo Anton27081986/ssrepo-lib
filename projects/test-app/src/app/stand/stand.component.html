@@ -1284,7 +1284,11 @@
 		<p class="section-description">Tab navigation with custom actions.</p>
 
 		<div class="spaced">
-			<div [style.borderBottom]="'1px solid var(--border-primary)'">
+			<div
+				class="tabs-wrapper"
+				[style.borderBottom]="'1px solid var(--border-primary)'"
+				[style.height.px]="36"
+			>
 				<ss-lib-tabs
 					[tabs]="tabs"
 					[activeTabIndex]="indexTab"
