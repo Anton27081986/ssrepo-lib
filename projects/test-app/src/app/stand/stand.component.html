@@ -1284,17 +1284,11 @@
 		<p class="section-description">Tab navigation with custom actions.</p>
 
 		<div class="spaced">
-			<div
-				class="tabs-wrapper"
-				[style.borderBottom]="'1px solid var(--border-primary)'"
-				[style.height.px]="36"
-			>
-				<ss-lib-tabs
-					[tabs]="tabs"
-					[activeTabIndex]="indexTab"
-					(changeIndexEmit)="changeTab($event)"
-				></ss-lib-tabs>
-			</div>
+			<ss-lib-tabs
+				[tabs]="tabs"
+				[activeTabIndex]="indexTab"
+				(changeIndexEmit)="changeTab($event)"
+			></ss-lib-tabs>
 		</div>
 
 		<div>Выбрана вкладка: {{ indexTab + 1 }}</div>

@@ -45,6 +45,7 @@ export class TabsComponent implements AfterViewInit, OnDestroy {
 	});
 
 	public tabs: InputSignal<Tab[]> = input.required<Tab[]>();
+	public height = input<number>(36);
 	public readonly actionsRef: InputSignal<TemplateRef<{}> | null> =
 		input<TemplateRef<{}> | null>(null);
 
