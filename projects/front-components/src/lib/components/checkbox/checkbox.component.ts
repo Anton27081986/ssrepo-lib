@@ -1,23 +1,18 @@
 import {
-	afterNextRender,
 	Component,
 	computed,
-	inject,
-	Inject,
-	Injector,
+	forwardRef,
 	input,
 	model,
 	ModelSignal,
-	OnInit,
-	runInInjectionContext,
-	Self,
 	Signal,
 	signal,
 	WritableSignal,
 } from '@angular/core';
-import { type ControlValueAccessor, NgControl } from '@angular/forms';
-import { toSignal } from '@angular/core/rxjs-interop';
-import { distinctUntilChanged, tap } from 'rxjs';
+import {
+	type ControlValueAccessor,
+	NG_VALUE_ACCESSOR,
+} from '@angular/forms';
 import { IconComponent } from '../icon/icon.component';
 import {
 	Colors,
@@ -58,10 +53,15 @@ import { TextComponent } from '../text/text.component';
 	templateUrl: './checkbox.component.html',
 	imports: [IconComponent, MapperPipe, TextComponent],
 	styleUrl: './checkbox.component.scss',
+	providers: [
+		{
+			provide: NG_VALUE_ACCESSOR,
+			useExisting: forwardRef(() => CheckboxComponent),
+			multi: true,
+		},
+	],
 })
-export class CheckboxComponent implements OnInit, ControlValueAccessor {
-	private readonly injector = inject(Injector);
-
+export class CheckboxComponent implements ControlValueAccessor {
 	public readonly label = input<string>('');
 	public readonly description = input<string>('');
 
@@ -111,20 +111,6 @@ export class CheckboxComponent implements OnInit, ControlValueAccessor {
 	protected readonly scaleSvg = SCALE_SVG;
 	protected readonly calcStrokeWidth = calcStrokeWidth;
 
-	constructor(
-		@Self()
-		@Inject(NgControl)
-		public ngControl: NgControl,
-	) {
-		if (this.ngControl) {
-			this.ngControl.valueAccessor = this;
-		}
-	}
-
-	public ngOnInit(): void {
-		this.checkParentCtrlStatus();
-	}
-
 	public writeValue(value: boolean | null): void {
 		if (value !== null) {
 			this.checked.set(value);
@@ -150,22 +136,5 @@ export class CheckboxComponent implements OnInit, ControlValueAccessor {
 			this.onChange(this.checked());
 			this.onTouched();
 		}
-	}
-
-	private checkParentCtrlStatus(): void {
-		runInInjectionContext(this.injector, () => {
-			toSignal(
-				this.ngControl.control!.statusChanges.pipe(
-					distinctUntilChanged(),
-					tap((status) =>
-						this.isError.set(
-							status === 'INVALID' &&
-								(this.ngControl.touched! ||
-									this.ngControl.dirty!),
-						),
-					),
-				),
-			);
-		});
 	}
 }
