@@ -5,8 +5,8 @@ import {
 	input,
 	ViewEncapsulation,
 } from '@angular/core';
-import { Orientation } from '../../shared/models';
 import { NgClass } from '@angular/common';
+import { Orientation } from '../../shared/models';
 
 /**
  * Компонент-разделитель с поддержкой вертикальной и горизонтальной ориентации
