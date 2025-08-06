@@ -60,6 +60,7 @@ export class ModalComponent {
 	public readonly contentRef = input<TemplateRef<{}> | null>(null);
 	public readonly stickyRef = input<TemplateRef<{}> | null>(null);
 	public readonly badgeProps = input.required<IBadgeProps>();
+	public readonly paddingContent = input.required<string>();
 	public readonly closePosition = input<
 		IconPosition.Start | IconPosition.End
 	>(IconPosition.End);

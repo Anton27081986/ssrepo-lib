@@ -23,7 +23,7 @@
 	<div
 		*ngIf="contentRef()"
 		class="ss-lib-modal__body"
-		[style.padding-top]="stickyRef() ? '12px' : '0'"
+		[style.padding]="paddingContent()"
 	>
 		<ng-container *ngTemplateOutlet="contentRef()"></ng-container>
 	</div>
