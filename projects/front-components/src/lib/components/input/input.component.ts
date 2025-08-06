@@ -24,7 +24,6 @@ import {
 } from '@maskito/kit';
 import { NgClass } from '@angular/common';
 import { Align, ExtraSize, InputType } from '../../shared/models';
-import { CloseButtonComponent } from '../buttons';
 
 /**
  * Компонент поля ввода с поддержкой различных типов и масок
@@ -38,9 +37,6 @@ import { CloseButtonComponent } from '../buttons';
  * [placeholder]: string - Текст подсказки - необязательный, по умолчанию: ''
  *
  * [readOnly]: boolean - Флаг режима только для чтения -
- * необязательный, по умолчанию: false
- *
- * [clearButton]: boolean - Флаг на показ иконки крестика в input -
  * необязательный, по умолчанию: false
  *
  * [align]: Align - Выравнивание текста - необязательный, по умолчанию: Align.Start
@@ -63,12 +59,7 @@ import { CloseButtonComponent } from '../buttons';
 @Component({
 	selector: 'ss-lib-input',
 	standalone: true,
-	imports: [
-		ReactiveFormsModule,
-		MaskitoDirective,
-		CloseButtonComponent,
-		NgClass,
-	],
+	imports: [ReactiveFormsModule, MaskitoDirective, NgClass],
 	templateUrl: './input.component.html',
 	styleUrl: './input.component.scss',
 	changeDetection: ChangeDetectionStrategy.OnPush,
@@ -89,7 +80,6 @@ export class InputComponent implements ControlValueAccessor {
 	public readonly size = input<ExtraSize>(ExtraSize.lg);
 	public readonly placeholder = input<string>('');
 	public readonly readOnly = input<boolean>(false);
-	public readonly clearButton = input<boolean>(false);
 	public readonly align = input<Align>(Align.Start);
 	public readonly min = input<unknown | undefined>(undefined);
 	public readonly max = input<unknown | undefined>(undefined);
@@ -139,15 +129,6 @@ export class InputComponent implements ControlValueAccessor {
 		);
 	}
 
-	protected get viewClearButton(): boolean {
-		return (
-			this.clearButton() &&
-			!this.disabled() &&
-			this.inputCtrl.value &&
-			this.inputCtrl.value.trim().length > 0
-		);
-	}
-
 	public writeValue(value: string | null): void {
 		this.inputCtrl.setValue(value, { emitEvent: false });
 	}
@@ -181,9 +162,5 @@ export class InputComponent implements ControlValueAccessor {
 
 	public setFocus(): void {
 		this.inputField()?.nativeElement.focus();
-	}
-
-	protected clearControl(): void {
-		this.inputCtrl.setValue(null);
 	}
 }

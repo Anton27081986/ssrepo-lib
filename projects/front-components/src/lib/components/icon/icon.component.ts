@@ -6,7 +6,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import type { IconType } from '../../shared/models';
 import { Colors } from '../../shared/models';
 import { ICONS } from '../../shared/assets/icons';
-import { SCALE_SVG } from "../../shared/constants";
+import { SCALE_SVG } from '../../shared/constants';
 
 /**
  * Компонент для отображения SVG иконок

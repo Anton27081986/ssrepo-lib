@@ -9,10 +9,7 @@ import {
 	signal,
 	WritableSignal,
 } from '@angular/core';
-import {
-	type ControlValueAccessor,
-	NG_VALUE_ACCESSOR,
-} from '@angular/forms';
+import { type ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { IconComponent } from '../icon/icon.component';
 import {
 	Colors,
