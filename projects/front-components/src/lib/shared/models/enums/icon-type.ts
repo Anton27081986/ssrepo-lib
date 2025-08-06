@@ -50,4 +50,5 @@ export enum IconType {
 	PackagePlus = 'package-plus',
 	Info = 'info',
 	Search = 'search',
+	LinkExternal01 = 'link-external-01',
 }
