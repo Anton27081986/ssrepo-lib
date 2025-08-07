@@ -856,21 +856,6 @@
 			</div>
 		</div>
 
-		<!-- Number Picker Section -->
-		<div class="section">
-			<h2 class="section-title">Number Picker</h2>
-			<p class="section-description">
-				Number input with min and max constraints.
-			</p>
-			<div class="component-row">
-				<ss-lib-number-picker
-					[formControl]="numberPickerCtrl"
-					[min]="5"
-					[max]="1000"
-				></ss-lib-number-picker>
-			</div>
-		</div>
-
 		<!-- Badges Section -->
 		<div class="section">
 			<h2 class="section-title">Badges</h2>
@@ -1423,6 +1408,23 @@
 						class="spaced"
 						[label]="'Input md'"
 						[hint]="'Подсказка'"
+						[showValidationFieldIcon]="true"
+						[clearButton]="true"
+						[size]="ExtraSize.md"
+					>
+						<ss-lib-input
+							fieldCtrl
+							[size]="ExtraSize.md"
+							[formControl]="inputCtrl"
+							[placeholder]="'oleg@mail.ru'"
+						/>
+					</ss-lib-form-field>
+
+
+					<ss-lib-form-field
+						class="spaced"
+						[label]="'Input md'"
+						[hint]="'Подсказка'"
 						[errorText]="'Неверно заполнено'"
 						[tooltipInfoText]="'Какой то тултип'"
 						[showValidationFieldIcon]="true"
@@ -1498,6 +1500,22 @@
 
 				<!-- Column 2 (lg inputs) -->
 				<div class="component-column">
+					<ss-lib-form-field
+						class="spaced"
+						[label]="'Input lg'"
+						[hint]="'Подсказка'"
+						[showValidationFieldIcon]="true"
+						[clearButton]="true"
+						[size]="ExtraSize.lg"
+					>
+						<ss-lib-input
+							fieldCtrl
+							[size]="ExtraSize.lg"
+							[formControl]="inputCtrl"
+							[placeholder]="'oleg@mail.ru'"
+						/>
+					</ss-lib-form-field>
+
 					<ss-lib-form-field
 						class="spaced"
 						[label]="'Input lg'"
@@ -1632,6 +1650,21 @@
 
 				<pre>{{ timepickerCtrl.value }}</pre>
 			</div>
+		</div>
+	</div>
+
+	<!-- Number Picker Section -->
+	<div class="section">
+		<h2 class="section-title">Number Picker</h2>
+		<p class="section-description">
+			Number input with min and max constraints.
+		</p>
+		<div class="component-row">
+			<ss-lib-number-picker
+				[formControl]="numberPickerCtrl"
+				[min]="5"
+				[max]="1000"
+			></ss-lib-number-picker>
 		</div>
 	</div>
 

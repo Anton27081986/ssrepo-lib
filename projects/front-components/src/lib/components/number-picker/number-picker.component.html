@@ -21,7 +21,7 @@
 			class="number-picker__input-field"
 			(focusout)="onCheckInputValueOnFocusout($event)"
 		>
-			<ss-lib-form-field>
+			<ss-lib-form-field [size]="ExtraSize.lg">
 				<ss-lib-input
 					fieldCtrl
 					[formControl]="numberPickerCtrl"
@@ -29,6 +29,7 @@
 					[min]="min()"
 					[max]="max()"
 					[align]="Align.Center"
+					[size]="ExtraSize.lg"
 				/>
 			</ss-lib-form-field>
 		</div>
