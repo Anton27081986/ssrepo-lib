@@ -65,7 +65,7 @@
 	pointer-events: none;
 }
 
-.field-container:focus-within:not(.state-invalid) {
+.field-container:focus-within:not(.state-invalid):not(.state-disabled) {
 	outline: 2px solid var(--border-focus, #3c92d5);
 	outline-offset: -2px;
 }
