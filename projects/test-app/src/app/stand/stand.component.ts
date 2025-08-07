@@ -78,7 +78,7 @@ export class StandComponent {
 	public numberPickerCtrl = new FormControl(2);
 
 	public datepickerCtrl: FormControl<Date | null> = new FormControl(
-		new Date('2025-07-06T09:42:01.028Z'),
+		new Date('2025-07-09T09:42:01.028Z'),
 	);
 
 	public minDate = new Date(2025, 7, 12);

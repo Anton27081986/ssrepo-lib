@@ -36,8 +36,8 @@
 	}
 
 	<div
-		tabindex="0"
 		class="field-container"
+		[attr.tabindex]="fieldCtrl!.ngControl.disabled ? null : 0"
 		[class.validation]="showValidation()"
 		[class.state-disabled]="fieldCtrl!.ngControl.disabled"
 		[class.show-border]="!showBorder()"
