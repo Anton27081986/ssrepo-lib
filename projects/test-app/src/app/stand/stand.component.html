@@ -1420,7 +1420,6 @@
 						/>
 					</ss-lib-form-field>
 
-
 					<ss-lib-form-field
 						class="spaced"
 						[label]="'Input md'"
@@ -1814,6 +1813,24 @@
 		/>
 	</div>
 
+	<!-- Scrollbar Section -->
+	<div class="section">
+		<h2 class="section-title">Scrollbar</h2>
+		<p class="section-description">Custom scrollbar with sample content.</p>
+		<div class="component-row">
+			<div class="scrollbar-test">
+				<ss-lib-scrollbar>
+					@for (colCount of 100 | repeatTimes; track $index) {
+						<div class="scrollbar-test__item">
+							Товарищи! сложившаяся структура организации играет
+							важную роль в формировании модели развития
+						</div>
+					}
+				</ss-lib-scrollbar>
+			</div>
+		</div>
+	</div>
+
 	<!--TODO:	###############################-->
 
 	<!-- Empty State Section -->
@@ -1823,29 +1840,29 @@
 			Empty state component with custom actions and icon.
 		</p>
 		<div class="component-row">
-			<ss-lib-empty-state
-				[headerTitle]="'Управление баннерами'"
-				[actionRef]="action"
-				[icon]="IconType.ImagePlus"
-				[title]="'Заголовок'"
-				[description]="
-					'Какой-то текст, который мне лень писать и выдумывать.'
-				"
-			>
-				<div class="component-row">
-					<ss-lib-button
-						[type]="ButtonType.Primary"
-						[text]="'Любая кнопка'"
-					></ss-lib-button>
-					<ss-lib-button
-						[type]="ButtonType.Primary"
-						[text]="'Еще кнопка'"
-					></ss-lib-button>
-				</div>
-			</ss-lib-empty-state>
-			<ng-template #action>
-				<ss-lib-button [text]="'Добавить баннер'"></ss-lib-button>
-			</ng-template>
+			<div class="empty-state__test">
+				<ss-lib-empty-state
+					[title]="'Заголовок'"
+					[description]="
+						'Здесь будут баннеры. Нажмите «Добавить баннер», чтобы добавить новый.'
+					"
+					[badge]="{ size: ExtraSize.xl, icon: IconType.ImagePlus }"
+				>
+					<div class="component-row">
+						<ss-lib-button
+							[type]="ButtonType.Secondary"
+							[text]="'Вторичная'"
+							[size]="ExtraSize.xl"
+						></ss-lib-button>
+
+						<ss-lib-button
+							[type]="ButtonType.Primary"
+							[text]="'Первичная'"
+							[size]="ExtraSize.xl"
+						></ss-lib-button>
+					</div>
+				</ss-lib-empty-state>
+			</div>
 		</div>
 	</div>
 
@@ -1919,24 +1936,6 @@
 				[tooltipText]="'Это тултип'"
 				[position]="TooltipPosition.TopRight"
 			></ss-lib-icon>
-		</div>
-	</div>
-
-	<!-- Scrollbar Section -->
-	<div class="section">
-		<h2 class="section-title">Scrollbar</h2>
-		<p class="section-description">Custom scrollbar with sample content.</p>
-		<div class="component-row">
-			<div class="scrollbar-test">
-				<ss-lib-scrollbar>
-					@for (colCount of 100 | repeatTimes; track $index) {
-						<div class="scrollbar-test__item">
-							Товарищи! сложившаяся структура организации играет
-							важную роль в формировании модели развития
-						</div>
-					}
-				</ss-lib-scrollbar>
-			</div>
 		</div>
 	</div>
 
