@@ -145,14 +145,18 @@
 }
 
 .scrollbar-test {
-	height: 150px;
-	width: 150px;
+	height: 250px;
+	width: 250px;
 	display: flex;
 	flex-wrap: nowrap;
 
 	&__item {
 		white-space: nowrap;
 	}
+}
+
+.empty-state__test {
+	width: 354px;
 }
 
 //.spinners {
