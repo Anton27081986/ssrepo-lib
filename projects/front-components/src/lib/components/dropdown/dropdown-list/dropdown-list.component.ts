@@ -1,6 +1,8 @@
 import {
+	effect,
 	Inject,
 	Injector,
+	OnDestroy,
 	TemplateRef,
 	ViewEncapsulation,
 } from '@angular/core';
@@ -14,8 +16,8 @@ import {
 	runInInjectionContext,
 	viewChild,
 } from '@angular/core';
-import { outputToObservable, toSignal } from '@angular/core/rxjs-interop';
-import { tap } from 'rxjs';
+import { outputToObservable } from '@angular/core/rxjs-interop';
+import { Subscription, tap } from 'rxjs';
 import { NgTemplateOutlet } from '@angular/common';
 import type {
 	IDictionaryItemDto,
@@ -78,8 +80,9 @@ import { DropdownGroupDirective } from '../directives/dropdown-group.directive';
 	imports: [NgTemplateOutlet, DividerComponent, ScrollbarComponent],
 })
 export class DropdownListComponent<
-	T extends IDictionaryItemDto = IDictionaryItemDto,
-> implements PopoverContent
+		T extends IDictionaryItemDto = IDictionaryItemDto,
+	>
+	implements PopoverContent, OnDestroy
 {
 	public readonly optionsContentGroup = contentChildren(
 		DropdownGroupDirective,
@@ -99,37 +102,41 @@ export class DropdownListComponent<
 	public readonly closed = output<void>();
 	public readonly value = output<T | string | null | IDictionaryItemDto>();
 
-	constructor(@Inject(Injector) private readonly injector: Injector) {
-		afterNextRender(() => {
-			runInInjectionContext(this.injector, () => {
-				this.optionsContent().forEach((option) =>
-					toSignal(
-						outputToObservable(option.valueEvent).pipe(
-							tap((data) => {
-								this.selectOption(data);
-							}),
-						),
-					),
-				);
+	private readonly subscriptions = new Set<Subscription>();
 
-				// this.optionsContentGroup().forEach((group) => {
-				// 	// Подписываемся на valueEvent для текущих items
-				// 	group.items()?.forEach((item) =>
-				// 		toSignal(
-				// 			outputToObservable(item.valueEvent).pipe(
-				// 				tap((data) => {
-				// 					this.selectOption(data);
-				// 				}),
-				// 			),
-				// 		),
-				// 	);
-				// });
+	constructor(@Inject(Injector) private readonly injector: Injector) {
+		afterNextRender(() => this.initOptionSubscriptions());
+	}
+
+	private initOptionSubscriptions(): void {
+		runInInjectionContext(this.injector, () => {
+			effect(() => {
+				this.clearSubscriptions();
+
+				for (const option of this.optionsContent()) {
+					this.subscriptions.add(
+						outputToObservable(option.valueEvent)
+							.pipe(tap((data) => this.selectOption(data)))
+							.subscribe(),
+					);
+				}
 			});
 		});
+	}
+
+	private clearSubscriptions(): void {
+		this.subscriptions.forEach((subscription) =>
+			subscription.unsubscribe(),
+		);
+		this.subscriptions.clear();
 	}
 
 	public selectOption(item: T | string | IDictionaryItemDto | null): void {
 		this.value.emit(item);
 		this.closed.emit();
+	}
+
+	public ngOnDestroy(): void {
+		this.clearSubscriptions();
 	}
 }
