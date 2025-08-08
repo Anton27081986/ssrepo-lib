@@ -7,7 +7,7 @@ import {
 import { calendarSheetImports } from './calendar-sheet.imports';
 import { WEEK_DAYS_SHORT, TODAY_LABEL } from '../../constans';
 import { CalendarDay, CalendarMonth } from '../../models';
-import { ButtonType } from '../../../../shared/models';
+import { ButtonType, ExtraSize } from '../../../../shared/models';
 
 @Component({
 	selector: 'ss-lib-calendar-sheet',
@@ -29,6 +29,7 @@ export class CalendarSheetComponent {
 	public readonly weekDaysShort = WEEK_DAYS_SHORT;
 	public readonly ButtonType = ButtonType;
 	public readonly todayLabel = TODAY_LABEL;
+	public readonly ExtraSize = ExtraSize;
 
 	private readonly today = CalendarDay.currentLocal();
 

@@ -6,10 +6,13 @@
 	>
 		<ss-lib-scrollbar>
 			@if (headerTemplateRef()) {
-				<ng-container
-					[ngTemplateOutlet]="headerTemplateRef()"
-				></ng-container>
-				<ss-lib-divider />
+				<div class="dropdown__options_header">
+					<ng-container
+						[ngTemplateOutlet]="headerTemplateRef()"
+					></ng-container>
+
+					<ss-lib-divider />
+				</div>
 			}
 
 			<ng-content></ng-content>

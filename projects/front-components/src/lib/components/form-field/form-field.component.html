@@ -36,50 +36,70 @@
 	}
 
 	<div
-		tabindex="0"
 		class="field-container"
+		[attr.tabindex]="fieldCtrl!.ngControl.disabled ? null : 0"
 		[class.validation]="showValidation()"
 		[class.state-disabled]="fieldCtrl!.ngControl.disabled"
 		[class.show-border]="!showBorder()"
+		[class]="'size-' + size()"
 		[ngClass]="['state-' + currentFieldCtrlState()]"
 		(focusout)="updateFormFieldStateOnFocusout()"
 	>
 		<div class="field-container__content-wrapper">
-			<div class="field-container__container-left">
-				<ss-lib-icon
-					*ngIf="icon() as icon"
-					[color]="getColorIcon"
-					[icon]="icon"
-					[width]="'20'"
-					[height]="'20'"
-				></ss-lib-icon>
-				<div class="field-container__content">
-					<ng-content></ng-content>
+			@if (icon()) {
+				<div class="field-container__content_left">
+					<ss-lib-icon
+						[color]="getColorIcon"
+						[icon]="icon()!"
+						[width]="'20'"
+						[height]="'20'"
+					></ss-lib-icon>
 				</div>
-			</div>
-			@if (currentFieldCtrlState() !== ControlState.Invalid) {
-				<ss-lib-status-icon
-					*ngIf="tooltipInfoText()"
-					ss-lib-tooltip
-					[tooltipText]="tooltipInfoText()"
-					[icon]="IconType.Help"
-				/>
 			}
 
-			@if (showValidationFieldIcon()) {
-				<div class="field-container__error-icon">
-					<ss-lib-status-icon
-						ss-lib-tooltip
-						[tooltipText]="errorText()"
-						[icon]="IconType.Alert"
-						[type]="statusIconType.Error"
-					/>
-				</div>
-			}
+			<div class="field-container__content">
+				<ng-content></ng-content>
+			</div>
+
+			<div class="field-container__content_right">
+				@if (viewClearButton) {
+					<ss-lib-close-button
+						[size]="closeButtonSize()"
+						(click)="clearControl()"
+					></ss-lib-close-button>
+				}
+
+				@if (
+					!!tooltipInfoText() &&
+					currentFieldCtrlState() !== ControlState.Invalid
+				) {
+					<div class="field-container__content_status">
+						<ss-lib-status-icon
+							ss-lib-tooltip
+							[tooltipText]="tooltipInfoText()"
+							[icon]="IconType.Help"
+							[disabled]="!!fieldCtrl!.ngControl.disabled"
+						/>
+					</div>
+				}
+
+				@if (showValidationFieldIcon()) {
+					<div
+						class="field-container__content_status field-container__error-icon"
+					>
+						<ss-lib-status-icon
+							ss-lib-tooltip
+							[tooltipText]="errorText()"
+							[icon]="IconType.Alert"
+							[type]="statusIconType.Error"
+						/>
+					</div>
+				}
+			</div>
 		</div>
 	</div>
 
-	@if (errorText()) {
+	@if (errorText() && !showValidationFieldIcon()) {
 		<div class="field-container__error-message">
 			<ss-lib-icon
 				[icon]="IconType.Alert"

@@ -160,7 +160,7 @@ export class HeaderFilterService {
 			.navigate([], {
 				queryParams: params,
 			})
-			.then();
+			.catch(() => {});
 	}
 
 	public getGlobalQueryParams(): FilterQueryParams {

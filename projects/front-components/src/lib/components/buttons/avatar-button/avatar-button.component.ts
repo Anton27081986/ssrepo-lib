@@ -1,7 +1,6 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { AvatarComponent } from '../../avatar/avatar.component';
-import { size } from "polished";
-import { ExtraSize } from "../../../shared/models";
+import { ExtraSize } from '../../../shared/models';
 
 /**
  * Кнопка с аватаром пользователя
@@ -24,17 +23,16 @@ import { ExtraSize } from "../../../shared/models";
 	selector: 'ss-lib-avatar-button',
 	standalone: true,
 	imports: [AvatarComponent],
-	template: `
-		<div
-			tabindex="0"
-			class="avatar-button"
-		>
-			<ss-lib-avatar
-				[username]="username()"
-				[src]="src()"
-				[size]="size()"
-			/>
-		</div>`,
+	template: ` <div
+		tabindex="0"
+		class="avatar-button"
+	>
+		<ss-lib-avatar
+			[username]="username()"
+			[src]="src()"
+			[size]="size()"
+		/>
+	</div>`,
 	styleUrl: './avatar-button.component.scss',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })

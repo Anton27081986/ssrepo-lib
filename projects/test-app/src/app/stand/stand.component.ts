@@ -19,12 +19,13 @@ import {
 	LinkAppearance,
 	Orientation,
 	Shape,
-	Status, TagType,
+	Status,
+	TagType,
 	TextType,
 	TextWeight,
 	ToastTypeEnum,
-	TooltipPosition
-} from "../../../../front-components/src/lib/shared/models";
+	TooltipPosition,
+} from '../../../../front-components/src/lib/shared/models';
 import { standImports } from './stand.imports';
 import { ColumnsStateService } from '../../../../front-components/src/lib/components';
 import { BANNERS_ITEMS, DEFAULT_COLS, DROPDOWN_ITEMS } from './constants';
@@ -56,10 +57,20 @@ export class StandComponent {
 		Validators.minLength(10),
 	]);
 
+	public inputCtrlDisabled = new FormControl({
+		value: 'rrrr',
+		disabled: true,
+	});
+
 	public textareaCtrl = new FormControl('rrrr', [
 		Validators.required,
 		Validators.minLength(10),
 	]);
+
+	public textareaCtrlDisabled = new FormControl({
+		value: 'rrrr',
+		disabled: true,
+	});
 
 	public indexTab = 0;
 
@@ -67,11 +78,11 @@ export class StandComponent {
 	public numberPickerCtrl = new FormControl(2);
 
 	public datepickerCtrl: FormControl<Date | null> = new FormControl(
-		new Date('2025-03-17T09:42:01.028Z'),
+		new Date('2025-07-09T09:42:01.028Z'),
 	);
 
-	public minDate = new Date(2025, 6, 20);
-	public maxDate = new Date(2025, 2, 20);
+	public minDate = new Date(2025, 7, 12);
+	public maxDate = new Date(2025, 7, 20);
 
 	public timepickerCtrl = new FormControl(null);
 	public dateTimepickerCtrl: FormControl<Date | null> = new FormControl(
@@ -163,6 +174,7 @@ export class StandComponent {
 	protected readonly TooltipPosition = TooltipPosition;
 	protected readonly exampleItems = exampleDataTable;
 	protected readonly bannersItems = BANNERS_ITEMS;
+	protected readonly TagType = TagType;
 
 	private readonly sharedPopupService = inject(SharedPopupService);
 
@@ -307,14 +319,14 @@ export class StandComponent {
 			mainButton: {
 				text: 'Пнока',
 				click: () => {
-					console.log('Кнопка Пнока была нажата!');
+					console.warn('Кнопка Пнока была нажата!');
 					// Можно добавить любую логику
 				},
 			},
 			secondaryButton: {
 				text: 'Вторичная кнопка',
 				click: () => {
-					console.log('Вторичная кнопка была нажата!');
+					console.warn('Вторичная кнопка была нажата!');
 				},
 			},
 		});
@@ -327,14 +339,14 @@ export class StandComponent {
 			mainButton: {
 				text: 'Пнока',
 				click: () => {
-					console.log('Кнопка Пнока была нажата!');
+					console.warn('Кнопка Пнока была нажата!');
 					// Можно добавить любую логику
 				},
 			},
 			secondaryButton: {
 				text: 'Вторичная кнопка',
 				click: () => {
-					console.log('Вторичная кнопка была нажата!');
+					console.warn('Вторичная кнопка была нажата!');
 				},
 			},
 		});
@@ -448,7 +460,7 @@ export class StandComponent {
 	}
 
 	public test(): void {
-		console.log('test');
+		console.warn('test');
 	}
 
 	// Toggle requiredTrue validator
@@ -458,6 +470,7 @@ export class StandComponent {
 		} else {
 			this.checkboxControl.setValidators(Validators.requiredTrue);
 		}
+
 		this.checkboxControl.updateValueAndValidity();
 	}
 
@@ -511,6 +524,4 @@ export class StandComponent {
 			(checkBox2Value && !checkBox3Value) ||
 			(!checkBox2Value && checkBox3Value);
 	}
-
-	protected readonly TagType = TagType;
 }

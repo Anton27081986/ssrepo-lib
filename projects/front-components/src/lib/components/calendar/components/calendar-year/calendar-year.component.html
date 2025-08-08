@@ -20,6 +20,7 @@
 						<ss-lib-calendar-cell
 							[displayValue]="monthShortName"
 							[item]="item"
+							[isActive]="itemIsActive(item)"
 							[isToday]="itemIsToday(item)"
 							(click)="onItemClick(item)"
 						/>

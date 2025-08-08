@@ -1,11 +1,9 @@
-import type { InputSignal, TemplateRef } from '@angular/core';
+import type { InputSignal } from '@angular/core';
 import { Component, input } from '@angular/core';
-import { NgIf, NgTemplateOutlet } from '@angular/common';
-import { Align, IconType } from '../../shared/models';
-import { ExtraSize, TextType, TextWeight } from '../../shared/models';
+import { Align, type IBadgeProps } from '../../shared/models';
+import { ExtraSize, TextType, TextWeight, Colors } from '../../shared/models';
 import { BadgeComponent } from '../badge/badge.component';
 import { TextComponent } from '../text/text.component';
-import { DividerComponent } from '../divider/divider.component';
 
 /**
  * Компонент для отображения пустого состояния с иконкой и описанием
@@ -14,11 +12,7 @@ import { DividerComponent } from '../divider/divider.component';
  * ```html
  * Параметры:
  *
- * [headerTitle]: string - Заголовок в шапке - обязательный
- *
- * [actionRef]: TemplateRef - Шаблон кнопок действий - обязательный
- *
- * [icon]: IconType - Иконка пустого состояния - обязательный
+ * [badge]: IBadgeProps - badge - обязательный
  *
  * [title]: string - Заголовок пустого состояния - обязательный
  *
@@ -26,9 +20,7 @@ import { DividerComponent } from '../divider/divider.component';
  * необязательный, по умолчанию: null
  *
  * <ss-lib-empty-state
- *   [headerTitle]="'Пустое состояние'"
- *   [actionRef]="actionTemplate"
- *   [icon]="IconType.EmptyState"
+ *   [badge]="{ icon: IconType.EmptyState}"
  *   [title]="'Нет данных'"
  *   [description]="'Добавьте данные для отображения'"
  * ></ss-lib-empty-state>
@@ -37,23 +29,15 @@ import { DividerComponent } from '../divider/divider.component';
 @Component({
 	selector: 'ss-lib-empty-state',
 	standalone: true,
-	imports: [
-		BadgeComponent,
-		TextComponent,
-		NgIf,
-		DividerComponent,
-		NgTemplateOutlet,
-	],
+	imports: [BadgeComponent, TextComponent],
 	templateUrl: './empty-state.component.html',
 	styleUrl: './empty-state.component.scss',
 })
 export class EmptyStateComponent {
-	public readonly headerTitle: InputSignal<string> = input.required<string>();
-	public readonly actionRef: InputSignal<TemplateRef<{}> | null> =
-		input.required();
-
-	public readonly icon: InputSignal<IconType> = input.required<IconType>();
 	public readonly title: InputSignal<string> = input.required();
+	public readonly badge: InputSignal<IBadgeProps> =
+		input.required<IBadgeProps>();
+
 	public readonly description: InputSignal<string | null> = input<
 		string | null
 	>(null);
@@ -62,4 +46,5 @@ export class EmptyStateComponent {
 	protected readonly TextWeight = TextWeight;
 	protected readonly ExtraSize = ExtraSize;
 	protected readonly Align = Align;
+	protected readonly Colors = Colors;
 }

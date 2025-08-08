@@ -26,11 +26,7 @@ const gapBetweenTabs = 12;
 	styleUrls: ['tabs.component.scss'],
 	standalone: true,
 	changeDetection: ChangeDetectionStrategy.OnPush,
-	imports: [
-		TabComponent,
-		DropdownItemComponent,
-		DropdownListComponent,
-	],
+	imports: [TabComponent, DropdownItemComponent, DropdownListComponent],
 })
 export class TabsComponent implements AfterViewInit, OnDestroy {
 	private readonly tabsBlock = viewChild('tabsBlock', {
