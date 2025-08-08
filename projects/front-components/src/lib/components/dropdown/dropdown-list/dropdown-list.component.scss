@@ -11,6 +11,10 @@
 	box-shadow: var(--shadow-xl);
 	position: relative;
 
+	&_header{
+		padding-bottom: 4px;
+	}
+
 	ss-lib-divider {
 		padding: 4px 0;
 	}

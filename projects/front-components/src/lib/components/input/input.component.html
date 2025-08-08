@@ -1,6 +1,5 @@
 <div
 	class="input-container"
-	[ngClass]="['size-' + size()]"
 	(focusout)="updateInputStateOnFocusout($event)"
 >
 	<input
@@ -8,16 +7,11 @@
 		tabindex="-1"
 		class="input-field"
 		type="text"
+		[ngClass]="['size-' + size()]"
 		[style.text-align]="align()"
 		[maskito]="inputMask()"
 		[formControl]="inputCtrl"
 		[placeholder]="placeholder()"
 		[readOnly]="readOnly()"
 	/>
-	@if (viewClearButton) {
-		<ss-lib-close-button
-			[size]="ExtraSize.xs"
-			(click)="clearControl()"
-		></ss-lib-close-button>
-	}
 </div>

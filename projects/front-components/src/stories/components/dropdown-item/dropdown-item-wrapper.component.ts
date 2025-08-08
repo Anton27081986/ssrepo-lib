@@ -1,6 +1,6 @@
 import { Component, input } from '@angular/core';
-import { DropdownItemComponent } from '../../../lib/components/dropdown-item/dropdown-item.component';
 import { IconType } from '../../../lib/shared/models';
+import { DropdownItemComponent } from '../../../lib/components';
 
 /**
  * Обертка для компонента DropdownItem.

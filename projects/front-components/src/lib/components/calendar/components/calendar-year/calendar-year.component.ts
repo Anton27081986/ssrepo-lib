@@ -52,6 +52,14 @@ export class CalendarYearComponent {
 		return this.monthToday().monthSame(item);
 	}
 
+	public itemIsActive(item: CalendarMonth): boolean {
+		if (!this.month()) {
+			return false;
+		}
+
+		return this.month()!.monthSame(item);
+	}
+
 	public onItemClick(item: CalendarMonth): void {
 		this.monthClick.emit(item);
 	}

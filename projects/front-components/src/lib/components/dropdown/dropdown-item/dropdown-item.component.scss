@@ -8,7 +8,7 @@
 	border-radius: var(--border-radius-sm);
 	background: var(--surface-primary);
 	padding: 8px 10px;
-	margin: 1px 6px;
+	margin: 0 6px 2px;
 
 	&:has(.selected) {
 		background: var(--surface-action-hover-3) !important;
@@ -33,6 +33,10 @@
 		cursor: default;
 		pointer-events: none;
 	}
+}
+
+:host(:last-of-type) {
+	margin-bottom: 0;
 }
 
 .dropdown-item {

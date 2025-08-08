@@ -1,4 +1,4 @@
-import type { AfterContentInit } from '@angular/core';
+import { AfterContentInit, computed } from '@angular/core';
 import {
 	Component,
 	ContentChild,
@@ -8,7 +8,7 @@ import {
 	runInInjectionContext,
 	signal,
 } from '@angular/core';
-import { NgClass, NgIf } from '@angular/common';
+import { NgClass } from '@angular/common';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { filter, map, tap } from 'rxjs';
 import { Validators } from '@angular/forms';
@@ -18,6 +18,7 @@ import { FieldCtrlDirective } from '../../core/directives';
 import {
 	Colors,
 	ControlState,
+	ExtraSize,
 	IconType,
 	Status,
 	TextType,
@@ -25,6 +26,7 @@ import {
 } from '../../shared/models';
 import { TooltipDirective } from '../tooltip/tooltip.directive';
 import { StatusIconComponent } from '../status-icon/status-icon.component';
+import { CloseButtonComponent } from '../buttons';
 
 /**
  * Компонент поля формы с поддержкой валидации, состояний и отображения ошибок
@@ -41,6 +43,9 @@ import { StatusIconComponent } from '../status-icon/status-icon.component';
  * по умолчанию: true
  *
  * [showValidationFieldIcon]: boolean - Флаг отображения иконки валидации -
+ * необязательный, по умолчанию: false
+ *
+ * [clearButton]: boolean - Флаг на показ иконки крестика в input -
  * необязательный, по умолчанию: false
  *
  * [errorText]: string - Текст ошибки - необязательный, по умолчанию: ''
@@ -74,9 +79,9 @@ import { StatusIconComponent } from '../status-icon/status-icon.component';
 		TextComponent,
 		NgClass,
 		IconComponent,
-		NgIf,
 		TooltipDirective,
 		StatusIconComponent,
+		CloseButtonComponent,
 	],
 	templateUrl: './form-field.component.html',
 	styleUrl: './form-field.component.scss',
@@ -87,9 +92,11 @@ export class FormFieldComponent implements AfterContentInit {
 
 	public readonly label = input<string>('');
 	public readonly hint = input<string>('');
+	public readonly size = input<ExtraSize>(ExtraSize.lg);
 	public readonly showValidation = input<boolean>(true);
 	public readonly showBorder = input<boolean>(true);
 	public readonly showValidationFieldIcon = input<boolean>(false);
+	public readonly clearButton = input<boolean>(false);
 	public readonly errorText = input<string>('');
 	public readonly icon = input<IconType | null>(null);
 	public readonly tooltipInfoText = input<string | null>(null);
@@ -102,10 +109,24 @@ export class FormFieldComponent implements AfterContentInit {
 		ControlState.Touched,
 	);
 
+	public readonly closeButtonSize = computed(() => {
+		switch (this.size()) {
+			case ExtraSize.xxs:
+			case ExtraSize.xs:
+			case ExtraSize.sm:
+			case ExtraSize.md:
+				return ExtraSize.xs;
+			case ExtraSize.lg:
+			case ExtraSize.xl:
+			case ExtraSize.xxl:
+				return ExtraSize.sm;
+		}
+	});
+
 	public readonly TextType = TextType;
 	public readonly TextWeight = TextWeight;
 	public readonly Colors = Colors;
-
+	public readonly ExtraSize = ExtraSize;
 	public readonly IconType = IconType;
 
 	private readonly injector = inject(Injector);
@@ -117,6 +138,15 @@ export class FormFieldComponent implements AfterContentInit {
 		const control = this.fieldCtrl?.ngControl.control;
 
 		return this.calcColorIcon(control!.value, this.currentFieldCtrlState());
+	}
+
+	protected get viewClearButton(): boolean {
+		return (
+			this.clearButton() &&
+			!this.fieldCtrl!.ngControl.control!.disabled &&
+			this.fieldCtrl!.ngControl.control!.value &&
+			this.fieldCtrl!.ngControl.control!.value.trim().length > 0
+		);
 	}
 
 	public ngAfterContentInit(): void {
@@ -131,6 +161,10 @@ export class FormFieldComponent implements AfterContentInit {
 
 	private initFieldCtrlState(): void {
 		if (this.fieldCtrl?.ngControl.control) {
+			if (this.fieldCtrl!.ngControl.control!.disabled) {
+				this.currentFieldCtrlState.set(ControlState.Disabled);
+			}
+
 			this.fieldCtrl!.ngControl.control!.markAllAsTouched = () => {
 				if (this.fieldCtrl!.ngControl.control!.disabled) {
 					return;
@@ -200,5 +234,9 @@ export class FormFieldComponent implements AfterContentInit {
 		}
 
 		return Colors.IconOnDisabled;
+	}
+
+	public clearControl(): void {
+		this.fieldCtrl!.ngControl.control!.setValue(null);
 	}
 }

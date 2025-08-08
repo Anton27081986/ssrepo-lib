@@ -30,6 +30,7 @@ export class PopoverTriggerForDirective implements OnDestroy {
 		alias: 'popoverTriggerFor',
 	});
 
+	public anchorSelector = input<string>('.field-container');
 	public popoverTriggerDisabled = input<boolean>(false);
 
 	public isPopoverOpen = signal<boolean>(false);
@@ -82,13 +83,26 @@ export class PopoverTriggerForDirective implements OnDestroy {
 		this.isPopoverOpenEmit.emit(true);
 
 		if (!this.overlayRef) {
+			let anchorElement: HTMLElement = this.elementRef.nativeElement;
+
+			if (this.anchorSelector()) {
+				const customAnchor = this.elementRef.nativeElement.closest(
+					this.anchorSelector(),
+				);
+
+				if (customAnchor) {
+					anchorElement = customAnchor as HTMLElement;
+				}
+			}
+
 			this.overlayRef = this.overlay.create({
 				hasBackdrop: true,
 				backdropClass: 'cdk-overlay-transparent-backdrop',
 				scrollStrategy: this.overlay.scrollStrategies.reposition(),
 				positionStrategy: this.overlay
 					.position()
-					.flexibleConnectedTo(this.elementRef)
+					.flexibleConnectedTo(anchorElement)
+					.withViewportMargin(8)
 					.withPositions([
 						{
 							originX: 'start',

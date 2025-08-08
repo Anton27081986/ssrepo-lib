@@ -9,6 +9,10 @@
 	border-radius: var(--border-radius-md);
 	transition: background-color 100ms linear;
 
+	--focus-rings-focus-ring-disabled:
+		0 0 0 2px var(--surface-primary),
+		0 0 0 4px var(--surface-disabled-selected);
+
 	&[data-type='weekday'],
 	&[data-type='default'] {
 		color: var(--text-body-2);
@@ -44,9 +48,18 @@
 			box-shadow: var(--focus-rings-focus-ring);
 		}
 
-		&.calendar-cell_disabled {
+		&.calendar-cell_disabled:not(.calendar-cell_today) {
 			background: var(--surface-disabled-selected);
 			color: var(--text-on-action);
+			pointer-events: none !important;
+			cursor: default;
+		}
+
+		&.calendar-cell_disabled.calendar-cell_today {
+			background: var(--surface-disabled-selected);
+			color: var(--text-on-action);
+			outline: none;
+			box-shadow: var(--focus-rings-focus-ring-disabled);
 			pointer-events: none !important;
 			cursor: default;
 		}
@@ -56,6 +69,14 @@
 		&.calendar-cell_today {
 			font-weight: 600;
 			color: var(--icon-information);
+			text-decoration: underline;
+			text-underline-offset: 25%;
+			text-decoration-thickness: 10%;
+
+			&:hover,
+			&:active {
+				color: var(--text-body-2);
+			}
 		}
 
 		&:hover {
