@@ -11,15 +11,20 @@ import type { SkeletonConf } from '../../../shared/models';
  *
  * @example
  * ```html
- * <ss-lib-skeleton-block [config]="{ width: '100%', height: '20px' }" />
+ * <ss-lib-skeleton-block [config]="{ width: '100%', height: '20px', borderRadius: '4px' }" />
  * ```
  */
 @Component({
 	selector: 'ss-lib-skeleton-block',
-	templateUrl: './skeleton-block.component.html',
-	styleUrls: ['./skeleton-block.component.scss'],
 	standalone: true,
+	template: ` <div class="ss-lib-skeleton-block"></div> `,
+	styleUrls: ['./skeleton-block.component.scss'],
 	changeDetection: ChangeDetectionStrategy.OnPush,
+	host: {
+		'[style.width]': 'config().width',
+		'[style.height]': 'config().height',
+		'[style.borderRadius]': 'config().borderRadius',
+	},
 })
 export class SkeletonBlockComponent {
 	public readonly config: InputSignal<SkeletonConf> =
