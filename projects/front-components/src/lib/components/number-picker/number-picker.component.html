@@ -3,7 +3,7 @@
 		<ss-lib-button
 			class="number-picker__number-indicator indicator-start"
 			[type]="ButtonType.Secondary"
-			[size]="ExtraSize.xl"
+			[size]="sizeConfig().buttonSize"
 			[icon]="IconType.Minus"
 			[iconPosition]="IconPosition.OnlyIcon"
 			[disabled]="
@@ -29,7 +29,7 @@
 					[min]="min()"
 					[max]="max()"
 					[align]="Align.Center"
-					[size]="ExtraSize.lg"
+					[size]="sizeConfig().inputSize"
 				/>
 			</ss-lib-form-field>
 		</div>
@@ -37,7 +37,7 @@
 		<ss-lib-button
 			class="number-picker__number-indicator indicator-end"
 			[type]="ButtonType.Secondary"
-			[size]="ExtraSize.xl"
+			[size]="sizeConfig().buttonSize"
 			[icon]="IconType.Plus"
 			[iconPosition]="IconPosition.OnlyIcon"
 			[disabled]="

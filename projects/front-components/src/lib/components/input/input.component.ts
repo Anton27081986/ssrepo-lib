@@ -77,7 +77,7 @@ export class InputComponent implements ControlValueAccessor {
 	});
 
 	public readonly type = input<InputType>(InputType.Text);
-	public readonly size = input<ExtraSize>(ExtraSize.lg);
+	public readonly size = input<ExtraSize.md | ExtraSize.lg>(ExtraSize.lg);
 	public readonly placeholder = input<string>('');
 	public readonly readOnly = input<boolean>(false);
 	public readonly align = input<Align>(Align.Start);
