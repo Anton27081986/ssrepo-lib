@@ -9,6 +9,8 @@ import {
 	input,
 	ViewContainerRef,
 } from '@angular/core';
+import { fromEvent, tap } from 'rxjs';
+import { toSignal } from '@angular/core/rxjs-interop';
 import { TooltipComponent } from './tooltip.component';
 import { TooltipPosition } from '../../shared/models';
 
@@ -35,6 +37,18 @@ export class TooltipDirective implements OnDestroy {
 
 	private componentRef: ComponentRef<TooltipComponent> | null = null;
 	private showTimeoutId: ReturnType<typeof setTimeout> | null = null;
+
+	constructor() {
+		toSignal(
+			fromEvent(window, 'scroll', { capture: true }).pipe(
+				tap(() => {
+					if (this.componentRef) {
+						this.destroy();
+					}
+				}),
+			),
+		);
+	}
 
 	@HostListener('mouseenter')
 	public onMouseEnter(): void {

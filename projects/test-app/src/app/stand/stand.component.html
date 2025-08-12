@@ -689,6 +689,7 @@
 						[iconPosition]="IconPosition.Start"
 						[size]="ExtraSize.sm"
 					></ss-lib-link>
+
 					<ss-lib-link
 						[type]="ButtonType.LinkBlue"
 						[linkAppearance]="LinkAppearance.Standalone"
@@ -697,6 +698,7 @@
 						[iconPosition]="IconPosition.Start"
 						[size]="ExtraSize.md"
 					></ss-lib-link>
+
 					<ss-lib-link
 						[type]="ButtonType.LinkBlue"
 						[linkAppearance]="LinkAppearance.Standalone"
@@ -705,6 +707,7 @@
 						[iconPosition]="IconPosition.Start"
 						[size]="ExtraSize.lg"
 					></ss-lib-link>
+
 					<ss-lib-link
 						[type]="ButtonType.LinkBlue"
 						[linkAppearance]="LinkAppearance.Standalone"
@@ -713,6 +716,7 @@
 						[iconPosition]="IconPosition.Start"
 						[size]="ExtraSize.xl"
 					></ss-lib-link>
+
 					<ss-lib-link
 						[type]="ButtonType.LinkBlue"
 						[linkAppearance]="LinkAppearance.Standalone"
@@ -721,6 +725,7 @@
 						[iconPosition]="IconPosition.Start"
 						[size]="ExtraSize.xxl"
 					></ss-lib-link>
+
 					<ss-lib-link
 						[type]="ButtonType.LinkBlue"
 						[linkAppearance]="LinkAppearance.Standalone"
@@ -733,6 +738,7 @@
 				</div>
 
 				<h4 class="sub-section-subtitle">Type - Link black</h4>
+
 				<div class="component-row">
 					<ss-lib-link
 						[type]="ButtonType.LinkBlack"
@@ -742,6 +748,7 @@
 						[iconPosition]="IconPosition.Start"
 						[size]="ExtraSize.xxs"
 					></ss-lib-link>
+
 					<ss-lib-link
 						[type]="ButtonType.LinkBlack"
 						[linkAppearance]="LinkAppearance.Standalone"
@@ -750,6 +757,7 @@
 						[iconPosition]="IconPosition.Start"
 						[size]="ExtraSize.xs"
 					></ss-lib-link>
+
 					<ss-lib-link
 						[type]="ButtonType.LinkBlack"
 						[linkAppearance]="LinkAppearance.Standalone"
@@ -758,6 +766,7 @@
 						[iconPosition]="IconPosition.Start"
 						[size]="ExtraSize.sm"
 					></ss-lib-link>
+
 					<ss-lib-link
 						[type]="ButtonType.LinkBlack"
 						[linkAppearance]="LinkAppearance.Standalone"
@@ -766,6 +775,7 @@
 						[iconPosition]="IconPosition.Start"
 						[size]="ExtraSize.md"
 					></ss-lib-link>
+
 					<ss-lib-link
 						[type]="ButtonType.LinkBlack"
 						[linkAppearance]="LinkAppearance.Standalone"
@@ -774,6 +784,7 @@
 						[iconPosition]="IconPosition.Start"
 						[size]="ExtraSize.lg"
 					></ss-lib-link>
+
 					<ss-lib-link
 						[type]="ButtonType.LinkBlack"
 						[linkAppearance]="LinkAppearance.Standalone"
@@ -782,6 +793,7 @@
 						[iconPosition]="IconPosition.Start"
 						[size]="ExtraSize.xl"
 					></ss-lib-link>
+
 					<ss-lib-link
 						[type]="ButtonType.LinkBlack"
 						[linkAppearance]="LinkAppearance.Standalone"
@@ -790,6 +802,7 @@
 						[iconPosition]="IconPosition.Start"
 						[size]="ExtraSize.xxl"
 					></ss-lib-link>
+
 					<ss-lib-link
 						[type]="ButtonType.LinkBlack"
 						[linkAppearance]="LinkAppearance.Standalone"
@@ -1389,482 +1402,495 @@
 				</div>
 			</div>
 		</div>
-	</div>
 
-	<!-- Form Fields Section -->
-	<div class="section">
-		<h2 class="section-title">Form Fields</h2>
-		<p class="section-description">
-			Input, textarea, datepicker, and timepicker components with
-			validation.
-		</p>
+		<!-- Form Fields Section -->
+		<div class="section">
+			<h2 class="section-title">Form Fields</h2>
+			<p class="section-description">
+				Input, textarea, datepicker, and timepicker components with
+				validation.
+			</p>
 
-		<div class="sub-section">
-			<!-- Блок: две колонки инпутов md и lg -->
-			<div class="component-row two-columns">
-				<!-- Column 1 (md inputs) -->
-				<div class="component-column">
-					<ss-lib-form-field
-						class="spaced"
-						[label]="'Input md'"
-						[hint]="'Подсказка'"
-						[showValidationFieldIcon]="true"
-						[clearButton]="true"
-						[size]="ExtraSize.md"
-					>
-						<ss-lib-input
-							fieldCtrl
+			<div class="sub-section">
+				<!-- Блок: две колонки инпутов md и lg -->
+				<div class="component-row two-columns">
+					<!-- Column 1 (md inputs) -->
+					<div class="component-column">
+						<ss-lib-form-field
+							class="spaced"
+							[label]="'Input md'"
+							[hint]="'Подсказка'"
+							[showValidationFieldIcon]="true"
+							[clearButton]="true"
 							[size]="ExtraSize.md"
-							[formControl]="inputCtrl"
-							[placeholder]="'oleg@mail.ru'"
-						/>
-					</ss-lib-form-field>
+						>
+							<ss-lib-input
+								fieldCtrl
+								[size]="ExtraSize.md"
+								[formControl]="inputCtrl"
+								[placeholder]="'oleg@mail.ru'"
+							/>
+						</ss-lib-form-field>
 
-					<ss-lib-form-field
-						class="spaced"
-						[label]="'Input md'"
-						[hint]="'Подсказка'"
-						[errorText]="'Неверно заполнено'"
-						[tooltipInfoText]="'Какой то тултип'"
-						[showValidationFieldIcon]="true"
-						[clearButton]="true"
-						[icon]="IconType.Search"
-						[size]="ExtraSize.md"
-					>
-						<ss-lib-input
-							fieldCtrl
+						<ss-lib-form-field
+							class="spaced"
+							[label]="'Input md'"
+							[hint]="'Подсказка'"
+							[errorText]="'Неверно заполнено'"
+							[tooltipInfoText]="'Какой то тултип'"
+							[showValidationFieldIcon]="true"
+							[clearButton]="true"
+							[icon]="IconType.Search"
 							[size]="ExtraSize.md"
-							[formControl]="inputCtrl"
-							[placeholder]="'oleg@mail.ru'"
-						/>
-					</ss-lib-form-field>
+						>
+							<ss-lib-input
+								fieldCtrl
+								[size]="ExtraSize.md"
+								[formControl]="inputCtrl"
+								[placeholder]="'oleg@mail.ru'"
+							/>
+						</ss-lib-form-field>
 
-					<ss-lib-form-field
-						class="spaced"
-						[label]="'Input md'"
-						[hint]="'Подсказка'"
-						[errorText]="'Неверно заполнено'"
-						[tooltipInfoText]="'Какой то тултип'"
-						[showValidationFieldIcon]="false"
-						[clearButton]="true"
-						[icon]="IconType.Bell"
-						[size]="ExtraSize.md"
-					>
-						<ss-lib-input
-							fieldCtrl
+						<ss-lib-form-field
+							class="spaced"
+							[label]="'Input md'"
+							[hint]="'Подсказка'"
+							[errorText]="'Неверно заполнено'"
+							[tooltipInfoText]="'Какой то тултип'"
+							[showValidationFieldIcon]="false"
+							[clearButton]="true"
+							[icon]="IconType.Bell"
 							[size]="ExtraSize.md"
-							[formControl]="inputCtrl"
-							[placeholder]="'oleg@mail.ru'"
-						/>
-					</ss-lib-form-field>
+						>
+							<ss-lib-input
+								fieldCtrl
+								[size]="ExtraSize.md"
+								[formControl]="inputCtrl"
+								[placeholder]="'oleg@mail.ru'"
+							/>
+						</ss-lib-form-field>
 
-					<ss-lib-form-field
-						class="spaced"
-						[label]="'Input md'"
-						[hint]="'Подсказка'"
-						[errorText]="'Неверно заполнено'"
-						[tooltipInfoText]="'Какой то тултип'"
-						[showValidationFieldIcon]="true"
-						[clearButton]="false"
-						[icon]="IconType.Bell"
-						[size]="ExtraSize.md"
-					>
-						<ss-lib-input
-							fieldCtrl
+						<ss-lib-form-field
+							class="spaced"
+							[label]="'Input md'"
+							[hint]="'Подсказка'"
+							[errorText]="'Неверно заполнено'"
+							[tooltipInfoText]="'Какой то тултип'"
+							[showValidationFieldIcon]="true"
+							[clearButton]="false"
+							[icon]="IconType.Bell"
 							[size]="ExtraSize.md"
-							[formControl]="inputCtrl"
-							[placeholder]="'oleg@mail.ru'"
-						/>
-					</ss-lib-form-field>
+						>
+							<ss-lib-input
+								fieldCtrl
+								[size]="ExtraSize.md"
+								[formControl]="inputCtrl"
+								[placeholder]="'oleg@mail.ru'"
+							/>
+						</ss-lib-form-field>
 
-					<ss-lib-form-field
-						class="spaced"
-						[label]="'Input md'"
-						[hint]="'Подсказка'"
-						[errorText]="'Неверно заполнено'"
-						[tooltipInfoText]="'Какой то тултип'"
-						[showValidationFieldIcon]="true"
-						[clearButton]="true"
-						[icon]="IconType.Bell"
-						[size]="ExtraSize.md"
-					>
-						<ss-lib-input
-							fieldCtrl
+						<ss-lib-form-field
+							class="spaced"
+							[label]="'Input md'"
+							[hint]="'Подсказка'"
+							[errorText]="'Неверно заполнено'"
+							[tooltipInfoText]="'Какой то тултип'"
+							[showValidationFieldIcon]="true"
+							[clearButton]="true"
+							[icon]="IconType.Bell"
 							[size]="ExtraSize.md"
-							[formControl]="inputCtrlDisabled"
-							[placeholder]="'oleg@mail.ru'"
-						/>
+						>
+							<ss-lib-input
+								fieldCtrl
+								[size]="ExtraSize.md"
+								[formControl]="inputCtrlDisabled"
+								[placeholder]="'oleg@mail.ru'"
+							/>
+						</ss-lib-form-field>
+					</div>
+
+					<!-- Column 2 (lg inputs) -->
+					<div class="component-column">
+						<ss-lib-form-field
+							class="spaced"
+							[label]="'Input lg'"
+							[hint]="'Подсказка'"
+							[showValidationFieldIcon]="true"
+							[clearButton]="true"
+							[size]="ExtraSize.lg"
+						>
+							<ss-lib-input
+								fieldCtrl
+								[size]="ExtraSize.lg"
+								[formControl]="inputCtrl"
+								[placeholder]="'oleg@mail.ru'"
+							/>
+						</ss-lib-form-field>
+
+						<ss-lib-form-field
+							class="spaced"
+							[label]="'Input lg'"
+							[hint]="'Подсказка'"
+							[errorText]="'Неверно заполнено'"
+							[tooltipInfoText]="'Какой то тултип'"
+							[showValidationFieldIcon]="true"
+							[clearButton]="true"
+							[icon]="IconType.Search"
+							[size]="ExtraSize.lg"
+						>
+							<ss-lib-input
+								fieldCtrl
+								[size]="ExtraSize.lg"
+								[formControl]="inputCtrl"
+								[placeholder]="'oleg@mail.ru'"
+							/>
+						</ss-lib-form-field>
+
+						<ss-lib-form-field
+							class="spaced"
+							[label]="'Input lg'"
+							[hint]="'Подсказка'"
+							[errorText]="'Неверно заполнено'"
+							[tooltipInfoText]="'Какой то тултип'"
+							[showValidationFieldIcon]="false"
+							[clearButton]="true"
+							[icon]="IconType.Bell"
+							[size]="ExtraSize.lg"
+						>
+							<ss-lib-input
+								fieldCtrl
+								[size]="ExtraSize.lg"
+								[formControl]="inputCtrl"
+								[placeholder]="'oleg@mail.ru'"
+							/>
+						</ss-lib-form-field>
+
+						<ss-lib-form-field
+							class="spaced"
+							[label]="'Input lg'"
+							[hint]="'Подсказка'"
+							[errorText]="'Неверно заполнено'"
+							[tooltipInfoText]="'Какой то тултип'"
+							[showValidationFieldIcon]="true"
+							[clearButton]="false"
+							[icon]="IconType.Bell"
+							[size]="ExtraSize.lg"
+						>
+							<ss-lib-input
+								fieldCtrl
+								[size]="ExtraSize.lg"
+								[formControl]="inputCtrl"
+								[placeholder]="'oleg@mail.ru'"
+							/>
+						</ss-lib-form-field>
+
+						<ss-lib-form-field
+							class="spaced"
+							[label]="'Input lg'"
+							[hint]="'Подсказка'"
+							[errorText]="'Неверно заполнено'"
+							[tooltipInfoText]="'Какой то тултип'"
+							[showValidationFieldIcon]="true"
+							[clearButton]="true"
+							[icon]="IconType.Bell"
+							[size]="ExtraSize.lg"
+						>
+							<ss-lib-input
+								fieldCtrl
+								[size]="ExtraSize.lg"
+								[formControl]="inputCtrlDisabled"
+								[placeholder]="'oleg@mail.ru'"
+							/>
+						</ss-lib-form-field>
+					</div>
+				</div>
+
+				<!-- Остальные компоненты -->
+				<div class="spaced">
+					<ss-lib-form-field
+						[label]="'Textarea'"
+						[hint]="'Подсказка'"
+						[errorText]="'Текст ошибки'"
+					>
+						<ss-lib-textarea
+							fieldCtrl
+							[formControl]="textareaCtrl"
+						></ss-lib-textarea>
 					</ss-lib-form-field>
 				</div>
 
-				<!-- Column 2 (lg inputs) -->
-				<div class="component-column">
+				<div class="spaced">
 					<ss-lib-form-field
-						class="spaced"
-						[label]="'Input lg'"
+						[label]="'Textarea disabled'"
 						[hint]="'Подсказка'"
-						[showValidationFieldIcon]="true"
-						[clearButton]="true"
-						[size]="ExtraSize.lg"
+						[errorText]="'Текст ошибки'"
 					>
-						<ss-lib-input
+						<ss-lib-textarea
 							fieldCtrl
-							[size]="ExtraSize.lg"
-							[formControl]="inputCtrl"
-							[placeholder]="'oleg@mail.ru'"
-						/>
-					</ss-lib-form-field>
-
-					<ss-lib-form-field
-						class="spaced"
-						[label]="'Input lg'"
-						[hint]="'Подсказка'"
-						[errorText]="'Неверно заполнено'"
-						[tooltipInfoText]="'Какой то тултип'"
-						[showValidationFieldIcon]="true"
-						[clearButton]="true"
-						[icon]="IconType.Search"
-						[size]="ExtraSize.lg"
-					>
-						<ss-lib-input
-							fieldCtrl
-							[size]="ExtraSize.lg"
-							[formControl]="inputCtrl"
-							[placeholder]="'oleg@mail.ru'"
-						/>
-					</ss-lib-form-field>
-
-					<ss-lib-form-field
-						class="spaced"
-						[label]="'Input lg'"
-						[hint]="'Подсказка'"
-						[errorText]="'Неверно заполнено'"
-						[tooltipInfoText]="'Какой то тултип'"
-						[showValidationFieldIcon]="false"
-						[clearButton]="true"
-						[icon]="IconType.Bell"
-						[size]="ExtraSize.lg"
-					>
-						<ss-lib-input
-							fieldCtrl
-							[size]="ExtraSize.lg"
-							[formControl]="inputCtrl"
-							[placeholder]="'oleg@mail.ru'"
-						/>
-					</ss-lib-form-field>
-
-					<ss-lib-form-field
-						class="spaced"
-						[label]="'Input lg'"
-						[hint]="'Подсказка'"
-						[errorText]="'Неверно заполнено'"
-						[tooltipInfoText]="'Какой то тултип'"
-						[showValidationFieldIcon]="true"
-						[clearButton]="false"
-						[icon]="IconType.Bell"
-						[size]="ExtraSize.lg"
-					>
-						<ss-lib-input
-							fieldCtrl
-							[size]="ExtraSize.lg"
-							[formControl]="inputCtrl"
-							[placeholder]="'oleg@mail.ru'"
-						/>
-					</ss-lib-form-field>
-
-					<ss-lib-form-field
-						class="spaced"
-						[label]="'Input lg'"
-						[hint]="'Подсказка'"
-						[errorText]="'Неверно заполнено'"
-						[tooltipInfoText]="'Какой то тултип'"
-						[showValidationFieldIcon]="true"
-						[clearButton]="true"
-						[icon]="IconType.Bell"
-						[size]="ExtraSize.lg"
-					>
-						<ss-lib-input
-							fieldCtrl
-							[size]="ExtraSize.lg"
-							[formControl]="inputCtrlDisabled"
-							[placeholder]="'oleg@mail.ru'"
-						/>
+							[formControl]="textareaCtrlDisabled"
+						></ss-lib-textarea>
 					</ss-lib-form-field>
 				</div>
-			</div>
 
-			<!-- Остальные компоненты -->
-			<div class="spaced">
-				<ss-lib-form-field
-					[label]="'Textarea'"
-					[hint]="'Подсказка'"
-					[errorText]="'Текст ошибки'"
-				>
-					<ss-lib-textarea
-						fieldCtrl
-						[formControl]="textareaCtrl"
-					></ss-lib-textarea>
-				</ss-lib-form-field>
-			</div>
+				<div class="spaced">
+					<ss-lib-form-field
+						[label]="'Datepicker'"
+						[hint]="'Подсказка'"
+						[errorText]="'Неверно заполнено'"
+						[showValidationFieldIcon]="true"
+					>
+						<ss-lib-datepicker
+							fieldCtrl
+							[formControl]="datepickerCtrl"
+							[min]="minDate"
+						></ss-lib-datepicker>
+					</ss-lib-form-field>
+				</div>
 
-			<div class="spaced">
-				<ss-lib-form-field
-					[label]="'Textarea disabled'"
-					[hint]="'Подсказка'"
-					[errorText]="'Текст ошибки'"
-				>
-					<ss-lib-textarea
-						fieldCtrl
-						[formControl]="textareaCtrlDisabled"
-					></ss-lib-textarea>
-				</ss-lib-form-field>
-			</div>
+				<div class="spaced">
+					<ss-lib-form-field
+						[label]="'Timepicker'"
+						[hint]="'Подсказка'"
+						[errorText]="'Неверно заполнено'"
+					>
+						<ss-lib-timepicker
+							fieldCtrl
+							[formControl]="timepickerCtrl"
+						></ss-lib-timepicker>
+					</ss-lib-form-field>
 
-			<div class="spaced">
+					<pre>{{ timepickerCtrl.value }}</pre>
+				</div>
+			</div>
+		</div>
+
+		<!-- Number Picker Section -->
+		<div class="section">
+			<h2 class="section-title">Number Picker</h2>
+			<p class="section-description">
+				Number input with min and max constraints.
+			</p>
+			<div class="component-row">
+				<ss-lib-number-picker
+					[formControl]="numberPickerCtrl"
+					[min]="5"
+					[max]="1000"
+				></ss-lib-number-picker>
+
+				<ss-lib-number-picker
+					[size]="ExtraSize.md"
+					[formControl]="numberPickerCtrl"
+					[min]="5"
+					[max]="1000"
+				></ss-lib-number-picker>
+			</div>
+		</div>
+
+		<!-- Select Dropdown Section -->
+		<div class="section">
+			<h2 class="section-title">Select Dropdown</h2>
+
+			<p class="section-description">
+				Select component with dropdown options.
+			</p>
+
+			<div class="component-row">
 				<ss-lib-form-field
-					[label]="'Datepicker'"
+					[label]="'Название'"
 					[hint]="'Подсказка'"
 					[errorText]="'Неверно заполнено'"
 					[showValidationFieldIcon]="true"
 				>
-					<ss-lib-datepicker
+					<ss-lib-select
 						fieldCtrl
-						[formControl]="datepickerCtrl"
-						[min]="minDate"
-					></ss-lib-datepicker>
+						[formControl]="selectCtrl"
+						[popoverTriggerFor]="dropdown2"
+					>
+						<ss-lib-dropdown-list #dropdown2>
+							@for (item of dropdownItems; track item.id) {
+								<ss-lib-dropdown-item
+									[value]="item"
+									[icon]="IconType.Bell"
+								></ss-lib-dropdown-item>
+							}
+						</ss-lib-dropdown-list>
+					</ss-lib-select>
 				</ss-lib-form-field>
 			</div>
+		</div>
 
-			<div class="spaced">
-				<ss-lib-form-field
-					[label]="'Timepicker'"
-					[hint]="'Подсказка'"
-					[errorText]="'Неверно заполнено'"
+		<!-- Avatar Dropdown Section -->
+		<div class="section">
+			<h2 class="section-title">Avatar Dropdown</h2>
+
+			<p class="section-description">
+				Avatar button with dropdown menu and custom header.
+			</p>
+
+			<div class="component-row">
+				<ss-lib-avatar-button
+					[username]="'ВН'"
+					[src]="'https://i.pravatar.cc/300'"
+					[popoverTriggerFor]="dropdown1"
+				></ss-lib-avatar-button>
+
+				<ss-lib-dropdown-list
+					#dropdown1
+					[headerTemplateRef]="avatarHeader"
 				>
-					<ss-lib-timepicker
-						fieldCtrl
-						[formControl]="timepickerCtrl"
-					></ss-lib-timepicker>
-				</ss-lib-form-field>
+					<ss-lib-dropdown-item
+						[label]="'Опция'"
+						[icon]="IconType.Bell"
+						[selected]="true"
+						(click)="console.log(1)"
+					></ss-lib-dropdown-item>
 
-				<pre>{{ timepickerCtrl.value }}</pre>
-			</div>
-		</div>
-	</div>
+					<ss-lib-dropdown-item
+						[label]="'Опция'"
+						[icon]="IconType.Bell"
+						(click)="console.log(1)"
+					></ss-lib-dropdown-item>
 
-	<!-- Number Picker Section -->
-	<div class="section">
-		<h2 class="section-title">Number Picker</h2>
-		<p class="section-description">
-			Number input with min and max constraints.
-		</p>
-		<div class="component-row">
-			<ss-lib-number-picker
-				[formControl]="numberPickerCtrl"
-				[min]="5"
-				[max]="1000"
-			></ss-lib-number-picker>
-		</div>
-	</div>
+					<ss-lib-dropdown-item
+						[label]="'Опция'"
+						[icon]="IconType.Bell"
+						(click)="console.log(1)"
+					></ss-lib-dropdown-item>
 
-	<!-- Select Dropdown Section -->
-	<div class="section">
-		<h2 class="section-title">Select Dropdown</h2>
+					<ss-lib-dropdown-item
+						[label]="'Опция'"
+						[icon]="IconType.Bell"
+						[isDisabled]="true"
+						(click)="console.log(2)"
+					></ss-lib-dropdown-item>
 
-		<p class="section-description">
-			Select component with dropdown options.
-		</p>
+					<ss-lib-divider class="divider"></ss-lib-divider>
 
-		<div class="component-row">
-			<ss-lib-form-field
-				[label]="'Название'"
-				[hint]="'Подсказка'"
-				[errorText]="'Неверно заполнено'"
-				[showValidationFieldIcon]="true"
-			>
-				<ss-lib-select
-					fieldCtrl
-					[formControl]="selectCtrl"
-					[popoverTriggerFor]="dropdown2"
-				>
-					<ss-lib-dropdown-list #dropdown2>
-						@for (item of dropdownItems; track item.id) {
-							<ss-lib-dropdown-item
-								[value]="item"
-								[icon]="IconType.Bell"
-							></ss-lib-dropdown-item>
-						}
-					</ss-lib-dropdown-list>
-				</ss-lib-select>
-			</ss-lib-form-field>
-		</div>
-	</div>
+					<ss-lib-dropdown-item
+						[label]="'Удалить'"
+						[icon]="IconType.Bell"
+						(click)="console.log(5)"
+					></ss-lib-dropdown-item>
 
-	<!-- Avatar Dropdown Section -->
-	<div class="section">
-		<h2 class="section-title">Avatar Dropdown</h2>
+					<ss-lib-dropdown-item
+						[label]="'Удалить'"
+						[icon]="IconType.Bell"
+						(click)="console.log(5)"
+					></ss-lib-dropdown-item>
+				</ss-lib-dropdown-list>
 
-		<p class="section-description">
-			Avatar button with dropdown menu and custom header.
-		</p>
+				<ng-template #avatarHeader>
+					<div class="avatar-test">
+						<ss-lib-avatar
+							[username]="'ВН'"
+							[src]="'https://i.pravatar.cc/300'"
+						></ss-lib-avatar>
 
-		<div class="component-row">
-			<ss-lib-avatar-button
-				[username]="'ВН'"
-				[src]="'https://i.pravatar.cc/300'"
-				[popoverTriggerFor]="dropdown1"
-			></ss-lib-avatar-button>
+						<div class="avatar-test__title">
+							<ss-lib-text
+								[type]="TextType.BodySm"
+								[weight]="TextWeight.Medium"
+								[color]="Colors.TextBody2"
+							>
+								Мария Викторовна
+							</ss-lib-text>
 
-			<ss-lib-dropdown-list
-				#dropdown1
-				[headerTemplateRef]="avatarHeader"
-			>
-				<ss-lib-dropdown-item
-					[label]="'Опция'"
-					[icon]="IconType.Bell"
-					[selected]="true"
-					(click)="console.log(1)"
-				></ss-lib-dropdown-item>
-
-				<ss-lib-dropdown-item
-					[label]="'Опция'"
-					[icon]="IconType.Bell"
-					(click)="console.log(1)"
-				></ss-lib-dropdown-item>
-
-				<ss-lib-dropdown-item
-					[label]="'Опция'"
-					[icon]="IconType.Bell"
-					(click)="console.log(1)"
-				></ss-lib-dropdown-item>
-
-				<ss-lib-dropdown-item
-					[label]="'Опция'"
-					[icon]="IconType.Bell"
-					[isDisabled]="true"
-					(click)="console.log(2)"
-				></ss-lib-dropdown-item>
-
-				<ss-lib-divider class="divider"></ss-lib-divider>
-
-				<ss-lib-dropdown-item
-					[label]="'Удалить'"
-					[icon]="IconType.Bell"
-					(click)="console.log(5)"
-				></ss-lib-dropdown-item>
-
-				<ss-lib-dropdown-item
-					[label]="'Удалить'"
-					[icon]="IconType.Bell"
-					(click)="console.log(5)"
-				></ss-lib-dropdown-item>
-			</ss-lib-dropdown-list>
-
-			<ng-template #avatarHeader>
-				<div class="avatar-test">
-					<ss-lib-avatar
-						[username]="'ВН'"
-						[src]="'https://i.pravatar.cc/300'"
-					></ss-lib-avatar>
-
-					<div class="avatar-test__title">
-						<ss-lib-text
-							[type]="TextType.BodySm"
-							[weight]="TextWeight.Medium"
-							[color]="Colors.TextBody2"
-						>
-							Мария Викторовна
-						</ss-lib-text>
-
-						<ss-lib-text
-							[type]="TextType.BodySm"
-							[weight]="TextWeight.Regular"
-							[color]="Colors.TextBody3"
-						>
-							Менеджер по продажам
-						</ss-lib-text>
-					</div>
-				</div>
-			</ng-template>
-		</div>
-	</div>
-
-	<!-- OTP Input Section -->
-	<div class="section">
-		<h2 class="section-title">OTP Input</h2>
-
-		<p class="section-description">One-time password input field.</p>
-		<div
-			class="component-row"
-			[style.align-items]="'center'"
-		>
-			<div [style.width.px]="360">
-				<ss-lib-otp-input
-					class="spaced"
-					[formControl]="otpCtrl"
-				></ss-lib-otp-input>
-			</div>
-		</div>
-
-		<ss-lib-button
-			[type]="ButtonType.Primary"
-			[text]="'Submit OTP'"
-			(click)="submitOtp()"
-		/>
-	</div>
-
-	<!-- Scrollbar Section -->
-	<div class="section">
-		<h2 class="section-title">Scrollbar</h2>
-		<p class="section-description">Custom scrollbar with sample content.</p>
-		<div class="component-row">
-			<div class="scrollbar-test">
-				<ss-lib-scrollbar>
-					@for (colCount of 100 | repeatTimes; track $index) {
-						<div class="scrollbar-test__item">
-							Товарищи! сложившаяся структура организации играет
-							важную роль в формировании модели развития
+							<ss-lib-text
+								[type]="TextType.BodySm"
+								[weight]="TextWeight.Regular"
+								[color]="Colors.TextBody3"
+							>
+								Менеджер по продажам
+							</ss-lib-text>
 						</div>
-					}
-				</ss-lib-scrollbar>
+					</div>
+				</ng-template>
+			</div>
+		</div>
+
+		<!-- OTP Input Section -->
+		<div class="section">
+			<h2 class="section-title">OTP Input</h2>
+
+			<p class="section-description">One-time password input field.</p>
+			<div
+				class="component-row"
+				[style.align-items]="'center'"
+			>
+				<div [style.width.px]="360">
+					<ss-lib-otp-input
+						class="spaced"
+						[formControl]="otpCtrl"
+					></ss-lib-otp-input>
+				</div>
+			</div>
+
+			<ss-lib-button
+				[type]="ButtonType.Primary"
+				[text]="'Submit OTP'"
+				(click)="submitOtp()"
+			/>
+		</div>
+
+		<!-- Scrollbar Section -->
+		<div class="section">
+			<h2 class="section-title">Scrollbar</h2>
+			<p class="section-description">
+				Custom scrollbar with sample content.
+			</p>
+			<div class="component-row">
+				<div class="scrollbar-test">
+					<ss-lib-scrollbar>
+						@for (colCount of 100 | repeatTimes; track $index) {
+							<div class="scrollbar-test__item">
+								Товарищи! сложившаяся структура организации
+								играет важную роль в формировании модели
+								развития
+							</div>
+						}
+					</ss-lib-scrollbar>
+				</div>
+			</div>
+		</div>
+
+		<!-- Empty State Section -->
+		<div class="section">
+			<h2 class="section-title">Empty State</h2>
+			<p class="section-description">
+				Empty state component with custom actions and icon.
+			</p>
+			<div class="component-row">
+				<div class="empty-state__test">
+					<ss-lib-empty-state
+						[title]="'Заголовок'"
+						[description]="
+							'Здесь будут баннеры. Нажмите «Добавить баннер», чтобы добавить новый.'
+						"
+						[badge]="{
+							size: ExtraSize.xl,
+							icon: IconType.ImagePlus,
+						}"
+					>
+						<div class="component-row">
+							<ss-lib-button
+								[type]="ButtonType.Secondary"
+								[text]="'Вторичная'"
+								[size]="ExtraSize.xl"
+							></ss-lib-button>
+
+							<ss-lib-button
+								[type]="ButtonType.Primary"
+								[text]="'Первичная'"
+								[size]="ExtraSize.xl"
+							></ss-lib-button>
+						</div>
+					</ss-lib-empty-state>
+				</div>
 			</div>
 		</div>
 	</div>
 
 	<!--TODO:	###############################-->
-
-	<!-- Empty State Section -->
-	<div class="section">
-		<h2 class="section-title">Empty State</h2>
-		<p class="section-description">
-			Empty state component with custom actions and icon.
-		</p>
-		<div class="component-row">
-			<div class="empty-state__test">
-				<ss-lib-empty-state
-					[title]="'Заголовок'"
-					[description]="
-						'Здесь будут баннеры. Нажмите «Добавить баннер», чтобы добавить новый.'
-					"
-					[badge]="{ size: ExtraSize.xl, icon: IconType.ImagePlus }"
-				>
-					<div class="component-row">
-						<ss-lib-button
-							[type]="ButtonType.Secondary"
-							[text]="'Вторичная'"
-							[size]="ExtraSize.xl"
-						></ss-lib-button>
-
-						<ss-lib-button
-							[type]="ButtonType.Primary"
-							[text]="'Первичная'"
-							[size]="ExtraSize.xl"
-						></ss-lib-button>
-					</div>
-				</ss-lib-empty-state>
-			</div>
-		</div>
-	</div>
 
 	<!-- Skeleton Blocks Section -->
 	<div class="section">
@@ -1875,25 +1901,27 @@
 		<div class="component-row">
 			<ss-lib-skeleton-block
 				[config]="{
-					width: '300px',
-					height: '200px',
-					type: Shape.Round,
+					width: '180px',
+					height: '56px',
+					borderRadius: '8px',
 				}"
-			></ss-lib-skeleton-block>
+			/>
+
 			<ss-lib-skeleton-block
 				[config]="{
-					width: '100px',
-					height: '10px',
-					type: Shape.Square,
+					width: '197px',
+					height: '14px',
+					borderRadius: '4px',
 				}"
-			></ss-lib-skeleton-block>
+			/>
+
 			<ss-lib-skeleton-block
 				[config]="{
-					width: '200px',
-					height: '200px',
-					type: Shape.Round,
+					width: '40px',
+					height: '40px',
+					borderRadius: '50%',
 				}"
-			></ss-lib-skeleton-block>
+			/>
 		</div>
 	</div>
 
@@ -1934,7 +1962,63 @@
 				[icon]="IconType.Plus"
 				[color]="Colors.IconOnDisabled"
 				[tooltipText]="'Это тултип'"
+				[position]="TooltipPosition.TopLeft"
+			></ss-lib-icon>
+
+			<ss-lib-icon
+				ss-lib-tooltip
+				[icon]="IconType.Plus"
+				[color]="Colors.IconOnDisabled"
+				[tooltipText]="'Это тултип'"
+				[position]="TooltipPosition.Top"
+			></ss-lib-icon>
+
+			<ss-lib-icon
+				ss-lib-tooltip
+				[icon]="IconType.Plus"
+				[color]="Colors.IconOnDisabled"
+				[tooltipText]="'Это тултип'"
 				[position]="TooltipPosition.TopRight"
+			></ss-lib-icon>
+
+			<ss-lib-icon
+				ss-lib-tooltip
+				[icon]="IconType.Plus"
+				[color]="Colors.IconOnDisabled"
+				[tooltipText]="'Это тултип'"
+				[position]="TooltipPosition.Right"
+			></ss-lib-icon>
+
+			<ss-lib-icon
+				ss-lib-tooltip
+				[icon]="IconType.Plus"
+				[color]="Colors.IconOnDisabled"
+				[tooltipText]="'Это тултип'"
+				[position]="TooltipPosition.BottomRight"
+			></ss-lib-icon>
+
+			<ss-lib-icon
+				ss-lib-tooltip
+				[icon]="IconType.Plus"
+				[color]="Colors.IconOnDisabled"
+				[tooltipText]="'Это тултип'"
+				[position]="TooltipPosition.Bottom"
+			></ss-lib-icon>
+
+			<ss-lib-icon
+				ss-lib-tooltip
+				[icon]="IconType.Plus"
+				[color]="Colors.IconOnDisabled"
+				[tooltipText]="'Это тултип'"
+				[position]="TooltipPosition.BottomLeft"
+			></ss-lib-icon>
+
+			<ss-lib-icon
+				ss-lib-tooltip
+				[icon]="IconType.Plus"
+				[color]="Colors.IconOnDisabled"
+				[tooltipText]="'Это тултип'"
+				[position]="TooltipPosition.Left"
 			></ss-lib-icon>
 		</div>
 	</div>
@@ -2017,6 +2101,20 @@
 		<p class="section-description">
 			Showcases image upload component with progress indicators.
 		</p>
+
+		<div class="component-row">
+			<ss-lib-progress
+				[total]="100"
+				[current]="50"
+			></ss-lib-progress>
+
+			<ss-lib-progress-circle
+				[progress]="fileLoadProgress()"
+			></ss-lib-progress-circle>
+
+			<ss-lib-spinner [displaySpinnerText]="true"></ss-lib-spinner>
+		</div>
+
 		<div class="sub-section">
 			<ss-lib-image-upload
 				class="spaced"
@@ -2024,14 +2122,6 @@
 				(fileChanged)="uploadFile($event)"
 				(uploadCancel)="uploadCancel()"
 			></ss-lib-image-upload>
-		</div>
-
-		<div class="component-row">
-			<ss-lib-progress-circle
-				[progress]="fileLoadProgress()"
-			></ss-lib-progress-circle>
-
-			<ss-lib-spinner [displaySpinnerText]="true"></ss-lib-spinner>
 		</div>
 	</div>
 </div>

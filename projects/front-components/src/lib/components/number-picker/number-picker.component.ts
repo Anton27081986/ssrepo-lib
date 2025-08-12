@@ -1,6 +1,7 @@
 import {
 	ChangeDetectionStrategy,
 	Component,
+	computed,
 	forwardRef,
 	input,
 	signal,
@@ -23,7 +24,12 @@ import {
 	InputType,
 } from '../../shared/models';
 import { FieldCtrlDirective } from '../../core/directives';
-import { ButtonComponent } from '../buttons/button/button.component';
+import { ButtonComponent } from '../buttons';
+
+interface ISizeConfig {
+	readonly inputSize: ExtraSize.md | ExtraSize.lg;
+	readonly buttonSize: ExtraSize;
+}
 
 /**
  * Компонент для выбора числового значения с кнопками управления и валидацией
@@ -31,6 +37,8 @@ import { ButtonComponent } from '../buttons/button/button.component';
  * @example
  * ```html
  * Параметры:
+ *
+ * [size]: ExtraSize - Размер - необязательный, по умолчанию: ExtraSize.lg
  *
  * [min]: number - Минимальное значение - необязательный, по умолчанию: 0
  *
@@ -72,6 +80,7 @@ import { ButtonComponent } from '../buttons/button/button.component';
 	],
 })
 export class NumberPickerComponent implements ControlValueAccessor {
+	public readonly size = input<ExtraSize.md | ExtraSize.lg>(ExtraSize.lg);
 	public readonly min = input<number>(0);
 	public readonly max = input<number | undefined>(undefined);
 	public readonly step = input<number>(1);
@@ -84,6 +93,23 @@ export class NumberPickerComponent implements ControlValueAccessor {
 	public readonly Align = Align;
 	public readonly InputType = InputType;
 	protected readonly ExtraSize = ExtraSize;
+
+	public readonly sizeConfig = computed((): ISizeConfig => {
+		switch (this.size()) {
+			case ExtraSize.md:
+				return {
+					inputSize: ExtraSize.md,
+					buttonSize: ExtraSize.lg,
+				};
+			case ExtraSize.lg:
+			default:
+				return {
+					inputSize: ExtraSize.lg,
+					buttonSize: ExtraSize.xl,
+				};
+		}
+	});
+
 	public onChange: ((value: number | null) => void) | undefined;
 	public onTouched: (() => void) | undefined;
 

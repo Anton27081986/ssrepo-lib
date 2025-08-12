@@ -42,6 +42,7 @@ import {
 	StatusIconComponent,
 	DialogHeaderComponent,
 	TagComponent,
+	ProgressComponent,
 } from '../../../../front-components/src/lib/components';
 import {
 	FieldCtrlDirective,
@@ -106,4 +107,5 @@ export const standImports = [
 	TableExampleComponent,
 	DialogHeaderComponent,
 	TagComponent,
+	ProgressComponent,
 ];
