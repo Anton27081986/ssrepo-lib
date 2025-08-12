@@ -64,7 +64,7 @@ export class DatepickerComponent implements ControlValueAccessor {
 	public min = input<Date>(FIRST_NATIVE_DAY);
 	public max = input<Date>(LAST_NATIVE_DAY);
 
-	public readonly size = input<ExtraSize>(ExtraSize.md);
+	public readonly size = input<ExtraSize.md | ExtraSize.lg>(ExtraSize.md);
 	public selectedDate = signal<CalendarDay | null>(null);
 	public datepickerCtrl = new FormControl<string | null>(null);
 	public readonly InputType = InputType;
