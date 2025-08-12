@@ -1,5 +1,4 @@
 import { IStoreTableBaseColumn } from '../../../../../front-components/src/lib/shared/models';
-import { Shape } from '../../../../../front-components/src/lib/shared/models';
 import { BannerRowItemField } from '../../example-table-tr/example-table-tr.component';
 
 export const DEFAULT_COLS: IStoreTableBaseColumn[] = [
@@ -15,12 +14,10 @@ export const DEFAULT_COLS: IStoreTableBaseColumn[] = [
 			header: {
 				width: '20px',
 				height: '20px',
-				type: Shape.Round,
 			},
 			body: {
 				width: '20px',
 				height: '20px',
-				type: Shape.Round,
 			},
 		},
 	},
@@ -36,12 +33,10 @@ export const DEFAULT_COLS: IStoreTableBaseColumn[] = [
 			header: {
 				width: '100px',
 				height: '10px',
-				type: Shape.Square,
 			},
 			body: {
 				width: '100px',
 				height: '20px',
-				type: Shape.Square,
 			},
 		},
 	},
@@ -57,12 +52,10 @@ export const DEFAULT_COLS: IStoreTableBaseColumn[] = [
 			header: {
 				width: '100px',
 				height: '50px',
-				type: Shape.Square,
 			},
 			body: {
 				width: '100px',
 				height: '50px',
-				type: Shape.Square,
 			},
 		},
 	},
@@ -79,12 +72,10 @@ export const DEFAULT_COLS: IStoreTableBaseColumn[] = [
 			header: {
 				width: '100px',
 				height: '50px',
-				type: Shape.Square,
 			},
 			body: {
 				width: '100px',
 				height: '50px',
-				type: Shape.Square,
 			},
 		},
 	},
@@ -100,12 +91,10 @@ export const DEFAULT_COLS: IStoreTableBaseColumn[] = [
 			header: {
 				width: '100px',
 				height: '50px',
-				type: Shape.Square,
 			},
 			body: {
 				width: '100px',
 				height: '50px',
-				type: Shape.Square,
 			},
 		},
 	},
@@ -122,12 +111,10 @@ export const DEFAULT_COLS: IStoreTableBaseColumn[] = [
 			header: {
 				width: '100px',
 				height: '50px',
-				type: Shape.Square,
 			},
 			body: {
 				width: '100px',
 				height: '50px',
-				type: Shape.Square,
 			},
 		},
 	},
@@ -143,12 +130,10 @@ export const DEFAULT_COLS: IStoreTableBaseColumn[] = [
 			header: {
 				width: '100px',
 				height: '50px',
-				type: Shape.Square,
 			},
 			body: {
 				width: '100px',
 				height: '50px',
-				type: Shape.Square,
 			},
 		},
 	},
@@ -165,12 +150,10 @@ export const DEFAULT_COLS: IStoreTableBaseColumn[] = [
 			header: {
 				width: '100px',
 				height: '50px',
-				type: Shape.Square,
 			},
 			body: {
 				width: '100px',
 				height: '50px',
-				type: Shape.Square,
 			},
 		},
 	},
@@ -186,12 +169,10 @@ export const DEFAULT_COLS: IStoreTableBaseColumn[] = [
 			header: {
 				width: '100px',
 				height: '50px',
-				type: Shape.Square,
 			},
 			body: {
 				width: '100px',
 				height: '50px',
-				type: Shape.Square,
 			},
 		},
 	},

@@ -16,7 +16,8 @@ $verticalArrowOffset: 8px;
 		0 12px 16px -4px #0a0d1214;
 
 	outline: 1px solid var(--border-tertiary);
-
+	will-change: opacity;
+	pointer-events: none;
 
 	//TODO: заменить цвета на токены --surface-tertiary и --border-tertiary в svg
 	&::before {

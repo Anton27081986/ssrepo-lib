@@ -54,6 +54,7 @@
 .component-row {
 	display: flex;
 	flex-wrap: wrap;
+	align-items: flex-start;
 	gap: 12px;
 	margin-bottom: 16px;
 }
@@ -130,7 +131,6 @@
 		flex-direction: column;
 	}
 }
-
 
 .avatar-test {
 	display: flex;
