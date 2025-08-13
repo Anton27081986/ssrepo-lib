@@ -10,13 +10,15 @@
 }
 
 @if (text()) {
-	<ss-lib-text
-		[type]="sizeConfig().textType"
-		[weight]="TextWeight.Medium"
-		[color]="textColor()"
-	>
-		{{ text() }}
-	</ss-lib-text>
+	<div class="action-bar-item__text">
+		<ss-lib-text
+			[type]="sizeConfig().textType"
+			[weight]="TextWeight.Medium"
+			[color]="textColor()"
+		>
+			{{ text() }}
+		</ss-lib-text>
+	</div>
 }
 
 @if (rightIconConfig()) {
