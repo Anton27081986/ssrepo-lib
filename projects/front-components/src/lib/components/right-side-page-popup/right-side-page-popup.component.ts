@@ -53,7 +53,7 @@ import { DividerComponent } from '../divider/divider.component';
 export class RightSidePagePopupComponent {
 	public readonly titleHeader = input<string>('');
 	public readonly descriptionHeader = input<string>('');
-	public readonly actionsRef = input.required<TemplateRef<unknown>>();
+	public readonly actionsRef = input<TemplateRef<{}> | null>(null);
 	public readonly contentRef = input<TemplateRef<{}> | null>(null);
 	public readonly badgeProps = input<IBadgeProps | null>(null);
 	public readonly closePosition = input<
