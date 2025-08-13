@@ -28,6 +28,33 @@ interface ISizeConfig {
 	readonly iconSize: string;
 }
 
+/**
+ * Компонент элемента панели действий с поддержкой текста, иконок и состояний (hover, pressed).
+ *
+ * @example
+ * ```html
+ * Параметры:
+ *
+ * [type]: ActionBarItemType - Тип элемента панели - обязательный,
+ * по умолчанию: ActionBarItemType.Default
+ *
+ * [text]: string - Текст элемента - необязательный,
+ * по умолчанию: ''
+ *
+ * [leftIconConfig]: IIconConfig | null - Конфигурация левой иконки - необязательный,
+ * по умолчанию: null
+ *
+ * [rightIconConfig]: IIconConfig | null - Конфигурация правой иконки - необязательный,
+ * по умолчанию: null
+ *
+ * <ss-lib-action-bar-item
+ *   [type]="ActionBarItemType.Default"
+ *   [text]="'Действие'"
+ *   [leftIconConfig]="{ icon: IconType.ArrowRight, color: Colors.IconAction2 }"
+ * ></ss-lib-action-bar-item>
+ * ```
+ */
+
 @Component({
 	selector: 'ss-lib-action-bar-item',
 	standalone: true,
