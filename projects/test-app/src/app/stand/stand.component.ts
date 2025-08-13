@@ -10,6 +10,7 @@ import { HttpClient, HttpEventType } from '@angular/common/http';
 import { RouterOutlet } from '@angular/router';
 import { toSignal } from '@angular/core/rxjs-interop';
 import {
+	ActionBarItemType,
 	ButtonType,
 	Colors,
 	ExtraSize,
@@ -175,6 +176,7 @@ export class StandComponent {
 	protected readonly exampleItems = exampleDataTable;
 	protected readonly bannersItems = BANNERS_ITEMS;
 	protected readonly TagType = TagType;
+	protected readonly ActionBarItemType = ActionBarItemType;
 
 	private readonly sharedPopupService = inject(SharedPopupService);
 

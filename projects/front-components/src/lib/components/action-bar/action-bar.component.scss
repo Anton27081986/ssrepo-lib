@@ -1,0 +1,14 @@
+.action-bar {
+	display: flex;
+	align-items: center;
+	gap: 0;
+
+	&.size-xxs {
+		border-radius: var(--border-radius-xs);
+	}
+
+	&.size-md {
+		border-radius: var(--border-radius-md);
+		box-shadow: var(--shadow-lg);
+	}
+}

@@ -27,8 +27,8 @@ import { ButtonComponent, CloseButtonComponent } from '../buttons';
 import { ToastRef } from './toast-ref';
 
 const TOAST_AUTO_CLOSE_DELAYS = {
-	LONG: 10_0000,
-	SHORT: 5_0000,
+	LONG: 10_000,
+	SHORT: 5_000,
 } as const;
 
 interface IToastIconConfig {

@@ -65,3 +65,5 @@ export { HeaderFilterCheckboxItemAbstractComponent } from './header-filter-check
 export { IndicatorChecklistPopupComponent } from './indicator-checklist-popup/indicator-checklist-popup.component';
 export { ProgressComponent } from './progress/progress.component';
 export { TagComponent } from './tag/tag.component';
+export { ActionBarComponent } from './action-bar/action-bar.component';
+export { ActionBarItemComponent } from './action-bar/action-bar-item/action-bar-item.component';

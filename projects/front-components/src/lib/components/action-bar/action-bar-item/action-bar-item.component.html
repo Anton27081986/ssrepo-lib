@@ -1,0 +1,31 @@
+@if (leftIconConfig()) {
+	<ss-lib-icon
+		[height]="sizeConfig().iconSize"
+		[width]="sizeConfig().iconSize"
+		[icon]="leftIconConfig()!.icon"
+		[color]="
+			state() | mapper: getIconColor : type() : leftIconConfig()!.color!
+		"
+	></ss-lib-icon>
+}
+
+@if (text()) {
+	<ss-lib-text
+		[type]="sizeConfig().textType"
+		[weight]="TextWeight.Medium"
+		[color]="textColor()"
+	>
+		{{ text() }}
+	</ss-lib-text>
+}
+
+@if (rightIconConfig()) {
+	<ss-lib-icon
+		[height]="sizeConfig().iconSize"
+		[width]="sizeConfig().iconSize"
+		[icon]="rightIconConfig()!.icon"
+		[color]="
+			state() | mapper: getIconColor : type() : rightIconConfig()!.color!
+		"
+	></ss-lib-icon>
+}
