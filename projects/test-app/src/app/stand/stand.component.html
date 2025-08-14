@@ -2056,7 +2056,7 @@
 		</div>
 
 		<div class="component-row">
-			<ss-lib-action-bar>
+			<ss-lib-action-bar [showClose]="true">
 				<ss-lib-action-bar-item
 					[type]="ActionBarItemType.Info"
 					[leftIconConfig]="{
@@ -2083,6 +2083,7 @@
 				<ss-lib-action-bar-item
 					[leftIconConfig]="{ icon: IconType.Trash }"
 					[text]="'Удалить'"
+					[isDestructive]="true"
 				/>
 			</ss-lib-action-bar>
 

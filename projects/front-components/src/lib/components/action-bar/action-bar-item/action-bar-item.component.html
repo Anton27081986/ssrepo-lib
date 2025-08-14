@@ -4,7 +4,12 @@
 		[width]="sizeConfig().iconSize"
 		[icon]="leftIconConfig()!.icon"
 		[color]="
-			state() | mapper: getIconColor : type() : leftIconConfig()!.color!
+			state()
+				| mapper
+					: getIconColor
+					: type()
+					: leftIconConfig()!.color!
+					: isDestructive()
 		"
 	></ss-lib-icon>
 }
@@ -27,7 +32,12 @@
 		[width]="sizeConfig().iconSize"
 		[icon]="rightIconConfig()!.icon"
 		[color]="
-			state() | mapper: getIconColor : type() : rightIconConfig()!.color!
+			state()
+				| mapper
+					: getIconColor
+					: type()
+					: rightIconConfig()!.color!
+					: isDestructive()
 		"
 	></ss-lib-icon>
 }

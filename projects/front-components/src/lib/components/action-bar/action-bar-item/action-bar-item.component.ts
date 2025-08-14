@@ -86,6 +86,7 @@ export class ActionBarItemComponent {
 
 	public type = input<ActionBarItemType>(ActionBarItemType.Default);
 	public text = input<string>('');
+	public readonly isDestructive = input<boolean>(false);
 	public leftIconConfig = input<IIconConfig | null, IIconConfig | null>(
 		null,
 		{
@@ -103,14 +104,23 @@ export class ActionBarItemComponent {
 	public readonly state = signal<IStateElement>(EMPTY_STATE);
 
 	public textColor = computed(() => {
-		if (this.type() === ActionBarItemType.Default) {
-			if (this.state().hover) {
-				return Colors.TextActionHover2;
-			}
+		if (this.type() !== ActionBarItemType.Default) {
+			return Colors.TextAction2;
+		}
 
-			if (this.state().pressed) {
-				return Colors.TextActionPressed2;
-			}
+		if (
+			this.isDestructive() &&
+			(this.state().hover || this.state().pressed)
+		) {
+			return Colors.TextError;
+		}
+
+		if (this.state().hover) {
+			return Colors.TextActionHover2;
+		}
+
+		if (this.state().pressed) {
+			return Colors.TextActionPressed2;
 		}
 
 		return Colors.TextAction2;
@@ -136,15 +146,22 @@ export class ActionBarItemComponent {
 		state: IStateElement,
 		type: ActionBarItemType,
 		color: Colors,
+		isDestructive: boolean,
 	): Colors {
-		if (type === ActionBarItemType.Default) {
-			if (state.hover) {
-				return Colors.IconActionHover2;
-			}
+		if (type !== ActionBarItemType.Default) {
+			return color;
+		}
 
-			if (state.pressed) {
-				return Colors.IconActionPressed2;
-			}
+		if (isDestructive && (state.hover || state.pressed)) {
+			return Colors.IconError;
+		}
+
+		if (state.hover) {
+			return Colors.IconActionHover2;
+		}
+
+		if (state.pressed) {
+			return Colors.IconActionPressed2;
 		}
 
 		return color;
