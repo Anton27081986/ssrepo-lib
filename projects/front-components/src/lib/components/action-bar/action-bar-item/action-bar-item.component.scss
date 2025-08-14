@@ -1,0 +1,72 @@
+:host {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: var(--surface-primary);
+	outline: 1px solid var(--border-primary);
+	outline-offset: -1px;
+	border-radius: 0;
+	margin-left: -1px;
+	transition: background 0.3s ease;
+	cursor: default;
+
+	&.type-default {
+		cursor: pointer;
+
+		&:hover {
+			background-color: var(--surface-action-hover-2);
+		}
+
+		&:active {
+			background-color: var(--surface-action-pressed-2);
+		}
+	}
+
+	/* Size variants */
+	&.size-xxs {
+		padding: 2px 4px;
+
+		&.only-icon {
+			padding: 4px 6px;
+		}
+	}
+
+	&.size-md {
+		padding: 10px 16px;
+		gap: 2px;
+
+		&.only-icon {
+			padding: 10px 12px;
+		}
+	}
+
+	&:first-child {
+		margin-left: 0;
+
+		&.size-xxs {
+			border-top-left-radius: var(--border-radius-xs);
+			border-bottom-left-radius: var(--border-radius-xs);
+		}
+
+		&.size-md {
+			border-top-left-radius: var(--border-radius-md);
+			border-bottom-left-radius: var(--border-radius-md);
+		}
+	}
+
+	&:last-child {
+		&.size-xxs {
+			border-top-right-radius: var(--border-radius-xs);
+			border-bottom-right-radius: var(--border-radius-xs);
+		}
+
+		&.size-md {
+			border-top-right-radius: var(--border-radius-md);
+			border-bottom-right-radius: var(--border-radius-md);
+		}
+	}
+
+	.action-bar-item__text {
+		padding: 0 2px;
+	}
+}

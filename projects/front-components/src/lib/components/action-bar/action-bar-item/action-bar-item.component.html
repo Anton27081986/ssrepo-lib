@@ -1,0 +1,43 @@
+@if (leftIconConfig()) {
+	<ss-lib-icon
+		[height]="sizeConfig().iconSize"
+		[width]="sizeConfig().iconSize"
+		[icon]="leftIconConfig()!.icon"
+		[color]="
+			state()
+				| mapper
+					: getIconColor
+					: type()
+					: leftIconConfig()!.color!
+					: isDestructive()
+		"
+	></ss-lib-icon>
+}
+
+@if (text()) {
+	<div class="action-bar-item__text">
+		<ss-lib-text
+			[type]="sizeConfig().textType"
+			[weight]="TextWeight.Medium"
+			[color]="textColor()"
+		>
+			{{ text() }}
+		</ss-lib-text>
+	</div>
+}
+
+@if (rightIconConfig()) {
+	<ss-lib-icon
+		[height]="sizeConfig().iconSize"
+		[width]="sizeConfig().iconSize"
+		[icon]="rightIconConfig()!.icon"
+		[color]="
+			state()
+				| mapper
+					: getIconColor
+					: type()
+					: rightIconConfig()!.color!
+					: isDestructive()
+		"
+	></ss-lib-icon>
+}

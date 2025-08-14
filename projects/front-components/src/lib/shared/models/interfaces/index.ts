@@ -26,3 +26,4 @@ export { IFilterCriterionType } from './filters';
 export { IFilterCriteria } from './filters';
 export { FilterQueryParams } from './filters';
 export { DynamicNumberArrayObject } from './filters';
+export { IIconConfig } from './icon-config';
