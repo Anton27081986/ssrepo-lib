@@ -3,10 +3,15 @@ import { ComponentType } from '@angular/cdk/overlay';
 export interface IFilterItem {
 	readonly field: string; // fill from another enum
 	readonly text: string;
+	readonly defaultText: string;
 	readonly queryParamConfig: FilterItemQueryParamConfig<IFilterCriterionType> | null;
 	readonly defaultValue: IFilterCriterionType | null;
 	readonly valueComponent: ComponentType<unknown>;
 	active: boolean;
+	readonly records: {
+		readonly width: string;
+		readonly height: string;
+	};
 }
 
 export interface FilterItemQueryParamConfig<T extends IFilterCriterionType> {
