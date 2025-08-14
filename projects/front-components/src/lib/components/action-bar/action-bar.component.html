@@ -1,0 +1,13 @@
+<div
+	class="action-bar"
+	[class]="'size-' + size()"
+>
+	<ng-content></ng-content>
+
+	@if (showClose()) {
+		<ss-lib-action-bar-item
+			[leftIconConfig]="{ icon: IconType.Close }"
+			(click)="closeActionBar()"
+		/>
+	}
+</div>

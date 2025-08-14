@@ -62,6 +62,7 @@ export { SsTableState } from './table/services';
 export { LoadPaginationComponent } from './load-pagination/load-pagination.component';
 export { HeaderFilterCheckboxSearchAbstractComponent } from './header-filter-checkbox-abstract/header-filter-checkbox-abstract.component';
 export { HeaderFilterCheckboxItemAbstractComponent } from './header-filter-checkbox-item-abstract/header-filter-checkbox-search-item-abstract.component';
-export { IndicatorChecklistPopupComponent } from './indicator-checklist-popup/indicator-checklist-popup.component';
 export { ProgressComponent } from './progress/progress.component';
 export { TagComponent } from './tag/tag.component';
+export { ActionBarComponent } from './action-bar/action-bar.component';
+export { ActionBarItemComponent } from './action-bar/action-bar-item/action-bar-item.component';

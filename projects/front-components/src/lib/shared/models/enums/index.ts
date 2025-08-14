@@ -23,3 +23,4 @@ export { ToastTypeEnum } from './toast-type-enum';
 export { Dimension } from './dimension';
 export { JustifyContent } from './justify-content';
 export { TagType } from './tag-type';
+export { ActionBarItemType } from './action-bar-item-type';

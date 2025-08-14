@@ -43,6 +43,8 @@ import {
 	DialogHeaderComponent,
 	TagComponent,
 	ProgressComponent,
+	ActionBarComponent,
+	ActionBarItemComponent,
 } from '../../../../front-components/src/lib/components';
 import {
 	FieldCtrlDirective,
@@ -108,4 +110,6 @@ export const standImports = [
 	DialogHeaderComponent,
 	TagComponent,
 	ProgressComponent,
+	ActionBarComponent,
+	ActionBarItemComponent,
 ];
