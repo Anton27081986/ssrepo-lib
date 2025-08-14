@@ -64,7 +64,7 @@
 			<div class="field-container__content_right">
 				@if (viewClearButton) {
 					<ss-lib-close-button
-						[size]="closeButtonSize()"
+						[size]="computedClearButtonSize()!"
 						(click)="clearControl()"
 					></ss-lib-close-button>
 				}
