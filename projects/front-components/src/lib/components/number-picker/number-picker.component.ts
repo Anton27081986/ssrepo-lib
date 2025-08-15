@@ -110,7 +110,7 @@ export class NumberPickerComponent implements ControlValueAccessor {
 		}
 	});
 
-	public onChange: ((value: number | null) => void) | undefined;
+	public onChange!: (value: number | null) => void;
 	public onTouched: (() => void) | undefined;
 
 	public writeValue(value: number | null): void {
@@ -146,7 +146,7 @@ export class NumberPickerComponent implements ControlValueAccessor {
 		value = this.checkNumberValue(value);
 
 		this.numberPickerCtrl.setValue(value);
-		this.onChange?.(value);
+		this.onChange(value);
 	}
 
 	public onCheckInputValueOnFocusout(event: FocusEvent): void {
@@ -162,8 +162,12 @@ export class NumberPickerComponent implements ControlValueAccessor {
 
 		if (!this.numberPickerCtrl.value) {
 			this.numberPickerCtrl.setValue(this.min());
-			this.onChange?.(this.min());
+			this.onChange(this.min());
+
+			return;
 		}
+
+		this.onChange(this.numberPickerCtrl.value);
 	}
 
 	private checkNumberValue(value: number): number {
