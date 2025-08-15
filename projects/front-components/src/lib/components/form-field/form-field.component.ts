@@ -48,6 +48,9 @@ import { CloseButtonComponent } from '../buttons';
  * [clearButton]: boolean - Флаг на показ иконки крестика в input -
  * необязательный, по умолчанию: false
  *
+ * [clearButtonSize]: ExtraSize | null - Размер иконки крестика в input -
+ * необязательный, по умолчанию: null
+ *
  * [errorText]: string - Текст ошибки - необязательный, по умолчанию: ''
  *
  * [tooltipInfoText]: string | null - Текст тултипа
@@ -97,6 +100,7 @@ export class FormFieldComponent implements AfterContentInit {
 	public readonly showBorder = input<boolean>(true);
 	public readonly showValidationFieldIcon = input<boolean>(false);
 	public readonly clearButton = input<boolean>(false);
+	public readonly clearButtonSize = input<ExtraSize | null>(null);
 	public readonly errorText = input<string>('');
 	public readonly icon = input<IconType | null>(null);
 	public readonly tooltipInfoText = input<string | null>(null);
@@ -109,7 +113,11 @@ export class FormFieldComponent implements AfterContentInit {
 		ControlState.Touched,
 	);
 
-	public readonly closeButtonSize = computed(() => {
+	public readonly computedClearButtonSize = computed(() => {
+		if (this.clearButtonSize()) {
+			return this.clearButtonSize();
+		}
+
 		switch (this.size()) {
 			case ExtraSize.xxs:
 			case ExtraSize.xs:
