@@ -1671,18 +1671,22 @@
 				Number input with min and max constraints.
 			</p>
 			<div class="component-row">
-				<ss-lib-number-picker
-					[formControl]="numberPickerCtrl"
-					[min]="5"
-					[max]="1000"
-				></ss-lib-number-picker>
+				<div style="width: 148px">
+					<ss-lib-number-picker
+						[formControl]="numberPickerCtrl"
+						[min]="5"
+						[max]="1000"
+					></ss-lib-number-picker>
+				</div>
 
-				<ss-lib-number-picker
-					[size]="ExtraSize.md"
-					[formControl]="numberPickerCtrl"
-					[min]="5"
-					[max]="1000"
-				></ss-lib-number-picker>
+				<div style="width: 148px">
+					<ss-lib-number-picker
+						[size]="ExtraSize.md"
+						[formControl]="numberPickerCtrl"
+						[min]="5"
+						[max]="1000"
+					></ss-lib-number-picker>
+				</div>
 			</div>
 		</div>
 
