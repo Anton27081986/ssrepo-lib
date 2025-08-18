@@ -3,7 +3,9 @@ import {
 	Inject,
 	Injector,
 	OnDestroy,
+	signal,
 	TemplateRef,
+	untracked,
 	ViewEncapsulation,
 } from '@angular/core';
 import {
@@ -43,6 +45,12 @@ import { DropdownGroupDirective } from '../directives/dropdown-group.directive';
  *
  * [height]: string - Высота выпадающего списка - необязательный,
  * по умолчанию: 'auto'
+ *
+ * [isOpen]: boolean - Открытие выпадающего списка - необязательный,
+ * по умолчанию: 'false'
+ *
+ * [scrollOnOpen]: boolean - Прокрутка списка при открытии - необязательный,
+ * по умолчанию: 'false'
  *
  * [isDraggable]: boolean - Возможность перетскивания,
  * по умолчанию: 'false'
@@ -98,14 +106,21 @@ export class DropdownListComponent<
 
 	public readonly width = input<string>('max-content');
 	public readonly height = input<string>('auto');
+	public readonly isOpen = input<boolean>(false);
+	public readonly scrollOnOpen = input<boolean>(false);
 
 	public readonly closed = output<void>();
 	public readonly value = output<T | string | null | IDictionaryItemDto>();
 
+	private readonly selectedIndex = signal<number>(0);
 	private readonly subscriptions = new Set<Subscription>();
 
 	constructor(@Inject(Injector) private readonly injector: Injector) {
 		afterNextRender(() => this.initOptionSubscriptions());
+	}
+
+	public ngOnDestroy(): void {
+		this.clearSubscriptions();
 	}
 
 	private initOptionSubscriptions(): void {
@@ -113,15 +128,55 @@ export class DropdownListComponent<
 			effect(() => {
 				this.clearSubscriptions();
 
-				for (const option of this.optionsContent()) {
+				this.optionsContent().forEach((option, index) => {
+					if (this.scrollOnOpen() && option.selected()) {
+						this.selectedIndex.set(index);
+					}
+
 					this.subscriptions.add(
 						outputToObservable(option.valueEvent)
-							.pipe(tap((data) => this.selectOption(data)))
+							.pipe(tap((data) => this.selectOption(data, index)))
 							.subscribe(),
 					);
+				});
+			});
+
+			effect(() => {
+				if (!this.scrollOnOpen() || !this.isOpen()) {
+					return;
 				}
+
+				untracked(() => {
+					setTimeout(() => {
+						const option =
+							this.optionsContent()[this.selectedIndex()];
+
+						option?.elementRef.nativeElement.scrollIntoView({
+							behavior: 'instant',
+							block: 'start',
+						});
+					}, 0);
+				});
 			});
 		});
+	}
+
+	private selectOption(
+		item: T | string | IDictionaryItemDto | null,
+		index?: number,
+	): void {
+		if (this.scrollOnOpen()) {
+			this.setCurrentIndex(index || 0);
+		}
+
+		this.value.emit(item);
+		this.closed.emit();
+	}
+
+	private setCurrentIndex(index: number): void {
+		if (this.scrollOnOpen()) {
+			this.selectedIndex.set(index || 0);
+		}
 	}
 
 	private clearSubscriptions(): void {
@@ -129,14 +184,5 @@ export class DropdownListComponent<
 			subscription.unsubscribe(),
 		);
 		this.subscriptions.clear();
-	}
-
-	public selectOption(item: T | string | IDictionaryItemDto | null): void {
-		this.value.emit(item);
-		this.closed.emit();
-	}
-
-	public ngOnDestroy(): void {
-		this.clearSubscriptions();
 	}
 }

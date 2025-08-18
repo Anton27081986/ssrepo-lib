@@ -1689,207 +1689,243 @@
 				</div>
 			</div>
 		</div>
+	</div>
 
-		<!-- Select Dropdown Section -->
-		<div class="section">
-			<h2 class="section-title">Select Dropdown</h2>
+	<!-- Select Dropdown Section -->
+	<div class="section">
+		<h2 class="section-title">Select Dropdown</h2>
 
-			<p class="section-description">
-				Select component with dropdown options.
-			</p>
+		<p class="section-description">
+			Select component with dropdown options.
+		</p>
 
-			<div class="component-row">
-				<ss-lib-form-field
-					[label]="'Название'"
-					[hint]="'Подсказка'"
-					[errorText]="'Неверно заполнено'"
-					[showValidationFieldIcon]="true"
-				>
-					<ss-lib-select
-						fieldCtrl
-						[formControl]="selectCtrl"
-						[popoverTriggerFor]="dropdown2"
-					>
-						<ss-lib-dropdown-list #dropdown2>
-							@for (item of dropdownItems; track item.id) {
-								<ss-lib-dropdown-item
-									[value]="item"
-									[icon]="IconType.Bell"
-								></ss-lib-dropdown-item>
-							}
-						</ss-lib-dropdown-list>
-					</ss-lib-select>
-				</ss-lib-form-field>
-			</div>
-		</div>
-
-		<!-- Avatar Dropdown Section -->
-		<div class="section">
-			<h2 class="section-title">Avatar Dropdown</h2>
-
-			<p class="section-description">
-				Avatar button with dropdown menu and custom header.
-			</p>
-
-			<div class="component-row">
-				<ss-lib-avatar-button
-					[username]="'ВН'"
-					[src]="'https://i.pravatar.cc/300'"
-					[popoverTriggerFor]="dropdown1"
-				></ss-lib-avatar-button>
-
-				<ss-lib-dropdown-list
-					#dropdown1
-					[headerTemplateRef]="avatarHeader"
-				>
-					<ss-lib-dropdown-item
-						[label]="'Опция'"
-						[icon]="IconType.Bell"
-						[selected]="true"
-						(click)="console.log(1)"
-					></ss-lib-dropdown-item>
-
-					<ss-lib-dropdown-item
-						[label]="'Опция'"
-						[icon]="IconType.Bell"
-						(click)="console.log(1)"
-					></ss-lib-dropdown-item>
-
-					<ss-lib-dropdown-item
-						[label]="'Опция'"
-						[icon]="IconType.Bell"
-						(click)="console.log(1)"
-					></ss-lib-dropdown-item>
-
-					<ss-lib-dropdown-item
-						[label]="'Опция'"
-						[icon]="IconType.Bell"
-						[isDisabled]="true"
-						(click)="console.log(2)"
-					></ss-lib-dropdown-item>
-
-					<ss-lib-divider class="divider"></ss-lib-divider>
-
-					<ss-lib-dropdown-item
-						[label]="'Удалить'"
-						[icon]="IconType.Bell"
-						(click)="console.log(5)"
-					></ss-lib-dropdown-item>
-
-					<ss-lib-dropdown-item
-						[label]="'Удалить'"
-						[icon]="IconType.Bell"
-						(click)="console.log(5)"
-					></ss-lib-dropdown-item>
-				</ss-lib-dropdown-list>
-
-				<ng-template #avatarHeader>
-					<div class="avatar-test">
-						<ss-lib-avatar
-							[username]="'ВН'"
-							[src]="'https://i.pravatar.cc/300'"
-						></ss-lib-avatar>
-
-						<div class="avatar-test__title">
-							<ss-lib-text
-								[type]="TextType.BodySm"
-								[weight]="TextWeight.Medium"
-								[color]="Colors.TextBody2"
-							>
-								Мария Викторовна
-							</ss-lib-text>
-
-							<ss-lib-text
-								[type]="TextType.BodySm"
-								[weight]="TextWeight.Regular"
-								[color]="Colors.TextBody3"
-							>
-								Менеджер по продажам
-							</ss-lib-text>
-						</div>
-					</div>
-				</ng-template>
-			</div>
-		</div>
-
-		<!-- OTP Input Section -->
-		<div class="section">
-			<h2 class="section-title">OTP Input</h2>
-
-			<p class="section-description">One-time password input field.</p>
-			<div
-				class="component-row"
-				[style.align-items]="'center'"
+		<div class="component-row">
+			<ss-lib-form-field
+				[label]="'Название'"
+				[hint]="'Подсказка'"
+				[errorText]="'Неверно заполнено'"
+				[showValidationFieldIcon]="true"
 			>
-				<div [style.width.px]="360">
-					<ss-lib-otp-input
-						class="spaced"
-						[formControl]="otpCtrl"
-					></ss-lib-otp-input>
-				</div>
-			</div>
-
-			<ss-lib-button
-				[type]="ButtonType.Primary"
-				[text]="'Submit OTP'"
-				(click)="submitOtp()"
-			/>
-		</div>
-
-		<!-- Scrollbar Section -->
-		<div class="section">
-			<h2 class="section-title">Scrollbar</h2>
-			<p class="section-description">
-				Custom scrollbar with sample content.
-			</p>
-			<div class="component-row">
-				<div class="scrollbar-test">
-					<ss-lib-scrollbar>
-						@for (colCount of 100 | repeatTimes; track $index) {
-							<div class="scrollbar-test__item">
-								Товарищи! сложившаяся структура организации
-								играет важную роль в формировании модели
-								развития
-							</div>
+				<ss-lib-select
+					fieldCtrl
+					[formControl]="selectCtrl"
+					[popoverTriggerFor]="dropdown2"
+				>
+					<ss-lib-dropdown-list #dropdown2>
+						@for (item of dropdownItems; track item.id) {
+							<ss-lib-dropdown-item
+								[value]="item"
+								[icon]="IconType.Bell"
+							></ss-lib-dropdown-item>
 						}
-					</ss-lib-scrollbar>
+					</ss-lib-dropdown-list>
+				</ss-lib-select>
+			</ss-lib-form-field>
+		</div>
+		<p class="section-description">
+			Dropdown component with custom templates and scrolling to selected
+			item.
+		</p>
+
+		<div class="component-row">
+			<ss-lib-button
+				[iconPosition]="IconPosition.Start"
+				[icon]="IconType.Calendar"
+				[popoverTriggerFor]="listActions"
+				[type]="ButtonType.Secondary"
+				[text]="activeWeek()?.name || 'Выберите неделю'"
+				[size]="ExtraSize.lg"
+				(isPopoverOpenEmit)="dropdownWeekIsOpen.set($event)"
+			>
+				<ss-lib-icon
+					[icon]="IconType.ChevronDown"
+					[width]="'20'"
+					[height]="'20'"
+				></ss-lib-icon>
+			</ss-lib-button>
+
+			<ss-lib-dropdown-list
+				#listActions
+				[height]="'274px'"
+				[width]="'236px'"
+				[scrollOnOpen]="true"
+				[isOpen]="dropdownWeekIsOpen()"
+			>
+				@for (week of dropdownWeeks; track week.id) {
+					<ss-lib-dropdown-item
+						[value]="week"
+						[label]="week.name"
+						[selected]="activeWeek()?.id === week.id"
+						(click)="activeWeek.set(week)"
+					/>
+				}
+			</ss-lib-dropdown-list>
+		</div>
+	</div>
+
+	<!-- Avatar Dropdown Section -->
+	<div class="section">
+		<h2 class="section-title">Avatar Dropdown</h2>
+
+		<p class="section-description">
+			Avatar button with dropdown menu and custom header.
+		</p>
+
+		<div class="component-row">
+			<ss-lib-avatar-button
+				[username]="'ВН'"
+				[src]="'https://i.pravatar.cc/300'"
+				[popoverTriggerFor]="dropdown1"
+			></ss-lib-avatar-button>
+
+			<ss-lib-dropdown-list
+				#dropdown1
+				[headerTemplateRef]="avatarHeader"
+			>
+				<ss-lib-dropdown-item
+					[label]="'Опция'"
+					[icon]="IconType.Bell"
+					[selected]="true"
+					(click)="console.log(1)"
+				></ss-lib-dropdown-item>
+
+				<ss-lib-dropdown-item
+					[label]="'Опция'"
+					[icon]="IconType.Bell"
+					(click)="console.log(1)"
+				></ss-lib-dropdown-item>
+
+				<ss-lib-dropdown-item
+					[label]="'Опция'"
+					[icon]="IconType.Bell"
+					(click)="console.log(1)"
+				></ss-lib-dropdown-item>
+
+				<ss-lib-dropdown-item
+					[label]="'Опция'"
+					[icon]="IconType.Bell"
+					[isDisabled]="true"
+					(click)="console.log(2)"
+				></ss-lib-dropdown-item>
+
+				<ss-lib-divider class="divider"></ss-lib-divider>
+
+				<ss-lib-dropdown-item
+					[label]="'Удалить'"
+					[icon]="IconType.Bell"
+					(click)="console.log(5)"
+				></ss-lib-dropdown-item>
+
+				<ss-lib-dropdown-item
+					[label]="'Удалить'"
+					[icon]="IconType.Bell"
+					(click)="console.log(5)"
+				></ss-lib-dropdown-item>
+			</ss-lib-dropdown-list>
+
+			<ng-template #avatarHeader>
+				<div class="avatar-test">
+					<ss-lib-avatar
+						[username]="'ВН'"
+						[src]="'https://i.pravatar.cc/300'"
+					></ss-lib-avatar>
+
+					<div class="avatar-test__title">
+						<ss-lib-text
+							[type]="TextType.BodySm"
+							[weight]="TextWeight.Medium"
+							[color]="Colors.TextBody2"
+						>
+							Мария Викторовна
+						</ss-lib-text>
+
+						<ss-lib-text
+							[type]="TextType.BodySm"
+							[weight]="TextWeight.Regular"
+							[color]="Colors.TextBody3"
+						>
+							Менеджер по продажам
+						</ss-lib-text>
+					</div>
 				</div>
+			</ng-template>
+		</div>
+	</div>
+
+	<!-- OTP Input Section -->
+	<div class="section">
+		<h2 class="section-title">OTP Input</h2>
+
+		<p class="section-description">One-time password input field.</p>
+		<div
+			class="component-row"
+			[style.align-items]="'center'"
+		>
+			<div [style.width.px]="360">
+				<ss-lib-otp-input
+					class="spaced"
+					[formControl]="otpCtrl"
+				></ss-lib-otp-input>
 			</div>
 		</div>
 
-		<!-- Empty State Section -->
-		<div class="section">
-			<h2 class="section-title">Empty State</h2>
-			<p class="section-description">
-				Empty state component with custom actions and icon.
-			</p>
-			<div class="component-row">
-				<div class="empty-state__test">
-					<ss-lib-empty-state
-						[title]="'Заголовок'"
-						[description]="
-							'Здесь будут баннеры. Нажмите «Добавить баннер», чтобы добавить новый.'
-						"
-						[badge]="{
-							size: ExtraSize.xl,
-							icon: IconType.ImagePlus,
-						}"
-					>
-						<div class="component-row">
-							<ss-lib-button
-								[type]="ButtonType.Secondary"
-								[text]="'Вторичная'"
-								[size]="ExtraSize.xl"
-							></ss-lib-button>
+		<ss-lib-button
+			[type]="ButtonType.Primary"
+			[text]="'Submit OTP'"
+			(click)="submitOtp()"
+		/>
+	</div>
 
-							<ss-lib-button
-								[type]="ButtonType.Primary"
-								[text]="'Первичная'"
-								[size]="ExtraSize.xl"
-							></ss-lib-button>
+	<!-- Scrollbar Section -->
+	<div class="section">
+		<h2 class="section-title">Scrollbar</h2>
+		<p class="section-description">Custom scrollbar with sample content.</p>
+		<div class="component-row">
+			<div class="scrollbar-test">
+				<ss-lib-scrollbar>
+					@for (colCount of 100 | repeatTimes; track $index) {
+						<div class="scrollbar-test__item">
+							Товарищи! сложившаяся структура организации играет
+							важную роль в формировании модели развития
 						</div>
-					</ss-lib-empty-state>
-				</div>
+					}
+				</ss-lib-scrollbar>
+			</div>
+		</div>
+	</div>
+
+	<!-- Empty State Section -->
+	<div class="section">
+		<h2 class="section-title">Empty State</h2>
+		<p class="section-description">
+			Empty state component with custom actions and icon.
+		</p>
+		<div class="component-row">
+			<div class="empty-state__test">
+				<ss-lib-empty-state
+					[title]="'Заголовок'"
+					[description]="
+						'Здесь будут баннеры. Нажмите «Добавить баннер», чтобы добавить новый.'
+					"
+					[badge]="{
+						size: ExtraSize.xl,
+						icon: IconType.ImagePlus,
+					}"
+				>
+					<div class="component-row">
+						<ss-lib-button
+							[type]="ButtonType.Secondary"
+							[text]="'Вторичная'"
+							[size]="ExtraSize.xl"
+						></ss-lib-button>
+
+						<ss-lib-button
+							[type]="ButtonType.Primary"
+							[text]="'Первичная'"
+							[size]="ExtraSize.xl"
+						></ss-lib-button>
+					</div>
+				</ss-lib-empty-state>
 			</div>
 		</div>
 	</div>
