@@ -26,15 +26,21 @@ import {
 	TextWeight,
 	ToastTypeEnum,
 	TooltipPosition,
+	IDictionaryItemDto,
 } from '../../../../front-components/src/lib/shared/models';
 import { standImports } from './stand.imports';
 import { ColumnsStateService } from '../../../../front-components/src/lib/components';
-import { BANNERS_ITEMS, DEFAULT_COLS, DROPDOWN_ITEMS } from './constants';
+import {
+	BANNERS_ITEMS,
+	DEFAULT_COLS,
+	DROPDOWN_ITEMS,
+	EXAMPLE_DATA_TABLE,
+	WEEK_ITEMS,
+} from './constants';
 import { SharedPopupService } from '../../../../front-components/src/lib/shared/services';
 import type { TestModalData } from '../test-modal/test-modal.component';
 import { TestModalComponent } from '../test-modal/test-modal.component';
 import { ToastRef } from '../../../../front-components/src/lib/components';
-import { exampleDataTable } from './constants/example-data-table';
 import { TestRightSidePageComponent } from '../test-left-side-page/test-right-side-page.component';
 import { Tab } from '../../../../front-components/src/lib/shared/models/interfaces/tab';
 import { TableOperPlanExampleComponent } from '../table-oper-plan-example/table-oper-plan-example.component';
@@ -76,6 +82,9 @@ export class StandComponent {
 	public indexTab = 0;
 
 	public selectCtrl = new FormControl(null);
+	public selectWeeksCtrl = new FormControl(null);
+	public activeWeek = signal<IDictionaryItemDto | null>(WEEK_ITEMS[30]);
+	public dropdownWeekIsOpen = signal<boolean>(false);
 	public numberPickerCtrl = new FormControl(2);
 
 	public datepickerCtrl: FormControl<Date | null> = new FormControl(
@@ -172,8 +181,9 @@ export class StandComponent {
 	protected readonly LinkAppearance = LinkAppearance;
 	protected readonly Status = Status;
 	protected readonly dropdownItems = DROPDOWN_ITEMS;
+	protected readonly dropdownWeeks = WEEK_ITEMS;
 	protected readonly TooltipPosition = TooltipPosition;
-	protected readonly exampleItems = exampleDataTable;
+	protected readonly exampleItems = EXAMPLE_DATA_TABLE;
 	protected readonly bannersItems = BANNERS_ITEMS;
 	protected readonly TagType = TagType;
 	protected readonly ActionBarItemType = ActionBarItemType;
