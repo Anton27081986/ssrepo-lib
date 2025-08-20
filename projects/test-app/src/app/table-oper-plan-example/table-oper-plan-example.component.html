@@ -16,11 +16,11 @@
 	@if (dropdownColumnsVisible().length > 0) {
 		<ss-lib-dropdown-group [label]="'Отображаемые'">
 			<div
-				id="visibleList"
+				id="visibleListOperPlan"
 				class="draggable-list"
 				cdkDropList
 				[cdkDropListData]="dropdownColumnsVisible()"
-				[cdkDropListConnectedTo]="['hiddenList']"
+				[cdkDropListConnectedTo]="['hiddenListOperPlan']"
 				(cdkDropListDropped)="onDropdownItemDrop($event)"
 			>
 				@for (column of dropdownColumnsVisible(); track column) {
@@ -66,11 +66,11 @@
 	@if (dropdownColumnsUnVisible().length > 0) {
 		<ss-lib-dropdown-group [label]="'Скрытые'">
 			<div
-				id="hiddenList"
+				id="hiddenListOperPlan"
 				cdkDropList
 				class="draggable-list"
 				[cdkDropListData]="dropdownColumnsUnVisible()"
-				[cdkDropListConnectedTo]="['visibleList']"
+				[cdkDropListConnectedTo]="['visibleListOperPlan']"
 				(cdkDropListDropped)="onDropdownItemDrop($event)"
 			>
 				@for (column of dropdownColumnsUnVisible(); track column) {
