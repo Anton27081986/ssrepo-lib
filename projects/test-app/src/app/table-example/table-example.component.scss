@@ -22,11 +22,6 @@
 	overflow: hidden;
 }
 
-.column-item__content {
-	display: flex;
-	align-items: center;
-}
-
 .drag-action__content {
 	display: flex;
 	align-items: center;
@@ -35,4 +30,18 @@
 
 .item-align--center {
 	justify-content: center;
+}
+
+.column-item__content {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 8px;
+
+	&_label {
+		display: flex;
+		align-items: center;
+		gap: 8px;
+	}
 }

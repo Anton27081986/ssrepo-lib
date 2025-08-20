@@ -15,12 +15,18 @@ import {
 	IconType,
 	TextType,
 	TextWeight,
+	ButtonType,
+	ExtraSize,
+	IconPosition,
 } from '../../../../front-components/src/lib/shared/models';
 
 import { columnConfigsMock, tableDataMock } from './mock';
 import { TableColumnConfig } from '../../../../front-components/src/lib/components/table/models';
 import { tableExampleImports } from './table-example.imports';
-import { SsTableState } from '../../../../front-components/src/lib/components/table/services';
+import {
+	SsTableState,
+	ButtonComponent,
+} from '../../../../front-components/src/lib/components';
 
 interface TableRow {
 	id: number;
@@ -38,7 +44,7 @@ interface TableRow {
 @Component({
 	selector: 'app-table-example',
 	standalone: true,
-	imports: [tableExampleImports, CdkDropList, CdkDrag],
+	imports: [tableExampleImports, CdkDropList, CdkDrag, ButtonComponent],
 	templateUrl: './table-example.component.html',
 	styleUrl: './table-example.component.scss',
 	changeDetection: ChangeDetectionStrategy.OnPush,
@@ -71,6 +77,9 @@ export class TableExampleComponent implements OnInit {
 	protected readonly Colors = Colors;
 	protected readonly IconType = IconType;
 	protected readonly Align = Align;
+	protected readonly ButtonType = ButtonType;
+	protected readonly ExtraSize = ExtraSize;
+	protected readonly IconPosition = IconPosition;
 
 	constructor() {
 		toSignal(
@@ -136,25 +145,37 @@ export class TableExampleComponent implements OnInit {
 
 		table.style.cssText = `
 			border-collapse: collapse;
+			border-spacing: 0;
 			position: absolute;
 			top: -9999px;
 			left: -9999px;
 			width: ${rect.width}px;
+			border: none !important;
+			outline: none !important;
+			background: transparent;
 		`;
+
 		clonedRow.style.cssText = `
 			background: var(--surface-primary);
+			border: none !important;
+			border-collapse: separate;
+			outline: none !important;
 			box-shadow: 0px 2px 2px -1px var(--effects-shadows-4),
 						0px 4px 6px -2px var(--effects-shadows-3),
 						0px 12px 16px -4px var(--effects-shadows-8);
 			pointer-events: none;
 		`;
 
-		originalCells.forEach((cell: HTMLTableCellElement, index: number) => {
-			const width = cell.getBoundingClientRect().width;
+		clonedCells.forEach((cell: HTMLElement, index: number) => {
+			const width = originalCells[index].getBoundingClientRect().width;
 
-			if (clonedCells[index]) {
-				(clonedCells[index] as HTMLElement).style.width = `${width}px`;
-			}
+			cell.style.cssText = `
+				width: ${width}px;
+				border: none !important;
+				outline: none !important;
+				background: transparent;
+				box-shadow: none !important; 
+			`;
 		});
 
 		tbody.appendChild(clonedRow);

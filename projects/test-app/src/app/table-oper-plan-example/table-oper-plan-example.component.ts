@@ -11,7 +11,10 @@ import { tap } from 'rxjs';
 import { FormControl } from '@angular/forms';
 import {
 	Align,
+	ButtonType,
 	Colors,
+	ExtraSize,
+	IconPosition,
 	IconType,
 	TextType,
 	TextWeight,
@@ -24,12 +27,18 @@ import { generateColumnOperPlanConfig } from './utils/generate-column-oper-plan-
 import { IOperationPlanItem } from './model/oper-plan.interface';
 import { createDragGhostExample } from './utils/create-drag-ghost-example';
 import { BASE_COLUMN_MAP } from './constants/base-column-map';
-import { SsTableState } from '../../../../front-components/src/lib/components/table/services';
+import { SsTableState } from '../../../../front-components/src/lib/components';
+import { ButtonComponent } from '../../../../front-components/src/lib/components';
 
 @Component({
 	selector: 'app-table-oper-plan-example',
 	standalone: true,
-	imports: [tableOperPlanExampleImports, CdkDropList, CdkDrag],
+	imports: [
+		tableOperPlanExampleImports,
+		CdkDropList,
+		CdkDrag,
+		ButtonComponent,
+	],
 	templateUrl: './table-oper-plan-example.component.html',
 	styleUrl: './table-oper-plan-example.component.scss',
 	changeDetection: ChangeDetectionStrategy.OnPush,
@@ -66,6 +75,9 @@ export class TableOperPlanExampleComponent implements OnInit {
 	protected readonly Colors = Colors;
 	protected readonly IconType = IconType;
 	protected readonly Align = Align;
+	protected readonly IconPosition = IconPosition;
+	protected readonly ButtonType = ButtonType;
+	protected readonly ExtraSize = ExtraSize;
 	protected readonly createDragGhostExample = createDragGhostExample;
 
 	constructor() {

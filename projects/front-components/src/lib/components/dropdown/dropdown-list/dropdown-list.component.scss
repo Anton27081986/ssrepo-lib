@@ -11,7 +11,7 @@
 	box-shadow: var(--shadow-xl);
 	position: relative;
 
-	&_header{
+	&_header {
 		padding-bottom: 4px;
 	}
 
@@ -70,7 +70,7 @@
 }
 
 .draggable-list.cdk-drop-list-dragging
-	.draggable-item:not(.cdk-drag-placeholder) {
+	.draggable-item:not(.cdk-drag-placeholder):not(.cdk-drag-disabled) {
 	transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
 }
 
@@ -79,4 +79,9 @@
 	background: none !important;
 	box-shadow: none !important;
 	border: none !important;
+}
+
+.cdk-drop-list-dragging .draggable-item.cdk-drag-disabled {
+	transition: none !important;
+	transform: none !important;
 }

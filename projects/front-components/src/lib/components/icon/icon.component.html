@@ -5,7 +5,7 @@
 			'width.px': width(),
 			'height.px': height(),
 			strokeWidth: strokeWidth(),
-			color: color(),
+			color: internalColor() || color(),
 		}"
 		[innerHTML]="svg()"
 	></div>
