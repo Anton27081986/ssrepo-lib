@@ -1,6 +1,6 @@
 import { ExampleDataTable } from '../interface/example-data-table';
 
-export const exampleDataTable: ExampleDataTable[] = [
+export const EXAMPLE_DATA_TABLE: ExampleDataTable[] = [
 	{
 		name: 'Баннер Баннер Баннер Баннер Баннер Баннер Баннер',
 		text: 'Баннер и какой то текст Баннер и какой то текст Баннер и какой то текст Баннер и какой то текст',

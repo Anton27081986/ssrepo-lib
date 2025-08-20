@@ -1,4 +1,4 @@
-import { Component, computed, input } from '@angular/core';
+import { Component, computed, input, signal } from '@angular/core';
 import { NgClass } from '@angular/common';
 import { Align, Colors, TextType, TextWeight } from '../../shared/models';
 
@@ -26,6 +26,9 @@ import { Align, Colors, TextType, TextWeight } from '../../shared/models';
  * [isUnderline]: boolean - Добавлять подчеркивание -
  * необязательный, по умолчанию: false
  *
+ * [internalColor]: Colors - Цвет текста - необязательный.
+ * Для задания цвета из другого компонента программно
+ *
  * <ss-lib-text
  *   [type]="TextType.BodyMd"
  *   [weight]="TextWeight.Regular"
@@ -52,6 +55,8 @@ export class TextComponent {
 	public readonly isEllipsis = input<boolean>(false);
 	public readonly isUnderline = input<boolean>(false);
 	public readonly isNoWrap = input<boolean>(false);
+
+	public internalColor = signal<Colors | null>(null);
 
 	public readonly getLineClampCount = computed(() =>
 		this.isLineClamp() ? this.lineClampCount() : 'none',
