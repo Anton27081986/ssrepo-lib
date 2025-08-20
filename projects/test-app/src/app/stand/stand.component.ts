@@ -5,7 +5,7 @@ import {
 	ValidationErrors,
 	Validators,
 } from '@angular/forms';
-import { catchError, Observable, of, Subscription, tap, window } from 'rxjs';
+import { catchError, Observable, of, Subscription, tap } from 'rxjs';
 import { HttpClient, HttpEventType } from '@angular/common/http';
 import { RouterOutlet } from '@angular/router';
 import { toSignal } from '@angular/core/rxjs-interop';
@@ -16,7 +16,6 @@ import {
 	ExtraSize,
 	IconPosition,
 	IconType,
-	JustifyContent,
 	LinkAppearance,
 	Orientation,
 	Shape,
@@ -29,27 +28,19 @@ import {
 	IDictionaryItemDto,
 } from '../../../../front-components/src/lib/shared/models';
 import { standImports } from './stand.imports';
-import { ColumnsStateService } from '../../../../front-components/src/lib/components';
-import {
-	BANNERS_ITEMS,
-	DEFAULT_COLS,
-	DROPDOWN_ITEMS,
-	EXAMPLE_DATA_TABLE,
-	WEEK_ITEMS,
-} from './constants';
+import { BANNERS_ITEMS, DROPDOWN_ITEMS, TABS, WEEK_ITEMS } from './constants';
 import { SharedPopupService } from '../../../../front-components/src/lib/shared/services';
 import type { TestModalData } from '../test-modal/test-modal.component';
 import { TestModalComponent } from '../test-modal/test-modal.component';
 import { ToastRef } from '../../../../front-components/src/lib/components';
 import { TestRightSidePageComponent } from '../test-left-side-page/test-right-side-page.component';
-import { Tab } from '../../../../front-components/src/lib/shared/models/interfaces/tab';
 import { TableOperPlanExampleComponent } from '../table-oper-plan-example/table-oper-plan-example.component';
 
 @Component({
 	selector: 'app-stand',
 	standalone: true,
 	imports: [...standImports, TableOperPlanExampleComponent],
-	providers: [ColumnsStateService, RouterOutlet],
+	providers: [RouterOutlet],
 	templateUrl: './stand.component.html',
 	styleUrl: './stand.component.scss',
 })
@@ -115,59 +106,6 @@ export class StandComponent {
 
 	public carouselIndex = signal(0);
 
-	public tabs: Tab[] = [
-		{
-			text: 'Таб',
-			icon: IconType.Info,
-			tag: '1',
-			isVisible: true,
-			isDisabled: false,
-		},
-		{
-			text: 'Таб',
-			icon: IconType.Info,
-			tag: '2',
-			isVisible: true,
-			isDisabled: false,
-		},
-		{
-			text: 'Таб',
-			isVisible: true,
-			isDisabled: true,
-		},
-		{
-			text: 'Таб',
-			isVisible: false,
-			isDisabled: false,
-		},
-		{
-			text: 'Таб',
-			tag: '4',
-			isVisible: true,
-			isDisabled: false,
-		},
-		{
-			text: 'Таб',
-			isVisible: true,
-			isDisabled: false,
-		},
-		{
-			text: 'Таб',
-			isVisible: false,
-			isDisabled: false,
-		},
-		{
-			text: 'Таб',
-			isVisible: true,
-			isDisabled: false,
-		},
-		{
-			text: 'Таб',
-			isVisible: true,
-			isDisabled: false,
-		},
-	];
-
 	protected readonly TextType = TextType;
 	protected readonly TextWeight = TextWeight;
 	protected readonly IconType = IconType;
@@ -183,23 +121,16 @@ export class StandComponent {
 	protected readonly dropdownItems = DROPDOWN_ITEMS;
 	protected readonly dropdownWeeks = WEEK_ITEMS;
 	protected readonly TooltipPosition = TooltipPosition;
-	protected readonly exampleItems = EXAMPLE_DATA_TABLE;
 	protected readonly bannersItems = BANNERS_ITEMS;
 	protected readonly TagType = TagType;
 	protected readonly ActionBarItemType = ActionBarItemType;
+	protected readonly TABS = TABS;
 
 	private readonly sharedPopupService = inject(SharedPopupService);
 
-	protected readonly JustifyContent = JustifyContent;
 	protected readonly statusType = Status;
-	protected readonly window = window;
 
-	constructor(
-		private readonly columnState: ColumnsStateService,
-		private readonly http: HttpClient,
-	) {
-		this.columnState.colsTr$.next(DEFAULT_COLS);
-
+	constructor(private readonly http: HttpClient) {
 		toSignal(
 			this.masterCheckboxCtrl.valueChanges.pipe(
 				tap((value: boolean | null) => {
@@ -465,10 +396,6 @@ export class StandComponent {
 
 	public changeTab(index: number): void {
 		this.indexTab = index;
-	}
-
-	public changeIndex(): void {
-		this.indexTab = 4;
 	}
 
 	public test(): void {

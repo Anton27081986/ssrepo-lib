@@ -2,6 +2,8 @@ import {
 	ChangeDetectionStrategy,
 	Component,
 	computed,
+	contentChildren,
+	effect,
 	ElementRef,
 	HostListener,
 	inject,
@@ -76,6 +78,13 @@ export class DropdownItemComponent<
 	public readonly elementRef = inject(ElementRef);
 
 	public itemContent = viewChild<TemplateRef<unknown>>('content');
+	public iconComponents = contentChildren(IconComponent, {
+		descendants: true,
+	});
+
+	public textComponents = contentChildren(TextComponent, {
+		descendants: true,
+	});
 
 	public readonly label = input<string>('');
 	public readonly value = input<T | string | null>(null);
@@ -137,6 +146,24 @@ export class DropdownItemComponent<
 	protected readonly StateTypes = StateTypes;
 	protected readonly Colors = Colors;
 	protected readonly IconType = IconType;
+
+	constructor() {
+		effect(() => {
+			const color = this.iconColor();
+
+			this.iconComponents().forEach((icon) =>
+				icon.internalColor.set(color),
+			);
+		});
+
+		effect(() => {
+			const color = this.textColor();
+
+			this.textComponents().forEach((text) =>
+				text.internalColor.set(color),
+			);
+		});
+	}
 
 	@HostListener('click')
 	public togglePopover(): void {

@@ -9,7 +9,7 @@ export function generateColumnOperPlanConfig(
 		{
 			id: 'tov',
 			name: 'Готовая продукция (ГП)',
-			showInDropdown: false,
+			showInDropdown: true,
 			showInHeader: true,
 			visible: true,
 			stickyColumn: true,
@@ -20,6 +20,7 @@ export function generateColumnOperPlanConfig(
 			showInDropdown: true,
 			showInHeader: true,
 			visible: true,
+			stickyColumn: true,
 		},
 		{
 			id: 'productionSection',

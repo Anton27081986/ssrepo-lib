@@ -1,4 +1,13 @@
-<ss-lib-utility-button [popoverTriggerFor]="dropdownColumn" />
+<div style="width: 150px; margin-bottom: 20px">
+	<ss-lib-button
+		[type]="ButtonType.Secondary"
+		[iconPosition]="IconPosition.Start"
+		[icon]="IconType.FilterLines"
+		[text]="'Отображение'"
+		[popoverTriggerFor]="dropdownColumn"
+		[size]="ExtraSize.md"
+	></ss-lib-button>
+</div>
 
 <ss-lib-dropdown-list #dropdownColumn>
 	@if (dropdownColumnsVisible().length > 0) {
@@ -17,20 +26,22 @@
 						class="draggable-item"
 					>
 						<div class="column-item__content">
-							@let ctrl = getControlForColumn(column);
+							<div class="column-item__content_label">
+								@let ctrl = getControlForColumn(column);
 
-							<ss-lib-checkbox
-								[formControl]="ctrl"
-								(click)="updateColumnVisibility(column)"
-							></ss-lib-checkbox>
+								<ss-lib-checkbox
+									[formControl]="ctrl"
+									(click)="updateColumnVisibility(column)"
+								></ss-lib-checkbox>
 
-							<ss-lib-text
-								[type]="TextType.BodySm"
-								[weight]="TextWeight.Regular"
-								[color]="Colors.TextBody3"
-							>
-								{{ column.name }}
-							</ss-lib-text>
+								<ss-lib-text
+									[type]="TextType.BodySm"
+									[weight]="TextWeight.Regular"
+									[color]="Colors.TextBody3"
+								>
+									{{ column.name }}
+								</ss-lib-text>
+							</div>
 
 							<ss-lib-icon
 								[height]="'16'"

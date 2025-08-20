@@ -128,8 +128,9 @@ export class SsTableState<T> {
 		visibleColumns: TableColumnConfig[],
 		hiddenColumns: TableColumnConfig[],
 	): void {
+		const allConfigs = this.state().columnConfigs;
+
 		this.state.update((currentState) => {
-			const allConfigs = [...currentState.columnConfigs];
 			const isVisibleContainer = event.container.data === visibleColumns;
 
 			if (event.previousContainer === event.container) {
@@ -288,13 +289,15 @@ export class SsTableState<T> {
 		);
 
 		draggedGroup.forEach((col) => {
-			const config = allConfigs.find((c) => c.id === col.id);
+			if (!col?.stickyColumn) {
+				const config = allConfigs.find((c) => c.id === col.id);
 
-			if (config) {
-				config.visible = isVisibleContainer;
-				const control = this.columnsForm.get(col.id);
+				if (config) {
+					config.visible = isVisibleContainer;
+					const control = this.columnsForm.get(col.id);
 
-				control?.setValue(isVisibleContainer);
+					control?.setValue(isVisibleContainer);
+				}
 			}
 		});
 	}
@@ -353,19 +356,27 @@ export class SsTableState<T> {
 	): TableColumnConfig[] {
 		const result: TableColumnConfig[] = [];
 
-		// Add sticky columns first
-		result.push(...allConfigs.filter((item) => item.stickyColumn));
+		// Сохраняем исходный порядок sticky колонок
+		const stickyColumns = allConfigs.filter((item) => item.stickyColumn);
 
-		// Add visible dropdown columns with their sub-columns/subGroups
+		result.push(...stickyColumns);
+
+		// Добавляем видимые dropdown колонки с их подколонками/подгруппами
 		newConfigs
-			.filter((item) => item.showInDropdown && item.visible)
+			.filter(
+				(item) =>
+					item.showInDropdown && item.visible && !item.stickyColumn,
+			)
 			.forEach((item) =>
 				result.push(...this.collectWithSubColumns(item, allConfigs)),
 			);
 
-		// Add hidden dropdown columns with their sub-columns/subGroups
+		// Добавляем скрытые dropdown колонки с их подколонками/подгруппами
 		newConfigs
-			.filter((item) => item.showInDropdown && !item.visible)
+			.filter(
+				(item) =>
+					item.showInDropdown && !item.visible && !item.stickyColumn,
+			)
 			.forEach((item) =>
 				result.push(...this.collectWithSubColumns(item, allConfigs)),
 			);
