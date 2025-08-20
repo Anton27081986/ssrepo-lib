@@ -1,4 +1,4 @@
-import type { Signal } from '@angular/core';
+import { signal, Signal } from '@angular/core';
 import { Component, computed, inject, input } from '@angular/core';
 import { NgStyle } from '@angular/common';
 import type { SafeHtml } from '@angular/platform-browser';
@@ -23,6 +23,9 @@ import { SCALE_SVG } from '../../shared/constants';
  *
  * [color]: Colors - Цвет иконки - необязательный, по умолчанию: Colors.IconPrimary
  *
+ * [internalColor]: Colors - Цвет иконки - необязательный.
+ * Для задания цвета из другого компонента программно
+ *
  * <ss-lib-icon
  *   [icon]="IconType.Search"
  *   [height]="'32'"
@@ -44,6 +47,8 @@ export class IconComponent {
 	public width = input<string>('24');
 	public strokeWidth = input<number>(SCALE_SVG);
 	public color = input<Colors>(Colors.IconBody);
+
+	public internalColor = signal<Colors | null>(null);
 
 	public svg: Signal<SafeHtml | null> = computed(() => {
 		const svgData = ICONS.get(this.icon());

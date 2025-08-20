@@ -34,7 +34,6 @@ import {
 	TimepickerComponent,
 	CheckboxComponent,
 	OtpInputComponent,
-	TableComponent,
 	TabComponent,
 	TabsComponent,
 	CarouselComponent,
@@ -52,7 +51,6 @@ import {
 	PopoverTriggerForDirective,
 } from '../../../../front-components/src/lib/core/directives';
 import { RepeatTimesPipe } from '../../../../front-components/src/lib/core/pipes';
-import { ExampleTableTrComponent } from '../example-table-tr/example-table-tr.component';
 import { LoadPaginationComponent } from '../../../../front-components/src/lib/components';
 import { TableExampleComponent } from '../table-example/table-example.component';
 
@@ -96,8 +94,6 @@ export const standImports = [
 	ProgressCircleComponent,
 	CheckboxComponent,
 	OtpInputComponent,
-	TableComponent,
-	ExampleTableTrComponent,
 	NgFor,
 	CarouselComponent,
 	ItemDirective,
