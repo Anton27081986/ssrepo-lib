@@ -4,6 +4,7 @@ import {
 	computed,
 	inject,
 	OnInit,
+	signal,
 } from '@angular/core';
 import { CdkDrag, CdkDragDrop, CdkDropList } from '@angular/cdk/drag-drop';
 import { toSignal } from '@angular/core/rxjs-interop';
@@ -69,6 +70,7 @@ export class TableOperPlanExampleComponent implements OnInit {
 
 	public readonly rowCheckboxes = this.tableStateService.getRowCheckboxes();
 	public readonly columnsForm = this.tableStateService.getColumnsForm();
+	public hoveredColumnIds = signal<string[]>([]);
 
 	protected readonly TextType = TextType;
 	protected readonly TextWeight = TextWeight;
@@ -199,5 +201,13 @@ export class TableOperPlanExampleComponent implements OnInit {
 		}
 
 		return '';
+	}
+
+	public setHoveredColumn(columnId: string | null): void {
+		this.tableStateService.setHoveredColumn(columnId);
+	}
+
+	public isHoveredColumn(columnId: string): boolean {
+		return this.tableStateService.isHoveredColumn(columnId);
 	}
 }
