@@ -135,6 +135,8 @@
 									: null
 							"
 							[resizable]="true"
+							(mouseenter)="setHoveredColumn(column.id)"
+							(mouseleave)="setHoveredColumn(null)"
 						>
 							<div
 								class="item-align--center"
@@ -176,6 +178,8 @@
 								*ssHead="subColumnId"
 								ssTh
 								[style]="{ padding: '0 10px' }"
+								(mouseenter)="setHoveredColumn(column.id)"
+								(mouseleave)="setHoveredColumn(null)"
 							>
 								<ss-lib-text
 									[color]="Colors.TextBody2"
@@ -210,6 +214,7 @@
 								*ssCell="column.id"
 								ssTd
 								[style]="{ padding: '0 10px' }"
+								[class.hover]="isHoveredColumn(column.id)"
 							>
 								<div
 									class="item-align--center"

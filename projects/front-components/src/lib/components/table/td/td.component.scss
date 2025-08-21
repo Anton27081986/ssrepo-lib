@@ -8,6 +8,10 @@
 	&:first-child {
 		border-left: 1px solid var(--border-primary);
 	}
+
+	&.hover {
+		background-color: var(--surface-action-hover-3) !important;
+	}
 }
 
 /* скрываем вертикальные разделители, если отключены бордеры */
