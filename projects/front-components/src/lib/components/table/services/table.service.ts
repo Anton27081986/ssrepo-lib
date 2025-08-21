@@ -25,6 +25,7 @@ export class SsTableState<T> {
 		columnConfigs: [],
 	});
 
+	private readonly hoveredColumnIds = signal<string[]>([]);
 	private readonly columnsForm = new FormGroup<ColumnControls>({});
 	private readonly checkboxControls: CheckboxControls = {
 		masterCheckbox: new FormControl<boolean>(false, { nonNullable: true }),
@@ -241,6 +242,24 @@ export class SsTableState<T> {
 			emitEvent: false,
 		});
 		this.checkboxControls.masterCheckboxIndeterminate.set(isIndeterminate);
+	}
+
+	public setHoveredColumn(columnId: string | null): void {
+		if (!columnId) {
+			this.hoveredColumnIds.set([]);
+
+			return;
+		}
+
+		const column = this.visibleColumns().find((c) => c.id === columnId);
+
+		column?.subColumns?.length
+			? this.hoveredColumnIds.set(column.subColumns)
+			: this.hoveredColumnIds.set([columnId]);
+	}
+
+	public isHoveredColumn(columnId: string): boolean {
+		return this.hoveredColumnIds().includes(columnId);
 	}
 
 	private reinitializeColumnsForm(configs: TableColumnConfig[]): void {

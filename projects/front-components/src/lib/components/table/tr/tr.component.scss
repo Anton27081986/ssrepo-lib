@@ -3,7 +3,8 @@
 	background-color: var(--surface-primary);
 	transition: all 0.2s ease;
 
-	&:hover {
+	&:hover,
+	&.hovered {
 		background-color: var(--surface-action-hover-3) !important;
 	}
 
