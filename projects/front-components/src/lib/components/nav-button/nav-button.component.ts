@@ -1,4 +1,11 @@
-import { Component, input, ViewEncapsulation } from '@angular/core';
+import {
+	Component,
+	computed,
+	inject,
+	input,
+	signal,
+	ViewEncapsulation,
+} from '@angular/core';
 import {
 	animate,
 	state,
@@ -6,11 +13,25 @@ import {
 	transition,
 	trigger,
 } from '@angular/animations';
-import { NgIf } from '@angular/common';
 import { IconComponent } from '../icon/icon.component';
-import type { IMenu } from '../../shared/models';
-import { IconType, NavButton, TextType, TextWeight } from '../../shared/models';
+import {
+	IconType,
+	NavButton,
+	TextType,
+	TextWeight,
+	IMenu,
+	StateTypes,
+	Colors,
+	IStateElement,
+} from '../../shared/models';
 import { TextComponent } from '../text/text.component';
+import { ElementStateService } from '../../shared/services';
+import { EMPTY_STATE } from '../../shared/constants';
+
+interface IColorsConfig {
+	text?: Colors;
+	icon?: Colors;
+}
 
 /**
  * Компонент навигационной кнопки.
@@ -29,9 +50,10 @@ import { TextComponent } from '../text/text.component';
  */
 @Component({
 	selector: 'ss-lib-nav-button',
-	templateUrl: './nav-button.component.html',
 	standalone: true,
+	templateUrl: './nav-button.component.html',
 	styleUrls: ['./nav-button.component.scss'],
+	imports: [IconComponent, TextComponent],
 	encapsulation: ViewEncapsulation.None,
 	animations: [
 		trigger('expendedPanel', [
@@ -40,13 +62,38 @@ import { TextComponent } from '../text/text.component';
 			transition('initial <=> hidden', animate('0.3s')),
 		]),
 	],
-	imports: [IconComponent, TextComponent, NgIf],
 })
 export class NavButtonComponent {
-	public readonly IconType = IconType;
+	public readonly elementState = inject(ElementStateService);
+
 	public readonly type = input<NavButton>(NavButton.NavBase);
 	public readonly menu = input.required<IMenu>();
-	protected readonly NuvButtonType = NavButton;
+	public readonly state = signal<IStateElement>(EMPTY_STATE);
+
+	protected readonly IconType = IconType;
+	protected readonly NavButtonType = NavButton;
 	protected readonly TextType = TextType;
 	protected readonly TextWeight = TextWeight;
+	protected readonly StateTypes = StateTypes;
+
+	public readonly colorsConfig = computed((): IColorsConfig => {
+		if (this.menu().active) {
+			return {
+				icon: Colors.IconActionHover2,
+				text: Colors.TextActionHover2,
+			};
+		}
+
+		if (this.state().default) {
+			return {
+				icon: Colors.IconAction2,
+				text: Colors.TextAction2,
+			};
+		}
+
+		return {
+			icon: Colors.IconActionHover2,
+			text: Colors.TextActionHover2,
+		};
+	});
 }

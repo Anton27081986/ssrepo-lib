@@ -2,9 +2,9 @@ import type { IconType } from '../enums';
 
 export interface IMenu {
 	title: string;
-	toolTip: string | null;
-	link: string;
-	pressed: boolean;
+	active: boolean;
 	icon: IconType;
 	subMenu: IMenu[];
+	toolTip?: string;
+	link?: string;
 }

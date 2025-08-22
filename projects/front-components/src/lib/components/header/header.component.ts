@@ -1,4 +1,4 @@
-import type { InputSignal, TemplateRef } from '@angular/core';
+import { inject, InputSignal, TemplateRef } from '@angular/core';
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { NgTemplateOutlet } from '@angular/common';
 import { ButtonComponent } from '../buttons';
@@ -48,6 +48,8 @@ import { CanvasState } from '../canvas/canvas.state';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderComponent {
+	private readonly canvasState = inject(CanvasState);
+
 	public readonly leftMenuTemplateRef: InputSignal<TemplateRef<{}> | null> =
 		input.required();
 
@@ -59,15 +61,16 @@ export class HeaderComponent {
 	protected readonly IconPosition = IconPosition;
 	protected readonly ExtraSize = ExtraSize;
 
-	constructor(public readonly canvasState: CanvasState) {}
-
 	public toggleMenu(): void {
-		if (this.canvasState.sidebarType() === SidebarType.Close) {
-			this.canvasState.sidebarType.set(SidebarType.Mini);
-		} else if (this.canvasState.sidebarType() === SidebarType.Mini) {
-			this.canvasState.sidebarType.set(SidebarType.Full);
-		} else {
-			this.canvasState.sidebarType.set(SidebarType.Mini);
+		switch (this.canvasState.sidebarType()) {
+			case SidebarType.Close:
+				this.canvasState.sidebarType.set(SidebarType.Mini);
+				break;
+			case SidebarType.Mini:
+				this.canvasState.sidebarType.set(SidebarType.Full);
+				break;
+			default:
+				this.canvasState.sidebarType.set(SidebarType.Mini);
 		}
 	}
 }

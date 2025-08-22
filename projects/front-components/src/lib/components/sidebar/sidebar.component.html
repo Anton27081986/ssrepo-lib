@@ -1,25 +1,29 @@
 <div class="sidebar  sidebar--{{ sidebarType() }}">
-	<div
-		*ngIf="sidebarType() !== SidebarType.Close"
-		class="sidebar__top-menu"
-		@animationTrigger
-	>
-		<ng-container *ngFor="let menu of menu()">
-			<ss-lib-nav-button
-				ss-lib-tooltip
-				[tooltipText]="menu.toolTip"
-				[position]="TooltipPosition.Right"
-				[menu]="menu"
-				[type]="
-					stateCanvas.sidebarType() === SidebarType.Full
-						? NuvButtonType.NavBase
-						: NuvButtonType.NavIcon
-				"
-				(click)="outMenuModel(menu)"
-			>
-			</ss-lib-nav-button>
-		</ng-container>
-	</div>
+	@if (sidebarType() !== SidebarType.Close) {
+		<div
+			class="sidebar__top-menu"
+			@animationTrigger
+		>
+			@for (menu of menu(); track menu) {
+				<ss-lib-nav-button
+					ss-lib-tooltip
+					[tooltipText]="
+						sidebarType()
+							| mapper: tooltipText : menu?.toolTip || ''
+					"
+					[position]="TooltipPosition.Right"
+					[menu]="menu"
+					[type]="
+						stateCanvas.sidebarType() === SidebarType.Full
+							? NuvButtonType.NavBase
+							: NuvButtonType.NavIcon
+					"
+					(click)="outMenuModel(menu)"
+				>
+				</ss-lib-nav-button>
+			}
+		</div>
+	}
 
 	<div class="sidebar__bottom-menu">
 		<div class="sidebar__bottom-menu_divider">
@@ -39,6 +43,7 @@
 					[class.expanded]="
 						stateCanvas.sidebarType() === SidebarType.Full
 					"
+					[size]="ExtraSize.sm"
 					[type]="ButtonType.TextSecondary"
 					[text]="closeBtnText()"
 					[icon]="IconType.ChevronLeftDouble"
