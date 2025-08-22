@@ -6,9 +6,8 @@ import {
 	input,
 	output,
 } from '@angular/core';
-import { NgForOf, NgIf } from '@angular/common';
 import { animate, style, transition, trigger } from '@angular/animations';
-import { IMenu, TooltipPosition } from '../../shared/models';
+import { ExtraSize, IMenu, TooltipPosition } from '../../shared/models';
 import {
 	ButtonType,
 	IconType,
@@ -20,6 +19,8 @@ import { DividerComponent } from '../divider/divider.component';
 import { NavButtonComponent } from '../nav-button/nav-button.component';
 import { ButtonComponent } from '../buttons';
 import { TooltipDirective } from '../tooltip/tooltip.directive';
+import { COLLAPSE_MENU } from './constants/collapse-menu';
+import { MapperPipe } from '../../core/pipes';
 
 /**
  * Компонент боковой панели с навигационным меню и анимацией
@@ -51,12 +52,11 @@ import { TooltipDirective } from '../tooltip/tooltip.directive';
 	templateUrl: './sidebar.component.html',
 	styleUrls: ['./sidebar.component.scss'],
 	imports: [
-		NgIf,
 		DividerComponent,
 		ButtonComponent,
-		NgForOf,
 		NavButtonComponent,
 		TooltipDirective,
+		MapperPipe,
 	],
 	animations: [
 		trigger('animationTrigger', [
@@ -79,7 +79,7 @@ export class SidebarComponent {
 
 	public readonly closeBtnText = computed(() =>
 		this.stateCanvas.sidebarType() === SidebarType.Full
-			? 'Свернуть меню'
+			? COLLAPSE_MENU
 			: '',
 	);
 
@@ -88,20 +88,30 @@ export class SidebarComponent {
 	protected readonly SidebarType = SidebarType;
 	protected readonly NuvButtonType = NavButton;
 	protected readonly TooltipPosition = TooltipPosition;
+	protected readonly ExtraSize = ExtraSize;
+
+	public tooltipText(sidebarType: SidebarType, text: string): string {
+		return sidebarType === SidebarType.Mini ? text : '';
+	}
 
 	public closeMenu(): void {
 		this.stateCanvas.sidebarType.set(SidebarType.Close);
 	}
 
 	public outMenuModel(menu: IMenu): void {
-		if (!menu.pressed) {
-			const pressed = this.menu().find((item) => item.pressed);
+		if (menu.active) {
+			return;
+		}
 
-			if (pressed) {
-				pressed.pressed = false;
-			}
+		this.deactivateCurrentMenu();
+		this.outMenuFromSidebar.emit(menu);
+	}
 
-			this.outMenuFromSidebar.emit(menu);
+	private deactivateCurrentMenu(): void {
+		const activeItem = this.menu().find((item) => item.active);
+
+		if (activeItem) {
+			activeItem.active = false;
 		}
 	}
 }

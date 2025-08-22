@@ -37,7 +37,7 @@ export class LayoutComponent {
 			title: 'Баннеры',
 			toolTip: 'Баннеры',
 			link: '',
-			pressed: true,
+			active: true,
 			icon: IconType.ImagePlus,
 			subMenu: [],
 		},
@@ -45,7 +45,7 @@ export class LayoutComponent {
 			title: 'Баннеры',
 			toolTip: 'Баннеры',
 			link: '',
-			pressed: false,
+			active: false,
 			icon: IconType.Alert,
 			subMenu: [],
 		},
@@ -68,6 +68,6 @@ export class LayoutComponent {
 	}
 
 	protected selectedMenu(menu: IMenu): void {
-		menu.pressed = true;
+		menu.active = true;
 	}
 }

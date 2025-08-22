@@ -26,20 +26,26 @@ import {
 	ToastTypeEnum,
 	TooltipPosition,
 	IDictionaryItemDto,
+	NavButton,
 } from '../../../../front-components/src/lib/shared/models';
 import { standImports } from './stand.imports';
-import { BANNERS_ITEMS, DROPDOWN_ITEMS, TABS, WEEK_ITEMS } from './constants';
+import {
+	BANNERS_ITEMS,
+	DROPDOWN_ITEMS,
+	MENU_LIST,
+	TABS,
+	WEEK_ITEMS,
+} from './constants';
 import { SharedPopupService } from '../../../../front-components/src/lib/shared/services';
 import type { TestModalData } from '../test-modal/test-modal.component';
 import { TestModalComponent } from '../test-modal/test-modal.component';
 import { ToastRef } from '../../../../front-components/src/lib/components';
 import { TestRightSidePageComponent } from '../test-left-side-page/test-right-side-page.component';
-import { TableOperPlanExampleComponent } from '../table-oper-plan-example/table-oper-plan-example.component';
 
 @Component({
 	selector: 'app-stand',
 	standalone: true,
-	imports: [...standImports, TableOperPlanExampleComponent],
+	imports: [...standImports],
 	providers: [RouterOutlet],
 	templateUrl: './stand.component.html',
 	styleUrl: './stand.component.scss',
@@ -125,6 +131,8 @@ export class StandComponent {
 	protected readonly TagType = TagType;
 	protected readonly ActionBarItemType = ActionBarItemType;
 	protected readonly TABS = TABS;
+	protected readonly NavButton = NavButton;
+	protected readonly menulist = MENU_LIST;
 
 	private readonly sharedPopupService = inject(SharedPopupService);
 
