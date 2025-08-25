@@ -132,8 +132,21 @@ export class ScrollbarComponent implements AfterViewInit {
 	}
 
 	private setupObservers(): void {
+		// ResizeObserver для отслеживания изменения размеров контейнера
 		if (this.elementRef?.nativeElement) {
-			this.resizeObserver()!.observe(this.elementRef!.nativeElement);
+			this.resizeObserver()!.observe(this.elementRef.nativeElement);
+		}
+
+		const content = this.elementRef.nativeElement.querySelector('.content');
+		const mutationObserver = new MutationObserver(() =>
+			this.updateDimensions(),
+		);
+
+		if (content) {
+			mutationObserver.observe(content, {
+				childList: true,
+				subtree: true,
+			});
 		}
 
 		let rafId: number | null = null;
@@ -155,6 +168,8 @@ export class ScrollbarComponent implements AfterViewInit {
 
 		this.destroyRef.onDestroy(() => {
 			this.resizeObserver().disconnect();
+
+			mutationObserver.disconnect();
 
 			this.scrollListener();
 
