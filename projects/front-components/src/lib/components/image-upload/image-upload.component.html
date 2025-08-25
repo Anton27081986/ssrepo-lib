@@ -10,44 +10,47 @@
 			(dragover)="$event.preventDefault()"
 		>
 			<ss-lib-badge
-				[badgeProps]="{
-					icon: IconType.ImagePlus,
-				}"
-			></ss-lib-badge>
-			<div>
+				[badgeProps]="{ icon: IconType.ImagePlus, size: ExtraSize.lg }"
+			/>
+
+			<div class="image-upload__info">
 				<ss-lib-text
 					[type]="TextType.BodySm"
 					[color]="Colors.TextBody2"
-					>Добавьте или перетащите изображение
+				>
+					Добавьте или перетащите изображение
 				</ss-lib-text>
+
 				<ss-lib-text
 					[type]="TextType.BodyXs"
 					[color]="Colors.TextBody3"
-					>PNG,SVG,JPEG (макс. разрешение
-					@if (maxWidth() || maxHeight()) {
-						{{ maxWidth() || 'неограничено ' }}х{{
-							maxHeight() || ' неограничено'
-						}}{{ 'px' }})
-					} @else {
-						неограничено)
-					}
+				>
+					{{ maxResolutionText() }}
 				</ss-lib-text>
 			</div>
+
 			<label
 				#hiddenInput
 				class="image-upload__button"
+				for="file-upload"
 			>
 				<input
-					accept="image/jpeg, image/gif, image/png"
+					#fileInput
+					id="file-upload"
+					accept="image/jpeg,image/gif,image/png"
 					class="image-upload__button__hidden-input"
 					type="file"
-					(change)="selectFromPC($event)"
-				/>
-				<ss-lib-button
+					aria-label="Загрузить с устройства"
 					[disabled]="disabled()"
+					(change)="onFileSelect(fileInput.files)"
+				/>
+
+				<ss-lib-button
+					[type]="ButtonType.Primary"
 					[text]="'Загрузить с устройства'"
 					[icon]="IconType.Upload"
-					[size]="ExtraSize.sm"
+					[size]="ExtraSize.md"
+					[disabled]="disabled()"
 					(click)="hiddenInput.click()"
 				></ss-lib-button>
 			</label>
@@ -56,28 +59,39 @@
 	@case (States.Preview) {
 		<div
 			class="image-preview"
+			role="img"
+			aria-label="Image preview"
 			[style.background-image]="backgroundImg() | safe: 'html'"
 		>
 			<ss-lib-preview-button
 				class="image-preview__close"
+				aria-label="Remove image"
 				(click)="onFileDelete()"
-			></ss-lib-preview-button>
+			/>
+
 			<img
-				alt="Баннер"
+				alt="Uploaded image preview"
 				[src]="imageSrc()"
 			/>
 		</div>
 	}
 	@case (States.Loading) {
-		<div class="image-loading">
+		<div
+			class="image-loading"
+			role="region"
+			aria-label="Image upload in progress"
+		>
 			<ss-lib-progress-circle
 				class="image-loading__loader"
+				aria-label="Upload progress"
 				[progress]="animProgress()"
-			></ss-lib-progress-circle>
+			/>
+
 			<ss-lib-preview-button
 				class="image-loading__cancel"
+				aria-label="Cancel upload"
 				(click)="onFileDelete()"
-			></ss-lib-preview-button>
+			/>
 		</div>
 	}
 }

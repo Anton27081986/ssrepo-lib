@@ -1,5 +1,6 @@
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgFor, NgOptimizedImage } from '@angular/common';
+
 import {
 	IconComponent,
 	TextComponent,
@@ -44,68 +45,91 @@ import {
 	ProgressComponent,
 	ActionBarComponent,
 	ActionBarItemComponent,
+	NavButtonComponent,
+	LoadPaginationComponent,
 } from '../../../../front-components/src/lib/components';
+
 import {
 	FieldCtrlDirective,
 	ItemDirective,
 	PopoverTriggerForDirective,
 } from '../../../../front-components/src/lib/core/directives';
+
 import { RepeatTimesPipe } from '../../../../front-components/src/lib/core/pipes';
-import { LoadPaginationComponent } from '../../../../front-components/src/lib/components';
+
 import { TableExampleComponent } from '../table-example/table-example.component';
+import { TableOperPlanExampleComponent } from '../table-oper-plan-example/table-oper-plan-example.component';
 
 export const standImports = [
+	// Angular
 	ReactiveFormsModule,
+	NgFor,
 	NgOptimizedImage,
+
+	// Core utils
 	RepeatTimesPipe,
 	FieldCtrlDirective,
+	ItemDirective,
 	PopoverTriggerForDirective,
 	TooltipDirective,
-	IconComponent,
-	TextComponent,
-	ToggleComponent,
-	ToggleIconComponent,
+
+	// Form & Input components
 	FormFieldComponent,
 	InputComponent,
 	TextareaComponent,
-	DropdownItemComponent,
-	DropdownListComponent,
-	SelectComponent,
-	AvatarComponent,
+	CheckboxComponent,
+	OtpInputComponent,
 	NumberPickerComponent,
-	DividerComponent,
+	DatepickerComponent,
+	TimepickerComponent,
+	CalendarComponent,
+
+	// UI elements
+	IconComponent,
+	TextComponent,
+	BadgeComponent,
+	TagComponent,
+	StatusIconComponent,
+	ProgressComponent,
+	ProgressCircleComponent,
+	SkeletonBlockComponent,
+	SpinnerComponent,
+
+	// Buttons
 	ButtonComponent,
 	UtilityButtonComponent,
 	AvatarButtonComponent,
 	CloseButtonComponent,
-	BadgeComponent,
-	EmptyStateComponent,
 	PreviewButtonComponent,
-	LinkComponent,
-	SkeletonBlockComponent,
 	BackdropButtonComponent,
-	SpinnerComponent,
-	ImageUploadComponent,
-	SpinnerComponent,
-	CalendarComponent,
-	DatepickerComponent,
+	ToggleComponent,
+	ToggleIconComponent,
+	LinkComponent,
+	NavButtonComponent,
+
+	// Navigation & Layout
+	DividerComponent,
+	AvatarComponent,
+	EmptyStateComponent,
 	ScrollbarComponent,
-	TimepickerComponent,
-	ProgressCircleComponent,
-	CheckboxComponent,
-	OtpInputComponent,
-	NgFor,
 	CarouselComponent,
-	ItemDirective,
 	PaginationDotsComponent,
 	TabComponent,
 	TabsComponent,
-	LoadPaginationComponent,
-	StatusIconComponent,
-	TableExampleComponent,
-	DialogHeaderComponent,
-	TagComponent,
-	ProgressComponent,
 	ActionBarComponent,
 	ActionBarItemComponent,
+	DialogHeaderComponent,
+
+	// File & Media
+	ImageUploadComponent,
+
+	// Lists
+	DropdownItemComponent,
+	DropdownListComponent,
+	SelectComponent,
+	LoadPaginationComponent,
+
+	// Examples
+	TableExampleComponent,
+	TableOperPlanExampleComponent,
 ];
