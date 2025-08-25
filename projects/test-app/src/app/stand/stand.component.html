@@ -15,31 +15,36 @@
 				<ss-lib-text
 					class="spaced"
 					[type]="TextType.BodyXs"
-					>Body XS
+				>
+					Body XS
 				</ss-lib-text>
 
 				<ss-lib-text
 					class="spaced"
 					[type]="TextType.BodySm"
-					>Body SM
+				>
+					Body SM
 				</ss-lib-text>
 
 				<ss-lib-text
 					class="spaced"
 					[type]="TextType.BodyMd"
-					>Body MD
+				>
+					Body MD
 				</ss-lib-text>
 
 				<ss-lib-text
 					class="spaced"
 					[type]="TextType.BodyLg"
-					>Body LG
+				>
+					Body LG
 				</ss-lib-text>
 
 				<ss-lib-text
 					class="spaced"
 					[type]="TextType.BodyXl"
-					>Body XL
+				>
+					Body XL
 				</ss-lib-text>
 			</div>
 
@@ -50,37 +55,43 @@
 				<ss-lib-text
 					class="spaced"
 					[type]="TextType.HeadingXs"
-					>Heading XS
+				>
+					Heading XS
 				</ss-lib-text>
 
 				<ss-lib-text
 					class="spaced"
 					[type]="TextType.HeadingSm"
-					>Heading SM
+				>
+					Heading SM
 				</ss-lib-text>
 
 				<ss-lib-text
 					class="spaced"
 					[type]="TextType.HeadingMd"
-					>Heading MD
+				>
+					Heading MD
 				</ss-lib-text>
 
 				<ss-lib-text
 					class="spaced"
 					[type]="TextType.HeadingLg"
-					>Heading LG
+				>
+					Heading LG
 				</ss-lib-text>
 
 				<ss-lib-text
 					class="spaced"
 					[type]="TextType.HeadingXl"
-					>Heading XL
+				>
+					Heading XL
 				</ss-lib-text>
 
 				<ss-lib-text
 					class="spaced"
 					[type]="TextType.HeadingXxl"
-					>Heading XXL
+				>
+					Heading XXL
 				</ss-lib-text>
 			</div>
 
@@ -92,29 +103,71 @@
 					class="spaced"
 					[type]="TextType.HeadingXs"
 					[weight]="TextWeight.Regular"
-					>Heading XS Regular
+				>
+					Heading XS Regular
 				</ss-lib-text>
 
 				<ss-lib-text
 					class="spaced"
 					[type]="TextType.HeadingXs"
 					[weight]="TextWeight.Medium"
-					>Heading XS Medium
+				>
+					Heading XS Medium
 				</ss-lib-text>
 
 				<ss-lib-text
 					class="spaced"
 					[type]="TextType.HeadingXs"
 					[weight]="TextWeight.Semibold"
-					>Heading XS Semibold
+				>
+					Heading XS Semibold
 				</ss-lib-text>
 
 				<ss-lib-text
 					class="spaced"
 					[type]="TextType.HeadingXs"
 					[weight]="TextWeight.Bold"
-					>Heading XS Bold
+				>
+					Heading XS Bold
 				</ss-lib-text>
+			</div>
+		</div>
+
+		<!-- Icon Section -->
+		<div class="section">
+			<h2 class="section-title">Icons</h2>
+			<p class="section-description">Examples of an icon components.</p>
+			<div class="component-row">
+				@for (icon of iconsList; track icon) {
+					<div class="icon-wrapper">
+						<ss-lib-icon
+							[icon]="IconType[icon]"
+							[color]="Colors.IconBody"
+						></ss-lib-icon>
+
+						<ss-lib-text
+							[type]="TextType.BodyXs"
+							[weight]="TextWeight.Regular"
+							>{{ icon }}
+						</ss-lib-text>
+					</div>
+				}
+			</div>
+		</div>
+
+		<!-- Divider Section -->
+		<div class="section">
+			<h2 class="section-title">Dividers</h2>
+			<p class="section-description">
+				Divider component for layout separation.
+			</p>
+			<div class="component-row">
+				<ss-lib-divider class="full-width" />
+
+				<ss-lib-divider
+					[style.height.px]="50"
+					[orientation]="Orientation.Vertical"
+				></ss-lib-divider>
 			</div>
 		</div>
 
@@ -816,6 +869,39 @@
 			</div>
 		</div>
 
+		<!-- Nav Buttons Section -->
+		<div class="section">
+			<h2 class="section-title">Nav Buttons</h2>
+
+			<p class="section-description">
+				Navigation buttons with icons, text and expandable submenu.
+			</p>
+
+			<div class="sub-section">
+				<h3 class="sub-section-title">Base Nav Buttons</h3>
+				<div class="component-row">
+					@for (menu of menulist; track menu.title) {
+						<ss-lib-nav-button
+							[type]="NavButton.NavBase"
+							[menu]="menu"
+						></ss-lib-nav-button>
+					}
+				</div>
+			</div>
+
+			<div class="sub-section">
+				<h3 class="sub-section-title">Icon-only Nav Buttons</h3>
+				<div class="component-row">
+					@for (menu of menulist; track menu.title) {
+						<ss-lib-nav-button
+							[type]="NavButton.NavIcon"
+							[menu]="menu"
+						></ss-lib-nav-button>
+					}
+				</div>
+			</div>
+		</div>
+
 		<!-- Avatar Section -->
 		<div class="section">
 			<h2 class="section-title">Avatar</h2>
@@ -866,6 +952,95 @@
 
 					<ss-lib-avatar-button />
 				</div>
+			</div>
+		</div>
+
+		<!-- Avatar Dropdown Section -->
+		<div class="section">
+			<h2 class="section-title">Avatar Dropdown</h2>
+
+			<p class="section-description">
+				Avatar button with dropdown menu and custom header.
+			</p>
+
+			<div class="component-row">
+				<ss-lib-avatar-button
+					[username]="'ВН'"
+					[src]="'https://i.pravatar.cc/300'"
+					[popoverTriggerFor]="dropdown1"
+				></ss-lib-avatar-button>
+
+				<ss-lib-dropdown-list
+					#dropdown1
+					[headerTemplateRef]="avatarHeader"
+				>
+					<ss-lib-dropdown-item
+						[label]="'Опция'"
+						[icon]="IconType.Bell"
+						[selected]="true"
+						(click)="console.log(1)"
+					></ss-lib-dropdown-item>
+
+					<ss-lib-dropdown-item
+						[label]="'Опция'"
+						[icon]="IconType.Bell"
+						(click)="console.log(1)"
+					></ss-lib-dropdown-item>
+
+					<ss-lib-dropdown-item
+						[label]="'Опция'"
+						[icon]="IconType.Bell"
+						(click)="console.log(1)"
+					></ss-lib-dropdown-item>
+
+					<ss-lib-dropdown-item
+						[label]="'Опция'"
+						[icon]="IconType.Bell"
+						[isDisabled]="true"
+						(click)="console.log(2)"
+					></ss-lib-dropdown-item>
+
+					<ss-lib-divider class="divider"></ss-lib-divider>
+
+					<ss-lib-dropdown-item
+						[label]="'Удалить'"
+						[icon]="IconType.Bell"
+						(click)="console.log(5)"
+					></ss-lib-dropdown-item>
+
+					<ss-lib-dropdown-item
+						[label]="'Удалить'"
+						[icon]="IconType.Bell"
+						(click)="console.log(5)"
+					></ss-lib-dropdown-item>
+				</ss-lib-dropdown-list>
+
+				<ng-template #avatarHeader>
+					<div class="avatar-test">
+						<ss-lib-avatar
+							[username]="'ВН'"
+							[src]="'https://i.pravatar.cc/300'"
+						></ss-lib-avatar>
+
+						<div class="avatar-test__title">
+							<ss-lib-text
+								[type]="TextType.BodySm"
+								[weight]="TextWeight.Medium"
+								[color]="Colors.TextBody2"
+							>
+								Мария Викторовна
+							</ss-lib-text>
+
+							<ss-lib-text
+								[type]="TextType.BodySm"
+								[weight]="TextWeight.Regular"
+								[color]="Colors.TextBody3"
+							>
+								Менеджер по продажам
+							</ss-lib-text>
+						</div>
+					</div>
+				</ng-template>
 			</div>
 		</div>
 
@@ -1092,205 +1267,6 @@
 			</div>
 		</div>
 
-		<!-- Icon Section -->
-		<div class="section">
-			<h2 class="section-title">Icons</h2>
-			<p class="section-description">Examples of an icon components.</p>
-			<div class="component-row">
-				@for (icon of iconsList; track icon) {
-					<div class="icon-wrapper">
-						<ss-lib-icon
-							[icon]="IconType[icon]"
-							[color]="Colors.IconBody"
-						></ss-lib-icon>
-
-						<ss-lib-text
-							[type]="TextType.BodyXs"
-							[weight]="TextWeight.Regular"
-							>{{ icon }}
-						</ss-lib-text>
-					</div>
-				}
-			</div>
-		</div>
-
-		<!-- Divider Section -->
-		<div class="section">
-			<h2 class="section-title">Dividers</h2>
-			<p class="section-description">
-				Divider component for layout separation.
-			</p>
-			<div class="component-row">
-				<ss-lib-divider class="full-width" />
-
-				<ss-lib-divider
-					[style.height.px]="50"
-					[orientation]="Orientation.Vertical"
-				></ss-lib-divider>
-			</div>
-		</div>
-
-		<!-- Toast Examples Section -->
-		<div class="section">
-			<h2 class="section-title">Toast Notifications</h2>
-			<p class="section-description">
-				Demonstrates various toast notification types and theme toggle
-				functionality.
-			</p>
-			<div class="sub-section">
-				<ss-lib-button
-					class="spaced"
-					[type]="ButtonType.Ghost"
-					[text]="'Toggle Dark/Light Theme'"
-					[icon]="IconType.Sun"
-					[iconPosition]="IconPosition.Start"
-					(click)="toggleTheme()"
-				></ss-lib-button>
-			</div>
-			<div class="component-row">
-				<ss-lib-button
-					[type]="ButtonType.Primary"
-					[text]="'Default Toast'"
-					(click)="showToastDefault()"
-				></ss-lib-button>
-				<ss-lib-button
-					[type]="ButtonType.Primary"
-					[text]="'Error Toast'"
-					(click)="showToastError()"
-				></ss-lib-button>
-				<ss-lib-button
-					[type]="ButtonType.Primary"
-					[text]="'Success Toast'"
-					(click)="showToastSuccess()"
-				></ss-lib-button>
-				<ss-lib-button
-					[type]="ButtonType.Primary"
-					[text]="'Toast с доп кнопкой'"
-					(click)="showToastWithButton()"
-				></ss-lib-button>
-
-				<ss-lib-button
-					[type]="ButtonType.Primary"
-					[text]="'Toast с доп кнопкой и большим текстом'"
-					(click)="showToastWithButtonLarge()"
-				></ss-lib-button>
-			</div>
-			<div class="component-row">
-				<ss-lib-button
-					[type]="ButtonType.Secondary"
-					[text]="'API Success'"
-					(click)="viewToastSuccess()"
-				></ss-lib-button>
-				<ss-lib-button
-					[type]="ButtonType.Secondary"
-					[text]="'API Error'"
-					(click)="exampleMetod({ email: 'sydney@fife' })"
-				></ss-lib-button>
-			</div>
-		</div>
-
-		<!-- Toggle Section -->
-		<div class="section">
-			<h2 class="section-title">Toggles</h2>
-			<p class="section-description">Toggle switches.</p>
-			<div class="component-row">
-				<ss-lib-toggle
-					class="spaced"
-					[formControl]="toggleCtrl"
-				></ss-lib-toggle>
-				<ss-lib-toggle-icon
-					class="spaced"
-					[formControl]="toggleCtrl"
-				></ss-lib-toggle-icon>
-			</div>
-		</div>
-
-		<!-- Checkbox Section -->
-		<div class="section">
-			<h2 class="section-title">Checkboxes</h2>
-
-			<p class="section-description">
-				Checkbox components with labels and indeterminate states.
-			</p>
-
-			<div
-				class="component-row"
-				style="flex-direction: column"
-			>
-				<ss-lib-checkbox
-					class="spaced"
-					[label]="'Чекбокс для тестирования'"
-					[description]="'Текст'"
-					[formControl]="checkboxControl"
-				></ss-lib-checkbox>
-			</div>
-
-			<div class="component-row">
-				<ss-lib-button
-					[type]="ButtonType.Secondary"
-					[text]="'Переключить валидатор requiredTrue'"
-					(click)="toggleRequiredValidator()"
-				></ss-lib-button>
-
-				<ss-lib-button
-					[type]="ButtonType.Secondary"
-					[text]="'Установить кастомный валидатор'"
-					(click)="setCustomValidator()"
-				></ss-lib-button>
-
-				<ss-lib-button
-					[type]="ButtonType.Secondary"
-					[text]="'Очистить валидаторы'"
-					(click)="clearValidators()"
-				></ss-lib-button>
-
-				<ss-lib-button
-					[type]="ButtonType.Secondary"
-					[text]="'Сбросить'"
-					(click)="resetControl()"
-				></ss-lib-button>
-			</div>
-
-			<div
-				class="component-row"
-				style="flex-direction: column"
-			>
-				<ss-lib-checkbox
-					class="spaced"
-					[formControl]="masterCheckboxCtrl"
-					[indeterminate]="isIndeterminate"
-				></ss-lib-checkbox>
-
-				<ss-lib-checkbox
-					class="spaced"
-					[formControl]="checkBox2"
-				></ss-lib-checkbox>
-
-				<ss-lib-checkbox
-					class="spaced"
-					[formControl]="checkBox3"
-				></ss-lib-checkbox>
-			</div>
-
-			<div class="component-row">
-				<ss-lib-checkbox
-					class="spaced"
-					[formControl]="checkBox4"
-				></ss-lib-checkbox>
-
-				<ss-lib-checkbox
-					class="spaced"
-					[indeterminate]="true"
-					[formControl]="checkBox5"
-				></ss-lib-checkbox>
-
-				<ss-lib-checkbox
-					class="spaced"
-					[formControl]="checkBox6"
-				></ss-lib-checkbox>
-			</div>
-		</div>
-
 		<!-- Status Icon Section -->
 		<div class="section">
 			<h2 class="section-title">Status Icons</h2>
@@ -1343,63 +1319,6 @@
 					[text]="'Заказ/контракт'"
 					[type]="TagType.Dot"
 				/>
-			</div>
-		</div>
-
-		<!-- Tabs Section -->
-		<div class="section">
-			<h2 class="section-title">Tabs</h2>
-
-			<p class="section-description">
-				Tab navigation with custom actions.
-			</p>
-
-			<div class="spaced">
-				<ss-lib-tabs
-					[tabs]="TABS"
-					[activeTabIndex]="indexTab"
-					(changeIndexEmit)="changeTab($event)"
-				></ss-lib-tabs>
-			</div>
-
-			<div>Выбрана вкладка: {{ indexTab + 1 }}</div>
-		</div>
-
-		<!-- Badges Section -->
-		<div class="section">
-			<h2 class="section-title">Dialog header</h2>
-			<p class="section-description">
-				Dialog header for modals and popups.
-			</p>
-
-			<div class="sub-section">
-				<div
-					class="component-row"
-					style="flex-direction: column"
-				>
-					<ss-lib-dialog-header
-						[title]="'Заголовок'"
-						[description]="'Описание'"
-						[viewClose]="true"
-						[badge]="{
-							icon: IconType.Info,
-							status: Status.Success,
-						}"
-					/>
-
-					<ss-lib-divider />
-
-					<ss-lib-dialog-header
-						[title]="'Заголовок'"
-						[description]="'Описание'"
-						[closePosition]="IconPosition.Start"
-						[viewClose]="true"
-						[badge]="{
-							icon: IconType.Info,
-							status: Status.Success,
-						}"
-					/>
-				</div>
 			</div>
 		</div>
 
@@ -1664,6 +1583,78 @@
 			</div>
 		</div>
 
+		<!-- Select Dropdown Section -->
+		<div class="section">
+			<h2 class="section-title">Select Dropdown</h2>
+
+			<p class="section-description">
+				Select component with dropdown options.
+			</p>
+
+			<div class="component-row">
+				<ss-lib-form-field
+					[label]="'Название'"
+					[hint]="'Подсказка'"
+					[errorText]="'Неверно заполнено'"
+					[showValidationFieldIcon]="true"
+				>
+					<ss-lib-select
+						fieldCtrl
+						[formControl]="selectCtrl"
+						[popoverTriggerFor]="dropdown2"
+					>
+						<ss-lib-dropdown-list #dropdown2>
+							@for (item of dropdownItems; track item.id) {
+								<ss-lib-dropdown-item
+									[value]="item"
+									[icon]="IconType.Bell"
+								></ss-lib-dropdown-item>
+							}
+						</ss-lib-dropdown-list>
+					</ss-lib-select>
+				</ss-lib-form-field>
+			</div>
+			<p class="section-description">
+				Dropdown component with custom templates and scrolling to
+				selected item.
+			</p>
+
+			<div class="component-row">
+				<ss-lib-button
+					[iconPosition]="IconPosition.Start"
+					[icon]="IconType.Calendar"
+					[popoverTriggerFor]="listActions"
+					[type]="ButtonType.Secondary"
+					[text]="activeWeek()?.name || 'Выберите неделю'"
+					[size]="ExtraSize.lg"
+					(isPopoverOpenEmit)="dropdownWeekIsOpen.set($event)"
+				>
+					<ss-lib-icon
+						[icon]="IconType.ChevronDown"
+						[width]="'20'"
+						[height]="'20'"
+					></ss-lib-icon>
+				</ss-lib-button>
+
+				<ss-lib-dropdown-list
+					#listActions
+					[height]="'274px'"
+					[width]="'236px'"
+					[scrollOnOpen]="true"
+					[isOpen]="dropdownWeekIsOpen()"
+				>
+					@for (week of dropdownWeeks; track week.id) {
+						<ss-lib-dropdown-item
+							[value]="week"
+							[label]="week.name"
+							[selected]="activeWeek()?.id === week.id"
+							(click)="activeWeek.set(week)"
+						/>
+					}
+				</ss-lib-dropdown-list>
+			</div>
+		</div>
+
 		<!-- Number Picker Section -->
 		<div class="section">
 			<h2 class="section-title">Number Picker</h2>
@@ -1689,589 +1680,649 @@
 				</div>
 			</div>
 		</div>
-	</div>
 
-	<!-- Select Dropdown Section -->
-	<div class="section">
-		<h2 class="section-title">Select Dropdown</h2>
+		<!-- OTP Input Section -->
+		<div class="section">
+			<h2 class="section-title">OTP Input</h2>
 
-		<p class="section-description">
-			Select component with dropdown options.
-		</p>
-
-		<div class="component-row">
-			<ss-lib-form-field
-				[label]="'Название'"
-				[hint]="'Подсказка'"
-				[errorText]="'Неверно заполнено'"
-				[showValidationFieldIcon]="true"
+			<p class="section-description">One-time password input field.</p>
+			<div
+				class="component-row"
+				[style.align-items]="'center'"
 			>
-				<ss-lib-select
-					fieldCtrl
-					[formControl]="selectCtrl"
-					[popoverTriggerFor]="dropdown2"
-				>
-					<ss-lib-dropdown-list #dropdown2>
-						@for (item of dropdownItems; track item.id) {
-							<ss-lib-dropdown-item
-								[value]="item"
-								[icon]="IconType.Bell"
-							></ss-lib-dropdown-item>
-						}
-					</ss-lib-dropdown-list>
-				</ss-lib-select>
-			</ss-lib-form-field>
-		</div>
-		<p class="section-description">
-			Dropdown component with custom templates and scrolling to selected
-			item.
-		</p>
-
-		<div class="component-row">
-			<ss-lib-button
-				[iconPosition]="IconPosition.Start"
-				[icon]="IconType.Calendar"
-				[popoverTriggerFor]="listActions"
-				[type]="ButtonType.Secondary"
-				[text]="activeWeek()?.name || 'Выберите неделю'"
-				[size]="ExtraSize.lg"
-				(isPopoverOpenEmit)="dropdownWeekIsOpen.set($event)"
-			>
-				<ss-lib-icon
-					[icon]="IconType.ChevronDown"
-					[width]="'20'"
-					[height]="'20'"
-				></ss-lib-icon>
-			</ss-lib-button>
-
-			<ss-lib-dropdown-list
-				#listActions
-				[height]="'274px'"
-				[width]="'236px'"
-				[scrollOnOpen]="true"
-				[isOpen]="dropdownWeekIsOpen()"
-			>
-				@for (week of dropdownWeeks; track week.id) {
-					<ss-lib-dropdown-item
-						[value]="week"
-						[label]="week.name"
-						[selected]="activeWeek()?.id === week.id"
-						(click)="activeWeek.set(week)"
-					/>
-				}
-			</ss-lib-dropdown-list>
-		</div>
-	</div>
-
-	<!-- Avatar Dropdown Section -->
-	<div class="section">
-		<h2 class="section-title">Avatar Dropdown</h2>
-
-		<p class="section-description">
-			Avatar button with dropdown menu and custom header.
-		</p>
-
-		<div class="component-row">
-			<ss-lib-avatar-button
-				[username]="'ВН'"
-				[src]="'https://i.pravatar.cc/300'"
-				[popoverTriggerFor]="dropdown1"
-			></ss-lib-avatar-button>
-
-			<ss-lib-dropdown-list
-				#dropdown1
-				[headerTemplateRef]="avatarHeader"
-			>
-				<ss-lib-dropdown-item
-					[label]="'Опция'"
-					[icon]="IconType.Bell"
-					[selected]="true"
-					(click)="console.log(1)"
-				></ss-lib-dropdown-item>
-
-				<ss-lib-dropdown-item
-					[label]="'Опция'"
-					[icon]="IconType.Bell"
-					(click)="console.log(1)"
-				></ss-lib-dropdown-item>
-
-				<ss-lib-dropdown-item
-					[label]="'Опция'"
-					[icon]="IconType.Bell"
-					(click)="console.log(1)"
-				></ss-lib-dropdown-item>
-
-				<ss-lib-dropdown-item
-					[label]="'Опция'"
-					[icon]="IconType.Bell"
-					[isDisabled]="true"
-					(click)="console.log(2)"
-				></ss-lib-dropdown-item>
-
-				<ss-lib-divider class="divider"></ss-lib-divider>
-
-				<ss-lib-dropdown-item
-					[label]="'Удалить'"
-					[icon]="IconType.Bell"
-					(click)="console.log(5)"
-				></ss-lib-dropdown-item>
-
-				<ss-lib-dropdown-item
-					[label]="'Удалить'"
-					[icon]="IconType.Bell"
-					(click)="console.log(5)"
-				></ss-lib-dropdown-item>
-			</ss-lib-dropdown-list>
-
-			<ng-template #avatarHeader>
-				<div class="avatar-test">
-					<ss-lib-avatar
-						[username]="'ВН'"
-						[src]="'https://i.pravatar.cc/300'"
-					></ss-lib-avatar>
-
-					<div class="avatar-test__title">
-						<ss-lib-text
-							[type]="TextType.BodySm"
-							[weight]="TextWeight.Medium"
-							[color]="Colors.TextBody2"
-						>
-							Мария Викторовна
-						</ss-lib-text>
-
-						<ss-lib-text
-							[type]="TextType.BodySm"
-							[weight]="TextWeight.Regular"
-							[color]="Colors.TextBody3"
-						>
-							Менеджер по продажам
-						</ss-lib-text>
-					</div>
+				<div [style.width.px]="360">
+					<ss-lib-otp-input
+						class="spaced"
+						[formControl]="otpCtrl"
+					></ss-lib-otp-input>
 				</div>
-			</ng-template>
+			</div>
+
+			<ss-lib-button
+				[type]="ButtonType.Primary"
+				[text]="'Submit OTP'"
+				(click)="submitOtp()"
+			/>
 		</div>
-	</div>
 
-	<!-- OTP Input Section -->
-	<div class="section">
-		<h2 class="section-title">OTP Input</h2>
+		<!-- Checkbox Section -->
+		<div class="section">
+			<h2 class="section-title">Checkboxes</h2>
 
-		<p class="section-description">One-time password input field.</p>
-		<div
-			class="component-row"
-			[style.align-items]="'center'"
-		>
-			<div [style.width.px]="360">
-				<ss-lib-otp-input
+			<p class="section-description">
+				Checkbox components with labels and indeterminate states.
+			</p>
+
+			<div
+				class="component-row"
+				style="flex-direction: column"
+			>
+				<ss-lib-checkbox
 					class="spaced"
-					[formControl]="otpCtrl"
-				></ss-lib-otp-input>
+					[label]="'Чекбокс для тестирования'"
+					[description]="'Текст'"
+					[formControl]="checkboxControl"
+				></ss-lib-checkbox>
 			</div>
-		</div>
 
-		<ss-lib-button
-			[type]="ButtonType.Primary"
-			[text]="'Submit OTP'"
-			(click)="submitOtp()"
-		/>
-	</div>
+			<div class="component-row">
+				<ss-lib-button
+					[type]="ButtonType.Secondary"
+					[text]="'Переключить валидатор requiredTrue'"
+					(click)="toggleRequiredValidator()"
+				></ss-lib-button>
 
-	<!-- Scrollbar Section -->
-	<div class="section">
-		<h2 class="section-title">Scrollbar</h2>
-		<p class="section-description">Custom scrollbar with sample content.</p>
-		<div class="component-row">
-			<div class="scrollbar-test">
-				<ss-lib-scrollbar>
-					@for (colCount of 100 | repeatTimes; track $index) {
-						<div class="scrollbar-test__item">
-							Товарищи! сложившаяся структура организации играет
-							важную роль в формировании модели развития
-						</div>
-					}
-				</ss-lib-scrollbar>
+				<ss-lib-button
+					[type]="ButtonType.Secondary"
+					[text]="'Установить кастомный валидатор'"
+					(click)="setCustomValidator()"
+				></ss-lib-button>
+
+				<ss-lib-button
+					[type]="ButtonType.Secondary"
+					[text]="'Очистить валидаторы'"
+					(click)="clearValidators()"
+				></ss-lib-button>
+
+				<ss-lib-button
+					[type]="ButtonType.Secondary"
+					[text]="'Сбросить'"
+					(click)="resetControl()"
+				></ss-lib-button>
 			</div>
-		</div>
-	</div>
 
-	<!-- Empty State Section -->
-	<div class="section">
-		<h2 class="section-title">Empty State</h2>
-		<p class="section-description">
-			Empty state component with custom actions and icon.
-		</p>
-		<div class="component-row">
-			<div class="empty-state__test">
-				<ss-lib-empty-state
-					[title]="'Заголовок'"
-					[description]="
-						'Здесь будут баннеры. Нажмите «Добавить баннер», чтобы добавить новый.'
-					"
-					[badge]="{
-						size: ExtraSize.xl,
-						icon: IconType.ImagePlus,
-					}"
-				>
-					<div class="component-row">
-						<ss-lib-button
-							[type]="ButtonType.Secondary"
-							[text]="'Вторичная'"
-							[size]="ExtraSize.xl"
-						></ss-lib-button>
-
-						<ss-lib-button
-							[type]="ButtonType.Primary"
-							[text]="'Первичная'"
-							[size]="ExtraSize.xl"
-						></ss-lib-button>
-					</div>
-				</ss-lib-empty-state>
-			</div>
-		</div>
-	</div>
-
-	<!--TODO:	###############################-->
-
-	<!-- Skeleton Blocks Section -->
-	<div class="section">
-		<h2 class="section-title">Skeleton Blocks</h2>
-		<p class="section-description">
-			Loading placeholders with different shapes and sizes.
-		</p>
-		<div class="component-row">
-			<ss-lib-skeleton-block
-				[config]="{
-					width: '180px',
-					height: '56px',
-					borderRadius: '8px',
-				}"
-			/>
-
-			<ss-lib-skeleton-block
-				[config]="{
-					width: '197px',
-					height: '14px',
-					borderRadius: '4px',
-				}"
-			/>
-
-			<ss-lib-skeleton-block
-				[config]="{
-					width: '40px',
-					height: '40px',
-					borderRadius: '50%',
-				}"
-			/>
-		</div>
-	</div>
-
-	<!-- Modal Buttons Section -->
-	<div class="section">
-		<h2 class="section-title">Modal Triggers</h2>
-		<p class="section-description">
-			Buttons to trigger different types of modals.
-		</p>
-		<div class="component-row">
-			<ss-lib-button
-				[type]="ButtonType.Primary"
-				[text]="'Модалка - компонент'"
-				(click)="openTestModal()"
-			></ss-lib-button>
-			<ss-lib-button
-				[type]="ButtonType.Primary"
-				[text]="'Модалка - confirm'"
-				(click)="openTestConfirmModal()"
-			></ss-lib-button>
-			<ss-lib-button
-				[type]="ButtonType.Primary"
-				[text]="'Модалка - light-box'"
-				(click)="openLightBoxModal()"
-			></ss-lib-button>
-		</div>
-	</div>
-
-	<!-- Tooltip Section -->
-	<div class="section">
-		<h2 class="section-title">Tooltip</h2>
-		<p class="section-description">
-			Icon with tooltip for additional information.
-		</p>
-		<div class="component-row">
-			<ss-lib-icon
-				ss-lib-tooltip
-				[icon]="IconType.Plus"
-				[color]="Colors.IconOnDisabled"
-				[tooltipText]="'Это тултип'"
-				[position]="TooltipPosition.TopLeft"
-			></ss-lib-icon>
-
-			<ss-lib-icon
-				ss-lib-tooltip
-				[icon]="IconType.Plus"
-				[color]="Colors.IconOnDisabled"
-				[tooltipText]="'Это тултип'"
-				[position]="TooltipPosition.Top"
-			></ss-lib-icon>
-
-			<ss-lib-icon
-				ss-lib-tooltip
-				[icon]="IconType.Plus"
-				[color]="Colors.IconOnDisabled"
-				[tooltipText]="'Это тултип'"
-				[position]="TooltipPosition.TopRight"
-			></ss-lib-icon>
-
-			<ss-lib-icon
-				ss-lib-tooltip
-				[icon]="IconType.Plus"
-				[color]="Colors.IconOnDisabled"
-				[tooltipText]="'Это тултип'"
-				[position]="TooltipPosition.Right"
-			></ss-lib-icon>
-
-			<ss-lib-icon
-				ss-lib-tooltip
-				[icon]="IconType.Plus"
-				[color]="Colors.IconOnDisabled"
-				[tooltipText]="'Это тултип'"
-				[position]="TooltipPosition.BottomRight"
-			></ss-lib-icon>
-
-			<ss-lib-icon
-				ss-lib-tooltip
-				[icon]="IconType.Plus"
-				[color]="Colors.IconOnDisabled"
-				[tooltipText]="'Это тултип'"
-				[position]="TooltipPosition.Bottom"
-			></ss-lib-icon>
-
-			<ss-lib-icon
-				ss-lib-tooltip
-				[icon]="IconType.Plus"
-				[color]="Colors.IconOnDisabled"
-				[tooltipText]="'Это тултип'"
-				[position]="TooltipPosition.BottomLeft"
-			></ss-lib-icon>
-
-			<ss-lib-icon
-				ss-lib-tooltip
-				[icon]="IconType.Plus"
-				[color]="Colors.IconOnDisabled"
-				[tooltipText]="'Это тултип'"
-				[position]="TooltipPosition.Left"
-			></ss-lib-icon>
-		</div>
-	</div>
-
-	<!-- Action bar Section -->
-	<div class="section">
-		<h2 class="section-title">Action bar</h2>
-
-		<p class="section-description">
-			A customizable panel for displaying interactive action items with
-			support for various sizes and optional close functionality.
-		</p>
-
-		<div class="component-row">
-			<ss-lib-action-bar [size]="ExtraSize.xxs">
-				<ss-lib-action-bar-item
-					[leftIconConfig]="{
-						icon: IconType.LinkExternal01,
-					}"
-				/>
-
-				<ss-lib-action-bar-item
-					[leftIconConfig]="{
-						icon: IconType.Message,
-					}"
-				/>
-
-				<ss-lib-action-bar-item
-					[leftIconConfig]="{
-						icon: IconType.Message,
-					}"
-					[text]="'3'"
-				/>
-			</ss-lib-action-bar>
-		</div>
-
-		<div class="component-row">
-			<ss-lib-action-bar [showClose]="true">
-				<ss-lib-action-bar-item
-					[type]="ActionBarItemType.Info"
-					[leftIconConfig]="{
-						icon: IconType.CheckCircle,
-						color: Colors.IconInformation,
-					}"
-					[text]="'Выбрано элементов: 1 из 200'"
-				/>
-
-				<ss-lib-action-bar-item
-					[leftIconConfig]="{ icon: IconType.FileSearch02 }"
-					[text]="'Заказ-наряд'"
-					[rightIconConfig]="{ icon: IconType.ChevronDown }"
-					[popoverTriggerFor]="dropdownTest"
-				/>
-
-				<ss-lib-action-bar-item
-					[leftIconConfig]="{ icon: IconType.FilePreviewSearch }"
-					[text]="'Рассчитать сырьё'"
-					[rightIconConfig]="{ icon: IconType.ChevronDown }"
-					[popoverTriggerFor]="dropdownTest"
-				/>
-
-				<ss-lib-action-bar-item
-					[leftIconConfig]="{ icon: IconType.Trash }"
-					[text]="'Удалить'"
-					[isDestructive]="true"
-				/>
-			</ss-lib-action-bar>
-
-			<ss-lib-dropdown-list
-				#dropdownTest
-				[width]="'162px'"
+			<div
+				class="component-row"
+				style="flex-direction: column"
 			>
-				<ss-lib-dropdown-item
-					[label]="'Опция'"
-					[icon]="IconType.Bell"
-					[selected]="true"
-					(click)="console.log(1)"
-				></ss-lib-dropdown-item>
+				<ss-lib-checkbox
+					class="spaced"
+					[formControl]="masterCheckboxCtrl"
+					[indeterminate]="isIndeterminate"
+				></ss-lib-checkbox>
 
-				<ss-lib-dropdown-item
-					[label]="'Опция'"
-					[icon]="IconType.Bell"
-					(click)="console.log(1)"
-				></ss-lib-dropdown-item>
+				<ss-lib-checkbox
+					class="spaced"
+					[formControl]="checkBox2"
+				></ss-lib-checkbox>
 
-				<ss-lib-dropdown-item
-					[label]="'Опция'"
-					[icon]="IconType.Bell"
-					(click)="console.log(1)"
-				></ss-lib-dropdown-item>
+				<ss-lib-checkbox
+					class="spaced"
+					[formControl]="checkBox3"
+				></ss-lib-checkbox>
+			</div>
 
-				<ss-lib-dropdown-item
-					[label]="'Опция'"
-					[icon]="IconType.Bell"
-					[isDisabled]="true"
-					(click)="console.log(2)"
-				></ss-lib-dropdown-item>
+			<div class="component-row">
+				<ss-lib-checkbox
+					class="spaced"
+					[formControl]="checkBox4"
+				></ss-lib-checkbox>
 
-				<ss-lib-divider class="divider"></ss-lib-divider>
+				<ss-lib-checkbox
+					class="spaced"
+					[indeterminate]="true"
+					[formControl]="checkBox5"
+				></ss-lib-checkbox>
 
-				<ss-lib-dropdown-item
-					[label]="'Удалить'"
-					[icon]="IconType.Bell"
-					(click)="console.log(5)"
-				></ss-lib-dropdown-item>
-
-				<ss-lib-dropdown-item
-					[label]="'Удалить'"
-					[icon]="IconType.Bell"
-					(click)="console.log(5)"
-				></ss-lib-dropdown-item>
-			</ss-lib-dropdown-list>
+				<ss-lib-checkbox
+					class="spaced"
+					[formControl]="checkBox6"
+				></ss-lib-checkbox>
+			</div>
 		</div>
-	</div>
 
-	<!-- Sidebar Trigger Section -->
-	<div class="section">
-		<h2 class="section-title">Sidebar Trigger</h2>
-		<p class="section-description">
-			Button to trigger a sidebar component.
-		</p>
-		<div class="component-row">
-			<ss-lib-button
-				[type]="ButtonType.Primary"
-				[text]="'Левый sidePage'"
-				(click)="openRightSidebar()"
-			></ss-lib-button>
+		<!-- Toggle Section -->
+		<div class="section">
+			<h2 class="section-title">Toggles</h2>
+			<p class="section-description">Toggle switches.</p>
+			<div class="component-row">
+				<ss-lib-toggle
+					class="spaced"
+					[formControl]="toggleCtrl"
+				></ss-lib-toggle>
+				<ss-lib-toggle-icon
+					class="spaced"
+					[formControl]="toggleCtrl"
+				></ss-lib-toggle-icon>
+			</div>
 		</div>
-	</div>
 
-	<!-- Carousel Section -->
-	<div class="section">
-		<h2 class="section-title">Carousel</h2>
-		<p class="section-description">Image carousel with auto-rotation.</p>
-		<div class="component-row">
-			<ss-lib-carousel
-				[duration]="3000"
-				[(index)]="carouselIndex"
-			>
-				@for (banner of bannersItems; track banner) {
-					<img
-						*ssItem
-						class="carousel-item"
-						alt="Banner image"
-						height="220"
-						width="990"
-						priority
-						[ngSrc]="banner.imageUrl"
+		<!-- Tabs Section -->
+		<div class="section">
+			<h2 class="section-title">Tabs</h2>
+
+			<p class="section-description">
+				Tab navigation with custom actions.
+			</p>
+
+			<div class="spaced">
+				<ss-lib-tabs
+					[tabs]="TABS"
+					[activeTabIndex]="indexTab"
+					(changeIndexEmit)="changeTab($event)"
+				></ss-lib-tabs>
+			</div>
+
+			<div>Выбрана вкладка: {{ indexTab + 1 }}</div>
+		</div>
+
+		<!-- Action bar Section -->
+		<div class="section">
+			<h2 class="section-title">Action bar</h2>
+
+			<p class="section-description">
+				A customizable panel for displaying interactive action items
+				support for various sizes and optional close functionality.
+			</p>
+
+			<div class="component-row">
+				<ss-lib-action-bar [size]="ExtraSize.xxs">
+					<ss-lib-action-bar-item
+						[leftIconConfig]="{
+							icon: IconType.LinkExternal01,
+						}"
 					/>
-				}
-			</ss-lib-carousel>
+
+					<ss-lib-action-bar-item
+						[leftIconConfig]="{
+							icon: IconType.Message,
+						}"
+					/>
+
+					<ss-lib-action-bar-item
+						[leftIconConfig]="{
+							icon: IconType.Message,
+						}"
+						[text]="'3'"
+					/>
+				</ss-lib-action-bar>
+			</div>
+
+			<div class="component-row">
+				<ss-lib-action-bar [showClose]="true">
+					<ss-lib-action-bar-item
+						[type]="ActionBarItemType.Info"
+						[leftIconConfig]="{
+							icon: IconType.CheckCircle,
+							color: Colors.IconInformation,
+						}"
+						[text]="'Выбрано элементов: 1 из 200'"
+					/>
+
+					<ss-lib-action-bar-item
+						[leftIconConfig]="{ icon: IconType.FileSearch02 }"
+						[text]="'Заказ-наряд'"
+						[rightIconConfig]="{ icon: IconType.ChevronDown }"
+						[popoverTriggerFor]="dropdownTest"
+					/>
+
+					<ss-lib-action-bar-item
+						[leftIconConfig]="{ icon: IconType.FilePreviewSearch }"
+						[text]="'Рассчитать сырьё'"
+						[rightIconConfig]="{ icon: IconType.ChevronDown }"
+						[popoverTriggerFor]="dropdownTest"
+					/>
+
+					<ss-lib-action-bar-item
+						[leftIconConfig]="{ icon: IconType.Trash }"
+						[text]="'Удалить'"
+						[isDestructive]="true"
+					/>
+				</ss-lib-action-bar>
+
+				<ss-lib-dropdown-list
+					#dropdownTest
+					[width]="'162px'"
+				>
+					<ss-lib-dropdown-item
+						[label]="'Опция'"
+						[icon]="IconType.Bell"
+						[selected]="true"
+						(click)="console.log(1)"
+					></ss-lib-dropdown-item>
+
+					<ss-lib-dropdown-item
+						[label]="'Опция'"
+						[icon]="IconType.Bell"
+						(click)="console.log(1)"
+					></ss-lib-dropdown-item>
+
+					<ss-lib-dropdown-item
+						[label]="'Опция'"
+						[icon]="IconType.Bell"
+						(click)="console.log(1)"
+					></ss-lib-dropdown-item>
+
+					<ss-lib-dropdown-item
+						[label]="'Опция'"
+						[icon]="IconType.Bell"
+						[isDisabled]="true"
+						(click)="console.log(2)"
+					></ss-lib-dropdown-item>
+
+					<ss-lib-divider class="divider"></ss-lib-divider>
+
+					<ss-lib-dropdown-item
+						[label]="'Удалить'"
+						[icon]="IconType.Bell"
+						(click)="console.log(5)"
+					></ss-lib-dropdown-item>
+
+					<ss-lib-dropdown-item
+						[label]="'Удалить'"
+						[icon]="IconType.Bell"
+						(click)="console.log(5)"
+					></ss-lib-dropdown-item>
+				</ss-lib-dropdown-list>
+			</div>
 		</div>
-	</div>
 
-	<!-- Table Examples Section -->
-	<div class="section">
-		<h2 class="section-title">Table Examples</h2>
-
-		<p class="section-description">
-			Custom table components for data display.
-		</p>
-
-		<div
-			class="component-row"
-			style="flex-direction: column; overflow: scroll"
-		>
-			<app-table-example class="spaced"></app-table-example>
+		<!-- Sidebar Trigger Section -->
+		<div class="section">
+			<h2 class="section-title">Sidebar Trigger</h2>
+			<p class="section-description">
+				Button to trigger a sidebar component.
+			</p>
+			<div class="component-row">
+				<ss-lib-button
+					[type]="ButtonType.Primary"
+					[text]="'Правый sidePage'"
+					(click)="openRightSidebar()"
+				></ss-lib-button>
+			</div>
 		</div>
 
-		<ss-lib-divider class="full-width" />
+		<!-- Dialog header -->
+		<div class="section">
+			<h2 class="section-title">Dialog header</h2>
+			<p class="section-description">
+				Dialog header for modals and popups.
+			</p>
 
-		<p class="section-description">
-			Custom table components for data display with sticky columns in
-			draggable mode, scrollable, resizable and hover on columns.
-		</p>
+			<div class="sub-section">
+				<div
+					class="component-row"
+					style="flex-direction: column"
+				>
+					<ss-lib-dialog-header
+						[title]="'Заголовок'"
+						[description]="'Описание'"
+						[viewClose]="true"
+						[badge]="{
+							icon: IconType.Info,
+							status: Status.Success,
+						}"
+					/>
 
-		<div
-			class="component-row"
-			style="flex-direction: column; overflow: scroll; margin-top: 28px"
-		>
-			<app-table-oper-plan-example
-				class="spaced"
-			></app-table-oper-plan-example>
+					<ss-lib-divider />
+
+					<ss-lib-dialog-header
+						[title]="'Заголовок'"
+						[description]="'Описание'"
+						[closePosition]="IconPosition.Start"
+						[viewClose]="true"
+						[badge]="{
+							icon: IconType.Info,
+							status: Status.Success,
+						}"
+					/>
+				</div>
+			</div>
 		</div>
-	</div>
 
-	<!-- Image Upload and Progress Section -->
-	<div class="section">
-		<h2 class="section-title">Image Upload & Progress Indicators</h2>
-		<p class="section-description">
-			Showcases image upload component with progress indicators.
-		</p>
-
-		<div class="component-row">
-			<ss-lib-progress
-				[total]="100"
-				[current]="50"
-			></ss-lib-progress>
-
-			<ss-lib-progress-circle
-				[progress]="fileLoadProgress()"
-			></ss-lib-progress-circle>
-
-			<ss-lib-spinner [displaySpinnerText]="true"></ss-lib-spinner>
+		<!-- Modal Buttons Section -->
+		<div class="section">
+			<h2 class="section-title">Modal Triggers</h2>
+			<p class="section-description">
+				Buttons to trigger different types of modals.
+			</p>
+			<div class="component-row">
+				<ss-lib-button
+					[type]="ButtonType.Primary"
+					[text]="'Модалка - компонент'"
+					(click)="openTestModal()"
+				></ss-lib-button>
+				<ss-lib-button
+					[type]="ButtonType.Primary"
+					[text]="'Модалка - confirm'"
+					(click)="openTestConfirmModal()"
+				></ss-lib-button>
+				<ss-lib-button
+					[type]="ButtonType.Primary"
+					[text]="'Модалка - light-box'"
+					(click)="openLightBoxModal()"
+				></ss-lib-button>
+			</div>
 		</div>
 
-		<div class="sub-section">
-			<ss-lib-image-upload
-				class="spaced"
-				[progress]="fileLoadProgress()"
-				(fileChanged)="uploadFile($event)"
-				(uploadCancel)="uploadCancel()"
-			></ss-lib-image-upload>
+		<!-- Toast Examples Section -->
+		<div class="section">
+			<h2 class="section-title">Toast Notifications</h2>
+			<p class="section-description">
+				Demonstrates various toast notification types and theme toggle
+				functionality.
+			</p>
+			<div class="sub-section">
+				<ss-lib-button
+					class="spaced"
+					[type]="ButtonType.Ghost"
+					[text]="'Toggle Dark/Light Theme'"
+					[icon]="IconType.Sun"
+					[iconPosition]="IconPosition.Start"
+					(click)="toggleTheme()"
+				></ss-lib-button>
+			</div>
+			<div class="component-row">
+				<ss-lib-button
+					[type]="ButtonType.Primary"
+					[text]="'Default Toast'"
+					(click)="showToastDefault()"
+				></ss-lib-button>
+				<ss-lib-button
+					[type]="ButtonType.Primary"
+					[text]="'Error Toast'"
+					(click)="showToastError()"
+				></ss-lib-button>
+				<ss-lib-button
+					[type]="ButtonType.Primary"
+					[text]="'Success Toast'"
+					(click)="showToastSuccess()"
+				></ss-lib-button>
+				<ss-lib-button
+					[type]="ButtonType.Primary"
+					[text]="'Toast с доп кнопкой'"
+					(click)="showToastWithButton()"
+				></ss-lib-button>
+
+				<ss-lib-button
+					[type]="ButtonType.Primary"
+					[text]="'Toast с доп кнопкой и большим текстом'"
+					(click)="showToastWithButtonLarge()"
+				></ss-lib-button>
+			</div>
+			<div class="component-row">
+				<ss-lib-button
+					[type]="ButtonType.Secondary"
+					[text]="'API Success'"
+					(click)="viewToastSuccess()"
+				></ss-lib-button>
+				<ss-lib-button
+					[type]="ButtonType.Secondary"
+					[text]="'API Error'"
+					(click)="exampleMetod({ email: 'sydney@fife' })"
+				></ss-lib-button>
+			</div>
+		</div>
+
+		<!-- Tooltip Section -->
+		<div class="section">
+			<h2 class="section-title">Tooltip</h2>
+			<p class="section-description">
+				Icon with tooltip for additional information.
+			</p>
+			<div class="component-row">
+				<ss-lib-icon
+					ss-lib-tooltip
+					[icon]="IconType.Plus"
+					[color]="Colors.IconOnDisabled"
+					[tooltipText]="'Это тултип'"
+					[position]="TooltipPosition.TopLeft"
+				></ss-lib-icon>
+
+				<ss-lib-icon
+					ss-lib-tooltip
+					[icon]="IconType.Plus"
+					[color]="Colors.IconOnDisabled"
+					[tooltipText]="'Это тултип'"
+					[position]="TooltipPosition.Top"
+				></ss-lib-icon>
+
+				<ss-lib-icon
+					ss-lib-tooltip
+					[icon]="IconType.Plus"
+					[color]="Colors.IconOnDisabled"
+					[tooltipText]="'Это тултип'"
+					[position]="TooltipPosition.TopRight"
+				></ss-lib-icon>
+
+				<ss-lib-icon
+					ss-lib-tooltip
+					[icon]="IconType.Plus"
+					[color]="Colors.IconOnDisabled"
+					[tooltipText]="'Это тултип'"
+					[position]="TooltipPosition.Right"
+				></ss-lib-icon>
+
+				<ss-lib-icon
+					ss-lib-tooltip
+					[icon]="IconType.Plus"
+					[color]="Colors.IconOnDisabled"
+					[tooltipText]="'Это тултип'"
+					[position]="TooltipPosition.BottomRight"
+				></ss-lib-icon>
+
+				<ss-lib-icon
+					ss-lib-tooltip
+					[icon]="IconType.Plus"
+					[color]="Colors.IconOnDisabled"
+					[tooltipText]="'Это тултип'"
+					[position]="TooltipPosition.Bottom"
+				></ss-lib-icon>
+
+				<ss-lib-icon
+					ss-lib-tooltip
+					[icon]="IconType.Plus"
+					[color]="Colors.IconOnDisabled"
+					[tooltipText]="'Это тултип'"
+					[position]="TooltipPosition.BottomLeft"
+				></ss-lib-icon>
+
+				<ss-lib-icon
+					ss-lib-tooltip
+					[icon]="IconType.Plus"
+					[color]="Colors.IconOnDisabled"
+					[tooltipText]="'Это тултип'"
+					[position]="TooltipPosition.Left"
+				></ss-lib-icon>
+			</div>
+		</div>
+
+		<!-- Image Upload and Progress Section -->
+		<div class="section">
+			<h2 class="section-title">Image Upload & Progress Indicators</h2>
+			<p class="section-description">
+				Showcases image upload component with progress indicators.
+			</p>
+
+			<div class="component-row">
+				<ss-lib-progress
+					[total]="100"
+					[current]="50"
+				></ss-lib-progress>
+
+				<ss-lib-spinner [displaySpinnerText]="true"></ss-lib-spinner>
+			</div>
+
+			<div class="sub-section">
+				<ss-lib-image-upload
+					class="spaced"
+					[progress]="fileLoadProgress()"
+					(fileChanged)="uploadFile($event)"
+					(uploadCancel)="uploadCancel()"
+				></ss-lib-image-upload>
+			</div>
+		</div>
+
+		<!-- Empty State Section -->
+		<div class="section">
+			<h2 class="section-title">Empty State</h2>
+			<p class="section-description">
+				Empty state component with custom actions and icon.
+			</p>
+			<div class="component-row">
+				<div class="empty-state__test">
+					<ss-lib-empty-state
+						[title]="'Заголовок'"
+						[description]="
+							'Здесь будут баннеры. Нажмите «Добавить баннер», чтобы добавить новый.'
+						"
+						[badge]="{
+							size: ExtraSize.xl,
+							icon: IconType.ImagePlus,
+						}"
+					>
+						<div class="component-row">
+							<ss-lib-button
+								[type]="ButtonType.Secondary"
+								[text]="'Вторичная'"
+								[size]="ExtraSize.xl"
+							></ss-lib-button>
+
+							<ss-lib-button
+								[type]="ButtonType.Primary"
+								[text]="'Первичная'"
+								[size]="ExtraSize.xl"
+							></ss-lib-button>
+						</div>
+					</ss-lib-empty-state>
+				</div>
+			</div>
+		</div>
+
+		<!-- Skeleton Blocks Section -->
+		<div class="section">
+			<h2 class="section-title">Skeleton Blocks</h2>
+			<p class="section-description">
+				Loading placeholders with different shapes and sizes.
+			</p>
+			<div class="component-row">
+				<ss-lib-skeleton-block
+					[config]="{
+						width: '180px',
+						height: '56px',
+						borderRadius: '8px',
+					}"
+				/>
+
+				<ss-lib-skeleton-block
+					[config]="{
+						width: '197px',
+						height: '14px',
+						borderRadius: '4px',
+					}"
+				/>
+
+				<ss-lib-skeleton-block
+					[config]="{
+						width: '40px',
+						height: '40px',
+						borderRadius: '50%',
+					}"
+				/>
+			</div>
+		</div>
+
+		<!-- Scrollbar Section -->
+		<div class="section">
+			<h2 class="section-title">Scrollbar</h2>
+			<p class="section-description">
+				Custom scrollbar with sample content.
+			</p>
+			<div class="component-row">
+				<div class="scrollbar-test">
+					<ss-lib-scrollbar>
+						@for (colCount of 100 | repeatTimes; track $index) {
+							<div class="scrollbar-test__item">
+								Товарищи! сложившаяся структура организации
+								играет важную роль в формировании модели
+								развития
+							</div>
+						}
+					</ss-lib-scrollbar>
+				</div>
+			</div>
+		</div>
+
+		<!-- Carousel Section -->
+		<div class="section">
+			<h2 class="section-title">Carousel</h2>
+			<p class="section-description">
+				Image carousel with auto-rotation.
+			</p>
+			<div class="component-row">
+				<ss-lib-carousel
+					[duration]="3000"
+					[(index)]="carouselIndex"
+				>
+					@for (banner of bannersItems; track banner) {
+						<img
+							*ssItem
+							class="carousel-item"
+							alt="Banner image"
+							height="220"
+							width="990"
+							priority
+							[ngSrc]="banner.imageUrl"
+						/>
+					}
+				</ss-lib-carousel>
+			</div>
+		</div>
+
+		<!-- Table Examples Section -->
+		<div class="section">
+			<h2 class="section-title">Table Examples</h2>
+
+			<p class="section-description">
+				Custom table components for data display.
+			</p>
+
+			<div
+				class="component-row"
+				style="flex-direction: column; overflow: scroll"
+			>
+				<app-table-example class="spaced"></app-table-example>
+			</div>
+
+			<ss-lib-divider class="full-width" />
+
+			<p class="section-description">
+				Custom table components for data display with sticky columns in
+				draggable mode, scrollable, resizable and hover on columns.
+			</p>
+
+			<div
+				class="component-row"
+				style="
+					flex-direction: column;
+					overflow: scroll;
+					margin-top: 28px;
+				"
+			>
+				<app-table-oper-plan-example
+					class="spaced"
+				></app-table-oper-plan-example>
+			</div>
 		</div>
 	</div>
 </div>

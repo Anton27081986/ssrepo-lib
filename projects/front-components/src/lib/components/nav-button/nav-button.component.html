@@ -1,30 +1,41 @@
 <button
-	class="nuv-icon-button"
-	[class.nuv-icon-button--active]="menu().pressed"
-	[class.nuv-icon-button--nav-base]="type() === NuvButtonType.NavBase"
-	[class.nuv-icon-button--nav-icon]="type() === NuvButtonType.NavIcon"
+	class="nav-icon-button"
+	[class]="type()"
+	[class.active]="menu().active"
+	(mouseenter)="elementState.updateState(state, StateTypes.Hover, true)"
+	(mouseleave)="elementState.updateState(state, StateTypes.Hover, false)"
+	(mousedown)="elementState.updateState(state, StateTypes.Pressed, true)"
+	(mouseup)="elementState.updateState(state, StateTypes.Pressed, false)"
+	(blur)="elementState.updateState(state, StateTypes.Focused, false)"
+	(focus)="elementState.checkFocus($event, state)"
 >
 	<ss-lib-icon
 		[height]="'20'"
 		[width]="'20'"
 		[icon]="menu().icon"
+		[color]="colorsConfig().icon!"
 	></ss-lib-icon>
 
 	<div
 		class="actions"
-		[@expendedPanel]="type() === NuvButtonType.NavBase ? 'view' : 'hidden'"
+		[@expendedPanel]="type() === NavButtonType.NavBase ? 'view' : 'hidden'"
 	>
 		<ss-lib-text
 			[type]="TextType.BodyMd"
 			[weight]="TextWeight.Medium"
-			>{{ menu().title }}</ss-lib-text
+			[color]="colorsConfig().text!"
 		>
-		<ss-lib-icon
-			*ngIf="menu().subMenu.length"
-			[height]="'16'"
-			[width]="'16'"
-			[icon]="IconType.ChevronDown"
-		>
-		</ss-lib-icon>
+			{{ menu().title }}
+		</ss-lib-text>
+
+		@if (menu().subMenu.length) {
+			<ss-lib-icon
+				[height]="'16'"
+				[width]="'16'"
+				[icon]="IconType.ChevronDown"
+				[color]="colorsConfig().icon!"
+			>
+			</ss-lib-icon>
+		}
 	</div>
 </button>

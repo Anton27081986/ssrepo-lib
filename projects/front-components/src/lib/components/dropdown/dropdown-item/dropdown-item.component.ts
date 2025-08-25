@@ -25,6 +25,11 @@ import {
 	IDictionaryItemDto,
 } from '../../../shared/models';
 
+interface IColorsConfig {
+	text: Colors;
+	icon: Colors;
+}
+
 /**
  * Компонент элемента выпадающего списка с поддержкой иконок и состояний
  *
@@ -105,40 +110,41 @@ export class DropdownItemComponent<
 		return val ? val.name : this.label() || '';
 	});
 
-	public readonly iconColor = computed(() => {
-		if (this.isDisabled()) {
-			return Colors.IconDisabled;
+	public readonly colorsConfig = computed((): IColorsConfig => {
+		const state = this.state();
+		const isDisabled = this.isDisabled();
+		const isDestructive = this.isDestructive();
+
+		if (isDisabled) {
+			return {
+				icon: Colors.IconDisabled,
+				text: Colors.TextDisabled,
+			};
 		}
 
-		if (this.state() === StateTypes.Hover) {
-			return Colors.IconActionHover2;
+		if (state === StateTypes.Hover) {
+			return {
+				icon: Colors.IconActionHover2,
+				text: Colors.TextActionHover2,
+			};
 		}
 
-		if (this.isDestructive()) {
-			return this.state() === StateTypes.Default
-				? Colors.IconAction2
-				: Colors.IconError;
+		if (isDestructive) {
+			return state === StateTypes.Default
+				? {
+						icon: Colors.IconAction2,
+						text: Colors.TextAction2,
+					}
+				: {
+						icon: Colors.IconError,
+						text: Colors.TextError,
+					};
 		}
 
-		return Colors.IconAction2;
-	});
-
-	public readonly textColor = computed(() => {
-		if (this.isDisabled()) {
-			return Colors.TextDisabled;
-		}
-
-		if (this.state() === StateTypes.Hover) {
-			return Colors.TextActionHover2;
-		}
-
-		if (this.isDestructive()) {
-			return this.state() === StateTypes.Default
-				? Colors.TextAction2
-				: Colors.TextError;
-		}
-
-		return Colors.TextAction2;
+		return {
+			icon: Colors.IconAction2,
+			text: Colors.TextAction2,
+		};
 	});
 
 	protected readonly TextType = TextType;
@@ -149,18 +155,14 @@ export class DropdownItemComponent<
 
 	constructor() {
 		effect(() => {
-			const color = this.iconColor();
+			const color = this.colorsConfig();
 
 			this.iconComponents().forEach((icon) =>
-				icon.internalColor.set(color),
+				icon.internalColor.set(color.icon!),
 			);
-		});
-
-		effect(() => {
-			const color = this.textColor();
 
 			this.textComponents().forEach((text) =>
-				text.internalColor.set(color),
+				text.internalColor.set(color.text!),
 			);
 		});
 	}

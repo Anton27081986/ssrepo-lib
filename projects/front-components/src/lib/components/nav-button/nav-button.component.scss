@@ -1,44 +1,42 @@
-button.nuv-icon-button {
+button.nav-icon-button {
 	display: flex;
 	flex-wrap: nowrap;
 	gap: 8px;
 	width: 100%;
 	align-items: center;
-	border-radius: 8px;
+	border-radius: var(--border-radius-md);
 	border: none;
 	background-color: transparent;
 	cursor: pointer;
 	justify-content: space-between;
 	min-width: 40px;
 
-	&:focus-visible {
-		outline: none;
-		box-shadow: var(--focus-rings-focus-ring);
-	}
-
-	&--nav-base {
+	&.nav-base {
 		padding: 8px 10px;
 	}
 
-	&--nav-icon {
+	&.nav-icon {
 		padding: 10px;
 	}
 
 	&:hover,
-	&--active {
+	&:active,
+	&.active {
 		background-color: var(--surface-action-hover-2);
+	}
+
+	&:focus-visible {
+		outline: none;
+		box-shadow: var(--focus-rings-focus-ring);
 	}
 }
 
-button.nuv-icon-button:active {
-	background-color: var(--surface-action-pressed-2);
-}
-
 .actions {
+	height: 24px;
+	width: 100%;
 	display: flex;
 	flex-wrap: nowrap;
-	width: 100%;
 	align-items: center;
-	height: 24px;
 	justify-content: space-between;
+	gap: 12px;
 }
