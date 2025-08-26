@@ -362,18 +362,30 @@ export class StandComponent {
 						},
 					},
 				)
-				.subscribe((resp) => {
-					if (resp.type === HttpEventType.Response) {
-						this.fileLoadProgress.set(100);
-					}
+				.subscribe({
+					next: (resp) => {
+						if (resp.type === HttpEventType.Response) {
+							this.fileLoadProgress.set(100);
+						}
 
-					if (resp.type === HttpEventType.UploadProgress) {
-						if (resp.total) {
+						if (
+							resp.type === HttpEventType.UploadProgress &&
+							resp.total
+						) {
 							this.fileLoadProgress.set(
 								Math.round((100 * resp.loaded) / resp.total),
 							);
 						}
-					}
+					},
+					error: (err: unknown) => {
+						this.sharedPopupService.openToast({
+							text: 'Ошибка при загрузке файла, включи впн',
+							type: ToastTypeEnum.Error,
+						});
+
+						console.error('Ошибка при загрузке файла:', err);
+						this.fileLoadProgress.set(0);
+					},
 				});
 		}
 	}

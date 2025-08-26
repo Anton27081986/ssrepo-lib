@@ -19,6 +19,8 @@ import {
  * [displaySpinnerText]: boolean - Флаг отображения текста загрузки -
  * необязательный, по умолчанию: false
  *
+ * [spinnerText]: string - Текст загрузки - необязательный, по умолчанию: 'Загрузка...'
+ *
  * <ss-lib-spinner
  *   [displaySpinnerText]="true"
  * ></ss-lib-spinner>
@@ -34,16 +36,12 @@ import {
 })
 export class SpinnerComponent {
 	public readonly displaySpinnerText = input<boolean>(false);
+	public readonly spinnerText = input<string>('Загрузка...');
 
 	protected readonly TextType = TextType;
-
 	protected readonly TextWeight = TextWeight;
-
 	protected readonly ExtraSize = ExtraSize;
-
 	protected readonly ButtonType = ButtonType;
-
 	protected readonly Shape = Shape;
-
 	protected readonly Colors = Colors;
 }
