@@ -349,7 +349,6 @@ export class StandComponent {
 
 			formData.append('file', file);
 
-			// eslint-disable-next-line rxjs/no-implicit-any-catch
 			this.fileLoadSubscription = this.http
 				.post<{ url: string }>(
 					`https://erp-dev.ssnab.it/api/files/fileStorage/2/upload`,
