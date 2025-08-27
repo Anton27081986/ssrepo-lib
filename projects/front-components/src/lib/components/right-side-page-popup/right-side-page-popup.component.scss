@@ -7,10 +7,6 @@
 	box-shadow: var(--shadow-xl);
 	position: relative;
 
-	&__header {
-		padding: 24px 24px 0 24px;
-	}
-
 	&__body {
 		display: flex;
 		flex-direction: column;

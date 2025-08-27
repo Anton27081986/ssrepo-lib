@@ -1,45 +1,50 @@
-<div
-	class="ss-lib-badge-info"
-	[style.justify-content]="
-		closePosition() === IconPosition.Start ? 'start' : 'space-between'
-	"
->
-	<div
-		class="ss-lib-badge-info__info-block"
-		[style.order]="closePosition() === IconPosition.Start ? 2 : 1"
-	>
-		<ss-lib-badge
-			*ngIf="badge() as props"
-			[badgeProps]="props"
-		>
-		</ss-lib-badge>
+<div class="ss-lib-badge-card__wrapper">
+	<div class="ss-lib-badge-card ss-lib-badge-card--{{ orientation() }}">
+		<div class="ss-lib-badge-card__main">
+			@if (badge()) {
+				<ss-lib-badge [badgeProps]="badge()!" />
+			}
 
-		<div class="ss-lib-badge-info__info">
-			<ss-lib-text
-				[type]="TextType.BodyLg"
-				[weight]="TextWeight.Semibold"
-				[align]="Align.Start"
-			>
-				{{ title() }}
-			</ss-lib-text>
-			<ss-lib-text
-				[color]="Colors.TextBody3"
-				[type]="TextType.BodySm"
-				[weight]="TextWeight.Regular"
-				[align]="Align.Start"
-			>
-				{{ description() }}
-			</ss-lib-text>
+			<div class="ss-lib-badge-card__content">
+				<div class="ss-lib-badge-card__text">
+					<ss-lib-text
+						[type]="TextType.BodyLg"
+						[weight]="TextWeight.Semibold"
+						[align]="textAlign()"
+					>
+						{{ title() }}
+					</ss-lib-text>
+
+					<ss-lib-text
+						[color]="Colors.TextBody3"
+						[type]="TextType.BodySm"
+						[weight]="TextWeight.Regular"
+						[align]="textAlign()"
+					>
+						{{ description() }}
+					</ss-lib-text>
+				</div>
+
+				<div class="ss-lib-badge-card__tags">
+					@for (tag of tags(); track tag) {
+						<ss-lib-tag
+							[type]="tag.type"
+							[text]="tag.text"
+							[dotColor]="tag.dotColor"
+						/>
+					}
+				</div>
+			</div>
 		</div>
-	</div>
 
-	<ss-lib-close-button
-		*ngIf="viewClose()"
-		class="ss-lib-badge-info__close"
-		[style.order]="closePosition() === IconPosition.Start ? 1 : 2"
-		[icon]="IconType.Close"
-		[size]="ExtraSize.xl"
-		[type]="ButtonType.CloseLight"
-		(click)="closeEvent.emit()"
-	></ss-lib-close-button>
+		@if (viewClose()) {
+			<ss-lib-close-button
+				class="ss-lib-badge-card__close"
+				[icon]="IconType.Close"
+				[size]="ExtraSize.xl"
+				[type]="ButtonType.CloseLight"
+				(click)="closeEvent.emit()"
+			></ss-lib-close-button>
+		}
+	</div>
 </div>
