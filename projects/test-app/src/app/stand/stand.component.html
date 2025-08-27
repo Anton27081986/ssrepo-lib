@@ -1972,6 +1972,16 @@
 							icon: IconType.Info,
 							status: Status.Success,
 						}"
+						[tags]="[
+							{
+								type: TagType.Default,
+								text: 'Заказ/контракт',
+							},
+							{
+								type: TagType.Default,
+								text: 'Заказ/контракт',
+							},
+						]"
 					/>
 
 					<ss-lib-divider />
@@ -1979,12 +1989,22 @@
 					<ss-lib-dialog-header
 						[title]="'Заголовок'"
 						[description]="'Описание'"
-						[closePosition]="IconPosition.Start"
+						[orientation]="Orientation.Vertical"
 						[viewClose]="true"
 						[badge]="{
 							icon: IconType.Info,
 							status: Status.Success,
 						}"
+						[tags]="[
+							{
+								type: TagType.Default,
+								text: 'Заказ/контракт',
+							},
+							{
+								type: TagType.Default,
+								text: 'Заказ/контракт',
+							},
+						]"
 					/>
 				</div>
 			</div>
