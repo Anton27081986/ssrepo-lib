@@ -5,6 +5,7 @@ export { IIconConfig } from './icon-config';
 export { PopoverContent } from './popover-content';
 export { SkeletonConf } from './skeleton.conf';
 export { ILightBoxData } from './modal-light-box';
+export { ITagProps } from './tag-props';
 
 // Modals
 export { IConfirmData, IApply } from './modal-confirm';
