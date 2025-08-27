@@ -1,22 +1,82 @@
-.ss-lib-badge-info {
+:host {
+	width: 100%;
+}
+
+.ss-lib-badge-card__wrapper {
+	padding: 24px 24px 0 24px;
+	position: relative;
+}
+
+.ss-lib-badge-card {
 	display: flex;
 	justify-content: space-between;
 	gap: 14px;
 
-	&__info-block {
+	&__main {
 		display: flex;
 		gap: 16px;
 	}
 
-	&__close {
-		position: absolute;
-		right: 12px;
-		top: 12px;
+	&__content {
+		display: flex;
+		flex-direction: column;
+		gap: 8px;
 	}
 
-	&__info {
+	&__text {
 		display: flex;
 		flex-direction: column;
 		gap: 4px;
+	}
+
+	&__tags {
+		display: flex;
+		gap: 8px;
+	}
+
+	&__close {
+		position: absolute;
+	}
+
+	/* --- ориентации --- */
+	&--horizontal {
+		flex-direction: row;
+		align-items: flex-start;
+
+		& > .ss-lib-badge-card__main {
+			flex-direction: row;
+			align-items: flex-start;
+		}
+
+		& .ss-lib-badge-card__close {
+			top: 12px;
+			right: 12px;
+		}
+	}
+
+	&--vertical {
+		flex-direction: column;
+		align-items: center;
+		text-align: center;
+
+		& > .ss-lib-badge-card__main {
+			flex-direction: column;
+			align-items: center;
+			gap: 16px;
+		}
+
+		& .ss-lib-badge-card__close {
+			top: 16px;
+			right: 16px;
+		}
+
+		&__content {
+			align-items: center;
+		}
+
+		&__tags {
+			justify-content: center;
+			flex-wrap: wrap;
+		}
 	}
 }

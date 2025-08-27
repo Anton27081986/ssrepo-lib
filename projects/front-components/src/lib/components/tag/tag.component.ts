@@ -32,7 +32,7 @@ import { TextComponent } from '../text/text.component';
 export class TagComponent {
 	public readonly type = input<TagType>(TagType.Default);
 	public text = input.required<string>();
-	public dotColor = input<Colors>(Colors.IconBody2);
+	public dotColor = input<Colors | undefined>(Colors.IconBody2);
 
 	protected readonly TextType = TextType;
 	protected readonly TextWeight = TextWeight;
