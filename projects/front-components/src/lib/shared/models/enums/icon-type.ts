@@ -2,6 +2,7 @@ export enum IconType {
 	Alert = 'alert',
 	ArrowLeft = 'arrow-left',
 	ArrowUp = 'arrow-up',
+	ArrowDown = 'arrow-down',
 	Bell = 'bell',
 	Box = 'box',
 	Calendar = 'calendar',
