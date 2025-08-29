@@ -2022,15 +2022,24 @@
 					[text]="'Модалка - компонент'"
 					(click)="openTestModal()"
 				></ss-lib-button>
+
 				<ss-lib-button
 					[type]="ButtonType.Primary"
 					[text]="'Модалка - confirm'"
 					(click)="openTestConfirmModal()"
 				></ss-lib-button>
+
 				<ss-lib-button
 					[type]="ButtonType.Primary"
 					[text]="'Модалка - light-box'"
 					(click)="openLightBoxModal()"
+				></ss-lib-button>
+
+				<ss-lib-button
+					#popoverBtn
+					[type]="ButtonType.Primary"
+					[text]="'Поповер'"
+					(click)="openPopover()"
 				></ss-lib-button>
 			</div>
 		</div>

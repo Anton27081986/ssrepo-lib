@@ -1,10 +1,11 @@
+import { Overlay, OverlayConfig } from '@angular/cdk/overlay';
 import {
-	ConnectedPosition,
-	Overlay,
-	OverlayConfig,
-} from '@angular/cdk/overlay';
-import { Injectable, Injector } from '@angular/core';
-import { ComponentPortal } from '@angular/cdk/portal';
+	Injectable,
+	Injector,
+	TemplateRef,
+	ViewContainerRef,
+} from '@angular/core';
+import { ComponentPortal, TemplatePortal } from '@angular/cdk/portal';
 import {
 	GenericPopupComponent,
 	PopoverAnimationEnum,
@@ -21,7 +22,10 @@ export class ModalService {
 		private readonly injector: Injector,
 	) {}
 
-	public open<T>(params: PopupParams<T>): ModalRef<T> {
+	public open<T>(
+		params: PopupParams<T>,
+		viewContainerRef?: ViewContainerRef,
+	): ModalRef<T> {
 		const overlayRef = this.overlay.create(this._getOverlayConfig(params));
 
 		const popoverRef = new ModalRef<T>(
@@ -38,9 +42,36 @@ export class ModalService {
 			parentElem.className = 'ss-lib-popup-global-scrolled';
 		}
 
-		overlayRef.attach(
-			new ComponentPortal(GenericPopupComponent, null, injector),
-		);
+		// только для Modal / Panel используем GenericPopupComponent
+		if (
+			params.type === PopupTypeEnum.Modal ||
+			params.type === PopupTypeEnum.Panel
+		) {
+			overlayRef.attach(
+				new ComponentPortal(GenericPopupComponent, null, injector),
+			);
+		}
+
+		// Popover — вставляем напрямую
+		if (params.type === PopupTypeEnum.Popover) {
+			if (params.content instanceof TemplateRef) {
+				if (!viewContainerRef) {
+					throw new Error(
+						'viewContainerRef is required when using TemplateRef',
+					);
+				}
+
+				overlayRef.attach(
+					new TemplatePortal(params.content, viewContainerRef, {
+						$implicit: params.data,
+					}),
+				);
+			} else {
+				overlayRef.attach(
+					new ComponentPortal(params.content, null, injector),
+				);
+			}
+		}
 
 		if (params.type === PopupTypeEnum.Panel) {
 			popoverRef.setAnimateState(PopoverAnimationEnum.panel);
@@ -61,19 +92,12 @@ export class ModalService {
 
 	private _getOverlayConfig<T>(params: PopupParams<T>): OverlayConfig {
 		const backdropClass: string[] = ['ss-lib-overlay-backdrop'];
-
-		let position: ConnectedPosition[];
+		const panelClass: string[] = ['ss-lib-popover-root'];
+		let positionStrategy;
 
 		if (params.isDarkOverlay) {
 			backdropClass.push('ss-lib-overlay-backdrop--dark');
 		}
-
-		const originOption = optionalDefined(
-			document.getElementById('app-root'),
-		);
-
-		const panelClass: string[] = ['ss-lib-popover-root'];
-		let positionStrategy;
 
 		if (params.type === PopupTypeEnum.Modal) {
 			positionStrategy = this.overlay
@@ -88,21 +112,50 @@ export class ModalService {
 			params.width = params.width ? params.width : '100%';
 			panelClass.push('hc-popover-sidebar');
 
-			position = [
-				{
-					originX: 'end',
-					originY: 'top',
-					overlayX: 'end',
-					overlayY: 'top',
-				},
-			];
-
 			positionStrategy = this.overlay
 				.position()
 				.flexibleConnectedTo(
-					unwrapExpect(originOption, 'Not found app-root'),
+					unwrapExpect(
+						optionalDefined(document.getElementById('app-root')),
+						'Not found app-root',
+					),
 				)
-				.withPositions(position)
+				.withPositions([
+					{
+						originX: 'end',
+						originY: 'top',
+						overlayX: 'end',
+						overlayY: 'top',
+					},
+				])
+				.withFlexibleDimensions(false)
+				.withPush(false);
+		}
+
+		if (params.type === PopupTypeEnum.Popover) {
+			if (!params.origin) {
+				throw new Error('Popover requires origin element!');
+			}
+
+			positionStrategy = this.overlay
+				.position()
+				.flexibleConnectedTo(params.origin)
+				.withPositions([
+					{
+						originX: 'start',
+						originY: 'bottom',
+						overlayX: 'start',
+						overlayY: 'top',
+						offsetY: 8,
+					},
+					{
+						originX: 'end',
+						originY: 'bottom',
+						overlayX: 'end',
+						overlayY: 'top',
+						offsetY: 8,
+					},
+				])
 				.withFlexibleDimensions(false)
 				.withPush(false);
 		}
