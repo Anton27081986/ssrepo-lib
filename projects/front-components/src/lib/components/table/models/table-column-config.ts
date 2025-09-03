@@ -1,3 +1,5 @@
+import { Align } from '../../../shared/models';
+
 export interface TableColumnConfig {
 	id: string;
 	name: string;
@@ -7,4 +9,8 @@ export interface TableColumnConfig {
 	stickyColumn?: boolean;
 	subGroups?: string[];
 	subColumns?: string[];
+	minWidth?: string;
+	width?: string;
+	align?: Align;
+	padding?: string;
 }
