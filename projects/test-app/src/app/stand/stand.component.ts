@@ -406,11 +406,13 @@ export class StandComponent {
 		this.otpCtrl.setErrors({ invalidOtp: true });
 	}
 
-	public openRightSidebar(): void {
+	public openRightSidebar(hasBackdrop: boolean): void {
 		this.sharedPopupService.openRightSidePage<TestModalData>(
 			TestRightSidePageComponent,
 			{ id: 0, text: 'Какой то текст' },
 			'860px',
+			hasBackdrop,
+			false,
 		);
 	}
 

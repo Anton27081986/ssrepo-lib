@@ -1,2375 +1,2381 @@
-<div class="container">
-	<div class="hide1">
-		<!-- Typography Section -->
-		<div class="section">
-			<h2 class="section-title">Typography</h2>
-
-			<p class="section-description">
-				Various text styles and weights for consistent typography.
-			</p>
-
-			<div
-				class="component-row"
-				style="flex-direction: column"
-			>
-				<ss-lib-text
-					class="spaced"
-					[type]="TextType.BodyXs"
-				>
-					Body XS
-				</ss-lib-text>
-
-				<ss-lib-text
-					class="spaced"
-					[type]="TextType.BodySm"
-				>
-					Body SM
-				</ss-lib-text>
-
-				<ss-lib-text
-					class="spaced"
-					[type]="TextType.BodyMd"
-				>
-					Body MD
-				</ss-lib-text>
-
-				<ss-lib-text
-					class="spaced"
-					[type]="TextType.BodyLg"
-				>
-					Body LG
-				</ss-lib-text>
-
-				<ss-lib-text
-					class="spaced"
-					[type]="TextType.BodyXl"
-				>
-					Body XL
-				</ss-lib-text>
-			</div>
-
-			<div
-				class="component-row"
-				style="flex-direction: column"
-			>
-				<ss-lib-text
-					class="spaced"
-					[type]="TextType.HeadingXs"
-				>
-					Heading XS
-				</ss-lib-text>
-
-				<ss-lib-text
-					class="spaced"
-					[type]="TextType.HeadingSm"
-				>
-					Heading SM
-				</ss-lib-text>
-
-				<ss-lib-text
-					class="spaced"
-					[type]="TextType.HeadingMd"
-				>
-					Heading MD
-				</ss-lib-text>
-
-				<ss-lib-text
-					class="spaced"
-					[type]="TextType.HeadingLg"
-				>
-					Heading LG
-				</ss-lib-text>
-
-				<ss-lib-text
-					class="spaced"
-					[type]="TextType.HeadingXl"
-				>
-					Heading XL
-				</ss-lib-text>
-
-				<ss-lib-text
-					class="spaced"
-					[type]="TextType.HeadingXxl"
-				>
-					Heading XXL
-				</ss-lib-text>
-			</div>
-
-			<div
-				class="component-row"
-				style="flex-direction: column"
-			>
-				<ss-lib-text
-					class="spaced"
-					[type]="TextType.HeadingXs"
-					[weight]="TextWeight.Regular"
-				>
-					Heading XS Regular
-				</ss-lib-text>
-
-				<ss-lib-text
-					class="spaced"
-					[type]="TextType.HeadingXs"
-					[weight]="TextWeight.Medium"
-				>
-					Heading XS Medium
-				</ss-lib-text>
-
-				<ss-lib-text
-					class="spaced"
-					[type]="TextType.HeadingXs"
-					[weight]="TextWeight.Semibold"
-				>
-					Heading XS Semibold
-				</ss-lib-text>
-
-				<ss-lib-text
-					class="spaced"
-					[type]="TextType.HeadingXs"
-					[weight]="TextWeight.Bold"
-				>
-					Heading XS Bold
-				</ss-lib-text>
-			</div>
-		</div>
-
-		<!-- Icon Section -->
-		<div class="section">
-			<h2 class="section-title">Icons</h2>
-			<p class="section-description">Examples of an icon components.</p>
-			<div class="component-row">
-				@for (icon of iconsList; track icon) {
-					<div class="icon-wrapper">
-						<ss-lib-icon
-							[icon]="IconType[icon]"
-							[color]="Colors.IconBody"
-						></ss-lib-icon>
-
-						<ss-lib-text
-							[type]="TextType.BodyXs"
-							[weight]="TextWeight.Regular"
-							>{{ icon }}
-						</ss-lib-text>
-					</div>
-				}
-			</div>
-		</div>
-
-		<!-- Divider Section -->
-		<div class="section">
-			<h2 class="section-title">Dividers</h2>
-			<p class="section-description">
-				Divider component for layout separation.
-			</p>
-			<div class="component-row">
-				<ss-lib-divider class="full-width" />
-
-				<ss-lib-divider
-					[style.height.px]="50"
-					[orientation]="Orientation.Vertical"
-				></ss-lib-divider>
-			</div>
-		</div>
-
-		<!-- Button Variants Section -->
-		<div class="section">
-			<h2 class="section-title">Buttons</h2>
-
-			<p class="section-description">
-				Showcases different button types and sizes, including disabled
-				states.
-			</p>
-
-			<!-- Primary Buttons -->
-			<div class="sub-section">
-				<h3 class="sub-section-title">Primary Buttons</h3>
-
-				<div class="component-row">
-					<ss-lib-button
-						[type]="ButtonType.Primary"
-						[text]="'Пнока'"
-						[icon]="IconType.Plus"
-						[iconPosition]="IconPosition.OnlyIcon"
-						[size]="ExtraSize.xxs"
-					></ss-lib-button>
-
-					<ss-lib-button
-						[type]="ButtonType.Primary"
-						[text]="'Пнока'"
-						[icon]="IconType.Plus"
-						[iconPosition]="IconPosition.OnlyIcon"
-						[size]="ExtraSize.xs"
-					></ss-lib-button>
-
-					<ss-lib-button
-						[type]="ButtonType.Primary"
-						[text]="'Пнока'"
-						[icon]="IconType.Plus"
-						[iconPosition]="IconPosition.OnlyIcon"
-						[size]="ExtraSize.sm"
-					></ss-lib-button>
-
-					<ss-lib-button
-						[type]="ButtonType.Primary"
-						[text]="'Пнока'"
-						[icon]="IconType.Plus"
-						[iconPosition]="IconPosition.OnlyIcon"
-						[size]="ExtraSize.md"
-					></ss-lib-button>
-
-					<ss-lib-button
-						[type]="ButtonType.Primary"
-						[text]="'Пнока'"
-						[icon]="IconType.Plus"
-						[iconPosition]="IconPosition.OnlyIcon"
-						[size]="ExtraSize.lg"
-					></ss-lib-button>
-
-					<ss-lib-button
-						[type]="ButtonType.Primary"
-						[text]="'Пнока'"
-						[icon]="IconType.Plus"
-						[iconPosition]="IconPosition.OnlyIcon"
-						[size]="ExtraSize.xl"
-					></ss-lib-button>
-
-					<ss-lib-button
-						class="disabled-demo"
-						[type]="ButtonType.Primary"
-						[text]="'Пнока'"
-						[icon]="IconType.Plus"
-						[iconPosition]="IconPosition.OnlyIcon"
-						[size]="ExtraSize.lg"
-						[disabled]="true"
-						(click)="test()"
-					></ss-lib-button>
-				</div>
-			</div>
-
-			<!-- Secondary Buttons -->
-			<div class="sub-section">
-				<h3 class="sub-section-title">Secondary Buttons</h3>
-
-				<div class="component-row">
-					<ss-lib-button
-						[type]="ButtonType.Secondary"
-						[text]="'Пнока'"
-						[icon]="IconType.Plus"
-						[iconPosition]="IconPosition.OnlyIcon"
-						[size]="ExtraSize.xxs"
-					></ss-lib-button>
-
-					<ss-lib-button
-						[type]="ButtonType.Secondary"
-						[text]="'Пнока'"
-						[icon]="IconType.Plus"
-						[iconPosition]="IconPosition.OnlyIcon"
-						[size]="ExtraSize.xs"
-					></ss-lib-button>
-
-					<ss-lib-button
-						[type]="ButtonType.Secondary"
-						[text]="'Пнока'"
-						[icon]="IconType.Plus"
-						[iconPosition]="IconPosition.OnlyIcon"
-						[size]="ExtraSize.sm"
-					></ss-lib-button>
-
-					<ss-lib-button
-						[type]="ButtonType.Secondary"
-						[text]="'Пнока'"
-						[icon]="IconType.Plus"
-						[iconPosition]="IconPosition.OnlyIcon"
-						[size]="ExtraSize.md"
-					></ss-lib-button>
-
-					<ss-lib-button
-						[type]="ButtonType.Secondary"
-						[text]="'Пнока'"
-						[icon]="IconType.Plus"
-						[iconPosition]="IconPosition.OnlyIcon"
-						[size]="ExtraSize.lg"
-					></ss-lib-button>
-
-					<ss-lib-button
-						[type]="ButtonType.Secondary"
-						[text]="'Пнока'"
-						[icon]="IconType.Plus"
-						[iconPosition]="IconPosition.End"
-						[size]="ExtraSize.xl"
-					></ss-lib-button>
-
-					<ss-lib-button
-						class="disabled-demo"
-						[type]="ButtonType.Secondary"
-						[text]="'Пнока'"
-						[icon]="IconType.Plus"
-						[iconPosition]="IconPosition.End"
-						[size]="ExtraSize.lg"
-						[disabled]="true"
-						(click)="test()"
-					></ss-lib-button>
-				</div>
-			</div>
-
-			<!-- Ghost Buttons -->
-			<div class="sub-section">
-				<h3 class="sub-section-title">Ghost Buttons</h3>
-				<div class="component-row">
-					<ss-lib-button
-						[type]="ButtonType.Ghost"
-						[text]="'Пнока'"
-						[icon]="IconType.Plus"
-						[iconPosition]="IconPosition.End"
-						[size]="ExtraSize.xxs"
-					></ss-lib-button>
-
-					<ss-lib-button
-						[type]="ButtonType.Ghost"
-						[text]="'Пнока'"
-						[icon]="IconType.Plus"
-						[iconPosition]="IconPosition.End"
-						[size]="ExtraSize.xs"
-					></ss-lib-button>
-
-					<ss-lib-button
-						[type]="ButtonType.Ghost"
-						[text]="'Пнока'"
-						[icon]="IconType.Plus"
-						[iconPosition]="IconPosition.End"
-						[size]="ExtraSize.sm"
-					></ss-lib-button>
-
-					<ss-lib-button
-						[type]="ButtonType.Ghost"
-						[text]="'Пнока'"
-						[icon]="IconType.Plus"
-						[iconPosition]="IconPosition.End"
-						[size]="ExtraSize.md"
-					></ss-lib-button>
-
-					<ss-lib-button
-						[type]="ButtonType.Ghost"
-						[text]="'Пнока'"
-						[icon]="IconType.Plus"
-						[iconPosition]="IconPosition.End"
-						[size]="ExtraSize.lg"
-					></ss-lib-button>
-
-					<ss-lib-button
-						[type]="ButtonType.Ghost"
-						[text]="'Пнока'"
-						[icon]="IconType.Plus"
-						[iconPosition]="IconPosition.End"
-						[size]="ExtraSize.xl"
-					></ss-lib-button>
-
-					<ss-lib-button
-						class="disabled-demo"
-						[type]="ButtonType.Ghost"
-						[text]="'Пнока'"
-						[icon]="IconType.Plus"
-						[iconPosition]="IconPosition.End"
-						[size]="ExtraSize.lg"
-						[disabled]="true"
-						(click)="test()"
-					></ss-lib-button>
-				</div>
-			</div>
-
-			<!-- Text Buttons -->
-			<div class="sub-section">
-				<h3 class="sub-section-title">Text Buttons</h3>
-
-				<div class="component-row">
-					<ss-lib-button
-						[type]="ButtonType.TextPrimary"
-						[text]="'Пнока'"
-						[icon]="IconType.Plus"
-						[iconPosition]="IconPosition.End"
-						[size]="ExtraSize.sm"
-					></ss-lib-button>
-
-					<ss-lib-button
-						[type]="ButtonType.TextSecondary"
-						[text]="'Пнока'"
-						[icon]="IconType.Plus"
-						[iconPosition]="IconPosition.End"
-						[size]="ExtraSize.sm"
-					></ss-lib-button>
-				</div>
-			</div>
-		</div>
-
-		<!-- Close Buttons Section -->
-		<div class="section">
-			<h2 class="section-title">Close Buttons</h2>
-
-			<p class="section-description">
-				Close buttons in dark and light variants with various sizes.
-			</p>
-
-			<div class="sub-section">
-				<h3 class="sub-section-title">Dark Close Buttons</h3>
-
-				<div class="component-row dark-background">
-					<ss-lib-close-button
-						[type]="ButtonType.CloseDark"
-						[size]="ExtraSize.xxs"
-					></ss-lib-close-button>
-
-					<ss-lib-close-button
-						[type]="ButtonType.CloseDark"
-						[size]="ExtraSize.xs"
-					></ss-lib-close-button>
-
-					<ss-lib-close-button
-						[type]="ButtonType.CloseDark"
-						[size]="ExtraSize.sm"
-					></ss-lib-close-button>
-
-					<ss-lib-close-button
-						[type]="ButtonType.CloseDark"
-						[size]="ExtraSize.md"
-					></ss-lib-close-button>
-
-					<ss-lib-close-button
-						[type]="ButtonType.CloseDark"
-						[size]="ExtraSize.lg"
-					></ss-lib-close-button>
-
-					<ss-lib-close-button
-						[type]="ButtonType.CloseDark"
-						[size]="ExtraSize.xl"
-					></ss-lib-close-button>
-
-					<ss-lib-close-button
-						[type]="ButtonType.CloseDark"
-						[size]="ExtraSize.xxl"
-					></ss-lib-close-button>
-
-					<ss-lib-close-button
-						class="disabled-demo"
-						[type]="ButtonType.CloseDark"
-						[size]="ExtraSize.xxl"
-						[disabled]="true"
-					></ss-lib-close-button>
-				</div>
-			</div>
-			<div class="sub-section">
-				<h3 class="sub-section-title">Light Close Buttons</h3>
-
-				<div class="component-row">
-					<ss-lib-close-button
-						[type]="ButtonType.CloseLight"
-						[size]="ExtraSize.xxs"
-					></ss-lib-close-button>
-
-					<ss-lib-close-button
-						[type]="ButtonType.CloseLight"
-						[size]="ExtraSize.xs"
-					></ss-lib-close-button>
-
-					<ss-lib-close-button
-						[type]="ButtonType.CloseLight"
-						[size]="ExtraSize.sm"
-					></ss-lib-close-button>
-
-					<ss-lib-close-button
-						[type]="ButtonType.CloseLight"
-						[size]="ExtraSize.md"
-					></ss-lib-close-button>
-
-					<ss-lib-close-button
-						[type]="ButtonType.CloseLight"
-						[size]="ExtraSize.lg"
-					></ss-lib-close-button>
-
-					<ss-lib-close-button
-						[type]="ButtonType.CloseLight"
-						[size]="ExtraSize.xl"
-					></ss-lib-close-button>
-
-					<ss-lib-close-button
-						[type]="ButtonType.CloseLight"
-						[size]="ExtraSize.xxl"
-					></ss-lib-close-button>
-
-					<ss-lib-close-button
-						class="disabled-demo"
-						[type]="ButtonType.CloseLight"
-						[size]="ExtraSize.xxl"
-						[disabled]="true"
-					></ss-lib-close-button>
-				</div>
-			</div>
-		</div>
-
-		<!-- Utility Buttons Section -->
-		<div class="section">
-			<h2 class="section-title">Utility Buttons</h2>
-
-			<p class="section-description">
-				Specialized buttons for specific actions.
-			</p>
-
-			<div class="component-row">
-				<ss-lib-utility-button class="spaced"></ss-lib-utility-button>
-			</div>
-		</div>
-
-		<!-- Preview Buttons Section -->
-		<div class="section">
-			<h2 class="section-title">Preview Button</h2>
-
-			<p class="section-description">
-				Specialized buttons for closing previews.
-			</p>
-
-			<div class="component-row">
-				<ss-lib-preview-button class="spaced"></ss-lib-preview-button>
-			</div>
-		</div>
-
-		<!-- Backdrop Buttons Section -->
-		<div class="section">
-			<h2 class="section-title">Backdrop Button</h2>
-
-			<p class="section-description">
-				Specialized buttons for closing backdrop.
-			</p>
-
-			<div class="component-row">
-				<ss-lib-backdrop-button class="spaced"></ss-lib-backdrop-button>
-			</div>
-		</div>
-
-		<!-- Links Section -->
-		<div class="section">
-			<h2 class="section-title">Links</h2>
-
-			<p class="section-description">
-				Link components with inline and standalone appearances.
-			</p>
-
-			<div class="sub-section">
-				<h3 class="sub-section-title">Inline Links</h3>
-
-				<h4 class="sub-section-subtitle">Type - Link blue</h4>
-
-				<div class="component-row">
-					<ss-lib-link
-						[type]="ButtonType.LinkBlue"
-						[linkAppearance]="LinkAppearance.Inline"
-						[text]="'Ссылка'"
-						[icon]="IconType.Plus"
-						[iconPosition]="IconPosition.Start"
-						[size]="ExtraSize.xxs"
-					></ss-lib-link>
-
-					<ss-lib-link
-						[type]="ButtonType.LinkBlue"
-						[linkAppearance]="LinkAppearance.Inline"
-						[text]="'Ссылка'"
-						[icon]="IconType.Plus"
-						[iconPosition]="IconPosition.Start"
-						[size]="ExtraSize.xs"
-					></ss-lib-link>
-
-					<ss-lib-link
-						[type]="ButtonType.LinkBlue"
-						[linkAppearance]="LinkAppearance.Inline"
-						[text]="'Ссылка'"
-						[icon]="IconType.Plus"
-						[iconPosition]="IconPosition.Start"
-						[size]="ExtraSize.sm"
-					></ss-lib-link>
-
-					<ss-lib-link
-						[type]="ButtonType.LinkBlue"
-						[linkAppearance]="LinkAppearance.Inline"
-						[text]="'Ссылка'"
-						[icon]="IconType.Plus"
-						[iconPosition]="IconPosition.Start"
-						[size]="ExtraSize.md"
-					></ss-lib-link>
-
-					<ss-lib-link
-						[type]="ButtonType.LinkBlue"
-						[linkAppearance]="LinkAppearance.Inline"
-						[text]="'Ссылка'"
-						[icon]="IconType.Plus"
-						[iconPosition]="IconPosition.Start"
-						[size]="ExtraSize.lg"
-					></ss-lib-link>
-
-					<ss-lib-link
-						[type]="ButtonType.LinkBlue"
-						[linkAppearance]="LinkAppearance.Inline"
-						[text]="'Ссылка'"
-						[icon]="IconType.Plus"
-						[iconPosition]="IconPosition.Start"
-						[size]="ExtraSize.xl"
-					></ss-lib-link>
-
-					<ss-lib-link
-						[type]="ButtonType.LinkBlue"
-						[linkAppearance]="LinkAppearance.Inline"
-						[text]="'Ссылка'"
-						[icon]="IconType.Plus"
-						[iconPosition]="IconPosition.Start"
-						[size]="ExtraSize.xxl"
-					></ss-lib-link>
-
-					<ss-lib-link
-						[type]="ButtonType.LinkBlue"
-						[linkAppearance]="LinkAppearance.Inline"
-						[text]="'Ссылка'"
-						[icon]="IconType.Plus"
-						[iconPosition]="IconPosition.Start"
-						[size]="ExtraSize.xxl"
-						[disabled]="true"
-					></ss-lib-link>
-				</div>
-
-				<h4 class="sub-section-subtitle">Type - Link black</h4>
-
-				<div class="component-row">
-					<ss-lib-link
-						[type]="ButtonType.LinkBlack"
-						[linkAppearance]="LinkAppearance.Inline"
-						[text]="'Ссылка'"
-						[icon]="IconType.Plus"
-						[iconPosition]="IconPosition.Start"
-						[size]="ExtraSize.xxs"
-					></ss-lib-link>
-
-					<ss-lib-link
-						[type]="ButtonType.LinkBlack"
-						[linkAppearance]="LinkAppearance.Inline"
-						[text]="'Ссылка'"
-						[icon]="IconType.Plus"
-						[iconPosition]="IconPosition.Start"
-						[size]="ExtraSize.xs"
-					></ss-lib-link>
-
-					<ss-lib-link
-						[type]="ButtonType.LinkBlack"
-						[linkAppearance]="LinkAppearance.Inline"
-						[text]="'Ссылка'"
-						[icon]="IconType.Plus"
-						[iconPosition]="IconPosition.Start"
-						[size]="ExtraSize.sm"
-					></ss-lib-link>
-
-					<ss-lib-link
-						[type]="ButtonType.LinkBlack"
-						[linkAppearance]="LinkAppearance.Inline"
-						[text]="'Ссылка'"
-						[icon]="IconType.Plus"
-						[iconPosition]="IconPosition.Start"
-						[size]="ExtraSize.md"
-					></ss-lib-link>
-
-					<ss-lib-link
-						[type]="ButtonType.LinkBlack"
-						[linkAppearance]="LinkAppearance.Inline"
-						[text]="'Ссылка'"
-						[icon]="IconType.Plus"
-						[iconPosition]="IconPosition.Start"
-						[size]="ExtraSize.lg"
-					></ss-lib-link>
-
-					<ss-lib-link
-						[type]="ButtonType.LinkBlack"
-						[linkAppearance]="LinkAppearance.Inline"
-						[text]="'Ссылка'"
-						[icon]="IconType.Plus"
-						[iconPosition]="IconPosition.Start"
-						[size]="ExtraSize.xl"
-					></ss-lib-link>
-
-					<ss-lib-link
-						[type]="ButtonType.LinkBlack"
-						[linkAppearance]="LinkAppearance.Inline"
-						[text]="'Ссылка'"
-						[icon]="IconType.Plus"
-						[iconPosition]="IconPosition.Start"
-						[size]="ExtraSize.xxl"
-					></ss-lib-link>
-
-					<ss-lib-link
-						[type]="ButtonType.LinkBlack"
-						[linkAppearance]="LinkAppearance.Inline"
-						[text]="'Ссылка'"
-						[icon]="IconType.Plus"
-						[iconPosition]="IconPosition.Start"
-						[size]="ExtraSize.xxl"
-						[disabled]="true"
-					></ss-lib-link>
-				</div>
-			</div>
-
-			<div class="sub-section">
-				<h3 class="sub-section-title">Standalone Links</h3>
-
-				<h4 class="sub-section-subtitle">Type - Link blue</h4>
-
-				<div class="component-row">
-					<ss-lib-link
-						[type]="ButtonType.LinkBlue"
-						[linkAppearance]="LinkAppearance.Standalone"
-						[text]="'Ссылка'"
-						[icon]="IconType.Plus"
-						[iconPosition]="IconPosition.Start"
-						[size]="ExtraSize.xxs"
-					></ss-lib-link>
-
-					<ss-lib-link
-						[type]="ButtonType.LinkBlue"
-						[linkAppearance]="LinkAppearance.Standalone"
-						[text]="'Ссылка'"
-						[icon]="IconType.Plus"
-						[iconPosition]="IconPosition.Start"
-						[size]="ExtraSize.xs"
-					></ss-lib-link>
-
-					<ss-lib-link
-						[type]="ButtonType.LinkBlue"
-						[linkAppearance]="LinkAppearance.Standalone"
-						[text]="'Ссылка'"
-						[icon]="IconType.Plus"
-						[iconPosition]="IconPosition.Start"
-						[size]="ExtraSize.sm"
-					></ss-lib-link>
-
-					<ss-lib-link
-						[type]="ButtonType.LinkBlue"
-						[linkAppearance]="LinkAppearance.Standalone"
-						[text]="'Ссылка'"
-						[icon]="IconType.Plus"
-						[iconPosition]="IconPosition.Start"
-						[size]="ExtraSize.md"
-					></ss-lib-link>
-
-					<ss-lib-link
-						[type]="ButtonType.LinkBlue"
-						[linkAppearance]="LinkAppearance.Standalone"
-						[text]="'Ссылка'"
-						[icon]="IconType.Plus"
-						[iconPosition]="IconPosition.Start"
-						[size]="ExtraSize.lg"
-					></ss-lib-link>
-
-					<ss-lib-link
-						[type]="ButtonType.LinkBlue"
-						[linkAppearance]="LinkAppearance.Standalone"
-						[text]="'Ссылка'"
-						[icon]="IconType.Plus"
-						[iconPosition]="IconPosition.Start"
-						[size]="ExtraSize.xl"
-					></ss-lib-link>
-
-					<ss-lib-link
-						[type]="ButtonType.LinkBlue"
-						[linkAppearance]="LinkAppearance.Standalone"
-						[text]="'Ссылка'"
-						[icon]="IconType.Plus"
-						[iconPosition]="IconPosition.Start"
-						[size]="ExtraSize.xxl"
-					></ss-lib-link>
-
-					<ss-lib-link
-						[type]="ButtonType.LinkBlue"
-						[linkAppearance]="LinkAppearance.Standalone"
-						[text]="'Ссылка'"
-						[icon]="IconType.Plus"
-						[iconPosition]="IconPosition.Start"
-						[size]="ExtraSize.xxl"
-						[disabled]="true"
-					></ss-lib-link>
-				</div>
-
-				<h4 class="sub-section-subtitle">Type - Link black</h4>
-
-				<div class="component-row">
-					<ss-lib-link
-						[type]="ButtonType.LinkBlack"
-						[linkAppearance]="LinkAppearance.Standalone"
-						[text]="'Ссылка'"
-						[icon]="IconType.Plus"
-						[iconPosition]="IconPosition.Start"
-						[size]="ExtraSize.xxs"
-					></ss-lib-link>
-
-					<ss-lib-link
-						[type]="ButtonType.LinkBlack"
-						[linkAppearance]="LinkAppearance.Standalone"
-						[text]="'Ссылка'"
-						[icon]="IconType.Plus"
-						[iconPosition]="IconPosition.Start"
-						[size]="ExtraSize.xs"
-					></ss-lib-link>
-
-					<ss-lib-link
-						[type]="ButtonType.LinkBlack"
-						[linkAppearance]="LinkAppearance.Standalone"
-						[text]="'Ссылка'"
-						[icon]="IconType.Plus"
-						[iconPosition]="IconPosition.Start"
-						[size]="ExtraSize.sm"
-					></ss-lib-link>
-
-					<ss-lib-link
-						[type]="ButtonType.LinkBlack"
-						[linkAppearance]="LinkAppearance.Standalone"
-						[text]="'Ссылка'"
-						[icon]="IconType.Plus"
-						[iconPosition]="IconPosition.Start"
-						[size]="ExtraSize.md"
-					></ss-lib-link>
-
-					<ss-lib-link
-						[type]="ButtonType.LinkBlack"
-						[linkAppearance]="LinkAppearance.Standalone"
-						[text]="'Ссылка'"
-						[icon]="IconType.Plus"
-						[iconPosition]="IconPosition.Start"
-						[size]="ExtraSize.lg"
-					></ss-lib-link>
-
-					<ss-lib-link
-						[type]="ButtonType.LinkBlack"
-						[linkAppearance]="LinkAppearance.Standalone"
-						[text]="'Ссылка'"
-						[icon]="IconType.Plus"
-						[iconPosition]="IconPosition.Start"
-						[size]="ExtraSize.xl"
-					></ss-lib-link>
-
-					<ss-lib-link
-						[type]="ButtonType.LinkBlack"
-						[linkAppearance]="LinkAppearance.Standalone"
-						[text]="'Ссылка'"
-						[icon]="IconType.Plus"
-						[iconPosition]="IconPosition.Start"
-						[size]="ExtraSize.xxl"
-					></ss-lib-link>
-
-					<ss-lib-link
-						[type]="ButtonType.LinkBlack"
-						[linkAppearance]="LinkAppearance.Standalone"
-						[text]="'Ссылка'"
-						[icon]="IconType.Plus"
-						[iconPosition]="IconPosition.Start"
-						[size]="ExtraSize.xxl"
-						[disabled]="true"
-					></ss-lib-link>
-				</div>
-			</div>
-		</div>
-
-		<!-- Nav Buttons Section -->
-		<div class="section">
-			<h2 class="section-title">Nav Buttons</h2>
-
-			<p class="section-description">
-				Navigation buttons with icons, text and expandable submenu.
-			</p>
-
-			<div class="sub-section">
-				<h3 class="sub-section-title">Base Nav Buttons</h3>
-				<div class="component-row">
-					@for (menu of menulist; track menu.title) {
-						<ss-lib-nav-button
-							[type]="NavButton.NavBase"
-							[menu]="menu"
-						></ss-lib-nav-button>
-					}
-				</div>
-			</div>
-
-			<div class="sub-section">
-				<h3 class="sub-section-title">Icon-only Nav Buttons</h3>
-				<div class="component-row">
-					@for (menu of menulist; track menu.title) {
-						<ss-lib-nav-button
-							[type]="NavButton.NavIcon"
-							[menu]="menu"
-						></ss-lib-nav-button>
-					}
-				</div>
-			</div>
-		</div>
-
-		<!-- Avatar Section -->
-		<div class="section">
-			<h2 class="section-title">Avatar</h2>
-			<p class="section-description">
-				Simple avatar component with image and username
-			</p>
-
-			<div class="sub-section">
-				<h3 class="sub-section-title">Avatar component</h3>
-
-				<div class="component-row">
-					<ss-lib-avatar
-						[username]="'ВН'"
-						[src]="'https://i.pravatar.cc/300'"
-						[size]="ExtraSize.xs"
-					></ss-lib-avatar>
-
-					<ss-lib-avatar [size]="ExtraSize.xs" />
-				</div>
-
-				<div class="component-row">
-					<ss-lib-avatar
-						[username]="'ВН'"
-						[src]="'https://i.pravatar.cc/300'"
-					></ss-lib-avatar>
-
-					<ss-lib-avatar />
-				</div>
-			</div>
-
-			<div class="sub-section">
-				<h3 class="sub-section-title">Avatar Button component</h3>
-				<div class="component-row">
-					<ss-lib-avatar-button
-						[username]="'ВН'"
-						[src]="'https://i.pravatar.cc/300'"
-						[size]="ExtraSize.xs"
-					/>
-
-					<ss-lib-avatar-button [size]="ExtraSize.xs" />
-				</div>
-
-				<div class="component-row">
-					<ss-lib-avatar-button
-						[username]="'ВН'"
-						[src]="'https://i.pravatar.cc/300'"
-					/>
-
-					<ss-lib-avatar-button />
-				</div>
-			</div>
-		</div>
-
-		<!-- Avatar Dropdown Section -->
-		<div class="section">
-			<h2 class="section-title">Avatar Dropdown</h2>
-
-			<p class="section-description">
-				Avatar button with dropdown menu and custom header.
-			</p>
-
-			<div class="component-row">
-				<ss-lib-avatar-button
-					[username]="'ВН'"
-					[src]="'https://i.pravatar.cc/300'"
-					[popoverTriggerFor]="dropdown1"
-				></ss-lib-avatar-button>
-
-				<ss-lib-dropdown-list
-					#dropdown1
-					[headerTemplateRef]="avatarHeader"
-				>
-					<ss-lib-dropdown-item
-						[label]="'Опция'"
-						[icon]="IconType.Bell"
-						[selected]="true"
-						(click)="console.log(1)"
-					></ss-lib-dropdown-item>
-
-					<ss-lib-dropdown-item
-						[label]="'Опция'"
-						[icon]="IconType.Bell"
-						(click)="console.log(1)"
-					></ss-lib-dropdown-item>
-
-					<ss-lib-dropdown-item
-						[label]="'Опция'"
-						[icon]="IconType.Bell"
-						(click)="console.log(1)"
-					></ss-lib-dropdown-item>
-
-					<ss-lib-dropdown-item
-						[label]="'Опция'"
-						[icon]="IconType.Bell"
-						[isDisabled]="true"
-						(click)="console.log(2)"
-					></ss-lib-dropdown-item>
-
-					<ss-lib-divider class="divider"></ss-lib-divider>
-
-					<ss-lib-dropdown-item
-						[label]="'Удалить'"
-						[icon]="IconType.Bell"
-						(click)="console.log(5)"
-					></ss-lib-dropdown-item>
-
-					<ss-lib-dropdown-item
-						[label]="'Удалить'"
-						[icon]="IconType.Bell"
-						(click)="console.log(5)"
-					></ss-lib-dropdown-item>
-				</ss-lib-dropdown-list>
-
-				<ng-template #avatarHeader>
-					<div class="avatar-test">
-						<ss-lib-avatar
-							[username]="'ВН'"
-							[src]="'https://i.pravatar.cc/300'"
-						></ss-lib-avatar>
-
-						<div class="avatar-test__title">
-							<ss-lib-text
-								[type]="TextType.BodySm"
-								[weight]="TextWeight.Medium"
-								[color]="Colors.TextBody2"
-							>
-								Мария Викторовна
-							</ss-lib-text>
-
-							<ss-lib-text
-								[type]="TextType.BodySm"
-								[weight]="TextWeight.Regular"
-								[color]="Colors.TextBody3"
-							>
-								Менеджер по продажам
-							</ss-lib-text>
-						</div>
-					</div>
-				</ng-template>
-			</div>
-		</div>
-
-		<!-- Badges Section -->
-		<div class="section">
-			<h2 class="section-title">Badges</h2>
-			<p class="section-description">
-				Badge components with different sizes, shapes, and statuses.
-			</p>
-
-			<div class="sub-section">
-				<h3 class="sub-section-title">Medium Badges</h3>
-				<div class="component-row">
-					<ss-lib-badge
-						[badgeProps]="{
-							size: ExtraSize.md,
-							icon: IconType.ImagePlus,
-						}"
-					></ss-lib-badge>
-
-					<ss-lib-badge
-						[badgeProps]="{
-							size: ExtraSize.md,
-							icon: IconType.ImagePlus,
-							status: Status.Success,
-						}"
-					></ss-lib-badge>
-
-					<ss-lib-badge
-						[badgeProps]="{
-							size: ExtraSize.md,
-							icon: IconType.ImagePlus,
-							status: Status.Warning,
-						}"
-					></ss-lib-badge>
-
-					<ss-lib-badge
-						[badgeProps]="{
-							size: ExtraSize.md,
-							icon: IconType.ImagePlus,
-							status: Status.Error,
-						}"
-					></ss-lib-badge>
-				</div>
-				<div class="component-row">
-					<ss-lib-badge
-						[badgeProps]="{
-							size: ExtraSize.md,
-							icon: IconType.ImagePlus,
-							shape: Shape.Round,
-						}"
-					></ss-lib-badge>
-
-					<ss-lib-badge
-						[badgeProps]="{
-							size: ExtraSize.md,
-							icon: IconType.ImagePlus,
-							status: Status.Success,
-							shape: Shape.Round,
-						}"
-					></ss-lib-badge>
-
-					<ss-lib-badge
-						[badgeProps]="{
-							size: ExtraSize.md,
-							icon: IconType.ImagePlus,
-							status: Status.Warning,
-							shape: Shape.Round,
-						}"
-					></ss-lib-badge>
-
-					<ss-lib-badge
-						[badgeProps]="{
-							size: ExtraSize.md,
-							icon: IconType.ImagePlus,
-							status: Status.Error,
-							shape: Shape.Round,
-						}"
-					></ss-lib-badge>
-				</div>
-			</div>
-
-			<div class="sub-section">
-				<h3 class="sub-section-title">Large Badges</h3>
-				<div class="component-row">
-					<ss-lib-badge
-						[badgeProps]="{
-							size: ExtraSize.lg,
-							icon: IconType.ImagePlus,
-						}"
-					></ss-lib-badge>
-
-					<ss-lib-badge
-						[badgeProps]="{
-							size: ExtraSize.lg,
-							icon: IconType.ImagePlus,
-							status: Status.Success,
-						}"
-					></ss-lib-badge>
-
-					<ss-lib-badge
-						[badgeProps]="{
-							size: ExtraSize.lg,
-							icon: IconType.ImagePlus,
-							status: Status.Warning,
-						}"
-					></ss-lib-badge>
-
-					<ss-lib-badge
-						[badgeProps]="{
-							size: ExtraSize.lg,
-							icon: IconType.ImagePlus,
-							status: Status.Error,
-						}"
-					></ss-lib-badge>
-				</div>
-				<div class="component-row">
-					<ss-lib-badge
-						[badgeProps]="{
-							size: ExtraSize.lg,
-							icon: IconType.ImagePlus,
-							shape: Shape.Round,
-						}"
-					></ss-lib-badge>
-
-					<ss-lib-badge
-						[badgeProps]="{
-							size: ExtraSize.lg,
-							icon: IconType.ImagePlus,
-							status: Status.Success,
-							shape: Shape.Round,
-						}"
-					></ss-lib-badge>
-
-					<ss-lib-badge
-						[badgeProps]="{
-							size: ExtraSize.lg,
-							icon: IconType.ImagePlus,
-							status: Status.Warning,
-							shape: Shape.Round,
-						}"
-					></ss-lib-badge>
-
-					<ss-lib-badge
-						[badgeProps]="{
-							size: ExtraSize.lg,
-							icon: IconType.ImagePlus,
-							status: Status.Error,
-							shape: Shape.Round,
-						}"
-					></ss-lib-badge>
-				</div>
-			</div>
-			<div class="sub-section">
-				<h3 class="sub-section-title">Extra Large Badges</h3>
-				<div class="component-row">
-					<ss-lib-badge
-						[badgeProps]="{
-							size: ExtraSize.xl,
-							icon: IconType.ImagePlus,
-						}"
-					></ss-lib-badge>
-
-					<ss-lib-badge
-						[badgeProps]="{
-							size: ExtraSize.xl,
-							icon: IconType.ImagePlus,
-							status: Status.Success,
-						}"
-					></ss-lib-badge>
-
-					<ss-lib-badge
-						[badgeProps]="{
-							size: ExtraSize.xl,
-							icon: IconType.ImagePlus,
-							status: Status.Warning,
-						}"
-					></ss-lib-badge>
-
-					<ss-lib-badge
-						[badgeProps]="{
-							size: ExtraSize.xl,
-							icon: IconType.ImagePlus,
-							status: Status.Error,
-						}"
-					></ss-lib-badge>
-				</div>
-				<div class="component-row">
-					<ss-lib-badge
-						[badgeProps]="{
-							size: ExtraSize.xl,
-							icon: IconType.ImagePlus,
-							shape: Shape.Round,
-						}"
-					></ss-lib-badge>
-
-					<ss-lib-badge
-						[badgeProps]="{
-							size: ExtraSize.xl,
-							icon: IconType.ImagePlus,
-							status: Status.Success,
-							shape: Shape.Round,
-						}"
-					></ss-lib-badge>
-
-					<ss-lib-badge
-						[badgeProps]="{
-							size: ExtraSize.xl,
-							icon: IconType.ImagePlus,
-							status: Status.Warning,
-							shape: Shape.Round,
-						}"
-					></ss-lib-badge>
-
-					<ss-lib-badge
-						[badgeProps]="{
-							size: ExtraSize.xl,
-							icon: IconType.ImagePlus,
-							status: Status.Error,
-							shape: Shape.Round,
-						}"
-					></ss-lib-badge>
-				</div>
-			</div>
-		</div>
-
-		<!-- Status Icon Section -->
-		<div class="section">
-			<h2 class="section-title">Status Icons</h2>
-			<p class="section-description">
-				Status Icon components with different statuses.
-			</p>
-			<div class="component-row">
-				<ss-lib-status-icon
-					[icon]="IconType.Info"
-					[type]="statusType.Default"
-				></ss-lib-status-icon>
-
-				<ss-lib-status-icon
-					[icon]="IconType.Info"
-					[type]="statusType.Success"
-				></ss-lib-status-icon>
-
-				<ss-lib-status-icon
-					[icon]="IconType.Info"
-					[type]="statusType.Warning"
-				></ss-lib-status-icon>
-
-				<ss-lib-status-icon
-					[icon]="IconType.Info"
-					[type]="statusType.Error"
-				></ss-lib-status-icon>
-
-				<ss-lib-status-icon
-					class="disabled-demo"
-					[icon]="IconType.Info"
-					[type]="statusType.Warning"
-					[disabled]="true"
-				></ss-lib-status-icon>
-			</div>
-		</div>
-
-		<!-- Tags Section -->
-		<div class="section">
-			<h2 class="section-title">Tags</h2>
-
-			<p class="section-description">Tags</p>
-
-			<div
-				class="component-row"
-				style="flex-direction: column"
-			>
-				<ss-lib-tag [text]="'Заказ/контракт'" />
-
-				<ss-lib-tag
-					[text]="'Заказ/контракт'"
-					[type]="TagType.Dot"
-				/>
-			</div>
-		</div>
-
-		<!-- Form Fields Section -->
-		<div class="section">
-			<h2 class="section-title">Form Fields</h2>
-			<p class="section-description">
-				Input, textarea, datepicker, and timepicker components with
-				validation.
-			</p>
-
-			<div class="sub-section">
-				<!-- Блок: две колонки инпутов md и lg -->
-				<div class="component-row two-columns">
-					<!-- Column 1 (md inputs) -->
-					<div class="component-column">
-						<ss-lib-form-field
-							class="spaced"
-							[label]="'Input md'"
-							[hint]="'Подсказка'"
-							[showValidationFieldIcon]="true"
-							[clearButton]="true"
-							[size]="ExtraSize.md"
-						>
-							<ss-lib-input
-								fieldCtrl
-								[size]="ExtraSize.md"
-								[formControl]="inputCtrl"
-								[placeholder]="'oleg@mail.ru'"
-							/>
-						</ss-lib-form-field>
-
-						<ss-lib-form-field
-							class="spaced"
-							[label]="'Input md'"
-							[hint]="'Подсказка'"
-							[errorText]="'Неверно заполнено'"
-							[tooltipInfoText]="'Какой то тултип'"
-							[showValidationFieldIcon]="true"
-							[clearButton]="true"
-							[icon]="IconType.Search"
-							[size]="ExtraSize.md"
-						>
-							<ss-lib-input
-								fieldCtrl
-								[size]="ExtraSize.md"
-								[formControl]="inputCtrl"
-								[placeholder]="'oleg@mail.ru'"
-							/>
-						</ss-lib-form-field>
-
-						<ss-lib-form-field
-							class="spaced"
-							[label]="'Input md'"
-							[hint]="'Подсказка'"
-							[errorText]="'Неверно заполнено'"
-							[tooltipInfoText]="'Какой то тултип'"
-							[showValidationFieldIcon]="false"
-							[clearButton]="true"
-							[icon]="IconType.Bell"
-							[size]="ExtraSize.md"
-						>
-							<ss-lib-input
-								fieldCtrl
-								[size]="ExtraSize.md"
-								[formControl]="inputCtrl"
-								[placeholder]="'oleg@mail.ru'"
-							/>
-						</ss-lib-form-field>
-
-						<ss-lib-form-field
-							class="spaced"
-							[label]="'Input md'"
-							[hint]="'Подсказка'"
-							[errorText]="'Неверно заполнено'"
-							[tooltipInfoText]="'Какой то тултип'"
-							[showValidationFieldIcon]="true"
-							[clearButton]="false"
-							[icon]="IconType.Bell"
-							[size]="ExtraSize.md"
-						>
-							<ss-lib-input
-								fieldCtrl
-								[size]="ExtraSize.md"
-								[formControl]="inputCtrl"
-								[placeholder]="'oleg@mail.ru'"
-							/>
-						</ss-lib-form-field>
-
-						<ss-lib-form-field
-							class="spaced"
-							[label]="'Input md'"
-							[hint]="'Подсказка'"
-							[errorText]="'Неверно заполнено'"
-							[tooltipInfoText]="'Какой то тултип'"
-							[showValidationFieldIcon]="true"
-							[clearButton]="true"
-							[icon]="IconType.Bell"
-							[size]="ExtraSize.md"
-						>
-							<ss-lib-input
-								fieldCtrl
-								[size]="ExtraSize.md"
-								[formControl]="inputCtrlDisabled"
-								[placeholder]="'oleg@mail.ru'"
-							/>
-						</ss-lib-form-field>
-					</div>
-
-					<!-- Column 2 (lg inputs) -->
-					<div class="component-column">
-						<ss-lib-form-field
-							class="spaced"
-							[label]="'Input lg'"
-							[hint]="'Подсказка'"
-							[showValidationFieldIcon]="true"
-							[clearButton]="true"
-							[size]="ExtraSize.lg"
-						>
-							<ss-lib-input
-								fieldCtrl
-								[size]="ExtraSize.lg"
-								[formControl]="inputCtrl"
-								[placeholder]="'oleg@mail.ru'"
-							/>
-						</ss-lib-form-field>
-
-						<ss-lib-form-field
-							class="spaced"
-							[label]="'Input lg'"
-							[hint]="'Подсказка'"
-							[errorText]="'Неверно заполнено'"
-							[tooltipInfoText]="'Какой то тултип'"
-							[showValidationFieldIcon]="true"
-							[clearButton]="true"
-							[icon]="IconType.Search"
-							[size]="ExtraSize.lg"
-						>
-							<ss-lib-input
-								fieldCtrl
-								[size]="ExtraSize.lg"
-								[formControl]="inputCtrl"
-								[placeholder]="'oleg@mail.ru'"
-							/>
-						</ss-lib-form-field>
-
-						<ss-lib-form-field
-							class="spaced"
-							[label]="'Input lg'"
-							[hint]="'Подсказка'"
-							[errorText]="'Неверно заполнено'"
-							[tooltipInfoText]="'Какой то тултип'"
-							[showValidationFieldIcon]="false"
-							[clearButton]="true"
-							[icon]="IconType.Bell"
-							[size]="ExtraSize.lg"
-						>
-							<ss-lib-input
-								fieldCtrl
-								[size]="ExtraSize.lg"
-								[formControl]="inputCtrl"
-								[placeholder]="'oleg@mail.ru'"
-							/>
-						</ss-lib-form-field>
-
-						<ss-lib-form-field
-							class="spaced"
-							[label]="'Input lg'"
-							[hint]="'Подсказка'"
-							[errorText]="'Неверно заполнено'"
-							[tooltipInfoText]="'Какой то тултип'"
-							[showValidationFieldIcon]="true"
-							[clearButton]="false"
-							[icon]="IconType.Bell"
-							[size]="ExtraSize.lg"
-						>
-							<ss-lib-input
-								fieldCtrl
-								[size]="ExtraSize.lg"
-								[formControl]="inputCtrl"
-								[placeholder]="'oleg@mail.ru'"
-							/>
-						</ss-lib-form-field>
-
-						<ss-lib-form-field
-							class="spaced"
-							[label]="'Input lg'"
-							[hint]="'Подсказка'"
-							[errorText]="'Неверно заполнено'"
-							[tooltipInfoText]="'Какой то тултип'"
-							[showValidationFieldIcon]="true"
-							[clearButton]="true"
-							[icon]="IconType.Bell"
-							[size]="ExtraSize.lg"
-						>
-							<ss-lib-input
-								fieldCtrl
-								[size]="ExtraSize.lg"
-								[formControl]="inputCtrlDisabled"
-								[placeholder]="'oleg@mail.ru'"
-							/>
-						</ss-lib-form-field>
-					</div>
-				</div>
-
-				<!-- Остальные компоненты -->
-				<div class="spaced">
-					<ss-lib-form-field
-						[label]="'Textarea'"
-						[hint]="'Подсказка'"
-						[errorText]="'Текст ошибки'"
-					>
-						<ss-lib-textarea
-							fieldCtrl
-							[formControl]="textareaCtrl"
-						></ss-lib-textarea>
-					</ss-lib-form-field>
-				</div>
-
-				<div class="spaced">
-					<ss-lib-form-field
-						[label]="'Textarea disabled'"
-						[hint]="'Подсказка'"
-						[errorText]="'Текст ошибки'"
-					>
-						<ss-lib-textarea
-							fieldCtrl
-							[formControl]="textareaCtrlDisabled"
-						></ss-lib-textarea>
-					</ss-lib-form-field>
-				</div>
-
-				<div class="spaced">
-					<ss-lib-form-field
-						[label]="'Datepicker'"
-						[hint]="'Подсказка'"
-						[errorText]="'Неверно заполнено'"
-						[showValidationFieldIcon]="true"
-					>
-						<ss-lib-datepicker
-							fieldCtrl
-							[formControl]="datepickerCtrl"
-							[min]="minDate"
-						></ss-lib-datepicker>
-					</ss-lib-form-field>
-				</div>
-
-				<div class="spaced">
-					<ss-lib-form-field
-						[label]="'Timepicker'"
-						[hint]="'Подсказка'"
-						[errorText]="'Неверно заполнено'"
-					>
-						<ss-lib-timepicker
-							fieldCtrl
-							[formControl]="timepickerCtrl"
-						></ss-lib-timepicker>
-					</ss-lib-form-field>
-
-					<pre>{{ timepickerCtrl.value }}</pre>
-				</div>
-			</div>
-		</div>
-
-		<!-- Select Dropdown Section -->
-		<div class="section">
-			<h2 class="section-title">Select Dropdown</h2>
-
-			<p class="section-description">
-				Select component with dropdown options.
-			</p>
-
-			<div class="component-row">
-				<ss-lib-form-field
-					[label]="'Название'"
-					[hint]="'Подсказка'"
-					[errorText]="'Неверно заполнено'"
-					[showValidationFieldIcon]="true"
-				>
-					<ss-lib-select
-						fieldCtrl
-						[formControl]="selectCtrl"
-						[popoverTriggerFor]="dropdown2"
-					>
-						<ss-lib-dropdown-list #dropdown2>
-							@for (item of dropdownItems; track item.id) {
-								<ss-lib-dropdown-item
-									[value]="item"
-									[icon]="IconType.Bell"
-								></ss-lib-dropdown-item>
-							}
-						</ss-lib-dropdown-list>
-					</ss-lib-select>
-				</ss-lib-form-field>
-			</div>
-			<p class="section-description">
-				Dropdown component with custom templates and scrolling to
-				selected item.
-			</p>
-
-			<div class="component-row">
-				<ss-lib-button
-					[iconPosition]="IconPosition.Start"
-					[icon]="IconType.Calendar"
-					[popoverTriggerFor]="listActions"
-					[type]="ButtonType.Secondary"
-					[text]="activeWeek()?.name || 'Выберите неделю'"
-					[size]="ExtraSize.lg"
-					(isPopoverOpenEmit)="dropdownWeekIsOpen.set($event)"
-				>
-					<ss-lib-icon
-						[icon]="IconType.ChevronDown"
-						[width]="'20'"
-						[height]="'20'"
-					></ss-lib-icon>
-				</ss-lib-button>
-
-				<ss-lib-dropdown-list
-					#listActions
-					[height]="'274px'"
-					[width]="'236px'"
-					[scrollOnOpen]="true"
-					[isOpen]="dropdownWeekIsOpen()"
-				>
-					@for (week of dropdownWeeks; track week.id) {
-						<ss-lib-dropdown-item
-							[value]="week"
-							[label]="week.name"
-							[selected]="activeWeek()?.id === week.id"
-							(click)="activeWeek.set(week)"
-						/>
-					}
-				</ss-lib-dropdown-list>
-			</div>
-		</div>
-
-		<!-- Number Picker Section -->
-		<div class="section">
-			<h2 class="section-title">Number Picker</h2>
-			<p class="section-description">
-				Number input with min and max constraints.
-			</p>
-			<div class="component-row">
-				<div style="width: 148px">
-					<ss-lib-number-picker
-						[formControl]="numberPickerCtrl"
-						[min]="5"
-						[max]="1000"
-					></ss-lib-number-picker>
-				</div>
-
-				<div style="width: 148px">
-					<ss-lib-number-picker
-						[size]="ExtraSize.md"
-						[formControl]="numberPickerCtrl"
-						[min]="5"
-						[max]="1000"
-					></ss-lib-number-picker>
-				</div>
-			</div>
-		</div>
-
-		<!-- OTP Input Section -->
-		<div class="section">
-			<h2 class="section-title">OTP Input</h2>
-
-			<p class="section-description">One-time password input field.</p>
-			<div
-				class="component-row"
-				[style.align-items]="'center'"
-			>
-				<div [style.width.px]="360">
-					<ss-lib-otp-input
-						class="spaced"
-						[formControl]="otpCtrl"
-					></ss-lib-otp-input>
-				</div>
-			</div>
-
-			<ss-lib-button
-				[type]="ButtonType.Primary"
-				[text]="'Submit OTP'"
-				(click)="submitOtp()"
+<!--<div class="container">-->
+<!--	<div class="hide1">-->
+<!--		&lt;!&ndash; Typography Section &ndash;&gt;-->
+<!--		<div class="section">-->
+<!--			<h2 class="section-title">Typography</h2>-->
+
+<!--			<p class="section-description">-->
+<!--				Various text styles and weights for consistent typography.-->
+<!--			</p>-->
+
+<!--			<div-->
+<!--				class="component-row"-->
+<!--				style="flex-direction: column"-->
+<!--			>-->
+<!--				<ss-lib-text-->
+<!--					class="spaced"-->
+<!--					[type]="TextType.BodyXs"-->
+<!--				>-->
+<!--					Body XS-->
+<!--				</ss-lib-text>-->
+
+<!--				<ss-lib-text-->
+<!--					class="spaced"-->
+<!--					[type]="TextType.BodySm"-->
+<!--				>-->
+<!--					Body SM-->
+<!--				</ss-lib-text>-->
+
+<!--				<ss-lib-text-->
+<!--					class="spaced"-->
+<!--					[type]="TextType.BodyMd"-->
+<!--				>-->
+<!--					Body MD-->
+<!--				</ss-lib-text>-->
+
+<!--				<ss-lib-text-->
+<!--					class="spaced"-->
+<!--					[type]="TextType.BodyLg"-->
+<!--				>-->
+<!--					Body LG-->
+<!--				</ss-lib-text>-->
+
+<!--				<ss-lib-text-->
+<!--					class="spaced"-->
+<!--					[type]="TextType.BodyXl"-->
+<!--				>-->
+<!--					Body XL-->
+<!--				</ss-lib-text>-->
+<!--			</div>-->
+
+<!--			<div-->
+<!--				class="component-row"-->
+<!--				style="flex-direction: column"-->
+<!--			>-->
+<!--				<ss-lib-text-->
+<!--					class="spaced"-->
+<!--					[type]="TextType.HeadingXs"-->
+<!--				>-->
+<!--					Heading XS-->
+<!--				</ss-lib-text>-->
+
+<!--				<ss-lib-text-->
+<!--					class="spaced"-->
+<!--					[type]="TextType.HeadingSm"-->
+<!--				>-->
+<!--					Heading SM-->
+<!--				</ss-lib-text>-->
+
+<!--				<ss-lib-text-->
+<!--					class="spaced"-->
+<!--					[type]="TextType.HeadingMd"-->
+<!--				>-->
+<!--					Heading MD-->
+<!--				</ss-lib-text>-->
+
+<!--				<ss-lib-text-->
+<!--					class="spaced"-->
+<!--					[type]="TextType.HeadingLg"-->
+<!--				>-->
+<!--					Heading LG-->
+<!--				</ss-lib-text>-->
+
+<!--				<ss-lib-text-->
+<!--					class="spaced"-->
+<!--					[type]="TextType.HeadingXl"-->
+<!--				>-->
+<!--					Heading XL-->
+<!--				</ss-lib-text>-->
+
+<!--				<ss-lib-text-->
+<!--					class="spaced"-->
+<!--					[type]="TextType.HeadingXxl"-->
+<!--				>-->
+<!--					Heading XXL-->
+<!--				</ss-lib-text>-->
+<!--			</div>-->
+
+<!--			<div-->
+<!--				class="component-row"-->
+<!--				style="flex-direction: column"-->
+<!--			>-->
+<!--				<ss-lib-text-->
+<!--					class="spaced"-->
+<!--					[type]="TextType.HeadingXs"-->
+<!--					[weight]="TextWeight.Regular"-->
+<!--				>-->
+<!--					Heading XS Regular-->
+<!--				</ss-lib-text>-->
+
+<!--				<ss-lib-text-->
+<!--					class="spaced"-->
+<!--					[type]="TextType.HeadingXs"-->
+<!--					[weight]="TextWeight.Medium"-->
+<!--				>-->
+<!--					Heading XS Medium-->
+<!--				</ss-lib-text>-->
+
+<!--				<ss-lib-text-->
+<!--					class="spaced"-->
+<!--					[type]="TextType.HeadingXs"-->
+<!--					[weight]="TextWeight.Semibold"-->
+<!--				>-->
+<!--					Heading XS Semibold-->
+<!--				</ss-lib-text>-->
+
+<!--				<ss-lib-text-->
+<!--					class="spaced"-->
+<!--					[type]="TextType.HeadingXs"-->
+<!--					[weight]="TextWeight.Bold"-->
+<!--				>-->
+<!--					Heading XS Bold-->
+<!--				</ss-lib-text>-->
+<!--			</div>-->
+<!--		</div>-->
+
+<!--		&lt;!&ndash; Icon Section &ndash;&gt;-->
+<!--		<div class="section">-->
+<!--			<h2 class="section-title">Icons</h2>-->
+<!--			<p class="section-description">Examples of an icon components.</p>-->
+<!--			<div class="component-row">-->
+<!--				@for (icon of iconsList; track icon) {-->
+<!--					<div class="icon-wrapper">-->
+<!--						<ss-lib-icon-->
+<!--							[icon]="IconType[icon]"-->
+<!--							[color]="Colors.IconBody"-->
+<!--						></ss-lib-icon>-->
+
+<!--						<ss-lib-text-->
+<!--							[type]="TextType.BodyXs"-->
+<!--							[weight]="TextWeight.Regular"-->
+<!--							>{{ icon }}-->
+<!--						</ss-lib-text>-->
+<!--					</div>-->
+<!--				}-->
+<!--			</div>-->
+<!--		</div>-->
+
+<!--		&lt;!&ndash; Divider Section &ndash;&gt;-->
+<!--		<div class="section">-->
+<!--			<h2 class="section-title">Dividers</h2>-->
+<!--			<p class="section-description">-->
+<!--				Divider component for layout separation.-->
+<!--			</p>-->
+<!--			<div class="component-row">-->
+<!--				<ss-lib-divider class="full-width" />-->
+
+<!--				<ss-lib-divider-->
+<!--					[style.height.px]="50"-->
+<!--					[orientation]="Orientation.Vertical"-->
+<!--				></ss-lib-divider>-->
+<!--			</div>-->
+<!--		</div>-->
+
+<!--		&lt;!&ndash; Button Variants Section &ndash;&gt;-->
+<!--		<div class="section">-->
+<!--			<h2 class="section-title">Buttons</h2>-->
+
+<!--			<p class="section-description">-->
+<!--				Showcases different button types and sizes, including disabled-->
+<!--				states.-->
+<!--			</p>-->
+
+<!--			&lt;!&ndash; Primary Buttons &ndash;&gt;-->
+<!--			<div class="sub-section">-->
+<!--				<h3 class="sub-section-title">Primary Buttons</h3>-->
+
+<!--				<div class="component-row">-->
+<!--					<ss-lib-button-->
+<!--						[type]="ButtonType.Primary"-->
+<!--						[text]="'Пнока'"-->
+<!--						[icon]="IconType.Plus"-->
+<!--						[iconPosition]="IconPosition.OnlyIcon"-->
+<!--						[size]="ExtraSize.xxs"-->
+<!--					></ss-lib-button>-->
+
+<!--					<ss-lib-button-->
+<!--						[type]="ButtonType.Primary"-->
+<!--						[text]="'Пнока'"-->
+<!--						[icon]="IconType.Plus"-->
+<!--						[iconPosition]="IconPosition.OnlyIcon"-->
+<!--						[size]="ExtraSize.xs"-->
+<!--					></ss-lib-button>-->
+
+<!--					<ss-lib-button-->
+<!--						[type]="ButtonType.Primary"-->
+<!--						[text]="'Пнока'"-->
+<!--						[icon]="IconType.Plus"-->
+<!--						[iconPosition]="IconPosition.OnlyIcon"-->
+<!--						[size]="ExtraSize.sm"-->
+<!--					></ss-lib-button>-->
+
+<!--					<ss-lib-button-->
+<!--						[type]="ButtonType.Primary"-->
+<!--						[text]="'Пнока'"-->
+<!--						[icon]="IconType.Plus"-->
+<!--						[iconPosition]="IconPosition.OnlyIcon"-->
+<!--						[size]="ExtraSize.md"-->
+<!--					></ss-lib-button>-->
+
+<!--					<ss-lib-button-->
+<!--						[type]="ButtonType.Primary"-->
+<!--						[text]="'Пнока'"-->
+<!--						[icon]="IconType.Plus"-->
+<!--						[iconPosition]="IconPosition.OnlyIcon"-->
+<!--						[size]="ExtraSize.lg"-->
+<!--					></ss-lib-button>-->
+
+<!--					<ss-lib-button-->
+<!--						[type]="ButtonType.Primary"-->
+<!--						[text]="'Пнока'"-->
+<!--						[icon]="IconType.Plus"-->
+<!--						[iconPosition]="IconPosition.OnlyIcon"-->
+<!--						[size]="ExtraSize.xl"-->
+<!--					></ss-lib-button>-->
+
+<!--					<ss-lib-button-->
+<!--						class="disabled-demo"-->
+<!--						[type]="ButtonType.Primary"-->
+<!--						[text]="'Пнока'"-->
+<!--						[icon]="IconType.Plus"-->
+<!--						[iconPosition]="IconPosition.OnlyIcon"-->
+<!--						[size]="ExtraSize.lg"-->
+<!--						[disabled]="true"-->
+<!--						(click)="test()"-->
+<!--					></ss-lib-button>-->
+<!--				</div>-->
+<!--			</div>-->
+
+<!--			&lt;!&ndash; Secondary Buttons &ndash;&gt;-->
+<!--			<div class="sub-section">-->
+<!--				<h3 class="sub-section-title">Secondary Buttons</h3>-->
+
+<!--				<div class="component-row">-->
+<!--					<ss-lib-button-->
+<!--						[type]="ButtonType.Secondary"-->
+<!--						[text]="'Пнока'"-->
+<!--						[icon]="IconType.Plus"-->
+<!--						[iconPosition]="IconPosition.OnlyIcon"-->
+<!--						[size]="ExtraSize.xxs"-->
+<!--					></ss-lib-button>-->
+
+<!--					<ss-lib-button-->
+<!--						[type]="ButtonType.Secondary"-->
+<!--						[text]="'Пнока'"-->
+<!--						[icon]="IconType.Plus"-->
+<!--						[iconPosition]="IconPosition.OnlyIcon"-->
+<!--						[size]="ExtraSize.xs"-->
+<!--					></ss-lib-button>-->
+
+<!--					<ss-lib-button-->
+<!--						[type]="ButtonType.Secondary"-->
+<!--						[text]="'Пнока'"-->
+<!--						[icon]="IconType.Plus"-->
+<!--						[iconPosition]="IconPosition.OnlyIcon"-->
+<!--						[size]="ExtraSize.sm"-->
+<!--					></ss-lib-button>-->
+
+<!--					<ss-lib-button-->
+<!--						[type]="ButtonType.Secondary"-->
+<!--						[text]="'Пнока'"-->
+<!--						[icon]="IconType.Plus"-->
+<!--						[iconPosition]="IconPosition.OnlyIcon"-->
+<!--						[size]="ExtraSize.md"-->
+<!--					></ss-lib-button>-->
+
+<!--					<ss-lib-button-->
+<!--						[type]="ButtonType.Secondary"-->
+<!--						[text]="'Пнока'"-->
+<!--						[icon]="IconType.Plus"-->
+<!--						[iconPosition]="IconPosition.OnlyIcon"-->
+<!--						[size]="ExtraSize.lg"-->
+<!--					></ss-lib-button>-->
+
+<!--					<ss-lib-button-->
+<!--						[type]="ButtonType.Secondary"-->
+<!--						[text]="'Пнока'"-->
+<!--						[icon]="IconType.Plus"-->
+<!--						[iconPosition]="IconPosition.End"-->
+<!--						[size]="ExtraSize.xl"-->
+<!--					></ss-lib-button>-->
+
+<!--					<ss-lib-button-->
+<!--						class="disabled-demo"-->
+<!--						[type]="ButtonType.Secondary"-->
+<!--						[text]="'Пнока'"-->
+<!--						[icon]="IconType.Plus"-->
+<!--						[iconPosition]="IconPosition.End"-->
+<!--						[size]="ExtraSize.lg"-->
+<!--						[disabled]="true"-->
+<!--						(click)="test()"-->
+<!--					></ss-lib-button>-->
+<!--				</div>-->
+<!--			</div>-->
+
+<!--			&lt;!&ndash; Ghost Buttons &ndash;&gt;-->
+<!--			<div class="sub-section">-->
+<!--				<h3 class="sub-section-title">Ghost Buttons</h3>-->
+<!--				<div class="component-row">-->
+<!--					<ss-lib-button-->
+<!--						[type]="ButtonType.Ghost"-->
+<!--						[text]="'Пнока'"-->
+<!--						[icon]="IconType.Plus"-->
+<!--						[iconPosition]="IconPosition.End"-->
+<!--						[size]="ExtraSize.xxs"-->
+<!--					></ss-lib-button>-->
+
+<!--					<ss-lib-button-->
+<!--						[type]="ButtonType.Ghost"-->
+<!--						[text]="'Пнока'"-->
+<!--						[icon]="IconType.Plus"-->
+<!--						[iconPosition]="IconPosition.End"-->
+<!--						[size]="ExtraSize.xs"-->
+<!--					></ss-lib-button>-->
+
+<!--					<ss-lib-button-->
+<!--						[type]="ButtonType.Ghost"-->
+<!--						[text]="'Пнока'"-->
+<!--						[icon]="IconType.Plus"-->
+<!--						[iconPosition]="IconPosition.End"-->
+<!--						[size]="ExtraSize.sm"-->
+<!--					></ss-lib-button>-->
+
+<!--					<ss-lib-button-->
+<!--						[type]="ButtonType.Ghost"-->
+<!--						[text]="'Пнока'"-->
+<!--						[icon]="IconType.Plus"-->
+<!--						[iconPosition]="IconPosition.End"-->
+<!--						[size]="ExtraSize.md"-->
+<!--					></ss-lib-button>-->
+
+<!--					<ss-lib-button-->
+<!--						[type]="ButtonType.Ghost"-->
+<!--						[text]="'Пнока'"-->
+<!--						[icon]="IconType.Plus"-->
+<!--						[iconPosition]="IconPosition.End"-->
+<!--						[size]="ExtraSize.lg"-->
+<!--					></ss-lib-button>-->
+
+<!--					<ss-lib-button-->
+<!--						[type]="ButtonType.Ghost"-->
+<!--						[text]="'Пнока'"-->
+<!--						[icon]="IconType.Plus"-->
+<!--						[iconPosition]="IconPosition.End"-->
+<!--						[size]="ExtraSize.xl"-->
+<!--					></ss-lib-button>-->
+
+<!--					<ss-lib-button-->
+<!--						class="disabled-demo"-->
+<!--						[type]="ButtonType.Ghost"-->
+<!--						[text]="'Пнока'"-->
+<!--						[icon]="IconType.Plus"-->
+<!--						[iconPosition]="IconPosition.End"-->
+<!--						[size]="ExtraSize.lg"-->
+<!--						[disabled]="true"-->
+<!--						(click)="test()"-->
+<!--					></ss-lib-button>-->
+<!--				</div>-->
+<!--			</div>-->
+
+<!--			&lt;!&ndash; Text Buttons &ndash;&gt;-->
+<!--			<div class="sub-section">-->
+<!--				<h3 class="sub-section-title">Text Buttons</h3>-->
+
+<!--				<div class="component-row">-->
+<!--					<ss-lib-button-->
+<!--						[type]="ButtonType.TextPrimary"-->
+<!--						[text]="'Пнока'"-->
+<!--						[icon]="IconType.Plus"-->
+<!--						[iconPosition]="IconPosition.End"-->
+<!--						[size]="ExtraSize.sm"-->
+<!--					></ss-lib-button>-->
+
+<!--					<ss-lib-button-->
+<!--						[type]="ButtonType.TextSecondary"-->
+<!--						[text]="'Пнока'"-->
+<!--						[icon]="IconType.Plus"-->
+<!--						[iconPosition]="IconPosition.End"-->
+<!--						[size]="ExtraSize.sm"-->
+<!--					></ss-lib-button>-->
+<!--				</div>-->
+<!--			</div>-->
+<!--		</div>-->
+
+<!--		&lt;!&ndash; Close Buttons Section &ndash;&gt;-->
+<!--		<div class="section">-->
+<!--			<h2 class="section-title">Close Buttons</h2>-->
+
+<!--			<p class="section-description">-->
+<!--				Close buttons in dark and light variants with various sizes.-->
+<!--			</p>-->
+
+<!--			<div class="sub-section">-->
+<!--				<h3 class="sub-section-title">Dark Close Buttons</h3>-->
+
+<!--				<div class="component-row dark-background">-->
+<!--					<ss-lib-close-button-->
+<!--						[type]="ButtonType.CloseDark"-->
+<!--						[size]="ExtraSize.xxs"-->
+<!--					></ss-lib-close-button>-->
+
+<!--					<ss-lib-close-button-->
+<!--						[type]="ButtonType.CloseDark"-->
+<!--						[size]="ExtraSize.xs"-->
+<!--					></ss-lib-close-button>-->
+
+<!--					<ss-lib-close-button-->
+<!--						[type]="ButtonType.CloseDark"-->
+<!--						[size]="ExtraSize.sm"-->
+<!--					></ss-lib-close-button>-->
+
+<!--					<ss-lib-close-button-->
+<!--						[type]="ButtonType.CloseDark"-->
+<!--						[size]="ExtraSize.md"-->
+<!--					></ss-lib-close-button>-->
+
+<!--					<ss-lib-close-button-->
+<!--						[type]="ButtonType.CloseDark"-->
+<!--						[size]="ExtraSize.lg"-->
+<!--					></ss-lib-close-button>-->
+
+<!--					<ss-lib-close-button-->
+<!--						[type]="ButtonType.CloseDark"-->
+<!--						[size]="ExtraSize.xl"-->
+<!--					></ss-lib-close-button>-->
+
+<!--					<ss-lib-close-button-->
+<!--						[type]="ButtonType.CloseDark"-->
+<!--						[size]="ExtraSize.xxl"-->
+<!--					></ss-lib-close-button>-->
+
+<!--					<ss-lib-close-button-->
+<!--						class="disabled-demo"-->
+<!--						[type]="ButtonType.CloseDark"-->
+<!--						[size]="ExtraSize.xxl"-->
+<!--						[disabled]="true"-->
+<!--					></ss-lib-close-button>-->
+<!--				</div>-->
+<!--			</div>-->
+<!--			<div class="sub-section">-->
+<!--				<h3 class="sub-section-title">Light Close Buttons</h3>-->
+
+<!--				<div class="component-row">-->
+<!--					<ss-lib-close-button-->
+<!--						[type]="ButtonType.CloseLight"-->
+<!--						[size]="ExtraSize.xxs"-->
+<!--					></ss-lib-close-button>-->
+
+<!--					<ss-lib-close-button-->
+<!--						[type]="ButtonType.CloseLight"-->
+<!--						[size]="ExtraSize.xs"-->
+<!--					></ss-lib-close-button>-->
+
+<!--					<ss-lib-close-button-->
+<!--						[type]="ButtonType.CloseLight"-->
+<!--						[size]="ExtraSize.sm"-->
+<!--					></ss-lib-close-button>-->
+
+<!--					<ss-lib-close-button-->
+<!--						[type]="ButtonType.CloseLight"-->
+<!--						[size]="ExtraSize.md"-->
+<!--					></ss-lib-close-button>-->
+
+<!--					<ss-lib-close-button-->
+<!--						[type]="ButtonType.CloseLight"-->
+<!--						[size]="ExtraSize.lg"-->
+<!--					></ss-lib-close-button>-->
+
+<!--					<ss-lib-close-button-->
+<!--						[type]="ButtonType.CloseLight"-->
+<!--						[size]="ExtraSize.xl"-->
+<!--					></ss-lib-close-button>-->
+
+<!--					<ss-lib-close-button-->
+<!--						[type]="ButtonType.CloseLight"-->
+<!--						[size]="ExtraSize.xxl"-->
+<!--					></ss-lib-close-button>-->
+
+<!--					<ss-lib-close-button-->
+<!--						class="disabled-demo"-->
+<!--						[type]="ButtonType.CloseLight"-->
+<!--						[size]="ExtraSize.xxl"-->
+<!--						[disabled]="true"-->
+<!--					></ss-lib-close-button>-->
+<!--				</div>-->
+<!--			</div>-->
+<!--		</div>-->
+
+<!--		&lt;!&ndash; Utility Buttons Section &ndash;&gt;-->
+<!--		<div class="section">-->
+<!--			<h2 class="section-title">Utility Buttons</h2>-->
+
+<!--			<p class="section-description">-->
+<!--				Specialized buttons for specific actions.-->
+<!--			</p>-->
+
+<!--			<div class="component-row">-->
+<!--				<ss-lib-utility-button class="spaced"></ss-lib-utility-button>-->
+<!--			</div>-->
+<!--		</div>-->
+
+<!--		&lt;!&ndash; Preview Buttons Section &ndash;&gt;-->
+<!--		<div class="section">-->
+<!--			<h2 class="section-title">Preview Button</h2>-->
+
+<!--			<p class="section-description">-->
+<!--				Specialized buttons for closing previews.-->
+<!--			</p>-->
+
+<!--			<div class="component-row">-->
+<!--				<ss-lib-preview-button class="spaced"></ss-lib-preview-button>-->
+<!--			</div>-->
+<!--		</div>-->
+
+<!-- Backdrop Buttons Section -->
+<div class="section">
+	<h2 class="section-title">Backdrop Button</h2>
+
+	<p class="section-description">Specialized buttons for closing backdrop.</p>
+
+	<div class="component-row">
+		<ss-lib-backdrop-button class="spaced"></ss-lib-backdrop-button>
+	</div>
+</div>
+
+<!--		&lt;!&ndash; Links Section &ndash;&gt;-->
+<!--		<div class="section">-->
+<!--			<h2 class="section-title">Links</h2>-->
+
+<!--			<p class="section-description">-->
+<!--				Link components with inline and standalone appearances.-->
+<!--			</p>-->
+
+<!--			<div class="sub-section">-->
+<!--				<h3 class="sub-section-title">Inline Links</h3>-->
+
+<!--				<h4 class="sub-section-subtitle">Type - Link blue</h4>-->
+
+<!--				<div class="component-row">-->
+<!--					<ss-lib-link-->
+<!--						[type]="ButtonType.LinkBlue"-->
+<!--						[linkAppearance]="LinkAppearance.Inline"-->
+<!--						[text]="'Ссылка'"-->
+<!--						[icon]="IconType.Plus"-->
+<!--						[iconPosition]="IconPosition.Start"-->
+<!--						[size]="ExtraSize.xxs"-->
+<!--					></ss-lib-link>-->
+
+<!--					<ss-lib-link-->
+<!--						[type]="ButtonType.LinkBlue"-->
+<!--						[linkAppearance]="LinkAppearance.Inline"-->
+<!--						[text]="'Ссылка'"-->
+<!--						[icon]="IconType.Plus"-->
+<!--						[iconPosition]="IconPosition.Start"-->
+<!--						[size]="ExtraSize.xs"-->
+<!--					></ss-lib-link>-->
+
+<!--					<ss-lib-link-->
+<!--						[type]="ButtonType.LinkBlue"-->
+<!--						[linkAppearance]="LinkAppearance.Inline"-->
+<!--						[text]="'Ссылка'"-->
+<!--						[icon]="IconType.Plus"-->
+<!--						[iconPosition]="IconPosition.Start"-->
+<!--						[size]="ExtraSize.sm"-->
+<!--					></ss-lib-link>-->
+
+<!--					<ss-lib-link-->
+<!--						[type]="ButtonType.LinkBlue"-->
+<!--						[linkAppearance]="LinkAppearance.Inline"-->
+<!--						[text]="'Ссылка'"-->
+<!--						[icon]="IconType.Plus"-->
+<!--						[iconPosition]="IconPosition.Start"-->
+<!--						[size]="ExtraSize.md"-->
+<!--					></ss-lib-link>-->
+
+<!--					<ss-lib-link-->
+<!--						[type]="ButtonType.LinkBlue"-->
+<!--						[linkAppearance]="LinkAppearance.Inline"-->
+<!--						[text]="'Ссылка'"-->
+<!--						[icon]="IconType.Plus"-->
+<!--						[iconPosition]="IconPosition.Start"-->
+<!--						[size]="ExtraSize.lg"-->
+<!--					></ss-lib-link>-->
+
+<!--					<ss-lib-link-->
+<!--						[type]="ButtonType.LinkBlue"-->
+<!--						[linkAppearance]="LinkAppearance.Inline"-->
+<!--						[text]="'Ссылка'"-->
+<!--						[icon]="IconType.Plus"-->
+<!--						[iconPosition]="IconPosition.Start"-->
+<!--						[size]="ExtraSize.xl"-->
+<!--					></ss-lib-link>-->
+
+<!--					<ss-lib-link-->
+<!--						[type]="ButtonType.LinkBlue"-->
+<!--						[linkAppearance]="LinkAppearance.Inline"-->
+<!--						[text]="'Ссылка'"-->
+<!--						[icon]="IconType.Plus"-->
+<!--						[iconPosition]="IconPosition.Start"-->
+<!--						[size]="ExtraSize.xxl"-->
+<!--					></ss-lib-link>-->
+
+<!--					<ss-lib-link-->
+<!--						[type]="ButtonType.LinkBlue"-->
+<!--						[linkAppearance]="LinkAppearance.Inline"-->
+<!--						[text]="'Ссылка'"-->
+<!--						[icon]="IconType.Plus"-->
+<!--						[iconPosition]="IconPosition.Start"-->
+<!--						[size]="ExtraSize.xxl"-->
+<!--						[disabled]="true"-->
+<!--					></ss-lib-link>-->
+<!--				</div>-->
+
+<!--				<h4 class="sub-section-subtitle">Type - Link black</h4>-->
+
+<!--				<div class="component-row">-->
+<!--					<ss-lib-link-->
+<!--						[type]="ButtonType.LinkBlack"-->
+<!--						[linkAppearance]="LinkAppearance.Inline"-->
+<!--						[text]="'Ссылка'"-->
+<!--						[icon]="IconType.Plus"-->
+<!--						[iconPosition]="IconPosition.Start"-->
+<!--						[size]="ExtraSize.xxs"-->
+<!--					></ss-lib-link>-->
+
+<!--					<ss-lib-link-->
+<!--						[type]="ButtonType.LinkBlack"-->
+<!--						[linkAppearance]="LinkAppearance.Inline"-->
+<!--						[text]="'Ссылка'"-->
+<!--						[icon]="IconType.Plus"-->
+<!--						[iconPosition]="IconPosition.Start"-->
+<!--						[size]="ExtraSize.xs"-->
+<!--					></ss-lib-link>-->
+
+<!--					<ss-lib-link-->
+<!--						[type]="ButtonType.LinkBlack"-->
+<!--						[linkAppearance]="LinkAppearance.Inline"-->
+<!--						[text]="'Ссылка'"-->
+<!--						[icon]="IconType.Plus"-->
+<!--						[iconPosition]="IconPosition.Start"-->
+<!--						[size]="ExtraSize.sm"-->
+<!--					></ss-lib-link>-->
+
+<!--					<ss-lib-link-->
+<!--						[type]="ButtonType.LinkBlack"-->
+<!--						[linkAppearance]="LinkAppearance.Inline"-->
+<!--						[text]="'Ссылка'"-->
+<!--						[icon]="IconType.Plus"-->
+<!--						[iconPosition]="IconPosition.Start"-->
+<!--						[size]="ExtraSize.md"-->
+<!--					></ss-lib-link>-->
+
+<!--					<ss-lib-link-->
+<!--						[type]="ButtonType.LinkBlack"-->
+<!--						[linkAppearance]="LinkAppearance.Inline"-->
+<!--						[text]="'Ссылка'"-->
+<!--						[icon]="IconType.Plus"-->
+<!--						[iconPosition]="IconPosition.Start"-->
+<!--						[size]="ExtraSize.lg"-->
+<!--					></ss-lib-link>-->
+
+<!--					<ss-lib-link-->
+<!--						[type]="ButtonType.LinkBlack"-->
+<!--						[linkAppearance]="LinkAppearance.Inline"-->
+<!--						[text]="'Ссылка'"-->
+<!--						[icon]="IconType.Plus"-->
+<!--						[iconPosition]="IconPosition.Start"-->
+<!--						[size]="ExtraSize.xl"-->
+<!--					></ss-lib-link>-->
+
+<!--					<ss-lib-link-->
+<!--						[type]="ButtonType.LinkBlack"-->
+<!--						[linkAppearance]="LinkAppearance.Inline"-->
+<!--						[text]="'Ссылка'"-->
+<!--						[icon]="IconType.Plus"-->
+<!--						[iconPosition]="IconPosition.Start"-->
+<!--						[size]="ExtraSize.xxl"-->
+<!--					></ss-lib-link>-->
+
+<!--					<ss-lib-link-->
+<!--						[type]="ButtonType.LinkBlack"-->
+<!--						[linkAppearance]="LinkAppearance.Inline"-->
+<!--						[text]="'Ссылка'"-->
+<!--						[icon]="IconType.Plus"-->
+<!--						[iconPosition]="IconPosition.Start"-->
+<!--						[size]="ExtraSize.xxl"-->
+<!--						[disabled]="true"-->
+<!--					></ss-lib-link>-->
+<!--				</div>-->
+<!--			</div>-->
+
+<!--			<div class="sub-section">-->
+<!--				<h3 class="sub-section-title">Standalone Links</h3>-->
+
+<!--				<h4 class="sub-section-subtitle">Type - Link blue</h4>-->
+
+<!--				<div class="component-row">-->
+<!--					<ss-lib-link-->
+<!--						[type]="ButtonType.LinkBlue"-->
+<!--						[linkAppearance]="LinkAppearance.Standalone"-->
+<!--						[text]="'Ссылка'"-->
+<!--						[icon]="IconType.Plus"-->
+<!--						[iconPosition]="IconPosition.Start"-->
+<!--						[size]="ExtraSize.xxs"-->
+<!--					></ss-lib-link>-->
+
+<!--					<ss-lib-link-->
+<!--						[type]="ButtonType.LinkBlue"-->
+<!--						[linkAppearance]="LinkAppearance.Standalone"-->
+<!--						[text]="'Ссылка'"-->
+<!--						[icon]="IconType.Plus"-->
+<!--						[iconPosition]="IconPosition.Start"-->
+<!--						[size]="ExtraSize.xs"-->
+<!--					></ss-lib-link>-->
+
+<!--					<ss-lib-link-->
+<!--						[type]="ButtonType.LinkBlue"-->
+<!--						[linkAppearance]="LinkAppearance.Standalone"-->
+<!--						[text]="'Ссылка'"-->
+<!--						[icon]="IconType.Plus"-->
+<!--						[iconPosition]="IconPosition.Start"-->
+<!--						[size]="ExtraSize.sm"-->
+<!--					></ss-lib-link>-->
+
+<!--					<ss-lib-link-->
+<!--						[type]="ButtonType.LinkBlue"-->
+<!--						[linkAppearance]="LinkAppearance.Standalone"-->
+<!--						[text]="'Ссылка'"-->
+<!--						[icon]="IconType.Plus"-->
+<!--						[iconPosition]="IconPosition.Start"-->
+<!--						[size]="ExtraSize.md"-->
+<!--					></ss-lib-link>-->
+
+<!--					<ss-lib-link-->
+<!--						[type]="ButtonType.LinkBlue"-->
+<!--						[linkAppearance]="LinkAppearance.Standalone"-->
+<!--						[text]="'Ссылка'"-->
+<!--						[icon]="IconType.Plus"-->
+<!--						[iconPosition]="IconPosition.Start"-->
+<!--						[size]="ExtraSize.lg"-->
+<!--					></ss-lib-link>-->
+
+<!--					<ss-lib-link-->
+<!--						[type]="ButtonType.LinkBlue"-->
+<!--						[linkAppearance]="LinkAppearance.Standalone"-->
+<!--						[text]="'Ссылка'"-->
+<!--						[icon]="IconType.Plus"-->
+<!--						[iconPosition]="IconPosition.Start"-->
+<!--						[size]="ExtraSize.xl"-->
+<!--					></ss-lib-link>-->
+
+<!--					<ss-lib-link-->
+<!--						[type]="ButtonType.LinkBlue"-->
+<!--						[linkAppearance]="LinkAppearance.Standalone"-->
+<!--						[text]="'Ссылка'"-->
+<!--						[icon]="IconType.Plus"-->
+<!--						[iconPosition]="IconPosition.Start"-->
+<!--						[size]="ExtraSize.xxl"-->
+<!--					></ss-lib-link>-->
+
+<!--					<ss-lib-link-->
+<!--						[type]="ButtonType.LinkBlue"-->
+<!--						[linkAppearance]="LinkAppearance.Standalone"-->
+<!--						[text]="'Ссылка'"-->
+<!--						[icon]="IconType.Plus"-->
+<!--						[iconPosition]="IconPosition.Start"-->
+<!--						[size]="ExtraSize.xxl"-->
+<!--						[disabled]="true"-->
+<!--					></ss-lib-link>-->
+<!--				</div>-->
+
+<!--				<h4 class="sub-section-subtitle">Type - Link black</h4>-->
+
+<!--				<div class="component-row">-->
+<!--					<ss-lib-link-->
+<!--						[type]="ButtonType.LinkBlack"-->
+<!--						[linkAppearance]="LinkAppearance.Standalone"-->
+<!--						[text]="'Ссылка'"-->
+<!--						[icon]="IconType.Plus"-->
+<!--						[iconPosition]="IconPosition.Start"-->
+<!--						[size]="ExtraSize.xxs"-->
+<!--					></ss-lib-link>-->
+
+<!--					<ss-lib-link-->
+<!--						[type]="ButtonType.LinkBlack"-->
+<!--						[linkAppearance]="LinkAppearance.Standalone"-->
+<!--						[text]="'Ссылка'"-->
+<!--						[icon]="IconType.Plus"-->
+<!--						[iconPosition]="IconPosition.Start"-->
+<!--						[size]="ExtraSize.xs"-->
+<!--					></ss-lib-link>-->
+
+<!--					<ss-lib-link-->
+<!--						[type]="ButtonType.LinkBlack"-->
+<!--						[linkAppearance]="LinkAppearance.Standalone"-->
+<!--						[text]="'Ссылка'"-->
+<!--						[icon]="IconType.Plus"-->
+<!--						[iconPosition]="IconPosition.Start"-->
+<!--						[size]="ExtraSize.sm"-->
+<!--					></ss-lib-link>-->
+
+<!--					<ss-lib-link-->
+<!--						[type]="ButtonType.LinkBlack"-->
+<!--						[linkAppearance]="LinkAppearance.Standalone"-->
+<!--						[text]="'Ссылка'"-->
+<!--						[icon]="IconType.Plus"-->
+<!--						[iconPosition]="IconPosition.Start"-->
+<!--						[size]="ExtraSize.md"-->
+<!--					></ss-lib-link>-->
+
+<!--					<ss-lib-link-->
+<!--						[type]="ButtonType.LinkBlack"-->
+<!--						[linkAppearance]="LinkAppearance.Standalone"-->
+<!--						[text]="'Ссылка'"-->
+<!--						[icon]="IconType.Plus"-->
+<!--						[iconPosition]="IconPosition.Start"-->
+<!--						[size]="ExtraSize.lg"-->
+<!--					></ss-lib-link>-->
+
+<!--					<ss-lib-link-->
+<!--						[type]="ButtonType.LinkBlack"-->
+<!--						[linkAppearance]="LinkAppearance.Standalone"-->
+<!--						[text]="'Ссылка'"-->
+<!--						[icon]="IconType.Plus"-->
+<!--						[iconPosition]="IconPosition.Start"-->
+<!--						[size]="ExtraSize.xl"-->
+<!--					></ss-lib-link>-->
+
+<!--					<ss-lib-link-->
+<!--						[type]="ButtonType.LinkBlack"-->
+<!--						[linkAppearance]="LinkAppearance.Standalone"-->
+<!--						[text]="'Ссылка'"-->
+<!--						[icon]="IconType.Plus"-->
+<!--						[iconPosition]="IconPosition.Start"-->
+<!--						[size]="ExtraSize.xxl"-->
+<!--					></ss-lib-link>-->
+
+<!--					<ss-lib-link-->
+<!--						[type]="ButtonType.LinkBlack"-->
+<!--						[linkAppearance]="LinkAppearance.Standalone"-->
+<!--						[text]="'Ссылка'"-->
+<!--						[icon]="IconType.Plus"-->
+<!--						[iconPosition]="IconPosition.Start"-->
+<!--						[size]="ExtraSize.xxl"-->
+<!--						[disabled]="true"-->
+<!--					></ss-lib-link>-->
+<!--				</div>-->
+<!--			</div>-->
+<!--		</div>-->
+
+<!--		&lt;!&ndash; Nav Buttons Section &ndash;&gt;-->
+<!--		<div class="section">-->
+<!--			<h2 class="section-title">Nav Buttons</h2>-->
+
+<!--			<p class="section-description">-->
+<!--				Navigation buttons with icons, text and expandable submenu.-->
+<!--			</p>-->
+
+<!--			<div class="sub-section">-->
+<!--				<h3 class="sub-section-title">Base Nav Buttons</h3>-->
+<!--				<div class="component-row">-->
+<!--					@for (menu of menulist; track menu.title) {-->
+<!--						<ss-lib-nav-button-->
+<!--							[type]="NavButton.NavBase"-->
+<!--							[menu]="menu"-->
+<!--						></ss-lib-nav-button>-->
+<!--					}-->
+<!--				</div>-->
+<!--			</div>-->
+
+<!--			<div class="sub-section">-->
+<!--				<h3 class="sub-section-title">Icon-only Nav Buttons</h3>-->
+<!--				<div class="component-row">-->
+<!--					@for (menu of menulist; track menu.title) {-->
+<!--						<ss-lib-nav-button-->
+<!--							[type]="NavButton.NavIcon"-->
+<!--							[menu]="menu"-->
+<!--						></ss-lib-nav-button>-->
+<!--					}-->
+<!--				</div>-->
+<!--			</div>-->
+<!--		</div>-->
+
+<!--		&lt;!&ndash; Avatar Section &ndash;&gt;-->
+<!--		<div class="section">-->
+<!--			<h2 class="section-title">Avatar</h2>-->
+<!--			<p class="section-description">-->
+<!--				Simple avatar component with image and username-->
+<!--			</p>-->
+
+<!--			<div class="sub-section">-->
+<!--				<h3 class="sub-section-title">Avatar component</h3>-->
+
+<!--				<div class="component-row">-->
+<!--					<ss-lib-avatar-->
+<!--						[username]="'ВН'"-->
+<!--						[src]="'https://i.pravatar.cc/300'"-->
+<!--						[size]="ExtraSize.xs"-->
+<!--					></ss-lib-avatar>-->
+
+<!--					<ss-lib-avatar [size]="ExtraSize.xs" />-->
+<!--				</div>-->
+
+<!--				<div class="component-row">-->
+<!--					<ss-lib-avatar-->
+<!--						[username]="'ВН'"-->
+<!--						[src]="'https://i.pravatar.cc/300'"-->
+<!--					></ss-lib-avatar>-->
+
+<!--					<ss-lib-avatar />-->
+<!--				</div>-->
+<!--			</div>-->
+
+<!--			<div class="sub-section">-->
+<!--				<h3 class="sub-section-title">Avatar Button component</h3>-->
+<!--				<div class="component-row">-->
+<!--					<ss-lib-avatar-button-->
+<!--						[username]="'ВН'"-->
+<!--						[src]="'https://i.pravatar.cc/300'"-->
+<!--						[size]="ExtraSize.xs"-->
+<!--					/>-->
+
+<!--					<ss-lib-avatar-button [size]="ExtraSize.xs" />-->
+<!--				</div>-->
+
+<!--				<div class="component-row">-->
+<!--					<ss-lib-avatar-button-->
+<!--						[username]="'ВН'"-->
+<!--						[src]="'https://i.pravatar.cc/300'"-->
+<!--					/>-->
+
+<!--					<ss-lib-avatar-button />-->
+<!--				</div>-->
+<!--			</div>-->
+<!--		</div>-->
+
+<!--		&lt;!&ndash; Avatar Dropdown Section &ndash;&gt;-->
+<!--		<div class="section">-->
+<!--			<h2 class="section-title">Avatar Dropdown</h2>-->
+
+<!--			<p class="section-description">-->
+<!--				Avatar button with dropdown menu and custom header.-->
+<!--			</p>-->
+
+<!--			<div class="component-row">-->
+<!--				<ss-lib-avatar-button-->
+<!--					[username]="'ВН'"-->
+<!--					[src]="'https://i.pravatar.cc/300'"-->
+<!--					[popoverTriggerFor]="dropdown1"-->
+<!--				></ss-lib-avatar-button>-->
+
+<!--				<ss-lib-dropdown-list-->
+<!--					#dropdown1-->
+<!--					[headerTemplateRef]="avatarHeader"-->
+<!--				>-->
+<!--					<ss-lib-dropdown-item-->
+<!--						[label]="'Опция'"-->
+<!--						[icon]="IconType.Bell"-->
+<!--						[selected]="true"-->
+<!--						(click)="console.log(1)"-->
+<!--					></ss-lib-dropdown-item>-->
+
+<!--					<ss-lib-dropdown-item-->
+<!--						[label]="'Опция'"-->
+<!--						[icon]="IconType.Bell"-->
+<!--						(click)="console.log(1)"-->
+<!--					></ss-lib-dropdown-item>-->
+
+<!--					<ss-lib-dropdown-item-->
+<!--						[label]="'Опция'"-->
+<!--						[icon]="IconType.Bell"-->
+<!--						(click)="console.log(1)"-->
+<!--					></ss-lib-dropdown-item>-->
+
+<!--					<ss-lib-dropdown-item-->
+<!--						[label]="'Опция'"-->
+<!--						[icon]="IconType.Bell"-->
+<!--						[isDisabled]="true"-->
+<!--						(click)="console.log(2)"-->
+<!--					></ss-lib-dropdown-item>-->
+
+<!--					<ss-lib-divider class="divider"></ss-lib-divider>-->
+
+<!--					<ss-lib-dropdown-item-->
+<!--						[label]="'Удалить'"-->
+<!--						[icon]="IconType.Bell"-->
+<!--						(click)="console.log(5)"-->
+<!--					></ss-lib-dropdown-item>-->
+
+<!--					<ss-lib-dropdown-item-->
+<!--						[label]="'Удалить'"-->
+<!--						[icon]="IconType.Bell"-->
+<!--						(click)="console.log(5)"-->
+<!--					></ss-lib-dropdown-item>-->
+<!--				</ss-lib-dropdown-list>-->
+
+<!--				<ng-template #avatarHeader>-->
+<!--					<div class="avatar-test">-->
+<!--						<ss-lib-avatar-->
+<!--							[username]="'ВН'"-->
+<!--							[src]="'https://i.pravatar.cc/300'"-->
+<!--						></ss-lib-avatar>-->
+
+<!--						<div class="avatar-test__title">-->
+<!--							<ss-lib-text-->
+<!--								[type]="TextType.BodySm"-->
+<!--								[weight]="TextWeight.Medium"-->
+<!--								[color]="Colors.TextBody2"-->
+<!--							>-->
+<!--								Мария Викторовна-->
+<!--							</ss-lib-text>-->
+
+<!--							<ss-lib-text-->
+<!--								[type]="TextType.BodySm"-->
+<!--								[weight]="TextWeight.Regular"-->
+<!--								[color]="Colors.TextBody3"-->
+<!--							>-->
+<!--								Менеджер по продажам-->
+<!--							</ss-lib-text>-->
+<!--						</div>-->
+<!--					</div>-->
+<!--				</ng-template>-->
+<!--			</div>-->
+<!--		</div>-->
+
+<!--		&lt;!&ndash; Badges Section &ndash;&gt;-->
+<!--		<div class="section">-->
+<!--			<h2 class="section-title">Badges</h2>-->
+<!--			<p class="section-description">-->
+<!--				Badge components with different sizes, shapes, and statuses.-->
+<!--			</p>-->
+
+<!--			<div class="sub-section">-->
+<!--				<h3 class="sub-section-title">Medium Badges</h3>-->
+<!--				<div class="component-row">-->
+<!--					<ss-lib-badge-->
+<!--						[badgeProps]="{-->
+<!--							size: ExtraSize.md,-->
+<!--							icon: IconType.ImagePlus,-->
+<!--						}"-->
+<!--					></ss-lib-badge>-->
+
+<!--					<ss-lib-badge-->
+<!--						[badgeProps]="{-->
+<!--							size: ExtraSize.md,-->
+<!--							icon: IconType.ImagePlus,-->
+<!--							status: Status.Success,-->
+<!--						}"-->
+<!--					></ss-lib-badge>-->
+
+<!--					<ss-lib-badge-->
+<!--						[badgeProps]="{-->
+<!--							size: ExtraSize.md,-->
+<!--							icon: IconType.ImagePlus,-->
+<!--							status: Status.Warning,-->
+<!--						}"-->
+<!--					></ss-lib-badge>-->
+
+<!--					<ss-lib-badge-->
+<!--						[badgeProps]="{-->
+<!--							size: ExtraSize.md,-->
+<!--							icon: IconType.ImagePlus,-->
+<!--							status: Status.Error,-->
+<!--						}"-->
+<!--					></ss-lib-badge>-->
+<!--				</div>-->
+<!--				<div class="component-row">-->
+<!--					<ss-lib-badge-->
+<!--						[badgeProps]="{-->
+<!--							size: ExtraSize.md,-->
+<!--							icon: IconType.ImagePlus,-->
+<!--							shape: Shape.Round,-->
+<!--						}"-->
+<!--					></ss-lib-badge>-->
+
+<!--					<ss-lib-badge-->
+<!--						[badgeProps]="{-->
+<!--							size: ExtraSize.md,-->
+<!--							icon: IconType.ImagePlus,-->
+<!--							status: Status.Success,-->
+<!--							shape: Shape.Round,-->
+<!--						}"-->
+<!--					></ss-lib-badge>-->
+
+<!--					<ss-lib-badge-->
+<!--						[badgeProps]="{-->
+<!--							size: ExtraSize.md,-->
+<!--							icon: IconType.ImagePlus,-->
+<!--							status: Status.Warning,-->
+<!--							shape: Shape.Round,-->
+<!--						}"-->
+<!--					></ss-lib-badge>-->
+
+<!--					<ss-lib-badge-->
+<!--						[badgeProps]="{-->
+<!--							size: ExtraSize.md,-->
+<!--							icon: IconType.ImagePlus,-->
+<!--							status: Status.Error,-->
+<!--							shape: Shape.Round,-->
+<!--						}"-->
+<!--					></ss-lib-badge>-->
+<!--				</div>-->
+<!--			</div>-->
+
+<!--			<div class="sub-section">-->
+<!--				<h3 class="sub-section-title">Large Badges</h3>-->
+<!--				<div class="component-row">-->
+<!--					<ss-lib-badge-->
+<!--						[badgeProps]="{-->
+<!--							size: ExtraSize.lg,-->
+<!--							icon: IconType.ImagePlus,-->
+<!--						}"-->
+<!--					></ss-lib-badge>-->
+
+<!--					<ss-lib-badge-->
+<!--						[badgeProps]="{-->
+<!--							size: ExtraSize.lg,-->
+<!--							icon: IconType.ImagePlus,-->
+<!--							status: Status.Success,-->
+<!--						}"-->
+<!--					></ss-lib-badge>-->
+
+<!--					<ss-lib-badge-->
+<!--						[badgeProps]="{-->
+<!--							size: ExtraSize.lg,-->
+<!--							icon: IconType.ImagePlus,-->
+<!--							status: Status.Warning,-->
+<!--						}"-->
+<!--					></ss-lib-badge>-->
+
+<!--					<ss-lib-badge-->
+<!--						[badgeProps]="{-->
+<!--							size: ExtraSize.lg,-->
+<!--							icon: IconType.ImagePlus,-->
+<!--							status: Status.Error,-->
+<!--						}"-->
+<!--					></ss-lib-badge>-->
+<!--				</div>-->
+<!--				<div class="component-row">-->
+<!--					<ss-lib-badge-->
+<!--						[badgeProps]="{-->
+<!--							size: ExtraSize.lg,-->
+<!--							icon: IconType.ImagePlus,-->
+<!--							shape: Shape.Round,-->
+<!--						}"-->
+<!--					></ss-lib-badge>-->
+
+<!--					<ss-lib-badge-->
+<!--						[badgeProps]="{-->
+<!--							size: ExtraSize.lg,-->
+<!--							icon: IconType.ImagePlus,-->
+<!--							status: Status.Success,-->
+<!--							shape: Shape.Round,-->
+<!--						}"-->
+<!--					></ss-lib-badge>-->
+
+<!--					<ss-lib-badge-->
+<!--						[badgeProps]="{-->
+<!--							size: ExtraSize.lg,-->
+<!--							icon: IconType.ImagePlus,-->
+<!--							status: Status.Warning,-->
+<!--							shape: Shape.Round,-->
+<!--						}"-->
+<!--					></ss-lib-badge>-->
+
+<!--					<ss-lib-badge-->
+<!--						[badgeProps]="{-->
+<!--							size: ExtraSize.lg,-->
+<!--							icon: IconType.ImagePlus,-->
+<!--							status: Status.Error,-->
+<!--							shape: Shape.Round,-->
+<!--						}"-->
+<!--					></ss-lib-badge>-->
+<!--				</div>-->
+<!--			</div>-->
+<!--			<div class="sub-section">-->
+<!--				<h3 class="sub-section-title">Extra Large Badges</h3>-->
+<!--				<div class="component-row">-->
+<!--					<ss-lib-badge-->
+<!--						[badgeProps]="{-->
+<!--							size: ExtraSize.xl,-->
+<!--							icon: IconType.ImagePlus,-->
+<!--						}"-->
+<!--					></ss-lib-badge>-->
+
+<!--					<ss-lib-badge-->
+<!--						[badgeProps]="{-->
+<!--							size: ExtraSize.xl,-->
+<!--							icon: IconType.ImagePlus,-->
+<!--							status: Status.Success,-->
+<!--						}"-->
+<!--					></ss-lib-badge>-->
+
+<!--					<ss-lib-badge-->
+<!--						[badgeProps]="{-->
+<!--							size: ExtraSize.xl,-->
+<!--							icon: IconType.ImagePlus,-->
+<!--							status: Status.Warning,-->
+<!--						}"-->
+<!--					></ss-lib-badge>-->
+
+<!--					<ss-lib-badge-->
+<!--						[badgeProps]="{-->
+<!--							size: ExtraSize.xl,-->
+<!--							icon: IconType.ImagePlus,-->
+<!--							status: Status.Error,-->
+<!--						}"-->
+<!--					></ss-lib-badge>-->
+<!--				</div>-->
+<!--				<div class="component-row">-->
+<!--					<ss-lib-badge-->
+<!--						[badgeProps]="{-->
+<!--							size: ExtraSize.xl,-->
+<!--							icon: IconType.ImagePlus,-->
+<!--							shape: Shape.Round,-->
+<!--						}"-->
+<!--					></ss-lib-badge>-->
+
+<!--					<ss-lib-badge-->
+<!--						[badgeProps]="{-->
+<!--							size: ExtraSize.xl,-->
+<!--							icon: IconType.ImagePlus,-->
+<!--							status: Status.Success,-->
+<!--							shape: Shape.Round,-->
+<!--						}"-->
+<!--					></ss-lib-badge>-->
+
+<!--					<ss-lib-badge-->
+<!--						[badgeProps]="{-->
+<!--							size: ExtraSize.xl,-->
+<!--							icon: IconType.ImagePlus,-->
+<!--							status: Status.Warning,-->
+<!--							shape: Shape.Round,-->
+<!--						}"-->
+<!--					></ss-lib-badge>-->
+
+<!--					<ss-lib-badge-->
+<!--						[badgeProps]="{-->
+<!--							size: ExtraSize.xl,-->
+<!--							icon: IconType.ImagePlus,-->
+<!--							status: Status.Error,-->
+<!--							shape: Shape.Round,-->
+<!--						}"-->
+<!--					></ss-lib-badge>-->
+<!--				</div>-->
+<!--			</div>-->
+<!--		</div>-->
+
+<!--		&lt;!&ndash; Status Icon Section &ndash;&gt;-->
+<!--		<div class="section">-->
+<!--			<h2 class="section-title">Status Icons</h2>-->
+<!--			<p class="section-description">-->
+<!--				Status Icon components with different statuses.-->
+<!--			</p>-->
+<!--			<div class="component-row">-->
+<!--				<ss-lib-status-icon-->
+<!--					[icon]="IconType.Info"-->
+<!--					[type]="statusType.Default"-->
+<!--				></ss-lib-status-icon>-->
+
+<!--				<ss-lib-status-icon-->
+<!--					[icon]="IconType.Info"-->
+<!--					[type]="statusType.Success"-->
+<!--				></ss-lib-status-icon>-->
+
+<!--				<ss-lib-status-icon-->
+<!--					[icon]="IconType.Info"-->
+<!--					[type]="statusType.Warning"-->
+<!--				></ss-lib-status-icon>-->
+
+<!--				<ss-lib-status-icon-->
+<!--					[icon]="IconType.Info"-->
+<!--					[type]="statusType.Error"-->
+<!--				></ss-lib-status-icon>-->
+
+<!--				<ss-lib-status-icon-->
+<!--					class="disabled-demo"-->
+<!--					[icon]="IconType.Info"-->
+<!--					[type]="statusType.Warning"-->
+<!--					[disabled]="true"-->
+<!--				></ss-lib-status-icon>-->
+<!--			</div>-->
+<!--		</div>-->
+
+<!--		&lt;!&ndash; Tags Section &ndash;&gt;-->
+<!--		<div class="section">-->
+<!--			<h2 class="section-title">Tags</h2>-->
+
+<!--			<p class="section-description">Tags</p>-->
+
+<!--			<div-->
+<!--				class="component-row"-->
+<!--				style="flex-direction: column"-->
+<!--			>-->
+<!--				<ss-lib-tag [text]="'Заказ/контракт'" />-->
+
+<!--				<ss-lib-tag-->
+<!--					[text]="'Заказ/контракт'"-->
+<!--					[type]="TagType.Dot"-->
+<!--				/>-->
+<!--			</div>-->
+<!--		</div>-->
+
+<!--		&lt;!&ndash; Form Fields Section &ndash;&gt;-->
+<!--		<div class="section">-->
+<!--			<h2 class="section-title">Form Fields</h2>-->
+<!--			<p class="section-description">-->
+<!--				Input, textarea, datepicker, and timepicker components with-->
+<!--				validation.-->
+<!--			</p>-->
+
+<!--			<div class="sub-section">-->
+<!--				&lt;!&ndash; Блок: две колонки инпутов md и lg &ndash;&gt;-->
+<!--				<div class="component-row two-columns">-->
+<!--					&lt;!&ndash; Column 1 (md inputs) &ndash;&gt;-->
+<!--					<div class="component-column">-->
+<!--						<ss-lib-form-field-->
+<!--							class="spaced"-->
+<!--							[label]="'Input md'"-->
+<!--							[hint]="'Подсказка'"-->
+<!--							[showValidationFieldIcon]="true"-->
+<!--							[clearButton]="true"-->
+<!--							[size]="ExtraSize.md"-->
+<!--						>-->
+<!--							<ss-lib-input-->
+<!--								fieldCtrl-->
+<!--								[size]="ExtraSize.md"-->
+<!--								[formControl]="inputCtrl"-->
+<!--								[placeholder]="'oleg@mail.ru'"-->
+<!--							/>-->
+<!--						</ss-lib-form-field>-->
+
+<!--						<ss-lib-form-field-->
+<!--							class="spaced"-->
+<!--							[label]="'Input md'"-->
+<!--							[hint]="'Подсказка'"-->
+<!--							[errorText]="'Неверно заполнено'"-->
+<!--							[tooltipInfoText]="'Какой то тултип'"-->
+<!--							[showValidationFieldIcon]="true"-->
+<!--							[clearButton]="true"-->
+<!--							[icon]="IconType.Search"-->
+<!--							[size]="ExtraSize.md"-->
+<!--						>-->
+<!--							<ss-lib-input-->
+<!--								fieldCtrl-->
+<!--								[size]="ExtraSize.md"-->
+<!--								[formControl]="inputCtrl"-->
+<!--								[placeholder]="'oleg@mail.ru'"-->
+<!--							/>-->
+<!--						</ss-lib-form-field>-->
+
+<!--						<ss-lib-form-field-->
+<!--							class="spaced"-->
+<!--							[label]="'Input md'"-->
+<!--							[hint]="'Подсказка'"-->
+<!--							[errorText]="'Неверно заполнено'"-->
+<!--							[tooltipInfoText]="'Какой то тултип'"-->
+<!--							[showValidationFieldIcon]="false"-->
+<!--							[clearButton]="true"-->
+<!--							[icon]="IconType.Bell"-->
+<!--							[size]="ExtraSize.md"-->
+<!--						>-->
+<!--							<ss-lib-input-->
+<!--								fieldCtrl-->
+<!--								[size]="ExtraSize.md"-->
+<!--								[formControl]="inputCtrl"-->
+<!--								[placeholder]="'oleg@mail.ru'"-->
+<!--							/>-->
+<!--						</ss-lib-form-field>-->
+
+<!--						<ss-lib-form-field-->
+<!--							class="spaced"-->
+<!--							[label]="'Input md'"-->
+<!--							[hint]="'Подсказка'"-->
+<!--							[errorText]="'Неверно заполнено'"-->
+<!--							[tooltipInfoText]="'Какой то тултип'"-->
+<!--							[showValidationFieldIcon]="true"-->
+<!--							[clearButton]="false"-->
+<!--							[icon]="IconType.Bell"-->
+<!--							[size]="ExtraSize.md"-->
+<!--						>-->
+<!--							<ss-lib-input-->
+<!--								fieldCtrl-->
+<!--								[size]="ExtraSize.md"-->
+<!--								[formControl]="inputCtrl"-->
+<!--								[placeholder]="'oleg@mail.ru'"-->
+<!--							/>-->
+<!--						</ss-lib-form-field>-->
+
+<!--						<ss-lib-form-field-->
+<!--							class="spaced"-->
+<!--							[label]="'Input md'"-->
+<!--							[hint]="'Подсказка'"-->
+<!--							[errorText]="'Неверно заполнено'"-->
+<!--							[tooltipInfoText]="'Какой то тултип'"-->
+<!--							[showValidationFieldIcon]="true"-->
+<!--							[clearButton]="true"-->
+<!--							[icon]="IconType.Bell"-->
+<!--							[size]="ExtraSize.md"-->
+<!--						>-->
+<!--							<ss-lib-input-->
+<!--								fieldCtrl-->
+<!--								[size]="ExtraSize.md"-->
+<!--								[formControl]="inputCtrlDisabled"-->
+<!--								[placeholder]="'oleg@mail.ru'"-->
+<!--							/>-->
+<!--						</ss-lib-form-field>-->
+<!--					</div>-->
+
+<!--					&lt;!&ndash; Column 2 (lg inputs) &ndash;&gt;-->
+<!--					<div class="component-column">-->
+<!--						<ss-lib-form-field-->
+<!--							class="spaced"-->
+<!--							[label]="'Input lg'"-->
+<!--							[hint]="'Подсказка'"-->
+<!--							[showValidationFieldIcon]="true"-->
+<!--							[clearButton]="true"-->
+<!--							[size]="ExtraSize.lg"-->
+<!--						>-->
+<!--							<ss-lib-input-->
+<!--								fieldCtrl-->
+<!--								[size]="ExtraSize.lg"-->
+<!--								[formControl]="inputCtrl"-->
+<!--								[placeholder]="'oleg@mail.ru'"-->
+<!--							/>-->
+<!--						</ss-lib-form-field>-->
+
+<!--						<ss-lib-form-field-->
+<!--							class="spaced"-->
+<!--							[label]="'Input lg'"-->
+<!--							[hint]="'Подсказка'"-->
+<!--							[errorText]="'Неверно заполнено'"-->
+<!--							[tooltipInfoText]="'Какой то тултип'"-->
+<!--							[showValidationFieldIcon]="true"-->
+<!--							[clearButton]="true"-->
+<!--							[icon]="IconType.Search"-->
+<!--							[size]="ExtraSize.lg"-->
+<!--						>-->
+<!--							<ss-lib-input-->
+<!--								fieldCtrl-->
+<!--								[size]="ExtraSize.lg"-->
+<!--								[formControl]="inputCtrl"-->
+<!--								[placeholder]="'oleg@mail.ru'"-->
+<!--							/>-->
+<!--						</ss-lib-form-field>-->
+
+<!--						<ss-lib-form-field-->
+<!--							class="spaced"-->
+<!--							[label]="'Input lg'"-->
+<!--							[hint]="'Подсказка'"-->
+<!--							[errorText]="'Неверно заполнено'"-->
+<!--							[tooltipInfoText]="'Какой то тултип'"-->
+<!--							[showValidationFieldIcon]="false"-->
+<!--							[clearButton]="true"-->
+<!--							[icon]="IconType.Bell"-->
+<!--							[size]="ExtraSize.lg"-->
+<!--						>-->
+<!--							<ss-lib-input-->
+<!--								fieldCtrl-->
+<!--								[size]="ExtraSize.lg"-->
+<!--								[formControl]="inputCtrl"-->
+<!--								[placeholder]="'oleg@mail.ru'"-->
+<!--							/>-->
+<!--						</ss-lib-form-field>-->
+
+<!--						<ss-lib-form-field-->
+<!--							class="spaced"-->
+<!--							[label]="'Input lg'"-->
+<!--							[hint]="'Подсказка'"-->
+<!--							[errorText]="'Неверно заполнено'"-->
+<!--							[tooltipInfoText]="'Какой то тултип'"-->
+<!--							[showValidationFieldIcon]="true"-->
+<!--							[clearButton]="false"-->
+<!--							[icon]="IconType.Bell"-->
+<!--							[size]="ExtraSize.lg"-->
+<!--						>-->
+<!--							<ss-lib-input-->
+<!--								fieldCtrl-->
+<!--								[size]="ExtraSize.lg"-->
+<!--								[formControl]="inputCtrl"-->
+<!--								[placeholder]="'oleg@mail.ru'"-->
+<!--							/>-->
+<!--						</ss-lib-form-field>-->
+
+<!--						<ss-lib-form-field-->
+<!--							class="spaced"-->
+<!--							[label]="'Input lg'"-->
+<!--							[hint]="'Подсказка'"-->
+<!--							[errorText]="'Неверно заполнено'"-->
+<!--							[tooltipInfoText]="'Какой то тултип'"-->
+<!--							[showValidationFieldIcon]="true"-->
+<!--							[clearButton]="true"-->
+<!--							[icon]="IconType.Bell"-->
+<!--							[size]="ExtraSize.lg"-->
+<!--						>-->
+<!--							<ss-lib-input-->
+<!--								fieldCtrl-->
+<!--								[size]="ExtraSize.lg"-->
+<!--								[formControl]="inputCtrlDisabled"-->
+<!--								[placeholder]="'oleg@mail.ru'"-->
+<!--							/>-->
+<!--						</ss-lib-form-field>-->
+<!--					</div>-->
+<!--				</div>-->
+
+<!--				&lt;!&ndash; Остальные компоненты &ndash;&gt;-->
+<!--				<div class="spaced">-->
+<!--					<ss-lib-form-field-->
+<!--						[label]="'Textarea'"-->
+<!--						[hint]="'Подсказка'"-->
+<!--						[errorText]="'Текст ошибки'"-->
+<!--					>-->
+<!--						<ss-lib-textarea-->
+<!--							fieldCtrl-->
+<!--							[formControl]="textareaCtrl"-->
+<!--						></ss-lib-textarea>-->
+<!--					</ss-lib-form-field>-->
+<!--				</div>-->
+
+<!--				<div class="spaced">-->
+<!--					<ss-lib-form-field-->
+<!--						[label]="'Textarea disabled'"-->
+<!--						[hint]="'Подсказка'"-->
+<!--						[errorText]="'Текст ошибки'"-->
+<!--					>-->
+<!--						<ss-lib-textarea-->
+<!--							fieldCtrl-->
+<!--							[formControl]="textareaCtrlDisabled"-->
+<!--						></ss-lib-textarea>-->
+<!--					</ss-lib-form-field>-->
+<!--				</div>-->
+
+<!--				<div class="spaced">-->
+<!--					<ss-lib-form-field-->
+<!--						[label]="'Datepicker'"-->
+<!--						[hint]="'Подсказка'"-->
+<!--						[errorText]="'Неверно заполнено'"-->
+<!--						[showValidationFieldIcon]="true"-->
+<!--					>-->
+<!--						<ss-lib-datepicker-->
+<!--							fieldCtrl-->
+<!--							[formControl]="datepickerCtrl"-->
+<!--							[min]="minDate"-->
+<!--						></ss-lib-datepicker>-->
+<!--					</ss-lib-form-field>-->
+<!--				</div>-->
+
+<!--				<div class="spaced">-->
+<!--					<ss-lib-form-field-->
+<!--						[label]="'Timepicker'"-->
+<!--						[hint]="'Подсказка'"-->
+<!--						[errorText]="'Неверно заполнено'"-->
+<!--					>-->
+<!--						<ss-lib-timepicker-->
+<!--							fieldCtrl-->
+<!--							[formControl]="timepickerCtrl"-->
+<!--						></ss-lib-timepicker>-->
+<!--					</ss-lib-form-field>-->
+
+<!--					<pre>{{ timepickerCtrl.value }}</pre>-->
+<!--				</div>-->
+<!--			</div>-->
+<!--		</div>-->
+
+<!--		&lt;!&ndash; Select Dropdown Section &ndash;&gt;-->
+<!--		<div class="section">-->
+<!--			<h2 class="section-title">Select Dropdown</h2>-->
+
+<!--			<p class="section-description">-->
+<!--				Select component with dropdown options.-->
+<!--			</p>-->
+
+<!--			<div class="component-row">-->
+<!--				<ss-lib-form-field-->
+<!--					[label]="'Название'"-->
+<!--					[hint]="'Подсказка'"-->
+<!--					[errorText]="'Неверно заполнено'"-->
+<!--					[showValidationFieldIcon]="true"-->
+<!--				>-->
+<!--					<ss-lib-select-->
+<!--						fieldCtrl-->
+<!--						[formControl]="selectCtrl"-->
+<!--						[popoverTriggerFor]="dropdown2"-->
+<!--					>-->
+<!--						<ss-lib-dropdown-list #dropdown2>-->
+<!--							@for (item of dropdownItems; track item.id) {-->
+<!--								<ss-lib-dropdown-item-->
+<!--									[value]="item"-->
+<!--									[icon]="IconType.Bell"-->
+<!--								></ss-lib-dropdown-item>-->
+<!--							}-->
+<!--						</ss-lib-dropdown-list>-->
+<!--					</ss-lib-select>-->
+<!--				</ss-lib-form-field>-->
+<!--			</div>-->
+<!--			<p class="section-description">-->
+<!--				Dropdown component with custom templates and scrolling to-->
+<!--				selected item.-->
+<!--			</p>-->
+
+<!--			<div class="component-row">-->
+<!--				<ss-lib-button-->
+<!--					[iconPosition]="IconPosition.Start"-->
+<!--					[icon]="IconType.Calendar"-->
+<!--					[popoverTriggerFor]="listActions"-->
+<!--					[type]="ButtonType.Secondary"-->
+<!--					[text]="activeWeek()?.name || 'Выберите неделю'"-->
+<!--					[size]="ExtraSize.lg"-->
+<!--					(isPopoverOpenEmit)="dropdownWeekIsOpen.set($event)"-->
+<!--				>-->
+<!--					<ss-lib-icon-->
+<!--						[icon]="IconType.ChevronDown"-->
+<!--						[width]="'20'"-->
+<!--						[height]="'20'"-->
+<!--					></ss-lib-icon>-->
+<!--				</ss-lib-button>-->
+
+<!--				<ss-lib-dropdown-list-->
+<!--					#listActions-->
+<!--					[height]="'274px'"-->
+<!--					[width]="'236px'"-->
+<!--					[scrollOnOpen]="true"-->
+<!--					[isOpen]="dropdownWeekIsOpen()"-->
+<!--				>-->
+<!--					@for (week of dropdownWeeks; track week.id) {-->
+<!--						<ss-lib-dropdown-item-->
+<!--							[value]="week"-->
+<!--							[label]="week.name"-->
+<!--							[selected]="activeWeek()?.id === week.id"-->
+<!--							(click)="activeWeek.set(week)"-->
+<!--						/>-->
+<!--					}-->
+<!--				</ss-lib-dropdown-list>-->
+<!--			</div>-->
+<!--		</div>-->
+
+<!--		&lt;!&ndash; Number Picker Section &ndash;&gt;-->
+<!--		<div class="section">-->
+<!--			<h2 class="section-title">Number Picker</h2>-->
+<!--			<p class="section-description">-->
+<!--				Number input with min and max constraints.-->
+<!--			</p>-->
+<!--			<div class="component-row">-->
+<!--				<div style="width: 148px">-->
+<!--					<ss-lib-number-picker-->
+<!--						[formControl]="numberPickerCtrl"-->
+<!--						[min]="5"-->
+<!--						[max]="1000"-->
+<!--					></ss-lib-number-picker>-->
+<!--				</div>-->
+
+<!--				<div style="width: 148px">-->
+<!--					<ss-lib-number-picker-->
+<!--						[size]="ExtraSize.md"-->
+<!--						[formControl]="numberPickerCtrl"-->
+<!--						[min]="5"-->
+<!--						[max]="1000"-->
+<!--					></ss-lib-number-picker>-->
+<!--				</div>-->
+<!--			</div>-->
+<!--		</div>-->
+
+<!--		&lt;!&ndash; OTP Input Section &ndash;&gt;-->
+<!--		<div class="section">-->
+<!--			<h2 class="section-title">OTP Input</h2>-->
+
+<!--			<p class="section-description">One-time password input field.</p>-->
+<!--			<div-->
+<!--				class="component-row"-->
+<!--				[style.align-items]="'center'"-->
+<!--			>-->
+<!--				<div [style.width.px]="360">-->
+<!--					<ss-lib-otp-input-->
+<!--						class="spaced"-->
+<!--						[formControl]="otpCtrl"-->
+<!--					></ss-lib-otp-input>-->
+<!--				</div>-->
+<!--			</div>-->
+
+<!--			<ss-lib-button-->
+<!--				[type]="ButtonType.Primary"-->
+<!--				[text]="'Submit OTP'"-->
+<!--				(click)="submitOtp()"-->
+<!--			/>-->
+<!--		</div>-->
+
+<!--		&lt;!&ndash; Checkbox Section &ndash;&gt;-->
+<!--		<div class="section">-->
+<!--			<h2 class="section-title">Checkboxes</h2>-->
+
+<!--			<p class="section-description">-->
+<!--				Checkbox components with labels and indeterminate states.-->
+<!--			</p>-->
+
+<!--			<div-->
+<!--				class="component-row"-->
+<!--				style="flex-direction: column"-->
+<!--			>-->
+<!--				<ss-lib-checkbox-->
+<!--					class="spaced"-->
+<!--					[label]="'Чекбокс для тестирования'"-->
+<!--					[description]="'Текст'"-->
+<!--					[formControl]="checkboxControl"-->
+<!--				></ss-lib-checkbox>-->
+<!--			</div>-->
+
+<!--			<div class="component-row">-->
+<!--				<ss-lib-button-->
+<!--					[type]="ButtonType.Secondary"-->
+<!--					[text]="'Переключить валидатор requiredTrue'"-->
+<!--					(click)="toggleRequiredValidator()"-->
+<!--				></ss-lib-button>-->
+
+<!--				<ss-lib-button-->
+<!--					[type]="ButtonType.Secondary"-->
+<!--					[text]="'Установить кастомный валидатор'"-->
+<!--					(click)="setCustomValidator()"-->
+<!--				></ss-lib-button>-->
+
+<!--				<ss-lib-button-->
+<!--					[type]="ButtonType.Secondary"-->
+<!--					[text]="'Очистить валидаторы'"-->
+<!--					(click)="clearValidators()"-->
+<!--				></ss-lib-button>-->
+
+<!--				<ss-lib-button-->
+<!--					[type]="ButtonType.Secondary"-->
+<!--					[text]="'Сбросить'"-->
+<!--					(click)="resetControl()"-->
+<!--				></ss-lib-button>-->
+<!--			</div>-->
+
+<!--			<div-->
+<!--				class="component-row"-->
+<!--				style="flex-direction: column"-->
+<!--			>-->
+<!--				<ss-lib-checkbox-->
+<!--					class="spaced"-->
+<!--					[formControl]="masterCheckboxCtrl"-->
+<!--					[indeterminate]="isIndeterminate"-->
+<!--				></ss-lib-checkbox>-->
+
+<!--				<ss-lib-checkbox-->
+<!--					class="spaced"-->
+<!--					[formControl]="checkBox2"-->
+<!--				></ss-lib-checkbox>-->
+
+<!--				<ss-lib-checkbox-->
+<!--					class="spaced"-->
+<!--					[formControl]="checkBox3"-->
+<!--				></ss-lib-checkbox>-->
+<!--			</div>-->
+
+<!--			<div class="component-row">-->
+<!--				<ss-lib-checkbox-->
+<!--					class="spaced"-->
+<!--					[formControl]="checkBox4"-->
+<!--				></ss-lib-checkbox>-->
+
+<!--				<ss-lib-checkbox-->
+<!--					class="spaced"-->
+<!--					[indeterminate]="true"-->
+<!--					[formControl]="checkBox5"-->
+<!--				></ss-lib-checkbox>-->
+
+<!--				<ss-lib-checkbox-->
+<!--					class="spaced"-->
+<!--					[formControl]="checkBox6"-->
+<!--				></ss-lib-checkbox>-->
+<!--			</div>-->
+<!--		</div>-->
+
+<!--		&lt;!&ndash; Toggle Section &ndash;&gt;-->
+<!--		<div class="section">-->
+<!--			<h2 class="section-title">Toggles</h2>-->
+<!--			<p class="section-description">Toggle switches.</p>-->
+<!--			<div class="component-row">-->
+<!--				<ss-lib-toggle-->
+<!--					class="spaced"-->
+<!--					[formControl]="toggleCtrl"-->
+<!--				></ss-lib-toggle>-->
+<!--				<ss-lib-toggle-icon-->
+<!--					class="spaced"-->
+<!--					[formControl]="toggleCtrl"-->
+<!--				></ss-lib-toggle-icon>-->
+<!--			</div>-->
+<!--		</div>-->
+
+<!--		&lt;!&ndash; Tabs Section &ndash;&gt;-->
+<!--		<div class="section">-->
+<!--			<h2 class="section-title">Tabs</h2>-->
+
+<!--			<p class="section-description">-->
+<!--				Tab navigation with custom actions.-->
+<!--			</p>-->
+
+<!--			<div class="spaced">-->
+<!--				<ss-lib-tabs-->
+<!--					[tabs]="TABS"-->
+<!--					[activeTabIndex]="indexTab"-->
+<!--					(changeIndexEmit)="changeTab($event)"-->
+<!--				></ss-lib-tabs>-->
+<!--			</div>-->
+
+<!--			<div>Выбрана вкладка: {{ indexTab + 1 }}</div>-->
+<!--		</div>-->
+
+<!--		&lt;!&ndash; Action bar Section &ndash;&gt;-->
+<!--		<div class="section">-->
+<!--			<h2 class="section-title">Action bar</h2>-->
+
+<!--			<p class="section-description">-->
+<!--				A customizable panel for displaying interactive action items-->
+<!--				support for various sizes and optional close functionality.-->
+<!--			</p>-->
+
+<!--			<div class="component-row">-->
+<!--				<ss-lib-action-bar [size]="ExtraSize.xxs">-->
+<!--					<ss-lib-action-bar-item-->
+<!--						[leftIconConfig]="{-->
+<!--							icon: IconType.LinkExternal01,-->
+<!--						}"-->
+<!--					/>-->
+
+<!--					<ss-lib-action-bar-item-->
+<!--						[leftIconConfig]="{-->
+<!--							icon: IconType.Message,-->
+<!--						}"-->
+<!--					/>-->
+
+<!--					<ss-lib-action-bar-item-->
+<!--						[leftIconConfig]="{-->
+<!--							icon: IconType.Message,-->
+<!--						}"-->
+<!--						[text]="'3'"-->
+<!--					/>-->
+<!--				</ss-lib-action-bar>-->
+<!--			</div>-->
+
+<!--			<div class="component-row">-->
+<!--				<ss-lib-action-bar [showClose]="true">-->
+<!--					<ss-lib-action-bar-item-->
+<!--						[type]="ActionBarItemType.Info"-->
+<!--						[leftIconConfig]="{-->
+<!--							icon: IconType.CheckCircle,-->
+<!--							color: Colors.IconInformation,-->
+<!--						}"-->
+<!--						[text]="'Выбрано элементов: 1 из 200'"-->
+<!--					/>-->
+
+<!--					<ss-lib-action-bar-item-->
+<!--						[leftIconConfig]="{ icon: IconType.FileSearch02 }"-->
+<!--						[text]="'Заказ-наряд'"-->
+<!--						[rightIconConfig]="{ icon: IconType.ChevronDown }"-->
+<!--						[popoverTriggerFor]="dropdownTest"-->
+<!--					/>-->
+
+<!--					<ss-lib-action-bar-item-->
+<!--						[leftIconConfig]="{ icon: IconType.FilePreviewSearch }"-->
+<!--						[text]="'Рассчитать сырьё'"-->
+<!--						[rightIconConfig]="{ icon: IconType.ChevronDown }"-->
+<!--						[popoverTriggerFor]="dropdownTest"-->
+<!--					/>-->
+
+<!--					<ss-lib-action-bar-item-->
+<!--						[leftIconConfig]="{ icon: IconType.Trash }"-->
+<!--						[text]="'Удалить'"-->
+<!--						[isDestructive]="true"-->
+<!--					/>-->
+<!--				</ss-lib-action-bar>-->
+
+<!--				<ss-lib-dropdown-list-->
+<!--					#dropdownTest-->
+<!--					[width]="'162px'"-->
+<!--				>-->
+<!--					<ss-lib-dropdown-item-->
+<!--						[label]="'Опция'"-->
+<!--						[icon]="IconType.Bell"-->
+<!--						[selected]="true"-->
+<!--						(click)="console.log(1)"-->
+<!--					></ss-lib-dropdown-item>-->
+
+<!--					<ss-lib-dropdown-item-->
+<!--						[label]="'Опция'"-->
+<!--						[icon]="IconType.Bell"-->
+<!--						(click)="console.log(1)"-->
+<!--					></ss-lib-dropdown-item>-->
+
+<!--					<ss-lib-dropdown-item-->
+<!--						[label]="'Опция'"-->
+<!--						[icon]="IconType.Bell"-->
+<!--						(click)="console.log(1)"-->
+<!--					></ss-lib-dropdown-item>-->
+
+<!--					<ss-lib-dropdown-item-->
+<!--						[label]="'Опция'"-->
+<!--						[icon]="IconType.Bell"-->
+<!--						[isDisabled]="true"-->
+<!--						(click)="console.log(2)"-->
+<!--					></ss-lib-dropdown-item>-->
+
+<!--					<ss-lib-divider class="divider"></ss-lib-divider>-->
+
+<!--					<ss-lib-dropdown-item-->
+<!--						[label]="'Удалить'"-->
+<!--						[icon]="IconType.Bell"-->
+<!--						(click)="console.log(5)"-->
+<!--					></ss-lib-dropdown-item>-->
+
+<!--					<ss-lib-dropdown-item-->
+<!--						[label]="'Удалить'"-->
+<!--						[icon]="IconType.Bell"-->
+<!--						(click)="console.log(5)"-->
+<!--					></ss-lib-dropdown-item>-->
+<!--				</ss-lib-dropdown-list>-->
+<!--			</div>-->
+<!--		</div>-->
+
+<!--		&lt;!&ndash; Sidebar Trigger Section &ndash;&gt;-->
+<!--		<div class="section">-->
+<!--			<h2 class="section-title">Sidebar Trigger</h2>-->
+<!--			<p class="section-description">-->
+<!--				Button to trigger a sidebar component.-->
+<!--			</p>-->
+<!--			<div class="component-row">-->
+<!--				<ss-lib-button-->
+<!--					[type]="ButtonType.Primary"-->
+<!--					[text]="'Правый sidePage'"-->
+<!--					(click)="openRightSidebar()"-->
+<!--				></ss-lib-button>-->
+<!--			</div>-->
+<!--		</div>-->
+
+<!-- Dialog header -->
+<div class="section">
+	<h2 class="section-title">Dialog header</h2>
+	<p class="section-description">Dialog header for modals and popups.</p>
+
+	<div class="sub-section">
+		<div
+			class="component-row"
+			style="flex-direction: column"
+		>
+			<ss-lib-dialog-header
+				[title]="'Заголовок'"
+				[description]="'Описание'"
+				[viewClose]="true"
+				[badge]="{
+					icon: IconType.Info,
+					status: Status.Success,
+				}"
+				[tags]="[
+					{
+						type: TagType.Default,
+						text: 'Заказ/контракт',
+					},
+					{
+						type: TagType.Default,
+						text: 'Заказ/контракт',
+					},
+				]"
 			/>
-		</div>
 
-		<!-- Checkbox Section -->
-		<div class="section">
-			<h2 class="section-title">Checkboxes</h2>
-
-			<p class="section-description">
-				Checkbox components with labels and indeterminate states.
-			</p>
-
-			<div
-				class="component-row"
-				style="flex-direction: column"
-			>
-				<ss-lib-checkbox
-					class="spaced"
-					[label]="'Чекбокс для тестирования'"
-					[description]="'Текст'"
-					[formControl]="checkboxControl"
-				></ss-lib-checkbox>
-			</div>
-
-			<div class="component-row">
-				<ss-lib-button
-					[type]="ButtonType.Secondary"
-					[text]="'Переключить валидатор requiredTrue'"
-					(click)="toggleRequiredValidator()"
-				></ss-lib-button>
-
-				<ss-lib-button
-					[type]="ButtonType.Secondary"
-					[text]="'Установить кастомный валидатор'"
-					(click)="setCustomValidator()"
-				></ss-lib-button>
-
-				<ss-lib-button
-					[type]="ButtonType.Secondary"
-					[text]="'Очистить валидаторы'"
-					(click)="clearValidators()"
-				></ss-lib-button>
-
-				<ss-lib-button
-					[type]="ButtonType.Secondary"
-					[text]="'Сбросить'"
-					(click)="resetControl()"
-				></ss-lib-button>
-			</div>
-
-			<div
-				class="component-row"
-				style="flex-direction: column"
-			>
-				<ss-lib-checkbox
-					class="spaced"
-					[formControl]="masterCheckboxCtrl"
-					[indeterminate]="isIndeterminate"
-				></ss-lib-checkbox>
-
-				<ss-lib-checkbox
-					class="spaced"
-					[formControl]="checkBox2"
-				></ss-lib-checkbox>
-
-				<ss-lib-checkbox
-					class="spaced"
-					[formControl]="checkBox3"
-				></ss-lib-checkbox>
-			</div>
-
-			<div class="component-row">
-				<ss-lib-checkbox
-					class="spaced"
-					[formControl]="checkBox4"
-				></ss-lib-checkbox>
-
-				<ss-lib-checkbox
-					class="spaced"
-					[indeterminate]="true"
-					[formControl]="checkBox5"
-				></ss-lib-checkbox>
-
-				<ss-lib-checkbox
-					class="spaced"
-					[formControl]="checkBox6"
-				></ss-lib-checkbox>
-			</div>
-		</div>
-
-		<!-- Toggle Section -->
-		<div class="section">
-			<h2 class="section-title">Toggles</h2>
-			<p class="section-description">Toggle switches.</p>
-			<div class="component-row">
-				<ss-lib-toggle
-					class="spaced"
-					[formControl]="toggleCtrl"
-				></ss-lib-toggle>
-				<ss-lib-toggle-icon
-					class="spaced"
-					[formControl]="toggleCtrl"
-				></ss-lib-toggle-icon>
-			</div>
-		</div>
-
-		<!-- Tabs Section -->
-		<div class="section">
-			<h2 class="section-title">Tabs</h2>
-
-			<p class="section-description">
-				Tab navigation with custom actions.
-			</p>
-
-			<div class="spaced">
-				<ss-lib-tabs
-					[tabs]="TABS"
-					[activeTabIndex]="indexTab"
-					(changeIndexEmit)="changeTab($event)"
-				></ss-lib-tabs>
-			</div>
-
-			<div>Выбрана вкладка: {{ indexTab + 1 }}</div>
-		</div>
-
-		<!-- Action bar Section -->
-		<div class="section">
-			<h2 class="section-title">Action bar</h2>
-
-			<p class="section-description">
-				A customizable panel for displaying interactive action items
-				support for various sizes and optional close functionality.
-			</p>
-
-			<div class="component-row">
-				<ss-lib-action-bar [size]="ExtraSize.xxs">
-					<ss-lib-action-bar-item
-						[leftIconConfig]="{
-							icon: IconType.LinkExternal01,
-						}"
-					/>
-
-					<ss-lib-action-bar-item
-						[leftIconConfig]="{
-							icon: IconType.Message,
-						}"
-					/>
-
-					<ss-lib-action-bar-item
-						[leftIconConfig]="{
-							icon: IconType.Message,
-						}"
-						[text]="'3'"
-					/>
-				</ss-lib-action-bar>
-			</div>
-
-			<div class="component-row">
-				<ss-lib-action-bar [showClose]="true">
-					<ss-lib-action-bar-item
-						[type]="ActionBarItemType.Info"
-						[leftIconConfig]="{
-							icon: IconType.CheckCircle,
-							color: Colors.IconInformation,
-						}"
-						[text]="'Выбрано элементов: 1 из 200'"
-					/>
-
-					<ss-lib-action-bar-item
-						[leftIconConfig]="{ icon: IconType.FileSearch02 }"
-						[text]="'Заказ-наряд'"
-						[rightIconConfig]="{ icon: IconType.ChevronDown }"
-						[popoverTriggerFor]="dropdownTest"
-					/>
-
-					<ss-lib-action-bar-item
-						[leftIconConfig]="{ icon: IconType.FilePreviewSearch }"
-						[text]="'Рассчитать сырьё'"
-						[rightIconConfig]="{ icon: IconType.ChevronDown }"
-						[popoverTriggerFor]="dropdownTest"
-					/>
-
-					<ss-lib-action-bar-item
-						[leftIconConfig]="{ icon: IconType.Trash }"
-						[text]="'Удалить'"
-						[isDestructive]="true"
-					/>
-				</ss-lib-action-bar>
-
-				<ss-lib-dropdown-list
-					#dropdownTest
-					[width]="'162px'"
-				>
-					<ss-lib-dropdown-item
-						[label]="'Опция'"
-						[icon]="IconType.Bell"
-						[selected]="true"
-						(click)="console.log(1)"
-					></ss-lib-dropdown-item>
-
-					<ss-lib-dropdown-item
-						[label]="'Опция'"
-						[icon]="IconType.Bell"
-						(click)="console.log(1)"
-					></ss-lib-dropdown-item>
-
-					<ss-lib-dropdown-item
-						[label]="'Опция'"
-						[icon]="IconType.Bell"
-						(click)="console.log(1)"
-					></ss-lib-dropdown-item>
-
-					<ss-lib-dropdown-item
-						[label]="'Опция'"
-						[icon]="IconType.Bell"
-						[isDisabled]="true"
-						(click)="console.log(2)"
-					></ss-lib-dropdown-item>
-
-					<ss-lib-divider class="divider"></ss-lib-divider>
-
-					<ss-lib-dropdown-item
-						[label]="'Удалить'"
-						[icon]="IconType.Bell"
-						(click)="console.log(5)"
-					></ss-lib-dropdown-item>
-
-					<ss-lib-dropdown-item
-						[label]="'Удалить'"
-						[icon]="IconType.Bell"
-						(click)="console.log(5)"
-					></ss-lib-dropdown-item>
-				</ss-lib-dropdown-list>
-			</div>
-		</div>
-
-		<!-- Sidebar Trigger Section -->
-		<div class="section">
-			<h2 class="section-title">Sidebar Trigger</h2>
-			<p class="section-description">
-				Button to trigger a sidebar component.
-			</p>
-			<div class="component-row">
-				<ss-lib-button
-					[type]="ButtonType.Primary"
-					[text]="'Правый sidePage'"
-					(click)="openRightSidebar()"
-				></ss-lib-button>
-			</div>
-		</div>
-
-		<!-- Dialog header -->
-		<div class="section">
-			<h2 class="section-title">Dialog header</h2>
-			<p class="section-description">
-				Dialog header for modals and popups.
-			</p>
-
-			<div class="sub-section">
-				<div
-					class="component-row"
-					style="flex-direction: column"
-				>
-					<ss-lib-dialog-header
-						[title]="'Заголовок'"
-						[description]="'Описание'"
-						[viewClose]="true"
-						[badge]="{
-							icon: IconType.Info,
-							status: Status.Success,
-						}"
-						[tags]="[
-							{
-								type: TagType.Default,
-								text: 'Заказ/контракт',
-							},
-							{
-								type: TagType.Default,
-								text: 'Заказ/контракт',
-							},
-						]"
-					/>
-
-					<ss-lib-divider />
-
-					<ss-lib-dialog-header
-						[title]="'Заголовок'"
-						[description]="'Описание'"
-						[orientation]="Orientation.Vertical"
-						[viewClose]="true"
-						[badge]="{
-							icon: IconType.Info,
-							status: Status.Success,
-						}"
-						[tags]="[
-							{
-								type: TagType.Default,
-								text: 'Заказ/контракт',
-							},
-							{
-								type: TagType.Default,
-								text: 'Заказ/контракт',
-							},
-						]"
-					/>
-				</div>
-			</div>
-		</div>
-
-		<!-- Modal Buttons Section -->
-		<div class="section">
-			<h2 class="section-title">Modal Triggers</h2>
-			<p class="section-description">
-				Buttons to trigger different types of modals.
-			</p>
-			<div class="component-row">
-				<ss-lib-button
-					[type]="ButtonType.Primary"
-					[text]="'Модалка - компонент'"
-					(click)="openTestModal()"
-				></ss-lib-button>
-				<ss-lib-button
-					[type]="ButtonType.Primary"
-					[text]="'Модалка - confirm'"
-					(click)="openTestConfirmModal()"
-				></ss-lib-button>
-				<ss-lib-button
-					[type]="ButtonType.Primary"
-					[text]="'Модалка - light-box'"
-					(click)="openLightBoxModal()"
-				></ss-lib-button>
-			</div>
-		</div>
-
-		<!-- Toast Examples Section -->
-		<div class="section">
-			<h2 class="section-title">Toast Notifications</h2>
-			<p class="section-description">
-				Demonstrates various toast notification types and theme toggle
-				functionality.
-			</p>
-			<div class="sub-section">
-				<ss-lib-button
-					class="spaced"
-					[type]="ButtonType.Ghost"
-					[text]="'Toggle Dark/Light Theme'"
-					[icon]="IconType.Sun"
-					[iconPosition]="IconPosition.Start"
-					(click)="toggleTheme()"
-				></ss-lib-button>
-			</div>
-			<div class="component-row">
-				<ss-lib-button
-					[type]="ButtonType.Primary"
-					[text]="'Default Toast'"
-					(click)="showToastDefault()"
-				></ss-lib-button>
-				<ss-lib-button
-					[type]="ButtonType.Primary"
-					[text]="'Error Toast'"
-					(click)="showToastError()"
-				></ss-lib-button>
-				<ss-lib-button
-					[type]="ButtonType.Primary"
-					[text]="'Success Toast'"
-					(click)="showToastSuccess()"
-				></ss-lib-button>
-				<ss-lib-button
-					[type]="ButtonType.Primary"
-					[text]="'Toast с доп кнопкой'"
-					(click)="showToastWithButton()"
-				></ss-lib-button>
-
-				<ss-lib-button
-					[type]="ButtonType.Primary"
-					[text]="'Toast с доп кнопкой и большим текстом'"
-					(click)="showToastWithButtonLarge()"
-				></ss-lib-button>
-			</div>
-			<div class="component-row">
-				<ss-lib-button
-					[type]="ButtonType.Secondary"
-					[text]="'API Success'"
-					(click)="viewToastSuccess()"
-				></ss-lib-button>
-				<ss-lib-button
-					[type]="ButtonType.Secondary"
-					[text]="'API Error'"
-					(click)="exampleMetod({ email: 'sydney@fife' })"
-				></ss-lib-button>
-			</div>
-		</div>
-
-		<!-- Tooltip Section -->
-		<div class="section">
-			<h2 class="section-title">Tooltip</h2>
-			<p class="section-description">
-				Icon with tooltip for additional information.
-			</p>
-			<div class="component-row">
-				<ss-lib-icon
-					ss-lib-tooltip
-					[icon]="IconType.Plus"
-					[color]="Colors.IconOnDisabled"
-					[tooltipText]="'Это тултип'"
-					[position]="TooltipPosition.TopLeft"
-				></ss-lib-icon>
-
-				<ss-lib-icon
-					ss-lib-tooltip
-					[icon]="IconType.Plus"
-					[color]="Colors.IconOnDisabled"
-					[tooltipText]="'Это тултип'"
-					[position]="TooltipPosition.Top"
-				></ss-lib-icon>
-
-				<ss-lib-icon
-					ss-lib-tooltip
-					[icon]="IconType.Plus"
-					[color]="Colors.IconOnDisabled"
-					[tooltipText]="'Это тултип'"
-					[position]="TooltipPosition.TopRight"
-				></ss-lib-icon>
-
-				<ss-lib-icon
-					ss-lib-tooltip
-					[icon]="IconType.Plus"
-					[color]="Colors.IconOnDisabled"
-					[tooltipText]="'Это тултип'"
-					[position]="TooltipPosition.Right"
-				></ss-lib-icon>
-
-				<ss-lib-icon
-					ss-lib-tooltip
-					[icon]="IconType.Plus"
-					[color]="Colors.IconOnDisabled"
-					[tooltipText]="'Это тултип'"
-					[position]="TooltipPosition.BottomRight"
-				></ss-lib-icon>
-
-				<ss-lib-icon
-					ss-lib-tooltip
-					[icon]="IconType.Plus"
-					[color]="Colors.IconOnDisabled"
-					[tooltipText]="'Это тултип'"
-					[position]="TooltipPosition.Bottom"
-				></ss-lib-icon>
-
-				<ss-lib-icon
-					ss-lib-tooltip
-					[icon]="IconType.Plus"
-					[color]="Colors.IconOnDisabled"
-					[tooltipText]="'Это тултип'"
-					[position]="TooltipPosition.BottomLeft"
-				></ss-lib-icon>
-
-				<ss-lib-icon
-					ss-lib-tooltip
-					[icon]="IconType.Plus"
-					[color]="Colors.IconOnDisabled"
-					[tooltipText]="'Это тултип'"
-					[position]="TooltipPosition.Left"
-				></ss-lib-icon>
-			</div>
-		</div>
-
-		<!-- Image Upload and Progress Section -->
-		<div class="section">
-			<h2 class="section-title">Image Upload & Progress Indicators</h2>
-
-			<p class="section-description">
-				Showcases image upload component with progress indicators.
-			</p>
-
-			<div class="component-row">
-				<ss-lib-progress
-					[total]="100"
-					[current]="50"
-				></ss-lib-progress>
-
-				<ss-lib-spinner [displaySpinnerText]="true"></ss-lib-spinner>
-			</div>
-
-			<div class="sub-section">
-				<ss-lib-image-upload
-					class="spaced"
-					[progress]="fileLoadProgress()"
-					(fileChanged)="uploadFile($event)"
-					(uploadCancel)="uploadCancel()"
-				></ss-lib-image-upload>
-			</div>
-		</div>
-
-		<!-- Empty State Section -->
-		<div class="section">
-			<h2 class="section-title">Empty State</h2>
-			<p class="section-description">
-				Empty state component with custom actions and icon.
-			</p>
-			<div class="component-row">
-				<div class="empty-state__test">
-					<ss-lib-empty-state
-						[title]="'Заголовок'"
-						[description]="
-							'Здесь будут баннеры. Нажмите «Добавить баннер», чтобы добавить новый.'
-						"
-						[badge]="{
-							size: ExtraSize.xl,
-							icon: IconType.ImagePlus,
-						}"
-					>
-						<div class="component-row">
-							<ss-lib-button
-								[type]="ButtonType.Secondary"
-								[text]="'Вторичная'"
-								[size]="ExtraSize.xl"
-							></ss-lib-button>
-
-							<ss-lib-button
-								[type]="ButtonType.Primary"
-								[text]="'Первичная'"
-								[size]="ExtraSize.xl"
-							></ss-lib-button>
-						</div>
-					</ss-lib-empty-state>
-				</div>
-			</div>
-		</div>
-
-		<!-- Skeleton Blocks Section -->
-		<div class="section">
-			<h2 class="section-title">Skeleton Blocks</h2>
-			<p class="section-description">
-				Loading placeholders with different shapes and sizes.
-			</p>
-			<div class="component-row">
-				<ss-lib-skeleton-block
-					[config]="{
-						width: '180px',
-						height: '56px',
-						borderRadius: '8px',
-					}"
-				/>
-
-				<ss-lib-skeleton-block
-					[config]="{
-						width: '197px',
-						height: '14px',
-						borderRadius: '4px',
-					}"
-				/>
-
-				<ss-lib-skeleton-block
-					[config]="{
-						width: '40px',
-						height: '40px',
-						borderRadius: '50%',
-					}"
-				/>
-			</div>
-		</div>
-
-		<!-- Scrollbar Section -->
-		<div class="section">
-			<h2 class="section-title">Scrollbar</h2>
-			<p class="section-description">
-				Custom scrollbar with sample content.
-			</p>
-			<div class="component-row">
-				<div class="scrollbar-test">
-					<ss-lib-scrollbar>
-						@for (colCount of 100 | repeatTimes; track $index) {
-							<div class="scrollbar-test__item">
-								Товарищи! сложившаяся структура организации
-								играет важную роль в формировании модели
-								развития
-							</div>
-						}
-					</ss-lib-scrollbar>
-				</div>
-			</div>
-		</div>
-
-		<!-- Carousel Section -->
-		<div class="section">
-			<h2 class="section-title">Carousel</h2>
-			<p class="section-description">
-				Image carousel with auto-rotation.
-			</p>
-			<div class="component-row">
-				<ss-lib-carousel
-					[duration]="3000"
-					[(index)]="carouselIndex"
-				>
-					@for (banner of bannersItems; track banner) {
-						<img
-							*ssItem
-							class="carousel-item"
-							alt="Banner image"
-							height="220"
-							width="990"
-							priority
-							[ngSrc]="banner.imageUrl"
-						/>
-					}
-				</ss-lib-carousel>
-			</div>
-		</div>
-
-		<!-- Table Examples Section -->
-		<div class="section">
-			<h2 class="section-title">Table Examples</h2>
-
-			<p class="section-description">
-				Custom table components for data display.
-			</p>
-
-			<div
-				class="component-row"
-				style="flex-direction: column; overflow: scroll"
-			>
-				<app-table-example class="spaced"></app-table-example>
-			</div>
-
-			<ss-lib-divider class="full-width" />
-
-			<p class="section-description">
-				Custom table components for data display with sticky columns in
-				draggable mode, scrollable, resizable and hover on columns.
-			</p>
-
-			<div
-				class="component-row"
-				style="
-					flex-direction: column;
-					overflow: scroll;
-					margin-top: 28px;
-				"
-			>
-				<app-table-oper-plan-example
-					class="spaced"
-				></app-table-oper-plan-example>
-			</div>
-		</div>
-
-		<!-- Load Pagination -->
-		<div class="section">
-			<h2 class="section-title">Load Pagination</h2>
-			<p class="section-description">
-				Load pagination component with a <i>“Show more”</i> button and
-				progress indicator.
-			</p>
-
-			<div class="sub-section">
-				<div
-					class="component-row"
-					style="flex-direction: column"
-				>
-					<!-- Example 1 -->
-					<ss-lib-load-pagination
-						[total]="100"
-						[offsetInput]="0"
-						[limit]="20"
-						[itemCount]="40"
-					/>
-
-					<ss-lib-divider />
-				</div>
-			</div>
+			<ss-lib-divider />
+
+			<ss-lib-dialog-header
+				[title]="'Заголовок'"
+				[description]="'Описание'"
+				[orientation]="Orientation.Vertical"
+				[viewClose]="true"
+				[badge]="{
+					icon: IconType.Info,
+					status: Status.Success,
+				}"
+				[tags]="[
+					{
+						type: TagType.Default,
+						text: 'Заказ/контракт',
+					},
+					{
+						type: TagType.Default,
+						text: 'Заказ/контракт',
+					},
+				]"
+			/>
 		</div>
 	</div>
 </div>
+
+<!-- Modal Buttons Section -->
+<div class="section">
+	<h2 class="section-title">Modal Triggers</h2>
+	<p class="section-description">
+		Buttons to trigger different types of modals.
+	</p>
+	<div class="component-row">
+		<ss-lib-button
+			[type]="ButtonType.Primary"
+			[text]="'Модалка - компонент'"
+			(click)="openTestModal()"
+		></ss-lib-button>
+		<ss-lib-button
+			[type]="ButtonType.Primary"
+			[text]="'Модалка - confirm'"
+			(click)="openTestConfirmModal()"
+		></ss-lib-button>
+		<ss-lib-button
+			[type]="ButtonType.Primary"
+			[text]="'Модалка - light-box'"
+			(click)="openLightBoxModal()"
+		></ss-lib-button>
+		<ss-lib-button
+			[type]="ButtonType.Primary"
+			[text]="'Модалка - side-page без overlay'"
+			(click)="openRightSidebar(true)"
+		></ss-lib-button>
+		<ss-lib-button
+			[type]="ButtonType.Primary"
+			[text]="'Модалка - side-page c backdrop'"
+			(click)="openRightSidebar(false)"
+		></ss-lib-button>
+	</div>
+</div>
+
+<!-- Toast Examples Section -->
+<div class="section">
+	<h2 class="section-title">Toast Notifications</h2>
+	<p class="section-description">
+		Demonstrates various toast notification types and theme toggle
+		functionality.
+	</p>
+	<div class="sub-section">
+		<ss-lib-button
+			class="spaced"
+			[type]="ButtonType.Ghost"
+			[text]="'Toggle Dark/Light Theme'"
+			[icon]="IconType.Sun"
+			[iconPosition]="IconPosition.Start"
+			(click)="toggleTheme()"
+		></ss-lib-button>
+	</div>
+	<div class="component-row">
+		<ss-lib-button
+			[type]="ButtonType.Primary"
+			[text]="'Default Toast'"
+			(click)="showToastDefault()"
+		></ss-lib-button>
+		<ss-lib-button
+			[type]="ButtonType.Primary"
+			[text]="'Error Toast'"
+			(click)="showToastError()"
+		></ss-lib-button>
+		<ss-lib-button
+			[type]="ButtonType.Primary"
+			[text]="'Success Toast'"
+			(click)="showToastSuccess()"
+		></ss-lib-button>
+		<ss-lib-button
+			[type]="ButtonType.Primary"
+			[text]="'Toast с доп кнопкой'"
+			(click)="showToastWithButton()"
+		></ss-lib-button>
+
+		<ss-lib-button
+			[type]="ButtonType.Primary"
+			[text]="'Toast с доп кнопкой и большим текстом'"
+			(click)="showToastWithButtonLarge()"
+		></ss-lib-button>
+	</div>
+	<div class="component-row">
+		<ss-lib-button
+			[type]="ButtonType.Secondary"
+			[text]="'API Success'"
+			(click)="viewToastSuccess()"
+		></ss-lib-button>
+		<ss-lib-button
+			[type]="ButtonType.Secondary"
+			[text]="'API Error'"
+			(click)="exampleMetod({ email: 'sydney@fife' })"
+		></ss-lib-button>
+	</div>
+</div>
+
+<!--		&lt;!&ndash; Tooltip Section &ndash;&gt;-->
+<!--		<div class="section">-->
+<!--			<h2 class="section-title">Tooltip</h2>-->
+<!--			<p class="section-description">-->
+<!--				Icon with tooltip for additional information.-->
+<!--			</p>-->
+<!--			<div class="component-row">-->
+<!--				<ss-lib-icon-->
+<!--					ss-lib-tooltip-->
+<!--					[icon]="IconType.Plus"-->
+<!--					[color]="Colors.IconOnDisabled"-->
+<!--					[tooltipText]="'Это тултип'"-->
+<!--					[position]="TooltipPosition.TopLeft"-->
+<!--				></ss-lib-icon>-->
+
+<!--				<ss-lib-icon-->
+<!--					ss-lib-tooltip-->
+<!--					[icon]="IconType.Plus"-->
+<!--					[color]="Colors.IconOnDisabled"-->
+<!--					[tooltipText]="'Это тултип'"-->
+<!--					[position]="TooltipPosition.Top"-->
+<!--				></ss-lib-icon>-->
+
+<!--				<ss-lib-icon-->
+<!--					ss-lib-tooltip-->
+<!--					[icon]="IconType.Plus"-->
+<!--					[color]="Colors.IconOnDisabled"-->
+<!--					[tooltipText]="'Это тултип'"-->
+<!--					[position]="TooltipPosition.TopRight"-->
+<!--				></ss-lib-icon>-->
+
+<!--				<ss-lib-icon-->
+<!--					ss-lib-tooltip-->
+<!--					[icon]="IconType.Plus"-->
+<!--					[color]="Colors.IconOnDisabled"-->
+<!--					[tooltipText]="'Это тултип'"-->
+<!--					[position]="TooltipPosition.Right"-->
+<!--				></ss-lib-icon>-->
+
+<!--				<ss-lib-icon-->
+<!--					ss-lib-tooltip-->
+<!--					[icon]="IconType.Plus"-->
+<!--					[color]="Colors.IconOnDisabled"-->
+<!--					[tooltipText]="'Это тултип'"-->
+<!--					[position]="TooltipPosition.BottomRight"-->
+<!--				></ss-lib-icon>-->
+
+<!--				<ss-lib-icon-->
+<!--					ss-lib-tooltip-->
+<!--					[icon]="IconType.Plus"-->
+<!--					[color]="Colors.IconOnDisabled"-->
+<!--					[tooltipText]="'Это тултип'"-->
+<!--					[position]="TooltipPosition.Bottom"-->
+<!--				></ss-lib-icon>-->
+
+<!--				<ss-lib-icon-->
+<!--					ss-lib-tooltip-->
+<!--					[icon]="IconType.Plus"-->
+<!--					[color]="Colors.IconOnDisabled"-->
+<!--					[tooltipText]="'Это тултип'"-->
+<!--					[position]="TooltipPosition.BottomLeft"-->
+<!--				></ss-lib-icon>-->
+
+<!--				<ss-lib-icon-->
+<!--					ss-lib-tooltip-->
+<!--					[icon]="IconType.Plus"-->
+<!--					[color]="Colors.IconOnDisabled"-->
+<!--					[tooltipText]="'Это тултип'"-->
+<!--					[position]="TooltipPosition.Left"-->
+<!--				></ss-lib-icon>-->
+<!--			</div>-->
+<!--		</div>-->
+
+<!--		&lt;!&ndash; Image Upload and Progress Section &ndash;&gt;-->
+<!--		<div class="section">-->
+<!--			<h2 class="section-title">Image Upload & Progress Indicators</h2>-->
+
+<!--			<p class="section-description">-->
+<!--				Showcases image upload component with progress indicators.-->
+<!--			</p>-->
+
+<!--			<div class="component-row">-->
+<!--				<ss-lib-progress-->
+<!--					[total]="100"-->
+<!--					[current]="50"-->
+<!--				></ss-lib-progress>-->
+
+<!--				<ss-lib-spinner [displaySpinnerText]="true"></ss-lib-spinner>-->
+<!--			</div>-->
+
+<!--			<div class="sub-section">-->
+<!--				<ss-lib-image-upload-->
+<!--					class="spaced"-->
+<!--					[progress]="fileLoadProgress()"-->
+<!--					(fileChanged)="uploadFile($event)"-->
+<!--					(uploadCancel)="uploadCancel()"-->
+<!--				></ss-lib-image-upload>-->
+<!--			</div>-->
+<!--		</div>-->
+
+<!--		&lt;!&ndash; Empty State Section &ndash;&gt;-->
+<!--		<div class="section">-->
+<!--			<h2 class="section-title">Empty State</h2>-->
+<!--			<p class="section-description">-->
+<!--				Empty state component with custom actions and icon.-->
+<!--			</p>-->
+<!--			<div class="component-row">-->
+<!--				<div class="empty-state__test">-->
+<!--					<ss-lib-empty-state-->
+<!--						[title]="'Заголовок'"-->
+<!--						[description]="-->
+<!--							'Здесь будут баннеры. Нажмите «Добавить баннер», чтобы добавить новый.'-->
+<!--						"-->
+<!--						[badge]="{-->
+<!--							size: ExtraSize.xl,-->
+<!--							icon: IconType.ImagePlus,-->
+<!--						}"-->
+<!--					>-->
+<!--						<div class="component-row">-->
+<!--							<ss-lib-button-->
+<!--								[type]="ButtonType.Secondary"-->
+<!--								[text]="'Вторичная'"-->
+<!--								[size]="ExtraSize.xl"-->
+<!--							></ss-lib-button>-->
+
+<!--							<ss-lib-button-->
+<!--								[type]="ButtonType.Primary"-->
+<!--								[text]="'Первичная'"-->
+<!--								[size]="ExtraSize.xl"-->
+<!--							></ss-lib-button>-->
+<!--						</div>-->
+<!--					</ss-lib-empty-state>-->
+<!--				</div>-->
+<!--			</div>-->
+<!--		</div>-->
+
+<!--		&lt;!&ndash; Skeleton Blocks Section &ndash;&gt;-->
+<!--		<div class="section">-->
+<!--			<h2 class="section-title">Skeleton Blocks</h2>-->
+<!--			<p class="section-description">-->
+<!--				Loading placeholders with different shapes and sizes.-->
+<!--			</p>-->
+<!--			<div class="component-row">-->
+<!--				<ss-lib-skeleton-block-->
+<!--					[config]="{-->
+<!--						width: '180px',-->
+<!--						height: '56px',-->
+<!--						borderRadius: '8px',-->
+<!--					}"-->
+<!--				/>-->
+
+<!--				<ss-lib-skeleton-block-->
+<!--					[config]="{-->
+<!--						width: '197px',-->
+<!--						height: '14px',-->
+<!--						borderRadius: '4px',-->
+<!--					}"-->
+<!--				/>-->
+
+<!--				<ss-lib-skeleton-block-->
+<!--					[config]="{-->
+<!--						width: '40px',-->
+<!--						height: '40px',-->
+<!--						borderRadius: '50%',-->
+<!--					}"-->
+<!--				/>-->
+<!--			</div>-->
+<!--		</div>-->
+
+<!--		&lt;!&ndash; Scrollbar Section &ndash;&gt;-->
+<!--		<div class="section">-->
+<!--			<h2 class="section-title">Scrollbar</h2>-->
+<!--			<p class="section-description">-->
+<!--				Custom scrollbar with sample content.-->
+<!--			</p>-->
+<!--			<div class="component-row">-->
+<!--				<div class="scrollbar-test">-->
+<!--					<ss-lib-scrollbar>-->
+<!--						@for (colCount of 100 | repeatTimes; track $index) {-->
+<!--							<div class="scrollbar-test__item">-->
+<!--								Товарищи! сложившаяся структура организации-->
+<!--								играет важную роль в формировании модели-->
+<!--								развития-->
+<!--							</div>-->
+<!--						}-->
+<!--					</ss-lib-scrollbar>-->
+<!--				</div>-->
+<!--			</div>-->
+<!--		</div>-->
+
+<!--		&lt;!&ndash; Carousel Section &ndash;&gt;-->
+<!--		<div class="section">-->
+<!--			<h2 class="section-title">Carousel</h2>-->
+<!--			<p class="section-description">-->
+<!--				Image carousel with auto-rotation.-->
+<!--			</p>-->
+<!--			<div class="component-row">-->
+<!--				<ss-lib-carousel-->
+<!--					[duration]="3000"-->
+<!--					[(index)]="carouselIndex"-->
+<!--				>-->
+<!--					@for (banner of bannersItems; track banner) {-->
+<!--						<img-->
+<!--							*ssItem-->
+<!--							class="carousel-item"-->
+<!--							alt="Banner image"-->
+<!--							height="220"-->
+<!--							width="990"-->
+<!--							priority-->
+<!--							[ngSrc]="banner.imageUrl"-->
+<!--						/>-->
+<!--					}-->
+<!--				</ss-lib-carousel>-->
+<!--			</div>-->
+<!--		</div>-->
+
+<!--		&lt;!&ndash; Table Examples Section &ndash;&gt;-->
+<!--		<div class="section">-->
+<!--			<h2 class="section-title">Table Examples</h2>-->
+
+<!--			<p class="section-description">-->
+<!--				Custom table components for data display.-->
+<!--			</p>-->
+
+<!--			<div-->
+<!--				class="component-row"-->
+<!--				style="flex-direction: column; overflow: scroll"-->
+<!--			>-->
+<!--				<app-table-example class="spaced"></app-table-example>-->
+<!--			</div>-->
+
+<!--			<ss-lib-divider class="full-width" />-->
+
+<!--			<p class="section-description">-->
+<!--				Custom table components for data display with sticky columns in-->
+<!--				draggable mode, scrollable, resizable and hover on columns.-->
+<!--			</p>-->
+
+<!--			<div-->
+<!--				class="component-row"-->
+<!--				style="-->
+<!--					flex-direction: column;-->
+<!--					overflow: scroll;-->
+<!--					margin-top: 28px;-->
+<!--				"-->
+<!--			>-->
+<!--				<app-table-oper-plan-example-->
+<!--					class="spaced"-->
+<!--				></app-table-oper-plan-example>-->
+<!--			</div>-->
+<!--		</div>-->
+
+<!--		&lt;!&ndash; Load Pagination &ndash;&gt;-->
+<!--		<div class="section">-->
+<!--			<h2 class="section-title">Load Pagination</h2>-->
+<!--			<p class="section-description">-->
+<!--				Load pagination component with a <i>“Show more”</i> button and-->
+<!--				progress indicator.-->
+<!--			</p>-->
+
+<!--			<div class="sub-section">-->
+<!--				<div-->
+<!--					class="component-row"-->
+<!--					style="flex-direction: column"-->
+<!--				>-->
+<!--					&lt;!&ndash; Example 1 &ndash;&gt;-->
+<!--					<ss-lib-load-pagination-->
+<!--						[total]="100"-->
+<!--						[offsetInput]="0"-->
+<!--						[limit]="20"-->
+<!--						[itemCount]="40"-->
+<!--					/>-->
+
+<!--					<ss-lib-divider />-->
+<!--				</div>-->
+<!--			</div>-->
+<!--		</div>-->
+<!--	</div>-->
+<!--</div>-->

@@ -74,8 +74,6 @@ export {
 	TableDirective,
 } from './table/directives';
 export { SsTableState } from './table/services';
-export { HeaderFilterCheckboxSearchAbstractComponent } from './header-filter-checkbox-abstract/header-filter-checkbox-abstract.component';
-export { HeaderFilterCheckboxItemAbstractComponent } from './header-filter-checkbox-item-abstract/header-filter-checkbox-search-item-abstract.component';
 
 // Misc
 export { IconComponent } from './icon/icon.component';
