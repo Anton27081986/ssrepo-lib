@@ -1,15 +1,17 @@
 import type { OnDestroy } from '@angular/core';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { ModalComponent } from '../modal/modal.component';
+import { NgIf } from '@angular/common';
 import {
+	ExtraSize,
 	IApply,
 	IBadgeProps,
 	IConfirmData,
 	ModalRef,
 } from '../../shared/models';
 import { ButtonType } from '../../shared/models';
-import { ModalActionApplyComponent } from '../modal-action-apply/modal-action-apply.component';
+import { DialogHeaderComponent } from '../dialog-header/dialog-header.component';
+import { ButtonComponent } from '../buttons';
 
 /**
  * Компонент модального окна подтверждения с поддержкой действий
@@ -46,7 +48,7 @@ import { ModalActionApplyComponent } from '../modal-action-apply/modal-action-ap
 @Component({
 	selector: 'ss-lib-confirm-modal',
 	standalone: true,
-	imports: [ModalComponent, ModalActionApplyComponent],
+	imports: [DialogHeaderComponent, ButtonComponent, NgIf],
 	templateUrl: './confirm-modal.component.html',
 	styleUrl: './confirm-modal.component.scss',
 	changeDetection: ChangeDetectionStrategy.OnPush,
@@ -54,17 +56,18 @@ import { ModalActionApplyComponent } from '../modal-action-apply/modal-action-ap
 export class ConfirmModalComponent implements OnDestroy {
 	public readonly ButtonType = ButtonType;
 
-	protected readonly applyText: IApply;
+	protected readonly apply: IApply | undefined;
 	protected readonly titleHeader: string;
 	protected readonly descriptionHeader: string;
 	protected readonly applyDisabled: boolean;
 	protected readonly badgeProps: IBadgeProps;
-	protected readonly cancelText: string | null;
+	protected readonly cancelText: string;
 
 	private readonly subscription: Subscription = new Subscription();
 
+	protected readonly ExtraSize = ExtraSize;
 	constructor(private readonly modalRef: ModalRef<IConfirmData>) {
-		this.applyText = this.modalRef.data.apply;
+		this.apply = this.modalRef.data.apply;
 		this.applyDisabled = false;
 		this.badgeProps = this.modalRef.data.badgeProps;
 		this.titleHeader = this.modalRef.data.title;
@@ -77,15 +80,13 @@ export class ConfirmModalComponent implements OnDestroy {
 	}
 
 	protected onApplyEvent(): void {
-		if (this.modalRef.data.apply.onSubmit) {
+		if (this.modalRef.data.apply?.onSubmit) {
 			this.subscription.add(
 				this.modalRef.data.apply.onSubmit().subscribe(() => {
 					this.modalRef.submit();
-					this.modalRef.close();
 				}),
 			);
 		} else {
-			this.modalRef.submit();
 			this.modalRef.close();
 		}
 	}

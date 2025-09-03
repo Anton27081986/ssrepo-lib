@@ -35,7 +35,6 @@ export { DropdownGroupDirective } from './dropdown/directives/dropdown-group.dir
 // Modals & Overlays
 export { ModalComponent } from './modal/modal.component';
 export { ConfirmModalComponent } from './confirm-modal/confirm-modal.component';
-export { ModalActionApplyComponent } from './modal-action-apply/modal-action-apply.component';
 export { LightBoxComponent } from './light-box/light-box.component';
 export { TooltipComponent } from './tooltip/tooltip.component';
 export { TooltipDirective } from './tooltip/tooltip.directive';

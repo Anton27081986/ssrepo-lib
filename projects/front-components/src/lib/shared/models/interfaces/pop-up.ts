@@ -40,7 +40,5 @@ export interface PopupParamsPanel<T> extends PopupParamsBase<T> {
 export interface IPopoverRef<T = unknown> {
 	readonly afterSubmit$: Observable<T>;
 	readonly afterClosed$: Observable<T>;
-	readonly afterDelete$: Observable<T>;
-
 	close(): void;
 }

@@ -204,8 +204,8 @@ export class StandComponent {
 
 	public openTestConfirmModal(): void {
 		const popover = this.sharedPopupService.openConfirmModal({
-			title: 'Какой то title',
-			description: 'Какой то description',
+			title: 'Выйти без сохранения?',
+			description: 'Все изменения будут утеряны',
 			badgeProps: {
 				icon: IconType.ImagePlus,
 				size: ExtraSize.lg,
@@ -213,10 +213,10 @@ export class StandComponent {
 				status: Status.Default,
 			},
 			apply: {
-				text: 'Ок',
+				text: 'Выйти',
 				onSubmit: () => this.submit(),
 			},
-			cancelText: 'не ок',
+			cancelText: 'Остаться',
 		});
 
 		// eslint-disable-next-line no-console
@@ -412,7 +412,7 @@ export class StandComponent {
 			{ id: 0, text: 'Какой то текст' },
 			'860px',
 			hasBackdrop,
-			false,
+			true,
 		);
 	}
 

@@ -44,7 +44,7 @@ export enum PopoverAnimationEnum {
 @Component({
 	standalone: true,
 	templateUrl: './popover.component.html',
-	styleUrls: ['./popover.component.scss'],
+	styleUrl: './popover.component.scss',
 	imports: [NgComponentOutlet],
 	animations: [
 		trigger('openPanel', [

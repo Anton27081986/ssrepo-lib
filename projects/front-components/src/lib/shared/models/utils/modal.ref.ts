@@ -26,10 +26,7 @@ export class ModalRef<T = unknown>
 
 	public submit(data?: unknown): void {
 		this.afterSubmit.next(data);
-	}
-
-	public delete(): void {
-		this.afterDelete.next(null);
+		this.overlayRef.dispose();
 	}
 
 	public close(): void {
