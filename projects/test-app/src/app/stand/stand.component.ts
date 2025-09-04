@@ -410,7 +410,7 @@ export class StandComponent {
 		this.sharedPopupService.openRightSidePage<TestModalData>(
 			TestRightSidePageComponent,
 			{ id: 0, text: 'Какой то текст' },
-			'860px',
+			'645px',
 			hasBackdrop,
 			true,
 		);
