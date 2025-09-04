@@ -25,6 +25,7 @@ import { TextComponent } from '../text/text.component';
 @Component({
 	selector: 'ss-lib-tag',
 	imports: [TextComponent],
+	standalone: true,
 	templateUrl: './tag.component.html',
 	styleUrl: './tag.component.scss',
 	changeDetection: ChangeDetectionStrategy.OnPush,

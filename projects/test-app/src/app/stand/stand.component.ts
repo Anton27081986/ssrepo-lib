@@ -178,7 +178,7 @@ export class StandComponent {
 				text: 'Какой то текст',
 			},
 			true,
-			'920px',
+			'820px',
 		);
 
 		popover.afterClosed$.subscribe((item) =>
