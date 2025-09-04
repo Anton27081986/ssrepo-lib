@@ -6,7 +6,10 @@ import {
 	Shape,
 	Status,
 } from '../../../../front-components/src/lib/shared/models';
-import { RightSidePagePopupComponent } from '../../../../front-components/src/lib/components';
+import {
+	ButtonComponent,
+	RightSidePagePopupComponent,
+} from '../../../../front-components/src/lib/components';
 import { TestModalData } from '../test-modal/test-modal.component';
 
 @Component({
@@ -14,7 +17,7 @@ import { TestModalData } from '../test-modal/test-modal.component';
 	standalone: true,
 	templateUrl: './test-right-side-page.component.html',
 	styleUrl: './test-right-side-page.component.scss',
-	imports: [RightSidePagePopupComponent],
+	imports: [RightSidePagePopupComponent, ButtonComponent],
 })
 export class TestRightSidePageComponent {
 	protected readonly IconType = IconType;
