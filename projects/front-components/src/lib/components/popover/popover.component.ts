@@ -42,10 +42,9 @@ export enum PopoverAnimationEnum {
  * ```
  */
 @Component({
-	selector: 's-lib-generic-popup',
 	standalone: true,
-	templateUrl: './generic-popup.component.html',
-	styleUrls: ['./generic-popup.component.scss'],
+	templateUrl: './popover.component.html',
+	styleUrl: './popover.component.scss',
 	imports: [NgComponentOutlet],
 	animations: [
 		trigger('openPanel', [
@@ -69,7 +68,7 @@ export enum PopoverAnimationEnum {
 		]),
 	],
 })
-export class GenericPopupComponent implements OnInit {
+export class PopoverComponent implements OnInit {
 	public readonly content: PopupContent;
 	public readonly type: TypePopup;
 	protected state: PopoverAnimationEnum = PopoverAnimationEnum.default;

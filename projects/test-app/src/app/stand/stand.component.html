@@ -1947,7 +1947,7 @@
 				<ss-lib-button
 					[type]="ButtonType.Primary"
 					[text]="'Правый sidePage'"
-					(click)="openRightSidebar()"
+					(click)="openRightSidebar(true)"
 				></ss-lib-button>
 			</div>
 		</div>
@@ -2031,6 +2031,16 @@
 					[type]="ButtonType.Primary"
 					[text]="'Модалка - light-box'"
 					(click)="openLightBoxModal()"
+				></ss-lib-button>
+				<ss-lib-button
+					[type]="ButtonType.Primary"
+					[text]="'Модалка - side-page без overlay'"
+					(click)="openRightSidebar(true)"
+				></ss-lib-button>
+				<ss-lib-button
+					[type]="ButtonType.Primary"
+					[text]="'Модалка - side-page c backdrop'"
+					(click)="openRightSidebar(false)"
 				></ss-lib-button>
 			</div>
 		</div>

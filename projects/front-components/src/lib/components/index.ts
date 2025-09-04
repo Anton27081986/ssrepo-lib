@@ -35,7 +35,6 @@ export { DropdownGroupDirective } from './dropdown/directives/dropdown-group.dir
 // Modals & Overlays
 export { ModalComponent } from './modal/modal.component';
 export { ConfirmModalComponent } from './confirm-modal/confirm-modal.component';
-export { ModalActionApplyComponent } from './modal-action-apply/modal-action-apply.component';
 export { LightBoxComponent } from './light-box/light-box.component';
 export { TooltipComponent } from './tooltip/tooltip.component';
 export { TooltipDirective } from './tooltip/tooltip.directive';
@@ -74,8 +73,6 @@ export {
 	TableDirective,
 } from './table/directives';
 export { SsTableState } from './table/services';
-export { HeaderFilterCheckboxSearchAbstractComponent } from './header-filter-checkbox-abstract/header-filter-checkbox-abstract.component';
-export { HeaderFilterCheckboxItemAbstractComponent } from './header-filter-checkbox-item-abstract/header-filter-checkbox-search-item-abstract.component';
 
 // Misc
 export { IconComponent } from './icon/icon.component';

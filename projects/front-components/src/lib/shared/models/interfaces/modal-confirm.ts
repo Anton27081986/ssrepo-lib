@@ -5,8 +5,8 @@ export interface IConfirmData {
 	title: string;
 	description: string;
 	badgeProps: IBadgeProps;
-	apply: IApply;
-	cancelText: string | null;
+	apply?: IApply;
+	cancelText: string;
 }
 
 export interface IApply {

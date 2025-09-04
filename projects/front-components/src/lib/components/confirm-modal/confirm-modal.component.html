@@ -1,17 +1,22 @@
-<ng-template #actionsRef>
-	<ss-lib-modal-action-apply
-		[applyText]="applyText.text"
-		[cancelText]="cancelText"
-		(applyEvent)="onApplyEvent()"
-	></ss-lib-modal-action-apply>
-</ng-template>
-
-<ss-lib-modal
-	[titleHeader]="titleHeader"
-	[descriptionHeader]="descriptionHeader"
-	[badgeProps]="badgeProps"
-	[actionsRef]="actionsRef"
-	[paddingContent]="'24px'"
-	(closeEmit)="close()"
->
-</ss-lib-modal>
+<div class="ss-lib-confirm-modal">
+	<ss-lib-dialog-header
+		[title]="titleHeader"
+		[description]="descriptionHeader"
+		[badge]="badgeProps"
+		(closeEvent)="close()"
+	></ss-lib-dialog-header>
+	<div class="ss-lib-confirm-modal__actions">
+		<ss-lib-button
+			[size]="ExtraSize.xl"
+			[text]="cancelText"
+			[type]="ButtonType.Secondary"
+			(click)="close()"
+		></ss-lib-button>
+		<ss-lib-button
+			*ngIf="apply"
+			[size]="ExtraSize.xl"
+			[text]="apply.text"
+			(click)="onApplyEvent()"
+		></ss-lib-button>
+	</div>
+</div>
