@@ -1,5 +1,7 @@
-.actions {
-	display: flex;
-	flex-wrap: nowrap;
-	gap: 12px;
+.test-modal {
+	&__actions {
+		display: flex;
+		flex-wrap: nowrap;
+		gap: 12px;
+	}
 }

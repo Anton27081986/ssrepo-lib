@@ -1,7 +1,7 @@
 <ss-lib-right-side-page-popup
 	[titleHeader]="'Какой то title'"
 	[descriptionHeader]="'Какой то description'"
-	[actionsRef]="actions"
+	[actionsRef]="modalRef.data.isFooter ? actions : null"
 	[contentRef]="contentRef"
 	(closeEmit)="close()"
 >
@@ -10,4 +10,4 @@
 <ng-template #actions>
 	<ss-lib-button [text]="'Кнопка 1'"></ss-lib-button>
 </ng-template>
-<ng-template #contentRef> </ng-template>
+<ng-template #contentRef></ng-template>

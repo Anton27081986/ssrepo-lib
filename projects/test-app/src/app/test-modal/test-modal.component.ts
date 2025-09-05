@@ -22,6 +22,7 @@ import { ToastService } from '../../../../front-components/src/lib/shared/servic
 export interface TestModalData {
 	id: number;
 	text: string;
+	isFooter?: boolean;
 }
 
 @Component({
