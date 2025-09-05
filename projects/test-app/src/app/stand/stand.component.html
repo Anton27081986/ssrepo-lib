@@ -1937,21 +1937,6 @@
 			</div>
 		</div>
 
-		<!-- Sidebar Trigger Section -->
-		<div class="section">
-			<h2 class="section-title">Sidebar Trigger</h2>
-			<p class="section-description">
-				Button to trigger a sidebar component.
-			</p>
-			<div class="component-row">
-				<ss-lib-button
-					[type]="ButtonType.Primary"
-					[text]="'Правый sidePage'"
-					(click)="openRightSidebar()"
-				></ss-lib-button>
-			</div>
-		</div>
-
 		<!-- Dialog header -->
 		<div class="section">
 			<h2 class="section-title">Dialog header</h2>
@@ -2033,6 +2018,16 @@
 					[type]="ButtonType.Primary"
 					[text]="'Модалка - light-box'"
 					(click)="openLightBoxModal()"
+				></ss-lib-button>
+				<ss-lib-button
+					[type]="ButtonType.Primary"
+					[text]="'Модалка - side-page без overlay'"
+					(click)="openRightSidebar(true)"
+				></ss-lib-button>
+				<ss-lib-button
+					[type]="ButtonType.Primary"
+					[text]="'Модалка - side-page c backdrop'"
+					(click)="openRightSidebar(false)"
 				></ss-lib-button>
 
 				<ss-lib-button

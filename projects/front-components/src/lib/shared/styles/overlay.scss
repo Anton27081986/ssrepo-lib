@@ -1,4 +1,4 @@
-.ss-lib-overlay-backdrop {
+.ss-lib-popover-overlay-backdrop {
 	&--dark {
 		background-color: var(--surface-backdrop);
 		opacity: 70% !important;
@@ -8,5 +8,5 @@
 .ss-lib-popup-global-scrolled {
 	position: fixed;
 	overflow-y: auto;
-	pointer-events: auto;
+	pointer-events: auto !important;
 }

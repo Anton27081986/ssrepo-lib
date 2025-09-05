@@ -25,7 +25,6 @@
 		<div
 			*ngIf="actionsRef()"
 			class="ss-lib-right-side-page-popup__actions"
-			[style.padding-top]="contentRef() ? '25px' : '32px'"
 			[class.ss-lib-modal__footer-add-padding]="!contentRef()"
 		>
 			<ng-container *ngTemplateOutlet="actionsRef()"></ng-container>

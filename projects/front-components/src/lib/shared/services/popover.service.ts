@@ -6,17 +6,17 @@ import {
 	ViewContainerRef,
 } from '@angular/core';
 import { ComponentPortal, TemplatePortal } from '@angular/cdk/portal';
-import {
-	GenericPopupComponent,
-	PopoverAnimationEnum,
-} from '../../components/generic-popup/generic-popup.component';
 import { PopupParams } from '../models/types/pop-up';
 import { ModalRef } from '../models';
 import { PopupTypeEnum } from '../models/enums/popup-type-enum';
 import { optionalDefined, unwrapExpect } from './popup.utils';
+import {
+	PopoverAnimationEnum,
+	PopoverComponent,
+} from '../../components/popover/popover.component';
 
 @Injectable({ providedIn: 'root' })
-export class ModalService {
+export class PopoverService {
 	constructor(
 		private readonly overlay: Overlay,
 		private readonly injector: Injector,
@@ -42,13 +42,13 @@ export class ModalService {
 			parentElem.className = 'ss-lib-popup-global-scrolled';
 		}
 
-		// только для Modal / Panel используем GenericPopupComponent
+		// только для Modal / Panel используем PopoverComponent
 		if (
 			params.type === PopupTypeEnum.Modal ||
 			params.type === PopupTypeEnum.Panel
 		) {
 			overlayRef.attach(
-				new ComponentPortal(GenericPopupComponent, null, injector),
+				new ComponentPortal(PopoverComponent, null, injector),
 			);
 		}
 
@@ -91,12 +91,12 @@ export class ModalService {
 	}
 
 	private _getOverlayConfig<T>(params: PopupParams<T>): OverlayConfig {
-		const backdropClass: string[] = ['ss-lib-overlay-backdrop'];
 		const panelClass: string[] = ['ss-lib-popover-root'];
 		let positionStrategy;
+		const backdropClass: string[] = ['ss-lib-popover-overlay-backdrop'];
 
 		if (params.isDarkOverlay) {
-			backdropClass.push('ss-lib-overlay-backdrop--dark');
+			backdropClass.push('ss-lib-popover-overlay-backdrop--dark');
 		}
 
 		if (params.type === PopupTypeEnum.Modal) {
@@ -110,7 +110,6 @@ export class ModalService {
 		if (params.type === PopupTypeEnum.Panel) {
 			params.height = '100%';
 			params.width = params.width ? params.width : '100%';
-			panelClass.push('hc-popover-sidebar');
 
 			positionStrategy = this.overlay
 				.position()
@@ -161,7 +160,7 @@ export class ModalService {
 		}
 
 		return new OverlayConfig({
-			hasBackdrop: !params.withoutBackdrop,
+			hasBackdrop: !params.hasBackdrop,
 			width: params.width,
 			minWidth: params.minWidth,
 			maxWidth: params.maxWidth,
@@ -170,7 +169,6 @@ export class ModalService {
 			backdropClass,
 			panelClass,
 			positionStrategy,
-			scrollStrategy: this.overlay.scrollStrategies.reposition(),
 		});
 	}
 }

@@ -1,6 +1,6 @@
 import { ElementRef, inject, Injectable } from '@angular/core';
 import { PopupContent } from '../models/types/pop-up';
-import { ModalService } from './modal.service';
+import { PopoverService } from './popover.service';
 import { PopupTypeEnum } from '../models/enums/popup-type-enum';
 import {
 	ConfirmModalComponent,
@@ -12,7 +12,7 @@ import { ToastService } from './toast.service';
 
 @Injectable({ providedIn: 'root' })
 export class SharedPopupService {
-	private readonly popup: ModalService = inject(ModalService);
+	private readonly popup: PopoverService = inject(PopoverService);
 	private readonly toastService: ToastService = inject(ToastService);
 
 	/**
@@ -20,14 +20,14 @@ export class SharedPopupService {
 	 * @param content - content config
 	 * @param data - data for modal window
 	 * @param isDarkOverlay - background dark
-	 * @param size - size modal window
+	 * @param width - size modal window
 	 * @param isBackDropClick - func close backdrop click
 	 */
 	public openModal<T>(
 		content: PopupContent,
 		data: T,
 		isDarkOverlay: boolean = true,
-		size: string,
+		width: string,
 		isBackDropClick: boolean = false,
 	): ModalRef<T> {
 		const popover = this.popup.open<T>({
@@ -36,7 +36,7 @@ export class SharedPopupService {
 			origin: null,
 			type: PopupTypeEnum.Modal,
 			isDarkOverlay,
-			width: size,
+			width,
 		});
 
 		if (isBackDropClick) {
@@ -113,7 +113,8 @@ export class SharedPopupService {
 	public openRightSidePage<T>(
 		content: PopupContent,
 		data: T,
-		size: string,
+		width: string,
+		hasBackDrop: boolean = true,
 		isDarkOverlay: boolean = true,
 		isBackDropClick: boolean = false,
 	): ModalRef<T> {
@@ -122,8 +123,9 @@ export class SharedPopupService {
 			data,
 			origin: null,
 			type: PopupTypeEnum.Panel,
-			width: size,
+			width,
 			isDarkOverlay,
+			hasBackdrop: hasBackDrop,
 		});
 
 		if (isBackDropClick) {
