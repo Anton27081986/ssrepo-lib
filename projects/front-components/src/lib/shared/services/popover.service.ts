@@ -160,7 +160,7 @@ export class PopoverService {
 		}
 
 		return new OverlayConfig({
-			hasBackdrop: !params.hasBackdrop,
+			hasBackdrop: params.hasBackdrop,
 			width: params.width,
 			minWidth: params.minWidth,
 			maxWidth: params.maxWidth,
