@@ -100,6 +100,8 @@ export class PopoverService {
 		}
 
 		if (params.type === PopupTypeEnum.Modal) {
+			params.hasBackdrop = true;
+
 			positionStrategy = this.overlay
 				.position()
 				.global()
