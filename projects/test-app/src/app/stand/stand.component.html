@@ -2019,22 +2019,52 @@
 					[text]="'Модалка - light-box'"
 					(click)="openLightBoxModal()"
 				></ss-lib-button>
-				<ss-lib-button
-					[type]="ButtonType.Primary"
-					[text]="'Модалка - side-page без overlay'"
-					(click)="openRightSidebar(true)"
-				></ss-lib-button>
-				<ss-lib-button
-					[type]="ButtonType.Primary"
-					[text]="'Модалка - side-page c backdrop'"
-					(click)="openRightSidebar(false)"
-				></ss-lib-button>
+			</div>
+		</div>
 
+		<!-- Popover with element binding Buttons Section -->
+		<div class="section">
+			<h2 class="section-title">Popover with element binding Triggers</h2>
+			<p class="section-description">
+				Buttons to trigger different types of Popover with element
+				binding.
+			</p>
+			<div class="component-row">
 				<ss-lib-button
 					#popoverBtn
 					[type]="ButtonType.Primary"
 					[text]="'Поповер'"
 					(click)="openPopover()"
+				></ss-lib-button>
+			</div>
+		</div>
+
+		<!-- Side Page Buttons Section -->
+		<div class="section">
+			<h2 class="section-title">Side Page Triggers</h2>
+			<p class="section-description">
+				Buttons to trigger different types of Side Page.
+			</p>
+			<div class="component-row">
+				<ss-lib-button
+					[type]="ButtonType.Primary"
+					[text]="'Модалка - side-page без overlay'"
+					(click)="openRightSidebar(true, true)"
+				></ss-lib-button>
+				<ss-lib-button
+					[type]="ButtonType.Primary"
+					[text]="'Модалка - side-page c backdrop'"
+					(click)="openRightSidebar(false, true)"
+				></ss-lib-button>
+				<ss-lib-button
+					[type]="ButtonType.Primary"
+					[text]="'Модалка - side-page без overlay'"
+					(click)="openRightSidebar(true, true)"
+				></ss-lib-button>
+				<ss-lib-button
+					[type]="ButtonType.Primary"
+					[text]="'Модалка - side-page без footer'"
+					(click)="openRightSidebar(true, false)"
 				></ss-lib-button>
 			</div>
 		</div>
