@@ -1,0 +1,38 @@
+:host {
+	width: 100%;
+}
+
+.accordion-item {
+	border: 1px solid var(--border-primary);
+	padding: 10px;
+}
+
+.accordion-item__header {
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+}
+
+.accordion-item__header-content {
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
+}
+
+.accordion-item__header-title {
+	display: flex;
+	align-items: center;
+}
+
+.accordion-item__content {
+	width: 100%;
+}
+
+.accordion-item__content-inner {
+	padding-top: 10px;
+}
+
+.accordion-item--disabled .accordion-item__header {
+	opacity: 0.5;
+	cursor: default;
+}
