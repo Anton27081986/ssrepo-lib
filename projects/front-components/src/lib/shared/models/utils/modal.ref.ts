@@ -3,7 +3,7 @@ import { ModalRefBase } from './modal.ref.base';
 import type { PopupContent } from '../types/pop-up';
 import type { PopupTypeEnum } from '../enums/popup-type-enum';
 import type { IPopoverRef } from '../interfaces/pop-up';
-import { PopoverAnimationEnum } from '../../../components/generic-popup/generic-popup.component';
+import { PopoverAnimationEnum } from '../../../components/popover/popover.component';
 
 export class ModalRef<T = unknown>
 	extends ModalRefBase
@@ -26,10 +26,7 @@ export class ModalRef<T = unknown>
 
 	public submit(data?: unknown): void {
 		this.afterSubmit.next(data);
-	}
-
-	public delete(): void {
-		this.afterDelete.next(null);
+		this.overlayRef.dispose();
 	}
 
 	public close(): void {

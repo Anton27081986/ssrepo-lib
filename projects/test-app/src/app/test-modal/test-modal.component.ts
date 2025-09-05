@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import {
+	ButtonComponent,
 	FormFieldComponent,
 	InputComponent,
-	ModalActionApplyComponent,
 	ModalComponent,
 	TextareaComponent,
 	ToastRef,
@@ -22,6 +22,7 @@ import { ToastService } from '../../../../front-components/src/lib/shared/servic
 export interface TestModalData {
 	id: number;
 	text: string;
+	isFooter?: boolean;
 }
 
 @Component({
@@ -29,12 +30,12 @@ export interface TestModalData {
 	standalone: true,
 	imports: [
 		ModalComponent,
-		ModalActionApplyComponent,
 		InputComponent,
 		FieldCtrlDirective,
 		FormFieldComponent,
 		ReactiveFormsModule,
 		TextareaComponent,
+		ButtonComponent,
 	],
 	templateUrl: './test-modal.component.html',
 	styleUrl: './test-modal.component.scss',

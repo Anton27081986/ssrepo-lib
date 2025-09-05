@@ -1,6 +1,6 @@
 import type { ConnectionPositionPair } from '@angular/cdk/overlay';
 import type { Observable } from 'rxjs';
-import type { PopoverAnimationEnum } from '../../../components/generic-popup/generic-popup.component';
+import type { PopoverAnimationEnum } from '../../../components/popover/popover.component';
 import type { PopupContent, TypePopup } from '../types/pop-up';
 import type { PopupTypeEnum } from '../enums/popup-type-enum';
 
@@ -14,11 +14,11 @@ interface PopupParamsBase<T> {
 	content: PopupContent;
 	data: T;
 	type: TypePopup;
-	withoutBackdrop?: true | undefined;
 	withoutBackground?: true | undefined;
 	withoutAnimation?: true | undefined;
 	animate?: PopoverAnimationEnum | undefined;
 	isDarkOverlay: boolean;
+	hasBackdrop?: boolean;
 }
 
 export interface IPopoverConfig {
@@ -40,7 +40,5 @@ export interface PopupParamsPanel<T> extends PopupParamsBase<T> {
 export interface IPopoverRef<T = unknown> {
 	readonly afterSubmit$: Observable<T>;
 	readonly afterClosed$: Observable<T>;
-	readonly afterDelete$: Observable<T>;
-
 	close(): void;
 }

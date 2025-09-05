@@ -9,23 +9,11 @@
 	position: relative;
 	margin: 52px 0;
 
-	&__header {
-		position: relative;
-	}
-
 	&__body {
 		display: flex;
 		flex-direction: column;
 		flex-grow: 1;
-	}
-
-	&__sticky {
-		position: sticky;
-		background: var(--surface-primary);
-		z-index: 1;
-		padding: 20px 24px 12px 24px;
-		top: 0;
-		margin-left: 1px;
+		padding: 20px 24px 32px 24px;
 	}
 
 	&__footer {
@@ -42,7 +30,7 @@
 	}
 
 	&__divider-top {
-		padding: 20px 0;
+		padding-top: 12px;
 	}
 
 	&__divider-sticky {

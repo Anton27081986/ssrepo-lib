@@ -10,7 +10,6 @@
 	[actionsRef]="actions"
 	[contentRef]="contentRef"
 	[stickyRef]="stickyRef"
-	[paddingContent]="'12px 24px 32px 24px'"
 	(closeEmit)="close()"
 >
 </ss-lib-modal>
@@ -165,10 +164,8 @@
 </ng-template>
 
 <ng-template #actions>
-	<ss-lib-modal-action-apply
-		[cancelText]="'Отмена'"
-		[applyText]="'Сохранить'"
-		(close)="close()"
-		(applyEvent)="onApplyEvent()"
-	></ss-lib-modal-action-apply>
+	<div class="test-modal__actions">
+		<ss-lib-button [text]="'Ок'"></ss-lib-button>
+		<ss-lib-button [text]="'Не ок'"></ss-lib-button>
+	</div>
 </ng-template>

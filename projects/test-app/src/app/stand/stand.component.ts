@@ -1,4 +1,11 @@
-import { Component, inject, signal, WritableSignal } from '@angular/core';
+import {
+	Component,
+	ElementRef,
+	inject,
+	signal,
+	viewChild,
+	WritableSignal,
+} from '@angular/core';
 import {
 	AbstractControl,
 	FormControl,
@@ -39,7 +46,10 @@ import {
 import { SharedPopupService } from '../../../../front-components/src/lib/shared/services';
 import type { TestModalData } from '../test-modal/test-modal.component';
 import { TestModalComponent } from '../test-modal/test-modal.component';
-import { ToastRef } from '../../../../front-components/src/lib/components';
+import {
+	ToastRef,
+	ConfirmModalComponent,
+} from '../../../../front-components/src/lib/components';
 import { TestRightSidePageComponent } from '../test-left-side-page/test-right-side-page.component';
 
 @Component({
@@ -51,6 +61,10 @@ import { TestRightSidePageComponent } from '../test-left-side-page/test-right-si
 	styleUrl: './stand.component.scss',
 })
 export class StandComponent {
+	public readonly popoverBtnElement = viewChild('popoverBtn', {
+		read: ElementRef,
+	});
+
 	public offset: WritableSignal<number> = signal(0);
 
 	public imgCtrl = new FormControl(null);
@@ -178,7 +192,7 @@ export class StandComponent {
 				text: 'Какой то текст',
 			},
 			true,
-			'920px',
+			'820px',
 		);
 
 		popover.afterClosed$.subscribe((item) =>
@@ -202,10 +216,26 @@ export class StandComponent {
 		popover.afterClosed$.subscribe((item) => console.log(item));
 	}
 
+	public openPopover(): void {
+		this.sharedPopupService.openPopover(
+			this.popoverBtnElement()!.nativeElement,
+			ConfirmModalComponent,
+			{
+				title: 'string',
+				description: 'string',
+				apply: {
+					text: 'string',
+					onSubmit: () => this.submit(),
+				},
+				cancelText: 'string',
+			},
+		);
+	}
+
 	public openTestConfirmModal(): void {
 		const popover = this.sharedPopupService.openConfirmModal({
-			title: 'Какой то title',
-			description: 'Какой то description',
+			title: 'Выйти без сохранения?',
+			description: 'Все изменения будут утеряны',
 			badgeProps: {
 				icon: IconType.ImagePlus,
 				size: ExtraSize.lg,
@@ -213,10 +243,10 @@ export class StandComponent {
 				status: Status.Default,
 			},
 			apply: {
-				text: 'Ок',
+				text: 'Выйти',
 				onSubmit: () => this.submit(),
 			},
-			cancelText: 'не ок',
+			cancelText: 'Остаться',
 		});
 
 		// eslint-disable-next-line no-console
@@ -406,11 +436,13 @@ export class StandComponent {
 		this.otpCtrl.setErrors({ invalidOtp: true });
 	}
 
-	public openRightSidebar(): void {
+	public openRightSidebar(hasBackdrop: boolean, isFooter: boolean): void {
 		this.sharedPopupService.openRightSidePage<TestModalData>(
 			TestRightSidePageComponent,
-			{ id: 0, text: 'Какой то текст' },
-			'860px',
+			{ id: 0, text: 'Какой то текст', isFooter },
+			'645px',
+			hasBackdrop,
+			true,
 		);
 	}
 
