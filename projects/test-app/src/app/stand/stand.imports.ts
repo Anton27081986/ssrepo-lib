@@ -59,9 +59,6 @@ import {
 
 import { RepeatTimesPipe } from '../../../../front-components/src/lib/core/pipes';
 
-import { TableExampleComponent } from '../table-example/table-example.component';
-import { TableOperPlanExampleComponent } from '../table-oper-plan-example/table-oper-plan-example.component';
-
 export const standImports = [
 	// Angular
 	ReactiveFormsModule,
@@ -132,8 +129,4 @@ export const standImports = [
 	LoadPaginationComponent,
 	AccordionComponent,
 	AccordionItemComponent,
-
-	// Examples
-	TableExampleComponent,
-	TableOperPlanExampleComponent,
 ];

@@ -16,11 +16,11 @@ import {
 	ThComponent,
 	TrComponent,
 	UtilityButtonComponent,
-} from '../../../../front-components/src/lib/components';
+} from '../../../../../front-components/src/lib/components';
 import {
 	DraggableItemDirective,
 	PopoverTriggerForDirective,
-} from '../../../../front-components/src/lib/core/directives';
+} from '../../../../../front-components/src/lib/core/directives';
 
 export const tableOperPlanExampleImports = [
 	CheckboxComponent,

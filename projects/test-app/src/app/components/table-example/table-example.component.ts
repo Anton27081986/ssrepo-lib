@@ -18,15 +18,15 @@ import {
 	ButtonType,
 	ExtraSize,
 	IconPosition,
-} from '../../../../front-components/src/lib/shared/models';
+} from '../../../../../front-components/src/lib/shared/models';
 
 import { columnConfigsMock, tableDataMock } from './mock';
-import { TableColumnConfig } from '../../../../front-components/src/lib/components/table/models';
+import { TableColumnConfig } from '../../../../../front-components/src/lib/components/table/models';
 import { tableExampleImports } from './table-example.imports';
 import {
 	SsTableState,
 	ButtonComponent,
-} from '../../../../front-components/src/lib/components';
+} from '../../../../../front-components/src/lib/components';
 
 interface TableRow {
 	id: number;

@@ -19,17 +19,17 @@ import {
 	IconType,
 	TextType,
 	TextWeight,
-} from '../../../../front-components/src/lib/shared/models';
+} from '../../../../../front-components/src/lib/shared/models';
 
-import { TableColumnConfig } from '../../../../front-components/src/lib/components/table/models';
+import { TableColumnConfig } from '../../../../../front-components/src/lib/components/table/models';
 import { tableOperPlanExampleImports } from './table-oper-plan-example.imports';
 import { operPlanMock } from './mock';
 import { generateColumnOperPlanConfig } from './utils/generate-column-oper-plan-config';
 import { IOperationPlanItem } from './model/oper-plan.interface';
 import { createDragGhostExample } from './utils/create-drag-ghost-example';
 import { BASE_COLUMN_MAP } from './constants/base-column-map';
-import { SsTableState } from '../../../../front-components/src/lib/components';
-import { ButtonComponent } from '../../../../front-components/src/lib/components';
+import { SsTableState } from '../../../../../front-components/src/lib/components';
+import { ButtonComponent } from '../../../../../front-components/src/lib/components';
 
 @Component({
 	selector: 'app-table-oper-plan-example',

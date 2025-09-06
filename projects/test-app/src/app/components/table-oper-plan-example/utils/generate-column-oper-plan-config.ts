@@ -1,5 +1,5 @@
 import { IOperationPlanItem } from '../model/oper-plan.interface';
-import { TableColumnConfig } from '../../../../../front-components/src/lib/components/table/models';
+import { TableColumnConfig } from '../../../../../../front-components/src/lib/components/table/models';
 
 export function generateColumnOperPlanConfig(
 	data: IOperationPlanItem[],
