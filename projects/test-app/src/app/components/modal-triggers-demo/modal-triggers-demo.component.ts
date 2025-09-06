@@ -11,7 +11,7 @@ import {
 import {
 	TestModalComponent,
 	TestModalData,
-} from '../../test-modal/test-modal.component';
+} from '../test-modal/test-modal.component';
 import { SharedPopupService } from '../../../../../front-components/src/lib/shared/services';
 
 @Component({

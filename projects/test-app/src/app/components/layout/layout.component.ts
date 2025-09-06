@@ -3,20 +3,20 @@ import { Router, RouterOutlet } from '@angular/router';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { tap } from 'rxjs';
-import type { IMenu } from '../../../../front-components/src/lib/shared/models';
+import type { IMenu } from '../../../../../front-components/src/lib/shared/models';
 import {
 	Colors,
 	IconType,
 	TextType,
 	TextWeight,
-} from '../../../../front-components/src/lib/shared/models';
+} from '../../../../../front-components/src/lib/shared/models';
 import {
 	CanvasComponent,
 	IconComponent,
 	TextComponent,
 	ToggleIconComponent,
-} from '../../../../front-components/src/lib/components';
-import { MENU } from '../utils/constants/menu';
+} from '../../../../../front-components/src/lib/components';
+import { MENU } from '../../utils/constants';
 
 @Component({
 	selector: 'app-layout',

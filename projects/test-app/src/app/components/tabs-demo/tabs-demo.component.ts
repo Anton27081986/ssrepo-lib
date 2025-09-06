@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { TabsComponent } from '../../../../../front-components/src/lib/components';
-import { TABS } from '../../stand/constants';
+import { TABS } from '../../utils/constants';
 
 @Component({
 	selector: 'app-tabs-demo',

@@ -1,5 +1,5 @@
 import type { Routes } from '@angular/router';
-import { LayoutComponent } from './layout/layout.component';
+import { LayoutComponent } from './components/layout/layout.component';
 import { StandComponent } from './stand/stand.component';
 import { componentsRoutes } from './components/components.routes';
 

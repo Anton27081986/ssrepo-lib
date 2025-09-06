@@ -19,7 +19,7 @@ import {
 	FieldCtrlDirective,
 	PopoverTriggerForDirective,
 } from '../../../../../front-components/src/lib/core/directives';
-import { DROPDOWN_ITEMS, WEEK_ITEMS } from '../../stand/constants';
+import { DROPDOWN_ITEMS, WEEK_ITEMS } from '../../utils/constants';
 
 @Component({
 	selector: 'app-select-dropdown-demo',

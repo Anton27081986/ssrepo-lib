@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { ButtonComponent } from '../../../../../front-components/src/lib/components';
 import { ButtonType } from '../../../../../front-components/src/lib/shared/models';
-import type { TestModalData } from '../../test-modal/test-modal.component';
-import { TestRightSidePageComponent } from '../../test-left-side-page/test-right-side-page.component';
+import type { TestModalData } from '../test-modal/test-modal.component';
+import { TestRightSidePageComponent } from '../test-left-side-page/test-right-side-page.component';
 import { SharedPopupService } from '../../../../../front-components/src/lib/shared/services';
 
 @Component({

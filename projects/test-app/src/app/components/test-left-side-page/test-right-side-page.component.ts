@@ -5,18 +5,17 @@ import {
 	ModalRef,
 	Shape,
 	Status,
-} from '../../../../front-components/src/lib/shared/models';
+} from '../../../../../front-components/src/lib/shared/models';
 import {
 	ButtonComponent,
 	RightSidePagePopupComponent,
-} from '../../../../front-components/src/lib/components';
+} from '../../../../../front-components/src/lib/components';
 import { TestModalData } from '../test-modal/test-modal.component';
 
 @Component({
 	selector: 'app-test-right-side-page',
 	standalone: true,
 	templateUrl: './test-right-side-page.component.html',
-	styleUrl: './test-right-side-page.component.scss',
 	imports: [RightSidePagePopupComponent, ButtonComponent],
 })
 export class TestRightSidePageComponent {

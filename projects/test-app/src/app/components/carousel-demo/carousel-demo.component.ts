@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { NgOptimizedImage } from '@angular/common';
 import { CarouselComponent } from '../../../../../front-components/src/lib/components';
-import { BANNERS_ITEMS } from '../../stand/constants';
 import { ItemDirective } from '../../../../../front-components/src/lib/core/directives';
+import { BANNERS_ITEMS } from '../../utils/constants';
 
 @Component({
 	selector: 'app-carousel-demo',

@@ -7,7 +7,7 @@ import {
 	ModalComponent,
 	TextareaComponent,
 	ToastRef,
-} from '../../../../front-components/src/lib/components';
+} from '../../../../../front-components/src/lib/components';
 import {
 	ExtraSize,
 	IconType,
@@ -15,9 +15,9 @@ import {
 	Shape,
 	Status,
 	ToastTypeEnum,
-} from '../../../../front-components/src/lib/shared/models';
-import { FieldCtrlDirective } from '../../../../front-components/src/lib/core/directives';
-import { ToastService } from '../../../../front-components/src/lib/shared/services/toast.service';
+} from '../../../../../front-components/src/lib/shared/models';
+import { FieldCtrlDirective } from '../../../../../front-components/src/lib/core/directives';
+import { ToastService } from '../../../../../front-components/src/lib/shared/services/toast.service';
 
 export interface TestModalData {
 	id: number;
