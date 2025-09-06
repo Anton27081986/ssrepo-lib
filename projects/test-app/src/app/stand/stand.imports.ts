@@ -47,6 +47,8 @@ import {
 	ActionBarItemComponent,
 	NavButtonComponent,
 	LoadPaginationComponent,
+	AccordionComponent,
+	AccordionItemComponent,
 } from '../../../../front-components/src/lib/components';
 
 import {
@@ -128,6 +130,8 @@ export const standImports = [
 	DropdownListComponent,
 	SelectComponent,
 	LoadPaginationComponent,
+	AccordionComponent,
+	AccordionItemComponent,
 
 	// Examples
 	TableExampleComponent,
