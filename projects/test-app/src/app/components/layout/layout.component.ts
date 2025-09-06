@@ -55,5 +55,7 @@ export class LayoutComponent {
 	protected selectedMenu(menu: IMenu): void {
 		menu.active = true;
 		void this.router.navigate([menu.link]);
+
+		window.scrollTo(0, 0);
 	}
 }
