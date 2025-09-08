@@ -32,6 +32,10 @@ export { DropdownListComponent } from './dropdown/dropdown-list/dropdown-list.co
 export { DropdownDraggableGroupListComponent } from './dropdown/dropdown-draggable-group-list/dropdown-draggable-group-list.component';
 export { DropdownGroupDirective } from './dropdown/directives/dropdown-group.directive';
 
+// Accordion
+export { AccordionComponent } from './accordion/accordion.component';
+export { AccordionItemComponent } from './accordion/accordion-item/accordion-item.component';
+
 // Modals & Overlays
 export { ModalComponent } from './modal/modal.component';
 export { ConfirmModalComponent } from './confirm-modal/confirm-modal.component';
