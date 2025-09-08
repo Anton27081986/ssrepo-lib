@@ -1,0 +1,46 @@
+<div
+	class="accordion-item"
+	[class.accordion-item--disabled]="isDisabled()"
+	(mouseenter)="state.set(StateTypes.Hover)"
+	(mouseleave)="state.set(StateTypes.Default)"
+	(mousedown)="state.set(StateTypes.Pressed)"
+	(mouseup)="state.set(StateTypes.Default)"
+>
+	<div
+		class="accordion-item__header"
+		(click)="!isDisabled() && toggle()"
+	>
+		<div class="accordion-item__header-content">
+			<div class="accordion-item__header-title">
+				@if (title()) {
+					<ss-lib-text
+						[type]="TextType.BodyLg"
+						[color]="colorsConfig().text"
+					>
+						{{ title() }}
+					</ss-lib-text>
+				}
+			</div>
+		</div>
+
+		<ss-lib-icon
+			[height]="'20'"
+			[width]="'20'"
+			[icon]="IconType.ChevronDown"
+			[color]="colorsConfig().icon"
+			[@rotate]="isExpanded()"
+		></ss-lib-icon>
+	</div>
+
+	<div
+		class="accordion-item__content"
+		[@collapseHeight]="isExpanded()"
+		(@collapseHeight.done)="onCollapseHeightAnimationDone($event)"
+	>
+		@if (isContentVisible()) {
+			<div class="accordion-item__content-inner">
+				<ng-content></ng-content>
+			</div>
+		}
+	</div>
+</div>

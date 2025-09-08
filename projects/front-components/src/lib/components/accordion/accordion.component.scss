@@ -1,0 +1,27 @@
+.accordion-wrapper {
+	border-radius: var(--border-radius-md);
+
+	.only-one-child {
+		.accordion-item {
+			border-radius: var(--border-radius-md);
+		}
+	}
+
+	.first-child {
+		.accordion-item {
+			border-radius: var(--border-radius-md) var(--border-radius-md) 0 0;
+		}
+	}
+
+	.last-child {
+		.accordion-item {
+			border-radius: 0 0 var(--border-radius-md) var(--border-radius-md);
+		}
+	}
+
+	& > *:not(:last-child) {
+		.accordion-item {
+			border-bottom: none !important;
+		}
+	}
+}

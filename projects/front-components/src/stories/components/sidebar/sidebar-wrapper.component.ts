@@ -1,5 +1,5 @@
 import { Component, input } from '@angular/core';
-import { SidebarComponent } from '../../../lib/components/sidebar/sidebar.component';
+import { SidebarComponent } from '../../../lib/components';
 import { IMenu } from '../../../lib/shared/models';
 import { IconType } from '../../../lib/shared/models';
 
@@ -34,32 +34,28 @@ export class SidebarWrapperComponent {
 	public readonly menu = input<IMenu[]>([
 		{
 			title: 'Главная',
-			toolTip: null,
 			link: '/home',
-			pressed: true,
+			active: true,
 			icon: IconType.HamburgerMenu,
 			subMenu: [],
 		},
 		{
 			title: 'Настройки',
-			toolTip: null,
 			link: '/settings',
-			pressed: false,
+			active: false,
 			icon: IconType.Settings01,
 			subMenu: [
 				{
 					title: 'Профиль',
-					toolTip: null,
 					link: '/settings/profile',
-					pressed: false,
+					active: false,
 					icon: IconType.User01,
 					subMenu: [],
 				},
 				{
 					title: 'Безопасность',
-					toolTip: null,
 					link: '/settings/security',
-					pressed: false,
+					active: false,
 					icon: IconType.Eye,
 					subMenu: [],
 				},
