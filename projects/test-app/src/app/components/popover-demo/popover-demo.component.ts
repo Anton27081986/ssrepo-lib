@@ -57,6 +57,10 @@ export class PopoverDemoComponent {
 				},
 				cancelText: 'string',
 			},
+			'300px',
+			true,
+			false,
+			false,
 		);
 	}
 

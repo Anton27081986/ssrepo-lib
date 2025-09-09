@@ -140,6 +140,7 @@ export class SharedPopupService {
 		content: PopupContent,
 		data: T,
 		width: string = 'auto',
+		hasBackDrop: boolean = true,
 		isDarkOverlay: boolean = false,
 		isBackDropClick: boolean = true,
 	): ModalRef<T> {
@@ -152,6 +153,7 @@ export class SharedPopupService {
 			type: PopupTypeEnum.Popover,
 			width,
 			isDarkOverlay,
+			hasBackdrop: hasBackDrop,
 		});
 
 		if (isBackDropClick) {
