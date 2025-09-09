@@ -37,6 +37,7 @@ import { CarouselDemoComponent } from './carousel-demo/carousel-demo.component';
 import { TableExamplesDemoComponent } from './table-examples-demo/table-examples-demo.component';
 import { LoadPaginationDemoComponent } from './load-pagination-demo/load-pagination-demo.component';
 import { PopoverDemoComponent } from './popover-demo/popover-demo.component';
+import { FilesUploadDemoComponent } from './files-upload-demo/files-upload-demo.component';
 
 export const componentsRoutes: Routes = [
 	{ path: 'typography', component: TypographyDemoComponent },
@@ -73,6 +74,7 @@ export const componentsRoutes: Routes = [
 		path: 'image-upload-progress',
 		component: ImageUploadProgressDemoComponent,
 	},
+	{ path: 'files-upload', component: FilesUploadDemoComponent },
 	{ path: 'empty-state', component: EmptyStateDemoComponent },
 	{ path: 'skeleton-blocks', component: SkeletonBlocksDemoComponent },
 	{ path: 'scrollbar', component: ScrollbarDemoComponent },

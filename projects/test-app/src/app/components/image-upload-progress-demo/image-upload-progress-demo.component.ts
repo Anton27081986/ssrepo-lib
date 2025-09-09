@@ -4,12 +4,12 @@ import {
 	inject,
 	signal,
 } from '@angular/core';
-import { SpinnerComponent } from 'front-components';
 import { Subscription } from 'rxjs';
 import { HttpClient, HttpEventType } from '@angular/common/http';
 import {
 	ImageUploadComponent,
 	ProgressComponent,
+	SpinnerComponent,
 } from '../../../../../front-components/src/lib/components';
 import { ToastTypeEnum } from '../../../../../front-components/src/lib/shared/models';
 import { SharedPopupService } from '../../../../../front-components/src/lib/shared/services';

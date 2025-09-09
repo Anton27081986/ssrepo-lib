@@ -24,6 +24,7 @@ export { Extremum } from './extremum';
 export { StateTypes } from './state-types';
 export { ControlState } from './control-state';
 export { Status } from './status';
+export { FileFormats } from './file-formats';
 
 // Buttons & Actions
 export { ButtonType } from './button-type';

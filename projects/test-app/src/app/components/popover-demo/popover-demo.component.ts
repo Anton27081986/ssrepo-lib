@@ -27,8 +27,14 @@ import { SharedPopupService } from '../../../../../front-components/src/lib/shar
 			<ss-lib-button
 				#popoverBtn
 				[type]="ButtonType.Primary"
-				[text]="'Поповер'"
-				(click)="openPopover()"
+				[text]="'Поповер c overlay'"
+				(click)="openPopoverWithBackDrop(true)"
+			></ss-lib-button>
+			<ss-lib-button
+				#popoverBtn
+				[type]="ButtonType.Primary"
+				[text]="'Поповер без overlay'"
+				(click)="openPopoverWithBackDrop(false)"
 			></ss-lib-button>
 		</div>
 	</div>`,
@@ -44,7 +50,7 @@ export class PopoverDemoComponent {
 
 	protected readonly ButtonType = ButtonType;
 
-	public openPopover(): void {
+	public openPopoverWithBackDrop(hasBackDrop: boolean): void {
 		this.sharedPopupService.openPopover(
 			this.popoverBtnElement()!.nativeElement,
 			ConfirmModalComponent,
@@ -57,6 +63,10 @@ export class PopoverDemoComponent {
 				},
 				cancelText: 'string',
 			},
+			'300px',
+			hasBackDrop,
+			false,
+			true,
 		);
 	}
 
