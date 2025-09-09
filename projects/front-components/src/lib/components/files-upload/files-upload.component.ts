@@ -138,8 +138,10 @@ export class FilesUploadComponent {
 		return `${fileCountText}${formatsText}${sizeText}`;
 	});
 
-	protected readonly canAddMoreFiles = computed((): boolean => {
-		return this.filesMetadata().length >= this.maxFiles();
+	protected readonly isDisabled = computed((): boolean => {
+		return (
+			this.disabled() || this.filesMetadata().length >= this.maxFiles()
+		);
 	});
 
 	protected readonly IconType = IconType;
@@ -167,7 +169,7 @@ export class FilesUploadComponent {
 	protected onDragEnter(event: DragEvent): void {
 		event.preventDefault();
 
-		if (!this.disabled()) {
+		if (!this.isDisabled()) {
 			this.hover.set(true);
 		}
 	}
@@ -211,7 +213,7 @@ export class FilesUploadComponent {
 	}
 
 	private validateAndProcessFiles(files: File[]): void {
-		if (this.disabled()) {
+		if (this.isDisabled()) {
 			return;
 		}
 
