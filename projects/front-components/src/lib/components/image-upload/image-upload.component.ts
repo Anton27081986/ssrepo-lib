@@ -26,18 +26,12 @@ import { SharedPopupService } from '../../shared/services';
 import { ProgressCircleComponent } from '../progress-circle/progress-circle.component';
 import { SafePipe } from '../../core/pipes';
 
-/**
- * Enum representing the states of the image upload component.
- */
 enum States {
 	Empty = 'empty',
 	Loading = 'loading',
 	Preview = 'preview',
 }
 
-/**
- * Interface for image validation configuration.
- */
 interface ImageValidationConfig {
 	maxSizeMB: number;
 	maxWidth: number;
@@ -45,10 +39,36 @@ interface ImageValidationConfig {
 }
 
 /**
- * Image upload component with drag-and-drop, preview, and validation support.
+ * Компонент загрузки изображения с поддержкой drag-and-drop, предпросмотра и валидации.
+ *
+ * Поддерживает ограничение по размеру, максимальному разрешению и формату.
+ * Отображает прогресс загрузки и позволяет отменить операцию.
  *
  * @example
  * ```html
+ * Параметры:
+ *
+ * [disabled]: boolean - Флаг блокировки компонента - необязательный, по умолчанию: false
+ *
+ * [maxSize]: number - Максимальный размер файла (в МБ) -
+ * необязательный, по умолчанию: 0 (без ограничения)
+ *
+ * [maxHeight]: number - Максимальная высота изображения (px) -
+ * необязательный, по умолчанию: 0 (без ограничения)
+ *
+ * [maxWidth]: number - Максимальная ширина изображения (px) -
+ * необязательный, по умолчанию: 0 (без ограничения)
+ *
+ * [progress]: number - Текущее значение прогресса загрузки (0–100) -
+ * необязательный, по умолчанию: 0
+ *
+ * [src]: string | null - Ссылка на изображение для отображения предпросмотра -
+ * необязательный, по умолчанию: null
+ *
+ * (fileChanged): EventEmitter<File | null> - Событие выбора нового файла
+ *
+ * (uploadCancel): EventEmitter<void> - Событие отмены загрузки
+ *
  * <ss-lib-image-upload
  *   [disabled]="false"
  *   [maxSize]="5"
@@ -61,6 +81,7 @@ interface ImageValidationConfig {
  * />
  * ```
  */
+
 @Component({
 	selector: 'ss-lib-image-upload',
 	templateUrl: './image-upload.component.html',

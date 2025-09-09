@@ -1,0 +1,100 @@
+<div
+	class="multi-file-upload"
+	[class.multi-file-upload__hover]="hover()"
+	[class.multi-file-upload__disabled]="isDisabled()"
+	(dragenter)="onDragEnter($event)"
+	(dragleave)="onDragLeave($event)"
+	(drop)="onDropSuccess($event)"
+	(dragover)="$event.preventDefault()"
+>
+	<ss-lib-badge
+		[badgeProps]="{ icon: IconType.ImagePlus, size: ExtraSize.lg }"
+	/>
+
+	<div class="multi-file-upload__info">
+		<ss-lib-text
+			[type]="TextType.BodySm"
+			[color]="Colors.TextBody2"
+		>
+			Добавьте или перетащите файлы
+		</ss-lib-text>
+
+		<ss-lib-text
+			[type]="TextType.BodyXs"
+			[color]="Colors.TextBody3"
+		>
+			{{ allowedFormatsText() }}
+		</ss-lib-text>
+	</div>
+
+	<label
+		#hiddenInput
+		class="multi-file-upload__button"
+	>
+		<input
+			#fileInput
+			class="multi-file-upload__button__hidden-input"
+			type="file"
+			multiple
+			aria-label="Загрузить файлы с устройства"
+			[accept]="allowedFormatsList()"
+			[disabled]="isDisabled()"
+			(change)="onFileSelect(fileInput.files)"
+		/>
+
+		<ss-lib-button
+			[type]="ButtonType.Primary"
+			[text]="'Загрузить с устройства'"
+			[icon]="IconType.Upload"
+			[size]="ExtraSize.md"
+			[disabled]="isDisabled()"
+			(click)="hiddenInput.click()"
+		></ss-lib-button>
+	</label>
+</div>
+
+<div class="file-list">
+	@for (file of filesMetadata(); track file.id) {
+		<div class="file-item">
+			@if (file.preview) {
+				<div
+					class="file-item__preview"
+					[style.background-image]="
+						'url(' + file.preview + ')' | safe: 'html'
+					"
+				></div>
+			} @else {
+				<ss-lib-badge
+					[badgeProps]="{
+						icon: IconType.FileCheck,
+						size: ExtraSize.md,
+					}"
+				/>
+			}
+
+			<div class="file-item__info">
+				<ss-lib-text
+					[type]="TextType.BodySm"
+					[color]="Colors.TextBody2"
+				>
+					{{ file.file.name }}
+				</ss-lib-text>
+
+				<ss-lib-text
+					[type]="TextType.BodyXs"
+					[color]="Colors.TextBody3"
+				>
+					{{ formatFileSize(file.file.size) }}
+				</ss-lib-text>
+			</div>
+
+			<ss-lib-close-button
+				class="ss-lib-badge-card__close"
+				[icon]="IconType.Close"
+				[size]="ExtraSize.lg"
+				[type]="ButtonType.CloseLight"
+				(click)="onFileDelete(file.id)"
+			></ss-lib-close-button>
+		</div>
+	}
+</div>

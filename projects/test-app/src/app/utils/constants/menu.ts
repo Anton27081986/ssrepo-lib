@@ -251,6 +251,14 @@ export const MENU: IMenu[] = [
 		subMenu: [],
 	},
 	{
+		title: 'Files upload',
+		toolTip: 'Files upload',
+		link: 'components/files-upload',
+		active: false,
+		icon: IconType.ImagePlus,
+		subMenu: [],
+	},
+	{
 		title: 'Empty state',
 		toolTip: 'Empty state',
 		link: 'components/empty-state',

@@ -53,6 +53,36 @@ export const collapseHeight = trigger('collapseHeight', [
 	transition('true => false', [animate('250ms ease-in')]),
 ]);
 
+/**
+ * Компонент элемента аккордеона с заголовком, описанием и анимацией раскрытия/сворачивания.
+ *
+ * Поддерживает состояния: выключен, раскрыт и в режиме наведения.
+ * Цвета и иконки автоматически меняются в зависимости от состояния.
+ * Можно управлять раскрытием через двустороннее связывание `[(isExpanded)]`.
+ *
+ * @example
+ * ```html
+ * Параметры:
+ *
+ * [title]: string - Заголовок элемента - необязательный, по умолчанию: ''
+ *
+ * [description]: string - Подзаголовок/описание - необязательный, по умолчанию: ''
+ *
+ * [isDisabled]: boolean - Флаг блокировки элемента - необязательный, по умолчанию: false
+ *
+ * [(isExpanded)]: boolean - Флаг раскрытия элемента - необязательный, по умолчанию: false
+ *
+ * <ss-lib-accordion-item
+ *   [title]="'Заголовок'"
+ *   [description]="'Описание'"
+ *   [isDisabled]="false"
+ *   [(isExpanded)]="expanded"
+ * >
+ *   <div>Контент, который будет отображаться при раскрытии</div>
+ * </ss-lib-accordion-item>
+ * ```
+ */
+
 @Component({
 	selector: 'ss-lib-accordion-item',
 	standalone: true,
