@@ -5,6 +5,7 @@ import {
 	ModalRef,
 	Shape,
 	Status,
+	TagType,
 } from '../../../../../front-components/src/lib/shared/models';
 import {
 	ButtonComponent,
@@ -28,6 +29,7 @@ export class TestRightSidePageComponent {
 		ModalRef<TestModalData>,
 	);
 
+	protected readonly TagType = TagType;
 	public close(): void {
 		this.modalRef.close();
 	}

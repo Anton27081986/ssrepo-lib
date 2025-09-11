@@ -7,7 +7,12 @@ import {
 	TemplateRef,
 } from '@angular/core';
 import { NgIf, NgTemplateOutlet } from '@angular/common';
-import { IBadgeProps, IconPosition, ModalRef } from '../../shared/models';
+import {
+	IBadgeProps,
+	IconPosition,
+	ITagProps,
+	ModalRef,
+} from '../../shared/models';
 import { DialogHeaderComponent } from '../dialog-header/dialog-header.component';
 import { DividerComponent } from '../divider/divider.component';
 
@@ -63,6 +68,8 @@ export class ModalComponent {
 	public readonly closePosition = input<
 		IconPosition.Start | IconPosition.End
 	>(IconPosition.End);
+
+	public readonly tags = input<ITagProps[]>([]);
 
 	public readonly closeEmit = output<void>();
 	private readonly popoverRef = inject(ModalRef);

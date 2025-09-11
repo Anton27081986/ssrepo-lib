@@ -6,7 +6,7 @@ import {
 	TemplateRef,
 } from '@angular/core';
 import { NgIf, NgTemplateOutlet } from '@angular/common';
-import { IBadgeProps } from '../../shared/models';
+import { IBadgeProps, ITagProps } from '../../shared/models';
 import { DialogHeaderComponent } from '../dialog-header/dialog-header.component';
 import { DividerComponent } from '../divider/divider.component';
 
@@ -56,6 +56,7 @@ export class RightSidePagePopupComponent {
 	public readonly actionsRef = input<TemplateRef<{}> | null>(null);
 	public readonly contentRef = input<TemplateRef<{}> | null>(null);
 	public readonly badgeProps = input<IBadgeProps | null>(null);
+	public readonly tags = input<ITagProps[]>([]);
 
 	public readonly closeEmit = output<void>();
 
