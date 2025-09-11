@@ -3,6 +3,16 @@
 	[descriptionHeader]="'Какой то description'"
 	[actionsRef]="modalRef.data.isFooter ? actions : null"
 	[contentRef]="contentRef"
+	[tags]="[
+		{
+			type: TagType.Default,
+			text: 'Заказ/контракт',
+		},
+		{
+			type: TagType.Default,
+			text: 'Заказ/контракт',
+		},
+	]"
 	(closeEmit)="close()"
 >
 </ss-lib-right-side-page-popup>
