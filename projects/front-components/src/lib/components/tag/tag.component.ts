@@ -1,5 +1,11 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
-import { Colors, TagType, TextType, TextWeight } from '../../shared/models';
+import {
+	Colors,
+	TagType,
+	TextType,
+	TextWeight,
+	ITagColorConfig,
+} from '../../shared/models';
 import { TextComponent } from '../text/text.component';
 
 /**
@@ -13,12 +19,16 @@ import { TextComponent } from '../text/text.component';
  *
  * [text]: string - Текст, отображаемый в теге - обязательный
  *
- * [dotColor]: string - Цвет точки (для типа TagType.Dot) - необязательный, по умолчанию: 'var(--icon-body-2)'
+ * [colorConfig]: ITagColorConfig - Конфигурация цветов для тега (точка, граница, текст).
+ *    Все поля необязательные, по умолчанию:
+ *      dotColor: Colors.IconBody2
+ *      borderColor: Colors.BorderPrimary
+ *      textColor: Colors.TextBody2
  *
  * <ss-lib-tag
  *   [type]="TagType.Dot"
  *   [text]="'Example Tag'"
- *   [dotColor]="'var(--custom-color)'"
+ *   [colorConfig]="{ dotColor: 'var(--custom-color)' }"
  * ></ss-lib-tag>
  * ```
  */
@@ -33,10 +43,30 @@ import { TextComponent } from '../text/text.component';
 export class TagComponent {
 	public readonly type = input<TagType>(TagType.Default);
 	public text = input.required<string>();
-	public dotColor = input<Colors | undefined>(Colors.IconBody2);
+	public colorConfig = input<ITagColorConfig | undefined, ITagColorConfig>(
+		{
+			dotColor: Colors.IconBody2,
+			borderColor: Colors.BorderPrimary,
+			textColor: Colors.TextBody2,
+		},
+		{
+			transform: this.setDefaultTagColor,
+		},
+	);
 
 	protected readonly TextType = TextType;
 	protected readonly TextWeight = TextWeight;
 	protected readonly Colors = Colors;
 	protected readonly TagType = TagType;
+
+	public setDefaultTagColor(
+		colorConfig: ITagColorConfig | undefined,
+	): ITagColorConfig {
+		return {
+			...colorConfig,
+			dotColor: colorConfig?.dotColor ?? Colors.IconBody2,
+			borderColor: colorConfig?.borderColor ?? Colors.BorderPrimary,
+			textColor: colorConfig?.textColor ?? Colors.TextBody2,
+		};
+	}
 }
