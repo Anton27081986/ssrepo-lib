@@ -1,12 +1,13 @@
 <div
 	class="tag"
 	[class]="'type-' + type()"
+	[style.outline-color]="colorConfig()!.borderColor"
 >
 	@if (type() === TagType.Dot) {
 		<div class="dot-wrapper">
 			<div
 				class="dot"
-				[style.backgroundColor]="dotColor()"
+				[style.background-color]="colorConfig()!.dotColor"
 			></div>
 		</div>
 	}
@@ -14,7 +15,7 @@
 	<ss-lib-text
 		[type]="TextType.BodyXs"
 		[weight]="TextWeight.Medium"
-		[color]="Colors.TextBody2"
+		[color]="colorConfig()!.textColor!"
 	>
 		{{ text() }}
 	</ss-lib-text>
